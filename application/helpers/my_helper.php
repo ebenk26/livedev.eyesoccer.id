@@ -63,3 +63,50 @@ if( ! function_exists('relative_time'))
         return "$difference $period $ending";
     }
 }
+
+define('CSSPATH',base_url().'assets/eyeme/css/');
+define('JSPATH',base_url().'assets/eyeme/js/');
+define('sIMGPATH',base_url().'assets/eyeme/img/');
+define('MEURL',base_url().'eyeme/');
+define('MEIMG',base_url().'img/eyeme/');
+define('EYEMEPATH',base_url().'eyeme/');
+define('MEPROFILE',base_url().'eyeme/profile/');
+define('DPIC',sIMGPATH.'EYEME/user-discover.png');
+
+
+function p($arr){
+    echo '<pre>';
+     print_r($arr);
+    echo '</pre>';
+
+}
+function cryptPass($str){
+    return md5($str);
+}
+function inputSecure($input){
+    $input = trim(strip_tags(str_replace("'",'',$input)));
+    
+    return $input;
+}
+
+function getTime($timeStamp){
+    $timeString = ""; 
+    $day       = floor($timeStamp / (3600 * 24));
+    $hours     = floor(($timeStamp % (3600 * 24)) / 3600 );
+    $minute    = (floor($timeStamp) / 60) % 60;
+    $secon     = floor($timeStamp % 60);
+
+    if($day  > 0){
+        $timeString  .= $day.' Hari yang lalu';
+    }
+    elseif($hours > 0 AND $day <= 0 ){
+        $timeString .= $hours.' Jam Yang lalu';
+    }
+    elseif($minute > 0 AND $hours <= 0 AND $day <= 0 ){
+        $timeString  .= $minute.' Menit yang lalu';
+    }
+   else{
+        $timeString = $secon.' Detik Yang lalu';
+    }
+    return array('day' => $day,'hours'=> $hours,'minute'=> $minute,'secon'=>$secon,'timeString' => $timeString);
+}
