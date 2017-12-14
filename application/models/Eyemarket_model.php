@@ -14,8 +14,662 @@ class Eyemarket_model extends CI_Model
             $query=$this->db->get();
             return $query->result ();
         }
-}
 
-/* End of file Berita_model.php */
-/* Location: ./application/models/Berita_model.php */
-/* Please DO NOT modify this information : */
+    public function get_all_product_admin()
+    {
+        $query = $this->db->query(" SELECT
+                                        A.id_product,
+                                        A.id_kategori,
+                                        A.id_toko,
+                                        A.nama,
+                                        A.title_slug,
+                                        A.harga_sebelum,
+                                        A.harga,
+                                        A.diskon,
+                                        A.stok,
+                                        A.berat,
+                                        A.keterangan,
+                                        A.ongkir,
+                                        A.status_publish,
+                                        A.created_date,
+                                        B. nama as toko,
+                                        C. nama as kategori,
+                                        D.id,
+                                        D.S,
+                                        D.M,
+                                        D.L,
+                                        D.XL,
+                                        D.XXL,
+                                        D.XXXL,
+                                        D.custom,
+                                        E.id as id_image,
+                                        E.image1,
+                                        E.image2,
+                                        E.image3,
+                                        E.image4,
+                                        E.image5,
+                                        F.nama as nama_region
+                                    FROM
+                                        eyemarket_product A
+                                    LEFT JOIN 
+                                        eyemarket_toko B on A.id_toko = B.id
+                                    INNER JOIN
+                                        eyemarket_category C on A.id_kategori = C.id
+                                    LEFT JOIN
+                                        eyemarket_size D on A.id_product = D.id_product
+                                    LEFT JOIN
+                                        eyemarket_images E on A.id_product =  E.id_product
+                                    INNER JOIN
+                                        eyemarket_parent_cat F on A.id_parent_cat = F.id
+                                    WHERE
+                                        status_publish != 2
+                                    ORDER BY 
+                                        A.id_product DESC
+                                        ")->result_array();
+            return $query; 
+    }
+
+    public function get_all_product()
+    {
+        $query = $this->db->query(" SELECT
+                                        A.id_product,
+                                        A.id_kategori,
+                                        A.id_toko,
+                                        A.nama,
+                                        A.title_slug,
+                                        A.harga_sebelum,
+                                        A.harga,
+                                        A.diskon,
+                                        A.status_publish,
+                                        A.created_date,
+                                        B. nama as toko,
+                                        C. nama as kategori,
+                                        E.id as id_image,
+                                        E.image1,
+                                        F.nama as nama_region
+                                    FROM
+                                        eyemarket_product A
+                                    LEFT JOIN 
+                                        eyemarket_toko B on A.id_toko = B.id
+                                    INNER JOIN
+                                        eyemarket_category C on A.id_kategori = C.id
+                                    LEFT JOIN
+                                        eyemarket_images E on A.id_product =  E.id_product
+                                    INNER JOIN
+                                        eyemarket_parent_cat F on A.id_kategori = F.id
+                                    WHERE
+                                        status_publish = 1
+                                    ORDER BY 
+                                        A.id_product DESC
+                                        ")->result_array();
+            return $query; 
+    }
+
+    public function get_all_kategori()
+    {
+        $query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        eyemarket_category
+                                        ")->result_array();
+        return $query; 
+    }
+
+    public function get_all_parent_kategori()
+    {
+        $query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        eyemarket_parent_cat
+                                        ")->result_array();
+        return $query; 
+    }
+
+    public function get_all_toko()
+    {
+        $query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        eyemarket_toko
+                                        ")->result_array();
+        return $query; 
+    }
+
+    function tambah_produk($input)
+    {
+        $this->db->insert('eyemarket_product', $input);
+        
+        return $this->db->insert_id();
+    }
+
+    function tambah_image($input)
+    {
+        $this->db->insert('eyemarket_images', $input);
+        
+        return $this->db->insert_id();
+    }
+
+    function tambah_gambar($id,$object)
+    {
+        $query = $this->db->update('eyemarket_images', $object, array('id_product' => $id));
+        
+        return $query;
+    }
+
+    function tambah_size($data_size)
+    {
+        $this->db->insert('eyemarket_size', $data_size);
+        
+        return $this->db->insert_id();
+    }
+
+    function edit_produk($id,$input)
+    {
+        // $this->db->where('id_product', $id);
+        // $this->db->update('eyemarket_product', $input);
+        // $this->db->insert('eyemarket_product', $input);
+
+        $query = $this->db->update('eyemarket_product', $input, array('id_product' => $id));
+
+        return $query;
+    }
+
+    function delete_produk($id,$data)
+    {
+        $query = $this->db->update('eyemarket_product', $data, array('id_product' => $id));
+        return $query;
+    }
+
+    function enable_produk($id,$data)
+    {
+        $query = $this->db->update('eyemarket_product', $data, array('id_product' => $id));
+        return $query;
+    }
+
+    function disable_produk($id,$data)
+    {
+        $query = $this->db->update('eyemarket_product', $data, array('id_product' => $id));
+        return $query;
+    }
+
+    public function get_id_product($title_slug)
+    {
+        $this->db->select('id_product');
+        $query = $this->db->get_where('eyemarket_product', array('title_slug' => $title_slug))->row();
+        return $query; 
+    }
+
+    public function get_product($id_product)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.id_product,
+                                        A.id_kategori,
+                                        A.id_toko,
+                                        A.nama,
+                                        A.title_slug,
+                                        A.harga_sebelum,
+                                        A.harga,
+                                        A.diskon,
+                                        A.stok,
+                                        A.berat,
+                                        A.keterangan,
+                                        A.ongkir,
+                                        A.status_publish,
+                                        A.created_date,
+                                        B. nama as toko,
+                                        C. nama as kategori,
+                                        D.id,
+                                        D.S,
+                                        D.M,
+                                        D.L,
+                                        D.XL,
+                                        D.XXL,
+                                        D.XXXL,
+                                        D.custom,
+                                        E.id as id_image,
+                                        E.image1,
+                                        E.image2,
+                                        E.image3,
+                                        E.image4,
+                                        E.image5
+                                    FROM
+                                        eyemarket_product A
+                                    LEFT JOIN 
+                                        eyemarket_toko B        on A.id_toko = B.id
+                                    INNER JOIN
+                                        eyemarket_category C    on A.id_kategori = C.id
+                                    LEFT JOIN
+                                        eyemarket_size D        on A.id_product = D.id_product
+                                    LEFT JOIN
+                                        eyemarket_images E      on A.id_product =  E.id_product
+                                    WHERE
+                                        A.id_product = '$id_product'
+                                        AND
+                                        status_publish != 2
+                                    ORDER BY 
+                                        A.id_product DESC
+                                        ")->result_array();
+            return $query; 
+    }
+
+    public function add_keranjang($data)
+    {
+        $this->db->insert('eyemarket_keranjang', $data);
+        
+        return $this->db->insert_id();
+    }
+
+    public function get_keranjang($id_member)
+    { 
+        $query = $this->db->query(" SELECT
+                                        A.*,
+                                        B.nama,
+                                        B.title_slug,
+                                        B.harga_sebelum,
+                                        B.harga,
+                                        B.diskon,
+                                        B.berat,
+                                        B.keterangan,
+                                        C.nama as toko,
+                                        E.id as id_image,
+                                        E.image1,
+                                        E.image2,
+                                        E.image3,
+                                        E.image4,
+                                        E.image5,
+                                        F.nama as nama_rumah
+                                    FROM
+                                        eyemarket_keranjang A
+                                    LEFT JOIN
+                                        eyemarket_product B     on B.id_product = A.id_product
+                                    LEFT JOIN
+                                        eyemarket_toko C        on C.id = B.id_toko
+                                    LEFT JOIN
+                                        eyemarket_images E      on A.id_product =  E.id_product
+                                    LEFT JOIN
+                                        eyemarket_address F      on A.id_alamat =  F.id
+                                    WHERE 
+                                        A.id_member = '$id_member'
+                                        AND
+                                        A.status = 0
+                                    ORDER BY
+                                        A.id ASC
+                                        ")->result_array();
+        return $query;
+    }
+
+    public function get_count_keranjang($id_member)
+    {
+        $query = $this->db->query(" SELECT
+                                        count(id) as jumlah
+                                    FROM
+                                        eyemarket_keranjang
+                                    WHERE
+                                        id_member = '$id_member'
+                                        AND
+                                        status = 0
+                                        ")->row();
+        return $query;
+    }
+
+    public function get_total_harga($id_member)
+    { 
+        $query = $this->db->query(" SELECT
+                                        sum(total) as total_all
+                                    FROM
+                                        eyemarket_keranjang
+                                    WHERE
+                                        id_member = '$id_member'
+                                        AND
+                                        status = 0
+                                        ")->row();
+        return $query;
+    }
+
+    public function get_total_berat($id_member)
+    { 
+        $query = $this->db->query(" SELECT
+                                        sum(berat) as berat_all
+                                    FROM
+                                        eyemarket_keranjang
+                                    WHERE
+                                        id_member = '$id_member'
+                                        AND
+                                        status = 0
+                                        ")->row();
+        return $query;
+    }
+
+    public function edit_keranjang($data,$id_keranjang)
+    {;
+        $query = $this->db->update('eyemarket_keranjang', $data, array('id' => $id_keranjang, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function edit_catatan($data,$id_keranjang)
+    {;
+        $query = $this->db->update('eyemarket_keranjang', $data, array('id' => $id_keranjang, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function delete_keranjang($id)
+    {
+        $this->db->delete('eyemarket_keranjang', array('id' => $id));
+
+        return TRUE;
+    }
+
+    public function get_member($id_member)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.*
+                                    FROM
+                                        tbl_member A
+                                    WHERE 
+                                        A.id_member = '$id_member'
+                                        ")->result_array();
+        return $query;
+    }
+
+    public function get_address($id_member)
+    { 
+        $query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        eyemarket_address
+                                    WHERE
+                                        id_member = '$id_member'
+                                    ")->result_array();
+        return $query;
+    }
+
+    public function tambah_address($input)
+    {
+        $this->db->insert('eyemarket_address', $input);
+        
+        return $this->db->insert_id();
+    }
+
+    public function update_cart_address($id_member,$data)
+    {
+        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function update_order_address($id_member,$data)
+    {
+        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function update_cart_delivery($id_member,$data)
+    {
+        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function update_order_delivery($id_member,$data)
+    {
+        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function update_cart_payment($id_member,$data)
+    {
+        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function update_order_payment($id_member,$data)
+    {
+        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        
+        return $query;
+    }
+
+    public function get_review_order($id_member)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.id,
+                                        A.no_order,
+                                        A.no_urut,
+                                        A.ongkir,
+                                        A.harga_all,
+                                        A.berat_all,
+                                        B.id,
+                                        B.id_product,
+                                        B.jumlah,
+                                        B.total,
+                                        B.catatan,
+                                        C.nama as nama_alamat,
+                                        C.penerima as nama_penerima,
+                                        C.alamat,
+                                        C.hp,
+                                        D.nama as kurir,
+                                        E.nama,
+                                        E.title_slug,
+                                        E.diskon,
+                                        E.harga,
+                                        E.berat,
+                                        F.nama as toko,
+                                        G.image1
+                                    FROM
+                                        eyemarket_order A
+                                    LEFT JOIN
+                                        eyemarket_keranjang B   ON A.id     = B.id_order
+                                    LEFT JOIN
+                                        eyemarket_address C     ON C.id     = A.id_alamat
+                                    LEFT JOIN
+                                        eyemarket_kurir D       ON D.id     = A.id_kurir
+                                    LEFT JOIN
+                                        eyemarket_product E ON E.id_product = B.id_product
+                                    LEFT JOIN
+                                        eyemarket_toko F    ON F.id = E.id_toko
+                                    LEFT JOIN
+                                        eyemarket_images G ON B.id_product = G.id_product
+                                    WHERE
+                                        A.status = 0
+                                        AND
+                                        A.id_member = '$id_member'
+                                        ")->result_array();
+        return $query;
+        
+    }
+
+    public function get_harga_satuan($id_keranjang)
+    { 
+        $query = $this->db->query(" SELECT
+                                        A.harga
+                                    FROM
+                                        eyemarket_product A
+                                    LEFT JOIN
+                                        eyemarket_keranjang B on B.id_product = A.id_product 
+                                    WHERE
+                                        B.id = '$id_keranjang'
+                                        ")->row();
+        return $query;
+    }
+
+    public function get_berat($id_keranjang)
+    { 
+        $query = $this->db->query(" SELECT
+                                        A.berat
+                                    FROM
+                                        eyemarket_product A
+                                    LEFT JOIN
+                                        eyemarket_keranjang B on B.id_product = A.id_product 
+                                    WHERE
+                                        B.id = '$id_keranjang'
+                                        ")->row();
+        return $query;
+    }
+
+    public function set_order($object)
+    {
+        $this->db->insert('eyemarket_order', $object);
+        
+        return $this->db->insert_id();
+    }
+
+    public function get_order($id_member)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.*,
+                                        B.bank,
+                                        B.nama_pemilik,
+                                        B.rekening,
+                                        B.logo
+                                    FROM
+                                        eyemarket_order A
+                                    INNER JOIN
+                                        eyemarket_payment B on B.id = A.id_tipe_bayar
+                                    WHERE
+                                        A.id_member = '$id_member'
+                                    AND
+                                        A.status = 0
+                                        ")->row();
+        return $query;
+    }
+
+    public function get_max_nourut($id_member)
+    {
+        $query = $this->db->query(" SELECT
+                                        MAX(A.no_urut) AS max_urut
+                                    FROM
+                                        eyemarket_order A 
+                                    WHERE
+                                        A.id_member = '$id_member'
+                                        ")->row();
+        return $query;
+    }
+
+    function set_order_status($id_order,$object)
+    {
+        $query = $this->db->update('eyemarket_order', $object, array('id' => $id_order));
+        
+        return $query;
+    }
+
+    public function get_invoice($no_order)
+    { 
+        $query = $this->db->query(" SELECT
+                                        A.*,
+                                        D.nama as toko,
+                                        D.hp,
+                                        D.email,
+                                        D.alamat,
+                                        E.nama as kurir
+                                    FROM
+                                        eyemarket_order A
+                                    LEFT JOIN
+                                        eyemarket_keranjang B on B.id_order = A.id
+                                    LEFT JOIN
+                                        eyemarket_product C on C.id_product = B.id_product
+                                    LEFT JOIN
+                                        eyemarket_toko D on D.id = C.id_toko
+                                    LEFT JOIN
+                                         eyemarket_kurir E on E.id = A.id_kurir
+                                    WHERE
+                                        A.no_order = '$no_order'
+                                    LIMIT
+                                        1
+                                        ")->row();
+        return $query;
+    }
+
+    public function get_keranjang_invoice($id_order)
+    { 
+        $query = $this->db->query(" SELECT
+                                        A.*,
+                                        B.nama,
+                                        B.title_slug,
+                                        B.harga_sebelum,
+                                        B.harga,
+                                        B.diskon,
+                                        B.berat,
+                                        B.keterangan,
+                                        C.nama as toko,
+                                        F.nama as nama_rumah
+                                    FROM
+                                        eyemarket_keranjang A
+                                    LEFT JOIN
+                                        eyemarket_product B         on B.id_product = A.id_product
+                                    LEFT JOIN
+                                        eyemarket_toko C            on C.id = B.id_toko
+                                    LEFT JOIN
+                                        eyemarket_address F         on A.id_alamat =  F.id
+                                    WHERE 
+                                        A.id_order = '$id_order'
+                                    ORDER BY
+                                        A.id ASC
+                                        ")->result_array();
+        return $query;
+    }
+
+    public function update_member($id_member,$data)
+    {
+        $query = $this->db->update('tbl_member', $data, array('id_member' => $id_member));
+
+        return $query;
+    }
+
+    public function get_pesanan($id_member)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.*
+                                    FROM
+                                        eyemarket_order A
+                                    WHERE
+                                        A.id_member = '$id_member'
+                                        ")->result_array();
+        return $query;
+    }
+
+    public function get_all_provinsi()
+    {
+        $query  = $this->db->get('provinsi')->result_array();
+
+        return $query;
+    }
+
+    public function get_kota()
+    {
+        $query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        kota
+                                    INNER JOIN
+                                        provinsi ON kota.id_provinsi_fk = provinsi.IDProvinsi
+                                    ORDER BY nama_kota
+                                        ")->result_array();
+        return $query;
+    }
+
+    public function get_kecamatan()
+    {
+        $query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        kecamatan
+                                    INNER JOIN
+                                        kota ON kecamatan.id_kota_fk = kota.id_kota
+                                    ORDER BY nama_kecamatan
+                                        ")->result_array();
+        return $query;
+    }
+
+    public function get_all_bank()
+    {
+        $query  = $this->db->get('eyemarket_payment')->result_array();
+
+        return $query;
+    }
+
+}
