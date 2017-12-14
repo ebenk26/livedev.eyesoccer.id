@@ -13,9 +13,7 @@ class Home_model extends CI_Model
 									c.logo as logo_a,
 									d.logo as logo_b,
 									c.name as club_a,
-									d.name as club_b,
-									a.score_a as skor_a,
-									a.score_b as skor_b
+									d.name as club_b
 								FROM
 									tbl_jadwal_event a
 									LEFT JOIN
@@ -25,13 +23,13 @@ class Home_model extends CI_Model
 									INNER JOIN
 										tbl_club d ON d.club_id=a.tim_b
 								WHERE
-									a.jadwal_pertandingan > DATE_SUB(CURDATE(), INTERVAL 2 WEEK)
+									a.jadwal_pertandingan
 								order by
 									jadwal_pertandingan DESC
 								LIMIT
-									12")->result_array();
+									6")->result_array();
 		return $query;
-	}
+	}	
 
 	public function get_trending_eyetube()
 	{
@@ -46,7 +44,7 @@ class Home_model extends CI_Model
 									ORDER BY
 										a.tube_view ASC
 									LIMIT
-										3
+										2
 									")->result_array();
 		return $query;
 	}
@@ -64,7 +62,7 @@ class Home_model extends CI_Model
 									ORDER BY
 										a.news_view ASC
 									LIMIT
-										2
+										3
 									")->result_array();
 		return $query;
 	}
@@ -74,6 +72,8 @@ class Home_model extends CI_Model
 		$query = $this->db->query("	SELECT
 										a.club_id,
 										a.name as nama_club,
+										a.competition,
+										a.logo,
 										b.name as nama_manager,
 										count(c.name) as squad
 									FROM
@@ -89,7 +89,7 @@ class Home_model extends CI_Model
 									GROUP BY
 										a.club_id
 									LIMIT
-										12
+										4
 									")->result_array();
 		return $query;
 	}
@@ -127,7 +127,7 @@ class Home_model extends CI_Model
 										a.status like '%pro%'
 										AND
 										a.birth_date like '%/%'
-									ORDER BY RAND()
+									ORDER BY RAND() ASC
 									LIMIT 3
 								")->result_array();
 		return $query;
@@ -233,6 +233,29 @@ class Home_model extends CI_Model
 								")->result_array();
 		return $query;
 	}
+	public function get_eyetube_populer()
+	{
+		$query = $this->db->query("	SELECT
+										a.eyetube_id,
+										a.title,
+										a.description,
+										a.thumb,
+										a.video,
+										a.url,
+										a.createon,
+										a.tube_view,
+										a.category_name
+									FROM
+										tbl_eyetube a
+									WHERE
+										a.tube_view
+									ORDER BY
+										a.tube_view DESC
+									LIMIT
+										4
+								")->result_array();
+		return $query;
+	}
 
 	public function get_eyenews_main()
 	{
@@ -277,6 +300,8 @@ class Home_model extends CI_Model
 		$query = $this->db->query("	SELECT
 										a.eyenews_id,
 										a.title,
+										a.description,
+										a.createon										,
 										a.thumb1,
 										a.news_type,
 										a.news_view,
@@ -284,12 +309,34 @@ class Home_model extends CI_Model
 									FROM
 										tbl_eyenews a
 									WHERE
-										a.publish_on > DATE_SUB(CURDATE(), INTERVAL 4 WEEK)
+										a.publish_on
 									ORDER BY
 										a.news_view DESC
 									LIMIT
 										3
-								")->row();
+								")->result_array();
+		return $query;
+	}
+	public function get_eyenews_rekomendasi()
+	{
+		$query = $this->db->query("	SELECT
+										a.eyenews_id,
+										a.title,
+										a.description,
+										a.createon										,
+										a.thumb1,
+										a.news_type,
+										a.news_view,
+										a.publish_on
+									FROM
+										tbl_eyenews a
+									WHERE
+										a.publish_on<='".date("Y-m-d H:i:s")."'
+									ORDER BY
+										a.eyenews_id DESC
+									LIMIT
+										3
+								")->result_array();
 		return $query;
 	}
 
@@ -298,12 +345,15 @@ class Home_model extends CI_Model
 		$query = $this->db->query("	SELECT
 										a.eyenews_id,
 										a.title,
+										a.thumb1,
+										a.description,
+										a.createon,
 										a.news_type,
 										a.news_view
 									FROM
 										tbl_eyenews a
 									WHERE
-										a.news_type like '%muda%'
+										a.news_type like '%usia muda%'
 									ORDER BY
 										a.eyenews_id DESC
 									LIMIT
@@ -314,27 +364,7 @@ class Home_model extends CI_Model
 
 	public function get_jadwal_today()
 	{
-		$query = $this->db->query("	SELECT
-										a.id_jadwal_event,
-										a.id_event,
-										a.jadwal_pertandingan,
-										a.tim_a,
-										a.tim_b,
-										a.live_pertandingan,
-										b.name,
-										b.logo,
-										c.name,
-										c.logo
-									FROM
-										tbl_jadwal_event a
-									INNER JOIN
-										tbl_club b ON b.club_id = a.tim_a
-									INNER JOIN
-										tbl_club c ON c.club_id = a.tim_b
-									WHERE
-										a.jadwal_pertandingan = NOW()
-									LIMIT
-										5
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' order by jadwal_pertandingan ASC LIMIT 5
 								")->result_array();
 		return $query;
 	}
@@ -396,7 +426,60 @@ class Home_model extends CI_Model
 								")->result_array();
 		return $query;
 	}
+	
+	public function get_eyemarket_main()
+	{
+		$query = $this->db->query("	SELECT
+										id_product,
+										admin_id,
+										product_name,
+										category_product_name,
+										price,
+										discount,
+										stock,
+										pic,
+										description
+									FROM
+										tbl_product
+									ORDER BY 
+									product_name
+									LIMIT
+										4
+								")->result_array();
+		return $query;
+	}
+	public function get_eyevent_main()
+	{
+		$query = $this->db->query("	SELECT
+										id_event,
+									title,
+									description,
+									pic,
+									publish_on,
+									updateon,
+									thumb1
+									FROM
+										tbl_event
+									ORDER BY 
+									id_event
+									LIMIT
+										3
+								")->result_array();
+		return $query;
+	}
 
+	public function get_kompetisi()
+	{
+		$query = $this->db->query("select * from tbl_competitions")->result_array();
+		return $query;
+	}
+
+	public function get_klasemen()
+	{
+		$query = $this->db->query("select club_id, name, logo, competition from tbl_club where competition='liga indonesia 1' AND name !='ebenktestlagijgndidelete' order by name ASC limit 10")->result_array();
+		return $query;
+	}
+	
 }
 
 /* End of file Home_model.php */
