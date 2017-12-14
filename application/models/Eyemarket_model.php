@@ -2,7 +2,7 @@
 
 class Eyemarket_model extends CI_Model
 {
-//membaca tabel database
+
         public function listing(){
             $this->db->select('tbl_category_product.*,category_product_name');
             $this->db->from('tbl_category_product');
