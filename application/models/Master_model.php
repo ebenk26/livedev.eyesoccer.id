@@ -6,8 +6,8 @@ class Master_model extends CI_Model
 	public function __construct()
     {
 		parent::__construct();
-	}
-	
+		c
+	}	
 	public function getLastId($table,$fieldId){
 		$this->db->select_max($fieldId);
 		$q = $this->db->get($table);
