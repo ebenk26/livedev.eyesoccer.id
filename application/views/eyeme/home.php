@@ -54,7 +54,7 @@
                     <a href="" class="c-g">selengkapnya</a>
                 
                 <div class="komen">
-                    <ul class="plus-c">
+                    <ul class="plus-c<?php echo $v['id_img']?>">
                         <li>
                             <a href="" class="c-g">Lihat komentar lainnya</a>
                         </li>
@@ -78,7 +78,7 @@
             </div>
             <div class="m-t-15 kolom-komentar">
             	
-                <input type="text" placeholder="Tambah komentar..." name="comment" rel="<?php echo $v['id_img']?>" class="comment">
+                <input type="text" placeholder="Tambah komentar..." name="comment" rel="<?php echo $v['id_img']?>" class="comment" autocomplete="off">
                 
             </div>
 
@@ -96,11 +96,9 @@
 
     <script src="<?php echo JSPATH?>home.js"></script>
     <script type="text/javascript">
-        var html = "",
-            $com  = $('.comment'), //class comment
-            valCom = $com.val(); 
+        var html = "";
+        var $com  = $('.comment'); //class comment
             
-    	
     	$('.img_more').click(function(event) {
     		/* Act on the event */	
     		var attr = $(this).attr('ref');
@@ -109,19 +107,20 @@
 
     	});
 
+    	$com.on('keypress',function(event){   
 
-
-    	$com.on('keypress',function(event){
-            console.log(valCom);
-            var id_img  = $(this).attr('rel');
-            //console.log($(this).serializ  var com     = $(this).val();
-            html        += "<li>";
-            html        += "<a href=\"<?php echo MEPROFILE.$_SESSION['username']?>\"><?php echo $_SESSION['username']?></a>";
-            html        += "<span>"+ valCom+"</span>";
-            html        += "</li>";
-          
+        var valCom = $(this).val();        
 
             if(event.keyCode == 13){
+                
+                var id_img  = $(this).attr('rel');
+                $this   = $(this);
+                //console.log($(this).serializ  var com     = $(this).val();
+                html        += "<li>";
+                html        += "<a href=\"<?php echo MEPROFILE.$_SESSION['username']?>\"><?php echo $_SESSION['username']?></a>";
+                html        += "<span>"+ valCom+"</span>";
+                html        += "</li>";
+                
                  $.ajax({
                         url: '<?php echo EYEMEPATH?>' + 'post_comment',
                         type: 'POST',
@@ -130,17 +129,22 @@
                         $(this).serialize()+'&img=' + id_img,
 
                     })
-                    .done(function(r) {
-                        $('.plus-c').html(html);
+                    .done(function(r){
 
-                        
+                        $('.plus-c'+id_img).append(html);
+                        html = "";
+                        $this.val('');
+
                     })
                     .fail(function() {
                         console.log("error");
                     })
                     .always(function() {
                         console.log("complete");
+
                     });
+
+                //$(this).val('');
                 
             }
 

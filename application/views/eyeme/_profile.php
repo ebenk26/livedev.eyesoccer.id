@@ -11,17 +11,7 @@
                             <li>
                                 <span class="uname"><?php echo $username?></span>
                                 <?php  // if id_member == session Id_member
-
-                                if($self == TRUE){
-                                    $button = '';
-                                }
-                                else{
-                                    $button = '<button class="btn-white-follow" type="button" rel="'.$id_member.'">
-                                    '.($checkFollowed == TRUE ? 'Mengikuti': 'Ikuti').'</button>';
-                                    #ternary checkFollowed 
-                                }
-                                    echo $button;
-                                 ?>
+                                echo ($self == TRUE ? '' : '<button class="btn-white-follow" type="button">FOLLOW</button>') ?>
                             </li>
                             <li class="desc-me-profile">
                                 <span><?php echo $bio?></span>
@@ -75,27 +65,3 @@
         </div>
     </div>
 </body>
-<script type="text/javascript">
-     
-    $('.btn-white-follow').click(function(event) {
-
-        var id_friend = $(this).attr('rel');
-        /* Act on the event */
-        $.ajax({
-            url: '<?php echo EYEMEPATH?>' + 'follow',
-            type: 'POST',
-            dataType: 'HTML',
-            data: {id_friend: id_friend},
-        })
-        .done(function(r) {
-            console.log(r);
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
-        
-    });
-</script>

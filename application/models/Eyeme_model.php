@@ -222,7 +222,7 @@ class Eyeme_model extends Master_model
 					ON a.id_member=b.id_member
 					WHERE a.id_img = $id_img
 					ORDER BY last_update
-					DESC
+					ASC
 						 ";
 		$query  = ($limit == null || !is_array($limit) ? $query: $query.'LIMIT '. $limit[0].','.$limit[1]);
 
@@ -252,12 +252,31 @@ class Eyeme_model extends Master_model
 		return $res; 
 
 	}
+	/**
+	*function checkFollowed melihat kondisi apakah member telah follow akun 
+	*@param id_member = id member has login
+	*@param id_follow = id user yang di follow
+	
+
+	*/
+	public function checkFollowed($id_member,$id_follow){
+		$where    = array('id_member' => $id_member,
+						'id_following'   => $id_follow);
+		$find     = $this->getAll('me_follow',$where);
+		if(count($find) > 0){
+			return TRUE;
+		}
+		else return FALSE;
+
+
+
+	}
 	public function follow($id_member,$id_friend){
 		$data      = array('id_member'=> $id_member,
 							'id_following' => $id_friend,
 							'last_update'  => $this->now);
 
-		$exe       = $this->db->insert('follow',$data);
+		$exe       = $this->db->insert('me_follow',$data);
 		return $exe;
 
 	}
