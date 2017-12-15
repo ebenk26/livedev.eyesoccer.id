@@ -11,7 +11,8 @@ class Eyeme extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','my_helper','html'));
 			$this->load->model('Master_model','mod');
-			$this->getSetting = $this->mod->getAll('setting');
+			$this->getSetting = $this->mod->getAll('setting');// check if user comming from home
+			
 			$this->id_member  = @$this->session->userdata('id_member');#id_member login 
 
 			$this->now        = date('Y-m-d G:i:s');
@@ -31,15 +32,14 @@ class Eyeme extends CI_Controller {
 	public function index()
 
 	{	
-
-		$id_member       = $this->session->userdata['id_member'];
+		$this->mod->checkLogin();
+		$id_member       = $this->id_member;
 		$getImgFollowing = $this->emod->getImgFollowing($id_member);
 		#p($getImgFollowing);
-
-
 		#$arr = array();
 		$i = 0;
-		foreach($getImgFollowing as $k => $v){
+		if($getImgFollowing > 0 ){
+			foreach($getImgFollowing as $k => $v){
 
 
 			$arr[$i]['id_img'] 		= $v->id_img;
@@ -65,18 +65,17 @@ class Eyeme extends CI_Controller {
 
 			$i++;	
 
+			}
+
 		}
+		else{
+			$arr = array();
+		}
+		
 		#p($arr);
 
 		$this->data['id_member']       = $id_member;
 		$this->data['imgFollowing']    = $arr;
-
-		#p($getFollowing);
-		#$foll= array();
-		
-		#$getImg       = $this->mod->getAll('me_img',arrayl('id_member'=> $id_member))
-		#if($getFollowing > 0 ){
-			#p($getFollowing);
 		
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/home',$this->data);
@@ -119,7 +118,7 @@ class Eyeme extends CI_Controller {
 			$whereImg = array('id_member'=> $getUser[0]->id_member,'active'=> '1');
 			
 			$getImg  		 = $this->mod->getAll('me_img',$whereImg);
-			#$getProfilePic   = $this->mod->getAll('me_img',$whereProfilePic);
+			
 			$whereFollowing = array('id_member'=> $getUser[0]->id_member,'block'=> 0);
 			$getFollowing   = $this->mod->getAll('me_follow',$whereFollowing);
 
@@ -128,8 +127,6 @@ class Eyeme extends CI_Controller {
 			
 
 			$check          = $this->emod->checkFollowed($this->id_member,$getUser[0]->id_member);
-			
-			echo $this->db->last_query();
 			
 			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] = $getFollower;
