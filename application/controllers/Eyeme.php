@@ -63,9 +63,7 @@ class Eyeme extends CI_Controller {
 			$arr[$i]['secon']      = $getTime[$i]['secon'];
 			$arr[$i]['timeString']  = $getTime[$i]['timeString'];
 
-
 			$i++;	
-
 
 		}
 		#p($arr);
@@ -80,11 +78,9 @@ class Eyeme extends CI_Controller {
 		#if($getFollowing > 0 ){
 			#p($getFollowing);
 		
-
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/home',$this->data);
 		#$this->load->view('eyeme/')
-
 
 		/*$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
@@ -124,14 +120,18 @@ class Eyeme extends CI_Controller {
 			
 			$getImg  		 = $this->mod->getAll('me_img',$whereImg);
 			#$getProfilePic   = $this->mod->getAll('me_img',$whereProfilePic);
-	
-
 			$whereFollowing = array('id_member'=> $getUser[0]->id_member,'block'=> 0);
 			$getFollowing   = $this->mod->getAll('me_follow',$whereFollowing);
 
 			$whereFollower  = array('id_following'=>$getUser[0]->id_member,'block'=> 0);
 			$getFollower    = $this->mod->getAll('me_follow',$whereFollower);
+			
 
+			$check          = $this->emod->checkFollowed($this->id_member,$getUser[0]->id_member);
+			
+			echo $this->db->last_query();
+			
+			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] = $getFollower;
 			$this->data['following']= $getFollowing;
 			$this->data['getImg']   = $getImg;
@@ -427,9 +427,11 @@ class Eyeme extends CI_Controller {
 		$this->db->delete('tbl_eyeme', array('id' => $id));
 		redirect('eyeme/explore');
 	}
-	public function follow($id_friend){
+	public function follow(){
+
+
 		$id_member  = $this->session->userdata('id_member');
-		$id_friend  = $id_friend;
+		$id_friend  = inputSecure($this->input->post('id_friend'));
 		$insert     = $this->emod->follow($id_member,$id_friend);
 		if($insert == TRUE){
 			echo 'success';
