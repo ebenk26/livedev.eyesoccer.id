@@ -80,6 +80,7 @@
     $('.btn-white-follow').click(function(event) {
 
         var id_friend = $(this).attr('rel');
+        $this   = $(this);
         /* Act on the event */
         $.ajax({
             url: '<?php echo EYEMEPATH?>' + 'follow',
@@ -88,7 +89,7 @@
             data: {id_friend: id_friend},
         })
         .done(function(r) {
-            console.log(r);
+            $this.text('Mengikuti');
         })
         .fail(function() {
             console.log("error");

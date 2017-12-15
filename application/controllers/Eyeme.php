@@ -11,7 +11,8 @@ class Eyeme extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','my_helper','html'));
 			$this->load->model('Master_model','mod');
-			$this->getSetting = $this->mod->getAll('setting');
+			$this->getSetting = $this->mod->getAll('setting');// check if user comming from home
+			$this->mod->checkLogin();
 			$this->id_member  = @$this->session->userdata('id_member');#id_member login 
 
 			$this->now        = date('Y-m-d G:i:s');
@@ -32,14 +33,15 @@ class Eyeme extends CI_Controller {
 
 	{	
 
-		$id_member       = $this->session->userdata['id_member'];
+		$id_member       = $this->id_member;
 		$getImgFollowing = $this->emod->getImgFollowing($id_member);
 		#p($getImgFollowing);
 
 
 		#$arr = array();
 		$i = 0;
-		foreach($getImgFollowing as $k => $v){
+		if($getImgFollowing > 0 ){
+			foreach($getImgFollowing as $k => $v){
 
 
 			$arr[$i]['id_img'] 		= $v->id_img;
@@ -65,7 +67,13 @@ class Eyeme extends CI_Controller {
 
 			$i++;	
 
+			}
+
 		}
+		else{
+			$arr = array();
+		}
+		
 		#p($arr);
 
 		$this->data['id_member']       = $id_member;
@@ -129,7 +137,7 @@ class Eyeme extends CI_Controller {
 
 			$check          = $this->emod->checkFollowed($this->id_member,$getUser[0]->id_member);
 			
-			echo $this->db->last_query();
+			#echo $this->db->last_query();
 			
 			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] = $getFollower;

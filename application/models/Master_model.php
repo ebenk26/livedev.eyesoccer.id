@@ -638,7 +638,27 @@ class Master_model extends CI_Model
 		return array('pagging'=> $pagging, 'row'=>$row, 'num'=>$num); // pagging link	
 	}
 	
-	
+	public function backwardPage($msg = '',$href=''){
+		$r = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : base_url();
+		
+		if($href != ''){$r = $href;}
+		
+		echo "
+			<script>
+				alert('".$msg."');
+				window.location.href = '".$r."';
+			</script>
+		";
+	}
+	public function checkLogin(){
+		$userid = $this->session->userdata('id_member');
+		if($userid == ''){
+			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().'test');
+			#return FALSE;
+		} 
+		#else return TRUE;
+	}
+		
 	function permalink($table,$title){
 		$title = str_replace("'",'',strip_tags(strtolower(url_title($title))));
 		
