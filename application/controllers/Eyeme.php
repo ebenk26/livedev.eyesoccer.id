@@ -11,10 +11,9 @@ class Eyeme extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','my_helper','html'));
 			$this->load->model('Master_model','mod');
-			$this->getSetting = $this->mod->getAll('setting');// check if user comming from home
+			$this->getSetting = $this->mod->getAll('setting');
 			
 			$this->id_member  = @$this->session->userdata('id_member');#id_member login 
-
 			$this->now        = date('Y-m-d G:i:s');
 
 			if(count($this->getSetting) > 0 ){
@@ -32,7 +31,7 @@ class Eyeme extends CI_Controller {
 	public function index()
 
 	{	
-		$this->mod->checkLogin();
+		$this->mod->checkLogin();// check if user comming from home
 		$id_member       = $this->id_member;
 		$getImgFollowing = $this->emod->getImgFollowing($id_member);
 		#p($getImgFollowing);
