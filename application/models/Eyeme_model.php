@@ -32,10 +32,10 @@ class Eyeme_model extends Master_model
 										A.suka,
 										A.komentar,
 										A.created_date,
-										B.name,
-										B.foto
+										B.name
+									
 									FROM
-										tbl_eyeme A
+										me_eyeme A
 									LEFT JOIN
 										tbl_member B on B.id_member = A.id_member
 									WHERE 
@@ -139,7 +139,9 @@ class Eyeme_model extends Master_model
 		$this->db->where('id_member',$id_or_username);
 		$this->db->or_where('username',$id_or_username);
 
+
 		$get  = $this->db->get('me_profile');
+		#echo $this->db->last_query();
 		if(count($get->num_rows()) > 0 ) {
 			$result = $get->result();
 

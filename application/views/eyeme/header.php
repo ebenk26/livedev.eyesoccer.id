@@ -46,14 +46,14 @@
                     <?php 
                         //icon setting 
                         $icon = array(
-                                    array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah'),
-                                    array('icon'=> 'notifications_none','link'=> MEURL.'notif','title'=> 'Pemberitahuan'),
-                                    array('icon'=> 'camera_alt','link'=> MEURL.'upload','title'=> 'Upload Gambar'),
-                                    array('icon'=> 'person_outline','link'=> MEURL.'profile/sofyanwaldy','title'=> 'Profil'));
+                                    array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),
+                                    array('icon'=> 'notifications_none','link'=> MEURL.'notif','title'=> 'Pemberitahuan','id'=>'notif'),
+                                    array('icon'=> 'camera_alt','link'=> MEURL.'upload','title'=> 'Upload Gambar','id'=>'upload'),
+                                    array('icon'=> 'person_outline','link'=> MEURL.'profile/sofyanwaldy','title'=> 'Profil','id'=> 'prof'));
                         //icon menu 
                         foreach($icon as $k => $v){
 
-                            echo  '<a href="'.$v['link'].'" title="'.$v['title'].'" style="text-decoration:none;">
+                            echo  '<a href="'.$v['link'].'" title="'.$v['title'].'" style="text-decoration:none;" id="'.$v['id'].'">
                             <i class="material-icons ikon">'.$v['icon'].'</i></a>';
                         }
 

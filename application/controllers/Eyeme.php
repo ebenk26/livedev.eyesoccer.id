@@ -78,6 +78,7 @@ class Eyeme extends CI_Controller {
 		
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/home',$this->data);
+		$this->load->view('eyeme/footer',$this->data);
 		#$this->load->view('eyeme/')
 
 		/*$data["meta"]["title"]="";
@@ -113,30 +114,33 @@ class Eyeme extends CI_Controller {
 		$getUser  = $this->emod->getProfile($id_or_username);
 		
 		if(count($getUser) > 0 ){
+			$usr  = $getUser[0];
 
-			$whereImg = array('id_member'=> $getUser[0]->id_member,'active'=> '1');
-			
+			//get Image 
+			$whereImg = array('id_member'=> $usr->id_member,'active'=> '1');
 			$getImg  		 = $this->mod->getAll('me_img',$whereImg);
-			
-			$whereFollowing = array('id_member'=> $getUser[0]->id_member,'block'=> 0);
+			//get following 
+			$whereFollowing = array('id_member'=> $usr->id_member,'block'=> '0');
 			$getFollowing   = $this->mod->getAll('me_follow',$whereFollowing);
-
-			$whereFollower  = array('id_following'=>$getUser[0]->id_member,'block'=> 0);
+			//get follower
+			$whereFollower  = array('id_following'=>$usr->id_member,'block'=> '0');
 			$getFollower    = $this->mod->getAll('me_follow',$whereFollower);
-			
+			//get Image 
 
-			$check          = $this->emod->checkFollowed($this->id_member,$getUser[0]->id_member);
+		
+			$check          = $this->emod->checkFollowed($this->id_member,$usr->id_member);
+			#echo count($getFollowing);
 			
 			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] = $getFollower;
 			$this->data['following']= $getFollowing;
 			$this->data['getImg']   = $getImg;
 			
-			$this->data['id_member']     = $getUser[0]->id_member;
-			$this->data['username']      = $getUser[0]->username;
-			$this->data['bio'] 		     = $getUser[0]->bio;
-			$this->data['display_pic']   = $getUser[0]->display_picture;
-			$this->data['self']			 = ($getUser[0]->id_member == @$_SESSION['id_member'] ? TRUE : FALSE);
+			$this->data['id_member']     = $usr->id_member;
+			$this->data['username']      = $usr->username;
+			$this->data['bio'] 		     = $usr->bio;
+			$this->data['display_pic']   = $usr->display_picture;
+			$this->data['self']			 = ($usr->id_member == @$_SESSION['id_member'] ? TRUE : FALSE);
 
 		} 
 		else{
@@ -145,6 +149,7 @@ class Eyeme extends CI_Controller {
 		}
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/profile',$this->data);
+		$this->load->view('eyeme/footer',$this->data);
 
 
 
@@ -269,7 +274,7 @@ class Eyeme extends CI_Controller {
 		if($this->input->post('username') != FALSE)
 		{
 	      $username 	= $this->input->post('username');
-	      $password 	= $this->input->post('pass');
+	      $password 	= $this->input->post('password');
 	      $password     = cryptPass($password);
 
 	      $getUser      = $this->mod->getAll('tbl_member',array('name'=> $username,'password'=> $password));
@@ -308,7 +313,7 @@ class Eyeme extends CI_Controller {
 
 	public function explore()
 	{
-		$data['konten'] 	= $this->Eyeme_model->get_all_konten();
+		$data['konten'] 	= $this->emod->get_all_konten();
 
 		$this->load->view('/eyeme/konten',$data);
 	}

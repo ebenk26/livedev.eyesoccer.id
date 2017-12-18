@@ -1805,9 +1805,7 @@ ul, li {
     top: -26px;
     left: 33px;
 }
-.comment, .like{
-    z-index: -1;
-}
+
 .like>span, .comment span, .komen span{
     font-size: .85em;
     font-weight: 400;
