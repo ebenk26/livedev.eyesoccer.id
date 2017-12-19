@@ -47,7 +47,7 @@
                         //icon setting 
                         $icon = array(
                                     array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),
-                                    array('icon'=> 'notifications_none','link'=> MEURL.'notif','title'=> 'Pemberitahuan','id'=>'notif'),
+                                    array('icon'=> 'notifications_none','link'=> '#','title'=> 'Pemberitahuan','id'=>'notif'),
                                     array('icon'=> 'camera_alt','link'=> MEURL.'upload','title'=> 'Upload Gambar','id'=>'upload'),
                                     array('icon'=> 'person_outline','link'=> MEURL.'profile/sofyanwaldy','title'=> 'Profil','id'=> 'prof'));
                         //icon menu 

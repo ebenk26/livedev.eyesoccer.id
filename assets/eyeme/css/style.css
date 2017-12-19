@@ -1762,8 +1762,9 @@ ul, li {
    
 }
 .posisi-popup-notif{
-    left: -264px;
+    right:140px;
     top: 60px;
+    z-index: 99;
 }
 .panah-popup-notif{
     width: 15px;
@@ -1782,7 +1783,7 @@ ul, li {
     box-shadow: 0px 0px 5px 0px #c0c0c0;
     border-radius: 3px;
     z-index: 1;
-    /* display: none; */
+    display: none;
 }
 .teks-popup{
     padding-left: 15px;

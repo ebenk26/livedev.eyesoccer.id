@@ -54,6 +54,18 @@ class Master_model extends CI_Model
 		return $cap;
 	}
 
+	/**
+	*@param $table = nama table,
+	*@param $where = array('key','value')
+	*@param $select = select field table
+	*@param $order  = order by  
+	*@param $limit   =  LIMIT,$offset ,
+	*@param $whereNotin = where not in
+	*@param $like  = like array()
+	*@return array()
+	fungsi untuk menggunakan query select 
+
+	*/
 	
 	public function getAll($table, $where = array(), $select = array(), $order = array(), $limit = '', $offset = '', $whereNotin = '', $like = array()){
 		if($limit != ''){

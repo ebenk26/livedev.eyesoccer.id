@@ -1,5 +1,5 @@
-<!--img upload-->
 
+<!--img upload-->
     <div class="detail-post-box" id="upload_pop" style="display:none">
         <div class="takepic-box m-0 p-r" >
             <div class="pic-l">
@@ -50,7 +50,7 @@
     </div>
 
     <!--/img-upload-->
-    <script src="<?php echo JSPATH?>home.js"></script>
+    <!--<script src="<?php #echo JSPATH?>home.js"></script>-->
     <script type="text/javascript">
         var html = "";
         var $com  = $('.comment'); //class comment
@@ -62,6 +62,14 @@
     		//console.log('.'+attr);
 
     	});
+        $('#notif').click(function(event){
+           // event.preventDefault();
+         
+            $('.kotak-popup-notif').slideToggle('slow',function(){
+               
+
+            });
+        });
 
     	$com.on('keypress',function(event){   
 
@@ -94,10 +102,6 @@
                     })
                     .fail(function() {
                         console.log("error");
-                    })
-                    .always(function() {
-                        console.log("complete");
-
                     });
 
                 //$(this).val('');
@@ -118,14 +122,40 @@
             }
          });
      
-            $(window).click(function(e) {
-                /* Act on the event */
-                 console.log(e.pageX);
-                 if(e.pageX <= 182  || e.pageX >= 1183){
-                    $('#upload_pop').css('display','none');
+        $(window).click(function(e) {
+            /* Act on the event */
+             if(e.pageX <= 182  || e.pageX >= 1183){
+                $('#upload_pop').css('display','none');
 
-                 }
+             }
+        });
+
+        $('#like').click(function(event) {
+            /* Act on the event */
+            var img = $(this).attr('ref');
+               $.ajax({
+                url: '<?php echo MEURL?>like/' + img,
+                type: 'POST',
+                dataType: 'JSON',
+                data: {param1: 'value1'},
+            })
+            .done(function() {
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
             });
+            
+            alert($(this).attr('ref'));
+        });
+        $('#unlike').click(function(event) {
+            /* Act on the event */
+            alert($(this).attr('ref'));
+        });
+
 
            
             

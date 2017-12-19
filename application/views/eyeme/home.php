@@ -33,15 +33,24 @@
                 <img src="<?php echo MEIMG.$v['img_name']?>" alt="<?php echo $v['img_alt']?>">
             </div>
             <div class="mt-10 m-l-20">
-                
-                    <i class="material-icons first-icon">favorite_border</i>
-                    <i class="material-icons second-icon">favorite</i>
+                <?php 
+
+                if($v['has_like'] == TRUE){
+                    echo '<i class="material-icons" style="color:#D50E0E" id="unlike" ref="'.$v['id_img'].'">favorite</i>';
+                }
+                else{
+                    echo '<i class="material-icons first-icon">favorite_border</i>
+                    <i class="material-icons second-icon" id="like" ref="'.$v['id_img'].'">favorite</i>';
+                }
+
+
+                ?>
+                    
+
                     <div class="p-r like">
-                        <a href="">andrey_ipsum</a>
-                        <span>dan</span>
-                        <a href="">678</a>
-                        <span>menyukai ini</span>
+                        <?php echo count($v['like'])?>
                     </div>
+
                 
                 <div class="w567 m-t-15">
                     <div class="garis-x2"></div>
@@ -94,4 +103,4 @@
     </div>
     </div>
     
-</body>
+
