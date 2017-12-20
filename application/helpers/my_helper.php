@@ -71,7 +71,7 @@ define('MEURL',base_url().'eyeme/');
 define('MEIMG',base_url().'img/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
-define('DPIC',sIMGPATH.'EYEME/user-discover.png');
+define('DPIC',sIMGPATH.'user-discover.png');
 define('NOW',date('Y-m-d G:i:s'));
 
 

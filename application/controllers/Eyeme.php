@@ -5,17 +5,20 @@ class Eyeme extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
-
+        	#sw::begin 
 		    $this->load->model('Eyemarket_model');
 		    $this->load->model('Eyeme_model','emod');
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','my_helper','html'));
 			$this->load->model('Master_model','mod');
 			$this->getSetting = $this->mod->getAll('setting');
-			$_SESSION['id_member'] = 189;
-			
 			$this->id_member  = @$this->session->userdata('id_member');#id_member login 
-			$this->now        = date('Y-m-d G:i:s');
+			$this->username   = @$this->session->userdata('username');
+			/*
+				variabel userdata
+			*/
+			$this->data['id_member'] = $this->id_member;
+			$this->data['username']  = $this->username;
 
 			if(count($this->getSetting) > 0 ){
 				$this->data['title'] = $this->getSetting[0]->title;
@@ -52,8 +55,8 @@ class Eyeme extends CI_Controller {
 			$arr[$i]['username']    = $v->username;	
 			$arr[$i]['last_update'] = $v->last_update;
 			$arr[$i]['date_create'] = $v->date_create;
-			$arr[$i]['now']         = $this->now;
-			$arr[$i]['distance']    = strtotime($this->now) - strtotime($arr[$i]['last_update']);#jarak waktu 
+			$arr[$i]['now']         = NOW;
+			$arr[$i]['distance']    = strtotime(NOW) - strtotime($arr[$i]['last_update']);#jarak waktu 
 			$getTime[$i]            = getTime($arr[$i]['distance']); #mengambil waktu last_update
 			$arr[$i]['day']         = $getTime[$i]['day'];
 			$arr[$i]['hours']       = $getTime[$i]['hours'];
@@ -102,6 +105,7 @@ class Eyeme extends CI_Controller {
 		}
 		#p($dataNotif);
 		$this->data['id_member']       = $id_member;
+		$this->data['username']        = $this->username;
 		$this->data['imgFollowing']    = $arr;
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/home',$this->data);
@@ -183,13 +187,17 @@ class Eyeme extends CI_Controller {
 	public function get_notif(){
 		$id_member   = $this->id_member;
 		$getNotif    = $this->emod->getNotif($id_member);
+		$json        = json_encode($getNotif);
+		echo $json;
 		if(count($getNotif) > 0  ){
 			#for($i= 0; $i <count($getNotif);$i++){
 
 		}
+		#$this->load->view('eyeme/notif');
 
 	}
-	/*
+	/**
+	*@param $id_img = id image yang di sukai
 		insert like 
 	*/
 	public function like($id_img){
@@ -556,7 +564,11 @@ class Eyeme extends CI_Controller {
 	}
 	
 	public function sess(){
-		p($_SESSION);
+		p($this->session->userdata());
+	}
+	public function destroy_sess(){
+		session_destroy();
+		echo 'success';
 	}
 	
 	
