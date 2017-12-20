@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Eyesoccer | Pemain</title>
+        <title>Eyesoccer | Offisial</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=1000">
         <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="crumb">
         <ul>
             <li>EyeProfile</li>
-            <li>Pemain</li>
+            <li>Offisial</li>
             <!-- <li>Klub</li> -->
             <!-- <li>Pemain</li> -->
         </ul>
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="center-dekstop m-0">
-        <div class="container box-border-radius fl-l mt-30">            				
+        <div class="container box-border-radius fl-l mt-30">					
                 <div class="fl-l img-80">				
                     <img src="<?=base_url()?>assets/img/content_11.jpg" alt="" height="100%">
                 </div>
@@ -94,8 +94,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <td>Juara Bertahan</td>
                             <td>: -</td>
-                        </tr><tr>
-                            <td>Pemain Bertahan</td>
+                        </tr>
+						<tr>
+                            <td>Pemain Termahal</td>
                             <td>: -</td>
                         </tr>
                     </table>
@@ -109,21 +110,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <thead>
                 <tr>
                     <th class="t-b-b">No</th>
-					<th class="t-b-b"></th>
-                    <th class="t-b-b">Pemain</th>
+                    <th class="t-b-b"></th>
+                    <th class="t-b-b">Nama</th>
                     <th class="t-b-b">Tgl Lahir</th>
                     <th class="t-b-b">Posisi</th>
                     <th class="t-b-b">Kewarganegaraan</th>
-                    <th class="t-b-b">Main</th>
-                    <th class="t-b-b">Gol</th>
-                    <th class="t-b-b">Assist</th>
+                    <th class="t-b-b">Masa Kontrak</th>
                 </tr>
             </thead>
             <tbody>
-					<?php
-					$no = 1;		
-					foreach($pemain_klub as $row){
-					$bulan 	= array(
+				<?php
+				$no = 1;
+				foreach($official_main as $row){
+				$bulan 	= array(
 			                '01' => 'Januari',
 			                '02' => 'Februari',
 			                '03' => 'Maret',
@@ -136,24 +135,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			                '10' => 'Oktober',
 			                '11' => 'November',
 			                '12' => 'Desember',
-						);
-				?>						
+						);					
+				?>
                 <tr>
                     <td><?=$no++?></td>
-                    <td><?=$row['nama']?></td>
-                    <td>
-						<!--<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>systems/player_storage/<?=$row["foto"]?>"></div></a>-->
-						<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>assets/img/content_11.jpg"></div></a>
-                    </td>
+                    <td><a href="<?php echo base_url(); ?>eyeprofile/official_detail/<?= $row['official_id']; ?>" class="media"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>systems/player_storage/<?php print $row['official_photo']; ?>" alt="" width="100%;"></div></a></td>					
+                    <td><?=$row['nama_manager']?></td>
                     <td><?=$row['tanggal']?> <?=$bulan[$row['bulan']]?> <?=$row['tahun']?></td>
-                    <td><?=$row['posisi']?></td>
-                    <td><?=$row['posisi']?></td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td><?=$row['position']?></td>
+                    <td><?=$row['nationality']?></td>
+                    <td><?=$row['contract']?></td>
                 </tr>
 				<?php }?>
             </tbody>
         </table>
+                <span class="next-right">Lihat Klasemen Lengkap
+                    <i class="material-icons t-8">keyboard_arrow_right</i>
+                </span>		
     </div>
     </body>
 </html>
