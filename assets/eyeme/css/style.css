@@ -2677,3 +2677,63 @@ ul, li {
 .img_more{
     cursor:pointer;
 }
+/*
+sw:begin;
+loading animation
+*/
+#loading{
+
+    margin:150px 200px;
+}
+.ntf{
+    
+    cursor:pointer !important;
+}
+.click-like{
+    cursor: pointer;
+}
+.notif-link{
+    display: inline;
+    cursor: pointer;
+}
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.lds-dual-ring {
+  position: relative;
+}
+.lds-dual-ring div {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: 30px;
+  left: 30px;
+  border-radius: 50%;
+  border: 14px solid #000;
+  border-color: #47c9f5 transparent #47c9f5 transparent;
+  -webkit-animation: lds-dual-ring 1s linear infinite;
+  animation: lds-dual-ring 1s linear infinite;
+}
+.lds-dual-ring {
+  width: 59px !important;
+  height: 59px !important;
+  -webkit-transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
+  transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
+}

@@ -362,7 +362,7 @@ class Eyeme_model extends Master_model
 						B.`username`
 					FROM `me_notif` AS A
 					INNER JOIN `me_profile` AS B
-					ON A.`id_member` = B.`id_member`
+					ON A.`id_member_act` = B.`id_member`
 					WHERE A.`id_member` = $id_member
 					ORDER BY last_update DESC
 					";

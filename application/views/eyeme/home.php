@@ -8,7 +8,7 @@
     		<div class="box-feed m-0">
             <div>
                 <img class="feed-profil-foto m-t-15 m-l-20" 
-                src="<?php echo ($v['dp'] == NULL || '' ? DPIC : sIMGPATH.$v['dp'])?>" alt="user photo" />
+                src="<?php echo ($v['dp'] == NULL || $v['dp'] == '' ? DPIC : sIMGPATH.$v['dp'])?>" alt="user photo" />
                 <div class="nama-pro-feed p-r">
 
                     <a href="<?php echo MEPROFILE.$v['username']?>">
@@ -17,7 +17,7 @@
 
                 </div>
                 <div class="p-r titik3 fl-r">
-                    <img src="<?php echo sIMGPATH?>EYEME/ic-more.png" class="img_more" ref="v-<?php echo $v['id_img']?>">
+                    <img src="<?php echo sIMGPATH?>ic-more.png" class="img_more" ref="v-<?php echo $v['id_img']?>">
                     <div class="posisi-kotak-popup p-a v-<?php echo $v['id_img']?>" style="display:none;">
                         <div class="kotak-popup">
                             <div class="panah-popup p-r m-0">
@@ -40,14 +40,13 @@
                 }
                 else{
                     echo '<i class="material-icons first-icon">favorite_border</i>
-                    <i class="material-icons second-icon" id="like" ref="'.$v['id_img'].'">favorite</i>';
+                    <i class="material-icons second-icon click-like"  ref="'.$v['id_img'].'">favorite</i>';
                 }
-
 
                 ?>
                     
 
-                    <div class="p-r like">
+                    <div class="p-r like ref-<?php echo $v['id_img']?>">
                         <?php echo count($v['like'])?>
                     </div>
 

@@ -5,17 +5,20 @@ class Eyeme extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
-
+        	#sw::begin 
 		    $this->load->model('Eyemarket_model');
 		    $this->load->model('Eyeme_model','emod');
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','my_helper','html'));
 			$this->load->model('Master_model','mod');
 			$this->getSetting = $this->mod->getAll('setting');
-			$_SESSION['id_member'] = 189;
-			
 			$this->id_member  = @$this->session->userdata('id_member');#id_member login 
-			$this->now        = date('Y-m-d G:i:s');
+			$this->username   = @$this->session->userdata('username');
+			/*
+				variabel userdata
+			*/
+			$this->data['id_member'] = $this->id_member;
+			$this->data['username']  = $this->username;
 
 			if(count($this->getSetting) > 0 ){
 				$this->data['title'] = $this->getSetting[0]->title;
@@ -35,74 +38,77 @@ class Eyeme extends CI_Controller {
 		$getImgFollowing = $this->emod->getImgFollowing($id_member);
 		
 		$i   = 0;
-		$arr = array();
+		$arr = array(); #data gambar yang di follow oleh user yang login 
 		if($getImgFollowing > 0 ){
+
 			foreach($getImgFollowing as $k => $v){
 
-			$arr[$i]['id_img'] 		= $v->id_img;
-			$arr[$i]['img_caption'] = $v->img_caption;
-			$arr[$i]['comment']     = $this->emod->getComment($v->id_img); #mengambil komentar berdasarkan id_img
-			$arr[$i]['like']        = $this->emod->getLike($v->id_img); #mengambil like Berdasarikan id_img
-			$arr[$i]['has_like']    = $this->emod->hasLike($this->id_member,$v->id_img);#check kondisi like
-			$arr[$i]['id_member']   = $v->id_member;
-			$arr[$i]['img_name']    = $v->img_name;
-			$arr[$i]['img_thumb']   = $v->img_thumb;
-			$arr[$i]['img_alt']     = $v->img_alt;
-			$arr[$i]['dp']          = $v->display_picture;
-			$arr[$i]['username']    = $v->username;	
-			$arr[$i]['last_update'] = $v->last_update;
-			$arr[$i]['date_create'] = $v->date_create;
-			$arr[$i]['now']         = $this->now;
-			$arr[$i]['distance']    = strtotime($this->now) - strtotime($arr[$i]['last_update']);#jarak waktu 
-			$getTime[$i]            = getTime($arr[$i]['distance']); #mengambil waktu last_update
-			$arr[$i]['day']         = $getTime[$i]['day'];
-			$arr[$i]['hours']       = $getTime[$i]['hours'];
-			$arr[$i]['minute']      = $getTime[$i]['minute'];
-			$arr[$i]['secon']       = $getTime[$i]['secon'];
-			$arr[$i]['timeString']  = $getTime[$i]['timeString'];
-
-			$i++;	
+				$arr[$i]['id_img'] 		= $v->id_img;
+				$arr[$i]['img_caption'] = $v->img_caption;
+				$arr[$i]['comment']     = $this->emod->getComment($v->id_img); #mengambil komentar berdasarkan id_img
+				$arr[$i]['like']        = $this->emod->getLike($v->id_img); #mengambil like Berdasarikan id_img
+				$arr[$i]['has_like']    = $this->emod->hasLike($this->id_member,$v->id_img);#check kondisi like
+				$arr[$i]['id_member']   = $v->id_member;
+				$arr[$i]['img_name']    = $v->img_name;
+				$arr[$i]['img_thumb']   = $v->img_thumb;
+				$arr[$i]['img_alt']     = $v->img_alt;
+				$arr[$i]['dp']          = $v->display_picture;
+				$arr[$i]['username']    = $v->username;	
+				$arr[$i]['last_update'] = $v->last_update;
+				$arr[$i]['date_create'] = $v->date_create;
+				$arr[$i]['now']         = NOW;
+				$arr[$i]['distance']    = getDistance(NOW,$arr[$i]['last_update']);#jarak waktu 
+				$getTime[$i]            = getTime($arr[$i]['distance']); #mengambil waktu last_update
+				$arr[$i]['day']         = $getTime[$i]['day'];
+				$arr[$i]['hours']       = $getTime[$i]['hours'];
+				$arr[$i]['minute']      = $getTime[$i]['minute'];
+				$arr[$i]['secon']       = $getTime[$i]['secon'];
+				$arr[$i]['timeString']  = $getTime[$i]['timeString'];
+				$i++;	
 
 			}
 		}
-	
-		$dataNotif = $this->emod->getNotif($id_member);
+			/*
+				$dataNotif = $this->emod->getNotif($id_member);
 
-		$j=0;
-		foreach($dataNotif as $k => $v){
-			
-			$sub[$j][0] = substr($v->notif_type,0,3);
-			$sub[$j][1] = substr($v->notif_type,3);
-
-				if($sub[$j][0] == 'COM'){
-
-					$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
+				$j=0;
+				foreach($dataNotif as $k => $v){
 					
-					$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-					$dataNotif[$j]->img_name  = 'img/'.$get[0]->img_name;
-					$dataNotif[$j]->img_thumb = 'img/'.$get[0]->img_thumb;
-					$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
-				}
-				elseif($sub[$j][0] == 'LIK'){
+					$sub[$j][0] = substr($v->notif_type,0,3);
+					$sub[$j][1] = substr($v->notif_type,3);
 
-					$get = $this->emod->whereImageIn('like',$sub[$j][1]);
+						if($sub[$j][0] == 'COM'){
+
+							$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
+							
+							$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
+							$dataNotif[$j]->img_name  = 'img/'.$get[0]->img_name;
+							$dataNotif[$j]->img_thumb = 'img/'.$get[0]->img_thumb;
+							$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+						}
+						elseif($sub[$j][0] == 'LIK'){
+
+							$get = $this->emod->whereImageIn('like',$sub[$j][1]);
+							
+							$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
+							$dataNotif[$j]->img_name  = 'img/'.$get[0]->img_name;
+							$dataNotif[$j]->img_thumb = 'img/'.$get[0]->img_thumb;
+							$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+
+						}
+						else{
+							$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
+						}
 					
-					$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-					$dataNotif[$j]->img_name  = 'img/'.$get[0]->img_name;
-					$dataNotif[$j]->img_thumb = 'img/'.$get[0]->img_thumb;
-					$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+					$j++;
 
 				}
-				else{
-					$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
-				}
-			
-			$j++;
-
-		}
+			*/
 		#p($dataNotif);
 		$this->data['id_member']       = $id_member;
+		$this->data['username']        = $this->username;
 		$this->data['imgFollowing']    = $arr;
+
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/home',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
@@ -130,15 +136,15 @@ class Eyeme extends CI_Controller {
 			$check          = $this->emod->checkFollowed($this->id_member,$usr->id_member);
 			
 			$this->data['checkFollowed'] = $check;
-			$this->data['follower'] = $getFollower;
-			$this->data['following']= $getFollowing;
-			$this->data['getImg']   = $getImg;
-			
+			$this->data['follower'] 	 = $getFollower;
+			$this->data['following']	 = $getFollowing;
+			$this->data['getImg']   	 = $getImg;
 			$this->data['id_member']     = $usr->id_member;
 			$this->data['username']      = $usr->username;
 			$this->data['bio'] 		     = $usr->bio;
 			$this->data['display_pic']   = $usr->display_picture;
 			$this->data['self']			 = ($usr->id_member == @$_SESSION['id_member'] ? TRUE : FALSE);
+			#jika yang mengunjungi profile diri sendiri
 
 		} 
 		else{
@@ -151,7 +157,9 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/footer',$this->data);
 
 	}
-
+	/**
+		*fungsi post komentar ke database
+	*/
 	public function post_comment(){
 		$id_img    = inputSecure($this->input->post('img'));
 		$id_member = $this->id_member;
@@ -166,6 +174,9 @@ class Eyeme extends CI_Controller {
 		echo $exe; 
 		
 	}
+	/**
+		*fungsi follow
+	*/
 	public function follow(){
 
 		$id_member  = $this->session->userdata('id_member');
@@ -182,19 +193,64 @@ class Eyeme extends CI_Controller {
 
 	public function get_notif(){
 		$id_member   = $this->id_member;
-		$getNotif    = $this->emod->getNotif($id_member);
-		if(count($getNotif) > 0  ){
-			#for($i= 0; $i <count($getNotif);$i++){
+		$dataNotif = $this->emod->getNotif($id_member);
+
+		$j=0;
+		foreach($dataNotif as $k => $v){
+			
+			$sub[$j][0] = substr($v->notif_type,0,3);
+			$sub[$j][1] = substr($v->notif_type,3);
+
+				if($sub[$j][0] == 'COM'){
+
+					$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
+					
+					$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
+					$dataNotif[$j]->img_name  = $get[0]->img_name;
+					$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
+					$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+				}
+				elseif($sub[$j][0] == 'LIK'){
+
+					$get = $this->emod->whereImageIn('like',$sub[$j][1]);
+					
+					$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
+					$dataNotif[$j]->img_name  = $get[0]->img_name;
+					$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
+					$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+
+				}
+				else{
+					$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
+				}
+			$distance    = getDistance(NOW,$v->last_update);
+			$getTime     = getTime($distance);
+			$dataNotif[$j]->timeString = $getTime['timeString'];
+			
+			$j++;
 
 		}
+		$json = json_encode($dataNotif);
+		echo $json;
+		#if(count($getNotif) > 0  ){
+			#for($i= 0; $i <count($getNotif);$i++){
+
+		#}
+		#$this->load->view('eyeme/notif');
 
 	}
-	/*
+	public function test_notif(){
+		$this->load->view('eyeme/test');
+	}
+	/**
+	*@param $id_img = id image yang di sukai
 		insert like 
 	*/
-	public function like($id_img){
-
+	public function like(){
+		$id_img = $this->input->post('id');
 		$this->emod->addLike($this->id_member,$id_img);
+		$getLike = $this->mod->getAll('me_like',array('id_img'=> $id_img));
+		echo count($getLike);
 
 	}
 	public function get_like($id_img){
@@ -203,7 +259,7 @@ class Eyeme extends CI_Controller {
 
 	}
 	/*
-	sw:: end
+	sw::end
 
 	*/
 	public function home()
@@ -556,7 +612,11 @@ class Eyeme extends CI_Controller {
 	}
 	
 	public function sess(){
-		p($_SESSION);
+		p($this->session->userdata());
+	}
+	public function destroy_sess(){
+		session_destroy();
+		echo 'success';
 	}
 	
 	
