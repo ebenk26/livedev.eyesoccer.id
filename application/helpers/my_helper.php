@@ -63,7 +63,7 @@ if( ! function_exists('relative_time'))
         return "$difference $period $ending";
     }
 }
-
+/* definisi variable */
 define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
@@ -73,7 +73,6 @@ define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
 define('DPIC',sIMGPATH.'user-discover.png');
 define('NOW',date('Y-m-d G:i:s'));
-
 
 function p($arr){
     echo '<pre>';
@@ -89,7 +88,11 @@ function inputSecure($input){
     
     return $input;
 }
+function getDistance($time1,$time2){
+    $distance =  strtotime($time1) - strtotime($time2);
+    return $distance;
 
+}
 function getTime($timeStamp){
     $timeString = ""; 
     $day       = floor($timeStamp / (3600 * 24));

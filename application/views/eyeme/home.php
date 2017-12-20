@@ -40,14 +40,13 @@
                 }
                 else{
                     echo '<i class="material-icons first-icon">favorite_border</i>
-                    <i class="material-icons second-icon" id="like" ref="'.$v['id_img'].'">favorite</i>';
+                    <i class="material-icons second-icon click-like"  ref="'.$v['id_img'].'">favorite</i>';
                 }
-
 
                 ?>
                     
 
-                    <div class="p-r like">
+                    <div class="p-r like ref-<?php echo $v['id_img']?>">
                         <?php echo count($v['like'])?>
                     </div>
 
