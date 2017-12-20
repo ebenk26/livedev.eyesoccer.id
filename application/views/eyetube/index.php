@@ -8,8 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <title></title>
     <meta name="viewport" content="width=1000">
-    <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						foreach($video_eyetube as $videonya){
 						?>					
                         <div class="gambar">
-                            <img src="<?=base_url()?>newassets/img/d.jpg" style="width:100%;margin-right:20px;">
+                            <img src="<?=base_url()?>assets/img/d.jpg" style="width:100%;margin-right:20px;">
                             <div class="bottom-left">
                                 <h4><?=$videonya['title']?></h4>
                                 <button class="btn-biru" type="button"><a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">Lihat</a></button>
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									{
 					?>					
                         <div class="gambar">
-                            <img src="<?=base_url()?>newassets/img/d.jpg" style="width:100%;margin-right:20px;">
+                            <img src="<?=base_url()?>assets/img/d.jpg" style="width:100%;margin-right:20px;">
                             <div class="bottom-left">
                                 <h4><?=$videonya['title']?></h4>
                                 <button class="btn-biru" type="button"><a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">Lihat</a></button>
@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="w30">
                     <div>
                         <!--<img src="<?php echo base_url(); ?>systems/eyetube_storage/<?= $populer['thumb']; ?>" style="width:100%;margin-right:20px;">-->
-                        <img src="<?=base_url()?>newassets/img/d.jpg" style="width:100%;margin-right:20px;">
+                        <img src="<?=base_url()?>assets/img/d.jpg" style="width:100%;margin-right:20px;">
                         <p class="sub-en"><?= $populer['title']; ?></p>
                         <span class="time-view">
 							<?php
@@ -152,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							?>
 								<div class="w30">
 									<div>
-										<img src="<?=base_url()?>newassets/img/d.jpg" style="width:100%;margin-right:20px;">
+										<img src="<?=base_url()?>assets/img/d.jpg" style="width:100%;margin-right:20px;">
 										<p class="sub-en"><?=$row['title']?></p>
 										<span class="time-view">
 										<?php
@@ -196,7 +196,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						?>
                             <div class="w30">
                                 <div>
-                                    <img src="<?=base_url()?>newassets/img/d.jpg" style="width:100%;margin-right:20px;">
+                                    <img src="<?=base_url()?>assets/img/d.jpg" style="width:100%;margin-right:20px;">
                                     <p class="sub-en"><?=$row['title']?></p>
                                     <span class="time-view">
 									<?php
@@ -237,7 +237,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						?>
                             <div class="w30">
                                 <div>
-                                    <img src="<?=base_url()?>newassets/img/d.jpg" style="width:100%;margin-right:20px;">
+                                    <img src="<?=base_url()?>assets/img/d.jpg" style="width:100%;margin-right:20px;">
                                     <p class="sub-en"><?=$row['title']?></p>
                                     <span class="time-view">
 										<?php
@@ -279,7 +279,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						?>
                             <div class="w30">
                                 <div>
-                                    <img src="<?=base_url()?>newassets/img/d.jpg" style="width:100%;margin-right:20px;">
+                                    <img src="<?=base_url()?>assets/img/d.jpg" style="width:100%;margin-right:20px;">
                                     <p class="sub-en"><?=$ssb['title']?></p>
                                     <span class="time-view">
 										<?php
@@ -299,7 +299,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     </div>
-    <script src="<?=base_url()?>newassets/js/home.js"></script>
+    <script src="<?=base_url()?>assets/js/home.js"></script>
 </body>
 
 </html>

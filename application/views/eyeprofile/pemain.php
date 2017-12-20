@@ -8,11 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <title>Eyesoccer | Pemain</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
     <div class="crumb">
@@ -104,13 +104,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="center-dekstop m-0">
     <input type="text" name="" id="" placeholder="Cari ..." class="src-200 mt-30">
-    <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
+    <img src="<?=base_url()?>assets/img/ic_search.png" alt="" class="img-src-200">
     <table class="radius table table-striped pd-18 mt-10" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
                     <th class="t-b-b">No</th>
-					<th class="t-b-b"></th>
-                    <th class="t-b-b">Pemain</th>
+					<th class="t-b-b">Pemain</th>
+                    <th class="t-b-b"></th>
                     <th class="t-b-b">Tgl Lahir</th>
                     <th class="t-b-b">Posisi</th>
                     <th class="t-b-b">Kewarganegaraan</th>
@@ -155,5 +155,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </tbody>
         </table>
     </div>
+</div>	
     </body>
 </html>

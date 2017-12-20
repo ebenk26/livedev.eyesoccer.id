@@ -10,10 +10,10 @@ $row=$cmd->row_array();
 <head>
     <title></title>
     <meta name="viewport" content="width=1000">
-    <link href="<?=base_url()?>newassets/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="<?=base_url()?>newassets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -164,7 +164,7 @@ $row=$cmd->row_array();
                     <div>
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                         <div class="tube-komen mt-10">
-                            <img src="<?=base_url()?>newassets/img/EYEME/user-discover.png" alt="profil foto">
+                            <img src="<?=base_url()?>assets/img/EYEME/user-discover.png" alt="profil foto">
                             <input type="text" placeholder="Tulis komentar kamu...">
                         </div>
                         <div class="fl-r">
@@ -178,7 +178,7 @@ $row=$cmd->row_array();
                             <table>
                                 <tr>
                                     <td>
-                                        <img src="<?=base_url()?>newassets/img/EYEME/user-discover.png" alt="profil foto">
+                                        <img src="<?=base_url()?>assets/img/EYEME/user-discover.png" alt="profil foto">
                                     </td>
                                     <td>
                                         <div>
@@ -220,7 +220,7 @@ $row=$cmd->row_array();
                             <table>
                                 <tr>
                                     <td>
-                                        <img src="<?=base_url()?>newassets/img/EYEME/user-discover.png" alt="profil foto">
+                                        <img src="<?=base_url()?>assets/img/EYEME/user-discover.png" alt="profil foto">
                                     </td>
                                     <td>
                                         <div>
@@ -262,7 +262,7 @@ $row=$cmd->row_array();
                             <table>
                                 <tr>
                                     <td>
-                                        <img src="<?=base_url()?>newassets/img/EYEME/user-discover.png" alt="profil foto">
+                                        <img src="<?=base_url()?>assets/img/EYEME/user-discover.png" alt="profil foto">
                                     </td>
                                     <td>
                                         <div>
@@ -321,7 +321,7 @@ $row=$cmd->row_array();
 										foreach ($eyetube_right_detail as $videonya){
 										?>									
                                     <div class="container h105">								
-                                        <img src="<?=base_url()?>newassets/img/a.jpg" alt="">
+                                        <img src="<?=base_url()?>assets/img/a.jpg" alt="">
                                         <div class="upr">
                                             <span>2:30</span>
                                         </div>
@@ -352,7 +352,7 @@ $row=$cmd->row_array();
 										foreach($eyetube_rekomendasi as $row){
 										?>									
                                     <div class="container h105">								
-                                        <img src="<?=base_url()?>newassets/img/a.jpg" alt="">
+                                        <img src="<?=base_url()?>assets/img/a.jpg" alt="">
                                         <div class="upr">
                                             <span>2:30</span>
                                         </div>
