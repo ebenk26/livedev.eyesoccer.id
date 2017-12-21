@@ -32,20 +32,26 @@
             <div class="post-photo m-t-10">
                 <img src="<?php echo MEIMG.$v['img_name']?>" alt="<?php echo $v['img_alt']?>">
             </div>
-            <div class="mt-10 m-l-20">
+            <div class="mt-10 m-l-20" ref= "ref-<?php echo $v['id_img']?>">
                 <?php 
+                /*ternary if button like clicked = has like 
+                      first icon = style display none
+                      second icon = ''
+                      attrib status = "active"
+                  else:
+                      firts icon =''
+                      second icon = 'second-icon'
+                      attrib status = ''
+                */
+                echo '<i class="material-icons first-icon first-icon-'.$v['id_img'].'" 
+                '.($v['has_like'] == true ? 'style="display:none"':'').'>favorite_border</i>
 
-                if($v['has_like'] == TRUE){
-                    echo '<i class="material-icons" style="color:#D50E0E" id="unlike" ref="'.$v['id_img'].'">favorite</i>';
-                }
-                else{
-                    echo '<i class="material-icons first-icon">favorite_border</i>
-                    <i class="material-icons second-icon click-like"  ref="'.$v['id_img'].'">favorite</i>';
-                }
+                    <i class="material-icons '
+                    .($v['has_like'] == true ? '' : 'second-icon').' click-like r"  ref="'.$v['id_img'].'" 
+                    '.($v['has_like'] == true ? 'status="active"' : '').'>favorite</i>';
 
                 ?>
                     
-
                     <div class="p-r like ref-<?php echo $v['id_img']?>">
                         <?php echo count($v['like'])?>
                     </div>

@@ -193,43 +193,47 @@ class Eyeme extends CI_Controller {
 
 	public function get_notif(){
 		$id_member   = $this->id_member;
+
 		$dataNotif = $this->emod->getNotif($id_member);
+		if(count($dataNotif) > 0 ){ #check result dataNotif
+			$j=0;
+			foreach($dataNotif as $k => $v){
+				
+				$sub[$j][0] = substr($v->notif_type,0,3);
+				$sub[$j][1] = substr($v->notif_type,3);
 
-		$j=0;
-		foreach($dataNotif as $k => $v){
-			
-			$sub[$j][0] = substr($v->notif_type,0,3);
-			$sub[$j][1] = substr($v->notif_type,3);
+					if($sub[$j][0] == 'COM'){
 
-				if($sub[$j][0] == 'COM'){
+						$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
+						
+						$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
+						$dataNotif[$j]->img_name  = $get[0]->img_name;
+						$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
+						$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+					}
+					elseif($sub[$j][0] == 'LIK'){
 
-					$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
-					
-					$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-					$dataNotif[$j]->img_name  = $get[0]->img_name;
-					$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
-					$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
-				}
-				elseif($sub[$j][0] == 'LIK'){
+						$get = $this->emod->whereImageIn('like',$sub[$j][1]);
+						
+						$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
+						$dataNotif[$j]->img_name  = $get[0]->img_name;
+						$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
+						$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
 
-					$get = $this->emod->whereImageIn('like',$sub[$j][1]);
-					
-					$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-					$dataNotif[$j]->img_name  = $get[0]->img_name;
-					$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
-					$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+					}
+					else{
+						$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
+					}
+				$distance    = getDistance(NOW,$v->last_update);
+				$getTime     = getTime($distance);
+				$dataNotif[$j]->timeString = $getTime['timeString'];
+				
+				$j++;
 
-				}
-				else{
-					$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
-				}
-			$distance    = getDistance(NOW,$v->last_update);
-			$getTime     = getTime($distance);
-			$dataNotif[$j]->timeString = $getTime['timeString'];
-			
-			$j++;
+			}
 
 		}
+		
 		$json = json_encode($dataNotif);
 		echo $json;
 		#if(count($getNotif) > 0  ){
@@ -249,6 +253,15 @@ class Eyeme extends CI_Controller {
 	public function like(){
 		$id_img = $this->input->post('id');
 		$this->emod->addLike($this->id_member,$id_img);
+		$getLike = $this->mod->getAll('me_like',array('id_img'=> $id_img));
+		echo count($getLike);
+
+	}
+	public function unlike(){
+		$id_img = $this->input->post('id');
+		$this->db->where('id_member',$this->id_member);
+		$this->db->where('id_img',$id_img);
+		$this->db->delete('me_like');
 		$getLike = $this->mod->getAll('me_like',array('id_img'=> $id_img));
 		echo count($getLike);
 

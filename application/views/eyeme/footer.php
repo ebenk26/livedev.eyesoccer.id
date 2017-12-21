@@ -204,27 +204,61 @@ $(window).click(function(e) {
 
      }
 });
-
+var sta ='';
 //like button click event 
 $('.click-like').click(function(event) {
-    /* Act on the event */
+    var $this = $(this);
+    var status = $this.attr('status');
     var img = $(this).attr('ref');
-       $.ajax({
-        url: '<?php echo MEURL?>like/',
-        type: 'POST',
-        dataType: 'html',
-        data: {id: img},
-    })
-    .done(function(r) {
-        $('.ref-'+img).text(r);
-        console.log("success");
-    })
-    .fail(function() {
-        console.log("error");
-    })
-    .always(function() {
-        console.log("complete");
-    });
+
+    if(typeof status !== typeof undefined && status !== false ){//check apakah attribut ref terdefenisi 
+        //fitur like 
+    /* Act on the event */
+        $.ajax({
+            url: '<?php echo MEURL?>unlike/',
+            type: 'POST',
+            dataType: 'html',
+            data: {id: img},
+        })
+        .done(function(r) {
+            $('.ref-'+img).text(r);
+           
+            $('.first-icon-' + img).show();
+            $this.addClass('second-icon');
+            $this.removeAttr('status');
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+       
+
+    }
+    else{
+         
+        $.ajax({
+            url: '<?php echo MEURL?>like/',
+            type: 'POST',
+            dataType: 'html',
+            data: {id: img},
+        })
+        .done(function(r) {
+            $('.ref-'+img).text(r);
+            $('.first-icon-' + img).hide();
+            $this.addClass('r');
+            $this.removeClass('second-icon');
+            $this.attr('status','active');
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    }
+   
     
     //alert($(this).attr('ref'));
 });

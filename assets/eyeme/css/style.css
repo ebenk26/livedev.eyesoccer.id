@@ -2681,6 +2681,9 @@ ul, li {
 sw:begin;
 loading animation
 */
+.r{
+    color:#D50E0E;
+}
 #loading{
 
     margin:150px 200px;
