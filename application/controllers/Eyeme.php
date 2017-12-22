@@ -17,8 +17,8 @@ class Eyeme extends CI_Controller {
 			/*
 				variabel userdata
 			*/
-			$this->data['id_member'] = $this->id_member;
-			$this->data['username']  = $this->username;
+			$this->data['id_member']   = $this->id_member;
+			$this->data['myusername']  = $this->username;
 
 			if(count($this->getSetting) > 0 ){
 				$this->data['title'] = $this->getSetting[0]->title;
@@ -106,7 +106,7 @@ class Eyeme extends CI_Controller {
 			*/
 		#p($dataNotif);
 		$this->data['id_member']       = $id_member;
-		$this->data['username']        = $this->username;
+		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
 
 		$this->load->view('eyeme/header',$this->data);
@@ -175,7 +175,7 @@ class Eyeme extends CI_Controller {
 		
 	}
 	/**
-		*fungsi follow
+		*fungsi follow::
 	*/
 	public function follow(){
 
@@ -190,10 +190,13 @@ class Eyeme extends CI_Controller {
 			echo 'false';
 		}
 	}
+	/*
 
+		*fungsi get_notif::
+	*/
 	public function get_notif(){
+		$this->mod->checkLogin();// check if user comming from home
 		$id_member   = $this->id_member;
-
 		$dataNotif = $this->emod->getNotif($id_member);
 		if(count($dataNotif) > 0 ){ #check result dataNotif
 			$j=0;
@@ -202,7 +205,7 @@ class Eyeme extends CI_Controller {
 				$sub[$j][0] = substr($v->notif_type,0,3);
 				$sub[$j][1] = substr($v->notif_type,3);
 
-					if($sub[$j][0] == 'COM'){
+					/*if($sub[$j][0] == 'COM'){
 
 						$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
 						
@@ -214,16 +217,18 @@ class Eyeme extends CI_Controller {
 					elseif($sub[$j][0] == 'LIK'){
 
 						$get = $this->emod->whereImageIn('like',$sub[$j][1]);
+						if(count($get) > 0 ){
+							$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
+							$dataNotif[$j]->img_name  = $get[0]->img_name;
+							$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
+							$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
+						}
 						
-						$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-						$dataNotif[$j]->img_name  = $get[0]->img_name;
-						$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
-						$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
 
 					}
 					else{
 						$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
-					}
+					}*/
 				$distance    = getDistance(NOW,$v->last_update);
 				$getTime     = getTime($distance);
 				$dataNotif[$j]->timeString = $getTime['timeString'];
@@ -236,11 +241,24 @@ class Eyeme extends CI_Controller {
 		
 		$json = json_encode($dataNotif);
 		echo $json;
-		#if(count($getNotif) > 0  ){
-			#for($i= 0; $i <count($getNotif);$i++){
+		
+	}
+	/*
 
-		#}
-		#$this->load->view('eyeme/notif');
+		fungsi upload;
+
+
+	*/
+	public function upload_img(){
+
+		$img_name = inputSecure($this->input->post('img'));
+		$caption  = inputSecure($this->input->post('caption'));
+		$tag      = inputSecure($this->input->post('tag'));
+		$uploadPath = MEIMG;
+		$maxSize    = 2024; 
+		#$allowType  = 
+
+		#$this->mod->uploadImg();
 
 	}
 	public function test_notif(){
@@ -404,6 +422,7 @@ class Eyeme extends CI_Controller {
 
 	      $email 		= $getUser[0]->email;
 	     echo $username.$password;
+	     redirect(MEURL,'refresh');
 
 	      if($getUser[0]->id_member=="" && $getUser[0]->password=="" AND count($getProf) <=  0 )
 	      {
@@ -431,8 +450,7 @@ class Eyeme extends CI_Controller {
 		redirect('eyeme/explore');
 	}
 
-	public function explore()
-	{
+	public function explore(){
 		$data['konten'] 	= $this->emod->get_all_konten();
 
 		$this->load->view('/eyeme/konten',$data);

@@ -233,20 +233,29 @@ class Eyeme_model extends Master_model
 	/**
 	*@param $data = array() data yang akan di input ke dalam database table me_comment;
 	*@return JSON or FALSE;
-	*fungsi post commentar 
+	*fungsi post_comment:: 
 	*/
 	public function postComment($data = array()){
 	
 		$insertComment = $this->db->insert('me_comment',$data);
 		$comment_id    = $this->db->insert_id();
-		$getIdMember   = $this->getAll('me_img',array('id_img'=> $data['id_img']),'id_member'); 
+
+		$select      = array('id_member','id_img','img_thumb','img_name','img_alt');
+		$getIdMember = $this->getAll('me_img',array('id_img'=> $id_img),$select); 
+		#mengambil id_member yang mempunyai gambar
+		$id_img        = $getIdMember[0]->id_img;
 		$id_member_img = $getIdMember[0]->id_member;
-		
+		$img_thumb     = $getIdMember[0]->img_thumb;
+		$img_alt  	   = $getIdMember[0]->img_name;
+
 		$dataNotif     = array(
 				'id_member'     => $id_member_img, # yang menerima notif comment
 				'id_member_act' => $data['id_member'], #yang memberi notif comment
+				'id_img'		=> $id_img,
 				'notif_type'    => 'COM'.$comment_id,
 				'notif_content' => $data['comment'],
+				'img_thumb'		=> $img_thumb,
+				'img_alt'	    => $img_alt,
 				'date_create'   => NOW,
 				'last_update'   => NOW);
 
@@ -320,15 +329,22 @@ class Eyeme_model extends Master_model
 		$insertLike = $this->db->insert('me_like',$dataLike);#insert data ke dalam table me_like
 		$like_id    = $this->db->insert_id();#mengambil last_id
 
-		$getIdMember = $this->getAll('me_img',array('id_img'=> $id_img),'id_member'); 
+		$select      = array('id_member','id_img','img_thumb','img_name','img_alt');
+		$getIdMember = $this->getAll('me_img',array('id_img'=> $id_img),$select); 
 		#mengambil id_member yang mempunyai gambar
+		$id_img        = $getIdMember[0]->id_img;
 		$id_member_img = $getIdMember[0]->id_member;
+		$img_thumb     = $getIdMember[0]->img_thumb;
+		$img_alt  	   = $getIdMember[0]->img_name;
 
 		$dataNotif  = array(
 				'id_member'     => $id_member_img, # yang menerima notif like 
 				'id_member_act' => $id_member, #yang memberi notif like
+				'id_img'	    => $id_img,#id gambar yang di beri notif
 				'notif_type'    => 'LIK'.$like_id,
 				'notif_content' => 'LIKE',
+				'img_thumb'		=> $img_thumb,
+				'img_alt'		=> $img_alt,
 				'date_create'   => NOW,
 				'last_update'   => NOW);
 		$insertNotif   = $this->db->insert('me_notif',$dataNotif); #insert data ke dalam table me_notif
@@ -345,7 +361,7 @@ class Eyeme_model extends Master_model
 
 	/**
 	*@param $id_member
-		fungsi mengambil notifikasi 
+		fungsi mengambil notifikasi getNotif::
 	*/
 	public function getNotif($id_member,$limit=''){
 		#$where    = array('id_member'=> $id_member);
@@ -354,6 +370,9 @@ class Eyeme_model extends Master_model
 						A.`id_notif`,
 						A.`id_member`,
 						A.`id_member_act`,
+						A.`id_img`,
+						A.`img_thumb`,
+						A.`img_alt`,
 						A.`notif_type`,
 						A.`notif_content`,
 						A.`last_update`,

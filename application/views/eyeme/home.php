@@ -8,7 +8,7 @@
     		<div class="box-feed m-0">
             <div>
                 <img class="feed-profil-foto m-t-15 m-l-20" 
-                src="<?php echo ($v['dp'] == NULL || $v['dp'] == '' ? DPIC : sIMGPATH.$v['dp'])?>" alt="user photo" />
+                src="<?php echo ($v['dp'] == NULL || $v['dp'] == '' ? DPIC : MEIMG.$v['dp'])?>" alt="user photo" />
                 <div class="nama-pro-feed p-r">
 
                     <a href="<?php echo MEPROFILE.$v['username']?>">
