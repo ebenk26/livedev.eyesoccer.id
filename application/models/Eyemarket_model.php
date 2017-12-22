@@ -2,7 +2,7 @@
 
 class Eyemarket_model extends CI_Model
 {
-
+//membaca tabel database
         public function listing(){
             $this->db->select('tbl_category_product.*,category_product_name');
             $this->db->from('tbl_category_product');
@@ -15,10 +15,23 @@ class Eyemarket_model extends CI_Model
             return $query->result ();
         }
 
+    public function get_admin($id)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.*
+                                    FROM
+                                        eyemarket_admin A
+                                    WHERE 
+                                        A.id = '$id'
+                                        ")->result_array();
+        return $query;
+    }
+
     public function get_all_product_admin()
     {
         $query = $this->db->query(" SELECT
                                         A.id_product,
+                                        A.id_parent_cat,
                                         A.id_kategori,
                                         A.id_toko,
                                         A.nama,
@@ -34,14 +47,6 @@ class Eyemarket_model extends CI_Model
                                         A.created_date,
                                         B. nama as toko,
                                         C. nama as kategori,
-                                        D.id,
-                                        D.S,
-                                        D.M,
-                                        D.L,
-                                        D.XL,
-                                        D.XXL,
-                                        D.XXXL,
-                                        D.custom,
                                         E.id as id_image,
                                         E.image1,
                                         E.image2,
@@ -277,7 +282,9 @@ class Eyemarket_model extends CI_Model
                                         E.image3,
                                         E.image4,
                                         E.image5,
-                                        F.nama as nama_rumah
+                                        F.nama as nama_rumah,
+                                        F.kode,
+                                        F.alamat
                                     FROM
                                         eyemarket_keranjang A
                                     LEFT JOIN
@@ -550,6 +557,13 @@ class Eyemarket_model extends CI_Model
         return $query;
     }
 
+    function set_keranjang_status($id_order,$cart)
+    {
+        $query = $this->db->update('eyemarket_keranjang', $cart, array('id_order' => $id_order));
+        
+        return $query;
+    }
+
     function set_order_status($id_order,$object)
     {
         $query = $this->db->update('eyemarket_order', $object, array('id' => $id_order));
@@ -565,7 +579,8 @@ class Eyemarket_model extends CI_Model
                                         D.hp,
                                         D.email,
                                         D.alamat,
-                                        E.nama as kurir
+                                        E.nama as kurir,
+                                        G.name as username
                                     FROM
                                         eyemarket_order A
                                     LEFT JOIN
@@ -576,6 +591,8 @@ class Eyemarket_model extends CI_Model
                                         eyemarket_toko D on D.id = C.id_toko
                                     LEFT JOIN
                                          eyemarket_kurir E on E.id = A.id_kurir
+                                    LEFT JOIN
+                                        tbl_member G         on A.id_member =  G.id_member
                                     WHERE
                                         A.no_order = '$no_order'
                                     LIMIT
@@ -634,34 +651,54 @@ class Eyemarket_model extends CI_Model
 
     public function get_all_provinsi()
     {
-        $query  = $this->db->get('provinsi')->result_array();
+        $this->db->select('provinsi');
+        $this->db->group_by('provinsi');
+        $query = $this->db->get('eyemarket_destinasi')->result_array();
 
         return $query;
     }
 
-    public function get_kota()
+    public function get_kota($prov)
     {
         $query = $this->db->query(" SELECT
-                                        *
+                                        A.kota
                                     FROM
-                                        kota
-                                    INNER JOIN
-                                        provinsi ON kota.id_provinsi_fk = provinsi.IDProvinsi
-                                    ORDER BY nama_kota
+                                        eyemarket_destinasi A
+                                    WHERE
+                                        A.provinsi = '$prov'
+                                        AND
+                                        A.kota != 'DKI JAKARTA'
+                                    GROUP BY
+                                        A.kota
                                         ")->result_array();
         return $query;
     }
 
-    public function get_kecamatan()
+    public function get_kecamatan($kota)
     {
         $query = $this->db->query(" SELECT
-                                        *
+                                        A.kecamatan
                                     FROM
-                                        kecamatan
-                                    INNER JOIN
-                                        kota ON kecamatan.id_kota_fk = kota.id_kota
-                                    ORDER BY nama_kecamatan
+                                        eyemarket_destinasi A
+                                    WHERE
+                                        A.kota = '$kota'
+                                    GROUP BY
+                                        A.kecamatan
                                         ")->result_array();
+        return $query;
+    }
+
+    public function get_kode_jne($kota,$kecamatan)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.kode
+                                    FROM
+                                        eyemarket_destinasi A
+                                    WHERE
+                                        A.kota = '$kota'
+                                        AND
+                                        A.kecamatan = '$kecamatan'
+                                        ")->row();
         return $query;
     }
 
@@ -669,6 +706,44 @@ class Eyemarket_model extends CI_Model
     {
         $query  = $this->db->get('eyemarket_payment')->result_array();
 
+        return $query;
+    }
+
+    function set_konfirmasi($objek)
+    {
+        $this->db->insert('eyemarket_konfirmasi', $objek);
+        
+        return $this->db->insert_id();
+    }
+
+    function get_all_order()
+    {
+        $query = $this->db->query(" SELECT
+                                        A.*,
+                                        B.fullname,
+                                        C.nama,
+                                        D.bukti,
+                                        D.created_date
+                                    FROM
+                                        eyemarket_order A
+                                    LEFT JOIN
+                                         tbl_member B   ON B.id_member = A.id_member
+                                    LEFT JOIN
+                                         eyemarket_kurir C  ON C.id = A.id_kurir
+                                    LEFT JOIN
+                                         eyemarket_konfirmasi D     ON D.id_order = A.no_order
+                                    WHERE
+                                        A.status != 0
+                                    ORDER BY
+                                         A.id DESC
+                                        ")->result_array();
+        return $query;
+    }
+
+    function set_status_lunas($id,$objek)
+    {
+        $query = $this->db->update('eyemarket_order', $objek, array('id' => $id));
+        
         return $query;
     }
 

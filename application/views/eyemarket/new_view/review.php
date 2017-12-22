@@ -180,6 +180,7 @@
                                         <?php 
                                             foreach ($model as $cart)
                                             {
+                                                $qty = $cart['jumlah'];
                                         ?>
                                                 <tr>
                                                     <td>
@@ -228,7 +229,7 @@
                                                         </span>
                                                         <br>
                                                         <span>
-                                                            <?= $jumlah; ?> barang (<?= $berat_all; ?> gram)
+                                                            <?= $qty; ?> barang (<?= $berat_all; ?> gram)
                                                         </span>
                                                     </td>
                                                     <td style="vertical-align: unset;">

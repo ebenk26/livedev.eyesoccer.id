@@ -6,6 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>EyeMarket - EyeSoccer</title>
+
+        <script>
+          var base_url = '<?php echo base_url(); ?>';  
+        </script>
+
       <link rel="stylesheet" href="<?=base_url()?>assets/eyemarket/user/node_modules/font-awesome/css/font-awesome.min.css" />
       <link rel="stylesheet" href="<?=base_url()?>assets/eyemarket/user/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
       <link rel="stylesheet" href="<?=base_url()?>assets/eyemarket/user/style.css"/>
@@ -42,20 +47,27 @@
                 <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
                 <div class="user-info">
                     <img src="<?=base_url()?>assets/eyemarket/user/images/face.jpg" alt="">
-                    <p class="name"><?= $nama_lengkap; ?></p>
+                    <p class="name"><?= $nama; ?></p>
+                    <p class="name"><small>Admin</small></p>
                 </div>
                     <ul class="nav">
-                        <li class="nav-item" id="profile">
-                            <a class="nav-link" href="<?= base_url() ?>eyemarket/user/<?= $id_member; ?>">
+                        <li class="nav-item" id="dashboard">
+                            <a class="nav-link" href="<?= base_url() ?>eyemarket/admin">
                                 <!-- <i class="fa fa-dashboard"></i> -->
                                 <img src="<?=base_url()?>assets/eyemarket/user/images/icons/1.png" alt="">
-                                <span class="menu-title">Profile</span>
+                                <span class="menu-title">Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item" id="pesanan">
-                            <a class="nav-link" href="<?= base_url() ?>eyemarket/pesanan/<?= $id_member; ?>">
+                        <li class="nav-item" id="produk">
+                            <a class="nav-link" href="<?= base_url() ?>eyemarket/crud_product">
                                 <img src="<?=base_url()?>assets/eyemarket/user/images/icons/2.png" alt="">
-                                <span class="menu-title">Pesanan</span>
+                                <span class="menu-title">Produk</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="order">
+                            <a class="nav-link" href="<?= base_url() ?>eyemarket/list_order">
+                                <img src="<?=base_url()?>assets/eyemarket/user/images/icons/5.png" alt="">
+                                <span class="menu-title">Order</span>
                             </a>
                         </li>
                     </ul>
@@ -113,6 +125,11 @@
       <script src="<?=base_url()?>assets/eyemarket/user/js/jquery.chained.remote.js"></script>
       <!-- <script src="<?=base_url()?>assets/eyemarket/user/js/chart.js"></script> -->
       <!-- <script src="<?=base_url()?>assets/eyemarket/user/js/maps.js"></script> -->
+      <script src="<?=base_url()?>bs/datatables/jquery.dataTables.js"></script>
+      <script src="<?=base_url()?>bs/datatables/dataTables.bootstrap4.js"></script>
+      <script src="<?=base_url()?>bs/tinymce/tinymce.min.js"></script>
+      <script src="<?=base_url()?>bs/tinymce/tinymce-init.js"></script>
+      <script src="<?=base_url()?>bs/js/eyesoccer.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function()
