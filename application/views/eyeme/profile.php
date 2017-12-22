@@ -3,7 +3,7 @@
         <div class="center-desktop m-0">
             <div class="w900 m-0 mt-53">
                 <div class="mt-30 fl-l">
-                    <img class="me-profil-foto" src="<?php echo MEIMG?>d.jpg" alt="foto profil">
+                    <img class="me-profil-foto" src="<?php echo ($display_pic == '' ? DPIC : MEIMG.$display_pic)?>" alt="foto profil">
                 </div>
                 <div class="container" style="margin-top:-149px; margin-left: 200px;">
                     <div class="fl-l me-profile" style="margin-bottom: 10px;">

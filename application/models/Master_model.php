@@ -665,10 +665,10 @@ class Master_model extends CI_Model
 	public function checkLogin(){
 		$userid = $this->session->userdata('id_member');
 		if($userid == ''){
-			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().'test');
-			#return FALSE;
+			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().'eyeme/testlogin');
+			
 		} 
-		#else return TRUE;
+		
 	}
 		
 	function permalink($table,$title){
@@ -741,15 +741,15 @@ class Master_model extends CI_Model
 	}
 	
 	function setTambahData(){
-		$this->session->set_flashdata('msg', '<div class="alert alert-success"> <i class="ace-icon fa fa-check bigger-110"></i> Berhasil Tambah Data</div>');
+		$this->session->set_flashdata('msg', '<div class="alert alert-success"> <i class="fa fa-check"></i> Berhasil Tambah Data</div>');
 	}
 	
 	function setUbahData(){
-		$this->session->set_flashdata('msg', '<div class="alert alert-success"> <i class="ace-icon fa fa-check bigger-110"></i> Berhasil Ubah Data</div>');
+		$this->session->set_flashdata('msg', '<div class="alert alert-success"> <i class="fa fa-check"></i> Berhasil Ubah Data</div>');
 	}
 	
 	function setHapusData(){
-		$this->session->set_flashdata('msg', '<div class="alert alert-success"> <i class="ace-icon fa fa-check bigger-110"></i>Berhasil Hapus Data</div>');
+		$this->session->set_flashdata('msg', '<div class="alert alert-success"> <i class="fa fa-check"></i>Berhasil Hapus Data</div>');
 	}
 	
 	function showFlashMsg(){

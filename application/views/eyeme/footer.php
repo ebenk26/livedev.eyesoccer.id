@@ -5,19 +5,23 @@
             <div class="pic-l">
                 <div class="container box-pic">
                     <div class="up-pic tx-c p-r">
-                        <ul>
+                        <img src="" id="show_img" alt="yourimg" width="400" height="400">
+                        <ul class="box-up">
                             <li>
                                 <i class="material-icons">cloud_upload</i>
                             </li>
                             <li>
                                 <span>Drop your photo here</span>
+                                
                             </li>
                             <li>
                                 <span>or</span>
                             </li>
                             <li>
+                                <input type="file" name="img" class="fileimg" style="display:none">
                                 <button class="btn-browse" type="button">Browse file</button>
-                            </li>
+                                
+                             </li>
                         </ul>
                     </div>
                     <div class="container rsz mt-10">
@@ -32,17 +36,17 @@
                 <div class="container com-tag">
                     <ul>
                         <li><span>Keterangan </span></li>
-                        <li><input type="text" placeholder="Tuli Keterangan disini..."></li>
+                        <li><input type="text" placeholder="Tuli Keterangan disini..." name="caption"></li>
                         <li></li>
-                        <li><span>Tag</span></li>
+                        <!--<li><span>Tag</span></li>
                         <li><input type="text" placeholder="Gunakan @ untuk menyebut teman" class="input2"></li>
                         <li></li>
                         <li><span>Lokasi</span></li>
                         <li><input type="text" placeholder="Ketik lokasimu" class="input2"></li>
                         <li></li>
                         <li></li>
-                        <li></li>
-                        <li><button class="btn-me-submit fl-r" type="button">Submit</button></li>
+                        <li></li>-->
+                        <li><button class="btn-me-submit fl-r" type="submit">Submit</button></li>
                     </ul>
                 </div>
             </div>
@@ -87,7 +91,7 @@ $('#notif').click(function(event){ //event notif click
             
             if(r.length > 0 ){
             $.each(r,function(k, v) { //parsing jsondata
-               tbl += '<tr class="notif-link" rel="' + v.link + '">';
+               tbl += '<tr class="notif-link" rel="' + v.id_img + '">';
                     tbl += '<td>';
                         tbl += '<img class="notif-profil-foto" src="' +
                         (v.display_picture == '' ? DPIC : MEIMG + v.display_picture ) +' " alt="user photo" />';
@@ -111,7 +115,7 @@ $('#notif').click(function(event){ //event notif click
                         tbl += '<span class="time-notif">'+ v.timeString +'</span>';
                     tbl += '</td>';
                     tbl += '<td class="fl-r mr-7">';
-                        tbl += '<img src="'+ MEIMG + v.img_name + '" alt="post photo" class="notif-photo">';
+                        tbl += '<img src="'+ MEIMG + v.img_thumb + '" alt="post photo" class="notif-photo">';
                     tbl += '</td>';
                 tbl += '</tr>';
                 tbl += '<tr>';
@@ -125,9 +129,10 @@ $('#notif').click(function(event){ //event notif click
                 tbl += '<div style="margin:auto">Anda belum memiliki pemberitahuan</div>';
             }
         loadingAni.hide();
-        $('.c').html(tbl);
-        console.log($('.notif-link').attr(rel));
+            $('.c').html(tbl);
+        //console.log($('.notif-link').attr(rel));
         tbl = "";
+            console.log(tbl);
         })
         .fail(function() {
             console.log("error");
@@ -204,27 +209,60 @@ $(window).click(function(e) {
 
      }
 });
-
 //like button click event 
 $('.click-like').click(function(event) {
-    /* Act on the event */
+    var $this = $(this);
+    var status = $this.attr('status');
     var img = $(this).attr('ref');
-       $.ajax({
-        url: '<?php echo MEURL?>like/',
-        type: 'POST',
-        dataType: 'html',
-        data: {id: img},
-    })
-    .done(function(r) {
-        $('.ref-'+img).text(r);
-        console.log("success");
-    })
-    .fail(function() {
-        console.log("error");
-    })
-    .always(function() {
-        console.log("complete");
-    });
+
+    if(typeof status !== typeof undefined && status !== false ){//check apakah attribut ref terdefenisi 
+        //fitur like 
+    /* Act on the event */
+        $.ajax({
+            url: '<?php echo MEURL?>unlike/',
+            type: 'POST',
+            dataType: 'html',
+            data: {id: img},
+        })
+        .done(function(r) {
+            $('.ref-'+img).text(r);
+           
+            $('.first-icon-' + img).show();
+            $this.addClass('second-icon');
+            $this.removeAttr('status');
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+       
+
+    }
+    else{
+         
+        $.ajax({
+            url: '<?php echo MEURL?>like/',
+            type: 'POST',
+            dataType: 'html',
+            data: {id: img},
+        })
+        .done(function(r) {
+            $('.ref-'+img).text(r);
+            $('.first-icon-' + img).hide();
+            $this.addClass('r');
+            $this.removeClass('second-icon');
+            $this.attr('status','active');
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    }
+   
     
     //alert($(this).attr('ref'));
 });
@@ -233,5 +271,25 @@ $('#unlike').click(function(event) {
     /* Act on the event */
     alert($(this).attr('ref'));
 });
+$('.btn-browse').click(function(event) {
+    /* Act on the event */
+    $('.fileimg').click();
+});
+function readImg(input){
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('.box-up').hide();
+            $('.up-pic').css('top','0px');
+            $('#show_img').attr('src',e.target.result);
 
+        }
+        reader.readAsDataURL(input.files[0]);
+
+    }
+}
+$('.fileimg').change(function(event) {
+    /* Act on the event */
+    readImg(this);
+});
 </script>

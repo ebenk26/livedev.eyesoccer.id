@@ -49,7 +49,7 @@
                                     array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),
                                     array('icon'=> 'notifications_none','link'=> '#','title'=> 'Pemberitahuan','id'=>'notif'),
                                     array('icon'=> 'camera_alt','link'=> MEURL.'upload','title'=> 'Upload Gambar','id'=>'upload'),
-                                    array('icon'=> 'person_outline','link'=> MEURL.'profile/'.$username,'title'=> 'Profil','id'=> 'prof'));
+                                    array('icon'=> 'person_outline','link'=> MEURL.'profile/'.$myusername,'title'=> 'Profil','id'=> 'prof'));
                         //icon menu 
                         foreach($icon as $k => $v){
 
