@@ -32,6 +32,11 @@
                     {
                         $status     = '<label class="badge badge-primary">Menunggu Pembayaran</label>';
                     }
+                    else
+                    if ($order['status'] == 2)
+                    {
+                        $status     = '<label class="badge badge-info">Menunggu Konfirmasi Admin</label>';
+                    }
             ?>
                     <tr class="">
                         <td> 
@@ -51,7 +56,14 @@
                         </td>
                         <td> 
                             <a href="<?= base_url(); ?>eyemarket/invoice/<?= $order['no_order']; ?>" class="btn btn-primary btn-sm" target="_blank">Lihat Invoice</a>
+                    <?php
+                        if ($order['status'] == 1)
+                        {
+                    ?>
                             <a href="<?= base_url(); ?>eyemarket/konfirmasi/<?= $order['no_order']; ?>" class="btn btn-success btn-sm">Konfirmasi Pembayaran</a>
+                    <?php 
+                        }
+                    ?>
                         </td>
                     </tr>
             <?php        

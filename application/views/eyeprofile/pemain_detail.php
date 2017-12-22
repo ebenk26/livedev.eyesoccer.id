@@ -1,418 +1,289 @@
 <?php
-$date2=date("Y-m-d H:i:s");
-$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','player','','".$_SESSION["ip"]."')");
-
-$pemain=$this->db->query("SELECT a.*,b.name as club_name,b.competition,b.logo,b.url FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id WHERE player_id='".$pid."' LIMIT 1")->row_array();
+defined('BASEPATH') OR exit('No direct script access allowed');
+$pemain=$this->db->query("SELECT a.*,
+										a.birth_date as tgl_lahir,
+										SUBSTRING(a.birth_date,1,2) as tanggal,
+										SUBSTRING(a.birth_date,4,2) as bulan,
+										SUBSTRING(a.birth_date,7,4) as tahun,
+										b.name as club_name,b.competition,b.logo FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id WHERE a.url='".$pid."' LIMIT 1")->row_array();
 ?>
-<style>
-img {
-    cursor: pointer;
-}
-</style>
-<div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
-	  <div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-		</div>
-		<div class="modal-body">
-		  <img src="" class="enlargeImageModalSource" style="width: 100%;">
-		</div>
-	  </div>
-	</div>
-</div>
-<br>
+
 <?php
-if($pemain["competition"] == "Liga Indonesia 1"){
-echo "<a style='margin-left:5px;' href='".base_url()."/eyeprofile/pemain#tab-1' class='btn btn-info btn-sm'>Kembali</a>";
-}else if($pemain["competition"] == "Liga Indonesia 2"){
-echo "<a style='margin-left:5px;' href='".base_url()."/eyeprofile/pemain#tab-2' class='btn btn-info btn-sm'>Kembali</a>";
-}else if($pemain["competition"] == "Liga Indonesia 2"){
-echo "<a style='margin-left:5px;' href='".base_url()."/eyeprofile/pemain#tab-3' class='btn btn-info btn-sm'>Kembali</a>";
-}else if($pemain["competition"] == "Liga Indonesia 3"){
-echo "<a style='margin-left:5px;' href='".base_url()."/eyeprofile/pemain#tab-3' class='btn btn-info btn-sm'>Kembali</a>";
-}else if($pemain["competition"] == "Liga Usia Muda"){
-echo "<a style='margin-left:5px;' href='".base_url()."/eyeprofile/pemain#tab-4' class='btn btn-info btn-sm'>Kembali</a>";
-}else if($pemain["competition"] == "SSB / Akademi Sepakbola"){
-echo "<a style='margin-left:5px;' href='".base_url()."/eyeprofile/pemain#tab-5' class='btn btn-info btn-sm'>Kembali</a>";
-}else{
-echo "<a style='margin-left:5px;' href='".base_url()."/eyeprofile/pemain#tab-6' class='btn btn-info btn-sm'>Kembali</a>";
-}
 if(isset($_SESSION["member_id"]))
 {
 	$_SESSION["player_id"] = $pemain["player_id"];
 	$member_player = $this->db->query("SELECT * FROM tbl_member_player WHERE id_member='".$_SESSION["member_id"]."'")->row_array();
-	if($member_player["id_player"] == $pemain["player_id"]){
+		if($member_player["id_player"] == $pemain["player_id"]){
 		echo '<button style="float: right;margin-right: 5px;" onclick="update_pemain('.$pemain["player_id"].')" class="btn btn-success btn-sm">Update</button>';
 	}
 }
-?>
-<?php
-if($pemain["competition"] != "Liga Indonesia 1" &&$pemain["competition"] != "Liga Indonesia 2"){
-echo '<h1 id="t2" style="font-size:25px;">Detail Pemain Amatir</h1>';
-}else{
-echo '<h1 id="t2" style="font-size:25px;">Detail Pemain Profesional</h1>';
-}
-?>
-
-<hr></hr>  
-
-<div class="col-lg-6 col-md-6">
-<div id="back6"><br>
-<img src="<?=base_url()?>systems/player_storage/<?=$pemain["pic"]?>" class="img img-responsive img-player-click" id="img6"><br>
-<h3 class="text-center" id="t4"><?=$pemain["name"]?></h3>
-<?php
-	$date1 = str_replace("/","-",$pemain["birth_date"]);
-	$d1 = new DateTime( $date1 );
-	$d2 = new DateTime( date( 'Y-m-d' ) );
-
-	$diff = $d2->diff( $d1 );
-?>
-<h4 class="text-center" id="t4"><?=$diff->y?> Tahun</h4>
-<h4 class="text-center" id="t4">ID Pemain : <?=$pemain["player_id"]?></h4>
-<div class="text-center">
-	<a href="<?=base_url()?>eyeprofile/klub_detail/<?=$pemain["url"]?>" class="btn btn-primary" style="line-height: 40px;">
-		<img src="<?=base_url()?>systems/club_logo/<?=$pemain["logo"]?>" class="media-object" id="img5" style="float: left;width: 40px;height: 40px;border-radius: 7px;">&nbsp;&nbsp;<?=$pemain["club_name"]?>
-	</a>
-</div>
-		<?php
-		/* echo "<div class='text-center'>
-			<img src='".base_url()."img/soccer_field.jpg'>";
-			echo "<span class='kiper'></span>";
-			echo "<span class='bek-tengah1'></span>";
-			echo "<span class='bek-tengah2'></span>";
-			echo "<span class='bek-kiri'></span>";
-			echo "<span class='bek-kanan'></span>";
-			echo "<span class='gelandang1'></span>";
-			echo "<span class='gelandang2'></span>";
-			echo "<span class='sayap-kiri'></span>";
-			echo "<span class='sayap-kanan'></span>";
-			echo "<span class='penyerang1'></span>";
-			echo "<span class='penyerang2'></span>";
-			
-			$str_replace = str_replace(" ","-",$pemain['position']);
-			$strtolower = strtolower($str_replace);
-			echo "<div class='text-".$strtolower."'>".$pemain['position']."</div>";
-			echo "<span class='".$strtolower." bg-".$strtolower."'></span>";
-		echo "</div>"; */
-		echo "<div class='text-center'>
-			<img class='img-field-pos' src='".base_url()."img/soccer_field.jpg'>";
-			$strtolower = strtolower($pemain['position']);
-			if($strtolower =='kiper'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/GK.png'>";
-			}else if($strtolower =='bek tengah'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/CB.png'>";
-			}else if($strtolower =='bek kiri'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/LB.png'>";
-			}else if($strtolower =='bek kanan'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/RB.png'>";
-			}else if($strtolower =='gelandang serang'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/AM.png'>";
-			}else if($strtolower =='gelandang bertahan'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/DMF.png'>";
-			}else if($strtolower =='sayap kanan'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/RW.png'>";
-			}else if($strtolower =='sayap kiri'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/LW.png'>";
-			}else if($strtolower =='penyerang'){
-				echo "<img class='img-field-pos img-field-posplyr' src='".base_url()."img/CF.png'>";
-			}
-			
-			$strtolower = strtolower($pemain['position_2']);
-			if($strtolower =='kiper'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/GK.png'>";
-			}else if($strtolower =='bek tengah'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/CB.png'>";
-			}else if($strtolower =='bek kiri'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/LB.png'>";
-			}else if($strtolower =='bek kanan'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/RB.png'>";
-			}else if($strtolower =='gelandang serang'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/AM.png'>";
-			}else if($strtolower =='gelandang bertahan'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/DMF.png'>";
-			}else if($strtolower =='sayap kanan'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/RW.png'>";
-			}else if($strtolower =='sayap kiri'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/LW.png'>";
-			}else if($strtolower =='penyerang'){
-				echo "<img class='img-field-pos img-field-posplyr2' src='".base_url()."img/CF.png'>";
-			}
-		echo "</div>";
-		?>
-</div><br> 
-</div>
-<div class="col-lg-6 col-md-6">
-<!--<div id="back6">
-<h1 id="t4">KARIR</h1><br>
-<div id="line1"><b>-<small id="set5">-</b></small></div>
-<div id="line2">Main<small id="set5"><b>-</b></small></div>
-<div id="line2">Gol<small id="set5"><b>-</b></small></div>
-<div id="line2">Kartu Kuning<small id="set5"><b>-</b></small></div>
-<div id="line2">Kartu Merah<small id="set5"><b>-</b></small></div>
-<br><br>
-</div><br>--> 
-<div id="back6">
-<h1 id="t4" class="text-center">PROFILE</h1>
-<?php
-/*
-if(isset($editable) && $editable=="1")
-{
-?>
-<div id="line1">Kewarganegaraan<small id="set5"><b><input type="text" class="form-control" value="<?=$pemain["nationality"]?>" name="nationality"/></b></small></div>
-<div id="line2">Tempat Lahir<small id="set5"><b><input type="text" class="form-control" value="<?=$pemain["birth_place"]?>" name="birth_place"/></b></small></div>
-<div id="line2">Tanggal Lahir<small id="set5"><b><input type="text" class="form-control" value="<?=$pemain["birth_date"]?>" name="birth_date"/></b></small></div>
-<div id="line2">Status<small id="set5"><b><input type="text" class="form-control" value="<?=$pemain["status"]?>" name="status"/></b></small></div>
-<div id="line2">Tinggi<small id="set5"><b><input type="text" class="form-control" value="<?=$pemain["height"]?>" name="height"/></b></small></div>
-<div id="line2">Berat<small id="set5"><b><input type="text" class="form-control" value="<?=$pemain["weight"]?>" name="weight"/></b></small></div>
-<div id="line2"><input type="submit" class="btn btn-success" value="Ubah Profil"/></div>
-<?php	
-}
-else{
-	*/
-	?>
-<div id="line1">Nama Panggilan<small id="set5"><b><?=$pemain["call_name"]?></b></small></div>
-<div id="line1">Tempat Lahir<small id="set5"><b><?=$pemain["birth_place"]?></b></small></div>
-<div id="line1">Tanggal Lahir<small id="set5"><b><?=$pemain["birth_date"]?></b></small></div>
-<div id="line1">Jenis Kelamin<small id="set5"><b>Pria</b></small></div>
-<div id="line1">Kewarganegaraan<small id="set5"><b><?=$pemain["nationality"]?></b></small></div>
-<div id="line1">Status Pemain<small id="set5"><b><?=$pemain["status"]?></b></small></div>
-<div id="line1">Nama Klub<small id="set5"><b><a href="<?=base_url()?>eyeprofile/klub_detail/<?=$pemain["url"]?>"><?=$pemain["club_name"]?></a></b></small></div>
-<div id="line1">No. Punggung<small id="set5"><b><?=$pemain["number"]?></b></small></div>
-<?php
-if($pemain["competition"] != "Liga Indonesia 1" &&$pemain["competition"] != "Liga Indonesia 2"){
-?>
-<div id="line1">Nama Ayah<small id="set5"><b><?=$pemain["father"]?></b></small></div>
-<div id="line1">Nama Ibu<small id="set5"><b><?=$pemain["mother"]?></b></small></div>
-<?php
-}
-?>
-<div id="line1">Tinggi Badan<small id="set5"><b><?=$pemain["height"]?> cm</b></small></div>
-<div id="line1">Berat Badan<small id="set5"><b><?=$pemain["weight"]?> kg</b></small></div>
-<div id="line1">Posisi Bermain<small id="set5"><b><?php echo $pemain["position"];
-if(!empty($pemain["position_2"])){
-echo "/".$pemain["position_2"];
-}?>
-</b></small></div>
-<div id="line1">Kemampuan Kaki<small id="set5"><b><?=$pemain["foot"]?></b></small></div>
-<!--<div id="line1">No. Telp.<small id="set5"><b></b></small></div>
-<div id="line1">Alamat Email<small id="set5"><b></b></small></div>-->
-<div id="line1">Klub Favorit<small id="set5"><b><?=$pemain["fav_club"]?></b></small></div>
-<div id="line1">Pemain Favorit<small id="set5"><b><?=$pemain["fav_player"]?></b></small></div>
-<div id="line1">Pelatih Favorit<small id="set5"><b><?=$pemain["fav_coach"]?></b></small></div>
-<?php
-if($pemain["competition"] == "Liga Indonesia 1" ||$pemain["competition"] == "Liga Indonesia 2"){
-?>
-<div id="line1">Kisaran Kontrak<small id="set5"><b></b></small></div>
-<?php
-}
-?>
-	<?php
-	/*
-}
-*/
+$bulan 	= array(
+'01' => 'Januari',
+'02' => 'Februari',
+'03' => 'Maret',
+'04' => 'April',
+'05' => 'Mei',
+'06' => 'Juni',
+'07' => 'Juli',
+'08' => 'Agustus',
+'09' => 'September',
+'10' => 'Oktober',
+'11' => 'November',
+'12' => 'Desember',
+);
 ?>
 
-<br> 
-</div>
-<br style="clear:both"/>
-</div>
-<br style="clear:both"/>
-<div class="col-lg-12 col-md-12">
-	<div id="back6" class="table table-responsive">
-		<h3 id="" class="text-center">Karir Klub</h3>
-		<?php
-		if($pemain["competition"] == "Liga Indonesia 1" ||$pemain["competition"] == "Liga Indonesia 2"){
-		?>
-		<table id="book-table" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-			<thead>
-			<tr>
-				<td>Bulan</td>
-				<td>Tahun</td>
-				<td>Klub</td>
-				<td>Turnamen/Kompetisi</td>
-				<td>Jumlah Main</td>
-				<td>No. Punggung</td>
-				<td>Pelatih</td>
-			</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		<?php
-		}else{
-		?>
-		<table id="book-table2" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-			<thead>
-			<tr>
-				<td>Bulan</td>
-				<td>Tahun</td>
-				<td>Klub</td>
-				<td>Turnamen/Kompetisi</td>
-				<td>Jumlah Main</td>
-				<td>No. Punggung</td>
-				<td>Pelatih</td>
-			</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		<?php
-		}
-		?>
-	</div>
-</div>
-<br style="clear:both"/>
-<br style="clear:both"/>
-<div class="col-lg-12 col-md-12">
-	<div id="back6" class="table table-responsive">
-		<h3 id="" class="text-center">Karir Timnas</h3>
-		<?php
-		if($pemain["competition"] == "Liga Indonesia 1" ||$pemain["competition"] == "Liga Indonesia 2"){
-		?>
-		<table id="timnas-prof" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-			<thead>
-			<tr>
-				<td>Tahun</td>
-				<td>Turnamen/Kompetisi</td>
-				<td>Negara</td>
-				<td>Jumlah Main</td>
-				<td>No. Punggung</td>
-				<td>Pelatih</td>
-			</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		<?php
-		}else{
-		?>
-		<table id="timnas-amatir" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-			<thead>
-			<tr>
-				<td>Tahun</td>
-				<td>Turnamen/Kompetisi</td>
-				<td>Negara</td>
-				<td>Jumlah Main</td>
-				<td>No. Punggung</td>
-				<td>Pelatih</td>
-			</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		<?php
-		}
-		?>
-	</div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Eyesoccer | Detail Pemain</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=1000">
+    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <div class="crumb">
+        <ul>
+            <li>Home</li>
+            <li>EyeProfile</li>
+            <li>Klub</li>
+            <li>Pemain</li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="garis-banner over-in profile-pemain">
+            <div class="left">
+                <svg style="height: 189px;">
+                    <g id="Layer_2" data-name="Layer 2">
+                        <g id="Layer_1-2" data-name="Layer 1">
+                            <polygon class="fill" points="132 0 22 190 0 190 110 0 132 0" />
+                            <polygon class="fill" points="330 0 330 190 42 190 152 0 330 0" />
+                        </g>
+                    </g>
+                </svg>
+                <div class="box-img-radius">
+                    <img src="<?=base_url()?>systems/player_storage/<?=$pemain["pic"]?>" alt="">                        
+                </div>
+            </div>
+            <div class="right fill">
+                <div class="t-30 mt-53">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Tanggal lahir</td>
+                                <td>: <?= $pemain['tanggal']." ".$bulan[$pemain['bulan']]." ".$pemain['tahun']; ?></td>
+                            </tr>
+                            <tr>
+                                <td>Tempat lahir</td>
+                                <td>: <?=$pemain["birth_place"]?></td>
+                            </tr>
+                            <tr>
+                                <td>Kewarganegaraan</td>
+                                <td>: <?=$pemain["nationality"]?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="t-30 mt-53">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Klub Sekarang</td>
+                                <td>: <b><a href="<?=base_url()?>eyeprofile/klub_detail/<?=$pemain["url"]?>"><?=$pemain["club_name"]?></a></b></td>
+                            </tr>
+                            <tr>
+                                <td>Posisi</td>
+                                <td>: <?=$pemain["position"]?></td>
+                            </tr>
+                            <tr>
+                                <td>Masa Kontrak</td>
+                                <td>: </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="t-30 mt-53">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Tinggi Badan</td>
+                                <td>: <?=$pemain["height"]?></td>
+                            </tr>
+                            <tr>
+                                <td>Berat Badan</td>
+                                <td>: <?=$pemain["weight"]?></td>
+                            </tr>
+                            <tr>
+                                <td>Kemampuan Kaki</td>
+                                <td>: <?=$pemain["foot"]?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h3><?=$pemain["name"]?></h3>
+        </div>
+    </div>
 
-<br style="clear:both"/>
-<br style="clear:both"/>
-<div class="col-lg-12 col-md-12">
-	<div id="back6" class="table table-responsive">
-		<h3 id="" class="text-center">Prestasi</h3>
-		<table id="prestasi" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-			<thead>
-			<tr>
-				<td>Tahun</td>
-				<td>Turnamen/Kompetisi</td>
-				<td>Negara</td>
-				<td>Peringkat</td>
-				<td>Penghargaan</td>
-			</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-	</div>
-</div>
-
-<br style="clear:both"/>
-<br style="clear:both"/>
-<div class="col-lg-12 col-md-12">
-	<div id="back6" class="table table-responsive">
-		<h3 id="" class="text-center">Galeri</h3>
-		<?php
-		$res=$this->db->query("select * from tbl_gallery where player_id='".$pemain['player_id']."' limit 10");
-		foreach($res->result_array() as $row){
-			echo '
-			<div class="col-lg-4 col-md-4 text-center" style="height:250px;">
-			<img src="'.base_url().'systems/player_storage/'.$row['pic'].'" class="img-polaroid thumbnail2 img-player-click" alt="Lights" style="margin: 0 auto;padding: 20px;height: 100%;">
-			</div>
-			';
-		}
-		?>
-	</div>
-</div>
-
-<script type="text/javascript">
-	$('#book-table').DataTable({
-		/* "columns": [
-			{ "width": "50" },
-			{ "width": "50" },
-			{ "width": "50" },
-			{ "width": "50" },
-			null
-		  ], */
-		/* responsive: true,
-		columnDefs: [
-			{ responsivePriority: 1, targets: 0 },
-			{ responsivePriority: 2, targets: -1 }
-		], */
-        "ajax": {
-            url : "<?php echo site_url("eyeprofile/karir_klub?player_id=".$pemain["player_id"]) ?>",
-            type : 'GET'
-        },
-    });
-	$('#book-table2').DataTable({
-		/* "columns": [
-			{ "width": "50" },
-			{ "width": "50" },
-			{ "width": "50" },
-			{ "width": "50" },
-			{ "width": "5%" },
-			{ "width": "5%" },
-			{ "width": "50" }
-		  ], */
-        "ajax": {
-            url : "<?php echo site_url("eyeprofile/karir_klub_amatir?player_id=".$pemain["player_id"]) ?>",
-            type : 'GET'
-        },
-    });
-	
-	$('#timnas-prof').DataTable({
-        "ajax": {
-            url : "<?php echo site_url("eyeprofile/karir_timnas_prof?player_id=".$pemain["player_id"]) ?>",
-            type : 'GET'
-        },
-    });
-	$('#timnas-amatir').DataTable({
-        "ajax": {
-            url : "<?php echo site_url("eyeprofile/karir_timnas_amatir?player_id=".$pemain["player_id"]) ?>",
-            type : 'GET'
-        },
-    });
-	$('#prestasi').DataTable({
-        "ajax": {
-            url : "<?php echo site_url("eyeprofile/prestasi_player?player_id=".$pemain["player_id"]) ?>",
-            type : 'GET'
-        },
-    });
-	$(function() {
-    	$('.img-player-click').on('click', function() {
-			$('.enlargeImageModalSource').attr('src', $(this).attr('src'));
-			$('#enlargeImageModal').modal('show');
-		});
-	});
-	function update_pemain(id_pemain){
-		<?php
-			if(isset($_SESSION["member_id"])){
-		?>
-				window.location="<?php echo site_url("eyeprofile/update_pemain?player_id=".$pemain["player_id"]) ?>";
-		<?php
-			}
-		?>
-		
-	}
-</script>
+    <div class="dekstop pd-t-280">
+    <div class="center-dekstop m-0">
+        <div class="w-60 m-r-1 pd-t-20 formasi">
+            <div class="container">
+                <h3>Karir Klub</h3>
+                <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
+                    <thead>
+					<?php $no=1;?>
+                        <tr>
+                            <th class="t-b-b">No</th>
+                            <th class="t-b-b">Klub</th>
+                            <th class="t-b-b">Tahun</th>
+                            <th class="t-b-b">Main</th>
+                            <th class="t-b-b">Gol</th>
+                            <th class="t-b-b">Pelatih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?=$no++?></td>
+                            <td>
+                                <img src="<?=base_url()?>systems/club_logo/<?=$pemain["logo"]?>" alt="" width="15px"> <?=$pemain["club_name"]?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>                        
+                    </tbody>
+                </table>
+                <h3 class="pd-t-20">Karir Timnas</h3>
+                <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
+                    <thead>
+					<?php $no=1;?>
+                        <tr>
+                            <th class="t-b-b">No</th>
+                            <th class="t-b-b">Timnas</th>
+                            <th class="t-b-b">Tahun</th>
+                            <th class="t-b-b">Main</th>
+                            <th class="t-b-b">Gol</th>
+                            <th class="t-b-b">Pelatih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?=$no++?></td>
+                            <td>
+                                <img src="<?=base_url()?>systems/club_logo/<?=$pemain["nationality"]?>" alt="" width="15px"> <?=$pemain["nationality"]?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="w-40 pd-t-20">
+        <h3 class="">Detail Posisi</h3>
+        <div class="container box-pertandingan det-pos">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="t-b-b" colspan="2">
+                            <img src="file:///Users/payaldasani/Desktop/michael-essien.jpg" style="width: 100% !important;" alt="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">
+                            <h4>Posisi utama</h4>
+                            <span><?=$pemain["position"]?></span>
+                        </td>
+                        <td width="50%">
+                            <h4>posisi lainnya</h4>
+                            <span></span>
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <h3 class="pd-t-20">statistik</h3>
+            <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="t-b-b">
+                            <div class="fl-l pd-0-10">
+                                <a href="">Kerja Sama</a>
+                            </div>
+                            <div class="fl-l pd-0-10">
+                                <a href="">Serangan</a>
+                            </div>
+                            <div class="fl-l pd-0-10">
+                                <a href="">Bertahan</a>
+                            </div>
+                            <div class="fl-l pd-0-10">
+                                <a href="">Disiplin</a>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="cap">
+                    <tr>
+                        <td>Assist</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Operan</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>akurasi operan</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>akurasi umpan silang</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Peluang</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <div class="container pd-t-20">
+            <h3 class="h3-oranye">Foto Galeri</h3>
+            <div id="em2Slide" class="carousel slide pemain-foto">
+                <div role="listbox" class="carousel-inner">
+					<?php
+					$res=$this->db->query("select * from tbl_gallery where player_id='".$pemain['player_id']."' limit 10");
+					foreach($res->result_array() as $row){
+						$explode = explode("-",$row['pic']);
+						if($explode[1]==""){
+							
+						}else{
+							echo '				
+                    <div class="box item active">					
+                        <div class="em-box">
+                            <img src="'.base_url().'systems/player_storage/'.$row['pic'].'" alt="">
+                        </div>
+                    </div>';}
+					}
+					?>
+                    <!--<div class="carousel-indicators bx-dot ep-dot pd-l-48">
+                        <span data-target="#em2Slide" data-slide-to="0" class="dot active"></span>
+                        <span data-target="#em2Slide" data-slide-to="1" class="dot"></span>
+                        <span data-target="#em2Slide" data-slide-to="2" class="dot"></span>
+                    </div>--><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </body>
+</html>

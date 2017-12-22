@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,15 +46,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <body>
 
-    <?php
-        $username   = $this->session->userdata('username');
-        $member_id  = $this->session->userdata('member_id');
-    ?>
-
     <div id="all">
+        <?php
+            if ($this->session->userdata('member_id') != NULL)
+            {
+                $username   = $this->session->userdata('username');
+                $member_id  = $this->session->userdata('member_id');
+            }
+            else
+            {
+                redirect('/home/login/');
+            }
+        ?>
+
         <header>
 
-            <!-- *** TOP *** -->
+            <!-- *** TOP ***  -->
             <div id="top">
                 <div class="container">
                     <div class="row">
@@ -74,13 +82,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             if ($username != NULL)
                             {
                         ?>
-                                <a href="#">
+                                <a href="<?= base_url(); ?>eyemarket/user/<?= $member_id; ?>">
                                     <i class="fa fa-user"></i>
                                     <span class="hidden-xs text-uppercase"><?= $username; ?></span>
-                                </a>
-                                <a href="<?= base_url(); ?>eyemarket/logout">
-                                    <i class="fa fa-sign-out"></i>
-                                    <span class="hidden-xs text-uppercase">Sign Out</span>
                                 </a>
                         <?php
                             }
@@ -97,8 +101,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </a>
                         <?php
                             }
-                        ?>
+                        ?>  
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -112,18 +117,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
             <div class="modal-dialog modal-sm">
+
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="<?= base_url(); ?>eyemarket/login" method="post">
+                        <form action="login" method="post" accept-charset="utf-8">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="username" name="username">
+                                <input type="text" class="form-control" id="email_modal" placeholder="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="password" name="password">
+                                <input type="password" class="form-control" id="password_modal" placeholder="password">
                             </div>
 
                             <p class="text-center">
@@ -144,120 +150,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div id="content">
             <div class="container">
-
-                <div class="row">
-
-                    <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px;">
-                        <li><a href="#">Home</a></li>
-                        <li><span>EyeMarket</span></li>
-                        <li><a href="<?= base_url(); ?>eyemarket/view_keranjang/<?= $member_id; ?> ">Keranjang Anda</a></li>
-                        <li><span>Metode Pengiriman</span></li>
-                    </ol>
-
-					<div class="col-md-9 clearfix" id="checkout">
-
-                        <div class="box">
-                            <form method="post" action="<?= base_url(); ?>eyemarket/update_cart_delivery/<?= $id_member; ?>">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li class="disabled"><a href="#"><i class="fa fa-map-marker"></i><br>Alamat</a>
-                                    </li>
-                                    <li class="active"><a href="#"><i class="fa fa-truck"></i><br>Metode Pengiriman</a>
-                                    </li>
-                                    <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>Metode Pembayaran</a>
-                                    </li>
-                                    <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Ulasan Pesanan</a>
-                                    </li>
-                                </ul>
-
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                    <?php 
-                                        if ($ctc != NULL || $reg != NULL)
-                                        {
-                                    ?>
-                                            <div class="box shipping-method">
-
-                                                <h4>JNE Reguler</h4>
-
-                                                <p>JNE Reguler adalah paket reguler yang ditawarkan JNE. Kecepatan pengiriman tergantung dari lokasi pengiriman dan lokasi tujuan. Untuk kota yang sama, umumnya memakan waktu 2-3 hari.</p>
-                                                Tujuan : <strong><?= $alamat; ?></strong>
-                                                <br>
-                                                Ongkir : <strong> Rp. <?php echo ($ctc != NULL) ? number_format($ctc,0,',','.') : number_format($reg,0,',','.'); ?> </strong>
-
-                                                <div class="box-footer text-center">
-                                                    <input type="radio" name="delivery" value="1">
-                                                    <input type="hidden" name="ongkir1" value="<?php echo ($ctc != NULL) ? $ctc: $reg; ?>">
-                                                </div>
-                                            </div>
-                                    <?php        
-                                        }
-                                    ?>
-                                            
-                                        </div>
-                                        <div class="col-sm-6">
-                                    <?php
-                                        if ($ctcyes != NULL || $yes != NULL)
-                                        {
-                                    ?>
-                                            <div class="box shipping-method">
-
-                                                <h4>JNE YES</h4>
-
-                                                <p>JNE YES adalah paket dengan prioritas pengiriman tercepat yang ditawarkan JNE. Hanya saja perlu diperhatikan kecepatan barang diterima juga dipengaruhi oleh kecepatan penjual melakukan pengiriman barang.</p>
-                                                Tujuan : <strong><?= $alamat; ?></strong>
-                                                <br>
-                                                Ongkir : <strong> Rp. <?php echo ($ctcyes != NULL) ? number_format($ctcyes,0,',','.') : number_format($yes,0,',','.'); ?> </strong>
-
-                                                <div class="box-footer text-center">
-                                                    <input type="radio" name="delivery" value="2">
-                                                    <input type="hidden" name="ongkir2" value="<?php echo ($ctcyes != NULL) ? $ctcyes: $yes; ?>">
-                                                </div>
-                                            </div>
-                                    <?php        
-                                        }
-                                    ?>
-                                        </div>
-                                    </div>
-                                    <!-- /.row -->
-
-                                </div>
-                                <!-- /.content -->
-
-                                <div class="box-footer">
-                                    <div class="pull-left">
-                                        <a href="<?=base_url()?>eyemarket/order_address/<?= $member_id; ?>" class="btn btn-default"><i class="fa fa-chevron-left"></i>Kembeli ke Data Alamat</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <button type="submit" class="btn btn-template-main">Lanjut ke Metode Pembayaran<i class="fa fa-chevron-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.box -->
-
-
-                    </div>	
-                    
-
+        <?php
+            if ($this->session->flashdata('sukses') == TRUE)
+            {
+        ?>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <?php echo $this->session->flashdata('sukses'); ?>
                 </div>
-                <!-- /.row -->
+        <?php        
+            }
+        ?>
 
+        <?php
+            if ($this->session->flashdata('gagal') == TRUE)
+            {
+        ?>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <?php echo $this->session->flashdata('gagal'); ?>
+                </div>
+        <?php        
+            }
+        ?>
+                
+                <?= $content; ?>
             </div>
             <!-- /.container -->
         </div>
         <!-- /#content -->
 
-
-
+        <!-- *** FOOTER END *** -->
 
         <!-- *** COPYRIGHT *** -->
 
         <div id="copyright">
             <div class="container">
                 <div class="col-md-12">
-                    <p class="pull-left">&copy; 2017. EYESOCCER</p>
+                    <p class="pull-left">&copy; 2017. EYESOCER</p>
                 </div>
             </div>
         </div>
@@ -269,6 +197,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </div>
     <!-- /#all -->
+
 
     <!-- #### JAVASCRIPT FILES ### -->
 
@@ -282,8 +211,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?=base_url()?>bs/jud/js/jquery.counterup.min.js"></script>
     <script src="<?=base_url()?>bs/jud/js/jquery.parallax-1.1.3.js"></script>
     <script src="<?=base_url()?>bs/jud/js/front.js"></script>
-
-
 </body>
 
 </html>
+
+<!-- jQuery -->
+<script>
+$(document).ready(function(){   
+        $(".form-item").submit(function(e){
+            var form_data = $(this).serialize();
+            var button_content = $(this).find('button[type=submit]');
+            button_content.html('Adding...'); //Loading button text 
+
+            $.ajax({ //request ajax ke cart_process.php
+                url: "cart_process.php",
+                type: "POST",
+                dataType:"json", 
+                data: form_data
+            }).done(function(data){ //Jika Ajax berhasil
+                $("#cart-info").html(data.items); //total items di cart-info element
+                button_content.html('BELI'); //
+                alert("Item telah dimasukan ke keranjang belanja anda"); 
+                if($(".shopping-cart-box").css("display") == "block"){
+                    $(".cart-box").trigger( "click" ); 
+                }
+            })
+            e.preventDefault();
+        });
+
+    //menampilkan item ke keranjang belanja
+    $( ".cart-box").click(function(e) { 
+        e.preventDefault(); 
+        $(".shopping-cart-box").fadeIn(); 
+        $("#shopping-cart-results").html('<img src="img/ajax-loader.gif">'); //menampilkan loading gambar
+        $("#shopping-cart-results" ).load( "cart_process.php", {"load_cart":"1"}); //membuat permintaan ajax menggunakan dengan jQuery Load() & update
+    });
+    
+    //keluar keranjang belanja
+    $( ".close-shopping-cart-box").click(function(e){ //fungsi klik pengguna pada keranjang belanja
+        e.preventDefault(); 
+        $(".shopping-cart-box").fadeOut(); //keluar keranjang belanka
+    });
+    
+    //Menghapus item dari keranjang
+    $("#shopping-cart-results").on('click', 'a.remove-item', function(e) {
+        e.preventDefault(); 
+        var pcode = $(this).attr("data-code"); //mendapatkan get produk
+        $(this).parent().fadeOut(); //menghapus elemen item dari kotak
+        $.getJSON( "cart_process.php", {"remove_code":pcode} , function(data){ //mendapatkan Harga Barang dari Server
+            $("#cart-info").html(data.items); //update Menjullahkan item pada cart-info
+            $(".cart-box").trigger( "click" ); //trigger click on cart-box to untuk memperbarui daftar item
+        });
+    });
+	
+});
+</script>
