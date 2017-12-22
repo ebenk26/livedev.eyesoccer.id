@@ -225,25 +225,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="firstname">Nama Lengkap Penerima</label>
-                                                        <input type="text" class="form-control" id="firstname" value="<?= $alamat['penerima']; ?>">
+                                                        <input type="text" class="form-control" id="firstname" value="<?= $alamat['penerima']; ?>" disabled="disabled">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="phone">Handphone</label>
-                                                        <input type="text" class="form-control" id="phone" value="<?= $alamat['hp'] ?>">
+                                                        <input type="text" class="form-control" id="phone" value="<?= $alamat['hp'] ?>" disabled="disabled">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="alamat">Alamat</label>
-                                                        <textarea id="alamat" class="form-control"><?= $alamat['alamat']; ?></textarea>
+                                                        <textarea id="alamat" class="form-control" disabled="disabled"><?= $alamat['alamat']; ?></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-3">
                                                     <div class="form-group">
                                                         <label for="zip">Kode Pos</label>
-                                                        <input type="number" id="kodepos" class="form-control" value="<?= $alamat['kodepos']; ?>">
+                                                        <input type="number" id="kodepos" class="form-control" value="<?= $alamat['kodepos']; ?>" disabled="disabled">
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,48 +310,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <div class="form-group">
                                                         <select id="provinsi" name="provinsi" class="form-control">
                                                             <option value="">Pilih Provinsi</option>
-                                                            <option value="jakarta">Jakarta</option>
-                                                            <option value="jabar">Jawa Barat</option>
+                                                            <?php
+                                                                foreach ($provinsi as $provinsinya)
+                                                                {
+                                                            ?>
+                                                                    <option value="<?= $provinsinya['provinsi'] ?>">
+                                                                        <?= $provinsinya['provinsi'] ?> 
+                                                                    </option>
+                                                            <?php        
+                                                                }
+                                                            ?>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <select id="kota" name="kota" class="form-control">
-                                                            <option value="">Pilih Seri</option>
-
-                                                            <option value="jaksel" data-chained="jakarta">
-                                                                Jakarta Selatan 
-                                                            </option>
-                                                            <option value="jaktim" data-chained="jakarta">
-                                                                Jakarta Timur 
-                                                            </option>
-                                                            <option value="jakbar" data-chained="jakarta">
-                                                                Jakarta Barat 
-                                                            </option>
-                                                            <option value="jakut" data-chained="jakarta">
-                                                                Jakarta Utara 
-                                                            </option>
-                                                            <!-- ============================================= -->
-                                                            <option value="depok" data-chained="jabar"> 
-                                                                Depok 
-                                                            </option>
-                                                            <option value="bogor" data-chained="jabar"> 
-                                                                Bogor 
-                                                            </option>
-                                                            <option value="bandung" data-chained="jabar"> 
-                                                                Bandung 
-                                                            </option>
+                                                        <select id="kota" name="kota" class="form-control" disabled>
+                                                            <option value="">Pilih Kota</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 col-md-4">
                                                     <div class="form-group">
-                                                        <select id="kecamatan" name="kecamatan" class="form-control">
-                                                            <option value="">--</option>
-                                                            <option value="tebet" data-chained="jaksel jakarta">Tebet</option>
-                                                            <option value="cijantung" data-chained="jaktim jakarta">Cijantung</option>
-                                                            <option value="margonda" data-chained="depok jabar">Margonda</option>
+                                                        <select id="kecamatan" name="kecamatan" class="form-control" disabled>
+                                                            <option value="">Pilih Kecamatan</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -456,14 +438,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         });
 
-        $(document).ready(function()
+        $('#provinsi').on('change', function()
         {
-            $("#kota").chained("#provinsi");
+            var prov    = $(this).val();
+            var urlnya  = "<?= base_url(); ?>Eyemarket/getkota";
+            $('#kota').html('');
 
-            $("#kecamatan").chained("#kota");
+            $.ajax({
+                url: urlnya,
+                type: 'POST',
+                data: {prov:prov},
+                dataType: 'json',
+            })
+            .done(function(result) {
+                var kotanya   = result;
 
-            // $("#kota").chained("#provinsi");
-            // $("#kecamatan").chained("#kota");
+                for (var i = 0; i < kotanya.length; i++)
+                {
+                    console.log(kotanya[i].kota);
+                    $('#kota').prop("disabled", false);
+                    $('#kota').append('<option value="'+kotanya[i].kota+'">'+kotanya[i].kota+'</option>');
+                    
+                }
+                
+            })
+            .fail(function() {
+                console.log("error");
+            });
+        });
+
+        $('#kota').on('change', function()
+        {
+            var kota    = $(this).val();
+            var urlnya  = "<?= base_url(); ?>Eyemarket/getkecamatan";
+            $('#kecamatan').html('');
+            
+            $.ajax({
+                url: urlnya,
+                type: 'POST',
+                data: {kota:kota},
+                dataType: 'json',
+            })
+            .done(function(result) {
+
+                for (var i = 0; i < result.length; i++)
+                {
+                    console.log(result[i].kecamatan);
+                    $('#kecamatan').append('<option value="'+result[i].kecamatan+'">'+result[i].kecamatan+'</option>');
+                    $('#kecamatan').prop("disabled", false);
+                }
+
+                
+            })
+            .fail(function() {
+                console.log("error");
+            });
         });
 
         

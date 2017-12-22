@@ -150,6 +150,45 @@
 	                    			</table>
 	                    		</td>
 	                    	</tr>
+	                    	<hr style="border-top-color:#d0d0d0;border-top-style:solid;border-bottom-color:#ffffff;border-bottom-style:solid;margin:20px 0;padding:0;border-width:3px 0 1px">
+	                    	<tr>
+	                    		<td>
+	                    			<table align="center">
+	                    			    <tr>
+	                    			        <td align="center">
+	                    			            <a href="<?php echo base_url(); ?>eyemarket/konfirmasi/<?= $no_order; ?>" style="display: inline-block;
+																	  padding: 6px 12px;
+																	  margin-bottom: 0;
+																	  font-size: 14px;
+																	  font-weight: normal;
+																	  line-height: 1.42857143;
+																	  text-align: center;
+																	  white-space: nowrap;
+																	  vertical-align: middle;
+																	  -ms-touch-action: manipulation;
+																	      touch-action: manipulation;
+																	  cursor: pointer;
+																	  -webkit-user-select: none;
+																	     -moz-user-select: none;
+																	      -ms-user-select: none;
+																	          user-select: none;
+																	  background-image: none;
+																	  border: 1px solid transparent;
+																	  border-radius: 4px;
+																	  color: #fff;
+																	  background-color: #5bc0de;
+																	  border-color: #46b8da;
+																	  padding: 10px 16px;
+																	  font-size: 18px;
+																	  line-height: 1.3333333;
+																	  border-radius: 6px;">
+	                    			            	Konfirmasi Pembayaran
+	                    			            </a>
+	                    			        </td>
+	                    			    </tr>
+	                    			</table>
+	                    		</td>
+	                    	</tr>
 	                	</tbody>
 	            	</table>
 				</td>
