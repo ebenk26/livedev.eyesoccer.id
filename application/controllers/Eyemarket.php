@@ -24,6 +24,7 @@ class Eyemarket extends CI_Controller {
 	{ 
 		$id_product 			= $this->Eyemarket_model->get_id_product($title_slug);
 		$data["product"] 		= $this->Eyemarket_model->get_product($id_product->id_product);
+		$data["ex_product"] 	= $this->Eyemarket_model->get_product_lain($id_product->id_product);
 		$created_date 		 	= "";
 		$data['username'] 		= $this->session->userdata('username');
 		$data['member_id'] 		= $this->session->userdata('member_id');

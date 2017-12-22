@@ -257,6 +257,23 @@ class Eyemarket_model extends CI_Model
             return $query; 
     }
 
+    public function get_product_lain($id_product)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.*,
+                                        B.image1
+                                    FROM
+                                        eyemarket_product A
+                                    LEFT JOIN
+                                        eyemarket_images B on B.id_product = A.id_product
+                                    WHERE
+                                        A.id_product != '$id_product'
+                                    LIMIT
+                                        4
+                                        ")->result_array();
+        return $query; 
+    }
+
     public function add_keranjang($data)
     {
         $this->db->insert('eyemarket_keranjang', $data);

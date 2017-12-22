@@ -96,62 +96,7 @@
                     <div class="col-sm-6">
                         <div class="box" style="padding-left: 45px;">
                                 <div class="sizes" style="text-align: left;">
-
-                                    <h3>Available sizes</h3>
-                        <?php 
-                            if ($data['id_kategori'] != 2)
-                            {
-                                if ($data['S'] != 0)
-                                {
-                        ?>
-                                    <label for="size_s">
-                                        <a href="#">S</a>
-                                        <input type="radio" id="size_s" name="size" value="s" class="size-input">
-                                    </label>
-                        <?php            
-                                }
-
-                                if ($data['M'] != 0)
-                                {
-                        ?>
-                                    <label for="size_m">
-                                        <a href="#">M</a>
-                                        <input type="radio" id="size_m" name="size" value="m" class="size-input">
-                                    </label>
-                        <?php
-                                }
-
-                                if ($data['L'] != 0)
-                                {
-                        ?>
-                                    <label for="size_l">
-                                        <a href="#">L</a>
-                                        <input type="radio" id="size_l" name="size" value="l" class="size-input">
-                                    </label>
-                        <?php
-                                }
-
-                                if ($data['XL'] != 0)
-                                {
-                        ?>
-                                    <label for="size_l">
-                                        <a href="#">XL</a>
-                                        <input type="radio" id="size_l" name="size" value="l" class="size-input">
-                                    </label>
-                        <?php
-                                }
-
-                                if ($data['XXL'] != 0)
-                                {
-                        ?>
-                                    <label for="size_l">
-                                        <a href="#">XXL</a>
-                                        <input type="radio" id="size_l" name="size" value="l" class="size-input">
-                                    </label>
-                        <?php 
-                                }       
-                            }
-                        ?>
+                                    <h3><?= $data['nama']; ?></h3>
                                 </div>
 
                                 <p style="margin-top: 5%;">
@@ -260,7 +205,7 @@
                 </div>
 
                 <div class="box social" id="product-social">
-                    <h4>Show it to your friends</h4>
+                    <h4>Bagikan</h4>
                     <p>
                         <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
                         <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
@@ -272,24 +217,31 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="box text-uppercase">
-                            <h3>You may also like these products</h3>
+                            <h3>Produk Lainnya</h3>
                         </div>
                     </div>
 
                     <div class="col-md-3 col-sm-6">
+                <?php
+                    foreach ($ex_product as $value)
+                    {
+                ?>
                         <div class="product">
                             <div class="image">
                                 <a href="#">
-                                    <img src="<?=base_url()?>/bs/jud/img/product2.jpg" alt="" class="img-responsive image1">
+                                    <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">
                                 </a>
                             </div>
                             <div class="text">
-                                <h3>Fur coat</h3>
-                                <p class="price">$143</p>
+                                <h3><?= $value['nama']; ?></h3>
+                                <p class="price">Rp. <?= number_format($value['harga'],0,',','.'); ?> </p>
 
                             </div>
                         </div>
                         <!-- /.product -->
+                <?php        
+                    }
+                ?>
                     </div>
 
                 </div>
