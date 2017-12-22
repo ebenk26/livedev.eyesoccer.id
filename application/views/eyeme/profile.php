@@ -34,9 +34,11 @@
                                         <td>diikuti</td>
                                     </tr>
                                     <tr style="font-size:18px !important;">
-                                        <td>200</td>
-                                        <td><?php echo anchor('eyeme/follower/'.$id_member,'200','style="text-decoration:none;color:rgb(83, 83, 83)"')?></td>
-                                        <td><?php echo anchor('eyeme/following/'.$id_member,'200','style="text-decoration:none;color:rgb(83, 83, 83)"')?></td>
+                                        <td><?php echo count($getImg)?></td>
+
+                                        <td><?php echo anchor('eyeme/follower/'.$id_member,count($follower),'style="text-decoration:none;color:rgb(83, 83, 83)"')?></td>
+                                        
+                                        <td><?php echo anchor('eyeme/following/'.$id_member,count($following),'style="text-decoration:none;color:rgb(83, 83, 83)"')?></td>
                                     </tr>
                                 </table>
                             </li>
@@ -48,7 +50,6 @@
                 <?php if(count($getImg) > 0 ){
 
                         for($j= 0; $j<count($getImg); $j++){?>
-
 
                         <div class="me-post">
 

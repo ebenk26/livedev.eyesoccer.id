@@ -32,10 +32,10 @@ class Eyeme_model extends Master_model
 										A.suka,
 										A.komentar,
 										A.created_date,
-										B.name,
-										B.foto
+										B.name
+									
 									FROM
-										tbl_eyeme A
+										me_eyeme A
 									LEFT JOIN
 										tbl_member B on B.id_member = A.id_member
 									WHERE 
@@ -128,6 +128,10 @@ class Eyeme_model extends Master_model
 								")->result_array();
 		return $query;
 	}
+
+
+	#sw:: begin 
+
 	/**
 	  *function to get profile user
 	  *@param $id_or_username in url
@@ -135,11 +139,10 @@ class Eyeme_model extends Master_model
 	*/
 	public function getProfile($id_or_username){
 
-		
 		$this->db->where('id_member',$id_or_username);
 		$this->db->or_where('username',$id_or_username);
-
 		$get  = $this->db->get('me_profile');
+		
 		if(count($get->num_rows()) > 0 ) {
 			$result = $get->result();
 
@@ -157,16 +160,10 @@ class Eyeme_model extends Master_model
 
 
 	}
-	public function like($id_img){
-		$checkLike = $this->getAll('me_like',array('id_img'=> $id_img));
-		return $checkLike;
-
-	}
+	
 	/**
 		*@param $id_member = member has login
-		*function getImgFollowing to get img who following by member
-
-		
+		*fungsi getImgFollowing to get img who following by member	
 
 	*/
 	public function getImgFollowing($id_member){
@@ -204,7 +201,7 @@ class Eyeme_model extends Master_model
 	*@param $id_img id dari gambar yang dikomen
 	*@param $limit array, array[0] =offset array[1] = limit
 
-		getComment function untuk mengambil komentar
+		fungsi getComment  untuk mengambil komentar
 
 	*/
 	public function getComment($id_img,$limit=array()){
@@ -233,6 +230,40 @@ class Eyeme_model extends Master_model
 
 
 	}
+	/**
+	*@param $data = array() data yang akan di input ke dalam database table me_comment;
+	*@return JSON or FALSE;
+	*fungsi post commentar 
+	*/
+	public function postComment($data = array()){
+	
+		$insertComment = $this->db->insert('me_comment',$data);
+		$comment_id    = $this->db->insert_id();
+		$getIdMember   = $this->getAll('me_img',array('id_img'=> $data['id_img']),'id_member'); 
+		$id_member_img = $getIdMember[0]->id_member;
+		
+		$dataNotif     = array(
+				'id_member'     => $id_member_img, # yang menerima notif comment
+				'id_member_act' => $data['id_member'], #yang memberi notif comment
+				'notif_type'    => 'COM'.$comment_id,
+				'notif_content' => $data['comment'],
+				'date_create'   => NOW,
+				'last_update'   => NOW);
+
+		$insertNotif   = $this->db->insert('me_notif',$dataNotif); #insert data ke dalam table me_notif
+	
+		if($insertComment == TRUE AND $insertNotif== TRUE){
+
+			$json = json_encode($data);
+			return  $json;
+
+		}
+		else{
+			return FALSE;
+		}
+
+	}
+	/*fungsi untuk mengambil like berdasarkan id img*/
 	public function getLike($id_img){
 
 		$query = "SELECT 
@@ -249,8 +280,97 @@ class Eyeme_model extends Master_model
 
 		$res   = $this->db->query($query);
 		$res   = $res->result();
+		#echo $this->db->last_query();
 		return $res; 
 
+	}
+	/**
+	*@param $id_member member do like
+	*@param $id_img image like
+	*fungsi hasLike untuk mengecheck kondisi apakah sudah dilike oleh user 
+	*/
+	public function hasLike($id_member,$id_img){
+		$where = array('id_member'=> $id_member,'id_img'=> $id_img);
+		$get   = $this->getAll('me_like',$where);
+		if(count($get) > 0 ){
+
+			return TRUE;
+		}
+		else return FALSE;
+
+	}
+	public function unLike($id_member,$id_img){
+		$this->db->where('id_member',$id_member);
+		$this->db->where('id_img',$id_img);
+		$delete = $this->db->delete('me_like');
+		return $delete;
+
+	}
+	/**
+	*@param id_member yang sedang login
+	*@param id_img gambar yang di like
+	*fungsi untuk menambahkan like kedalam database
+
+	*/
+	public function addLike($id_member,$id_img){
+		$dataLike   = array('id_member'=> $id_member,
+						'id_img'   => $id_img, #bugs
+						'last_update'=> NOW);
+
+		$insertLike = $this->db->insert('me_like',$dataLike);#insert data ke dalam table me_like
+		$like_id    = $this->db->insert_id();#mengambil last_id
+
+		$getIdMember = $this->getAll('me_img',array('id_img'=> $id_img),'id_member'); 
+		#mengambil id_member yang mempunyai gambar
+		$id_member_img = $getIdMember[0]->id_member;
+
+		$dataNotif  = array(
+				'id_member'     => $id_member_img, # yang menerima notif like 
+				'id_member_act' => $id_member, #yang memberi notif like
+				'notif_type'    => 'LIK'.$like_id,
+				'notif_content' => 'LIKE',
+				'date_create'   => NOW,
+				'last_update'   => NOW);
+		$insertNotif   = $this->db->insert('me_notif',$dataNotif); #insert data ke dalam table me_notif
+		if($insertLike == TRUE AND $insertNotif == TRUE){
+
+			return TRUE;
+
+		}
+		else{
+			return FALSE;
+		}
+
+	}
+
+	/**
+	*@param $id_member
+		fungsi mengambil notifikasi 
+	*/
+	public function getNotif($id_member,$limit=''){
+		#$where    = array('id_member'=> $id_member);
+		#$getNotif = $this->getAll('me_notif',$where,'',array('last_update','DESC','0,5'));
+		$query    = "SELECT 
+						A.`id_notif`,
+						A.`id_member`,
+						A.`id_member_act`,
+						A.`notif_type`,
+						A.`notif_content`,
+						A.`last_update`,
+						A.`read`,
+						B.`display_picture`,
+						B.`username`
+					FROM `me_notif` AS A
+					INNER JOIN `me_profile` AS B
+					ON A.`id_member_act` = B.`id_member`
+					WHERE A.`id_member` = $id_member
+					ORDER BY last_update DESC
+					";
+		if($limit != ''){
+			$query .= $limit;
+		}
+		$getNotif  = $this->db->query($query);
+		return $getNotif->result();
 	}
 	/**
 	*function checkFollowed melihat kondisi apakah member telah follow akun 
@@ -280,6 +400,7 @@ class Eyeme_model extends Master_model
 		return $exe;
 
 	}
+
 	public function addComment($data= array()){
 		$insert = $this->db->insert('me_comment',$data);
 		if($insert == TRUE){
@@ -288,7 +409,7 @@ class Eyeme_model extends Master_model
 		}
 		else return FALSE;
 	}
-	#public function rm($arr)
+
 	public function rm($tbl,  $where = array() ){
 		if(is_array($where)){
 
@@ -305,10 +426,26 @@ class Eyeme_model extends Master_model
 
 		}
 		else{
-			echo 'Faile';
+			echo 'Failed';
 		}
 	}
-
+	/**
+	*@param $tbl table where in select
+	*@param $id  id dari table select
+	* fungsi whereImageIn untuk mengambil data dari table image yang berelasi dengan id_img dan $tbl
+	*/
+	public function whereImageIn($tbl,$id){
+		$query = "
+			SELECT 
+				*
+			FROM 
+				`me_img` AS A
+			WHERE id_img 
+				IN(SELECT `id_img` FROM `me_$tbl` WHERE id_$tbl = $id)";
+		$exe  = $this->db->query($query);
+		
+		return $exe->result();
+	}
 	/*public function unlike($arr = array()){
 
 		if(is_array($arr)){
