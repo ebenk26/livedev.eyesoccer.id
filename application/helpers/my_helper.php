@@ -114,3 +114,87 @@ function getTime($timeStamp){
     }
     return array('day' => $day,'hours'=> $hours,'minute'=> $minute,'secon'=>$secon,'timeString' => $timeString);
 }
+
+function getOngkir($tujuan,$berat)
+{
+    $berat_kg = 0;
+
+    if ($berat <= 1400)
+    {
+        $berat_kg = 1;
+    }
+    else
+    if ($berat > 1400 && $berat <= 2400)
+    {
+        $berat_kg = 2;
+    }
+    else
+    if ($berat > 2400 && $berat <= 3400)
+    {
+        $berat_kg = 3;
+    }
+    else
+    if ($berat > 3400 && $berat <= 4400)
+    {
+        $berat_kg = 4;
+    }
+    else
+    if ($berat > 4400 && $berat <= 5400)
+    {
+        $berat_kg = 5;
+    }
+    else
+    if ($berat > 5400 && $berat <=6400)
+    {
+        $berat_kg = 6;
+    }
+    else
+    if ($berat > 6400 && $berat <= 7400)
+    {
+        $berat_kg = 7;
+    }
+    else
+    if ($berat > 7400 && $berat <= 8400)
+    {
+        $berat_kg = 8;
+    }
+    else
+    if ($berat > 8400 && $berat <= 9400)
+    {
+        $berat_kg = 9;
+    }
+    else
+    if ($berat > 9400 && $berat <= 10400)
+    {
+        $berat_kg = 10;
+    }
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "http://apiv2.jne.co.id:10101/tracing/api/pricedev",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "username=MATABOLA&api_key=4703a7e30643c286460874b14feab0d9&from=CGK10000&thru=$tujuan&weight=$berat_kg",
+        CURLOPT_HTTPHEADER => array(
+            "content-type: application/x-www-form-urlencoded",
+            "accept: application/json"
+        ),
+    ));
+
+    $response   = curl_exec($curl);
+    $err        = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      return "cURL Error #:" . $err;
+    } else {
+      // echo $response;
+      return json_decode($response);
+    }
+}
