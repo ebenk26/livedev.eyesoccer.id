@@ -1777,13 +1777,14 @@ ul, li {
     z-index: 2;
 }
 .kotak-popup-notif{
-    width: 480px;
+    width: 490px;
     height: 420px;
     background-color: white;
     box-shadow: 0px 0px 5px 0px #c0c0c0;
     border-radius: 3px;
     z-index: 1;
     display: none;
+    overflow-y: scroll;
 }
 .teks-popup{
     padding-left: 15px;
@@ -2681,6 +2682,9 @@ ul, li {
 sw:begin;
 loading animation
 */
+.r{
+    color:#D50E0E;
+}
 #loading{
 
     margin:150px 200px;

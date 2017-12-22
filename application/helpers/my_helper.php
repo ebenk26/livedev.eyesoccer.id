@@ -63,7 +63,7 @@ if( ! function_exists('relative_time'))
         return "$difference $period $ending";
     }
 }
-/* definisi variable */
+/* DEFINE */
 define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
