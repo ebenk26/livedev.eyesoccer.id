@@ -32,8 +32,10 @@ class Eyeme extends CI_Controller {
 			
     }
 
-	public function index(){	
+	public function index(){
+	#echo $this->id_member;	
 		$this->mod->checkLogin();// check if user comming from home
+		#exit;
 		$id_member       = $this->id_member;
 		$getImgFollowing = $this->emod->getImgFollowing($id_member);
 		
@@ -250,17 +252,37 @@ class Eyeme extends CI_Controller {
 
 	*/
 	public function upload_img(){
+		$file      = 'img';
+		$ext       = pathinfo($_FILES[$file]['name'],PATHINFO_EXTENSION);
+		$img_name  = $_FILES[$file]['name'];
+		p($_FILES);
 
-		$img_name = inputSecure($this->input->post('img'));
-		$caption  = inputSecure($this->input->post('caption'));
-		$tag      = inputSecure($this->input->post('tag'));
-		$uploadPath = MEIMG;
+		$caption   = inputSecure($this->input->post('caption'));
+		$tag       = inputSecure($this->input->post('tag'));
+		$allowType = 'JPG|JPEG|PNG';
+		$pathUpload= './img/';
 		$maxSize    = 2024; 
+		$maxWidth   = 1600;
+		$max_height = 1600;
+
+		
+		
+		$act       = $this->mod->uploadImg($pathUpload,$img_name,$maxSize,$maxWidth,$max_height,'img');
+		#$act       = $this->mod->handleUpload($file,$pathUpload,1,1);
+		#p($act)
+		p($_POST);
+		p($_FILES);
+		#$uploadPath = MEIMG;
+		#maxSize    = 2024; 
+		#maxWidth   = 600;
+		#max_height = 600;
+		#$act       = $this->mod->uploadImg($imgName,$caption,$tag);
 		#$allowType  = 
 
 		#$this->mod->uploadImg();
 
 	}
+	#public funct
 	public function test_notif(){
 		$this->load->view('eyeme/test');
 	}
@@ -422,7 +444,7 @@ class Eyeme extends CI_Controller {
 
 	      $email 		= $getUser[0]->email;
 	     echo $username.$password;
-	     redirect(MEURL,'refresh');
+	     #redirect(MEURL,'refresh');
 
 	      if($getUser[0]->id_member=="" && $getUser[0]->password=="" AND count($getProf) <=  0 )
 	      {

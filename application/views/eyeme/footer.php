@@ -1,11 +1,12 @@
 
 <!--img upload-->
     <div class="detail-post-box" id="upload_pop" style="display:none">
+        <?php echo form_open_multipart(MEURL.'upload_img')?>
         <div class="takepic-box m-0 p-r" >
             <div class="pic-l">
                 <div class="container box-pic">
                     <div class="up-pic tx-c p-r">
-                        <img src="" id="show_img" alt="yourimg" width="400" height="400">
+                        <img src="" id="show_img" alt="yourimg" width="400" height="400" class="hidden">
                         <ul class="box-up">
                             <li>
                                 <i class="material-icons">cloud_upload</i>
@@ -18,7 +19,7 @@
                                 <span>or</span>
                             </li>
                             <li>
-                                <input type="file" name="img" class="fileimg" style="display:none">
+                                <input type="file" name="img" class="fileimg hidden">
                                 <button class="btn-browse" type="button">Browse file</button>
                                 
                              </li>
@@ -281,6 +282,7 @@ function readImg(input){
         reader.onload = function(e){
             $('.box-up').hide();
             $('.up-pic').css('top','0px');
+            $('#show_img').removeClass('hidden');
             $('#show_img').attr('src',e.target.result);
 
         }
@@ -291,5 +293,11 @@ function readImg(input){
 $('.fileimg').change(function(event) {
     /* Act on the event */
     readImg(this);
+});
+$(function(){
+
+    $('.up-pic').cropit();
+
+
 });
 </script>
