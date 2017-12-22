@@ -252,7 +252,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -279,7 +279,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -306,7 +306,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -333,7 +333,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -360,7 +360,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
