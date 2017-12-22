@@ -85,8 +85,6 @@ class Eyemarket extends CI_Controller {
 
 	public function login()
 	{
-		if($this->input->post('username') != FALSE)
-		{
 	      	$username 	= $this->input->post('username');
 	      	$password 	= $this->input->post('password');
 
@@ -109,7 +107,6 @@ class Eyemarket extends CI_Controller {
 
 	      		redirect($_SERVER['HTTP_REFERER']);
 	      	}  
-      	}	
 	}
 
 	public function logout()

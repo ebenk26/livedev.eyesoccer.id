@@ -53,10 +53,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $username   = $this->session->userdata('username');
                 $member_id  = $this->session->userdata('member_id');
             }
-            else
-            {
-                redirect('/home/login/');
-            }
         ?>
 
         <header>
@@ -79,12 +75,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div> -->
                             <div class="login">
                         <?php 
-                            if ($username != NULL)
+                            if (isset($username))
                             {
                         ?>
                                 <a href="<?= base_url(); ?>eyemarket/user/<?= $member_id; ?>">
                                     <i class="fa fa-user"></i>
                                     <span class="hidden-xs text-uppercase"><?= $username; ?></span>
+                                </a>
+                                <a href="<?= base_url(); ?>eyemarket/logout">
+                                    <i class="fa fa-user"></i>
+                                    <span class="hidden-xs text-uppercase">Logout</span>
                                 </a>
                         <?php
                             }
@@ -124,12 +124,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="login" method="post" accept-charset="utf-8">
+                        <form action="<?= base_url(); ?>eyemarket/login" method="post" accept-charset="utf-8">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="email_modal" placeholder="email">
+                                <input type="text" class="form-control" id="email_modal" placeholder="email" name="username">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="password_modal" placeholder="password">
+                                <input type="password" class="form-control" id="password_modal" placeholder="password" name="password">
                             </div>
 
                             <p class="text-center">
