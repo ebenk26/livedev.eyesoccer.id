@@ -117,57 +117,9 @@ function getTime($timeStamp){
 
 function getOngkir($tujuan,$berat)
 {
-    $berat_kg = 0;
+    $berat_kg   = $berat / 1000;
 
-    if ($berat <= 1400)
-    {
-        $berat_kg = 1;
-    }
-    else
-    if ($berat > 1400 && $berat <= 2400)
-    {
-        $berat_kg = 2;
-    }
-    else
-    if ($berat > 2400 && $berat <= 3400)
-    {
-        $berat_kg = 3;
-    }
-    else
-    if ($berat > 3400 && $berat <= 4400)
-    {
-        $berat_kg = 4;
-    }
-    else
-    if ($berat > 4400 && $berat <= 5400)
-    {
-        $berat_kg = 5;
-    }
-    else
-    if ($berat > 5400 && $berat <=6400)
-    {
-        $berat_kg = 6;
-    }
-    else
-    if ($berat > 6400 && $berat <= 7400)
-    {
-        $berat_kg = 7;
-    }
-    else
-    if ($berat > 7400 && $berat <= 8400)
-    {
-        $berat_kg = 8;
-    }
-    else
-    if ($berat > 8400 && $berat <= 9400)
-    {
-        $berat_kg = 9;
-    }
-    else
-    if ($berat > 9400 && $berat <= 10400)
-    {
-        $berat_kg = 10;
-    }
+    $berat_fix  = round($berat_kg);
 
     $curl = curl_init();
 
