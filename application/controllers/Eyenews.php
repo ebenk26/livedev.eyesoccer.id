@@ -13,10 +13,10 @@ class Eyenews extends CI_Controller {
 	
 	public function index()
 	{
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"]="eyenews";		
+		$data["meta"]["title"] 			="";
+		$data["meta"]["image"] 			=base_url()."/assets/img/tab_icon.png";
+		$data["meta"]["description"] 	="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
+		$data["page"] 					="eyenews";		
 		
 		$data['all_news'] 				= $this->Eyenews_model->get_all_news();
 		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
@@ -28,10 +28,11 @@ class Eyenews extends CI_Controller {
 		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
-		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();		
-		
+		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['kanal'] 					= "eyenews";
 		$data["body"]=$this->load->view('eyenews/index', $data,true);
-		$this->load->view('template-baru',$data);		
+
+		$this->load->view('template/static',$data);		
 	}
 
 	public function detail($eyenews_id='',$action=null)

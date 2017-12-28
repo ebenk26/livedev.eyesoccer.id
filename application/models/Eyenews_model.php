@@ -333,27 +333,27 @@ class Eyenews_model extends CI_Model
 
 public function get_jadwal_today()
 	{
-		$query = $this->db->query("SELECT a.*,
-									c.club_id as club_id_a,
-									d.club_id as club_id_b,
-									c.logo as logo_a,
-									d.logo as logo_b,
-									c.name as club_a,
-									d.name as club_b
+		$query = $this->db->query("	SELECT a.*,
+										c.club_id as club_id_a,
+										d.club_id as club_id_b,
+										c.logo as logo_a,
+										d.logo as logo_b,
+										c.name as club_a,
+										d.name as club_b
 									FROM 
-									tbl_jadwal_event a 
+										tbl_jadwal_event a 
 									LEFT JOIN 
-									tbl_event b 
-									ON b.id_event=a.id_event 
+										tbl_event b ON b.id_event=a.id_event 
 									INNER JOIN 
-									tbl_club c 
-									ON c.club_id=a.tim_a 
+										tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN 
-									tbl_club d 
-									ON d.club_id=a.tim_b 
+										tbl_club d ON d.club_id=a.tim_b 
 									WHERE 
-									a.live_pertandingan!='' AND jadwal_pertandingan>='".date("Y-m-d")."' 
-									order by jadwal_pertandingan ASC LIMIT 5
+										a.live_pertandingan!=''
+										AND
+										jadwal_pertandingan>='2017-12-10 00:00:00' 
+									ORDER BY
+										jadwal_pertandingan ASC LIMIT 5
 								")->result_array();
 		return $query;
 	}

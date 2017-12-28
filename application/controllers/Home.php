@@ -60,7 +60,8 @@ class Home extends CI_Controller {
 		$data['jadwal_yesterday'] 	= $this->Home_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 	= $this->Home_model->get_jadwal_tomorrow();
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
-		$data['klasemen'] 		= $this->Home_model->get_klasemen();
+		$data['klasemen'] 			= $this->Home_model->get_klasemen();
+		$data['kanal'] 				= "home";
 		
 		$data["body"]=$this->load->view('home/index', $data, TRUE);
 		$this->load->view('template/static',$data);		
