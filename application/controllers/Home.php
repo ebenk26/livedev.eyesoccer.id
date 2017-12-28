@@ -32,10 +32,15 @@ class Home extends CI_Controller {
 		$data["popup"]=$array[14][3];
 		
 		$data['jadwal'] 			= $this->Home_model->get_all_jadwal();		
+		$data['jadwal_2'] 			= $this->Home_model->get_all_jadwal_2();		
 		$data['trend_eyetube'] 		= $this->Home_model->get_trending_eyetube();
 		$data['trend_eyenews'] 		= $this->Home_model->get_trending_eyenews();
 		$data['profile_club'] 		= $this->Home_model->get_profile_club();
+		$data['profile_club_2'] 	= $this->Home_model->get_profile_club_2();
+		$data['profile_club_3'] 	= $this->Home_model->get_profile_club_3();
 		$data['profile_player']	 	= $this->Home_model->get_player_random();
+		$data['profile_player_2']	 = $this->Home_model->get_player_random_2();
+		$data['profile_player_3']	 = $this->Home_model->get_player_random_3();
 		$data['video_eyetube'] 		= $this->Home_model->get_eyetube_satu();
 		$data['eyetube_science'] 	= $this->Home_model->get_eyetube_science();
 		$data['eyetube_stars'] 		= $this->Home_model->get_eyetube_stars();
@@ -49,14 +54,16 @@ class Home extends CI_Controller {
 		$data['eyenews_populer'] 	= $this->Home_model->get_eyenews_populer();
 		$data['eyenews_rekomendasi']= $this->Home_model->get_eyenews_rekomendasi();
 		$data['eyevent_main']		= $this->Home_model->get_eyevent_main();
+		$data['eyevent_main_2']		= $this->Home_model->get_eyevent_main_2();
+		$data['eyevent_main_3']		= $this->Home_model->get_eyevent_main_3();
 		$data['jadwal_today'] 		= $this->Home_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 	= $this->Home_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 	= $this->Home_model->get_jadwal_tomorrow();
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
 		$data['klasemen'] 		= $this->Home_model->get_klasemen();
 		
-		$data["body"]=$this->load->view('home/index', $data);
-		//$this->load->view('template-baru',$data);		
+		$data["body"]=$this->load->view('home/index', $data, TRUE);
+		$this->load->view('template/static',$data);		
 		
 		//$data["body"]=$this->load->view('home/index2', $data, true);
 		//$this->load->view('template-front-end',$data);
