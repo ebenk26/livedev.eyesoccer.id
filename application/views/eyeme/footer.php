@@ -1,33 +1,42 @@
 
 <!--img upload-->
     <div class="detail-post-box" id="upload_pop" style="display:none">
-        <div class="takepic-box m-0 p-r" >
+        <?php echo form_open_multipart(MEURL.'upload_img',array('name'=> 'uploadform'))?>
+        <div class="takepic-box m-0 p-r">
             <div class="pic-l">
-                <div class="container box-pic">
-                    <div class="up-pic tx-c p-r">
-                        <img src="" id="show_img" alt="yourimg" width="400" height="400">
-                        <ul class="box-up">
-                            <li>
-                                <i class="material-icons">cloud_upload</i>
-                            </li>
-                            <li>
-                                <span>Drop your photo here</span>
+                <div class="container ">
+                    <div class="image-editor" >
+                        <input type="file" class="cropit-image-input fileimg hidden" name="img">
+                        <div class="cropit-preview box-pic">
+                            <div class="up-pic tx-c p-r ">
+                             
+                                <ul class="box-up">
+                                    <li>
+                                        <i class="material-icons">cloud_upload</i>
+                                    </li>
+                                    <li>
+                                        <span>Seret Fotomu Disini</span>
+                                        
+                                    </li>
+                                    <li>
+                                        <span>Atau</span>
+                                    </li>
+                                    <li>
+                                        <button class="btn-browse" type="button" style="z-index: 999" id="browse">Pilih file</button>
+                                    </li>
+                                </ul>
+                               
+
+                            </div>
+                            <div class="container rsz mt-10">
+                                <div id="slidecontainer">
+                                    <input type="range" min="1" max="100" value="1" class="slider cropit-image-zoom-input" id="myRange">
+                                </div>
+                                <button class="btn-danger hidden" id="cancel" type="button">Pilih File</button>
+                                <button class="pull-right btn-browse hidden" id="crop" type="button">Potong</button>
+                               
                                 
-                            </li>
-                            <li>
-                                <span>or</span>
-                            </li>
-                            <li>
-                                <input type="file" name="img" class="fileimg" style="display:none">
-                                <button class="btn-browse" type="button">Browse file</button>
-                                
-                             </li>
-                        </ul>
-                    </div>
-                    <div class="container rsz mt-10">
-                        <span>Resize photo</span>
-                        <div id="slidecontainer">
-                            <input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,7 +45,7 @@
                 <div class="container com-tag">
                     <ul>
                         <li><span>Keterangan </span></li>
-                        <li><input type="text" placeholder="Tuli Keterangan disini..." name="caption"></li>
+                        <li><input type="text" placeholder="Tuli Keterangan disini..." name="caption" class="c-caption"></li>
                         <li></li>
                         <!--<li><span>Tag</span></li>
                         <li><input type="text" placeholder="Gunakan @ untuk menyebut teman" class="input2"></li>
@@ -46,7 +55,7 @@
                         <li></li>
                         <li></li>
                         <li></li>-->
-                        <li><button class="btn-me-submit fl-r" type="submit">Submit</button></li>
+                        <li><button class="btn-me-submit fl-r" type="submit" id="upload-act">Kirim</button></li>
                     </ul>
                 </div>
             </div>
@@ -69,6 +78,7 @@ var html      = "",//html comment
     DPIC      = '<?php echo DPIC?>',
     MEIMG     = '<?php echo MEIMG?>',
     MEPROFILE = '<?php echo MEPROFILE?>',
+    MYPROFILE = MEPROFILE + '<?php echo $myusername?>';
     loadingAni= $('#loading'); //Loading Animation 
     
 $('.img_more').click(function(event) {
@@ -271,25 +281,140 @@ $('#unlike').click(function(event) {
     /* Act on the event */
     alert($(this).attr('ref'));
 });
-$('.btn-browse').click(function(event) {
+$('#browse').click(function(event) {
     /* Act on the event */
     $('.fileimg').click();
 });
-function readImg(input){
+/*function readImg(input){
     if(input.files && input.files[0]){
         var reader = new FileReader();
         reader.onload = function(e){
             $('.box-up').hide();
             $('.up-pic').css('top','0px');
+            $('#show_img').removeClass('hidden');
             $('#show_img').attr('src',e.target.result);
 
         }
         reader.readAsDataURL(input.files[0]);
 
     }
-}
-$('.fileimg').change(function(event) {
-    /* Act on the event */
+}*/
+/*$('.fileimg').change(function(event) {
+    Act on the event 
     readImg(this);
+});*/
+/*cropit:: function*/
+$(function() {
+    $('.image-editor').cropit({
+        exportZoom: 1.25,
+        imageBackground: true,
+        imageBackgroundBorderWidth: 40,
+        zoom:.75
+    });     
+
 });
-</script>
+//crop::click
+$('#crop').click(function(event) {
+    /* Act on the event */
+    $('.cropit-preview-background-container').hide();
+     imageData = $('.image-editor').cropit('export');
+    $('.hidden-image-data').val(imageData);
+    // Print HTTP request params
+    var formValue = $(this).serialize();
+    $('#tc').attr('src',decodeURIComponent(imageData));
+    //console.log(decodeURIComponent(imageData));
+
+    $('.cropit-preview-image').on('mousedown',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    $('.fileimg').attr('value',decodeURIComponent(imageData));
+    console.log(imageData);
+
+});
+
+   /* $('#browse').submit(function() {
+      // Move cropped image data to hidden input
+      var imageData = $('.image-editor').cropit('export');
+      $('.hidden-image-data').val(imageData);
+
+      // Print HTTP request params
+      var formValue = $(this).serialize();
+      $('#tc').attr('src',decodeURIComponent(imageData));
+
+      $('#result-data').text(formValue);
+
+      // Prevent the form from actually submitting
+      return false;
+    });*/
+//fileimg::change
+$('.fileimg').on('change',function(){
+    $('#cancel').removeClass('hidden');
+    $('#crop').removeClass('hidden');
+    $('.cropit-preview-background-container').show();
+    $('.c-p').remove();
+     
+
+    $('#browse').hide();
+  
+});
+//cancel::click
+$('#cancel').click(function(event) {
+    /* Act on the event */
+     $('.fileimg').click();
+      $('.cropit-preview-image').unbind('mousedown');
+
+     //alert('test');
+});
+
+//upload-act::click
+
+
+$('#upload-act').click(function(event) {
+    var imageCaption  = $('.c-caption').val(); 
+    event.preventDefault();
+    //alert(imageCaption);
+    /* Act on the event */
+   $.ajax({
+        url: '<?php echo base_url()?>eyeme/upload_img',
+        type: 'POST',
+        dataType: 'HTML',
+        data: {imageData: imageData,
+                caption: imageCaption},
+    })
+    .done(function(e) {
+        alert(e);
+        window.location.replace(MYPROFILE);
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+
+    
+});
+
+
+
+/*$('.box-pic').on({
+    dragover:function(event){
+        event.preventDefault();
+        event.stopPropagation();
+    },
+    dragenter:function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        $(this).css('background-color','lightBlue');
+    },
+   
+    drop:function(e){
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('test');
+        alert('test');
+    }
+})*/
+
+  </script>

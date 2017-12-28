@@ -128,9 +128,10 @@ class Eyeme_model extends Master_model
 								")->result_array();
 		return $query;
 	}
+	
 
 
-	#sw:: begin 
+	#sw::begin 
 
 	/**
 	  *function to get profile user
@@ -156,8 +157,6 @@ class Eyeme_model extends Master_model
 		$this->db->where_in($where,$inArr);
 		$res = $this->db->get($tbl);
 		return $res;
-
-
 
 	}
 	
@@ -241,7 +240,7 @@ class Eyeme_model extends Master_model
 		$comment_id    = $this->db->insert_id();
 
 		$select      = array('id_member','id_img','img_thumb','img_name','img_alt');
-		$getIdMember = $this->getAll('me_img',array('id_img'=> $id_img),$select); 
+		$getIdMember = $this->getAll('me_img',array('id_img'=> $data['id_img']),$select); 
 		#mengambil id_member yang mempunyai gambar
 		$id_img        = $getIdMember[0]->id_img;
 		$id_member_img = $getIdMember[0]->id_member;
@@ -465,6 +464,20 @@ class Eyeme_model extends Master_model
 		
 		return $exe->result();
 	}
+	public function insertImg($imageName,$caption,$id_member){
+		$data = array('img_name'=> $imageName,
+					 'id_member'  => $id_member,
+					 'img_caption' => $caption,
+					 'img_thumb'   => 'thumb_'.$imageName,
+					 'img_alt'    => substr($caption, 0,30),
+					 'date_create' => NOW,
+					 'active'      => '1');
+		$insert = $this->db->insert('me_img',$data);
+		if($insert){
+			return 'success';
+		}
+	}
+	//sw::end
 	/*public function unlike($arr = array()){
 
 		if(is_array($arr)){

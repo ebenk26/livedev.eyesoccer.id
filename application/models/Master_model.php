@@ -164,10 +164,7 @@ class Master_model extends CI_Model
 		}
 	}
 	
-	function query($qry){
-		$hasil=$this->db->query($qry);
-		return $hasil;
-	}	
+	
 	function update($table,$updateField = array(),$where = array()){
 		$this->db->update($table, $updateField, $where);
 	}
@@ -302,8 +299,8 @@ class Master_model extends CI_Model
 				$uploadPath	 = $pathUpload;
 				$ImgName		= $uploadName;
 				$maxSize		= 5000;
-				$maxWidth	   = 5000;
-				$maxHeight	  = 5000;
+				$maxWidth	   = 1000;
+				$maxHeight	  = 1000;
 			
 				$this->uploadImg($uploadPath, $ImgName, $maxSize, $maxWidth, $maxHeight, $inputName);
 				
@@ -325,10 +322,25 @@ class Master_model extends CI_Model
 			}
 		}
 	}
-	
-	function uploadImg($uploadPath, $ImgName, $maxSize, $maxWidth, $maxHeight, $inputName, $allowtypefile = '')
+	public function resizeImg($source_image,$width='',$height=''){
+
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $source_image;
+		$config['create_thumb'] = TRUE;
+		$config['maintain_ratio'] = TRUE;
+		$config['width']         = $width;
+		$config['height']       = $height;
+		$config['overwrite'] = TRUE;
+		$config['thumb_marker'] = 'thumb_';
+		$this->load->library('image_lib',$config);
+		if(!$this->image_lib->resize()){
+			 echo $this->image_lib->display_errors();
+		}
+
+	}
+	public function uploadImg($uploadPath, $ImgName, $maxSize, $maxWidth, $maxHeight, $inputName, $allowtypefile = '')
 	{
-		$allowtype = $allowtypefile == '' ? 'gif|jpg|png' : $allowtypefile;
+		$allowtype = $allowtypefile == '' ? 'gif|jpg|png|jpeg' : $allowtypefile;
 		
 		#$inputNama = nama input file form
 		$this->load->library('upload');	
@@ -336,26 +348,30 @@ class Master_model extends CI_Model
 		$config['file_name']      = $ImgName;
 		$config['upload_path']    = $uploadPath;
 		$config['allowed_types']  = $allowtype;
-		$config['max_size']	   = $maxSize;
+		$config['max_size']	      = $maxSize;
 		$config['max_width']      = $maxWidth;
 		$config['max_height']     = $maxHeight;
+
 		
 		#p($config);
 		$this->upload->initialize($config);
 		#echo $inputName;
 		#exit;
-		if (!$this->upload->do_upload($inputName))					
+		if (!$this->upload->do_upload('img'))					
 		{
 			$error = $this->upload->display_errors('','');
 			echo "
 			<script>
 				alert('".$error."');
-				window.history.go(-1);
+				//window.history.go(-1);
 			</script>
 			";
 			exit;
 		}else{
-			return true;
+			$uploadData = $this->upload->data();
+			echo $uploadPath.$uploadData['file_name'];
+			$this->resizeImg($uploadPath.$uploadData['file_name']);
+			return $uploadData;
 		}		
 	}
 		
