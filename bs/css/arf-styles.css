@@ -202,18 +202,6 @@ padding:15px;
 bottom: 0px;
 letter-spacing: 1px;
 }
-#setcenter105{
-position: absolute;
-left: 54px;
-width: 100%;
-text-align: center;
-font-family: 'Roboto-Medium'; 
-font-size: 15px; 
-color: #ffffff; 
-background: rgba(0,0,0,0.0);
-padding:1px;
-bottom: 36px;
-}
 @media screen and (max-width: 780px){
 #setcenter100{
 position: absolute;
@@ -237,6 +225,5 @@ opacity: 0.3;
 width: 100%;
 padding: 10px;
 overflow-y: scroll;
-height: 1050px;
-overflow-x: hidden;
+height: 300px;
 }

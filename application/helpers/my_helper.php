@@ -228,3 +228,8 @@ function getOngkir($tujuan,$berat)
       return json_decode($response);
     }
 }
+
+function imgUrl()
+{
+    return "https://www.eyesoccer.id/";
+}

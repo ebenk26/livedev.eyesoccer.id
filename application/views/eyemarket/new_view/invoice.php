@@ -19,6 +19,20 @@
 </head>
 <body>
     
+    <?php
+        if ($model->status == 3)
+        {
+    ?>
+            <img src="<?php echo base_url(); ?>assets/eyemarket/lunas.png" style="z-index: 999;
+            position: absolute;
+            margin: 11% 22%;
+            width: 59%;
+            transform: rotate(13deg);
+            opacity: 0.2;">
+    <?php        
+        }
+    ?>
+
     <div class="container">
         <div class="container">
             <div class="row">

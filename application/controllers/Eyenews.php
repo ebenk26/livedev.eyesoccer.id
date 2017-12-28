@@ -34,7 +34,7 @@ class Eyenews extends CI_Controller {
 		$this->load->view('template-baru',$data);		
 	}
 
-public function detail($eyenews_id='',$action=null)
+	public function detail($eyenews_id='',$action=null)
 	{
 		
 		$eyenews_id2 = $eyenews_id; //update rizki
@@ -60,7 +60,7 @@ public function detail($eyenews_id='',$action=null)
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-	$data["meta"]["share"]='
+		$data["meta"]["share"]='
 		<!-- Begin of SEO Meta Tags -->
 		<title>'.$row['title'].' - EyeNews | EyeSoccer</title>
 		<meta name="title" content="'.$row['title'].' - EyeNews | EyeSoccer" />
@@ -97,7 +97,7 @@ public function detail($eyenews_id='',$action=null)
 		<meta name="twitter:description" content="'.preg_replace('/\s+?(\S+)?$/', '', substr(strip_tags($row['description']), 0, 100)).'" />
 		<meta name="twitter:image" content="https://www.eyesoccer.id/systems/eyenews_storage/'.$row['pic'].'" />
 		<!--end of twitter card data-->
-	';
+		';
 		/* $cmd_ads=$this->db->query("select * from tbl_ads")->result_array();
 		$i=0;
 		foreach($cmd_ads as $ads){
