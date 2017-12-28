@@ -11,6 +11,7 @@ class Eyeme extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','my_helper','html'));
 			$this->load->model('Master_model','mod');
+			$this->load->helper('path');
 			$this->getSetting = $this->mod->getAll('setting');
 			$this->id_member  = @$this->session->userdata('id_member');#id_member login 
 			$this->username   = @$this->session->userdata('username');
@@ -19,6 +20,7 @@ class Eyeme extends CI_Controller {
 			*/
 			$this->data['id_member']   = $this->id_member;
 			$this->data['myusername']  = $this->username;
+
 
 			if(count($this->getSetting) > 0 ){
 				$this->data['title'] = $this->getSetting[0]->title;
@@ -252,7 +254,31 @@ class Eyeme extends CI_Controller {
 
 	*/
 	public function upload_img(){
-		$file      = 'img';
+		if(count($this->input->post()) > 0 ){ 
+			$imageData  = $this->input->post('imageData');
+			$imageData  = str_replace('data:image/png;base64,', '', $imageData);
+			$imageData  = str_replace(' ', '+', $imageData);
+			$image      = base64_decode($imageData);
+			$fileName   = date('dmYhis').'.'.'jpeg';
+			$path       = set_realpath('img/eyeme');
+			file_put_contents($path.$fileName, $image);
+			$caption    = inputsecure($this->input->post('caption'));
+			$this->mod->resizeImg($path.$fileName,100,100);
+			$insert     = $this->emod->insertImg($fileName,$caption,$this->id_member);
+			if(!$insert){
+				echo 'error';
+			}
+			else{
+				echo 'Berhasil Upload Foto';
+			}
+		}
+		else{
+			echo 'ACCESS DENIED';
+		}
+
+		#$this->
+
+		/*$file      = 'img';
 		$ext       = pathinfo($_FILES[$file]['name'],PATHINFO_EXTENSION);
 		$img_name  = $_FILES[$file]['name'];
 		p($_FILES);
@@ -260,29 +286,31 @@ class Eyeme extends CI_Controller {
 		$caption   = inputSecure($this->input->post('caption'));
 		$tag       = inputSecure($this->input->post('tag'));
 		$allowType = 'JPG|JPEG|PNG';
-		$pathUpload= './img/';
+		
 		$maxSize    = 2024; 
 		$maxWidth   = 1600;
-		$max_height = 1600;
+		$max_height = 1600;*/
+		#$pathUpload= './img/';
+
 
 		
 		
-		$act       = $this->mod->uploadImg($pathUpload,$img_name,$maxSize,$maxWidth,$max_height,'img');
-		#$act       = $this->mod->handleUpload($file,$pathUpload,1,1);
+		#$act       = $this->mod->uploadImg($pathUpload,$img_name,$maxSize,$maxWidth,$max_height,'img');
+		#$act       = $this->mod->handleUpload('img',$pathUpload,1,1);
 		#p($act)
-		p($_POST);
-		p($_FILES);
-		#$uploadPath = MEIMG;
-		#maxSize    = 2024; 
-		#maxWidth   = 600;
-		#max_height = 600;
-		#$act       = $this->mod->uploadImg($imgName,$caption,$tag);
-		#$allowType  = 
-
-		#$this->mod->uploadImg();
+		#p($_POST);
+		#p($_FILES);
+	
 
 	}
-	#public funct
+	public function explore(){
+		$this->load->view('eyeme/header',$this->data);
+		$this->load->view('eyeme/explore',$this->data);
+		$this->load->view('eyeme/footer',$this->data);
+
+		#echo 'explore test';
+	}
+	
 	public function test_notif(){
 		$this->load->view('eyeme/test');
 	}
@@ -472,11 +500,11 @@ class Eyeme extends CI_Controller {
 		redirect('eyeme/explore');
 	}
 
-	public function explore(){
+	/*public function explore(){
 		$data['konten'] 	= $this->emod->get_all_konten();
 
 		$this->load->view('/eyeme/konten',$data);
-	}
+	}*/
 
 	public function addKomentar()
 	{

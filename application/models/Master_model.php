@@ -328,10 +328,10 @@ class Master_model extends CI_Model
 		$config['source_image'] = $source_image;
 		$config['create_thumb'] = TRUE;
 		$config['maintain_ratio'] = TRUE;
-		$config['width']         = 75;
-		$config['height']       = 50;
+		$config['width']         = $width;
+		$config['height']       = $height;
 		$config['overwrite'] = TRUE;
-		$config['thumb_marker'] = '_thumb';
+		$config['thumb_marker'] = 'thumb_';
 		$this->load->library('image_lib',$config);
 		if(!$this->image_lib->resize()){
 			 echo $this->image_lib->display_errors();

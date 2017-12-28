@@ -2465,7 +2465,7 @@ ul, li {
     border-radius: 5px;
     color: white;
     padding: 6px 15px;
-    font-size: .5em;
+    font-size: .6em;
     position: relative;
     border: 0;
     /* z-index: -1; */
@@ -2474,6 +2474,24 @@ ul, li {
     color: #3a7dc6;
     background-color: white; 
     border: 1px solid lightgray;
+}
+.btn-danger{
+    background-color: #EE2525;
+    width: 100px;
+    border-radius: 5px;
+    color: white;
+    padding: 6px 15px;
+    font-size: .6em;
+    position: relative;
+    border: 0;
+}
+.btn-danger:hover{
+    color: #EE2525;
+    background-color: white; 
+    border: 1px solid lightgray;
+}
+.pull-right{
+    float:right;
 }
 #slidecontainer {
     width: 100%;
