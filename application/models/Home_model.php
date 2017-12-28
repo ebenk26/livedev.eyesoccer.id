@@ -111,6 +111,7 @@ class Home_model extends CI_Model
 		$query = $this->db->query("	SELECT
 										a.player_id,
 										a.club_id,
+										a.url,
 										a.birth_date as tgl_lahir,
 										SUBSTRING(a.birth_date,1,2) as tanggal,
 										SUBSTRING(a.birth_date,4,2) as bulan,
@@ -479,6 +480,7 @@ class Home_model extends CI_Model
 		$query = $this->db->query("select club_id, name, logo, competition from tbl_club where competition='liga indonesia 1' AND name !='ebenktestlagijgndidelete' order by name ASC limit 10")->result_array();
 		return $query;
 	}
+
 	
 }
 

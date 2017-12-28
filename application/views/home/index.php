@@ -4,8 +4,8 @@
         <title>EYESOCCER</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=1000">
-        <link href="assets/css/bs.css" rel="stylesheet">
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="newassets/css/bs.css" rel="stylesheet">
+        <link href="newassets/css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -35,15 +35,16 @@
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
+									<li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>									
                                 </ul>
                             </li>
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
                             <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
                             <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
                             <li><a href="<?=base_url()?>eyevent">EyeEvent</a></li>
+                            <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>							
                             <li><a href="<?=base_url()?>eyetransfer">EyeTransfer</a></li>
                             <li><a href="<?=base_url()?>eyetiket">EyeTiket</a></li>
-                            <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>
                             <li><a href="<?=base_url()?>eyewallet">EyeWallet</a></li>
                         </ul>
                         <i id="src" class="material-icons">search</i>
@@ -107,7 +108,7 @@
         </div>
         <!-- EYEPROFILE -->
         <div class="carous center-dekstop m-t-35">
-            <img class="img-title" src="assets/img/ic_eyeprofile.png" alt="">
+            <img class="img-title" src="newassets/img/ic_eyeprofile.png" alt="">
             <h2 class="title ep">EyeProfile</h2>
             <hr class="x-ep">
             <span>
@@ -122,9 +123,9 @@
 			?>			
                     <div class="box item active">
                         <div class="box-content">
-                            <!--<img src="assets/img/ss-img.png" alt="">-->
-							<img height="100px;" src="assets/img/ss-img.png">								
-							<!--<img height="100px;" src="<?=base_url()?>systems/club_logo/<?php print $club['logo']; ?>">-->								
+                            <!--<img src="newassets/img/ss-img.png" alt="">-->
+							<a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $club['club_id']; ?>">
+							<img height="100px;" src="<?=base_url()?>systems/club_logo/<?php print $club['logo']; ?>"></a>								
                             <div class="detail">
                                 <h2><?= $club['nama_club']; ?></h2>
                                 <h3><?= $club['competition']; ?></h3>
@@ -180,8 +181,9 @@
 					?>				
                     <div class="item active">
                         <div class="ctn-pemain">
-                            <img src="assets/img/ss-img.png" alt="">
-                            <!--<img src="<?php echo base_url(); ?>systems/player_storage/<?= $player['foto']; ?>" alt="">-->
+						<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$player["url"]?>">
+                            <img src="<?php echo base_url(); ?>systems/player_storage/<?= $player['foto']; ?>" alt="">
+						</a>
                             <div class="des">
                                 <h3><?= $player['nama']; ?></h3>
                                 <p>Posisi: <?= $player['posisi']; ?><br>
@@ -199,7 +201,7 @@
         </div>
         <!-- EYETUBE -->
         <div class="center-dekstop pd-l-100">        
-            <img class="img-title" src="assets/img/ic_eyetube.png" alt="">
+            <img class="img-title" src="newassets/img/ic_eyetube.png" alt="">
             <h2 class="title et">EyeTube</h2>
             <hr class="x-et">
             <div class="et-content m-b-100">
@@ -210,7 +212,6 @@
 				?>
                     <div class="et-v-content">
                         <img src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
-                        <!--<img src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">-->
                         <div class="btn-play">
                             <img src="assets/img/btn-play.png" alt="">
                         </div>
@@ -222,7 +223,9 @@
 						echo relative_time($tanggal) . ' ago - '.$videonya['tube_view'].' views';						
 					?>					
 					</span>
-                    <h1 class="et-title"><?= $videonya['title']; ?></h1>
+                    <h1 class="et-title">
+					<a href="<?=base_url()?>eyetube/detail/<?=$videonya["url"]?>" class="vid-ttl">					
+					<?= $videonya['title']; ?></a></h1>
                     <p class="et-d">
 					<?php
 						$keterangan = strip_tags($videonya['description']);
@@ -249,7 +252,7 @@
 						$tanggal 	= date_format($date,"Y-m-d H:i:s");
 						echo relative_time($tanggal) . ' ago - '.$videonya['tube_view'].' views';						
 					?></span>
-                            <p class="et-st-det"><?= $videonya['title']; ?></p>
+                            <p class="et-st-det"><a href="<?=base_url()?>eyetube/detail/<?=$videonya["url"]?>" class="vid-ttl"><?= $videonya['title']; ?></a></p>
                         </div>
                         <img class="v-et-2 v-et-100" width="100%" src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
 					<?php
@@ -272,16 +275,17 @@
 					<div role="listbox" class="carousel-inner">                    
                         <div class="box item active">
                             <div class="box-vl pd-b-10">
-                                <a href="" class="vl">Video Lainnya</a>
+                                <a href="<?=base_url()?>eyetube" class="vl">Video Lainnya</a>
                                 <i class="material-icons r-vl">keyboard_arrow_right</i>                                
                             </div>
 							<?php
 							foreach ($eyetube_stars as $stars)
 							{
 							?>							
-                            <div class="vid-box-vl">
-                                <img src="assets/img/video-small.png" alt="">
-                                <a href="" class="vid-ttl"><?= $stars['title']; ?></a><br>
+                            <div class="vid-box-vl">							
+                                <img src="<?php echo base_url(); ?>systems/eyetube_storage/<?= $stars['thumb']; ?>" alt="">
+                                <a href="<?=base_url()?>eyetube/detail/<?=$stars["url"]?>" class="vid-ttl">
+								<?= $stars['title']; ?></a><br>
                                 <p class="vid-time"><?php
 	    						$date 		=  new DateTime($stars['createon']);
 	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -295,7 +299,7 @@
                         </div>
                         <div class="box item">
                             <div class="box-vl">
-                                <a href="" class="vl">Video Lainnya</a>
+                                <a href="<?=base_url()?>eyetube" class="vl">Video Lainnya</a>
                                 <i class="material-icons r-vl">keyboard_arrow_right</i>                                
                             </div>
 							<?php
@@ -303,8 +307,8 @@
 							{
 							?>							
                             <div class="vid-box-vl">
-                                <img src="assets/img/video-small.png" alt="">
-                                <a href="" class="vid-ttl"><?= $populer['title']; ?></a><br>
+                                <img src="<?php echo base_url(); ?>systems/eyetube_storage/<?= $populer['thumb']; ?>" alt="">
+                                <a href="<?=base_url()?>eyetube/detail/<?=$populer["url"]?>" class="vid-ttl"><?= $populer['title']; ?></a><br>
                                 <p class="vid-time"><?php
 	    						$date 		=  new DateTime($populer['createon']);
 	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -318,7 +322,7 @@
                         </div>
                         <div class="box item">
                             <div class="box-vl">
-                                <a href="" class="vl">Video Lainnya</a>
+                                <a href="<?=base_url()?>eyetube" class="vl">Video Lainnya</a>
                                 <i class="material-icons r-vl">keyboard_arrow_right</i>                                
                             </div>
 							<?php
@@ -326,8 +330,8 @@
 							{
 							?>							
                             <div class="vid-box-vl">
-                                <img src="assets/img/video-small.png" alt="">
-                                <a href="" class="vid-ttl"><?= $kamu['title']; ?></a><br>
+                                <img src="<?php echo base_url(); ?>systems/eyetube_storage/<?= $kamu['thumb']; ?>" alt="">
+                                <a href="<?=base_url()?>eyetube/detail/<?=$kamu["url"]?>" class="vid-ttl"><?= $kamu['title']; ?></a><br>
                                 <p class="vid-time"><?php
 	    						$date 		=  new DateTime($kamu['createon']);
 	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -347,7 +351,7 @@
         <div class="center-dekstop pd-l-100">
             <div class="et-content m-b-150">
                 <div class="et-content1">
-                    <img class="img-title" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
+                    <img class="img-title" src="<?php echo base_url(); ?>newassets/img/ic_eyenews.png" alt="">
                     <h2 class="title en">EyeNews</h2>
                     <hr class="x-en">
                     <div class="t-en-content2">
@@ -359,10 +363,11 @@
 	  							echo relative_time($tanggal) . ' ago';
 	  						?>
 	  					</small></span>
-                        <p class="et-st-det"><?php echo $eyenews_main->title; ?></p>
-                    </div>					
-                    <img class="v-et-2 w-100" src="assets/img/video-small.png" alt="">
-                    <!--<img class="v-et-2 w-100" src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="">-->
+                        <p class="et-st-det"><a href="<?=base_url()?>eyenews/detail/<?=$eyenews_main->eyenews_id; ?>"><?php echo $eyenews_main->title; ?></a></p>
+                    </div>				
+					<a href="<?=base_url()?>eyenews/detail/<?=$eyenews_main->eyenews_id; ?>">					
+                    <img class="v-et-2 w-100" src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="">
+					</a>
                     <div class="h-berita-terkait" style="margin-bottom:26px;">
                         <h3>Berita Terkait</h3>
 						<?php
@@ -375,7 +380,7 @@
                         <ul>
                             <li>
                                 <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar['eyenews_id'];?>">
-								<img src="<?php echo base_url(); ?>assets/img/chevron-right-red.png"> <?= $similar['title']; ?></a>
+								<img src="<?php echo base_url(); ?>newassets/img/chevron-right-red.png"> <?= $similar['title']; ?></a>
                             </li>
                         </ul>
 						<?php			
@@ -386,19 +391,19 @@
                     </div>
                 </div>
                 <div class="et-content2">
-                    <img class="img-title" src="assets/img/ic-eyeme.png" alt="">
+                    <img class="img-title" src="newassets/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
                     <div class="c-em-content2">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">					
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">					
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">					
+                        <img src="newassets/img/eyeme-photo thumbnail.png" alt="">					
                         <button type="text" class="em-btn">Lihat Foto Lainnya</button>
                     </div>
                 </div>
@@ -419,18 +424,17 @@
 								foreach($eyenews_populer as $populer){
 								?>
                                     <x>
-                                        <a href="">Berita Lainnya</a>
+                                        <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
                                     <div class="rek-ber">
                                         <div class="rek-ber-c">
-                                            <img src="assets/img/video-small.png" style="width:150px" alt="">
-                                            <!--<img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:150px" alt="">-->
+                                            <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:150px" alt="">
                                             <span><?=$populer['createon'];?></span>
-                                            <h1><?=$populer['title'];?></h1>
+                                            <h1><a href="<?=base_url()?>eyenews/detail/<?=$populer["eyenews_id"]?>"><?=$populer['title'];?></a></h1>
                                             <p><?php
 												$keterangan = strip_tags($populer['description']);
-												echo word_limiter($keterangan,25);
+												echo word_limiter($keterangan,15);
 											?></p>
                                         </div>
                                         <hr>                                        
@@ -444,14 +448,14 @@
 								foreach($eyenews_rekomendasi as $rekomendasi){
 								?>
                                     <x>
-                                        <a href="">Berita Lainnya</a>
+                                        <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
                                     <div class="rek-ber">
                                         <div class="rek-ber-c">
                                             <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" style="width:150px" alt="">
                                             <span><?$rekomendasi['createon'];?></span>
-                                            <h1><?=$rekomendasi['title'];?></h1>
+                                            <h1><a href="<?=base_url()?>eyenews/detail/<?=$rekomendasi["eyenews_id"]?>"><?=$rekomendasi['title'];?></a></h1>
                                             <p><?php
 												$keterangan = strip_tags($rekomendasi['description']);
 												echo word_limiter($keterangan,15);
@@ -468,14 +472,14 @@
 								foreach($eyenews_muda as $muda){
 								?>
                                     <x>
-                                        <a href="">Berita Lainnya</a>
+                                        <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
                                     <div class="rek-ber">
                                         <div class="rek-ber-c">
                                             <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:150px" alt="">
                                             <span><?$muda['createon'];?></span>
-                                            <h1><?=$muda['title'];?></h1>
+                                            <h1><a href="<?=base_url()?>eyenews/detail/<?=$muda["eyenews_id"]?>"><?=$muda['title'];?></a></h1>
                                             <p><?php
 												$keterangan = strip_tags($muda['description']);
 												echo word_limiter($keterangan,15);
@@ -492,7 +496,7 @@
                     </div>
                 </div>
                 <div class="et-content2">
-                    <img class="img-title" src="assets/img/ic_eyemarket.png" alt="">
+                    <img class="img-title" src="newassets/img/ic_eyemarket.png" alt="">
                     <h2 class="title emar">EyeMarket</h2>
                     <hr class="x-emar">
                         <div class="rek-ber m-t-14">
@@ -500,8 +504,7 @@
 							foreach ($eyemarket_main as $row1){
 						?>						
                             <div class="rek-ber-c">
-								<img src="assets/img/video-small.png" alt="" style="width:110px; height:90px;">
-								<!--<img src="systems/eyemarket_storage/<?=$row1["pic"]?>" alt="" style="width:110px; height:90px;">-->
+								<img src="systems/eyemarket_storage/<?=$row1["pic"]?>" alt="" style="width:110px; height:90px;"></a>
                                 <h1><?php echo $row1['product_name'];  ?> </h1>
                                 <span class="price">HARGA</span>
                                 <p class="prices">Rp.<?php echo number_format($row1['price'],2,",","."); ?></p>
@@ -522,7 +525,7 @@
         </div>
         <!-- EYEVENT -->
         <div class="center-dekstop pd-l-100">
-            <img class="img-title" src="assets/img/ic_eyevent.png" alt="">
+            <img class="img-title" src="newassets/img/ic_eyevent.png" alt="">
             <h2 class="title ee">EyeVent</h2>
             <hr class="x-ee">
             <span>
@@ -537,14 +540,16 @@
 						foreach($eyevent_main as $row){
 						?>
                             <div class="ev-box-content">
-                                <!--<img src="assets/img/video-small.png" alt="">-->
+                                <!--<img src="newassets/img/video-small.png" alt="">-->
+								<a href="<?=base_url()?>eyevent/detail/<?=$row["id_event"]?>">								
 								<img height="200px;" src="<?=base_url()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+								</a>
                             </div>
 						<?php }?>
                         </div>
                         <div class="box item" style="width:1060px;">			
                             <div class="ev-box-content">
-                                <!--<img src="assets/img/video-small.png" alt="">-->
+                                <!--<img src="newassets/img/video-small.png" alt="">-->
 								<img height="200px;" src="">								
                             </div>
                         </div>
@@ -669,9 +674,9 @@
                         Copyright 2017 eyesoccer.com. All Rights Reserved.
                     </div>
                     <div class="center50">
-                        <a href="" id="i-fb"><img class="first" src="assets/img/ic_facebook.png" alt=""><img class="scond" src="assets/img/ic_facebook_selected.png" alt=""></a>
-                        <a href="" id="i-tw"><img class="first" src="assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="assets/img/ic_twitter-selected.png" alt=""></a>
-                        <a href="" id="i-in"><img class="first" src="assets/img/ic_instagram.png" alt=""><img class="scond" src="assets/img/ic_instagram-selected.png" alt=""></a>
+                        <a href="" id="i-fb"><img class="first" src="newassets/img/ic_facebook.png" alt=""><img class="scond" src="newassets/img/ic_facebook_selected.png" alt=""></a>
+                        <a href="" id="i-tw"><img class="first" src="newassets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="newassets/img/ic_twitter-selected.png" alt=""></a>
+                        <a href="" id="i-in"><img class="first" src="newassets/img/ic_instagram.png" alt=""><img class="scond" src="newassets/img/ic_instagram-selected.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -680,6 +685,6 @@
         <div id="srcbox" class="searchbox">
             <input type="text"><button id="srcSub" type="submit">Cari</button>
         </div>
-    <script src="<?=base_url()?>assets/js/home.js"></script>
+    <script src="<?=base_url()?>newassets/js/home.js"></script>
     </body>
 </html>
