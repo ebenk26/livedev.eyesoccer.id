@@ -37,6 +37,11 @@
                     {
                         $status     = '<label class="badge badge-info">Menunggu Konfirmasi Admin</label>';
                     }
+                    else
+                    if ($order['status'] == 3)
+                    {
+                        $status     = '<label class="badge badge-success">Pembayaran Lunas</label>';
+                    }
             ?>
                     <tr class="">
                         <td> 
