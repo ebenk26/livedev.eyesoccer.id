@@ -24,6 +24,7 @@ class Eyemarket extends CI_Controller {
 	{ 
 		$id_product 			= $this->Eyemarket_model->get_id_product($title_slug);
 		$data["product"] 		= $this->Eyemarket_model->get_product($id_product->id_product);
+		$data["ex_product"] 	= $this->Eyemarket_model->get_product_lain($id_product->id_product);
 		$created_date 		 	= "";
 		$data['username'] 		= $this->session->userdata('username');
 		$data['member_id'] 		= $this->session->userdata('member_id');
@@ -85,8 +86,6 @@ class Eyemarket extends CI_Controller {
 
 	public function login()
 	{
-		if($this->input->post('username') != FALSE)
-		{
 	      	$username 	= $this->input->post('username');
 	      	$password 	= $this->input->post('password');
 
@@ -109,7 +108,6 @@ class Eyemarket extends CI_Controller {
 
 	      		redirect($_SERVER['HTTP_REFERER']);
 	      	}  
-      	}	
 	}
 
 	public function logout()
@@ -252,7 +250,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -279,7 +277,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -306,7 +304,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -333,7 +331,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -360,7 +358,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'produk_image/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {

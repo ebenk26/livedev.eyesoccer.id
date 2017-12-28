@@ -161,5 +161,10 @@ $data["profile"]=$profile;
 
 		$this->load->view('home1',$data);
 	}**/
+
+	public function login()
+	{
+		$this->load->view('login');
+	}
 	
 }
