@@ -59,12 +59,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </p>
                         </div>
                         <div class="col-xs-7">
-                            <!-- <div class="social">
-                                <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-                                <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-                            </div> -->
                             <div class="login">
                         <?php 
                             if (isset($username))
@@ -73,6 +67,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="<?= base_url(); ?>eyemarket/user/<?= $member_id; ?>">
                                     <i class="fa fa-user"></i>
                                     <span class="hidden-xs text-uppercase"><?= $username; ?></span>
+                                </a>
+                                <a href="<?= base_url(); ?>eyemarket/user/<?= $member_id; ?>">
+                                    <i class="fa fa-cart-plus"></i>
                                 </a>
                                 <a href="<?= base_url(); ?>eyemarket/logout">
                                     <i class="fa fa-user"></i>
