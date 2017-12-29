@@ -9,7 +9,7 @@ class Eyetube extends CI_Controller {
 		    $this->load->model('Eyetube_model');
 			$this->load->helper(array('form','url','text','date'));			
 			date_default_timezone_set('Asia/Jakarta');
-
+			$this->load->helper('my');
 			
     }
 	public function index($pg=null)
@@ -41,9 +41,13 @@ class Eyetube extends CI_Controller {
 		$data['video_eyetube'] = $this->Eyetube_model->get_eyetube_satu();
 		$data['eyetube_populer'] = $this->Eyetube_model->get_eyetube_populer();
 		$data['eyetube_rekomendasi'] = $this->Eyetube_model->get_eyetube_rekomendasi();
+		$data['eyetube_rekomendasi_2'] = $this->Eyetube_model->get_eyetube_rekomendasi_2();
 		$data['eyetube_science'] = $this->Eyetube_model->get_eyetube_science();
+		$data['eyetube_science_2'] = $this->Eyetube_model->get_eyetube_science_2();
 		$data['eyetube_kamu'] = $this->Eyetube_model->get_eyetube_kamu();
+		$data['eyetube_kamu_2'] = $this->Eyetube_model->get_eyetube_kamu_2();
 		$data['eyetube_ssb'] = $this->Eyetube_model->get_eyetube_ssb();
+		$data['eyetube_ssb_2'] = $this->Eyetube_model->get_eyetube_ssb_2();
 		
 		$data["extrascript"]=$this->load->view('eyetube/script_index', '', true);
 		$this->load->view('config-session',$data);
