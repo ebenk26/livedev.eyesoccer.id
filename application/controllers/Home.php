@@ -100,7 +100,7 @@ class Home extends CI_Controller {
 	}
 	public function member_area(){
 		// var_dump('dfjdkffk');exit();
-		if(isset($_SESSION["member_id"])){
+		if(isset($_SESSION["id_member"])){
 			
 		}else{
 		
@@ -125,7 +125,7 @@ class Home extends CI_Controller {
 
 		$data["popup"]=$array[14][3];
 
-		$profile=$this->db->query("SELECT * FROM tbl_member a LEFT JOIN tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["member_id"]."' LIMIT 1")->row_array();
+		$profile=$this->db->query("SELECT * FROM tbl_member a LEFT JOIN tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["id_member"]."' LIMIT 1")->row_array();
 		// var_dump($profile);exit();
 				if(isset($profile["profile_pic"]) && $profile["profile_pic"]!="")
 		{
@@ -144,12 +144,12 @@ class Home extends CI_Controller {
 	}
 	
 	public function logout(){
-		unset($_SESSION["member_id"],$_SESSION["user_id"]);
+		unset($_SESSION["id_member"],$_SESSION["user_id"]);
 				session_destroy();
 				redirect("home/index");
 	}
 	public function request_player(){
-		$this->db->query("INSERT INTO tbl_member_player SET id_player='".$_POST["player_id"]."',id_member='".$_SESSION["member_id"]."', add_date='".date("Y-m-d H:i:s")."'");
+		$this->db->query("INSERT INTO tbl_member_player SET id_player='".$_POST["player_id"]."',id_member='".$_SESSION["id_member"]."', add_date='".date("Y-m-d H:i:s")."'");
 		redirect("home/member_area");
 		
 	}
@@ -188,6 +188,7 @@ class Home extends CI_Controller {
 	public function login_session()
 	{
 		if(isset($_POST['username'])){
+
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$page     = $_POST['page'];
