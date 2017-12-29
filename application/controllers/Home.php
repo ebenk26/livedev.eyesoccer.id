@@ -9,6 +9,7 @@ class Home extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->model('Home_model');
 			$this->load->helper(array('form','url','text','date'));
+			$this->load->helper('my');
     }
 	public function index()
 	{	

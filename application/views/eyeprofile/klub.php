@@ -2,21 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1000">
-    <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-<body>
     <div class="crumb">
         <ul>
             <!--<li>Home</li>-->
@@ -163,10 +148,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="box-slc-musim">
                     <span>Pilih Musim</span>
                     <select id="" name="" selected="true" class="slc-musim">
-                        <option value="">2017/18</option>
-                        <option value="">2017/18</option>
-                        <option value="">2017/18</option>
-                        <option value="">2017/18</option>
+						<?php
+							foreach($kompetisi as $row){
+						?>
+							<option><?=$row['competition']?></option>';  
+						<?php
+							}
+						?>
                     </select>                    
                 </div>
                 <table class="radius table table-striped" cellspacing="0" cellpadding="0">
@@ -306,6 +294,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         </div>
 		</div>
-</body>
-
-</html>
