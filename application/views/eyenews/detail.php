@@ -151,7 +151,7 @@
                         <span><?= $value['description']; ?></span>
                     </div>
 
-                    <div style="margin-top: 20px;">
+                    <!--<div style="margin-top: 20px;">
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                         <div class="tube-komen mt-10">
                             <img src="<?=base_url()?>assets/img/EYEME/user-discover.png" alt="profil foto">
@@ -182,32 +182,6 @@
 
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <div>
-                                            <span>sed ut perticipan. Ut denim am minim venian, quis nostrud exercitation ullamco
-                                                laboris nisi up aliquip ex ea consepuat. Ut denim am minim venian, quis nostrud
-                                            </span>
-                                        </div>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <div>
-                                            <ul>
-                                                <li>
-                                                    <a href="">Balas</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Laporkan</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
                             </table>
                             <div class="garis-x3 m-t-10"></div>
 
@@ -216,7 +190,87 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div>-->
+					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
+					<div id="emoji">
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="smile">
+								<img src="<?=base_url()?>img/emoticon/senang.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Senang</small>
+								<center class="replace_smile" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_smile']?>
+								</center>
+							</a>
+						</div>	
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="shock">
+								<img src="<?=base_url()?>img/emoticon/terkejut.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Terkejut</small>
+								<center class="replace_shock" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_shock']?>
+								</center>
+							</a>
+						</div>						
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="inspired">
+								<img src="<?=base_url()?>img/emoticon/terinspirasi.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Terinspirasi</small>
+								<center class="replace_inspired" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_inspired']?>
+								</center>
+							</a>
+						</div>
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="happy">
+								<img src="<?=base_url()?>img/emoticon/bangga.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Bangga</small>
+								<center class="replace_happy" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_happy']?>
+								</center>
+							</a>
+						</div>						
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="sad">
+								<img src="<?=base_url()?>img/emoticon/sedih.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Sedih</small>
+								<center class="replace_sad" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_sad']?>
+								</center>
+							</a>
+						</div>						
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="fear">
+								<img src="<?=base_url()?>img/emoticon/takut.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Takut</small>
+								<center class="replace_fear" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_fear']?>
+								</center>
+							</a>
+						</div>					
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="fun" style="cursor:pointer">
+								<img src="<?=base_url()?>img/emoticon/terhibur.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Terhibur</small>
+								<center class="replace_fun" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_fun']?>
+								</center>
+							</a>
+						</div>			
+
+						<div style="background:#117A65;color:#fff;border:solid #fff 1px;text-align:center;padding:1px;cursor:pointer">
+							<a class="emoticon" type_emot="angry" style="cursor:pointer">
+								<img src="<?=base_url()?>img/emoticon/marah.png" class="img-responsive max-width: 100% height: auto">
+								<small style="color:#fff">Marah</small>
+								<center class="replace_angry" style="background:#117A65;color:#fff;text-align:center;padding:1px;">
+									<?=$value['news_angry']?>
+								</center>
+							</a>
+						</div>
+					</div>
+					<br>
+					<h6 id="t4">Bagikan</h6>					
+					<div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyenews_storage/<?php print $value['pic']; ?>"></div>					
+					<div class="fb-comments" data-href="http://eyesoccer.id<?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
                 </div>
 
                 <div class="container tube-r">
@@ -338,33 +392,77 @@
     }
 ?>	
 <script>
-$(document).ready(function(){
-  pw=parseInt($(".parent-image").width());
-  cw=parseInt($(".child-image").width());
-  perpc=(cw/pw)*100;
-  if(perpc>=70)
-  {
-    $(".child-image").width(pw);
-  }
-//alert(perpc);
-  $(".emoticon").click(function(){
-	 // alert("tes");
-		id=$("#eyenews_id22").val();
-		type=$(this).attr("type_emot");
-		link="eyenews";
-		$.ajax({
+        $(document).ready(function () 
+        {
+            $(".emoticon").click(function()
+            {
+                // alert("tes");
+                id = $("#eyenews_id22").val();
+                type = $(this).attr("type_emot");
+                link = "eyenews";
+                $.ajax({
 
-		type: "POST",
-		data: { 'type':type,'id':id,'link':link},
-		url: "<?=base_url()?>eyenews/emot/"+id,
-		dataType: "json",
-		success:function(data){	
-		$(".replace_"+type).empty().html(data.html);
-		}
+                    type: "POST",
+                    data: { 'type': type, 'id': id, 'link': link },
+                    url: "<?=base_url()?>eyenews/new_emot/" + id,
+                    dataType: "json",
+                    success: function (data) {
 
-		});
-  })
-}) 
-</script>
+                        $(".replace_" + type).empty().html(data.html);
+                    }
+
+                });
+            })
+			
+			//Start infinite scroll
+		var offset = 1;
+        // create a long list of items
+        var container = $("#containerss");
+        var lastItemIndex = 0;
+        var title = "";
+        var loading = "<img style='width: 40%;margin-left: 30%;' class='load-gif' src='../../assets/img/loadingsoccer.gif' alt='Loading'>";
+        var appendToList = function() {
+			//getjson
+			$.ajax({
+				url: "../getRecentEyenews/" + offset,
+				type: "GET",
+				dataType: "JSON",
+				success: function(data)
+				{
+					if(data[0]['title'] == 0){
+						
+					}else{
+						// alert(JSON.stringify(data[0]['title']));
+						$.each( data, function( key, data ) {
+							$('.load-gif').hide();
+							// console.log(data.title);
+							var contentScroll = "<a style='font-size:14px;' href='/eyenews/detail/"+data.url+"'><div><img src='/systems/eyenews_storage/"+data.thumb1+"' style='height: 101px;float: left;'><div class='data-title'>"+data.title+"</div></div></a>"
+                            var el = $("<div>").attr("class", "itemss").html(contentScroll);
+                            
+							lastItemIndex = lastItemIndex + 1;
+							container.append(el);
+							
+						});
+					}
+				},
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					alert('Error get data from ajax');
+				}
+			});
+			offset = offset+5;
+			//end getjson
+        }
+
+        container.bind("infinite-scroll", function(args) {
+          console.log("Received", args);
+		  $('.load-gif').show();
+          setTimeout(function(){ appendToList(); }, 1500);
+        });
+
+        var infiniteScroll = new $.InfiniteScroll('#containerss', true).setup();
+        setTimeout(function(){ appendToList(); }, 1500);
+        }) 
+    </script>
 </body>
 </html>
