@@ -55,7 +55,7 @@
                         <li></li>
                         <li></li>
                         <li></li>-->
-                        <li><button class="btn-me-submit fl-r" type="submit" id="upload-act">Kirim</button></li>
+                        <li><button class="btn-me-submit fl-r disable" type="submit" id="upload-act" disabled="disabled">Kirim</button></li>
                     </ul>
                 </div>
             </div>
@@ -89,7 +89,7 @@ $('.img_more').click(function(event) {
 
 });
 $('#notif').click(function(event){ //event notif click
-   // event.preventDefault();
+   event.preventDefault();
  
     $('.kotak-popup-notif').slideToggle('slow',function(){//toggle down
         $.ajax({
@@ -111,11 +111,11 @@ $('#notif').click(function(event){ //event notif click
                         tbl += '<span class="ntf">';
 
                         if(v.notif_type.substr(0,3) == 'COM'){
-                            tbl += 'Mengomentari Foto Anda'; 
+                            tbl += 'Mengomentari Foto Anda </br><i style="margin:auto">' + v.notif_content + '</i>'; 
 
                         }
                         else if(v.notif_type.substr(0,3) == 'LIK'){
-                            tbl += 'menyukai Foto Anda'; 
+                            tbl += 'Menyukai Foto Anda'; 
                         }
                         else{
                              tbl += 'Mengikuti Anda'; 
@@ -329,7 +329,9 @@ $('#crop').click(function(event) {
         e.stopPropagation();
       });
     $('.fileimg').attr('value',decodeURIComponent(imageData));
-    console.log(imageData);
+    $('#upload-act').removeClass('disable');
+    $('#upload-act').removeAttr('disabled');
+   // console.log(imageData);
 
 });
 
@@ -385,6 +387,8 @@ $('#upload-act').click(function(event) {
     .done(function(e) {
         alert(e);
         window.location.replace(MYPROFILE);
+        $(this).attr('disabled', 'disable');
+        $(this).addClass('disable');
     })
     .fail(function() {
         console.log("error");
