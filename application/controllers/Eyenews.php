@@ -13,10 +13,10 @@ class Eyenews extends CI_Controller {
 	
 	public function index()
 	{
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"]="eyenews";		
+		$data["meta"]["title"] 			="";
+		$data["meta"]["image"] 			=base_url()."/assets/img/tab_icon.png";
+		$data["meta"]["description"] 	="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
+		$data["page"] 					="eyenews";		
 		
 		$data['all_news'] 				= $this->Eyenews_model->get_all_news();
 		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
@@ -28,13 +28,14 @@ class Eyenews extends CI_Controller {
 		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
-		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();		
-		
+		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['kanal'] 					= "eyenews";
 		$data["body"]=$this->load->view('eyenews/index', $data,true);
-		$this->load->view('template-baru',$data);		
+
+		$this->load->view('template/static',$data);		
 	}
 
-public function detail($eyenews_id='',$action=null)
+	public function detail($eyenews_id='',$action=null)
 	{
 		
 		$eyenews_id2 = $eyenews_id; //update rizki
@@ -60,7 +61,7 @@ public function detail($eyenews_id='',$action=null)
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-	$data["meta"]["share"]='
+		$data["meta"]["share"]='
 		<!-- Begin of SEO Meta Tags -->
 		<title>'.$row['title'].' - EyeNews | EyeSoccer</title>
 		<meta name="title" content="'.$row['title'].' - EyeNews | EyeSoccer" />
@@ -97,7 +98,7 @@ public function detail($eyenews_id='',$action=null)
 		<meta name="twitter:description" content="'.preg_replace('/\s+?(\S+)?$/', '', substr(strip_tags($row['description']), 0, 100)).'" />
 		<meta name="twitter:image" content="https://www.eyesoccer.id/systems/eyenews_storage/'.$row['pic'].'" />
 		<!--end of twitter card data-->
-	';
+		';
 		/* $cmd_ads=$this->db->query("select * from tbl_ads")->result_array();
 		$i=0;
 		foreach($cmd_ads as $ads){

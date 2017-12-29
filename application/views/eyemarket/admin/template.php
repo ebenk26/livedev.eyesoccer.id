@@ -11,7 +11,7 @@
           var base_url = '<?php echo base_url(); ?>';  
         </script>
 
-      <link rel="stylesheet" href="<?=base_url()?>assets/eyemarket/user/node_modules/font-awesome/css/font-awesome.min.css" />
+      <link rel="stylesheet" href="<?=base_url()?>assets/eyemarket/font-awesome/css/font-awesome.min.css" />
       <link rel="stylesheet" href="<?=base_url()?>assets/eyemarket/user/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
       <link rel="stylesheet" href="<?=base_url()?>assets/eyemarket/user/style.css"/>
       <link rel="shortcut icon" href="<?=base_url()?>img/tab_icon.png"/>

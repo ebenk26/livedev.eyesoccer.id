@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title></title>
-    <meta name="viewport" content="width=1000">
-    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
 
 <body>
     <div class="crumb">
@@ -334,7 +321,7 @@
                                         <span><?=$row["club_a"]?></span>
                                     </td>
                                     <td>
-                                        <img src="<?=base_url()?>systems/club_logo/<?php print $row['club_a']; ?>" alt="">
+                                        <img src="<?=base_url()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt="">
                                     </td>
                                     <td>
                                         <span><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></span>
@@ -365,6 +352,3 @@
         </div>
     </div>
     </div>
-</body>
-
-</html>
