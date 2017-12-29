@@ -46,7 +46,7 @@
             <div class="w1020 m-0">
                 <div class="container h-news-l">
                     <div>
-                        <img src="<?=base_url()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="">
+                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="">
                     </div>
                     <div class="container p-r panah-news">
                         <div class="fl-l">
@@ -77,7 +77,7 @@
                     </table>
                     <div class="pd" style="height: 370px;overflow: hidden;">
                         <div>
-                            <a href="<?=base_url()?>eyenews/detail/<?=$headline->eyenews_id; ?>">
+                            <a href="<?=imgUrl();?>eyenews/detail/<?=$headline->eyenews_id; ?>">
                                 <h1><?= $headline->title; ?></h1>
                             </a>
                             <span>
@@ -125,7 +125,7 @@
 						?>
                         <div class="w30">
                             <div>
-                                <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $similar['thumb1']; ?>" style="width:100%;margin-right:20px;">
+                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar['thumb1']; ?>" style="width:100%;margin-right:20px;">
                                 <a href="">
                                     <p class="sub-en"><?= $similar['title']; ?></p>
                                 </a>
@@ -155,7 +155,7 @@
 							?>							
                             <div class="container garis-x4">
                                 <div class="container" style="width:240px;">
-                                    <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" alt="">
+                                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" alt="">
                                 </div>
                                 <div class="container news-rcm-z">
                                     <div class="rr">
@@ -183,7 +183,7 @@
 							<?php 
 							foreach($eyenews_populer as $row){
 							?>
-                                <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
                                 <div class="n-rcm-up-teks">
                                     <div class="rr">
                                         <span><?=$row['createon'];?></span>
@@ -205,7 +205,7 @@
 							?>							
                             <div class="container news-rcm-d">							
                                 <a href="" class="nn">
-                                    <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
                                 </a>
                                 <div class="container rm">
                                     <a href="">
@@ -247,7 +247,7 @@
 					?>						
                         <div class="w30">
                             <div>
-                                <img src="<?php echo base_url(); ?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="width:100%;margin-right:20px;">
+                                <img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="width:100%;margin-right:20px;">
                                 <a href="">
                                     <p class="sub-en"><?= $videonya['title']; ?></p>
                                 </a>
@@ -275,7 +275,7 @@
 						?>
                         <div class="container garis-x4">
                             <div class="container" style="width:240px;">
-                                <img src="<?php echo base_url(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
                             </div>
                             <div class="container news-rcm-z">
                                 <div class="rr">
@@ -321,14 +321,14 @@
                                         <span><?=$row["club_a"]?></span>
                                     </td>
                                     <td>
-                                        <img src="<?=base_url()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt="">
+                                        <img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt="">
                                     </td>
                                     <td>
                                         <span><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></span>
                                         <p><?=$row['live_pertandingan']?></p>
                                     </td>
                                     <td>
-                                        <img src="<?=base_url()?>systems/club_logo/<?php print $row['club_a']; ?>" alt="">
+                                        <img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt="">
                                     </td>
                                     <td>
                                         <span><?=$row["club_b"]?></span>
