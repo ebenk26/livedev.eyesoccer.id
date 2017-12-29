@@ -8,8 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
+        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <ul>
             <li>Home</li>
             <li>EyeProfile</li>
-            <li>Offisial</li>
+            <li>Klub Offisial</li>
         </ul>
     </div>
     <div class="container">
@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </g>
                     </g>
                 </svg>					
-                <img src="<?=base_url()?>assets/img/garis.svg" alt="">
+                <img src="<?=base_url()?>newassets/img/garis.svg" alt="">
                 <img class="epro-logo" src="" alt="">
             </div>
             <div class="right">
@@ -112,13 +112,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 			<?php }?>
         </div>
-        <div class="menu-2">
+        <!--<div class="menu-2">
             <ul>
                 <li>Pemain</li>
                 <li>Offisial</li>
                 <li>Supporter</li>
             </ul>
-        </div>
+        </div>-->
     </div>
     <div class="dekstop pd-t-280">
     <div class="center-dekstop m-0 option">
@@ -176,7 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div> 
 		<?php }?>
     </div>
-</div>	
+	</div>
     <script src="assets/js/home.js"></script>
     </body>
 </html>

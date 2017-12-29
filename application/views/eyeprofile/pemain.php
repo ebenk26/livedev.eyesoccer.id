@@ -8,11 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <title>Eyesoccer | Pemain</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=1000">
-    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
     <div class="crumb">
@@ -104,15 +104,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="center-dekstop m-0">
     <input type="text" name="" id="" placeholder="Cari ..." class="src-200 mt-30">
-    <img src="<?=base_url()?>assets/img/ic_search.png" alt="" class="img-src-200">
+    <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
     <table class="radius table table-striped pd-18 mt-10" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
                     <th class="t-b-b">No</th>
-					<th class="t-b-b">Pemain</th>
-                    <th class="t-b-b"></th>
+					<th class="t-b-b"></th>
+                    <th class="t-b-b">Pemain</th>
                     <th class="t-b-b">Tgl Lahir</th>
                     <th class="t-b-b">Posisi</th>
+                    <th class="t-b-b">Klub</th>
                     <th class="t-b-b">Kewarganegaraan</th>
                     <th class="t-b-b">Main</th>
                     <th class="t-b-b">Gol</th>
@@ -140,15 +141,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				?>						
                 <tr>
                     <td><?=$no++?></td>
-                    <td><?=$row['nama']?></td>
+                    <td>
+					<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>">
+					<div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;">
+						<img src="<?=base_url()?>systems/player_storage/<?=$row["foto"]?>" alt="">
+					</div>
+					</a>					
+					</td>
                     <td>
 						<!--<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>systems/player_storage/<?=$row["foto"]?>"></div></a>-->
-						<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>assets/img/content_11.jpg"></div></a>
+					<?=$row['nama']?>	
                     </td>
                     <td><?=$row['tanggal']?> <?=$bulan[$row['bulan']]?> <?=$row['tahun']?></td>
                     <td><?=$row['posisi']?></td>
-                    <td><?=$row['posisi']?></td>
-                    <td>-</td>
+                    <td><?=$row['klub']?></td>
+                    <td><?=$row['timnas']?></td>
                     <td>-</td>
                 </tr>
 				<?php }?>

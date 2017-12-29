@@ -28,7 +28,7 @@
             text-transform: capitalize;
             font-size: 2.5em;
             margin: 5px 0px;
-            font-weight: 200;
+            font-weight: 100;
         }
         .conten-left>span{
             font-size: .8em;
@@ -76,16 +76,15 @@
         {
             width: 330px;
             float: left;
-            /* padding-left: 15px; */
+            padding-left: 15px;
             font-size: 0.8em;
             color: black;
         }
         .box-judul small{
-            float: left;
+            float: right;
             font-size: 0.8em;
             color: black;
-            display: block;
-            /* padding-right: 15px; */
+            padding-right: 15px;
         }
         .box-judul p:hover, .box-judul small:hover
         {
@@ -118,8 +117,6 @@
             font-size: 1.5em;
             font-weight: 300;
             line-height: .5;
-            max-height: 70px;
-            overflow: hidden;
         }
         @media (min-width: 300px) and (max-width: 1004px)
         {
@@ -353,9 +350,6 @@
             <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyenews_storage/<?php print $value['pic']; ?>"></div>
             <hr></hr>
             <div class="fb-comments" data-href="http://eyesoccer.id<?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
-			<div class="banner hidden-md hidden-lg" style="width: 100%;">
-				<img src="<?= base_url(); ?>systems/eyeads_storage/<?= $ads_right->pic; ?>" class="img img-responsive">
-			</div>
         </div> 
         <div class="content-right hidden-sm hidden-xs">
             <br>
@@ -379,7 +373,7 @@
                 foreach ($terkini as $terkininya)
                 {
             ?>
-                        <div class="media" style="width: 90%;border-bottom: 1px solid;padding-bottom: 10px;">
+                        <div class="media drop-shadow" style="width: 90%;">
                             <a href="<?= base_url(); ?>eyenews/detail/<?= $terkininya["eyenews_id"]; ?>">
                                 <img src="<?=base_url()?>systems/eyenews_storage/<?= $terkininya["thumb1"]; ?>" alt="" style="width: 90px; height: 80px; float: left;">
                                 <div class="box-judul">
