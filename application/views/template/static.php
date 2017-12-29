@@ -77,6 +77,7 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
+            <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
     </head>
@@ -88,7 +89,23 @@
                         <img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
                     </div>
                     <div class="btn-login">
-                        <span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login">Masuk</span>
+					
+<?php	if(!isset($_SESSION["member_id"]))
+{
+?>
+<span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/login">Masuk</a></span>
+	<?php
+}
+else{
+	
+	?>
+	
+	<span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/member_area"><img src="<?=imgUrl()?>systems/img_storage/<?=load_top_avatar() ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name()?></a></span>
+	<?php
+}
+?>
+					
+                        
                     </div>                
                 </div>                
             </div>
@@ -150,6 +167,7 @@
         <div id="srcbox" class="searchbox">
             <input type="text"><button id="srcSub" type="submit">Cari</button>
         </div>
+    <script src="<?=base_url()?>bs/js/bootstrapvalidator.min.js"></script>
     <script src="<?=base_url()?>assets/js/home.js"></script>
     </body>
 </html>

@@ -25,7 +25,7 @@ $get_player=$this->db->query("SELECT * FROM tbl_player WHERE player_id='".$pm["i
 </style>
 <div class="col-lg-5 col-xs-12">
  <div class="col-lg-3 col-xs-6 ">
- <img src="<?=base_url()?>systems/img_storage/<?=$pic?>" class="img  text-center blah" width="100%" /> <br />
+ <img src="<?=imgUrl()?>systems/img_storage/<?=$pic?>" class="img  text-center blah" width="100%" /> <br />
 	  <br />
 	    <div class="form-group text-center" id="t1">
 		<form id="change_profil" method="POST" action="profile_upload" enctype="multipart/form-data">
@@ -86,7 +86,7 @@ $get_player=$this->db->query("SELECT * FROM tbl_player WHERE player_id='".$pm["i
 	 {
 		?>
 			  <div class="col-lg-3 col-xs-6">
-	  <img src="<?=base_url()?>systems/img_storage/<?=$gr["thumb1"]?>" class="img img-rounded" width="100%" />
+	  <img src="<?=imgUrl()?>systems/img_storage/<?=$gr["thumb1"]?>" class="img img-rounded" width="100%" />
 	  </div>	
 		<?php 
 	 }
@@ -101,7 +101,7 @@ $get_player=$this->db->query("SELECT * FROM tbl_player WHERE player_id='".$pm["i
   </div>
 
 </div>
-<a href="<?=base_url()?>home/logout" class="clickable btn btn-danger" ><small style="color:black;font-weight:bolder">Keluar</small></a>
+<a href="<?=imgUrl()?>home/logout" class="clickable btn btn-danger" ><small style="color:black;font-weight:bolder">Keluar</small></a>
 
 </div>
 
@@ -113,7 +113,7 @@ if($check->num_rows()>0 && $pm["active"]=="1")
 ?>
 <a data-toggle="modal" data-target="#player_reg" style="text-decoration:none;cursor:pointer;">
 
-<img src="<?=base_url()?>systems/player_storage/<?=$get_player["pic"]?>" class="img img-responsive" style="width:45px;height:45px;display:inline;">
+<img src="<?=imgUrl()?>systems/player_storage/<?=$get_player["pic"]?>" class="img img-responsive" style="width:45px;height:45px;display:inline;">
 <br />
 <h3 class="text-center" id="t4"><?=$get_player["name"]?></h3>
 
@@ -123,7 +123,7 @@ if($check->num_rows()>0 && $pm["active"]=="1")
 }
 else{
 	?>
-	<a data-toggle="modal" data-target="#player_reg" style="text-decoration:none;cursor:pointer"><img src="<?=base_url()?>img/pemain_hitam.png" class="img img-responsive" style="width:45px;height:45px;display:inline;"></a>&emsp;&ensp;
+	<a data-toggle="modal" data-target="#player_reg" style="text-decoration:none;cursor:pointer"><img src="<?=imgUrl()?>img/pemain_hitam.png" class="img img-responsive" style="width:45px;height:45px;display:inline;"></a>&emsp;&ensp;
 
 	<?php
 }
@@ -131,7 +131,7 @@ else{
 </div>
 <div class="col-lg-3 col-xs-4 text-center" >
 
-<a href="<?=base_url()?>eyeprofile/klub" style="text-decoration:none;cursor:pointer"><img src="<?=base_url()?>img/club_hitam.png" class="img img-responsive" style="width:45px;height:45px;display:inline;"></a>&emsp;&ensp;
+<a href="<?=imgUrl()?>eyeprofile/klub" style="text-decoration:none;cursor:pointer"><img src="<?=imgUrl()?>img/club_hitam.png" class="img img-responsive" style="width:45px;height:45px;display:inline;"></a>&emsp;&ensp;
 </div>
 </div>
 	<hr></hr>
@@ -169,7 +169,7 @@ else{
 </div>
  
 
-<img id="loader_img" src="<?=base_url()?>img/loader.gif" style="position:absolute;top:40%;display:none">
+<img id="loader_img" src="<?=imgUrl()?>img/loader.gif" style="position:absolute;top:40%;display:none">
 
 
 <?php
@@ -189,7 +189,7 @@ if($check->num_rows()>0)
 	 
 	  <div class="form-group" id="t1"><span>Nama : </span><b><?=$get_player["name"]?></b></div>
 	  <div class="form-group" id="t1"><span>Tanggal Daftar : </span><b><?=$pm["add_date"]?></b></div>
-	  <div class="form-group" id="t1"><span><a href="<?=base_url("home/batal_daftar_player")?>" class="btn btn-danger">Batal Daftar</a></span></div>
+	  <div class="form-group" id="t1"><span><a href="<?=imgUrl("home/batal_daftar_player")?>" class="btn btn-danger">Batal Daftar</a></span></div>
 	  <br style="clear:both"/>
       </div>
     </div>
@@ -209,7 +209,7 @@ if($check->num_rows()>0)
 	 
 	  <div class="form-group" id="t1"><span>Nama : </span><b><?=$get_player["name"]?></b></div>
 	  <div class="form-group" id="t1"><span>Tanggal Daftar : </span><b><?=$pm["add_date"]?></b></div>
-	  <div class="form-group" id="t1"><span><a href="<?=base_url("eyeprofile/pemain_detail/".$get_player["player_id"])?>" class="btn btn-info">Ubah Profil</a></span></div>
+	  <div class="form-group" id="t1"><span><a href="<?=imgUrl("eyeprofile/pemain_detail/".$get_player["player_id"])?>" class="btn btn-info">Ubah Profil</a></span></div>
 	   <br style="clear:both"/>
       </div>
     </div>
@@ -233,7 +233,7 @@ else{
 	<div class="tab-content">
     <div id="pilih_pemain" class="tab-pane fade in active">
       <h3>Pilih Pemain</h3>
-      <form method="post" action="<?=base_url("home/request_player")?>" id="reg_form_player" enctype="multipart/form-data">
+      <form method="post" action="<?=imgUrl("home/request_player")?>" id="reg_form_player" enctype="multipart/form-data">
 		  <small>Sudah terdaftar di database kami? Verifikasi diri anda sekarang !</small>
 		  <div class="form-group" id="t1">
 			<input style="width: 98%;" type='text' placeholder="Masukkan nama pemain yang telah terdaftar" name='player_id' value='' class='auto ui-autocomplete-input' autocomplete='off'>
@@ -319,123 +319,4 @@ else{
 <?php
 }
 ?>
-
-<script>
-	$(function(){
-		// We can attach the `fileselect` event to all file inputs on the page
-		$(document).on('change', ':file', function() {
-		var input = $(this),
-		numFiles = input.get(0).files ? input.get(0).files.length : 1,
-		label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-		input.trigger('fileselect', [numFiles, label]);
-		});
-
-		// We can watch for our custom `fileselect` event like this
-		$(document).ready( function() {
-		$(':file').on('fileselect', function(event, numFiles, label) {
-
-		  var input = $(this).parents('.input-group').find(':text'),
-			  log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-		  if( input.length ) {
-			  input.val(log);
-		  } else {
-			  // if( log ) alert(log);
-		  }
-
-		});
-		});
-		
-		function readURL(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function (e) {
-					
-			// alert( e.target.result);
-					$('.blah').attr('src', e.target.result);
-					//$("#profil_pic_button").hide();
-					$("#submit_pic").show();
-				}
-
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
-		
-		$("#file_pic").change(function(){
-			//alert($(this).val());
-			//$("#submit_pic").show();
-			readURL(this);
-		});
-		
-		$('#reg_form_player').bootstrapValidator({
-			// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-			/* feedbackIcons: {
-				valid: 'glyphicon glyphicon-ok',
-				invalid: 'glyphicon glyphicon-remove',
-				validating: 'glyphicon glyphicon-refresh'
-			}, */
-			fields: {
-			 
-				
-			player_id: {
-					validators: {
-						notEmpty: {
-							message: 'Pemain tidak boleh kosong.'
-						}
-					}
-				},
-				file_ibukandung: {
-					validators: {
-						notEmpty: {
-							message: 'Nama ibu tidak boleh kosong.'
-						}
-					}
-				},
-				file_ktp: {
-					validators: {
-						notEmpty: {
-							message: 'File tidak boleh kosong.'
-						},
-					}
-				},
-				file_kk: {
-					validators: {
-						notEmpty: {
-							message: 'File tidak boleh kosong.'
-						},
-					}
-				},
-				file_akte: {
-					validators: {
-						notEmpty: {
-							message: 'File tidak boleh kosong.'
-						},
-					}
-				},
-				
-				}
-		}).on('success.form.bv', function(e) {
-
-			  alert("tes");
-		   // $('#success_message').slideDown({ opacity: "show" }, "slow");
-			$('#submit-button').removeAttr("disabled");
-
-			
-		});
-		
-		$("[name=player_id]").focusin(function(){
-			if($("[name=player_id]").val()!=""){
-				// alert();
-				// $("#form_verification_player").show();
-			}else{
-				// $("#form_verification_player").hide();
-			}
-		});
-		
-		$(".auto").autocomplete({
-			source: "search_player",
-			minLength: 3
-		}); 
-	})
-</script>
 <br class="clear" style="clear:both" />  

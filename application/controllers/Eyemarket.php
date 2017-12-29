@@ -10,6 +10,16 @@ class Eyemarket extends CI_Controller {
 			$this->load->helper(array('form','url','text','date','my_helper'));
 			$this->load->library('PHPMailer_Library');
 			$this->load->library('session');
+
+			$this->load->model('Master_model','mod');
+
+			$this->id_member  = @$this->session->userdata('id_member');#id_member login 
+			$this->username   = @$this->session->userdata('username');
+			/*
+				variabel userdata
+			*/
+			$this->data['id_member']   = $this->id_member;
+			$this->data['myusername']  = $this->username;
     }
 
 	public function index()
@@ -27,7 +37,7 @@ class Eyemarket extends CI_Controller {
 		$data["ex_product"] 	= $this->Eyemarket_model->get_product_lain($id_product->id_product);
 		$created_date 		 	= "";
 		$data['username'] 		= $this->session->userdata('username');
-		$data['member_id'] 		= $this->session->userdata('member_id');
+		$data['member_id'] 		= $this->session->userdata('id_member');
 
 		foreach ($data["product"] as $produk)
 		{
@@ -102,7 +112,7 @@ class Eyemarket extends CI_Controller {
 	      	}
 	      	else
 	      	{
-	      		$this->session->set_userdata('member_id',$user_id);
+	      		$this->session->set_userdata('id_member',$user_id);
 	      		$this->session->set_userdata('email',$email);
 	      		$this->session->set_userdata('username',$username);
 
@@ -497,12 +507,15 @@ class Eyemarket extends CI_Controller {
 
 	public function view_keranjang($id_member)
 	{
+		$this->mod->checkLogin();
+
 		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
+		
 		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
 		$data['jumlah']		= $this->Eyemarket_model->get_count_keranjang($id_member);
 
 		$data['username'] 	= $this->session->userdata('username');
-		$data['member_id'] 	= $this->session->userdata('member_id');
+		$data['member_id'] 	= $this->session->userdata('id_member');
 
 		$data["content"] 	= $this->load->view('eyemarket/new_view/basket', $data, true);
 
@@ -582,25 +595,18 @@ class Eyemarket extends CI_Controller {
 
 	public function input_order($id_member)
 	{
-		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
-		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
-		$data['berat_all']	= $this->Eyemarket_model->get_total_berat($id_member);
+		// $data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
+		// $data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
+		// $data['berat_all']	= $this->Eyemarket_model->get_total_berat($id_member);
 
-		//====== input ke table order 
-		$object 	= array(
-			'id_member' 	=> $id_member,
-			'harga' 		=> $data['total_all']->total_all,
-			'berat_all' 	=> $data['berat_all']->berat_all,
-		);
 
-		$order 	= $this->Eyemarket_model->set_order($object);
+		// //====== update keranjang
+		// $object_cart 	= array(
+		// 	'id_order' 	=> $order,
+		// );
 
-		//====== update keranjang
-		$object_cart 	= array(
-			'id_order' 	=> $order,
-		);
+		// $query = $this->db->update('eyemarket_keranjang', $object_cart, array('id_member' => $id_member, 'status' => '0'));
 
-		$query = $this->db->update('eyemarket_keranjang', $object_cart, array('id_member' => $id_member, 'status' => '0'));
 
 		redirect('/eyemarket/order_address/'.$id_member);
 	}
@@ -742,16 +748,46 @@ class Eyemarket extends CI_Controller {
 		$this->load->view('/eyemarket/new_view/payment', $data);
 	}
 
-	public function update_cart_payment($id_member)
+	public function start_order($id_member)
 	{
 		$object 	= array(
 			'id_tipe_bayar' 	=> $this->input->post('payment'),
 		);
-
-		$update 	= $this->Eyemarket_model->update_cart_payment($id_member,$object);
-		$update 	= $this->Eyemarket_model->update_order_payment($id_member,$object);
 		
-		if ($update)
+		$update 	= $this->Eyemarket_model->update_cart_payment($id_member,$object);
+
+		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
+
+		foreach ($data['model'] as $model)
+		{
+			$id_alamat 		= $model['id_alamat'];
+			$id_kurir 		= $model['id_kurir'];
+			$id_tipe_bayar 	= $model['id_tipe_bayar'];
+		}
+
+		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
+		$data['berat_all']	= $this->Eyemarket_model->get_total_berat($id_member);
+
+		// ====== input ke table order 
+		$data 	= array(
+			'id_member' 	=> $id_member,
+			'id_alamat' 	=> $id_alamat,
+			'id_kurir' 		=> $id_kurir,
+			'id_tipe_bayar' => $id_tipe_bayar,
+			'harga' 		=> $data['total_all']->total_all,
+			'berat_all' 	=> $data['berat_all']->berat_all,
+		);
+
+		$order 		= $this->Eyemarket_model->set_order($data);
+
+		// ===== update keranjang (id_order)
+		$objek 	= array(
+			'id_order' => $order,
+		);
+
+		$query = $this->db->update('eyemarket_keranjang', $objek, array('id_member' => $id_member, 'status' => '0'));		
+		
+		if ($query)
 		{
 			redirect('/eyemarket/order_review/'.$id_member);
 		}
@@ -906,7 +942,7 @@ class Eyemarket extends CI_Controller {
 
 	public function user($id_member)
 	{
-		if ($this->session->userdata('member_id') == NULL)
+		if ($this->session->userdata('id_member') == NULL)
 		{
 			$url 	= uri_string();
 			redirect('/home/login/');

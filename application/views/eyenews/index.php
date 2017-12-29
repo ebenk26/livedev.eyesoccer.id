@@ -3,8 +3,7 @@
     <div class="crumb">
         <ul>
             <li>Home</li>
-            <li>EyeProfile</li>
-            <li>Klub</li>
+            <li>Eyenews</li>
             <!-- <li>Pemain</li> -->
         </ul>
     </div>
@@ -313,7 +312,7 @@
 							?>							
                                 <tr>
                                     <td colspan="5">
-                                        <p class="lp"><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></p>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
