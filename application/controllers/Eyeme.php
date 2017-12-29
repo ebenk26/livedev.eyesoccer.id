@@ -69,46 +69,9 @@ class Eyeme extends CI_Controller {
 				$arr[$i]['secon']       = $getTime[$i]['secon'];
 				$arr[$i]['timeString']  = $getTime[$i]['timeString'];
 				$i++;	
-
 			}
-		}
-			/*
-				$dataNotif = $this->emod->getNotif($id_member);
-
-				$j=0;
-				foreach($dataNotif as $k => $v){
-					
-					$sub[$j][0] = substr($v->notif_type,0,3);
-					$sub[$j][1] = substr($v->notif_type,3);
-
-						if($sub[$j][0] == 'COM'){
-
-							$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
-							
-							$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-							$dataNotif[$j]->img_name  = 'img/'.$get[0]->img_name;
-							$dataNotif[$j]->img_thumb = 'img/'.$get[0]->img_thumb;
-							$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
-						}
-						elseif($sub[$j][0] == 'LIK'){
-
-							$get = $this->emod->whereImageIn('like',$sub[$j][1]);
-							
-							$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-							$dataNotif[$j]->img_name  = 'img/'.$get[0]->img_name;
-							$dataNotif[$j]->img_thumb = 'img/'.$get[0]->img_thumb;
-							$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
-
-						}
-						else{
-							$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
-						}
-					
-					$j++;
-
-				}
-			*/
-		#p($dataNotif);
+		}	
+		
 		$this->data['id_member']       = $id_member;
 		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
@@ -125,7 +88,6 @@ class Eyeme extends CI_Controller {
 		
 		if(count($getUser) > 0 ){
 			$usr  = $getUser[0];
-
 			//get Image 
 			$whereImg = array('id_member'=> $usr->id_member,'active'=> '1');
 			$getImg  		 = $this->mod->getAll('me_img',$whereImg);
@@ -135,9 +97,21 @@ class Eyeme extends CI_Controller {
 			//get follower
 			$whereFollower  = array('id_following'=>$usr->id_member,'block'=> '0');
 			$getFollower    = $this->mod->getAll('me_follow',$whereFollower);
-			//get Image 
 		
 			$check          = $this->emod->checkFollowed($this->id_member,$usr->id_member);
+			//mengambil jumlah comment dan jumlah like setiap gambar 
+
+			for($i = 0; $i < count($getImg); $i++){
+				$like  = $this->mod->getAll('me_like',
+							array('id_img' => $getImg[$i]->id_img),
+							array('id_img'));
+				$comment = $this->mod->getAll('me_comment',
+							array('id_img' => $getImg[$i]->id_img),
+							array('id_img'));
+				$getImg[$i]->countLike = count($like);
+				$getImg[$i]->countComment = count($comment);
+
+			}
 			
 			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] 	 = $getFollower;
@@ -194,14 +168,14 @@ class Eyeme extends CI_Controller {
 			echo 'false';
 		}
 	}
-	/*
-
-		*fungsi get_notif::
+	/**
+	*fungsi get_notif::
 	*/
 	public function get_notif(){
 		$this->mod->checkLogin();// check if user comming from home
 		$id_member   = $this->id_member;
 		$dataNotif = $this->emod->getNotif($id_member);
+		
 		if(count($dataNotif) > 0 ){ #check result dataNotif
 			$j=0;
 			foreach($dataNotif as $k => $v){
@@ -247,10 +221,10 @@ class Eyeme extends CI_Controller {
 		echo $json;
 		
 	}
-	/*
+	/**
 
-		fungsi upload;
-
+		fungsi upload_img::
+		upload image dari base64 
 
 	*/
 	public function upload_img(){
@@ -276,44 +250,23 @@ class Eyeme extends CI_Controller {
 			echo 'ACCESS DENIED';
 		}
 
-		#$this->
-
-		/*$file      = 'img';
-		$ext       = pathinfo($_FILES[$file]['name'],PATHINFO_EXTENSION);
-		$img_name  = $_FILES[$file]['name'];
-		p($_FILES);
-
-		$caption   = inputSecure($this->input->post('caption'));
-		$tag       = inputSecure($this->input->post('tag'));
-		$allowType = 'JPG|JPEG|PNG';
 		
-		$maxSize    = 2024; 
-		$maxWidth   = 1600;
-		$max_height = 1600;*/
-		#$pathUpload= './img/';
-
-
-		
-		
-		#$act       = $this->mod->uploadImg($pathUpload,$img_name,$maxSize,$maxWidth,$max_height,'img');
-		#$act       = $this->mod->handleUpload('img',$pathUpload,1,1);
-		#p($act)
-		#p($_POST);
-		#p($_FILES);
 	
 
 	}
+	/**
+		*fungsi explore::
+	*/
 	public function explore(){
+		$this->data['ex'] = $this->emod->getExplore();
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/explore',$this->data);
+		$this->load->view('eyeme/notif',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 
 		#echo 'explore test';
 	}
 	
-	public function test_notif(){
-		$this->load->view('eyeme/test');
-	}
 	/**
 	*@param $id_img = id image yang di sukai
 		insert like 
@@ -339,9 +292,11 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/like',$data);
 
 	}
-	/*
+	public function test_notif(){
+		$this->load->view('eyeme/test');
+	}
+	/**
 	sw::end
-
 	*/
 	public function home()
 	{

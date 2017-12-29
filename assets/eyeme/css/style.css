@@ -2762,3 +2762,8 @@ loading animation
   -webkit-transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
   transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
 }
+.disable{
+    background: #E5E5E5 !important;
+    color:#969696 !important;
+    cursor: not-allowed;
+}

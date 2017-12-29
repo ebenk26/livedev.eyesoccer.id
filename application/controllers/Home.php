@@ -8,6 +8,7 @@ class Home extends CI_Controller {
 		   // $this->load->model('Eyemarket_model');
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->model('Home_model');
+			$this->load->model('Master_model','mod');
 			$this->load->helper(array('form','url','text','date'));
 			$this->load->helper('my');
     }
@@ -187,22 +188,34 @@ class Home extends CI_Controller {
 	public function login_session()
 	{
 		if(isset($_POST['username'])){
-			$username=$_POST['username'];
-			$password=$_POST['password'];
-			$page=$_POST['page'];
-			$cmd=$this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
-			$row=$cmd->row_array();
-			$user_id=$row['id_member'];
-			$username=$row['name'];
-			$cek = $cmd->num_rows();
-			if($cek>0)
+
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			$page     = $_POST['page'];
+			$cmd      = 
+			$this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
+			$row      =$cmd->row_array();
+			$user_id  =$row['id_member'];
+			$cek      = $cmd->num_rows();
+			if($cek > 0)
 			{
 				if($row['id_member']=="" && $row['password']==""){
+				  
 				  header("refresh:0");  
 				  }
 				  else{
-				  $_SESSION['id_member']=$user_id;
-				  $_SESSION['username']=$username;
+				  	//get eyeme username 
+				  	$where   = array('id_member' => $user_id);
+				  	$profile  = $this->mod->getAll('me_profile',$where,array('username','id_member','display_picture'));
+
+					  	if(count($profile) > 0 ){
+
+					  		$this->session->id_member  = $profile[0]->id_member;
+					  		$this->session->username   = $profile[0]->username;
+
+					  	}
+					 //end
+				  $_SESSION['member_id']=$user_id;
 				  header("location:".base_url().$page);  
 				  }  
 			}else{
