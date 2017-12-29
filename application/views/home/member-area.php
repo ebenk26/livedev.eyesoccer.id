@@ -1,6 +1,6 @@
 <?php
 
-$check=$this->db->query("SELECT * FROM tbl_member_player WHERE id_member='".$_SESSION["member_id"]."' LIMIT 1");
+$check=$this->db->query("SELECT * FROM tbl_member_player WHERE id_member='".$_SESSION["id_member"]."' LIMIT 1");
 	 
 if($check->num_rows()>0)
 {
@@ -81,7 +81,7 @@ $get_player=$this->db->query("SELECT * FROM tbl_player WHERE player_id='".$pm["i
       <div class="panel-body">
 	 <div class="col-lg-12 pre-scrollable">
 	 <?php
-	 $galery=$this->db->query("SELECT * FROM tbl_gallery WHERE upload_user='".$_SESSION["member_id"]."' AND publish_by='member' AND active='1'");
+	 $galery=$this->db->query("SELECT * FROM tbl_gallery WHERE upload_user='".$_SESSION["id_member"]."' AND publish_by='member' AND active='1'");
 	 foreach($galery->result_array() as $gr)
 	 {
 		?>
@@ -101,7 +101,7 @@ $get_player=$this->db->query("SELECT * FROM tbl_player WHERE player_id='".$pm["i
   </div>
 
 </div>
-<a href="<?=imgUrl()?>home/logout" class="clickable btn btn-danger" ><small style="color:black;font-weight:bolder">Keluar</small></a>
+<a href="<?=base_url()?>home/logout" class="clickable btn btn-danger" ><small style="color:black;font-weight:bolder">Keluar</small></a>
 
 </div>
 

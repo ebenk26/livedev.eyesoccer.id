@@ -90,7 +90,7 @@
                     </div>
                     <div class="btn-login">
 					
-<?php	if(!isset($_SESSION["member_id"]))
+<?php	if(!isset($_SESSION["id_member"]))
 {
 ?>
 <span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/login">Masuk</a></span>
