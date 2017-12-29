@@ -39,11 +39,11 @@ $bulan 	= array(
         <title>Eyesoccer | Detail Pemain</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=1000">
-    <link href="<?=base_url()?>assets/css/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
     <div class="crumb">
@@ -93,7 +93,7 @@ $bulan 	= array(
                         <tbody>
                             <tr>
                                 <td>Klub Sekarang</td>
-                                <td>: <b><a href="<?=base_url()?>eyeprofile/klub_detail/<?=$pemain["url"]?>"><?=$pemain["club_name"]?></a></b></td>
+                                <td>: <b><a href="<?=base_url()?>eyeprofile/klub_detail/<?=$pemain["club_id"]?>"><?=$pemain["club_name"]?></a></b></td>
                             </tr>
                             <tr>
                                 <td>Posisi</td>
@@ -136,7 +136,6 @@ $bulan 	= array(
                 <h3>Karir Klub</h3>
                 <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
                     <thead>
-					<?php $no=1;?>
                         <tr>
                             <th class="t-b-b">No</th>
                             <th class="t-b-b">Klub</th>
@@ -147,21 +146,27 @@ $bulan 	= array(
                         </tr>
                     </thead>
                     <tbody>
+					<?php 
+					$no=1;
+					foreach($karir_player as $row){
+					?>					
                         <tr>
                             <td><?=$no++?></td>
                             <td>
-                                <img src="<?=base_url()?>systems/club_logo/<?=$pemain["logo"]?>" alt="" width="15px"> <?=$pemain["club_name"]?></td>
+							<?=$row["klub"]?>
+                                <!--<img src="<?=base_url()?>systems/club_logo/<?=$pemain["logo"]?>" alt="" width="15px"> <?=$pemain["club_name"]?>-->
+							</td>
+                            <td><?=$row["tahun"]?></td>
+                            <td><?=$row["jumlah_main"]?></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>                        
+                            <td><?=$row["pelatih"]?></td>
+                        </tr>
+					<?php } ?>                        
                     </tbody>
                 </table>
                 <h3 class="pd-t-20">Karir Timnas</h3>
                 <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
                     <thead>
-					<?php $no=1;?>
                         <tr>
                             <th class="t-b-b">No</th>
                             <th class="t-b-b">Timnas</th>
@@ -172,16 +177,17 @@ $bulan 	= array(
                         </tr>
                     </thead>
                     <tbody>
+					<?php 
+					$no=1;
+					?>					
                         <tr>
-                            <td><?=$no++?></td>
-                            <td>
-                                <img src="<?=base_url()?>systems/club_logo/<?=$pemain["nationality"]?>" alt="" width="15px"> <?=$pemain["nationality"]?></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
-                        
                     </tbody>
                 </table>
             </div>

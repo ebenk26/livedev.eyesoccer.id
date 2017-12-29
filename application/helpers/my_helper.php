@@ -233,3 +233,19 @@ function imgUrl()
 {
     return "https://www.eyesoccer.id/";
 }
+
+function load_top_avatar()
+{
+	$CI =& get_instance();
+	$prof_pic=$CI->db->query("SELECT b.pic FROM tbl_member a left join tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["member_id"]."'")->row()->pic;
+	
+	return $prof_pic;
+}
+
+function load_top_name()
+{
+	$CI =& get_instance();
+	$prof_name=$CI->db->query("SELECT a.name FROM tbl_member a left join tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["member_id"]."'")->row()->name;
+	
+	return $prof_name;
+}

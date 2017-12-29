@@ -9,6 +9,7 @@ class Home extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->model('Home_model');
 			$this->load->helper(array('form','url','text','date'));
+			$this->load->helper('my');
     }
 	public function index()
 	{	
@@ -60,7 +61,8 @@ class Home extends CI_Controller {
 		$data['jadwal_yesterday'] 	= $this->Home_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 	= $this->Home_model->get_jadwal_tomorrow();
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
-		$data['klasemen'] 		= $this->Home_model->get_klasemen();
+		$data['klasemen'] 			= $this->Home_model->get_klasemen();
+		$data['kanal'] 				= "home";
 		
 		$data["body"]=$this->load->view('home/index', $data, TRUE);
 		$this->load->view('template/static',$data);		
@@ -97,7 +99,12 @@ class Home extends CI_Controller {
 	}
 	public function member_area(){
 		// var_dump('dfjdkffk');exit();
-	$data["meta"]["title"]="";
+		if(isset($_SESSION["member_id"])){
+			
+		}else{
+		
+		}
+		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
 		
@@ -118,19 +125,20 @@ class Home extends CI_Controller {
 		$data["popup"]=$array[14][3];
 
 		$profile=$this->db->query("SELECT * FROM tbl_member a LEFT JOIN tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["member_id"]."' LIMIT 1")->row_array();
-// var_dump($profile);exit();
-		if(isset($profile["profile_pic"]) && $profile["profile_pic"]!="")
-{
-	$data["pic"]=$profile["pic"];
-}
-else{
-	$data["pic"]="no-person.jpg";
-}
-$data["profile"]=$profile;
+		// var_dump($profile);exit();
+				if(isset($profile["profile_pic"]) && $profile["profile_pic"]!="")
+		{
+			$data["pic"]=$profile["pic"];
+		}
+		else{
+			$data["pic"]="no-person.jpg";
+		}
+		$data["kanal"]="home";
+		$data["profile"]=$profile;
 		$data["extrascript"]=$this->load->view('home/script_member_area', $data, true);
 		$data["body"]=$this->load->view('home/member-area', $data, true);
 		//$this->load->view('template-front-end',$data);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 		
 	}
 	
@@ -171,7 +179,34 @@ $data["profile"]=$profile;
 
 	public function login()
 	{
-		$this->load->view('login');
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('login', $data, TRUE);
+		$this->load->view('template/static',$data);
 	}
 	
+	public function login_session()
+	{
+		if(isset($_POST['username'])){
+			$username=$_POST['username'];
+			$password=$_POST['password'];
+			$page=$_POST['page'];
+			$cmd=$this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
+			$row=$cmd->row_array();
+			$user_id=$row['id_member'];
+			$cek = $cmd->num_rows();
+			if($cek>0)
+			{
+				if($row['id_member']=="" && $row['password']==""){
+				  header("refresh:0");  
+				  }
+				  else{
+				  $_SESSION['member_id']=$user_id;
+				  header("location:".base_url().$page);  
+				  }  
+			}else{
+				echo "<script>alert('Email atau Password salah')</script>";
+				header("location:".base_url()."home/login");  
+			}
+		}
+	}
 }

@@ -103,10 +103,32 @@
 
 <div class="login-page">
     <div class="form">
-        <form class="login-form" action="<?= base_url(); ?>eyemarket/login" method="post">
+        <form class="login-form" action="<?= base_url(); ?>home/login_session" method="post">
             <input type="text" name="username" placeholder="username"/>
             <input type="password" name="password" placeholder="password"/>
+            <input type="hidden" name="page" class="form-login-redirect"/>
             <button>login</button>
       </form>
   </div>
 </div>
+<script>
+	$(document).ready(function(){
+		var getUrlParameter = function getUrlParameter(sParam) {
+			var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+				sURLVariables = sPageURL.split('&'),
+				sParameterName,
+				i;
+
+			for (i = 0; i < sURLVariables.length; i++) {
+				sParameterName = sURLVariables[i].split('=');
+
+				if (sParameterName[0] === sParam) {
+					return sParameterName[1] === undefined ? true : sParameterName[1];
+				}
+			}
+		};
+		var tech = getUrlParameter('page');
+		$(".form-login-redirect").val(tech);
+		console.log(tech);
+	});
+</script>

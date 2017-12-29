@@ -681,7 +681,7 @@ class Master_model extends CI_Model
 	public function checkLogin(){
 		$userid = $this->session->userdata('id_member');
 		if($userid == ''){
-			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().'eyeme/testlogin');
+			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().'home/login');
 			
 		} 
 		
