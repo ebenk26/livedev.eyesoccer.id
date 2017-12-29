@@ -155,7 +155,7 @@
                     <div class="col-md-9 clearfix" id="checkout">
 
                         <div class="box">
-                            <form method="post" action="<?= base_url(); ?>eyemarket/update_cart_payment/<?= $id_member; ?>">
+                            <form method="post" action="<?= base_url(); ?>eyemarket/start_order/<?= $id_member; ?>">
                                 <ul class="nav nav-pills nav-justified">
                                     <li class="disabled"><a href="#"><i class="fa fa-map-marker"></i><br>Alamat</a>
                                     </li>

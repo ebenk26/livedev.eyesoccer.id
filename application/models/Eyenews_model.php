@@ -351,7 +351,7 @@ public function get_jadwal_today()
 									WHERE 
 										a.live_pertandingan!=''
 										AND
-										jadwal_pertandingan>='2017-12-10 00:00:00' 
+										jadwal_pertandingan>='".date("Y-m-d")."' 
 									ORDER BY
 										jadwal_pertandingan ASC LIMIT 5
 								")->result_array();
