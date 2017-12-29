@@ -306,7 +306,7 @@ $('#browse').click(function(event) {
 /*cropit:: function*/
 $(function() {
     $('.image-editor').cropit({
-        exportZoom: 1,
+        exportZoom: 1.25,
         imageBackground: true,
         imageBackgroundBorderWidth: 40,
        
