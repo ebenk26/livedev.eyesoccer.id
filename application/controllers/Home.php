@@ -189,6 +189,7 @@ class Home extends CI_Controller {
 		if(isset($_POST['username'])){
 			$username=$_POST['username'];
 			$password=$_POST['password'];
+			$page=$_POST['page'];
 			$cmd=$this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
 			$row=$cmd->row_array();
 			$user_id=$row['id_member'];
@@ -196,13 +197,11 @@ class Home extends CI_Controller {
 			if($cek>0)
 			{
 				if($row['id_member']=="" && $row['password']==""){
-					 print_r($row);
-					 exit;
 				  header("refresh:0");  
 				  }
 				  else{
 				  $_SESSION['member_id']=$user_id;
-				  header("location:".base_url()."home/member_area");  
+				  header("location:".base_url().$page);  
 				  }  
 			}else{
 				echo "<script>alert('Email atau Password salah')</script>";
