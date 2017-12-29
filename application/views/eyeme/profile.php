@@ -49,6 +49,7 @@
             <div class="w900 m-0">
                 <?php if(count($getImg) > 0 ){
 
+
                         for($j= 0; $j<count($getImg); $j++){?>
 
                         <div class="me-post">
@@ -57,9 +58,9 @@
 
                             <div class="tengah tx-c">
                                 <i class="material-icons">favorite</i>
-                                <span>6</span>
+                                <span><?php echo $getImg[$j]->countLike?></span>
                                 <i class="material-icons">chat_bubble</i>
-                                <span>10</span>
+                                <span><?php echo $getImg[$j]->countComment?></span>
                             </div>
                         </div>
                         <?php

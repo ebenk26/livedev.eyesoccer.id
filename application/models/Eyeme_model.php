@@ -132,6 +132,31 @@ class Eyeme_model extends Master_model
 
 
 	#sw::begin 
+	/**
+	  *function get Explore
+
+
+	*/
+	public function getExplore(){
+		$getImg = $this->mod->getAll('me_img');
+		for($i= 0 ; $i < count($getImg); $i++){
+			$dp      = $this->mod->getAll('me_profile',
+								array('id_member'=> $getImg[$i]->id_member),
+								array('display_picture','username'));
+			$like    =$this->mod->getAll('me_like',
+								array('id_img'=>$getImg[$i]->id_img),
+								array('id_like','id_member'));
+			$comment =$this->mod->getAll('me_comment',
+								array('id_img' => $getImg[$i]->id_img),
+								array('id_comment','id_member'));
+			#echo $this->db->last_query();
+			$getImg[$i]->username  = $dp[0]->username;
+			$getImg[$i]->display_pic = $dp[0]->display_picture;
+			$getImg[$i]->countLike = count($like);
+			$getImg[$i]->countComment = count($comment);
+		}
+		return $getImg;
+	}
 
 	/**
 	  *function to get profile user
@@ -182,7 +207,7 @@ class Eyeme_model extends Master_model
 				 LEFT JOIN me_profile as b 
 				 ON a.id_member = b.id_member  
 				 WHERE  a.id_member IN
-				 (SELECT id_following from me_follow where id_member = $id_member) AND active='1' ";
+				 (SELECT id_following from me_follow where id_member = $id_member) AND active='1' ORDER BY a.last_update DESC";
 		$res = $this->db->query($query);
 
 		if(count($res) > 0 ){
@@ -471,11 +496,23 @@ class Eyeme_model extends Master_model
 					 'img_thumb'   => 'thumb_'.$imageName,
 					 'img_alt'    => substr($caption, 0,30),
 					 'date_create' => NOW,
+					 'last_update'  => NOW,
 					 'active'      => '1');
 		$insert = $this->db->insert('me_img',$data);
 		if($insert){
 			return 'success';
 		}
+	}
+	public function unFollow($id_friend){
+		$id_member  = $this->session->userdata('id_memnber');//id member session login 
+		$id_friend  = $id_member;
+
+		$this->db->where('id_member',$id_member);
+		$this->db->where('id_following',$id_friend);
+		$exe = $this->db->delete('me_follow');
+		return $exe;
+		
+
 	}
 	//sw::end
 	/*public function unlike($arr = array()){
