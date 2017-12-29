@@ -503,6 +503,17 @@ class Eyeme_model extends Master_model
 			return 'success';
 		}
 	}
+	public function unFollow($id_friend){
+		$id_member  = $this->session->userdata('id_memnber');//id member session login 
+		$id_friend  = $id_member;
+
+		$this->db->where('id_member',$id_member);
+		$this->db->where('id_following',$id_friend);
+		$exe = $this->db->delete('me_follow');
+		return $exe;
+		
+
+	}
 	//sw::end
 	/*public function unlike($arr = array()){
 

@@ -100,6 +100,7 @@ class Eyeme extends CI_Controller {
 		
 			$check          = $this->emod->checkFollowed($this->id_member,$usr->id_member);
 			//mengambil jumlah comment dan jumlah like setiap gambar 
+
 			for($i = 0; $i < count($getImg); $i++){
 				$like  = $this->mod->getAll('me_like',
 							array('id_img' => $getImg[$i]->id_img),
@@ -174,6 +175,7 @@ class Eyeme extends CI_Controller {
 		$this->mod->checkLogin();// check if user comming from home
 		$id_member   = $this->id_member;
 		$dataNotif = $this->emod->getNotif($id_member);
+		
 		if(count($dataNotif) > 0 ){ #check result dataNotif
 			$j=0;
 			foreach($dataNotif as $k => $v){

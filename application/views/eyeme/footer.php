@@ -111,7 +111,7 @@ $('#notif').click(function(event){ //event notif click
                         tbl += '<span class="ntf">';
 
                         if(v.notif_type.substr(0,3) == 'COM'){
-                            tbl += 'Mengomentari Foto Anda </br><i style="margin:auto">' + v.notif_content + '</i>'; 
+                            tbl += 'Mengomentari Foto Anda </br><span style="margin:auto">' + v.notif_content + '</span>'; 
 
                         }
                         else if(v.notif_type.substr(0,3) == 'LIK'){
@@ -306,10 +306,10 @@ $('#browse').click(function(event) {
 /*cropit:: function*/
 $(function() {
     $('.image-editor').cropit({
-        exportZoom: 1.25,
+        exportZoom: 1,
         imageBackground: true,
         imageBackgroundBorderWidth: 40,
-        zoom:.75
+       
     });     
 
 });
