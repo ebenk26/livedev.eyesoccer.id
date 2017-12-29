@@ -103,7 +103,7 @@
 
 <div class="login-page">
     <div class="form">
-        <form class="login-form" action="<?= base_url(); ?>eyemarket/login" method="post">
+        <form class="login-form" action="<?= base_url(); ?>home/login_session" method="post">
             <input type="text" name="username" placeholder="username"/>
             <input type="password" name="password" placeholder="password"/>
             <button>login</button>
