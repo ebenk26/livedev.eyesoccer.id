@@ -30,6 +30,33 @@ class Home_model extends CI_Model
 									6")->result_array();
 		return $query;
 	}	
+	
+	public function get_all_jadwal_2()
+	{
+		$query = $this->db->query("SELECT
+									a.*,
+									c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b
+								FROM
+									tbl_jadwal_event a
+									LEFT JOIN
+										tbl_event b ON b.id_event=a.id_event
+									INNER JOIN
+										tbl_club c ON c.club_id=a.tim_a
+									INNER JOIN
+										tbl_club d ON d.club_id=a.tim_b
+								WHERE
+									a.jadwal_pertandingan
+								order by
+									jadwal_pertandingan DESC
+								LIMIT
+									6,6")->result_array();
+		return $query;
+	}
 
 	public function get_trending_eyetube()
 	{
@@ -93,6 +120,60 @@ class Home_model extends CI_Model
 									")->result_array();
 		return $query;
 	}
+	
+	public function get_profile_club_2()
+	{
+		$query = $this->db->query("	SELECT
+										a.club_id,
+										a.name as nama_club,
+										a.competition,
+										a.logo,
+										b.name as nama_manager,
+										count(c.name) as squad
+									FROM
+										tbl_club a
+									INNER JOIN
+										tbl_official_team b on a.club_id = b.club_now
+									LEFT JOIN
+										tbl_player c on a.club_id = c.club_id
+									WHERE
+										b.position  = 'Manager'
+										AND
+										a.id_liga = '0'
+									GROUP BY
+										a.club_id
+									LIMIT
+										4,4
+									")->result_array();
+		return $query;
+	}
+	
+	public function get_profile_club_3()
+	{
+		$query = $this->db->query("	SELECT
+										a.club_id,
+										a.name as nama_club,
+										a.competition,
+										a.logo,
+										b.name as nama_manager,
+										count(c.name) as squad
+									FROM
+										tbl_club a
+									INNER JOIN
+										tbl_official_team b on a.club_id = b.club_now
+									LEFT JOIN
+										tbl_player c on a.club_id = c.club_id
+									WHERE
+										b.position  = 'Manager'
+										AND
+										a.id_liga = '0'
+									GROUP BY
+										a.club_id
+									LIMIT
+										8,4
+									")->result_array();
+		return $query;
+	}
 
 	public function get_squad($club_id)
 	{
@@ -107,6 +188,60 @@ class Home_model extends CI_Model
 	}
 
 	public function get_player_random()
+	{
+		$query = $this->db->query("	SELECT
+										a.player_id,
+										a.club_id,
+										a.birth_date as tgl_lahir,
+										SUBSTRING(a.birth_date,1,2) as tanggal,
+										SUBSTRING(a.birth_date,4,2) as bulan,
+										SUBSTRING(a.birth_date,7,4) as tahun,
+										a.name as nama,
+										a.pic as foto,
+										a.position as posisi,
+										b.name as klub
+									FROM
+										tbl_player a
+									LEFT JOIN
+										tbl_club b on a.club_id = b.club_id
+									WHERE
+										a.status like '%pro%'
+										AND
+										a.birth_date like '%/%'
+									ORDER BY RAND() ASC
+									LIMIT 3
+								")->result_array();
+		return $query;
+	}
+	
+	public function get_player_random_2()
+	{
+		$query = $this->db->query("	SELECT
+										a.player_id,
+										a.club_id,
+										a.birth_date as tgl_lahir,
+										SUBSTRING(a.birth_date,1,2) as tanggal,
+										SUBSTRING(a.birth_date,4,2) as bulan,
+										SUBSTRING(a.birth_date,7,4) as tahun,
+										a.name as nama,
+										a.pic as foto,
+										a.position as posisi,
+										b.name as klub
+									FROM
+										tbl_player a
+									LEFT JOIN
+										tbl_club b on a.club_id = b.club_id
+									WHERE
+										a.status like '%pro%'
+										AND
+										a.birth_date like '%/%'
+									ORDER BY RAND() ASC
+									LIMIT 3
+								")->result_array();
+		return $query;
+	}
+	
+	public function get_player_random_3()
 	{
 		$query = $this->db->query("	SELECT
 										a.player_id,
@@ -464,6 +599,46 @@ class Home_model extends CI_Model
 									id_event
 									LIMIT
 										3
+								")->result_array();
+		return $query;
+	}
+	
+	public function get_eyevent_main_2()
+	{
+		$query = $this->db->query("	SELECT
+										id_event,
+									title,
+									description,
+									pic,
+									publish_on,
+									updateon,
+									thumb1
+									FROM
+										tbl_event
+									ORDER BY 
+									id_event
+									LIMIT
+										3,3
+								")->result_array();
+		return $query;
+	}
+	
+	public function get_eyevent_main_3()
+	{
+		$query = $this->db->query("	SELECT
+										id_event,
+									title,
+									description,
+									pic,
+									publish_on,
+									updateon,
+									thumb1
+									FROM
+										tbl_event
+									ORDER BY 
+									id_event
+									LIMIT
+										6,3
 								")->result_array();
 		return $query;
 	}

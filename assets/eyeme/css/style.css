@@ -1762,8 +1762,9 @@ ul, li {
    
 }
 .posisi-popup-notif{
-    left: -264px;
+    right:140px;
     top: 60px;
+    z-index: 99;
 }
 .panah-popup-notif{
     width: 15px;
@@ -1776,13 +1777,14 @@ ul, li {
     z-index: 2;
 }
 .kotak-popup-notif{
-    width: 480px;
+    width: 490px;
     height: 420px;
     background-color: white;
     box-shadow: 0px 0px 5px 0px #c0c0c0;
     border-radius: 3px;
     z-index: 1;
-    /* display: none; */
+    display: none;
+    overflow-y: scroll;
 }
 .teks-popup{
     padding-left: 15px;
@@ -1805,9 +1807,7 @@ ul, li {
     top: -26px;
     left: 33px;
 }
-.comment, .like{
-    z-index: -1;
-}
+
 .like>span, .comment span, .komen span{
     font-size: .85em;
     font-weight: 400;
@@ -2465,7 +2465,7 @@ ul, li {
     border-radius: 5px;
     color: white;
     padding: 6px 15px;
-    font-size: .5em;
+    font-size: .6em;
     position: relative;
     border: 0;
     /* z-index: -1; */
@@ -2474,6 +2474,24 @@ ul, li {
     color: #3a7dc6;
     background-color: white; 
     border: 1px solid lightgray;
+}
+.btn-danger{
+    background-color: #EE2525;
+    width: 100px;
+    border-radius: 5px;
+    color: white;
+    padding: 6px 15px;
+    font-size: .6em;
+    position: relative;
+    border: 0;
+}
+.btn-danger:hover{
+    color: #EE2525;
+    background-color: white; 
+    border: 1px solid lightgray;
+}
+.pull-right{
+    float:right;
 }
 #slidecontainer {
     width: 100%;
@@ -2677,4 +2695,75 @@ ul, li {
 }
 .img_more{
     cursor:pointer;
+}
+/*
+sw:begin;
+loading animation
+*/
+.hidden{
+    display: none;
+}
+.r{
+    color:#D50E0E;
+}
+#loading{
+
+    margin:150px 200px;
+}
+.ntf{
+    
+    cursor:pointer !important;
+}
+.click-like{
+    cursor: pointer;
+}
+.notif-link{
+    display: inline;
+    cursor: pointer;
+}
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.lds-dual-ring {
+  position: relative;
+}
+.lds-dual-ring div {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: 30px;
+  left: 30px;
+  border-radius: 50%;
+  border: 14px solid #000;
+  border-color: #47c9f5 transparent #47c9f5 transparent;
+  -webkit-animation: lds-dual-ring 1s linear infinite;
+  animation: lds-dual-ring 1s linear infinite;
+}
+.lds-dual-ring {
+  width: 59px !important;
+  height: 59px !important;
+  -webkit-transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
+  transform: translate(-29.5px, -29.5px) scale(0.295) translate(29.5px, 29.5px);
+}
+.disable{
+    background: #E5E5E5 !important;
+    color:#969696 !important;
+    cursor: not-allowed;
 }

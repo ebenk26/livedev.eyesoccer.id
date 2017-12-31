@@ -1,105 +1,296 @@
 <?php
-$date2=date("Y-m-d H:i:s");
-$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','player','','".$_SESSION["ip"]."')");
-$tp2=$this->db->query("SELECT * FROM tbl_club WHERE active='1'")->num_rows();
-$tppro=$this->db->query("SELECT * FROM tbl_club WHERE active='1' and competition in ('Liga Indonesia 1','Liga Indonesia 2')")->num_rows();
-$tpama=$this->db->query("SELECT * FROM tbl_club WHERE active='1' and competition not in ('Liga Indonesia 1','Liga Indonesia 2')")->num_rows();
+defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<div class="col-lg-11 col-md-11 header-iphone">
-<!--<div style="background:#3d3d3d;color:#fff;padding:10px;"><marquee><strong>Bagi yang mendaftar Liga Pelajar U16 dan Liga Santri Nusantara pada tanggal 4 - 7 Agustus 2017. Di harap menginput ulang atau mendaftar ulang atau dapat menghubungi saudara Ajuan Firel (081384009828)</strong></marquee></div>-->
-<h1 id="t2">Daftar Klub <button class="btn btn-info" style="background-color:#31b0d5">Total Klub : <b><?=$tp2?> Klub (<?=$tppro?> Klub Profesional & <?=$tpama?> Klub Amatir)</b></button></h1>
-
-
-	<?php 
-	
-	$html='<ul class="nav nav-tabs">';
-	$html2='<div class="tab-content">';
-	$comp=$this->db->query("SELECT * FROM tbl_competitions ORDER BY competition_id ASC");
-	$active="1";
-	foreach($comp->result_array() as $cp)
-	{
-		if($active=="1")
-		{
-			$active="active";
-		}
-	else{
-		$active="";
-		}
-		$html.='<li class="'.$active.'"><a data-toggle="tab" href="#tab-'.$cp["competition_id"].'" id="a4">'.$cp["competition"].'</a></li>';
-		
-		$html2.='<div id="tab-'.$cp["competition_id"].'" class="tab-pane fade in '.$active.'"><br />';
-		$html2.="<div class='col-lg-4 col-xs-12 pull-right'><form class='form_search' comp_id='".$cp["competition_id"]."'><div class='form-group'>
-				<div class='input-group'>
-				<input type='text' name='other_query' placeholder='Search' id='other_query_search_".$cp["competition_id"]."' class='form-control' id='set8' >
-				<input type='hidden' name='last_id' id='last_id_search_".$cp["competition_id"]."' value='".$cp["competition"]."'>
-				<div class='input-group-btn'>
-				<button type='submit' name='submit' class='btn btn-info' id='set8'><span class='fa fa-search'></span></button>
-				</div>
-				</div>
-				</div>
-				</form>
-				</div>";
-		$tp=$this->db->query("SELECT * FROM tbl_club WHERE competition='".$cp["competition"]."' AND active='1'")->num_rows();
-		
-		$html2.="<div class='col-lg-12 col-xs-12'><p class='h4'>Total Klub terdaftar di <b class='liga_name_".$cp["competition_id"]."'>".$cp["competition"]."</b> sebanyak <b class='liga_total_".$cp["competition_id"]."'>".$tp."</b><b> Klub</b></p><br /></div>";
-		
-		if($cp["competition_id"]!="4")
-		{
-		$club=$this->db->query("SELECT * FROM tbl_club WHERE competition='".$cp["competition"]."' AND active='1' ORDER BY name ASC");
-		
-		$html2.='<div id="list_klub_'.$cp["competition_id"].'">';
-		foreach($club->result_array() as $cb){
-			if(!strstr($cb["logo"], ".")) {
-	$cb["logo"]='LOGO UNTUK APLIKASI.jpg';
-}
-			$html2.='<div class="col-xs-12 col-lg-6 ">
-			<div class="media" onclick="window.location.href=\"'.base_url().'eyeprofile/klub_detail/'.$cb["club_id"].'\"" style="cursor:pointer" class="bg-success">
-			<div class="media-left"><img src="'.base_url().'systems/club_logo/'.$cb["logo"].'" class="media-object" id="img5"></div>
-			<div class="media-body"><a href="'.base_url().'eyeprofile/klub_detail/'.$cb["club_id"].'" id="a4">
-			<p class="media-heading">'.$cb["name"].'</p><small id="set6"><i class="fa fa-flag"></i> '.$cb["competition"].'</small></a>
-			</div>
-			</div>
-			<hr></hr>
-			</div>
-			';
-			
-		}
-			$html2.='</div>';
-		}
-		else{
-			//$getlistliga=$this->db->query("SELECT * FROM tbl_liga ORDER BY id_liga ASC");
-			$html2.="
-			<div class='col-xs-12 col-lg-4 '>
-			<select class='liga_id form-control' no_liga='".$cp["competition_id"]."'>
-			<option value=''>Pilih Liga</option>
-			<option value='1'>Liga Pelajar U-16 Piala Menpora</option>
-			<option value='2'>Liga Santri Nusantara</option>
-			<option value='3'>Liga Indonesia U-19</option>
-			</select>
-			</div>
-			<div class='col-xs-8 col-lg-8 replace_liga'>
-			</div>
-			<div class='col-xs-12 col-lg-12 replace_liga2'>
-			</div>";
-			
-			
-			
-		}
-		$html2.='</div>';
-	}
-	$html.='</ul>';
-	
-	echo $html.$html2;
-	?>
-
-<br />
-<br />
-</div>
-<br />
-<br />
-</div>
-  
-	
-  
-  
+    <div class="crumb">
+        <ul>
+            <!--<li>Home</li>-->
+            <li>EyeProfile</li>
+            <!-- <li>Klub</li> -->
+            <!-- <li>Pemain</li> -->
+        </ul>
+    </div>
+    <div class="dekstop">	
+        <div class="center-dekstop m-0">
+            <div class="menu-2 w-100 m-0-0 pd-t-20">
+                <ul>
+                    <li><a href="<?=base_url()?>" style="text-decoration:none;">Home</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;">Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/official" style="text-decoration:none;">Offisial</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;">Perangkat Pertandingan</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/supporter" style="text-decoration:none;">supporter</a></li>
+                </ul>
+                <select id="" name="" selected="true" class="slc-musim fl-r">
+				<?php
+					foreach($kompetisi as $row){
+				?>
+					<option><?=$row['competition']?></option>';  
+				<?php
+					}
+				?>
+                </select>
+            </div>
+        </div>
+        <div class="center-dekstop m-0">		
+            <div class="container box-border-radius fl-l mt-30">
+				
+                <div class="fl-l img-80">				
+                    <img src="<?=base_url()?>assets/img/content_11.jpg" alt="" height="100%">
+                </div>
+                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l">
+                    <table>
+                        <tr>
+                            <td>Level Liga</td>
+                            <td>: <?php echo $club_header->competition; ?></td>
+                        </tr>
+                        <tr>
+							<?php 							
+								$jml=$this->db->query("select name from tbl_club where competition='liga indonesia 1'");
+								$total=$jml->result_array();?>
+                            <td>Jumlah Klub</td>
+                            <td>: <?php $count = $jml->num_rows($jml);?> <?php echo "$count";?> Klub</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Pemain</td>
+                            <td>:
+							<?php 							
+							$jmlp=$this->db->query("select name from tbl_player where status!='amatir' AND status!=''");
+							$total=$jmlp->result_array();							
+							$count = $jmlp->num_rows($jmlp);?> <?php echo "$count";?> Pemain</td>
+                        </tr>
+                        <tr>
+                            <td>Pemain Asing</td>
+                            <td>:
+							<?php 							
+							$jmln=$this->db->query("select nationality from tbl_player where nationality !='indonesia' AND nationality !=''");
+							$total=$jmln->result_array();							
+							$count = $jmln->num_rows($jmln);?> <?php echo "$count";?> Pemain</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tabel-liga-370 table-pd-3 fl-l">
+                    <table>
+                        <tr>
+                            <td>Rekor Juara</td>
+                            <td>: -</td>
+                        </tr>
+                        <tr>
+                            <td>Usia Rata-rata</td>
+                            <td>: -
+                        </tr>
+                        <tr>
+                            <td>Juara Bertahan</td>
+                            <td>: -</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="center-dekstop m-0">
+            <div class="ep2box fl-l pd-t-20">
+				<?php 				
+				foreach($club_main as $main){
+				?>
+                <div class="box-content ep2 fl-l">
+                    <a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['club_id']; ?>"><img src="<?=base_url()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt=""></a>
+                    <div class="detail">
+                        <h2><?=$main['nama_club'];?></h2>
+                        <h3><?=$main['competition'];?></h3>
+                        <table>
+                            <tr>
+                                <td>Squad</td>
+                                <td>: <?=$main['squad'];?></td>
+                            </tr>
+                            <tr>
+                                <td>Manager</td>
+                                <td>: <?=$main['nama_manager'];?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+				<?php
+				}
+				?>
+            </div>
+            <div class="container t-b-b pd-b-20 pd-t-20"></div>
+            <div class="container">
+                <h3 class="h3-oranye">Jadwal pertandingan liga 1 indonesia</h3>
+            <div id="jadwal" class="jadwal carousel slide m-0 p-d-l-0">
+                <div class="left navigate" href="#jadwal" role="button">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                </div>
+                <div role="listbox" class="j-box carousel-inner">
+                    <?php
+					foreach($profile_club as $club){
+					?>
+				<div class="over item active">			
+					<div class="j-content">
+						<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+						<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+						<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+					</div>								
+				</div>		
+				<?php
+				}
+				?>
+                </div>
+                <div class="right navigate" href="#jadwal" role="button">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                </div>
+            </div>
+        </div>
+        <div class="container t-b-b pd-t-20"></div>
+        <div class="center-dekstop m-0">
+            <div class="w-60 m-r-1 pd-t-20 formasi">
+            <div class="container">
+                <h3>Klasemen Liga 1 Indonesia</h3>
+                <div class="box-slc-musim">
+                    <span>Pilih Musim</span>
+                    <select id="" name="" selected="true" class="slc-musim">
+						<?php
+							foreach($kompetisi as $row){
+						?>
+							<option><?=$row['competition']?></option>';  
+						<?php
+							}
+						?>
+                    </select>                    
+                </div>
+                <table class="radius table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th class="t-b-b">No</th>
+                            <th class="t-b-b">Klub</th>
+                            <th class="t-b-b">Main</th>
+                            <th class="t-b-b">M</th>
+                            <th class="t-b-b">S</th>
+                            <th class="t-b-b">K</th>
+                            <th class="t-b-b">SG</th>
+                            <th class="t-b-b">Poin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+						<?php
+						$no=1;
+						foreach($klasemen as $classe){
+						?>
+                        <tr>
+                            <td><?=$no++?></td>
+                            <td>
+                                <img src="<?=base_url()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+						<?php
+						}
+						?>						
+                    </tbody>
+                </table>
+                <span class="next-right">Lihat Klasemen Lengkap
+                    <i class="material-icons t-8">keyboard_arrow_right</i>
+                </span>				
+            </div>
+        </div>
+        <div class="w-40 pd-t-20">
+            <div class="container">
+                <h3>Transfer Terbaru</h3>
+                <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th class="t-b-b">No</th>
+                            <th class="t-b-b">Pemain</th>
+                            <th class="t-b-b">Status</th>
+                            <th class="t-b-b">Dari</th>
+                            <th class="t-b-b">ke</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+					<?php
+					$no=1;
+					foreach($transfer_pemain as $transfer){
+					?>
+                        <tr>
+                            <td><?=$no++?></td>
+                            <td>
+                                <?=$transfer['nama']?>
+                                <span><?=$transfer['posisi']?></span>
+                            </td>
+                            <td>-</td>
+                            <td>-<img src="" alt="" width="25px"></td>
+                            <td>-<img src="" alt="" width="25px"></td>
+                        </tr>
+						<?php
+						}
+						?> 
+                    </tbody>
+                </table>
+                <div class="nav-pencetak-gol">
+                    <ul>
+                        <li>
+                            <i class="material-icons left">keyboard_arrow_left</i>
+                        </li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>
+                            <i class="material-icons right">keyboard_arrow_right</i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <h3>Pencetak Gol Terbanyak</h3>
+                <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th class="t-b-b">No</th>
+                            <th class="t-b-b">Pemain</th>
+                            <th class="t-b-b">Umur</th>
+                            <th class="t-b-b">Main</th>
+                            <th class="t-b-b">goal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+					<?php 
+					$no=1;
+					foreach($pencetak_gol as $cetak){
+					?>
+                        <tr>
+                            <td><?=$no++?></td>
+                            <td><?=$cetak['name']?>
+                            <span><?=$cetak['position']?></span></td>
+                            </td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr><?php
+					}?>
+                    </tbody>
+                </table>
+                <div class="nav-pencetak-gol">
+                    <ul>
+                        <li>
+                            <i class="material-icons left">keyboard_arrow_left</i>
+                        </li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>
+                            <i class="material-icons right">keyboard_arrow_right</i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+		</div>

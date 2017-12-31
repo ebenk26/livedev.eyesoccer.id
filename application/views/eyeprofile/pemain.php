@@ -1,89 +1,167 @@
-
 <?php
-$date2=date("Y-m-d H:i:s");
-$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','player','','".$_SESSION["ip"]."')");
-
-$cmd22=$this->db->query("select * from tbl_running_text where place='list_pemain' LIMIT 1");
-$run=$cmd22->row_array();
-$tp2=$this->db->query("SELECT a.*,b.name as club_name,b.competition FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id ORDER BY a.name ASC")->num_rows();
-
-$tppro=$this->db->query("SELECT a.*,b.name as club_name,b.competition FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id where b.competition in ('Liga Indonesia 1','Liga Indonesia 2') ORDER BY a.name ASC")->num_rows();
-
-$tpama=$this->db->query("SELECT a.*,b.name as club_name,b.competition FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id where b.competition not in ('Liga Indonesia 1','Liga Indonesia 2') ORDER BY a.name ASC")->num_rows();
+defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<div style="background:#3d3d3d;color:#fff;padding:10px;" SCROLLDELAY=250><marquee><strong><?=$run["description"]?></strong></marquee></div>
-<h1 id="t2">Daftar Pemain <button class="btn btn-info" style="background-color:#31b0d5">Total Pemain : <b><?=$tp2?> Pemain (<?=$tppro?> Profesional & <?=$tpama?> Amatir)</b></button></h1>
-<hr></hr> 
-<?php 
-	
-	$html='<ul class="nav nav-tabs">';
-	$html2='<div class="tab-content">';
-	$comp=$this->db->query("SELECT * FROM tbl_competitions ORDER BY competition_id ASC");
-	$active="1";
-	foreach($comp->result_array() as $cp)
-	{
-		if($active=="1")
-		{
-			$active="active";
-		}
-	else{
-		$active="";
-		}
-		$html.='<li class="'.$active.'"><a data-toggle="tab" class="tab-'.$cp["competition_id"].'" href="#tab-'.$cp["competition_id"].'" id="a4">'.$cp["competition"].'</a></li>';
-		
-		$html2.='<div id="tab-'.$cp["competition_id"].'" class="tab-pane fade in '.$active.'"><br />';
-		
-		$club=$this->db->query("SELECT a.*,b.name as club_name,b.competition FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id WHERE b.competition='".$cp["competition"]."' ORDER BY a.name ASC LIMIT 10");
-		$tp=$this->db->query("SELECT a.*,b.name as club_name,b.competition FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id WHERE b.competition='".$cp["competition"]."' ORDER BY a.name ASC")->num_rows();
-		$html2.="<div class='col-lg-8 col-xs-12'><p class='h4'>Total Pemain terdaftar di <b>".$cp["competition"]."</b> sebanyak <b>".$tp." Pemain</b></p></div>";
-		$html2.="<div class='col-lg-4 col-xs-12 pull-right'><form class='form_search' comp_id='".$cp["competition_id"]."'><div class='form-group'>
-				<div class='input-group'>
-				<input type='text' name='other_query' placeholder='Search' id='other_query_search_".$cp["competition_id"]."' class='form-control' id='set8' >
-				<input type='hidden' name='last_id' id='last_id_search_".$cp["competition_id"]."' value='0'>
-				<div class='input-group-btn'>
-				<button type='submit' name='submit' class='btn btn-info' id='set8'><span class='fa fa-search'></span></button>
-				</div>
-				</div>
-				</div>
-				</form>
-				</div>";
-		$html2.="<div id='replace_pemain_".$cp["competition_id"]."'><br /><br /><hr />";
-		foreach($club->result_array() as $cb){
-				if(!strstr($cb["pic"], ".")) {
-			$cb["pic"]='EYESCR.png';
-				}
 
-			$html2.='<div class="col-xs-12 col-lg-6 ">
-			<div class="media" onclick=\'window.location.href="'.base_url().'eyeprofile/pemain_detail/'.$cb["player_id"].'"\' style="cursor:pointer" class="bg-success">
-			<div class="media-left"><img src="'.base_url().'systems/player_storage/'.$cb["pic"].'" class="media-object" id="img5"></div>
-			<div class="media-body"><p class="media-heading">'.$cb["name"].'</p>
-      <small id="set6"><i class="fa fa-flag"></i> '.$cb["club_name"].' <br /> '.$cb["competition"].' <br /> '.$cb["birth_date"].'</small>
-			</div>
-			</div>
-			<hr></hr>
-			</div>
-			';
-		}
-		$html2.='</div>';
-		$html2.='<div id="append_pemain_'.$cp["competition_id"].'"></div><button type="button" class="btn btn-default col-lg-12 col-md-12 xs-12 show_more" other_query="" id="show_more_'.$cp["competition_id"].'" competition="'.$cp["competition_id"].'" last_id="10"/>Show More</button>';
-		$html2.='</div>';
-	}
-	$html.='</ul>';
-	
-	echo $html.$html2;
-	?>
-
-
-  
-
-<script>
-	$(document).ready(function() {	
-		var url = window.location.href;
-		var arguments = url.split('#')[1].split('=');
-		var tabs = arguments.shift();
-		// alert(arguments.shift());
-		// alert(tabs);
-		$("."+tabs).click();
-	})
-</script>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Eyesoccer | Pemain</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=1000">
+        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <div class="crumb">
+        <ul>
+            <li>EyeProfile</li>
+            <li>Pemain</li>
+            <!-- <li>Klub</li> -->
+            <!-- <li>Pemain</li> -->
+        </ul>
+    </div>
+    <div class="dekstop">
+    <div class="center-dekstop m-0">
+        <div class="menu-2 w-100 m-0-0 pd-t-20">
+            <ul>
+                    <li><a href="<?=base_url()?>" style="text-decoration:none; color:#3d3d3d;">Home</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;color:#3d3d3d;">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub_offisial" style="text-decoration:none;color:#3d3d3d;">Ofisial</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;color:#3d3d3d;">Perangkat Pertandingan</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/supporter" style="text-decoration:none;color:#3d3d3d;">supporter</a></li>
+            </ul>
+            <select id="" name="" selected="true" class="slc-musim fl-r">
+				<?php
+					foreach($kompetisi as $row){
+				?>
+					<option><?=$row['competition']?></option>';  
+				<?php
+					}
+				?>
+            </select>
+        </div>
+    </div>
+    <div class="center-dekstop m-0">
+        <div class="container box-border-radius fl-l mt-30">            				
+                <div class="fl-l img-80">				
+                    <img src="<?=base_url()?>assets/img/content_11.jpg" alt="" height="100%">
+                </div>
+                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l">
+                    <table>
+                        <tr>
+                            <td>Level Liga</td>
+                            <td>: <?php echo $club_header->competition; ?></td>
+                        </tr>
+                        <tr>
+							<?php 							
+								$jml=$this->db->query("select name from tbl_club where competition='liga indonesia 1'");
+								$total=$jml->result_array();?>
+                            <td>Jumlah Klub</td>
+                            <td>: <?php $count = $jml->num_rows($jml);?> <?php echo "$count";?> Klub</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Pemain</td>
+                            <td>:
+							<?php 							
+							$jmlp=$this->db->query("select name from tbl_player where status!='amatir' AND status!=''");
+							$total=$jmlp->result_array();							
+							$count = $jmlp->num_rows($jmlp);?> <?php echo "$count";?> Pemain</td>
+                        </tr>
+                        <tr>
+                            <td>Pemain Asing</td>
+                            <td>:
+							<?php 							
+							$jmln=$this->db->query("select nationality from tbl_player where nationality !='indonesia' AND nationality !=''");
+							$total=$jmln->result_array();							
+							$count = $jmln->num_rows($jmln);?> <?php echo "$count";?> Pemain</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tabel-liga-370 table-pd-3 fl-l">
+                    <table>
+                        <tr>
+                            <td>Rekor Juara</td>
+                            <td>: -</td>
+                        </tr>
+                        <tr>
+                            <td>Usia Rata-rata</td>
+                            <td>: -
+                        </tr>
+                        <tr>
+                            <td>Juara Bertahan</td>
+                            <td>: -</td>
+                        </tr><tr>
+                            <td>Pemain Bertahan</td>
+                            <td>: -</td>
+                        </tr>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <div class="center-dekstop m-0">
+    <input type="text" name="" id="" placeholder="Cari ..." class="src-200 mt-30">
+    <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
+    <table class="radius table table-striped pd-18 mt-10" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="t-b-b">No</th>
+					<th class="t-b-b"></th>
+                    <th class="t-b-b">Pemain</th>
+                    <th class="t-b-b">Tgl Lahir</th>
+                    <th class="t-b-b">Posisi</th>
+                    <th class="t-b-b">Klub</th>
+                    <th class="t-b-b">Kewarganegaraan</th>
+                    <th class="t-b-b">Main</th>
+                    <th class="t-b-b">Gol</th>
+                    <th class="t-b-b">Assist</th>
+                </tr>
+            </thead>
+            <tbody>
+					<?php
+					$no = 1;		
+					foreach($pemain_klub as $row){
+					$bulan 	= array(
+			                '01' => 'Januari',
+			                '02' => 'Februari',
+			                '03' => 'Maret',
+			                '04' => 'April',
+			                '05' => 'Mei',
+			                '06' => 'Juni',
+			                '07' => 'Juli',
+			                '08' => 'Agustus',
+			                '09' => 'September',
+			                '10' => 'Oktober',
+			                '11' => 'November',
+			                '12' => 'Desember',
+						);
+				?>						
+                <tr>
+                    <td><?=$no++?></td>
+                    <td>
+					<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>">
+					<div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;">
+						<img src="<?=base_url()?>systems/player_storage/<?=$row["foto"]?>" alt="">
+					</div>
+					</a>					
+					</td>
+                    <td>
+						<!--<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>systems/player_storage/<?=$row["foto"]?>"></div></a>-->
+					<?=$row['nama']?>	
+                    </td>
+                    <td><?=$row['tanggal']?> <?=$bulan[$row['bulan']]?> <?=$row['tahun']?></td>
+                    <td><?=$row['posisi']?></td>
+                    <td><?=$row['klub']?></td>
+                    <td><?=$row['timnas']?></td>
+                    <td>-</td>
+                </tr>
+				<?php }?>
+            </tbody>
+        </table>
+    </div>
+</div>	
+    </body>
+</html>
