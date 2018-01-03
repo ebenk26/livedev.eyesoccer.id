@@ -180,9 +180,8 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
-		$data['kanal'] 				= "home";
-		$data["body"]=$this->load->view('login', $data, TRUE);
-		$this->load->view('template/static',$data);
+		$data['kanal'] 				= "registration";
+		$data["body"]=$this->load->view('home/registration', $data);
 	}
 	
 	public function login_session()
@@ -192,8 +191,7 @@ class Home extends CI_Controller {
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$page     = $_POST['page'];
-			$cmd      = 
-			$this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
+			$cmd      = $this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
 			$row      =$cmd->row_array();
 			$user_id  =$row['id_member'];
 			$cek      = $cmd->num_rows();
@@ -216,12 +214,19 @@ class Home extends CI_Controller {
 					  	}
 					 //end
 				  $_SESSION['member_id']=$user_id;
+				  $_SESSION['id_member']=$user_id;
 				  header("location:".base_url().$page);  
 				  }  
 			}else{
 				echo "<script>alert('Email atau Password salah')</script>";
-				header("location:".base_url()."home/login");  
+				header("location:".base_url()."home/login");
 			}
 		}
+	}
+	
+	public function registration()
+	{
+		$data['kanal'] 				= "registration";
+		$data["body"]=$this->load->view('home/registration', $data);
 	}
 }

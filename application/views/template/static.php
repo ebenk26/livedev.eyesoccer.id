@@ -64,7 +64,13 @@
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
         <?php    
-            }
+            }else if($kanal == 'registration')
+			{
+		?>
+				<link href="<?=base_url()?>assets/registration/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/registration/css/bs.css" rel="stylesheet">
+		<?php
+			}
             else
             {
         ?>
@@ -85,9 +91,11 @@
         <nav>
             <div class="dekstop">
                 <div class="center-dekstop m-0">
-                    <div class="logo">
-                        <img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
-                    </div>
+					<a href="<?php echo base_url()?>">
+						<div class="logo">
+							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
+						</div>
+					</a>
                     <div class="btn-login">
 					
 <?php	if(!isset($_SESSION["id_member"]))
@@ -157,9 +165,9 @@ else{
                         Copyright 2017 eyesoccer.com. All Rights Reserved.
                     </div>
                     <div class="center50">
-                        <a href="" id="i-fb"><img class="first" src="assets/img/ic_facebook.png" alt=""><img class="scond" src="assets/img/ic_facebook_selected.png" alt=""></a>
-                        <a href="" id="i-tw"><img class="first" src="assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="assets/img/ic_twitter-selected.png" alt=""></a>
-                        <a href="" id="i-in"><img class="first" src="assets/img/ic_instagram.png" alt=""><img class="scond" src="assets/img/ic_instagram-selected.png" alt=""></a>
+                        <a href="" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
+                        <a href="" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
+                        <a href="" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
                     </div>
                 </div>
             </div>
