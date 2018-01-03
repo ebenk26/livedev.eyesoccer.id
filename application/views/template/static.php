@@ -122,15 +122,16 @@ else{
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
                                 </ul>
                             </li>
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
                             <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
                             <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
                             <li><a href="<?=base_url()?>eyevent">EyeEvent</a></li>
+                            <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>							
                             <li><a href="<?=base_url()?>eyetransfer">EyeTransfer</a></li>
                             <li><a href="<?=base_url()?>eyetiket">EyeTiket</a></li>
-                            <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>
                             <li><a href="<?=base_url()?>eyewallet">EyeWallet</a></li>
                         </ul>
                         <i id="src" class="material-icons">search</i>

@@ -1,43 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Eyesoccer</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="twitter:username" content="@judjo" />
-<link rel="stylesheet" type="text/css" href="bs/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="bs/fa/css/font-awesome.min.css">
-<link rel="icon" type="image/png" href="img/tab_icon.png">
-<link rel="stylesheet" type="text/css" href="bs/css/mycss.css">
-
-<!-- Custom CSS 
-<link href="bs/css/style.css" rel="stylesheet" type="text/css">
--->
-<style>
-.drop-shadow {
-        -webkit-box-shadow: 0 0 5px 0px rgba(0, 0, 0, .5);
-        box-shadow: 0 0 5px 0px rgba(0, 0, 0, .5);
-    }
-.drop-shadow2 {
-        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-    .thumbnails {
-    text-align:center;
-}
-.thumbnail2{
-    overflow-x:hidden;
-}
-
-
-</style>
-
-</head>
-<body>
-
 <div class="container-fluid">
 <div class="row">
 

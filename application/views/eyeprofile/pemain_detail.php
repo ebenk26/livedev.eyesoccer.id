@@ -32,28 +32,7 @@ $bulan 	= array(
 '12' => 'Desember',
 );
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Eyesoccer | Detail Pemain</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>EyeProfile</li>
-            <li>Klub</li>
-            <li>Pemain</li>
-        </ul>
-    </div>
+<br><br><br><br>
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
             <div class="left">
@@ -66,7 +45,7 @@ $bulan 	= array(
                     </g>
                 </svg>
                 <div class="box-img-radius">
-                    <img src="<?=base_url()?>systems/player_storage/<?=$pemain["pic"]?>" alt="">                        
+                    <img src="<?=imgUrl()?>systems/player_storage/<?=$pemain["pic"]?>" alt="">                        
                 </div>
             </div>
             <div class="right fill">
@@ -276,7 +255,7 @@ $bulan 	= array(
 							echo '				
                     <div class="box item active">					
                         <div class="em-box">
-                            <img src="'.base_url().'systems/player_storage/'.$row['pic'].'" alt="">
+                            <img src="'.imgUrl().'systems/player_storage/'.$row['pic'].'" alt="">
                         </div>
                     </div>';}
 					}
@@ -291,5 +270,3 @@ $bulan 	= array(
         </div>
     </div>
     </div>
-    </body>
-</html>

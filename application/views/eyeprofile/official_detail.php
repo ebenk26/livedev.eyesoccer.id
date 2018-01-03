@@ -3,28 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".$id."'")->row_array();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>EyeProfile</li>
-            <li>Klub</li>
-            <li>Ofisial</li>
-        </ul>
-    </div>
+<br><br><br><br>
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
             <div class="left">
@@ -37,7 +16,7 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
                     </g>
                 </svg>
                 <div class="box-img-radius">
-                    <img src="<?=base_url()?>systems/player_storage/<?=$ofisial["official_photo"]?>" alt="">                        
+                    <img src="<?=imgUrl()?>systems/player_storage/<?=$ofisial["official_photo"]?>" alt="">                        
                 </div>
             </div>
             <div class="right fill">
@@ -106,7 +85,7 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
             <div class="container ofisial-detail">
                 <h3>Latar Belakang</h3>
                 <p>
-				Latar Belakang
+				
                 </p>
             </div>
         </div>
@@ -147,5 +126,3 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
         </div>
     </div>
     </div>
-    </body>
-</html>

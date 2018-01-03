@@ -5,28 +5,7 @@ $club=($this->db->query("SELECT * FROM tbl_club WHERE club_id='".$cid."' LIMIT 1
 $official=$this->db->query("SELECT * FROM tbl_official_team WHERE club_now='".$cid."' ORDER BY official_id ASC");
 $total_official=($official->num_rows());
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>EyeProfile</li>
-            <li>Klub</li>
-            <li>Ofisial</li>
-        </ul>
-    </div>
+<br><br><br><br>
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
             <div class="left">
@@ -39,7 +18,7 @@ $total_official=($official->num_rows());
                     </g>
                 </svg>
                 <div class="box-img-radius">
-                    <img src="<?=base_url()?>systems/club_logo/<?php print $club['logo']; ?>" alt="">                        
+                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>" alt="">                        
                 </div>
             </div>
             <div class="right fill">
@@ -110,5 +89,3 @@ $total_official=($official->num_rows());
         </div>      
     </div>
     </div>
-    </body>
-</html>
