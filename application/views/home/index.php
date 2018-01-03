@@ -70,7 +70,7 @@
             <h2 class="title ep">EyeProfile</h2>
             <hr class="x-ep">
             <span>
-                <a href="" class="kl">Klub Lainnya</a>
+                <a href="<?php echo base_url()?>eyeprofile/klub" class="kl">Klub Lainnya</a>
                 <i class="material-icons r-kl">keyboard_arrow_right</i>                                
             </span>            
             <div id="epSlide" class="carousel slide">			  
@@ -477,13 +477,13 @@
                         <div id="tab2" class="carousel slide">
                             <div role="listbox" class="carousel-inner">                    
                                 <div class="box item active">
-								<?php
-								foreach($eyenews_populer as $populer){
-								?>
-                                    <x>
+									<x>
                                         <a href="">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
+								<?php
+								foreach($eyenews_populer as $populer){
+								?>
                                     <div class="rek-ber">
                                         <div class="rek-ber-c">
                                             <!--<img src="assets/img/video-small.png" style="width:150px" alt="">-->
@@ -502,13 +502,13 @@
 								?>
                                 </div>
                                 <div class="box item">
-								<?php
-								foreach($eyenews_rekomendasi as $rekomendasi){
-								?>
-                                    <x>
+									<x>
                                         <a href="">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
+								<?php
+								foreach($eyenews_rekomendasi as $rekomendasi){
+								?>
                                     <div class="rek-ber">
                                         <div class="rek-ber-c">
                                             <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" style="width:150px" alt="">
@@ -526,13 +526,13 @@
 									?>
                                 </div>
                                 <div class="box item">
-																	<?php
-								foreach($eyenews_muda as $muda){
-								?>
-                                    <x>
-                                        <a href="">Berita Lainnya</a>
+									<x>
+                                        <a href="<?php echo base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
+								<?php
+								foreach($eyenews_muda as $muda){
+								?>
                                     <div class="rek-ber">
                                         <div class="rek-ber-c">
                                             <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:150px" alt="">
@@ -677,9 +677,9 @@
 						?>
                             <tbody>
                                 <tr>
-                                    <td class="tx-r"><?=$row["club_a"]?><span class="i-l"><img src="<?=base_url()?>systems/club_logo/<?php print $row['club_a']; ?>" alt=""></span></td>
+                                    <td class="tx-r"><?=$row["club_a"]?><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
                                     <td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"></span></td>
-                                    <td class="tx-l"><span class="i-r"><img src="<?=base_url()?>systems/club_logo/<?php print $row['club_b']; ?>" alt=""></span><?=$row["club_b"]?></td>
+                                    <td class="tx-l"><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span><?=$row["club_b"]?></td>
                                 </tr>
                             </tbody>
 						<?php }?>
