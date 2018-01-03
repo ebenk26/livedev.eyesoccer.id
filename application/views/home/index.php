@@ -432,7 +432,7 @@
                     <h2 class="title en">EyeNews</h2>
                     <hr class="x-en">
 					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
-						<div class="t-en-content2" style="z-index: 1;top: 260px;left: 20px;">
+						<div class="t-en-content2" style="z-index: 1;top: 260px;left: 20px;"> 
 							<span class="et-st">	  					<small>
 								<?php
 									$date 		=  new DateTime($eyenews_main->createon);
