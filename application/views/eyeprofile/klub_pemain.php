@@ -1,36 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>EyeProfile</li>
-            <li>Klub</li>
-            <!-- <li>Pemain</li> -->
-        </ul>
-    </div>
+<br><br>
     <div class="container">
         <div class="garis-banner">
 		<?php
 		foreach($klub_pemain as $row){
 		?>		
             <div class="left">		
-                <img src="<?=base_url()?>newassets/img/garis.svg" alt="">
-                <img class="epro-logo" src="<?=base_url()?>systems/club_logo/<?php  $row['logo_club']; ?>" alt="">
+                <img src="<?=base_url()?>assets/img/garis.svg" alt="">
+                <img class="epro-logo" src="<?=imgUrl()?>systems/club_logo/<?php  $row['logo_club']; ?>" alt="">
             </div>
             <div class="right">
                 <div class="t-30">
@@ -121,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <select id="" name="" selected="true" class="slc-musim">
             <option value="">2017/18</option>
         </select>
-        <button class="fl-r btn-orange" type="button"><img src="<?=base_url()?>newassets/img/" alt=""> Tambah Pemain</button>
+        <button class="fl-r btn-orange" type="button"><img src="<?=imgUrl()?>newassets/img/" alt=""> Tambah Pemain</button>
     </div>	
 			<div class="center-dekstop m-0 pd-t-20">
 			<?php
@@ -149,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<span><?=$row['posisi']?></span>
 					</div>
 					<div class="img-pemain">
-						<img src="<?=base_url()?>systems/player_storage/<?=$row["foto"]?>" alt="">                
+						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["foto"]?>" alt="">                
 					</div>
 					<table>
 						<tbody>
@@ -231,7 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <td><?=$no++?></td>
                             <td>
-                                <img src="<?=base_url()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
@@ -268,11 +247,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr class="t-20">
                             <td width="40%">
                                 <i class="material-icons i-l-pertandingan"></i>
-                                <img src="<?=base_url()?>systems/club_logo/<?=$data["logo_a"]?>" alt=""> <?=$data["club_a"]?>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?=$data["logo_a"]?>" alt=""> <?=$data["club_a"]?>
                             </td>
                             <td width="20%" style="font-weight: 600;">vs</td>
                             <td width="40%">
-                                <img src="<?=base_url()?>systems/club_logo/<?=$data["logo_a"]?>" alt=""> <?=$data["club_b"]?>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?=$data["logo_a"]?>" alt=""> <?=$data["club_b"]?>
                                 <i class="material-icons i-r-pertandingan"></i>
                             </td>
                         </tr><?php } ?>
@@ -336,12 +315,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h4><?=$data["product_name"]?></h4>
                             <div class="container">
                                 <div class="w-40 m-r-1">
-                                    <img class="img-prod" src="<?=base_url()?>systems/eyemarket_storage/<?php print $data['pic']; ?>" alt="">
+                                    <img class="img-prod" src="<?=imgUrl()?>systems/eyemarket_storage/<?php print $data['pic']; ?>" alt="">
                                 </div>
                                 <div class="w-60">
                                     <span>Harga</span>
                                     <h5>Rp. <?=number_format($data['price'],2,",",".")?></h5>
-                                    <a href="<?=base_url()?>eyemarket/detail/<?php print $data['id_product']; ?>"><button type="submit" class="beli">Beli</a></button>
+                                    <a href="<?=base_url()?>eyemarket/detail/<?php print $data['id_product']; ?>" style="text-decoration:none;"><button type="submit" class="beli">Beli</a></button>
                                 </div>
                             </div>
                         </div>
@@ -357,5 +336,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         </div>
 		</div>
-    </body>
-</html>

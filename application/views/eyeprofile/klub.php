@@ -1,16 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 
-    <div class="crumb">
-        <ul>
-            <!--<li>Home</li>-->
-            <li>EyeProfile</li>
-            <!-- <li>Klub</li> -->
-            <!-- <li>Pemain</li> -->
-        </ul>
-    </div>
-    <div class="dekstop">	
         <div class="center-dekstop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
@@ -36,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="container box-border-radius fl-l mt-30">
 				
                 <div class="fl-l img-80">				
-                    <img src="<?=base_url()?>assets/img/content_11.jpg" alt="" height="100%">
+                    <img src="<?=imgUrl()?>assets/img/content_11.jpg" alt="" height="100%">
                 </div>
                 <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l">
                     <table>
@@ -93,7 +81,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				foreach($club_main as $main){
 				?>
                 <div class="box-content ep2 fl-l">
-                    <a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['club_id']; ?>"><img src="<?=base_url()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt=""></a>
+                    <a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['club_id']; ?>">
+					<img src="<?=imgUrl()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt=""></a>
                     <div class="detail">
                         <h2><?=$main['nama_club'];?></h2>
                         <h3><?=$main['competition'];?></h3>
@@ -148,13 +137,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="box-slc-musim">
                     <span>Pilih Musim</span>
                     <select id="" name="" selected="true" class="slc-musim">
-						<?php
-							foreach($kompetisi as $row){
-						?>
-							<option><?=$row['competition']?></option>';  
-						<?php
-							}
-						?>
+                        <option value="">2017/18</option>
+                        <option value="">2017/18</option>
+                        <option value="">2017/18</option>
+                        <option value="">2017/18</option>
                     </select>                    
                 </div>
                 <table class="radius table table-striped" cellspacing="0" cellpadding="0">
@@ -178,7 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tr>
                             <td><?=$no++?></td>
                             <td>
-                                <img src="<?=base_url()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>
@@ -293,4 +279,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         </div>
         </div>
-		</div>

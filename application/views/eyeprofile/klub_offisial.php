@@ -1,27 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>EyeProfile</li>
-            <li>Klub Offisial</li>
-        </ul>
-    </div>
+<br><br>
     <div class="container">
         <div class="garis-banner">
          	<?php
@@ -36,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </g>
                     </g>
                 </svg>					
-                <img src="<?=base_url()?>newassets/img/garis.svg" alt="">
+                <img src="<?=base_url()?>assets/img/garis.svg" alt="">
                 <img class="epro-logo" src="" alt="">
             </div>
             <div class="right">
@@ -154,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span><?=$data['position']?></span>
             </div>
             <div class="img-pemain">
-                <img src="<?=base_url()?>systems/player_storage/<?=$data["official_photo"]?>" alt="" width="100%">                
+                <img src="<?=imgUrl()?>systems/player_storage/<?=$data["official_photo"]?>" alt="" width="100%">                
             </div>
             <table>
                 <tbody>
@@ -177,6 +157,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php }?>
     </div>
 	</div>
-    <script src="assets/js/home.js"></script>
-    </body>
-</html>

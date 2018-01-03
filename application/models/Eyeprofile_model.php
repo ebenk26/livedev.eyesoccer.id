@@ -65,7 +65,8 @@ class Eyeprofile_model extends CI_Model
 									c.logo as logo_a,
 									d.logo as logo_b,
 									c.name as club_a,
-									d.name as club_b 
+									d.name as club_b,
+									c.url as link_klub
 									FROM tbl_jadwal_event a 
 									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
@@ -259,6 +260,19 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 
+	public function get_karir_klub()
+	{
+		$query = $this->db->query("SELECT * FROM tbl_karir_klub WHERE karir_klub_id")->result_array();
+		return $query;
+	}
+
+	public function get_karir_player()
+	{
+		$query = $this->db->query("SELECT * FROM tbl_karir_player 
+								WHERE 								
+								pelatih!='0' AND negara!='' AND karir_id Limit 5")->result_array();
+		return $query;
+	}
 	
 }
 

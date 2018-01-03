@@ -2,8 +2,8 @@
 session_start();
 $host="localhost";
 $user="root";
-$pass="";
-$db="db_eyesoccer";
+$pass="usDKyVxiXLjZsVrq";
+$db="admin_eyesoccer";
 
 if($_SERVER['SERVER_PORT'] !== 443 &&
    (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off')) {

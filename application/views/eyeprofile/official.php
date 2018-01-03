@@ -1,29 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Eyesoccer | Offisial</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=1000">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="crumb">
-        <ul>
-            <li>EyeProfile</li>
-            <li>Offisial</li>
-            <!-- <li>Klub</li> -->
-            <!-- <li>Pemain</li> -->
-        </ul>
-    </div>
-    <div class="dekstop">
     <div class="center-dekstop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>
@@ -48,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="center-dekstop m-0">
         <div class="container box-border-radius fl-l mt-30">					
                 <div class="fl-l img-80">				
-                    <img src="<?=base_url()?>assets/img/content_11.jpg" alt="" height="100%">
+                    <img src="<?=imgUrl()?>assets/img/content_11.jpg" alt="" height="100%">
                 </div>
                 <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l">
                     <table>
@@ -139,7 +116,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				?>
                 <tr>
                     <td><?=$no++?></td>
-                    <td><a href="<?php echo base_url(); ?>eyeprofile/official_detail/<?= $row['official_id']; ?>" class="media"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>systems/player_storage/<?php print $row['official_photo']; ?>" alt="" width="100%;"></div></a></td>					
+                    <td><a href="<?php echo base_url(); ?>eyeprofile/official_detail/<?= $row['official_id']; ?>" class="media">
+					<div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;">
+					<img src="<?=imgUrl()?>systems/player_storage/<?php print $row['official_photo']; ?>" alt="" width="100%;"></div></a></td>					
                     <td><?=$row['nama_manager']?></td>
                     <td><?=$row['tanggal']?> <?=$bulan[$row['bulan']]?> <?=$row['tahun']?></td>
                     <td><?=$row['position']?></td>
@@ -153,6 +132,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <i class="material-icons t-8">keyboard_arrow_right</i>
                 </span>		
     </div>
-	</div>
-    </body>
-</html>

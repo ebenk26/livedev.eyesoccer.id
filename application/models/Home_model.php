@@ -102,6 +102,7 @@ class Home_model extends CI_Model
 										a.competition,
 										a.logo,
 										b.name as nama_manager,
+										a.url as link_klub,
 										count(c.name) as squad
 									FROM
 										tbl_club a
@@ -129,6 +130,7 @@ class Home_model extends CI_Model
 										a.competition,
 										a.logo,
 										b.name as nama_manager,
+										a.url as link_klub,
 										count(c.name) as squad
 									FROM
 										tbl_club a
@@ -156,6 +158,7 @@ class Home_model extends CI_Model
 										a.competition,
 										a.logo,
 										b.name as nama_manager,
+										a.url as link_klub,
 										count(c.name) as squad
 									FROM
 										tbl_club a
@@ -199,7 +202,8 @@ class Home_model extends CI_Model
 										a.name as nama,
 										a.pic as foto,
 										a.position as posisi,
-										b.name as klub
+										b.name as klub,
+										a.url as link_player
 									FROM
 										tbl_player a
 									LEFT JOIN
@@ -226,7 +230,8 @@ class Home_model extends CI_Model
 										a.name as nama,
 										a.pic as foto,
 										a.position as posisi,
-										b.name as klub
+										b.name as klub,
+										a.url as link_player
 									FROM
 										tbl_player a
 									LEFT JOIN
@@ -253,7 +258,8 @@ class Home_model extends CI_Model
 										a.name as nama,
 										a.pic as foto,
 										a.position as posisi,
-										b.name as klub
+										b.name as klub,
+										a.url as link_player
 									FROM
 										tbl_player a
 									LEFT JOIN
@@ -417,7 +423,8 @@ class Home_model extends CI_Model
 										a.eyenews_id,
 										a.title,
 										a.news_type,
-										a.news_view
+										a.news_view,
+										a.url
 									FROM
 										tbl_eyenews a
 									WHERE
@@ -440,7 +447,8 @@ class Home_model extends CI_Model
 										a.thumb1,
 										a.news_type,
 										a.news_view,
-										a.publish_on
+										a.publish_on,
+										a.url
 									FROM
 										tbl_eyenews a
 									WHERE
@@ -462,7 +470,8 @@ class Home_model extends CI_Model
 										a.thumb1,
 										a.news_type,
 										a.news_view,
-										a.publish_on
+										a.publish_on,
+										a.url
 									FROM
 										tbl_eyenews a
 									WHERE
@@ -484,7 +493,8 @@ class Home_model extends CI_Model
 										a.description,
 										a.createon,
 										a.news_type,
-										a.news_view
+										a.news_view,
+										a.url
 									FROM
 										tbl_eyenews a
 									WHERE
