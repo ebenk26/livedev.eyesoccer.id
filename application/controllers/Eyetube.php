@@ -51,9 +51,10 @@ class Eyetube extends CI_Controller {
 		
 		$data["extrascript"]=$this->load->view('eyetube/script_index', '', true);
 		$this->load->view('config-session',$data);
+		
+		$data['kanal']="home";
 		$data["body"]=$this->load->view('eyetube/index', $data, true);
-		//$this->load->view('template-front-end',$data);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 	}
 	
 	public function detail($eyetube_id=null,$action=null)
@@ -107,7 +108,7 @@ class Eyetube extends CI_Controller {
 		<meta property="fb:app_id" content="966242223397117" />
 ';
 		
-		
+		$data['video_eyetube'] = $this->Eyetube_model->get_eyetube_satu2();
 		$data['eyetube_right_detail'] = $this->Eyetube_model->get_eyetube_right_detail();
 		$data['eyetube_rekomendasi'] = $this->Eyetube_model->get_eyetube_rekomendasi2();
 		
@@ -132,11 +133,11 @@ class Eyetube extends CI_Controller {
 		$data["page"]="home";
 		$data["popup"]=$array[14][3];
 		$data["extrascript"]=$this->load->view('eyetube/script_index', '', true);
-		//$data["body"]=$this->load->view('home/index', '', true);
 		$this->load->view('config-session',$data);
+		
+		$data['kanal']="home";
 		$data["body"]=$this->load->view('eyetube/detail', $data, true);
-		//$this->load->view('template-front-end',$data);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 	}
 	
 	public function detail2($eyetube_id=null,$action=null)

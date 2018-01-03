@@ -24,6 +24,29 @@ class Eyetube_model extends CI_Model
 										2
 								")->result_array();
 		return $query;
+	}
+	
+	public function get_eyetube_satu2()
+	{
+		$query = $this->db->query("	SELECT
+										a.eyetube_id,
+										a.title,
+										a.description,
+										a.thumb,
+										a.video,
+										a.url,
+										a.createon,
+										a.tube_view
+									FROM
+										tbl_eyetube a
+									WHERE
+										a.active = 1
+									ORDER BY
+										a.eyetube_id DESC
+									LIMIT
+										4
+								")->result_array();
+		return $query;
 	}	
 	
 	public function get_eyetube_right_detail()
@@ -113,7 +136,7 @@ class Eyetube_model extends CI_Model
 									ORDER BY
 										a.eyetube_id DESC
 									LIMIT
-										9
+										4
 								")->result_array();
 		return $query;
 	}
