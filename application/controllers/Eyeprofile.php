@@ -9,6 +9,7 @@ class Eyeprofile extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->model('Eyeprofile_model');
 			$this->load->helper(array('form','url','text','date'));
+			$this->load->helper('my');
     }
 	
 	public function index()
@@ -29,10 +30,9 @@ class Eyeprofile extends CI_Controller {
 		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
 		$data['kompetisi'] = $this->Eyeprofile_model->get_kompetisi();
 
-		
+		$data['kanal'] 				= "home";
 		$data["body"]=$this->load->view('eyeprofile/index', $data,true);
-		$this->load->view('template-baru',$data);		
-		//$this->load->view('eyeprofile/index');
+		$this->load->view('template/static',$data);
 	}	
 	
 	public function klub()
@@ -54,8 +54,9 @@ class Eyeprofile extends CI_Controller {
 		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
 		$data['kompetisi'] = $this->Eyeprofile_model->get_kompetisi();		
 		
+		$data['kanal'] 				= "home";
 		$data["body"]=$this->load->view('eyeprofile/klub', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}
 
 	public function klub_pemain()
@@ -82,8 +83,9 @@ class Eyeprofile extends CI_Controller {
 		$data['jadwal_pertandingan'] = $this->Eyeprofile_model->get_jadwal_pertandingan();
 		$data['eyemarket_main'] = $this->Eyeprofile_model->get_eyemarket_main();		
 		
+		$data['kanal'] 				= "home";
 		$data["body"]=$this->load->view('eyeprofile/klub_pemain', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}	
 	
 	public function klub_offisial()
@@ -107,30 +109,39 @@ class Eyeprofile extends CI_Controller {
 		$data['klub_official'] = $this->Eyeprofile_model->get_klub_official();
 		$data['official_klub'] = $this->Eyeprofile_model->get_official_klub();
 		
+		$data['kanal'] 				= "home";
 		$data["body"]=$this->load->view('eyeprofile/klub_offisial', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}	
 	
 	public function klub_detail($id=''){
 		if($id=="")
 		{
-			redirect("eyeprofile/klub");
-			
+			redirect("eyeprofile/klub");			
 		}
-		$query=($this->db->query("SELECT * FROM tbl_club WHERE url='".$id."' LIMIT 1"));
-		$dataquery = $query->row_array();
-		
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-
+		
 		$data["page"]="eyeprofile";
-		$data["cid"]=$dataquery['club_id'];
-		$data["url"]=$dataquery['url'];
+		$data["cid"]=$id;
+
+		$data['club_header'] = $this->Eyeprofile_model->get_club_header();
+		$data['club_main'] = $this->Eyeprofile_model->get_club_main();
+		$data['profile_club'] = $this->Eyeprofile_model->get_profile_club();
+		$data['jumlah_klub'] = $this->Eyeprofile_model->get_jumlah_klub();
+		$data['jumlah_pemain'] = $this->Eyeprofile_model->get_jumlah_pemain();
+		$data['pemain_asing'] = $this->Eyeprofile_model->get_pemain_asing();
+		$data['klasemen'] = $this->Eyeprofile_model->get_klasemen();
+		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain();
+		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
+		$data['kompetisi'] = $this->Eyeprofile_model->get_kompetisi();																
+		$data['karir_klub'] = $this->Eyeprofile_model->get_karir_klub();																
+		$data['kanal'] 				= "home";
 		
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/klub_detail', $data, true);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 	}	
 	
 	public function pemain()
@@ -154,9 +165,10 @@ class Eyeprofile extends CI_Controller {
 		$data['klub_official'] = $this->Eyeprofile_model->get_klub_official();
 		$data['official_klub'] = $this->Eyeprofile_model->get_official_klub();
 		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();		
+		$data['kanal'] = "home";
 		
 		$data["body"]=$this->load->view('eyeprofile/pemain', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}
 	
 	public function pemain_detail($id=''){
@@ -182,11 +194,12 @@ class Eyeprofile extends CI_Controller {
 		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain();
 		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
 		$data['kompetisi'] = $this->Eyeprofile_model->get_kompetisi();				
+		$data['karir_player'] = $this->Eyeprofile_model->get_karir_player();				
 		
-		
+		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/pemain_detail', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}
 
 	public function official()
@@ -209,8 +222,9 @@ class Eyeprofile extends CI_Controller {
 		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
 		$data['kompetisi'] = $this->Eyeprofile_model->get_kompetisi();
 		
+		$data['kanal'] = "home";
 		$data["body"]=$this->load->view('eyeprofile/official', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}	
 
 	public function official_detail($id=null,$action=null){
@@ -227,9 +241,10 @@ class Eyeprofile extends CI_Controller {
 		$data["id"]=$id;
 		$data["action"]=$action;
 		
+		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/official_detail', $data, true);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 	}
 	
 	public function supporter()
@@ -257,8 +272,9 @@ class Eyeprofile extends CI_Controller {
 		$data['eyemarket_main'] = $this->Eyeprofile_model->get_eyemarket_main();
 		$data['supporter'] = $this->Eyeprofile_model->get_klub_supporter();
 		
+		$data['kanal'] = "home";
 		$data["body"]=$this->load->view('eyeprofile/supporter', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}	
 	
 	public function referee()
@@ -288,7 +304,8 @@ class Eyeprofile extends CI_Controller {
 		$data['eyemarket_main'] = $this->Eyeprofile_model->get_eyemarket_main();
 		$data['supporter'] = $this->Eyeprofile_model->get_klub_supporter();		
 		
+		$data['kanal'] = "home";
 		$data["body"]=$this->load->view('eyeprofile/referee', $data, true);
-		$this->load->view('template-baru',$data);		
+		$this->load->view('template/static',$data);		
 	}
 }

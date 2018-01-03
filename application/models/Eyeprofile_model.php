@@ -260,6 +260,19 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 
+	public function get_karir_klub()
+	{
+		$query = $this->db->query("SELECT * FROM tbl_karir_klub WHERE karir_klub_id")->result_array();
+		return $query;
+	}
+
+	public function get_karir_player()
+	{
+		$query = $this->db->query("SELECT * FROM tbl_karir_player 
+								WHERE 								
+								pelatih!='0' AND negara!='' AND karir_id Limit 5")->result_array();
+		return $query;
+	}
 	
 }
 

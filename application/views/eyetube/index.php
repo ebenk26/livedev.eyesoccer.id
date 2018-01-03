@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <title></title>
-    <meta name="viewport" content="width=1000">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/bs.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>Eyetube</li>
-            <li>Home</li>
-            <!-- <li>Pemain</li> -->
-        </ul>
-    </div>
-    <div class="desktop">
         <div class="center-desktop m-0">
             <div class="menu-3 w1020 m-0">
                 <ul>
@@ -106,7 +84,9 @@
                 <div class="w30">
                     <div>
                         <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb']; ?>" style="width:100%;margin-right:20px;">
-                        <p class="sub-en"><?= $populer['title']; ?></p>
+                        <p class="sub-en">
+						<a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer['url']; ?>" style="text-decoration:none;">
+						<?= $populer['title']; ?></a></p>
                         <span class="time-view">
 							<?php
 	    						$date 		=  new DateTime($populer['createon']);
@@ -145,18 +125,20 @@
                     <div role="listbox" class="carousel-inner">
                         <div class="box item active">
 							<?php 
-							foreach($eyetube_rekomendasi as $row){
+							foreach($eyetube_rekomendasi as $rekomendasi){
 							?>						
                             <div class="w30">
                                 <div>
-                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $row['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                    <p class="sub-en"><?=$row['title']?></p>
+                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $rekomendasi['thumb']; ?>" style="width:100%;margin-right:20px;">
+                                    <p class="sub-en">
+									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi['url']; ?>" style="text-decoration:none;">
+									<?=$rekomendasi['title']?></a></p>
                                     <span class="time-view">
 									<?php
-											$date 		=  new DateTime($row['createon']);
+											$date 		=  new DateTime($rekomendasi['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' ago - '.$row['tube_view'].' views';
+											echo relative_time($tanggal) . ' ago - '.$rekomendasi['tube_view'].' views';
 										?>
 									</span>
                                 </div>
@@ -167,18 +149,20 @@
                         </div>
                         <div class="box item">
 							<?php 
-							foreach($eyetube_rekomendasi_2 as $row_2){
+							foreach($eyetube_rekomendasi_2 as $rekomendasi_2){
 							?>						
                             <div class="w30">
                                 <div>
-                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $row_2['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                    <p class="sub-en"><?=$row_2['title']?></p>
+                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $rekomendasi_2['thumb']; ?>" style="width:100%;margin-right:20px;">
+                                    <p class="sub-en">
+									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi_2['url']; ?>" style="text-decoration:none;">
+									<?=$rekomendasi_2['title']?></a></p>
                                     <span class="time-view">
 									<?php
-											$date 		=  new DateTime($row_2['createon']);
+											$date 		=  new DateTime($rekomendasi_2['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' ago - '.$row_2['tube_view'].' views';
+											echo relative_time($tanggal) . ' ago - '.$rekomendasi_2['tube_view'].' views';
 										?>									
 									</span>
                                 </div>
@@ -209,18 +193,20 @@
                     <div role="listbox" class="carousel-inner">
                         <div class="box item active">
 							<?php
-								foreach($eyetube_science as $row){
+								foreach($eyetube_science as $science){
 							?>
                             <div class="w30">
                                 <div>
-                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $row['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                    <p class="sub-en"><?=$row['title']?></p>
+                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $science['thumb']; ?>" style="width:100%;margin-right:20px;">
+                                    <p class="sub-en">
+									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $science['url']; ?>" style="text-decoration:none;">
+									<?=$science['title']?></a></p>
                                     <span class="time-view">
 										<?php
-											$date 		=  new DateTime($row['createon']);
+											$date 		=  new DateTime($science['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' ago - '.$row['tube_view'].' views';
+											echo relative_time($tanggal) . ' ago - '.$science['tube_view'].' views';
 										?>									
 									</span>
                                 </div>
@@ -229,18 +215,20 @@
                         </div>
                         <div class="box item">
 							<?php
-								foreach($eyetube_science_2 as $row_2){
+								foreach($eyetube_science_2 as $science2){
 							?>						
                             <div class="w30">
                                 <div>
-                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $row_2['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                    <p class="sub-en"><?=$row_2['title']?></p>
+                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $science2['thumb']; ?>" style="width:100%;margin-right:20px;">
+                                    <p class="sub-en">
+									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $science2['url']; ?>" style="text-decoration:none;">
+									<?=$science2['title']?></a></p>
                                     <span class="time-view">
 										<?php
-											$date 		=  new DateTime($row_2['createon']);
+											$date 		=  new DateTime($science2['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' ago - '.$row_2['tube_view'].' views';
+											echo relative_time($tanggal) . ' ago - '.$science2['tube_view'].' views';
 										?>									
 									</span>
                                 </div>
@@ -270,18 +258,20 @@
                     <div role="listbox" class="carousel-inner">
                         <div class="box item active">
 						<?php
-						foreach($eyetube_kamu as $row){
+						foreach($eyetube_kamu as $kamu){
 						?>						
                             <div class="w30">
                                 <div>
-                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $row['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                    <p class="sub-en"><?=$row['title']?></p>
+                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb']; ?>" style="width:100%;margin-right:20px;">
+                                    <p class="sub-en">
+									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $kamu['url']; ?>" style="text-decoration:none;">
+									<?=$kamu['title']?></a></p>
                                     <span class="time-view">
 										<?php
-											$date 		=  new DateTime($row['createon']);
+											$date 		=  new DateTime($kamu['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' ago - '.$row['tube_view'].' views';
+											echo relative_time($tanggal) . ' ago - '.$kamu['tube_view'].' views';
 										?>									
 									</span>
                                 </div>
@@ -329,7 +319,9 @@
                             <div class="w30">
                                 <div>
                                     <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $ssb['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                    <p class="sub-en"><?=$ssb['title']?></p>
+                                    <p class="sub-en">
+									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb['url']; ?>" style="text-decoration:none;">
+									<?=$ssb['title']?></a></p>
                                     <span class="time-view">
 										<?php
 											$date 		=  new DateTime($ssb['createon']);
@@ -349,7 +341,9 @@
                             <div class="w30">
                                 <div>
                                     <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $ssb_2['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                    <p class="sub-en"><?=$ssb_2['title']?></p>
+                                    <p class="sub-en">
+									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb_2['url']; ?>" style="text-decoration:none;">
+									<?=$ssb_2['title']?></a></p>
                                     <span class="time-view">
 										<?php
 											$date 		=  new DateTime($ssb_2['createon']);
@@ -367,8 +361,3 @@
             </div>
         </div>
     </div>
-    </div>
-        <script src="<?=base_url()?>assets/js/home.js"></script>
-</body>
-
-</html>
