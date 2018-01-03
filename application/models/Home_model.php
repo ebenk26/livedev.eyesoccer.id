@@ -406,7 +406,8 @@ class Home_model extends CI_Model
 										a.thumb1,
 										a.news_type,
 										a.news_view,
-										a.createon
+										a.createon,
+										a.url
 									FROM
 										tbl_eyenews a
 									ORDER BY
