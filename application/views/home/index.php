@@ -81,26 +81,27 @@
 							{
 						?>			
 							
-								<div class="box-content">
-									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-									<div class="detail">
-										<h2><?= $club['nama_club']; ?></h2>
-										<h3><?= $club['competition']; ?></h3>
-										<table>
-											<tr>
-												<td>Squad</td>
-												<td><?= $club['squad']; ?></td>
-											</tr>
-											<tr>
-												<td>Manager</td>
-												<td><?= $club['nama_manager']; ?></td>
-											</tr>
-										</table>                        
+								<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
+									<div class="box-content">
+										<!--<img src="assets/img/ss-img.png" alt="">-->
+										<!--<img height="100px;" src="assets/img/ss-img.png">-->
+										<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+										<div class="detail">
+											<h2><?= $club['nama_club']; ?></h2>
+											<h3><?= $club['competition']; ?></h3>
+											<table>
+												<tr>
+													<td>Squad</td>
+													<td><?= $club['squad']; ?></td>
+												</tr>
+												<tr>
+													<td>Manager</td>
+													<td><?= $club['nama_manager']; ?></td>
+												</tr>
+											</table>                        
+										</div>
 									</div>
-								</div>
-							
+								</a>
 						<?php 
 						}
 						?>
@@ -110,27 +111,27 @@
 							foreach ($profile_club_2 as $club)
 							{
 						?>			
-							
-								<div class="box-content">
-									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-									<div class="detail">
-										<h2><?= $club['nama_club']; ?></h2>
-										<h3><?= $club['competition']; ?></h3>
-										<table>
-											<tr>
-												<td>Squad</td>
-												<td><?= $club['squad']; ?></td>
-											</tr>
-											<tr>
-												<td>Manager</td>
-												<td><?= $club['nama_manager']; ?></td>
-											</tr>
-										</table>                        
+								<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
+									<div class="box-content">
+										<!--<img src="assets/img/ss-img.png" alt="">-->
+										<!--<img height="100px;" src="assets/img/ss-img.png">-->
+										<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+										<div class="detail">
+											<h2><?= $club['nama_club']; ?></h2>
+											<h3><?= $club['competition']; ?></h3>
+											<table>
+												<tr>
+													<td>Squad</td>
+													<td><?= $club['squad']; ?></td>
+												</tr>
+												<tr>
+													<td>Manager</td>
+													<td><?= $club['nama_manager']; ?></td>
+												</tr>
+											</table>                        
+										</div>
 									</div>
-								</div>
-							
+								</a>
 						<?php 
 						}
 						?>
@@ -140,27 +141,27 @@
 							foreach ($profile_club_3 as $club)
 							{
 						?>			
-							
-								<div class="box-content">
-									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-									<div class="detail">
-										<h2><?= $club['nama_club']; ?></h2>
-										<h3><?= $club['competition']; ?></h3>
-										<table>
-											<tr>
-												<td>Squad</td>
-												<td><?= $club['squad']; ?></td>
-											</tr>
-											<tr>
-												<td>Manager</td>
-												<td><?= $club['nama_manager']; ?></td>
-											</tr>
-										</table>                        
+								<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
+									<div class="box-content">
+										<!--<img src="assets/img/ss-img.png" alt="">-->
+										<!--<img height="100px;" src="assets/img/ss-img.png">-->
+										<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+										<div class="detail">
+											<h2><?= $club['nama_club']; ?></h2>
+											<h3><?= $club['competition']; ?></h3>
+											<table>
+												<tr>
+													<td>Squad</td>
+													<td><?= $club['squad']; ?></td>
+												</tr>
+												<tr>
+													<td>Manager</td>
+													<td><?= $club['nama_manager']; ?></td>
+												</tr>
+											</table>                        
+										</div>
 									</div>
-								</div>
-							
+								</a>
 						<?php 
 						}
 						?>
@@ -199,17 +200,19 @@
 								);
 						foreach ($profile_player as $player)
 						{	
-						?>				
-							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
-								<div class="des">
-									<h3><?= $player['nama']; ?></h3>
-									<p>Posisi: <?= $player['posisi']; ?><br>
-									Klub: <?= $player['klub']; ?><br>
-									Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+						?>		
+							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
+								<div class="ctn-pemain">
+									<!--<img src="assets/img/ss-img.png" alt="">-->
+									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
+									<div class="des">
+										<h3><?= $player['nama']; ?></h3>
+										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
+										Klub: <?= $player['klub']; ?><br>
+										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+									</div>
 								</div>
-							</div>
+							</a>
 						<?php
 						}
 						?>	
@@ -219,17 +222,19 @@
 						<?php
 						foreach ($profile_player_2 as $player)
 						{	
-						?>				
-							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
-								<div class="des">
-									<h3><?= $player['nama']; ?></h3>
-									<p>Posisi: <?= $player['posisi']; ?><br>
-									Klub: <?= $player['klub']; ?><br>
-									Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+						?>		
+							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
+								<div class="ctn-pemain">
+									<!--<img src="assets/img/ss-img.png" alt="">-->
+									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
+									<div class="des">
+										<h3><?= $player['nama']; ?></h3>
+										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
+										Klub: <?= $player['klub']; ?><br>
+										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+									</div>
 								</div>
-							</div>
+							</a>
 						<?php
 						}
 						?>
@@ -239,17 +244,19 @@
 						<?php
 						foreach ($profile_player_3 as $player)
 						{	
-						?>				
-							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
-								<div class="des">
-									<h3><?= $player['nama']; ?></h3>
-									<p>Posisi: <?= $player['posisi']; ?><br>
-									Klub: <?= $player['klub']; ?><br>
-									Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+						?>			
+							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
+								<div class="ctn-pemain">
+									<!--<img src="assets/img/ss-img.png" alt="">-->
+									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
+									<div class="des">
+										<h3><?= $player['nama']; ?></h3>
+										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
+										Klub: <?= $player['klub']; ?><br>
+										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+									</div>
 								</div>
-							</div>
+							</a>
 						<?php
 						}
 						?>
@@ -269,13 +276,15 @@
 				foreach ($video_eyetube as $videonya)
 				{
 				?>
-                    <div class="et-v-content">
-                        <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
-                        <!--<img src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">-->
-                        <div class="btn-play">
-                            <img src="assets/img/btn-play.png" alt="">
-                        </div>
-                    </div>
+					<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>">
+						<div class="et-v-content">
+							<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
+							<!--<img src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">-->
+							<div class="btn-play">
+								<img src="assets/img/btn-play.png" alt="">
+							</div>
+						</div>
+					</a>
                     <span class="et-st">
 					<?php
 						$date 		=  new DateTime($videonya['createon']);
@@ -283,7 +292,9 @@
 						echo relative_time($tanggal) . ' ago - '.$videonya['tube_view'].' views';						
 					?>					
 					</span>
-                    <h1 class="et-title"><?= $videonya['title']; ?></h1>
+					<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>" style="text-decoration: unset;">
+						<h1 class="et-title"><?= $videonya['title']; ?></h1>
+					</a>
                     <p class="et-d">
 					<?php
 						$keterangan = strip_tags($videonya['description']);
@@ -303,7 +314,8 @@
 								{
 									if ($i != 0)
 									{
-					?>					
+					?>			
+						<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>" style="text-decoration: unset;">
                         <div class="t-et-content2">
                             <span class="et-st"><?php
 						$date 		=  new DateTime($videonya['createon']);
@@ -313,6 +325,7 @@
                             <p class="et-st-det"><?= $videonya['title']; ?></p>
                         </div>
                         <img class="v-et-2 v-et-100" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
+						</a>
 					<?php
 					}
 					$i++;
@@ -339,17 +352,19 @@
 							<?php
 							foreach ($eyetube_stars as $stars)
 							{
-							?>							
-                            <div class="vid-box-vl">
-                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">
-                                <a href="" class="vid-ttl"><?= $stars['title']; ?></a><br>
-                                <p class="vid-time"><?php
-	    						$date 		=  new DateTime($stars['createon']);
-	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
+							?>
+							<a href="<?=base_url().'eyetube/detail/'.$stars['url']; ?>" style="text-decoration: unset;">
+								<div class="vid-box-vl">
+									<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">
+									<span class="vid-ttl"><?= $stars['title']; ?></span><br>
+									<p class="vid-time"><?php
+									$date 		=  new DateTime($stars['createon']);
+									$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-	    						echo relative_time($tanggal) . ' ago - '.$stars['tube_view'].' views';
-	    					?></p>                              
-                            </div>
+									echo relative_time($tanggal) . ' ago - '.$stars['tube_view'].' views';
+								?></p>                              
+								</div>
+							</a>
 							<?php		
 							}
 							?>							
@@ -362,18 +377,20 @@
 							<?php
 							foreach ($eyetube_populer as $populer)
 							{
-							?>							
-                            <div class="vid-box-vl">
-                                <!--<img src="assets/img/video-small.png" alt="">-->
-                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">
-                                <a href="" class="vid-ttl"><?= $populer['title']; ?></a><br>
-                                <p class="vid-time"><?php
-	    						$date 		=  new DateTime($populer['createon']);
-	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
+							?>			
+							<a href="<?=base_url().'eyetube/detail/'.$populer['url']; ?>" style="text-decoration: unset;">
+								<div class="vid-box-vl">
+									<!--<img src="assets/img/video-small.png" alt="">-->
+									<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">
+									<span class="vid-ttl"><?= $populer['title']; ?></span><br>
+									<p class="vid-time"><?php
+									$date 		=  new DateTime($populer['createon']);
+									$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-	    						echo relative_time($tanggal) . ' ago - '.$populer['tube_view'].' views';
-	    					?></p>                              
-                            </div>
+									echo relative_time($tanggal) . ' ago - '.$populer['tube_view'].' views';
+								?></p>                              
+								</div>
+							</a>
 							<?php		
 							}
 							?>							
@@ -387,16 +404,18 @@
 							foreach ($eyetube_kamu as $kamu)
 							{
 							?>							
-                            <div class="vid-box-vl">
-                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
-                                <a href="" class="vid-ttl"><?= $kamu['title']; ?></a><br>
-                                <p class="vid-time"><?php
-	    						$date 		=  new DateTime($kamu['createon']);
-	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
+							<a href="<?=base_url().'eyetube/detail/'.$kamu['url']; ?>" style="text-decoration: unset;">
+								<div class="vid-box-vl">
+									<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
+									<span class="vid-ttl"><?= $kamu['title']; ?></span><br>
+									<p class="vid-time"><?php
+									$date 		=  new DateTime($kamu['createon']);
+									$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-	    						echo relative_time($tanggal) . ' ago - '.$kamu['tube_view'].' views';
-	    					?></p>                              
-                            </div>
+									echo relative_time($tanggal) . ' ago - '.$kamu['tube_view'].' views';
+								?></p>                              
+								</div>
+							</a>
 							<?php		
 							}
 							?>							
@@ -436,7 +455,7 @@
 						?>						
                         <ul>
                             <li>
-                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar['eyenews_id'];?>">
+                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar['url'];?>">
 								<img src="<?php echo base_url(); ?>assets/img/chevron-right-red.png"> <?= $similar['title']; ?></a>
                             </li>
                         </ul>
@@ -485,16 +504,19 @@
 								foreach($eyenews_populer as $populer){
 								?>
                                     <div class="rek-ber">
-                                        <div class="rek-ber-c">
-                                            <!--<img src="assets/img/video-small.png" style="width:150px" alt="">-->
-                                            <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:150px" alt="">
-                                            <span><?=$populer['createon'];?></span>
-                                            <h1><?=$populer['title'];?></h1>
-                                            <p><?php
+										<div class="rek-ber-c">
+											<!--<img src="assets/img/video-small.png" style="width:150px" alt="">-->
+											<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:150px" alt="">
+											<span><?=$populer['createon'];?></span>
+											<h1>
+												<a href="<?=base_url().'eyenews/detail/'.$populer['url']; ?>" style="text-decoration: unset;color:black;"><?=$populer['title'];?>
+												</a>
+											</h1>
+											<p><?php
 												$keterangan = strip_tags($populer['description']);
 												echo word_limiter($keterangan,25);
 											?></p>
-                                        </div>
+										</div>
                                         <hr>                                        
                                     </div>
 								<?php
@@ -510,15 +532,19 @@
 								foreach($eyenews_rekomendasi as $rekomendasi){
 								?>
                                     <div class="rek-ber">
-                                        <div class="rek-ber-c">
-                                            <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" style="width:150px" alt="">
-                                            <span><?=$rekomendasi['createon'];?></span>
-                                            <h1><?=$rekomendasi['title'];?></h1>
-                                            <p><?php
+										<div class="rek-ber-c">
+											<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" style="width:150px" alt="">
+											<span><?=$rekomendasi['createon'];?></span>
+											<h1>
+												<a href="<?=base_url().'eyenews/detail/'.$rekomendasi['url']; ?>" style="text-decoration: unset;color:black;">
+												<?=$rekomendasi['title'];?>
+												</a>
+											</h1>
+											<p><?php
 												$keterangan = strip_tags($rekomendasi['description']);
 												echo word_limiter($keterangan,15);
 											?></p>
-                                        </div>
+										</div>
                                         <hr>
                                     </div>
 									<?php
@@ -534,15 +560,19 @@
 								foreach($eyenews_muda as $muda){
 								?>
                                     <div class="rek-ber">
-                                        <div class="rek-ber-c">
-                                            <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:150px" alt="">
-                                            <span><?=$muda['createon'];?></span>
-                                            <h1><?=$muda['title'];?></h1>
-                                            <p><?php
+										<div class="rek-ber-c">
+											<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:150px" alt="">
+											<span><?=$muda['createon'];?></span>
+											<h1>
+												<a href="<?=base_url().'eyenews/detail/'.$muda['url']; ?>" style="text-decoration: unset;color:black;">
+												<?=$muda['title'];?>
+												</a>
+											</h1>
+											<p><?php
 												$keterangan = strip_tags($muda['description']);
 												echo word_limiter($keterangan,15);
 											?></p>
-                                        </div>
+										</div>
                                         <hr>
                                     </div>
 									<?php
@@ -648,7 +678,7 @@
 											<?php
 												$date = new DateTime(date("Y-m-d"));
 												$date->modify('-1 day');
-												echo $date->format('Y-m-d');
+												echo $date->format('d F');
 											?>
 										</span>
                                     </a>
@@ -664,7 +694,7 @@
 											<?php
 												$date = new DateTime(date("Y-m-d"));
 												$date->modify('+1 day');
-												echo $date->format('Y-m-d');
+												echo $date->format('d F');
 											?>
 										</span>
                                     </a>

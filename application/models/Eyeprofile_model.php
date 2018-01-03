@@ -65,7 +65,8 @@ class Eyeprofile_model extends CI_Model
 									c.logo as logo_a,
 									d.logo as logo_b,
 									c.name as club_a,
-									d.name as club_b 
+									d.name as club_b,
+									c.url as link_klub
 									FROM tbl_jadwal_event a 
 									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
