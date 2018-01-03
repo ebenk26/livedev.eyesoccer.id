@@ -180,8 +180,12 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
-		$data['kanal'] 				= "registration";
-		$data["body"]=$this->load->view('home/registration', $data);
+		if(isset($_SESSION['id_member'])){
+			header("location:".base_url()."home/index");
+		}else{
+			$data['kanal'] 				= "registration";
+			$data["body"]=$this->load->view('home/registration', $data);
+		}
 	}
 	
 	public function login_session()
