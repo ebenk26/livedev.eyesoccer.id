@@ -72,7 +72,7 @@
 	                    			                      white-space: nowrap;
 	                    			                      vertical-align: baseline;
 	                    			                      border-radius: .25em;">
-	                    			                <?= date('d/m/Y H:i:s',strtotime($model->expired_date)); ?>
+	                    			                <?= date('d/m/Y H:i:s',strtotime($expired)); ?>
 	                    			            </span>
 	                    			        </td>
 	                    			    </tr>

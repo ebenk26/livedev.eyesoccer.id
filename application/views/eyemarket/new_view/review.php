@@ -222,6 +222,7 @@
                                                         <br>
                                                         <span>
                                                             <?= $qty; ?> barang (<?= $berat_all; ?> gram)
+                                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Berat total barang yang kurang dari 1.4 kg, maka terhitung 1 kg sesuai ketentuan JNE."><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                                         </span>
                                                     </td>
                                                     <td style="vertical-align: unset;">
