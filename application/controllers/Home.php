@@ -180,7 +180,7 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
-		if(isset($_SESSION['id_member'])){
+		if(isset($_SESSION['id_member']) && $this->session->id_member){
 			header("location:".base_url()."home/index");
 		}else{
 			$data['kanal'] 				= "registration";
@@ -190,11 +190,10 @@ class Home extends CI_Controller {
 	
 	public function login_session()
 	{
-		if(isset($_POST['username'])){
-
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			$page     = $_POST['page'];
+		if($this->input->post('username')){
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			$page     = $this->input->post('page');
 			$cmd      = $this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
 			$row      =$cmd->row_array();
 			$user_id  =$row['id_member'];
@@ -219,11 +218,13 @@ class Home extends CI_Controller {
 					 //end
 				  $_SESSION['member_id']=$user_id;
 				  $_SESSION['id_member']=$user_id;
-				  header("location:".base_url().$page);  
+				  // header("location:".base_url().$page);  
+				  echo "true";
 				  }  
 			}else{
-				echo "<script>alert('Email atau Password salah')</script>";
-				header("location:".base_url()."home/login");
+				// header('Refresh:0; url= '. base_url().'home/login'); 
+				// echo "<script>alert('Email atau Password salah')</script>";
+				echo "false";
 			}
 		}
 	}

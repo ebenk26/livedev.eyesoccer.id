@@ -30,7 +30,8 @@
             </div>
 
             <div class="container">
-				<form class="form-login" action="<?= base_url(); ?>home/login_session" method="post">
+				<!--<form class="form-login" action="<?// = base_url(); ?>home/login_session" method="post">-->
+				<form class="form-login">
                     <div class="frm-login-data m-0">
                         <span>Email</span>
                         <input name="username" type="text" placeholder="Ketik alamat email">
@@ -126,6 +127,39 @@
 			var tech = getUrlParameter('page');
 			$(".form-login-redirect").val(tech);
 			console.log(tech);
+			
+			$(".form-login").submit(function(e) {
+				e.preventDefault();
+				var formData = $( this ).serialize();
+				$.ajax({  
+					 type: "POST",  
+					 url: "<?php base_url()?>../home/login_session",  
+					 data: formData,
+					 async: false,
+					 cache: false,
+					 processData: true,
+					 beforeSend: function() {
+						 console.log('before');
+					 }, 
+					 complete: function() {
+						 console.log('complete');
+					 },
+					 success: function(data) {
+						// alert(data);
+						console.log(data);
+						if(data=='true'){
+							window.location.href = "../home/index";
+						}else{
+							alert('Email atau Password salah');
+						}
+					 },
+					 error: function(err){
+						console.log(err);
+						alert(err);
+					 }
+				}); 
+				return false;
+			})
 		});
         var active = document.getElementsByClassName("active")[0];
         var deactive = document.getElementsByClassName("deactive")[0];

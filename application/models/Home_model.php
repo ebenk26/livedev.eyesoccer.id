@@ -23,7 +23,7 @@ class Home_model extends CI_Model
 									INNER JOIN
 										tbl_club d ON d.club_id=a.tim_b
 								WHERE
-									a.jadwal_pertandingan
+									a.jadwal_pertandingan <= '".date('Y-m-d H:i:s')."'
 								order by
 									jadwal_pertandingan DESC
 								LIMIT
@@ -50,7 +50,7 @@ class Home_model extends CI_Model
 									INNER JOIN
 										tbl_club d ON d.club_id=a.tim_b
 								WHERE
-									a.jadwal_pertandingan
+									a.jadwal_pertandingan <= '".date('Y-m-d H:i:s')."'
 								order by
 									jadwal_pertandingan DESC
 								LIMIT
