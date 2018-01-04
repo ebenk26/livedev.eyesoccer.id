@@ -1884,7 +1884,7 @@ ul, li {
 }
 .btn-white-follow{
     background-color: white;
-    width: 120px;
+    min-width: 160px;
     border: 1px solid #3a7dc6;
     border-radius: 5px;
     color: #3a7dc6;
@@ -2700,6 +2700,18 @@ ul, li {
 sw:begin;
 loading animation
 */
+.a-fol{
+    text-decoration:none;
+    color:rgb(83, 83, 83);
+}
+.unfol:hover{
+    background: #EE1C1C;
+    border-color:#EE1C1C;
+}
+.unfol:hover:before{
+    content:'Berhenti ';
+    width:210px;
+}
 .hidden{
     display: none;
 }

@@ -117,6 +117,10 @@ $('#notif').click(function(event){ //event notif click
                         else if(v.notif_type.substr(0,3) == 'LIK'){
                             tbl += 'Menyukai Foto Anda'; 
                         }
+                        else if(v.notif_type.substr(0,3) == 'FOL'){
+                            tbl += 'Mengikuti Anda';
+
+                        }
                         else{
                              tbl += 'Mengikuti Anda'; 
                         }
@@ -125,7 +129,7 @@ $('#notif').click(function(event){ //event notif click
                         tbl += '<span class="time-notif">'+ v.timeString +'</span>';
                     tbl += '</td>';
                     tbl += '<td class="fl-r mr-7">';
-                        tbl += '<img src="'+ MEIMG + v.img_thumb + '" alt="post photo" class="notif-photo">';
+                        tbl += (v.img_thumb == null ? '' : '<img src="'+ MEIMG + v.img_thumb + '" alt="post photo" class="notif-photo">');
                     tbl += '</td>';
                 tbl += '</tr>';
                 tbl += '<tr>';
@@ -275,6 +279,59 @@ $('.click-like').click(function(event) {
    
     
     //alert($(this).attr('ref'));
+});
+//follow 
+$('.btn-white-follow').click(function(event) {
+
+    var id_friend = $(this).attr('rel');
+    $this   = $(this);
+    /* Act on the event */
+    if($this.hasClass('fol')){
+        $.ajax({
+            url: '<?php echo EYEMEPATH?>' + 'follow',
+            type: 'POST',
+            dataType: 'HTML',
+            data: {id_friend: id_friend},
+        })
+        .done(function(r) {
+            if(r == 'success'){
+                $this.removeClass('fol');
+                $this.addClass('unfol');
+                $this.text('Mengikuti');
+            }
+           
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    }
+    else{
+         $.ajax({
+            url: '<?php echo EYEMEPATH?>' + 'unfollow',
+            type: 'POST',
+            dataType: 'HTML',
+            data: {id_friend: id_friend},
+        })
+        .done(function(r) {
+            if(r == 'success'){
+                 $this.removeClass('unfol');
+                $this.addClass('fol');
+                $this.text('ikuti');
+            }
+           
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+
+    }
+    
 });
 //unlike 
 $('#unlike').click(function(event) {

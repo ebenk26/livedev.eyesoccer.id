@@ -157,15 +157,25 @@ class Eyeme extends CI_Controller {
 	*/
 	public function follow(){
 
-		$id_member  = $this->session->userdata('id_member');
+		
 		$id_friend  = inputSecure($this->input->post('id_friend'));
-		$insert     = $this->emod->follow($id_member,$id_friend);
-		if($insert == TRUE){
-			echo 'success';
+		$insert     = $this->emod->follow($this->id_member,$id_friend);
+		if(!$insert){
+			echo 'failed';
 
 		}
 		else{
-			echo 'false';
+			echo 'success';
+		}
+	}
+	public function unfollow(){
+		$id_friend = inputSecure($this->input->post('id_friend'));
+		$delete    = $this->emod->unfollow($this->id_member,$id_friend);
+		if(!$delete){
+			echo 'failed';
+		}
+		else{
+			echo 'success';
 		}
 	}
 	/**
@@ -266,6 +276,9 @@ class Eyeme extends CI_Controller {
 
 		#echo 'explore test';
 	}
+	#public function img($id_img){
+		#$this->
+	#}
 	
 	/**
 	*@param $id_img = id image yang di sukai

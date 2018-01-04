@@ -678,10 +678,10 @@ class Master_model extends CI_Model
 			</script>
 		";
 	}
-	public function checkLogin(){
+	public function checkLogin($page =''){ // page == halamaan yang di tuju 
 		$userid = $this->session->userdata('id_member');
 		if($userid == ''){
-			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().'home/login');
+			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().($page == '' ? 'home/login' : 'home/login?page='.$page));
 			
 		} 
 		

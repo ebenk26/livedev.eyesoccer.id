@@ -139,17 +139,18 @@ class Eyeme_model extends Master_model
 	*/
 	public function getExplore(){
 		$getImg = $this->mod->getAll('me_img');
+
 		for($i= 0 ; $i < count($getImg); $i++){
 			$dp      = $this->mod->getAll('me_profile',
 								array('id_member'=> $getImg[$i]->id_member),
 								array('display_picture','username'));
-			$like    =$this->mod->getAll('me_like',
+			$like    = $this->mod->getAll('me_like',
 								array('id_img'=>$getImg[$i]->id_img),
 								array('id_like','id_member'));
-			$comment =$this->mod->getAll('me_comment',
+			$comment = $this->mod->getAll('me_comment',
 								array('id_img' => $getImg[$i]->id_img),
 								array('id_comment','id_member'));
-			#echo $this->db->last_query();
+			
 			$getImg[$i]->username  = $dp[0]->username;
 			$getImg[$i]->display_pic = $dp[0]->display_picture;
 			$getImg[$i]->countLike = count($like);
@@ -437,10 +438,36 @@ class Eyeme_model extends Master_model
 	public function follow($id_member,$id_friend){
 		$data      = array('id_member'=> $id_member,
 							'id_following' => $id_friend,
-							'last_update'  => $this->now);
+							'last_update'  => NOW);
 
 		$exe       = $this->db->insert('me_follow',$data);
+		$dataNotif     = array(
+				'id_member'     => $id_friend, # yang menerima notif comment
+				'id_member_act' => $id_member, #yang memberi notif comment
+				'id_img'		=> NULL,
+				'notif_type'    => 'FOL',
+				'notif_content' => 'FOLLOW',
+				'img_thumb'		=> NULL,
+				'img_alt'	    => NULL,
+				'date_create'   => NOW,
+				'last_update'   => NOW);
+
+		$insertNotif   = $this->db->insert('me_notif',$dataNotif); #insert data ke dalam table me_notif
+
+
 		return $exe;
+
+	}
+	public function unFollow($id_member,$id_friend){
+		
+		$id_friend  = $id_friend;
+
+		$this->db->where('id_member',$id_member);
+		$this->db->where('id_following',$id_friend);
+		$exe = $this->db->delete('me_follow');
+		#echo $this->db->last_query();
+		return $exe;
+		
 
 	}
 
@@ -503,15 +530,9 @@ class Eyeme_model extends Master_model
 			return 'success';
 		}
 	}
-	public function unFollow($id_friend){
-		$id_member  = $this->session->userdata('id_memnber');//id member session login 
-		$id_friend  = $id_member;
-
-		$this->db->where('id_member',$id_member);
-		$this->db->where('id_following',$id_friend);
-		$exe = $this->db->delete('me_follow');
-		return $exe;
-		
+	
+	public function getImg($id_img){
+		#$this->getAll('')
 
 	}
 	//sw::end
