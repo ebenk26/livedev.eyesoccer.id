@@ -116,6 +116,13 @@ function getTime($timeStamp){
     return array('day' => $day,'hours'=> $hours,'minute'=> $minute,'secon'=>$secon,'timeString' => $timeString);
 }
 
+function btnFol($id_member,$has_follow = TRUE){
+    return '<button class="btn-white-follow '.(!$has_follow ? 'fol' : 'unfol').'" type="button" rel="'.$id_member.'">'
+    .(!$has_follow ? 'ikuti':'Mengikuti').'</button>';
+
+}
+
+
 if ( ! function_exists('image_resize'))
 {
     function image_resize($width, $height, $crop=0, $src, $dst='')

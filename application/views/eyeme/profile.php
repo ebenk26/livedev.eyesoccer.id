@@ -12,15 +12,15 @@
                                 <span class="uname"><?php echo $username?></span>
                                 <?php  // if id_member == session Id_member
 
-                                if($self == TRUE){
-                                    $button = '';
+                                if(!$self){
+                                    
+                                    echo btnFol($id_member,$checkFollowed);
+                                        
+                            
                                 }
-                                else{
-                                    $button = '<button class="btn-white-follow" type="button" rel="'.$id_member.'">
-                                    '.($checkFollowed == TRUE ? 'Mengikuti': 'Ikuti').'</button>';
-                                    #ternary checkFollowed 
-                                }
-                                    echo $button;
+                                
+                                
+                                    
                                  ?>
                             </li>
                             <li class="desc-me-profile">
@@ -29,16 +29,16 @@
                             <li>
                                 <table style="width:unset;">
                                     <tr>
-                                        <td>photo</td>
+                                        <td>Photo</td>
                                         <td>Pengikut</td>
-                                        <td>diikuti</td>
+                                        <td>Diikuti</td>
                                     </tr>
                                     <tr style="font-size:18px !important;">
                                         <td><?php echo count($getImg)?></td>
 
-                                        <td><?php echo anchor('eyeme/follower/'.$id_member,count($follower),'style="text-decoration:none;color:rgb(83, 83, 83)"')?></td>
+                                        <td><?php echo anchor('eyeme/follower/'.$id_member,count($follower),'class="a-fol follower"')?></td>
                                         
-                                        <td><?php echo anchor('eyeme/following/'.$id_member,count($following),'style="text-decoration:none;color:rgb(83, 83, 83)"')?></td>
+                                        <td><?php echo anchor('eyeme/following/'.$id_member,count($following),'class="a-fol following"')?></td>
                                     </tr>
                                 </table>
                             </li>
@@ -77,28 +77,3 @@
         </div>
     </div>
 </body>
-<script type="text/javascript">
-     
-    $('.btn-white-follow').click(function(event) {
-
-        var id_friend = $(this).attr('rel');
-        $this   = $(this);
-        /* Act on the event */
-        $.ajax({
-            url: '<?php echo EYEMEPATH?>' + 'follow',
-            type: 'POST',
-            dataType: 'HTML',
-            data: {id_friend: id_friend},
-        })
-        .done(function(r) {
-            $this.text('Mengikuti');
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
-        
-    });
-</script>
