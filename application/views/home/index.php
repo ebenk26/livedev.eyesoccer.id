@@ -66,7 +66,7 @@
         </div>
         <!-- EYEPROFILE -->
         <div class="carous center-dekstop m-t-35" style="margin-top: -20px;">
-            <img class="img-title" src="assets/img/ic_eyeprofile.png" alt="">
+            <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
             <h2 class="title ep">EyeProfile</h2>
             <hr class="x-ep">
             <span>
@@ -267,7 +267,7 @@
         </div>
         <!-- EYETUBE -->
         <div class="center-dekstop pd-l-100">        
-            <img class="img-title" src="assets/img/ic_eyetube.png" alt="">
+            <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyetube.png" alt="">
             <h2 class="title et">EyeTube</h2>
             <hr class="x-et">
             <div class="et-content m-b-100">
@@ -281,7 +281,7 @@
 							<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
 							<!--<img src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">-->
 							<div class="btn-play">
-								<img src="assets/img/btn-play.png" alt="">
+								<img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="">
 							</div>
 						</div>
 					</a>
@@ -469,19 +469,19 @@
                     </div>
                 </div>
                 <div class="et-content2">
-                    <img class="img-title" src="assets/img/ic-eyeme.png" alt="">
+                    <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
                     <div class="c-em-content2">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">					
-                        <img src="assets/img/eyeme-photo thumbnail.png" alt="">					
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">	
+                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">					
                         <button type="text" class="em-btn">Lihat Foto Lainnya</button>
                     </div>
                 </div>
@@ -586,7 +586,7 @@
                     </div>
                 </div>
                 <div class="et-content2">
-                    <img class="img-title" src="assets/img/ic_eyemarket.png" alt="">
+                    <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
                     <h2 class="title emar">EyeMarket</h2>
                     <hr class="x-emar">
                         <div class="rek-ber m-t-14">
@@ -594,7 +594,7 @@
 							foreach ($eyemarket_main as $row1){
 						?>						
                             <div class="rek-ber-c">
-								<img src="assets/img/video-small.png" alt="" style="width:110px; height:90px;">
+								<img src="<?php echo base_url()?>assets/home/img/video-small.png" alt="" style="width:110px; height:90px;">
 								<!--<img src="systems/eyemarket_storage/<?=$row1["pic"]?>" alt="" style="width:110px; height:90px;">-->
                                 <h1><?php echo $row1['product_name'];  ?> </h1>
                                 <span class="price">HARGA</span>
@@ -616,7 +616,7 @@
         </div>
         <!-- EYEVENT -->
         <div class="center-dekstop pd-l-100">
-            <img class="img-title" src="assets/img/ic_eyevent.png" alt="">
+            <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyevent.png" alt="">
             <h2 class="title ee">EyeVent</h2>
             <hr class="x-ee">
             <span>
@@ -753,7 +753,7 @@
                         <tr>
                             <td><?=$no++?></td>
                             <td>
-                                <img src="<?=base_url()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>

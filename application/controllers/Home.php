@@ -11,6 +11,7 @@ class Home extends CI_Controller {
 			$this->load->model('Master_model','mod');
 			$this->load->helper(array('form','url','text','date'));
 			$this->load->helper('my');
+			$this->load->library("PHPMailer_Library");
     }
 	public function index()
 	{	
@@ -180,7 +181,7 @@ class Home extends CI_Controller {
 
 	public function login()
 	{
-		if(isset($_SESSION['id_member'])){
+		if(isset($_SESSION['id_member']) && $this->session->id_member){
 			header("location:".base_url()."home/index");
 		}else{
 			$data['kanal'] 				= "registration";
@@ -190,11 +191,10 @@ class Home extends CI_Controller {
 	
 	public function login_session()
 	{
-		if(isset($_POST['username'])){
-
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			$page     = $_POST['page'];
+		if($this->input->post('username')){
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			$page     = $this->input->post('page');
 			$cmd      = $this->db->query("select * from tbl_member where email='".$username."' and password='".md5($password)."' and verification=1");
 			$row      =$cmd->row_array();
 			$user_id  =$row['id_member'];
@@ -219,11 +219,13 @@ class Home extends CI_Controller {
 					 //end
 				  $_SESSION['member_id']=$user_id;
 				  $_SESSION['id_member']=$user_id;
-				  header("location:".base_url().$page);  
+				  // header("location:".base_url().$page);  
+				  echo "true";
 				  }  
 			}else{
-				echo "<script>alert('Email atau Password salah')</script>";
-				header("location:".base_url()."home/login");
+				// header('Refresh:0; url= '. base_url().'home/login'); 
+				// echo "<script>alert('Email atau Password salah')</script>";
+				echo "false";
 			}
 		}
 	}
@@ -232,5 +234,74 @@ class Home extends CI_Controller {
 	{
 		$data['kanal'] 				= "registration";
 		$data["body"]=$this->load->view('home/registration', $data);
+	}
+	
+	public function regis_session()
+	{
+		$objMail = $this->phpmailer_library->load();
+		if($this->input->post('username')){
+			$query=$this->db->query("select * FROM tbl_member WHERE username='".$this->input->post("username")."' LIMIT 1");
+			$cek = $query->num_rows();
+			if($cek>0)
+			{
+				echo "exist username";
+			}else{
+				if($this->input->post('name')){
+					$this->db->select('*');
+					$this->db->where("email='".$this->input->post("email")."'");
+					$query2 = $this->db->get('tbl_member');
+					$num = $query2->num_rows();
+					
+					// $ceks = $query2->num_rows();
+					if($num>0)
+					{
+						// echo "select * FROM tbl_member WHERE email='".$this->input->post("email")."' LIMIT 1"; 
+						echo "exist"; 
+					}
+					else{
+						$randurl = substr(md5(microtime()),rand(0,26),5);
+						$this->db->query("INSERT INTO tbl_member (name,username,email,join_date,member_type,unique_code,password,verification) values ('".$this->input->post("name")."','".$this->input->post("username")."','".$this->input->post("email")."','".date("Y-m-d H:i:s")."','Regular','".$randurl."','".md5($this->input->post("password"))."','0')");
+						$insert_id = $this->db->insert_id();
+						$id=$insert_id;
+						
+						try {
+							//Server settings
+							$objMail->SMTPDebug = 2;                                 // Enable verbose debug output
+							$objMail->isSMTP();                                      // Set objMailer to use SMTP
+							$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+							$objMail->SMTPAuth = true;                               // Enable SMTP authentication
+							$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
+							$objMail->Password = 'BolaSepak777#';                           // SMTP password
+							$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+							$objMail->Port = 465;                                    // TCP port to connect to
+
+							//Recipients
+							$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
+							$objMail->addAddress("".$this->input->post("email")."");               // Name is optional
+							$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
+							$objMail->addBCC('ebenk.rzq@gmail.com');
+
+							//Content
+							$objMail->isHTML(true);                                  // Set eobjMail format to HTML
+							$objMail->Subject = 'Registrasi Member Eyesoccer';
+							$objMail->Body    = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut https://www.eyesoccer.id/verifikasi?ver='.$randurl.' untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
+							<br><br>
+							Salam Eyesoccer';
+
+							$objMail->send();
+							// echo 'Message has been sent';
+							echo "true"; 
+						} catch (Exception $e) {
+							// echo 'Message could not be sent.';
+							// echo 'objMailer Error: ' . $objMail->ErrorInfo;
+							$this->db->query("delete from tbl_member where id_member=".$id."");
+							echo "false";
+						}
+					}
+				}
+			}
+		}else{
+			echo "false";
+		}
 	}
 }

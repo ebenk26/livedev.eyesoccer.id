@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="detail-post-box">
+    <div class="detail-post-box" style="overflow:auto;">
         <div class="container frm-login">
             <div class="logo-ey m-0">
                 <img src="<?php echo base_url()?>assets/registration/img/logo_eyscr.png" alt="">
@@ -30,12 +30,13 @@
             </div>
 
             <div class="container">
-				<form class="form-login" action="<?= base_url(); ?>home/login_session" method="post">
+				<!--<form class="form-login" action="<?// = base_url(); ?>home/login_session" method="post">-->
+				<form class="form-login">
                     <div class="frm-login-data m-0">
                         <span>Email</span>
-                        <input name="username" type="text" placeholder="Ketik alamat email">
+                        <input name="username" type="text" placeholder="Ketik alamat email" required>
                         <span>Password</span>
-                        <input name="password" type="password" placeholder="Ketik password">
+                        <input name="password" type="password" placeholder="Ketik password" required>
 						<input type="hidden" name="page" class="form-login-redirect"/>
                         <div class="container">
                             <a href="">Lupa password?</a>
@@ -76,20 +77,26 @@
                         </div>
                     </div>
                 </form>
-                <div class="form-signup">
+                <form class="form-signup">
                     <div class="frm-login-data m-0">
+						<span>Username</span>
+                        <input name="username" id="username_regis" type="text" placeholder="Username (text and number, ex: Eyesoccer26)" required>
                         <span>Nama</span>
-                        <input type="text" placeholder="Ketik nama lengkap">
+                        <input name="name" id="name_regis" type="text" placeholder="Ketik nama lengkap" required>
                         <span>Email</span>
-                        <input type="text" placeholder="Ketik alamat email">
+                        <input name="email" id="email_regis" type="email" placeholder="Ketik alamat email" required>
                         <span>Password</span>
                         <div>
-                            <input type="password" placeholder="Ketik password" value="">
+                            <input name="password" id="password_regis" type="password" placeholder="Ketik password" value="" required>
                             <!-- <i class="show-pass fa fa-eye sh" id="pass_user" aria-hidden="true" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();"></i> -->
                             <!-- <i class="fa fa-eye-slash sh2" aria-hidden="true"></i> -->
                         </div>
+						<span>Konfirmasi Password</span>
+                        <div>
+                            <input name="conf_password" id="conf_password_regis" type="password" placeholder="Ketik password" value="" required>
+                        </div>
                         <div class="container fl-l">
-                            <input type="checkbox" class="icb">
+                            <input name="term" id="term_regis" type="checkbox" class="icb" required>
                             <div class="container icb2 mb-10">
                                 <ul>
                                     <li><span>Saya telah membaca dan menyetujui</span></li>
@@ -99,10 +106,10 @@
                                 <!-- Saya telah membaca dan menyetujui <a href="">Ketentuan dan Kebijakan Privasi</a> EyeSoccer.id -->
                             </div>
                         </div>
-                        <button type="button" class="btn-orange-3" style="width:100%; margin:20px 0 30px;">DAFTAR</button>
+                        <button class="btn-orange-3" style="width:100%; margin:20px 0 30px;">DAFTAR</button>
 
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
@@ -126,6 +133,102 @@
 			var tech = getUrlParameter('page');
 			$(".form-login-redirect").val(tech);
 			console.log(tech);
+			
+			$(".form-login").submit(function(e) {
+				e.preventDefault();
+				var formData = $( this ).serialize();
+				$.ajax({  
+					 type: "POST",  
+					 url: "<?php base_url()?>../home/login_session",  
+					 data: formData,
+					 async: false,
+					 cache: false,
+					 processData: true,
+					 beforeSend: function() {
+						 console.log('before');
+					 }, 
+					 complete: function() {
+						 console.log('complete');
+					 },
+					 success: function(data) {
+						// alert(data);
+						console.log(data);
+						if(data=='true'){
+							window.location.href = "../home/index";
+						}else{
+							alert('Email atau Password salah');
+						}
+					 },
+					 error: function(err){
+						console.log(err);
+						alert(err);
+					 }
+				}); 
+				return false;
+			})
+			
+			$(".form-signup").submit(function(e) {
+				e.preventDefault();
+				var formData = $( this ).serialize();
+				// console.log(formData);				
+				$.ajax({  
+					 type: "POST",  
+					 url: "<?php base_url()?>../home/regis_session",  
+					 data: formData,
+					 processData: true,
+					 beforeSend: function() {
+						 console.log('before');
+						 if ($('#term_regis').is(':checked')) {
+							// alert('checked');
+						}else{
+							alert('Silahkan centang menyetujui Ketentuan dan Kebijakan Privasi EyeSoccer.id');
+							return false;
+						}
+						
+						if($('#password_regis').val() != $('#conf_password_regis').val()){
+							alert('Konfirmasi password tidak sama.');
+							return false;
+						}
+					 }, 
+					 complete: function() {
+						 console.log('complete');
+					 },
+					 success: function(data) {
+						// alert(data);
+						// console.log(data);
+						if(data=='true'){
+							alert('Registrasi berhasil, silahkan cek inbox atau spam pada email anda.');
+							window.location.href = "../home/index";
+						}else if(data=='false'){
+							alert('Registrasi gagal, email tidak valid.');
+						}else if(data=='exist username'){
+							alert('Username sudah terpakai');
+						}else if(data=='exist'){
+							alert('Email sudah terpakai');
+						}else{
+							// alert(data);
+							alert('Registrasi berhasil, silahkan cek inbox atau spam pada email anda.');
+							window.location.href = "../home/index";
+						}
+					 },
+					 error: function(err){
+						console.log(err);
+						alert(err);
+					 }
+				}); 
+				return false;
+			})
+			
+			$('#username_regis').keypress(function (e) {
+				var regex = new RegExp("^[a-zA-Z0-9]+$");
+				var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+				if (regex.test(str)) {
+					return true;
+				}
+
+				e.preventDefault();
+				return false;
+			});
 		});
         var active = document.getElementsByClassName("active")[0];
         var deactive = document.getElementsByClassName("deactive")[0];
