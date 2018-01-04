@@ -290,11 +290,13 @@ $('.btn-white-follow').click(function(event) {
         $.ajax({
             url: '<?php echo EYEMEPATH?>' + 'follow',
             type: 'POST',
-            dataType: 'HTML',
+            dataType: 'JSON',
             data: {id_friend: id_friend},
         })
         .done(function(r) {
-            if(r == 'success'){
+            if(r.msg == 'success'){
+                $('.following').text(r.following);
+                $('.follower').text(r.follower);
                 $this.removeClass('fol');
                 $this.addClass('unfol');
                 $this.text('Mengikuti');
@@ -312,12 +314,14 @@ $('.btn-white-follow').click(function(event) {
          $.ajax({
             url: '<?php echo EYEMEPATH?>' + 'unfollow',
             type: 'POST',
-            dataType: 'HTML',
+            dataType: 'JSON',
             data: {id_friend: id_friend},
         })
         .done(function(r) {
-            if(r == 'success'){
-                 $this.removeClass('unfol');
+            if(r.msg == 'success'){
+                $('.following').text(r.following);
+                $('.follower').text(r.follower);
+                $this.removeClass('unfol');
                 $this.addClass('fol');
                 $this.text('ikuti');
             }

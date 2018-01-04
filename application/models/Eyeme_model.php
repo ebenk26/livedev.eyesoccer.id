@@ -435,6 +435,11 @@ class Eyeme_model extends Master_model
 
 
 	}
+	/**
+	*follow::
+	*id_member = id member yang mengikuti
+	*id_friend = id member yang diikuti
+	*/
 	public function follow($id_member,$id_friend){
 		$data      = array('id_member'=> $id_member,
 							'id_following' => $id_friend,
@@ -452,10 +457,16 @@ class Eyeme_model extends Master_model
 				'date_create'   => NOW,
 				'last_update'   => NOW);
 
-		$insertNotif   = $this->db->insert('me_notif',$dataNotif); #insert data ke dalam table me_notif
+		$insertNotif    = $this->db->insert('me_notif',$dataNotif); #insert data ke dalam table me_notif
+		$getFollower    = $this->getAll('me_follow',array('id_following'=>$id_friend,'block' => '0'));
+		$getFollowing   = $this->getAll('me_follow',array('id_member'=>$id_friend,'block' => '0'));
+		$return         = array('follower' => count($getFollower),
+								'following' => count($getFollowing));
+		                //mengambil jumlah follower dari member yang kita ikuti
 
 
-		return $exe;
+
+		return $return;
 
 	}
 	public function unFollow($id_member,$id_friend){
@@ -466,7 +477,15 @@ class Eyeme_model extends Master_model
 		$this->db->where('id_following',$id_friend);
 		$exe = $this->db->delete('me_follow');
 		#echo $this->db->last_query();
-		return $exe;
+		$getFollower    = $this->getAll('me_follow',array('id_following'=>$id_friend,'block' => '0'));
+		$getFollowing   = $this->getAll('me_follow',array('id_member'=>$id_friend,'block' => '0'));
+		$return         = array('follower' => count($getFollower),
+								'following' => count($getFollowing));
+		                //mengambil jumlah follower dari member yang kita ikuti
+
+
+
+		return $return;
 		
 
 	}
