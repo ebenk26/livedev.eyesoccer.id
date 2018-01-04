@@ -90,7 +90,7 @@ class Eyeme extends CI_Controller {
 			$usr  = $getUser[0];
 			//get Image 
 			$whereImg = array('id_member'=> $usr->id_member,'active'=> '1');
-			$getImg  		 = $this->mod->getAll('me_img',$whereImg);
+			$getImg  		 = $this->mod->getAll('me_img',$whereImg,'',array('last_update'=>'DESC'));
 			//get following 
 			$whereFollowing = array('id_member'=> $usr->id_member,'block'=> '0');
 			$getFollowing   = $this->mod->getAll('me_follow',$whereFollowing);
@@ -157,29 +157,30 @@ class Eyeme extends CI_Controller {
 	*/
 	public function follow(){
 
-		
 		$id_friend  = inputSecure($this->input->post('id_friend'));
-		$insert     = $this->emod->follow($this->id_member,$id_friend);
-		if(!$insert){
-			echo 'failed';
-
-		}
-		else{
-			echo 'success';
-		}
-	}
-	public function unfollow(){
-		$id_friend = inputSecure($this->input->post('id_friend'));
-		$delete    = $this->emod->unfollow($this->id_member,$id_friend);
-		if(!$delete){
-			echo 'failed';
-		}
-		else{
-			echo 'success';
-		}
+		$exe        = $this->emod->follow($this->id_member,$id_friend);
+		$response   = array('msg' => 'success',
+							'follower' => $exe['follower'],
+							'following'=> $exe['following']);
+		$json = json_encode($response);
+		echo $json;
+		
 	}
 	/**
-	*fungsi get_notif::
+		*fungsin unfollow::
+	*/
+	public function unfollow(){
+		$id_friend = inputSecure($this->input->post('id_friend'));
+		$exe       = $this->emod->unFollow($this->id_member,$id_friend);
+		$response  = array('msg' => 'success',
+							'follower' => $exe['follower'],
+							'following'=> $exe['following']);
+		$json = json_encode($response);
+		echo $json;
+		
+	}
+	/**
+		*fungsi get_notif::
 	*/
 	public function get_notif(){
 		$this->mod->checkLogin();// check if user comming from home
@@ -265,6 +266,26 @@ class Eyeme extends CI_Controller {
 
 	}
 	/**
+	*fungsi img::
+	*@param @id_img
+
+	*/
+
+	public function img($id_img){
+		$where      = array('id_img' => $id_img);
+		$getImg     = $this->mod->getAll('me_img',$where);
+		$getLike    = $this->mod->getAll('me_like',$where);
+		$getComment = $this->mod->getAll('me_comment',$where);
+		if(!count($getImg) > 0 ){
+			redirect(MEURL,'refresh');
+
+		}
+		$getImg[0]->countLike = count($getLike);
+		$getImg[0]->countComment = count($getComment);
+		$getImg[0]->comment      = $getComment;
+		p($getImg);
+	}
+	/**
 		*fungsi explore::
 	*/
 	public function explore(){
@@ -276,9 +297,7 @@ class Eyeme extends CI_Controller {
 
 		#echo 'explore test';
 	}
-	#public function img($id_img){
-		#$this->
-	#}
+	
 	
 	/**
 	*@param $id_img = id image yang di sukai
