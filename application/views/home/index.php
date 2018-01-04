@@ -431,19 +431,21 @@
                     <img class="img-title" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
                     <h2 class="title en">EyeNews</h2>
                     <hr class="x-en">
-                    <div class="t-en-content2">
-                        <span class="et-st">	  					<small>
-	  						<?php
-	  							$date 		=  new DateTime($eyenews_main->createon);
-	  							$tanggal 	= date_format($date,"Y-m-d H:i:s");
+					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
+						<div class="t-en-content2" style="z-index: 1;top: 260px;left: 20px;"> 
+							<span class="et-st">	  					<small>
+								<?php
+									$date 		=  new DateTime($eyenews_main->createon);
+									$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-	  							echo relative_time($tanggal) . ' ago';
-	  						?>
-	  					</small></span>
-                        <p class="et-st-det"><?php echo $eyenews_main->title; ?></p>
-                    </div>					
+									echo relative_time($tanggal) . ' ago';
+								?>
+							</small></span>
+							<p class="et-st-det"><?php echo $eyenews_main->title; ?></p>
+						</div>					
                     <!--<img class="v-et-2 w-100" src="assets/img/video-small.png" alt="">-->
-                    <img class="v-et-2 w-100" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="">
+						<img class="v-et-2 w-100" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>">
+					</a>
                     <div class="h-berita-terkait" style="margin-bottom:26px;">
                         <h3>Berita Terkait</h3>
 						<?php
