@@ -138,7 +138,7 @@ class Eyeme_model extends Master_model
 
 	*/
 	public function getExplore(){
-		$getImg = $this->mod->getAll('me_img');
+		$getImg = $this->mod->getAll('me_img','','',array('last_update'=> 'DESC'));
 
 		for($i= 0 ; $i < count($getImg); $i++){
 			$dp      = $this->mod->getAll('me_profile',
@@ -148,13 +148,13 @@ class Eyeme_model extends Master_model
 								array('id_img'=>$getImg[$i]->id_img),
 								array('id_like','id_member'));
 			$comment = $this->mod->getAll('me_comment',
-								array('id_img' => $getImg[$i]->id_img),
-								array('id_comment','id_member'));
+								array('id_img' => $getImg[$i]->id_img));
 			
 			$getImg[$i]->username  = $dp[0]->username;
 			$getImg[$i]->display_pic = $dp[0]->display_picture;
 			$getImg[$i]->countLike = count($like);
 			$getImg[$i]->countComment = count($comment);
+			$getImg[$i]->comment      = $comment;
 		}
 		return $getImg;
 	}

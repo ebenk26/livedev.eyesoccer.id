@@ -79,6 +79,7 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/home',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 		
 	}
@@ -128,10 +129,12 @@ class Eyeme extends CI_Controller {
 		else{
 			$this->data['getImg'] = array();
 			$this->data['err'] = "username not found";
+			redirect(MEURL,'refresh');
 		}
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/profile',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 
 	}
@@ -248,7 +251,7 @@ class Eyeme extends CI_Controller {
 			$path       = set_realpath('img/eyeme');
 			file_put_contents($path.$fileName, $image);
 			$caption    = inputsecure($this->input->post('caption'));
-			$this->mod->resizeImg($path.$fileName,100,100);
+			$this->mod->resizeImg($path.$fileName,300,300);
 			$insert     = $this->emod->insertImg($fileName,$caption,$this->id_member);
 			if(!$insert){
 				echo 'error';
@@ -299,6 +302,8 @@ class Eyeme extends CI_Controller {
 		#p($hasLike);
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/image',$this->data);
+		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 	}
 	/**
@@ -309,6 +314,8 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/explore',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
+		$this->load->view('eyeme/post_detail',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 
 		#echo 'explore test';
