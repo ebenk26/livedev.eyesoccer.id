@@ -214,11 +214,13 @@ class Home extends CI_Controller {
 
 					  		$this->session->id_member  = $profile[0]->id_member;
 					  		$this->session->username   = $profile[0]->username;
+					  		$this->session->img_profile   = load_top_avatar();
 
 					  	}
 					 //end
 				  $_SESSION['member_id']=$user_id;
 				  $_SESSION['id_member']=$user_id;
+				  $_SESSION['img_profile']=load_top_avatar();;
 				  // header("location:".base_url().$page);  
 				  echo "true";
 				  }  
