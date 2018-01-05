@@ -9,6 +9,7 @@ class Eyenews extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->model('Eyenews_model');
 			$this->load->helper(array('form','url','text','date','my'));
+			$this->load->helper('my');
     }
 	
 	public function index()
@@ -25,10 +26,12 @@ class Eyenews extends CI_Controller {
 		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
 		$data['headline'] 				= $this->Eyenews_model->get_headline();		
 		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();		
+		$data['eyenews_populer2']		= $this->Eyenews_model->get_eyenews_populer2();		
 		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
 		$data['kanal'] 					= "eyenews";
 		$data["body"]=$this->load->view('eyenews/index', $data,true);
 
@@ -122,6 +125,7 @@ class Eyenews extends CI_Controller {
 		$data['ads_right'] 		= $this->Eyenews_model->get_ads_right();
 		$data['new_eyetube'] 	= $this->Eyenews_model->get_new_eyetube();
 		$data['trending_eyenews'] 	= $this->Eyenews_model->get_trending_eyenews();
+		$data['eyetube_populer'] = $this->Eyenews_model->get_eyetube_populer();		
 		
 		//$data["extrascript"]=$this->load->view('eyetube/script_index', '', true);
 		//$data["body"]=$this->load->view('home/index', '', true);
@@ -143,5 +147,98 @@ class Eyenews extends CI_Controller {
 		$data["body"]=$this->load->view('eyenews/detail', $data, true);
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
-	}	
+	}
+
+	public function getUserIP()
+	{
+    $client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+    $remote  = $_SERVER['REMOTE_ADDR'];
+
+    if(filter_var($client, FILTER_VALIDATE_IP))
+    {
+        $ip = $client;
+    }
+    elseif(filter_var($forward, FILTER_VALIDATE_IP))
+    {
+        $ip = $forward;
+    }
+    else
+    {
+        $ip = $remote;
+    }
+
+    return $ip;
+	}
+	
+	public function new_emot($id=null)
+	{			
+		$date 	= date("Y-m-d H:i:s");
+		$ip 	= $this->getUserIP();
+		$tipe 	= $_POST["type"];
+
+		
+		$cek_emot 	= $this->Eyenews_model->cek_view_smile($id,$ip,$tipe);
+		
+		if ($cek_emot < 1 )
+		{
+			$update 	= $this->Eyenews_model->set_news_emot($id,$tipe);
+
+			$object 	= array(
+							'visit_date' 	=> $date,
+							'type_visit' 	=> $tipe,
+							'place_visit' 	=> 'eyenews',
+							'place_id' 		=> $id,
+							'session_ip' 	=> $ip,
+			);
+
+			$insert 	= $this->Eyenews_model->set_tbl_view($object);
+
+			$jumlah 	= $this->Eyenews_model->get_jumlah_emot($id,$tipe);
+			
+			if ($tipe == "smile")
+			{
+				$html["html"] 	= $jumlah->news_smile;
+			}
+			else
+			if ($tipe == "shock")
+			{
+				$html["html"] 	= $jumlah->news_shock;
+			}
+			else
+			if ($tipe == "inspired")
+			{
+				$html["html"] 	= $jumlah->news_inspired;
+			}
+			else
+			if ($tipe == "happy")
+			{
+				$html["html"] 	= $jumlah->news_happy;
+			}
+			else
+			if ($tipe == "sad")
+			{
+				$html["html"] 	= $jumlah->news_sad;
+			}
+			else
+			if ($tipe == "fear")
+			{
+				$html["html"] 	= $jumlah->news_fear;
+			}
+			else
+			if ($tipe == "angry")
+			{
+				$html["html"] 	= $jumlah->news_angry;
+			}
+			else
+			if ($tipe == "fun")
+			{
+				$html["html"] 	= $jumlah->news_fun;
+			}
+
+			echo json_encode($html);
+			
+		}
+	}
+	
 }

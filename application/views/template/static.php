@@ -150,6 +150,16 @@ else{
         <div class="dekstop">
 			<?php echo $body;?>
         </div>
+    <script>
+        (function(d, s, id)
+        {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.10&appId=478665635841729";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+	</script>		
         <!-- FOOTER -->
         <footer>
             <div class="f-w">
