@@ -273,9 +273,12 @@ class Eyeme extends CI_Controller {
 
 	public function img($id_img){
 		$where      = array('id_img' => $id_img);
-		$getImg     = $this->mod->getAll('me_img',$where);
+
+		
+		$getImg     = $this->emod->getImg($id_img,$where);
+		$hasLike    = $this->emod->hasLike($this->id_member,$id_img);
 		$getLike    = $this->mod->getAll('me_like',$where);
-		$getComment = $this->mod->getAll('me_comment',$where);
+		$getComment = $this->emod->getComment($id_img);
 		if(!count($getImg) > 0 ){
 			redirect(MEURL,'refresh');
 
@@ -283,7 +286,20 @@ class Eyeme extends CI_Controller {
 		$getImg[0]->countLike = count($getLike);
 		$getImg[0]->countComment = count($getComment);
 		$getImg[0]->comment      = $getComment;
-		p($getImg);
+		$distance                = getDistance(NOW,$getImg[0]->last_update);#jarak waktu 
+		$getTime                 = getTime($distance); #mengambil waktu last_update
+		$day                     = $getTime['day'];
+		$hours                   = $getTime['hours'];
+		$minute                  = $getTime['minute'];
+		$secon				     = $getTime['secon'];
+		$timeString              = $getTime['timeString'];
+		$getImg[0]->timeString   = $timeString;
+		$getImg[0]->has_like     = $hasLike;
+		$this->data['img']       = $getImg;
+		#p($hasLike);
+		$this->load->view('eyeme/header',$this->data);
+		$this->load->view('eyeme/image',$this->data);
+		$this->load->view('eyeme/footer',$this->data);
 	}
 	/**
 		*fungsi explore::

@@ -65,12 +65,12 @@
                
                     <a href="<?php echo MEURL.$v['username']?>"><?php echo $v['username']?></a>
                     <span><?php echo $v['img_caption']?> </span>
-                    <a href="test" class="c-g">selengkapnya</a>
+                    <!--<a href="test" class="c-g">selengkapnya</a>-->
                 
                 <div class="komen">
                     <ul class="plus-c<?php echo $v['id_img']?>">
                         <li>
-                            <a href="" class="c-g">Lihat komentar lainnya</a>
+                            <!--<a href="" class="c-g">Lihat komentar lainnya</a>-->
                         </li>
                         <?php 
 
@@ -106,6 +106,6 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
     
 
