@@ -206,6 +206,23 @@
 									<!--<img src="assets/img/ss-img.png" alt="">-->
 									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
 									<div class="des">
+										<?php
+											$str_name = strlen($player['nama']);
+											if($str_name > 20){
+												$player['nama'] = substr($player['nama'],0,20);
+												$player['nama'] = $player['nama'].'...';
+											}else{
+												$player['nama'] = $player['nama'];
+											}
+											
+											$str_klub = strlen($player['klub']);
+											if($str_klub > 20){
+												$player['klub'] = substr($player['klub'],0,20);
+												$player['klub'] = $player['klub'].'...';
+											}else{
+												$player['klub'] = $player['klub'];
+											}
+										?>
 										<h3><?= $player['nama']; ?></h3>
 										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
 										Klub: <?= $player['klub']; ?><br>
@@ -228,6 +245,23 @@
 									<!--<img src="assets/img/ss-img.png" alt="">-->
 									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
 									<div class="des">
+										<?php
+											$str_name = strlen($player['nama']);
+											if($str_name > 20){
+												$player['nama'] = substr($player['nama'],0,20);
+												$player['nama'] = $player['nama'].'...';
+											}else{
+												$player['nama'] = $player['nama'];
+											}
+											
+											$str_klub = strlen($player['klub']);
+											if($str_klub > 20){
+												$player['klub'] = substr($player['klub'],0,20);
+												$player['klub'] = $player['klub'].'...';
+											}else{
+												$player['klub'] = $player['klub'];
+											}
+										?>
 										<h3><?= $player['nama']; ?></h3>
 										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
 										Klub: <?= $player['klub']; ?><br>
@@ -250,6 +284,23 @@
 									<!--<img src="assets/img/ss-img.png" alt="">-->
 									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
 									<div class="des">
+										<?php
+											$str_name = strlen($player['nama']);
+											if($str_name > 20){
+												$player['nama'] = substr($player['nama'],0,20);
+												$player['nama'] = $player['nama'].'...';
+											}else{
+												$player['nama'] = $player['nama'];
+											}
+											
+											$str_klub = strlen($player['klub']);
+											if($str_klub > 20){
+												$player['klub'] = substr($player['klub'],0,20);
+												$player['klub'] = $player['klub'].'...';
+											}else{
+												$player['klub'] = $player['klub'];
+											}
+										?>
 										<h3><?= $player['nama']; ?></h3>
 										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
 										Klub: <?= $player['klub']; ?><br>

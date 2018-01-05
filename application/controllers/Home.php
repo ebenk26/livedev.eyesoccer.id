@@ -262,7 +262,7 @@ class Home extends CI_Controller {
 					}
 					else{
 						$randurl = substr(md5(microtime()),rand(0,26),5);
-						$this->db->query("INSERT INTO tbl_member (name,username,email,join_date,member_type,unique_code,password,verification) values ('".$this->input->post("name")."','".$this->input->post("username")."','".$this->input->post("email")."','".date("Y-m-d H:i:s")."','Regular','".$randurl."','".md5($this->input->post("password"))."','0')");
+						$this->db->query("INSERT INTO tbl_member (name,username,email,join_date,member_type,unique_code,password,verification) values ('".$this->input->post("name")."','".strtolower($this->input->post("username"))."','".$this->input->post("email")."','".date("Y-m-d H:i:s")."','Regular','".$randurl."','".md5($this->input->post("password"))."','0')");
 						$insert_id = $this->db->insert_id();
 						$id=$insert_id;
 						
@@ -303,6 +303,60 @@ class Home extends CI_Controller {
 				}
 			}
 		}else{
+			echo "false";
+		}
+	}
+	
+	public function forgot_password()
+	{
+		if(isset($_SESSION['id_member']) && $this->session->id_member){
+			header("location:".base_url()."home/index");
+		}else{
+			$data['kanal'] 				= "forgot_password";
+			$data["body"]=$this->load->view('home/forgot_password', $data);
+		}
+	}
+	public function forgot_pwd_session()
+	{
+		$objMail = $this->phpmailer_library->load();
+		$email = $this->input->post("email");
+		
+		$randurl = substr(md5(microtime()),rand(0,26),5);
+		$data = array(
+               'unique_code' => $randurl
+            );
+
+		$this->db->where('email', $email);
+		$this->db->update('tbl_member', $data); 
+		
+		try {
+			//Server settings
+			$objMail->SMTPDebug = 2;                                 // Enable verbose debug output
+			$objMail->isSMTP();                                      // Set objMailer to use SMTP
+			$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+			$objMail->SMTPAuth = true;                               // Enable SMTP authentication
+			$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
+			$objMail->Password = 'BolaSepak777#';                           // SMTP password
+			$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+			$objMail->Port = 465;                                    // TCP port to connect to
+
+			//Recipients
+			$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
+			$objMail->addAddress("".$this->input->post("email")."");               // Name is optional
+			$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
+			$objMail->addBCC('ebenk.rzq@gmail.com');
+
+			//Content
+			$objMail->isHTML(true);                                  // Set eobjMail format to HTML
+			$objMail->Subject = 'Forgot Password Eyesoccer';
+			$objMail->Body    = 'Silahkan klik link berikut https://www.eyesoccer.id/forgot_ver?ver='.$randurl.' untuk memperbarui password anda. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
+			<br><br>
+			Salam Eyesoccer';
+
+			$objMail->send();
+			// echo 'Message has been sent';
+			echo "true"; 
+		} catch (Exception $e) {
 			echo "false";
 		}
 	}
