@@ -245,7 +245,7 @@
                                         <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $trendnya_news["thumb1"]; ?>" alt="">
                                     </a>
                                     <div class="container rn">
-                                        <a href="">
+                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $trendnya_news['url']; ?>">
                                             <span><?= $trendnya_news["title"]; ?></span>
                                         </a>
                                         <div class="rr">
@@ -286,7 +286,7 @@
                                         <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terpopulernya['thumb1']; ?>" alt="">
                                     </a>
                                     <div class="container rn">
-                                        <a href="">
+                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terpopulernya['url']; ?>">
                                             <span><?= $terpopulernya["title"]; ?></span>
                                         </a>
                                         <div class="rr">
@@ -328,7 +328,7 @@
                                     </a>
 
                                     <div class="container rd">
-                                        <a href="">
+                                        <a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer['url']; ?>">
                                             <span style="margin-top:12px;"><?= $populer['title']; ?></span>
                                         </a>
                                         <div class="rr">
