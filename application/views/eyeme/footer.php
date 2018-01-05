@@ -367,9 +367,11 @@ $('#browse').click(function(event) {
 /*cropit:: function*/
 $(function() {
     $('.image-editor').cropit({
-        exportZoom: 1.25,
+        exportZoom: 2,
         imageBackground: true,
         imageBackgroundBorderWidth: 40,
+        minZoom:'fit'
+
        
     });     
 
@@ -412,12 +414,12 @@ $('#crop').click(function(event) {
     });*/
 //fileimg::change
 $('.fileimg').on('change',function(){
+
     $('#cancel').removeClass('hidden');
     $('#crop').removeClass('hidden');
     $('.cropit-preview-background-container').show();
     $('.c-p').remove();
      
-
     $('#browse').hide();
   
 });

@@ -1,13 +1,5 @@
 
-<body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>Eyenews</li>
-            <!-- <li>Pemain</li> -->
-        </ul>
-    </div>
-    <div class="desktop">
+
         <div class="center-desktop m-0">
             <div class="menu-4 w1020 m-0">
                 <ul>
@@ -349,5 +341,3 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>

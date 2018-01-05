@@ -208,7 +208,9 @@ class Eyeme_model extends Master_model
 				 LEFT JOIN me_profile as b 
 				 ON a.id_member = b.id_member  
 				 WHERE  a.id_member IN
-				 (SELECT id_following from me_follow where id_member = $id_member) AND active='1' ORDER BY a.last_update DESC";
+				 (SELECT id_following from me_follow where id_member = $id_member) 
+				 AND active='1' 
+				 ORDER BY a.last_update DESC";
 		$res = $this->db->query($query);
 
 		if(count($res) > 0 ){
@@ -221,6 +223,25 @@ class Eyeme_model extends Master_model
 		}
 		return $return;
 
+	}
+	public function getImg($id_img){
+		$query = "SELECT 
+				A.id_img,
+				A.img_caption,
+				A.id_member,
+				A.img_name,
+				A.img_thumb,
+				A.img_alt,
+				A.date_create,
+				A.last_update,
+				B.display_picture,
+				B.username
+				FROM me_img AS A
+				INNER JOIN me_profile as B
+				ON A.id_member = B.id_member
+				WHERE A.id_img = $id_img AND A.active = '1'";
+		$get  = $this->db->query($query);
+		return $get->result();
 	}
 	/**
 	*@param $id_img id dari gambar yang dikomen
@@ -550,10 +571,7 @@ class Eyeme_model extends Master_model
 		}
 	}
 	
-	public function getImg($id_img){
-		#$this->getAll('')
-
-	}
+	
 	//sw::end
 	/*public function unlike($arr = array()){
 
