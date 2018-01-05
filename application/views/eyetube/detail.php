@@ -11,7 +11,9 @@ $row=$cmd->row_array();
     <title></title>
     <meta name="viewport" content="width=1000">
     <link href="<?=base_url()?>assets/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">    
+	<link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -133,19 +135,95 @@ $row=$cmd->row_array();
                         </div>
                         <div class="garis-x3"></div>
                     </div>
+					<!-- EMOTICON -->
+					<input type="hidden" id="eyetube_id22" value="" />
+					<h3 id="t1">Bagaimana reaksi Anda tentang video ini?</h3>					
+                    <div class="container mt-45 mb-30">
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>bangga</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>bingung</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box box-img-90">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/gembira.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>gembira</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/sedih.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>sedih</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>suka</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/takut.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>takut</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/terhibur.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>terhibur</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/terkejut.png" alt="">
+                                </div>
+                                <span></span>
+                                <span>terkejut</span>
+                            </a>
+                        </div>
+                    </div>					
                     <div>
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                         <div class="tube-komen mt-10">
-						<div class="fb-comments" data-href="http://eyesoccer.id<?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
                         </div>
-                        <div class="garis-x3 mt-20"></div>
                     </div>
+						<div class="fb-comments" data-href="http://eyesoccer.id<?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
                     <div>
                         <div class="tube-komen">
 
-                            <div class="tx-c">
+                            <!--<div class="tx-c">
                                 <button class="btn-white mt-10" type="button">Lihat komentar lainnya</button>
-                            </div>
+                            </div>-->
 
                         </div>
                     </div>
@@ -165,7 +243,9 @@ $row=$cmd->row_array();
                                     <div class="container h105">								
                                         <img src="<?=imgUrl()?>systems/eyetube_storage/<?php print $videonya['thumb']; ?>" alt="">
                                         <div class="container r">
-                                            <span style="margin-top:12px;"><?=$row['title']?></span>
+                                            <span style="margin-top:12px;">
+											<a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>" style="text-decoration:none;">
+											<?=$row['title']?></a></span>
                                             <div class="rr">
                                                 <span><?php
 													$date 		=  new DateTime($videonya['createon']);
@@ -188,7 +268,7 @@ $row=$cmd->row_array();
                                 </div>
                                 <div>
 										<?php
-										foreach($eyetube_rekomendasi as $row){
+										foreach($eyetube_populer as $row){
 										?>									
                                     <div class="container h105">								
                                         <img src="<?=imgUrl()?>systems/eyetube_storage/<?php print $row['thumb']; ?>" alt="">
@@ -196,7 +276,9 @@ $row=$cmd->row_array();
                                             <span></span>
                                         </div>
                                         <div class="container r">
-                                            <span style="margin-top:7px;"><?=$row['title']?></span>
+                                            <span style="margin-top:7px;">
+											<a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>" style="text-decoration:none;">											
+											<?=$row['title']?></a></span>
                                             <div class="rr">
                                                 <span><?php
 													$date 		=  new DateTime($videonya['createon']);

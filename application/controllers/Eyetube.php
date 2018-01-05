@@ -111,6 +111,7 @@ class Eyetube extends CI_Controller {
 		$data['video_eyetube'] = $this->Eyetube_model->get_eyetube_satu2();
 		$data['eyetube_right_detail'] = $this->Eyetube_model->get_eyetube_right_detail();
 		$data['eyetube_rekomendasi'] = $this->Eyetube_model->get_eyetube_rekomendasi2();
+		$data['eyetube_populer'] = $this->Eyetube_model->get_eyetube_populer();
 		
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";

@@ -32,7 +32,10 @@
 	<!--CSS-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">		
         <link href="<?=base_url()?>newassets/css/bs.css" rel="stylesheet">
-        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">
+        <link href="<?=base_url()?>newassets/css/style.css" rel="stylesheet">       
+		<link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+        <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="<?=base_url()?>assets/eyenews/font-awesome/css/font-awesome.min.css">		
         <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">		
 	<!--End CSS-->	
 
@@ -82,7 +85,16 @@
             </div>
         </div>
 <?=$body?>
-
+    <script>
+        (function(d, s, id)
+        {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.10&appId=478665635841729";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+	</script>
 		
         <!-- FOOTER -->
         <footer>

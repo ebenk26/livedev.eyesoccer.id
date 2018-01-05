@@ -1,13 +1,5 @@
 
-<body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>Eyenews</li>
-            <!-- <li>Pemain</li> -->
-        </ul>
-    </div>
-    <div class="desktop">
+
         <div class="center-desktop m-0">
             <div class="menu-4 w1020 m-0">
                 <ul>
@@ -49,7 +41,7 @@
                     </div>
                     <div class="container p-r panah-news">
                         <div class="fl-l">
-                            <a href="<?=base_url()?>eyenews/detail/<?=$headline->eyenews_id; ?>">
+                            <a href="<?=base_url()?>eyenews/detail/<?=$headline->url; ?>">
                                 <i class="material-icons">keyboard_arrow_left</i>
                             </a>
                         </div>
@@ -76,7 +68,7 @@
                     </table>
                     <div class="pd" style="height: 370px;overflow: hidden;">
                         <div>
-                            <a href="<?=imgUrl();?>eyenews/detail/<?=$headline->eyenews_id; ?>">
+                            <a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
                                 <h1><?= $headline->title; ?></h1>
                             </a>
                             <span>
@@ -95,7 +87,7 @@
 						?>							
                                 <li>
                                     <span>
-									<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['eyenews_id'];?>">
+									<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
 									<?= $row['title']; ?></a>									
 									</span>
                                 </li>
@@ -125,8 +117,9 @@
                         <div class="w30">
                             <div>
                                 <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar['thumb1']; ?>" style="width:100%;margin-right:20px;">
-                                <a href="">
-                                    <p class="sub-en"><?= $similar['title']; ?></p>
+                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar['url'];?>">
+                                    <p class="sub-en">									
+									<?= $similar['title']; ?></p>
                                 </a>
                                 <span class="time-view">
 								<?php
@@ -160,8 +153,9 @@
                                     <div class="rr">
                                         <span><?=$rekomendasi['createon'];?></span>
                                     </div>
-                                    <a href="">
-                                        <p><?=$rekomendasi['title'];?></p>
+                                    <a href="<?php echo base_url(); ?>eyenews/detail/<?= $rekomendasi['url'];?>">
+                                        <p>										
+										<?=$rekomendasi['title'];?></p>
                                     </a>
                                     <span>
 									<?php
@@ -187,44 +181,40 @@
                                     <div class="rr">
                                         <span><?=$row['createon'];?></span>
                                     </div>
-                                    <a href="">
+                                    <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
                                         <span>
-											<?=$row['title'];?>										
+											<?=$row['title'];?>									
 										</span>
                                     </a>
                                 </div>
 							<?php break; } ?>
                             </div>
 							<?php
-							$i = 0;
-							foreach ($eyenews_populer as $row)
-							{
-							if ($i != 0)
+							foreach ($eyenews_populer2 as $populer2)
 							{
 							?>							
                             <div class="container news-rcm-d">							
                                 <a href="" class="nn">
-                                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer2['thumb1']; ?>" alt="">
                                 </a>
                                 <div class="container rm">
-                                    <a href="">
-                                        <span><?=$row['title'];?></span>
+                                    <a href="<?php echo base_url(); ?>eyenews/detail/<?= $populer2['url'];?>">
+                                        <span>
+										<?=$populer2['title'];?></span>
                                     </a>
                                     <div class="rr">
                                         <span>
 										<?php
-											$date 		=  new DateTime($row['createon']);
+											$date 		=  new DateTime($populer2['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' lalu - '.$row['news_view'].' views';
+											echo relative_time($tanggal) . ' lalu - '.$populer2['news_view'].' views';
 										?>
 										</span>
                                     </div>
                                 </div>
                             </div>
 							<?php
-							}
-							$i++;
 							}
 							?>							
                         </div>
@@ -247,8 +237,9 @@
                         <div class="w30">
                             <div>
                                 <img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                <a href="">
-                                    <p class="sub-en"><?= $videonya['title']; ?></p>
+                                <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url'];?>">
+                                    <p class="sub-en">
+									<?= $videonya['title']; ?></p>
                                 </a>
                                 <span class="time-view">
 								<?php
@@ -270,29 +261,30 @@
                             <h4>RAGAM</h4>
                         </div>
 						<?php
-						foreach($all_news as $row){
+						foreach($all_news as $row12){
 						?>
                         <div class="container garis-x4">
                             <div class="container" style="width:240px;">
-                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row12['thumb1']; ?>" alt="">
                             </div>
                             <div class="container news-rcm-z">
                                 <div class="rr">
                                     <span>
 										<?php
-											$date 		=  new DateTime($row['createon']);
+											$date 		=  new DateTime($row12['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' lalu - '.$row['news_view'].' views';
+											echo relative_time($tanggal) . ' lalu - '.$row12['news_view'].' views';
 										?>									
 									</span>
                                 </div>
-                                <a href="">
-                                    <p><?=$row['title']?></p>
+                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row12['url'];?>">
+                                    <p>									
+									<?=$row12['title']?></p>
                                 </a>
                                 <span>
 									<?php
-									$keterangan = strip_tags($row['description']);
+									$keterangan = strip_tags($row12['description']);
 									echo word_limiter($keterangan,15);
 									?>								
 								</span>
@@ -349,5 +341,3 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>

@@ -12,7 +12,7 @@ class Eyenews_model extends CI_Model
                                         tbl_eyenews A
                                     ORDER BY 
                                         A.eyenews_id DESC
-                                    Limit 12
+                                    Limit 5
                                         ")->row();
             return $query; 
 	}	
@@ -24,7 +24,7 @@ class Eyenews_model extends CI_Model
                                     FROM
                                         tbl_eyenews A
                                     ORDER BY 
-                                        A.eyenews_id ASC
+                                        A.eyenews_id DESC
                                     Limit 3
                                         ")->result_array();
             return $query; 
@@ -159,10 +159,15 @@ class Eyenews_model extends CI_Model
     public function get_new_eyetube()
     {
         $query = $this->db->query(" SELECT
-                                        A.eyetube_id,
-                                        A.title,
-                                        A.thumb,
-                                        A.createon
+										a.eyetube_id,
+										a.title,
+										a.description,
+										a.thumb,
+										a.video,
+										a.url,
+										a.createon,
+										a.tube_view,
+										a.category_name
                                     FROM
                                         tbl_eyetube A
                                     ORDER BY 
@@ -246,6 +251,7 @@ class Eyenews_model extends CI_Model
 	{
 		$query = $this->db->query("	SELECT
 										a.eyenews_id,
+										a.url,
 										a.title,
 										a.thumb1,
 										a.news_type,
@@ -267,6 +273,7 @@ class Eyenews_model extends CI_Model
 	{
 		$query = $this->db->query("	SELECT
 										a.eyenews_id,
+										a.url,
 										a.title,
 										a.description,
 										a.createon										,
@@ -279,7 +286,7 @@ class Eyenews_model extends CI_Model
 									WHERE
 										a.publish_on<='".date("Y-m-d H:i:s")."'
 									ORDER BY
-										a.eyenews_id DESC
+										a.eyenews_id ASC
 									LIMIT
 										3
 								")->result_array();
@@ -290,6 +297,31 @@ class Eyenews_model extends CI_Model
 	{
 		$query = $this->db->query("	SELECT
 										a.eyenews_id,
+										a.url,
+										a.title,
+										a.description,
+										a.createon										,
+										a.thumb1,
+										a.news_type,
+										a.news_view,
+										a.publish_on
+									FROM
+										tbl_eyenews a
+									WHERE
+										a.publish_on
+									ORDER BY
+										a.news_view DESC
+									LIMIT
+										3
+								")->result_array();
+		return $query;
+	}
+	
+	public function get_eyenews_populer2()
+	{
+		$query = $this->db->query("	SELECT
+										a.eyenews_id,
+										a.url,
 										a.title,
 										a.description,
 										a.createon										,
@@ -442,6 +474,30 @@ public function get_trending_eyenews()
 									")->result_array();
 		return $query;
 	}	
+
+	public function get_eyetube_populer()
+	{
+		$query = $this->db->query("	SELECT
+										a.eyetube_id,
+										a.title,
+										a.description,
+										a.thumb,
+										a.video,
+										a.url,
+										a.createon,
+										a.tube_view,
+										a.category_name
+									FROM
+										tbl_eyetube a
+									WHERE
+										a.tube_view
+									ORDER BY
+										a.tube_view DESC
+									LIMIT
+										4
+								")->result_array();
+		return $query;
+	}
 	
 }
 
