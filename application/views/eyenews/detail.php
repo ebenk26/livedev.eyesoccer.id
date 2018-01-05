@@ -227,7 +227,7 @@
                     <div style="margin-top: 20px;">
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                     </div>
-					<div class="fb-comments" data-href="http://eyesoccer.id<?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
+					<div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
                 </div>
 
                 <div class="container tube-r">
