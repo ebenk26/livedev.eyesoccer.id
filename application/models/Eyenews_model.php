@@ -133,7 +133,8 @@ class Eyenews_model extends CI_Model
                                         A.eyenews_id,
                                         A.thumb1,
                                         A.publish_on,
-										A.createon,.
+										A.createon,
+										A.url,
 										A.news_view
                                     FROM
                                         tbl_eyenews A
