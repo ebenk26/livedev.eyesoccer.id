@@ -134,8 +134,6 @@ class Eyeme_model extends Master_model
 	#sw::begin 
 	/**
 	  *function get Explore
-
-
 	*/
 	public function getExplore(){
 		$getImg = $this->mod->getAll('me_img','','',array('last_update'=> 'DESC'));
@@ -160,7 +158,7 @@ class Eyeme_model extends Master_model
 	}
 
 	/**
-	  *function to get profile user
+	  *fungsi getProfile:: to get user profile by id or username
 	  *@param $id_or_username in url
 	
 	*/
@@ -178,6 +176,13 @@ class Eyeme_model extends Master_model
 		return $result;
 
 	}
+	/**
+		*fungsi getWhereIn:: to get table where in 
+		*@param $tbl = table selected
+		*@param where = where colomn condition
+		*@param where_in as array where colomn in 
+
+	*/
 	public function getWhereIn($tbl,$where, $inArr=array()){
 
 		$this->db->where_in($where,$inArr);
@@ -187,8 +192,9 @@ class Eyeme_model extends Master_model
 	}
 	
 	/**
+		*fungsi getImgFollowing:: to get img who following by member
 		*@param $id_member = member has login
-		*fungsi getImgFollowing to get img who following by member	
+		*@return $return as array 	
 
 	*/
 	public function getImgFollowing($id_member){
@@ -224,6 +230,12 @@ class Eyeme_model extends Master_model
 		return $return;
 
 	}
+	/**
+	*fungsi getImg:: to get Image by Id_img
+	*@param id_img 
+	*@return result as array ()
+
+	*/
 	public function getImg($id_img){
 		$query = "SELECT 
 				A.id_img,
@@ -243,11 +255,38 @@ class Eyeme_model extends Master_model
 		$get  = $this->db->query($query);
 		return $get->result();
 	}
+	public function getAllImg($id_img){
+		$where      = array('id_img' => $id_img);
+
+		
+		$getImg     = $this->emod->getImg($id_img,$where);
+		$hasLike    = $this->emod->hasLike($this->id_member,$id_img);
+		$getLike    = $this->mod->getAll('me_like',$where);
+		$getComment = $this->emod->getComment($id_img);
+		if(!count($getImg) > 0 ){
+			redirect(MEURL,'refresh');
+
+		}
+		$getImg[0]->countLike = count($getLike);
+		$getImg[0]->countComment = count($getComment);
+		$getImg[0]->comment      = $getComment;
+		$distance                = getDistance(NOW,$getImg[0]->last_update);#jarak waktu 
+		$getTime                 = getTime($distance); #mengambil waktu last_update
+		$day                     = $getTime['day'];
+		$hours                   = $getTime['hours'];
+		$minute                  = $getTime['minute'];
+		$secon				     = $getTime['secon'];
+		$timeString              = $getTime['timeString'];
+		$getImg[0]->timeString   = $timeString;
+		$getImg[0]->has_like     = $hasLike;
+		return $getImg;
+	}
 	/**
+	*fungsi getComment::  to get comment 
 	*@param $id_img id dari gambar yang dikomen
 	*@param $limit array, array[0] =offset array[1] = limit
 
-		fungsi getComment  untuk mengambil komentar
+		
 
 	*/
 	public function getComment($id_img,$limit=array()){

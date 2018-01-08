@@ -780,6 +780,7 @@ th{
 }
 footer{
     background-color: #616161;
+    
 }
 .f-w{
     width: 870px;
@@ -2293,7 +2294,7 @@ ul, li {
     border-radius: 10px;    
 }
 .me-head{
-    position: fixed;
+    
     height: 50px;
     left: 10%;
     display: block;
@@ -2301,6 +2302,8 @@ ul, li {
     border-bottom: 1px solid gainsboro;
     padding-bottom: 20px;
     z-index: 10;
+    position: relative;
+    
 }
 .detail-post-box{
     position: fixed;
@@ -2778,4 +2781,8 @@ loading animation
     background: #E5E5E5 !important;
     color:#969696 !important;
     cursor: not-allowed;
+}
+.cropit-preview-background {
+        opacity: .2;
+        cursor: auto;
 }

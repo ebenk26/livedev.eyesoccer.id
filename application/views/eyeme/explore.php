@@ -44,11 +44,10 @@
             </div>
         </div>
         <div class="w900 m-0">
-            <?php 
+        <?php 
             //p($ex);
             //parsing data explore
-                      foreach($ex as $k => $v){
-               
+            foreach($ex as $k => $v){  
                 ?>
                 <div class="me-post" id="<?php echo $v->id_img?>">
                     <img src="<?php echo MEIMG.$v->img_thumb?>" class="me-gambar-post" alt="">
@@ -64,8 +63,7 @@
          </div>
     </div>
 </div>
-<<br>
-</br>
+
 
 <script>
      obj = JSON.parse('{"img":"http://localhost/eyesoccer/img/eyeme/thumb_05012018013108.jpeg"}');

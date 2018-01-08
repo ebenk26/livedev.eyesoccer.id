@@ -1,3 +1,31 @@
+ <!-- FOOTER -->
+
+<footer>
+    <div class="f-w">
+        <a class="p-d-l-0" href="">Tentang Kami</a>
+        <a href="">Tim EyeSoccer</a>
+        <a href="">Pedoman Media Siber</a>
+        <a href="">Kebijakan Privasi</a>
+        <a href="">Panduan Komunitas</a>
+        <a href="">Kontak</a>
+        <a href="">Karir</a>
+        <div class="container">
+            <div class="center50 c-l">
+                Copyright 2017 eyesoccer.com. All Rights Reserved.
+            </div>
+            <div class="center50">
+                <a href="" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
+                <a href="" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
+                <a href="" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- SEARCHBOX -->
+<div id="srcbox" class="searchbox">
+    <input type="text"><button id="srcSub" type="submit">Cari</button>
+</div>
+
 <!--<script src="<?php #echo JSPATH?>home.js"></script>-->
 <!--<script src="<?php #echo JSPATH?>sw.js"></script>-->
 <script type="text/javascript">
