@@ -725,24 +725,13 @@
                     <div class="border-box">
                         <div class="container bg-g">						
                             <div class="t-tab">
-                                <div class="day-choose">
-                                    <a href="">Kemarin
-                                        <span>
-											<?php
-												$date = new DateTime(date("Y-m-d"));
-												$date->modify('-1 day');
-												echo $date->format('d F');
-											?>
-										</span>
-                                    </a>
-                                </div>
-                                <div class="day-choose t-active">
-                                    <a href="">Hari ini
+								<div class="day-choose t-active" id="jadwal_today">
+                                    <a href="#" onclick="return false;">Hari ini
                                         <span><?=date("d F")?></span>
                                     </a>
                                 </div>
-                                <div class="day-choose">
-                                    <a href="">Besok
+                                <div class="day-choose" id="jadwal_tomorrow">
+                                    <a href="#" onclick="return false;">Besok
                                         <span>
 											<?php
 												$date = new DateTime(date("Y-m-d"));
@@ -752,11 +741,42 @@
 										</span>
                                     </a>
                                 </div>
+                                <div class="day-choose" id="jadwal_tomorrow2">
+                                    <a href="#" onclick="return false;">Lusa
+                                        <span>
+											<?php
+												$date = new DateTime(date("Y-m-d"));
+												$date->modify('+2 day');
+												echo $date->format('d F');
+											?>
+										</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <table class="table border-b">
-						<?php
-						foreach($jadwal_today as $row){
+						<div id="tbl_jadwal_today">
+							asdasd
+							<table class="table border-b">
+							<?php
+							foreach($jadwal_today as $row){
+							?>
+								<tbody>
+									<tr>
+										<td class="tx-r"><?=$row["club_a"]?><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
+										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
+										</td>
+										<td class="tx-l"><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span><?=$row["club_b"]?></td>
+									</tr>
+								</tbody>
+							<?php }?>
+							</table>
+						</div>
+						<div id="tbl_jadwal_tomorrow" style="display:none">
+							dddd
+							<table class="table border-b">
+							<?php
+						foreach($jadwal_tomorrow1 as $row){
 						?>
                             <tbody>
                                 <tr>
@@ -768,7 +788,26 @@
                                 </tr>
                             </tbody>
 						<?php }?>
-                        </table>
+							</table>
+						</div>
+						<div id="tbl_jadwal_tomorrow2" style="display:none">
+							tyty
+							<table class="table border-b">
+							<?php
+							foreach($jadwal_tomorrow2 as $row){
+							?>
+								<tbody>
+									<tr>
+										<td class="tx-r"><?=$row["club_a"]?><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
+										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
+										</td>
+										<td class="tx-l"><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span><?=$row["club_b"]?></td>
+									</tr>
+								</tbody>
+							<?php }?>
+							</table>
+						</div>
                         <div class="t-c-b">
                             <button type="" class="btn-green">Lihat Jadwal Lainnya</button>
                         </div>
@@ -825,3 +864,27 @@
                 </div>
             </div>
         </div>
+		<script>
+			$(document).ready(function(){
+				$('#tbl_jadwal_tomorrow,#tbl_jadwal_tomorrow2').hide();
+					
+				$('#jadwal_today').click(function(){
+					$('#tbl_jadwal_tomorrow,#tbl_jadwal_tomorrow2').hide();
+					$('.day-choose').removeClass('t-active');
+					$('#jadwal_today').addClass('t-active');
+					$('#tbl_jadwal_today').show();
+				});
+				$('#jadwal_tomorrow').click(function(){
+					$('#tbl_jadwal_tomorrow2,#tbl_jadwal_today').hide();
+					$('.day-choose').removeClass('t-active');
+					$('#jadwal_tomorrow').addClass('t-active');
+					$('#tbl_jadwal_tomorrow').show();
+				});
+				$('#jadwal_tomorrow2').click(function(){
+					$('#tbl_jadwal_tomorrow,#tbl_jadwal_today').hide();
+					$('.day-choose').removeClass('t-active');
+					$('#jadwal_tomorrow2').addClass('t-active');
+					$('#tbl_jadwal_tomorrow2').show();
+				});
+			})
+		</script>

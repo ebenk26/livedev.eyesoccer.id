@@ -25,8 +25,8 @@
             </div>
 
             <div class="log-reg m-0" style="margin-bottom:20px !important;">
-                <span class="active">Masuk</span>
-                <span class="deactive">Daftar</span>
+                <span class="active" style="cursor:pointer;">Masuk</span>
+                <span class="deactive" style="cursor:pointer;">Daftar</span>
             </div>
 
             <div class="container">
