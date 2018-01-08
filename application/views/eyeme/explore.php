@@ -45,16 +45,10 @@
         </div>
         <div class="w900 m-0">
             <?php 
-            p($ex);
+            //p($ex);
             //parsing data explore
-            $i=0;
-            foreach($ex as $k => $v){
-                $arr[$i]['img_name'] = $v->img_name;
-                $arr[$i]['img_caption'] = $v->img_caption;
-                $arr[$i]['countLike']   = $v->countLike;
-                $arr[$i]['countComment']= $v->countComment;
-                $arr[$i]['comment']     = $v->comment;
-                $i++;
+                      foreach($ex as $k => $v){
+               
                 ?>
                 <div class="me-post" id="<?php echo $v->id_img?>">
                     <img src="<?php echo MEIMG.$v->img_thumb?>" class="me-gambar-post" alt="">
@@ -66,19 +60,13 @@
                     </div>
                 </div>
 
-          <?php   }?>                
+          <?php   }?>                  
          </div>
     </div>
 </div>
 <<br>
 </br>
-<?php
-$json = json_encode($arr);
-echo $json;
-p($arr);
 
-
-?>
 <script>
      obj = JSON.parse('{"img":"http://localhost/eyesoccer/img/eyeme/thumb_05012018013108.jpeg"}');
 $('.me-post').click(function(event) {
