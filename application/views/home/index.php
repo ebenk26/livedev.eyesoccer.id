@@ -209,7 +209,7 @@
 										<?php
 											$str_name = strlen($player['nama']);
 											if($str_name > 20){
-												$player['nama'] = substr($player['nama'],0,20);
+												$player['nama'] = substr($player['nama'],0,18);
 												$player['nama'] = $player['nama'].'...';
 											}else{
 												$player['nama'] = $player['nama'];
@@ -217,7 +217,7 @@
 											
 											$str_klub = strlen($player['klub']);
 											if($str_klub > 20){
-												$player['klub'] = substr($player['klub'],0,20);
+												$player['klub'] = substr($player['klub'],0,18);
 												$player['klub'] = $player['klub'].'...';
 											}else{
 												$player['klub'] = $player['klub'];
@@ -248,7 +248,7 @@
 										<?php
 											$str_name = strlen($player['nama']);
 											if($str_name > 20){
-												$player['nama'] = substr($player['nama'],0,20);
+												$player['nama'] = substr($player['nama'],0,18);
 												$player['nama'] = $player['nama'].'...';
 											}else{
 												$player['nama'] = $player['nama'];
@@ -256,7 +256,7 @@
 											
 											$str_klub = strlen($player['klub']);
 											if($str_klub > 20){
-												$player['klub'] = substr($player['klub'],0,20);
+												$player['klub'] = substr($player['klub'],0,18);
 												$player['klub'] = $player['klub'].'...';
 											}else{
 												$player['klub'] = $player['klub'];
@@ -287,7 +287,7 @@
 										<?php
 											$str_name = strlen($player['nama']);
 											if($str_name > 20){
-												$player['nama'] = substr($player['nama'],0,20);
+												$player['nama'] = substr($player['nama'],0,18);
 												$player['nama'] = $player['nama'].'...';
 											}else{
 												$player['nama'] = $player['nama'];
@@ -295,7 +295,7 @@
 											
 											$str_klub = strlen($player['klub']);
 											if($str_klub > 20){
-												$player['klub'] = substr($player['klub'],0,20);
+												$player['klub'] = substr($player['klub'],0,18);
 												$player['klub'] = $player['klub'].'...';
 											}else{
 												$player['klub'] = $player['klub'];
