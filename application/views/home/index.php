@@ -755,7 +755,7 @@
                             </div>
                         </div>
 						<div id="tbl_jadwal_today">
-							asdasd
+							
 							<table class="table border-b">
 							<?php
 							foreach($jadwal_today as $row){
@@ -773,7 +773,7 @@
 							</table>
 						</div>
 						<div id="tbl_jadwal_tomorrow" style="display:none">
-							dddd
+							
 							<table class="table border-b">
 							<?php
 						foreach($jadwal_tomorrow1 as $row){
@@ -791,7 +791,7 @@
 							</table>
 						</div>
 						<div id="tbl_jadwal_tomorrow2" style="display:none">
-							tyty
+							
 							<table class="table border-b">
 							<?php
 							foreach($jadwal_tomorrow2 as $row){
