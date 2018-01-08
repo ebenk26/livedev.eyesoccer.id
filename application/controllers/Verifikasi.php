@@ -19,7 +19,7 @@ class Verifikasi extends CI_Controller {
 				if($this->db->affected_rows()>0){
 					// echo"<script>alert('Verifikasi berhasil. Silahkan login menggunakan email dan password anda.')</script>";
 					$message = "Verifikasi berhasil. Silahkan login menggunakan email dan password anda.";
-					echo "<script type='text/javascript'>alert('$message');window.location = ('https://www.eyesoccer.id') </script>";
+					echo "<script type='text/javascript'>alert('$message');window.location = ('".base_url()."') </script>";
 					// unset($_SESSION["member_id"],$_SESSION["user_id"]);
 					// session_destroy();
 					// redirect("");

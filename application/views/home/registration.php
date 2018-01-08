@@ -39,7 +39,7 @@
                         <input name="password" type="password" placeholder="Ketik password" required>
 						<input type="hidden" name="page" class="form-login-redirect"/>
                         <div class="container">
-                            <a href="">Lupa password?</a>
+                            <a href="<?php echo base_url()?>home/forgot_password">Lupa password?</a>
                         </div>
                         <button class="btn-orange-3" style="width:100%; margin:20px 0;">MASUK</button>
                         <div class="container tx-c">

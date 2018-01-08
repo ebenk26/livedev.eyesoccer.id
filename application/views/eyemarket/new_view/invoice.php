@@ -20,6 +20,7 @@
 <body>
     
     <?php
+    // var_dump($model);exit();
         if ($model->status == 3)
         {
     ?>
@@ -113,12 +114,47 @@
                                 <div class="row">
                                     <!-- accepted payments column -->
                                     <div class="col-xs-6">
-                                        <!-- <p class="lead">Payment Methods:</p>
-                                        <img src="images/visa.png" alt="Visa">
-                                        <img src="images/mastercard.png" alt="Mastercard">
-                                        <img src="images/american-express.png" alt="American Express">
-                                        <img src="images/paypal.png" alt="Paypal">
-                                        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
+                                        <p class="lead">Metode Pengiriman</p>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Kurir</td>
+                                                    <td>:</td>
+                                                    <td><?= $model->kurir; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Berat Keseluruhan</td>
+                                                    <td>:</td>
+                                                    <td><?= $model->berat_all; ?> gram</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Penerima</td>
+                                                    <td>:</td>
+                                                    <td><?= $model->penerima; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alamat</td>
+                                                    <td>:</td>
+                                                    <td><?= $model->alamat; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><?= $model->kota; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><?= $model->kecamatan; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><?= $model->provinsinya; ?></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <!-- <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
                                             Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
                                          </p> -->
                                     </div>
