@@ -170,9 +170,9 @@ class Eyenews_model extends CI_Model
 										a.tube_view,
 										a.category_name
                                     FROM
-                                        tbl_eyetube A
+                                        tbl_eyetube a
                                     ORDER BY 
-                                        A.eyetube_id DESC
+                                        a.eyetube_id DESC
                                     LIMIT
                                         5
                                         ")->result_array();
