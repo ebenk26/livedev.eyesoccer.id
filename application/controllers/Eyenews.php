@@ -8,6 +8,7 @@ class Eyenews extends CI_Controller {
 		   // $this->load->model('Eyemarket_model');
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->model('Eyenews_model');
+			$this->load->model('Master_model');
 			$this->load->helper(array('form','url','text','date','my'));
 			$this->load->helper('my');
     }
@@ -32,6 +33,54 @@ class Eyenews extends CI_Controller {
 		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
 		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
+		
+		$where    = array();
+		$selectID = 'eyenews_id';
+		$tbl      = 'tbl_eyenews';
+		$limit    = 4;
+		$offset   = $this->uri->segment(3);
+		$uri_segment = 3;
+		$url      = 'eyenews/page';
+		$like = array('prod_name'=> '','merk'=> '');
+		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		
+		$data['kanal'] 					= "eyenews";
+		$data["body"]=$this->load->view('eyenews/index', $data,true);
+
+		$this->load->view('template/static',$data);		
+	}
+	
+	public function page()
+	{
+		$data["meta"]["title"] 			="";
+		$data["meta"]["image"] 			=base_url()."/assets/img/tab_icon.png";
+		$data["meta"]["description"] 	="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
+		$data["page"] 					="eyenews";		
+		
+		$data['all_news'] 				= $this->Eyenews_model->get_all_news();
+		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
+		$data['eyenews_rekomendasi']	= $this->Eyenews_model->get_eyenews_rekomendasi();
+		$news_type 						= $data['eyenews_main']->news_type;
+		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
+		$data['headline'] 				= $this->Eyenews_model->get_headline();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();		
+		$data['eyenews_populer2']		= $this->Eyenews_model->get_eyenews_populer2();		
+		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
+		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
+		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
+		
+		$where    = array();
+		$selectID = 'eyenews_id';
+		$tbl      = 'tbl_eyenews';
+		$limit    = 4;
+		$offset   = $this->uri->segment(3);
+		$uri_segment = 3;
+		$url      = 'eyenews/page';
+		$like = array('prod_name'=> '','merk'=> '');
+		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		
 		$data['kanal'] 					= "eyenews";
 		$data["body"]=$this->load->view('eyenews/index', $data,true);
 
