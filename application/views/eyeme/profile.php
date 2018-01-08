@@ -1,7 +1,7 @@
 
 <div class="desktop">
         <div class="center-desktop m-0">
-            <div class="w900 m-0 mt-53">
+            <div class="w900 m-0 ">
                 <div class="mt-30 fl-l">
                     <img class="me-profil-foto" src="<?php echo ($display_pic == '' ? DPIC : MEIMG.$display_pic)?>" alt="foto profil">
                 </div>

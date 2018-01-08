@@ -279,7 +279,7 @@ class Eyeme extends CI_Controller {
 	*/
 	public function img($id_img){
 		$getImg               = $this->emod->getAllImg($id_img);
-		$this->data['img']     = $getImg;
+		$this->data['img']    = $getImg;
 		#p($hasLike);
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/image',$this->data);

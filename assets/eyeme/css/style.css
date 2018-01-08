@@ -1763,8 +1763,8 @@ ul, li {
    
 }
 .posisi-popup-notif{
-    right:140px;
-    top: 60px;
+    right:130px;
+    top: 185px;
     z-index: 99;
 }
 .panah-popup-notif{
@@ -1773,7 +1773,7 @@ ul, li {
     background-color: white;
     box-shadow: -1px -1px 0px 0px lightgrey;
     transform: rotate(45deg);
-    top: -7px;
+    top: 7px;
     left: 332px;
     z-index: 2;
 }
