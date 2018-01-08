@@ -222,7 +222,7 @@ class Home extends CI_Controller {
 				  $_SESSION['id_member']=$user_id;
 				  $_SESSION['img_profile']=load_top_avatar();;
 				  // header("location:".base_url().$page);  
-				  echo "true";
+				  echo $page;
 				  }  
 			}else{
 				// header('Refresh:0; url= '. base_url().'home/login'); 

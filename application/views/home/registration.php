@@ -153,10 +153,12 @@
 					 success: function(data) {
 						// alert(data);
 						console.log(data);
-						if(data=='true'){
+						if(data==''){
 							window.location.href = "../home/index";
-						}else{
+						}else if(data=='false'){
 							alert('Email atau Password salah');
+						}else{
+							window.location.href = "../"+data;
 						}
 					 },
 					 error: function(err){
