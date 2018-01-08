@@ -34,11 +34,8 @@
 						foreach($video_eyetube as $videonya){
 						?>					
                         <div class="gambar">
-                            <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="width:554px;">
-                            <div class="bottom-left">
-                                <h4><?=$videonya['title']?></h4>
-                                <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>"><button class="btn-biru" type="button">Lihat</a></button>
-                            </div>
+							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">
+                            <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="width:554px;"></a>
                         </div>
 						<?php break; }?>
                     </div>
@@ -51,11 +48,8 @@
 									{
 					?>					
                         <div class="gambar">
-                            <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="margin-left:42px; width:554px;">
-                            <div class="bottom-left">
-                                <h4 style="margin-left:42px;"><?=$videonya['title']?></h4>
-                                <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>"><button class="btn-biru" style="margin-left:42px;" type="button">Lihat</a></button>
-                            </div>
+							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">						
+                            <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="margin-left:42px; width:554px;"></a>
                         </div>
 					<?php
 					}

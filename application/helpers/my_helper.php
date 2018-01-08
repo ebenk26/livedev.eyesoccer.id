@@ -64,7 +64,7 @@ if( ! function_exists('relative_time'))
     }
 }
 //sw:begin
-/* DEFINE */
+/* DEFINE LINK */
 define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
@@ -74,6 +74,23 @@ define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
 define('DPIC',sIMGPATH.'user-discover.png');
 define('NOW',date('Y-m-d G:i:s'));
+define('LOGIN',base_url().'home/login');
+define('IMGSTORE',imgUrl().'systems/image_store/');
+define('MEMBERAREA',base_url().'home/member_area');
+define('EYEPROFILE',base_url().'eyeprofile/');
+define('pCLUB',EYEPROFILE.'klub');
+define('pPLAYER',EYEPROFILE.'pemain');
+define('pOFFICIAL',EYEPROFILE.'official');
+define('pREFEREE',EYEPROFILE.'referee');
+define('pSUPPORT',EYEPROFILE.'supporter');
+define('EYETUBE',base_url().'eyetube');
+define('EYENEWS',base_url().'eyenews');
+define('EYEME',base_url().'eyeme');
+define('EYEEVENT',base_url().'eyevent');
+define('EYEMARKET',base_url().'eyemarket');
+define('EYETRANSFER',base_url().'eyetransfer');
+define('EYETIKET',base_url().'eyetiket');
+define('EYEWALLET',base_url().'wallet');
 
 function p($arr){
     echo '<pre>';
@@ -115,11 +132,23 @@ function getTime($timeStamp){
     }
     return array('day' => $day,'hours'=> $hours,'minute'=> $minute,'secon'=>$secon,'timeString' => $timeString);
 }
-
+//button follow and unfollow
 function btnFol($id_member,$has_follow = TRUE){
     return '<button class="btn-white-follow '.(!$has_follow ? 'fol' : 'unfol').'" type="button" rel="'.$id_member.'">'
     .(!$has_follow ? 'ikuti':'Mengikuti').'</button>';
 
+}
+//button login 
+function btnLogin($login){
+
+    return '<span class="btn-reg">
+            Pendaftaran Liga</span>
+            <span class="btn-btn-login">
+
+            <a style="text-decoration: none;" href="'.(!$login ? LOGIN : MEMBERAREA).'">
+            '.(!$login ? 'masuk': '<img src="'.IMGSTORE.load_top_avatar().'" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;" alt="Photo profile">'.load_top_name()).'
+            </a>
+            </span>';
 }
 
 
@@ -198,6 +227,44 @@ if ( ! function_exists('image_resize'))
         #echo '<br><b>'.$type.'</b><br>';
         return true;
     }
+}
+
+/**
+ * Generates meta tags from an array of key/values
+ *
+ * @access  public
+ * @param   array
+ * @return  string
+ */
+function meta_property($property = '', $content = '', $type = 'property', $newline = "\n")
+{
+    // Since we allow the data to be passes as a string, a simple array
+    // or a multidimensional one, we need to do a little prepping.
+    if ( ! is_array($property))
+    {
+        $property = array(array('property' => $property, 'content' => $content, 'type' => $type, 'newline' => $newline));
+    }
+    else
+    {
+        // Turn single array into multidimensional
+        if (isset($property['property']))
+        {
+            $property = array($property);
+        }
+    }
+
+    $str = '';
+    foreach ($property as $meta)
+    {
+        $type       = ( ! isset($meta['type']) OR $meta['type'] == 'property') ? 'property' : $meta['type'];
+        $property       = ( ! isset($meta['property']))     ? ''    : $meta['property'];
+        $content    = ( ! isset($meta['content']))  ? ''    : $meta['content'];
+        $newline    = ( ! isset($meta['newline']))  ? "\n"  : $meta['newline'];
+
+        $str .= '<meta '.$type.'="'.$property.'" content="'.$content.'" />'.$newline;
+    }
+
+    return $str;
 }
 //sw:end
 function getOngkir($tujuan,$berat)
