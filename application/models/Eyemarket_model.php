@@ -261,11 +261,14 @@ class Eyemarket_model extends CI_Model
     {
         $query = $this->db->query(" SELECT
                                         A.*,
-                                        B.image1
+                                        B.image1,
+                                        C.nama as toko
                                     FROM
                                         eyemarket_product A
                                     LEFT JOIN
                                         eyemarket_images B on B.id_product = A.id_product
+                                    LEFT JOIN
+                                        eyemarket_toko C on C.id = A.id_toko
                                     WHERE
                                         A.id_product != '$id_product'
                                     LIMIT
@@ -542,9 +545,11 @@ class Eyemarket_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function get_order($id_member)
-    {
-        $query = $this->db->query(" SELECT
+    public function get_order($id = NULL,$id_member = NULL)
+    { 
+        if ($id != NULL && $id_member == NULL)
+        {
+            $query = $this->db->query(" SELECT
                                         A.*,
                                         B.bank,
                                         B.nama_pemilik,
@@ -555,10 +560,29 @@ class Eyemarket_model extends CI_Model
                                     INNER JOIN
                                         eyemarket_payment B on B.id = A.id_tipe_bayar
                                     WHERE
-                                        A.id_member = '$id_member'
-                                    AND
-                                        A.status = 0
+                                        A.id = '$id'
                                         ")->row();
+        }
+        else
+        if ($id == NULL && $id_member != NULL)
+        {
+            $query = $this->db->query(" SELECT
+                                            A.*,
+                                            B.bank,
+                                            B.nama_pemilik,
+                                            B.rekening,
+                                            B.logo
+                                        FROM
+                                            eyemarket_order A
+                                        INNER JOIN
+                                            eyemarket_payment B on B.id = A.id_tipe_bayar
+                                        WHERE
+                                            A.id_member = '$id_member'
+                                        AND
+                                            A.status = 0
+                                            ")->row();
+        }
+        
         return $query;
     }
 
@@ -597,19 +621,26 @@ class Eyemarket_model extends CI_Model
                                         D.email,
                                         D.alamat,
                                         E.nama as kurir,
-                                        G.name as username
+                                        G.name as username,
+                                        H.penerima,
+                                        H.alamat,
+                                        H.provinsi as provinsinya,
+                                        H.kota,
+                                        H.kecamatan
                                     FROM
                                         eyemarket_order A
                                     LEFT JOIN
-                                        eyemarket_keranjang B on B.id_order = A.id
+                                        eyemarket_keranjang B   on B.id_order = A.id
                                     LEFT JOIN
-                                        eyemarket_product C on C.id_product = B.id_product
+                                        eyemarket_product C     on C.id_product = B.id_product
                                     LEFT JOIN
-                                        eyemarket_toko D on D.id = C.id_toko
+                                        eyemarket_toko D        on D.id = C.id_toko
                                     LEFT JOIN
-                                         eyemarket_kurir E on E.id = A.id_kurir
+                                         eyemarket_kurir E      on E.id = A.id_kurir
                                     LEFT JOIN
-                                        tbl_member G         on A.id_member =  G.id_member
+                                        tbl_member G            on A.id_member =  G.id_member
+                                    LEFT JOIN
+                                        eyemarket_address H     on A.id_alamat =  H.id
                                     WHERE
                                         A.no_order = '$no_order'
                                     LIMIT

@@ -203,9 +203,25 @@ if ( ! function_exists('image_resize'))
 function getOngkir($tujuan,$berat)
 {
     $berat_kg   = $berat / 1000;
+    $exp        = explode(".", $berat_kg);
 
-    $berat_fix  = round($berat_kg);
-
+    $berat_fix  = "";
+    if ($berat <= 1300)
+    {
+        $berat_fix  = 1;
+    }
+    else
+    {
+        if ($exp[1] <= 3)
+        {
+            $berat_fix  = $exp[0];
+        }
+        else
+        {
+            $berat_fix  = $exp[0] + 1;
+        }
+    }
+    
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
@@ -216,7 +232,7 @@ function getOngkir($tujuan,$berat)
         CURLOPT_TIMEOUT => 30,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => "username=MATABOLA&api_key=4703a7e30643c286460874b14feab0d9&from=CGK10000&thru=$tujuan&weight=$berat_kg",
+        CURLOPT_POSTFIELDS => "username=MATABOLA&api_key=4703a7e30643c286460874b14feab0d9&from=CGK10000&thru=$tujuan&weight=$berat_fix",
         CURLOPT_HTTPHEADER => array(
             "content-type: application/x-www-form-urlencoded",
             "accept: application/json"
