@@ -76,6 +76,16 @@
         ?>
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+				<style>
+					.center-dekstop{
+						width: 1065px;
+					}
+					.x-m {
+						font-size: .9em;
+						margin-left: -50px;
+						width: 1105px;
+					}
+				</style>
         <?php    
             }else if($kanal == 'registration')
 			{
