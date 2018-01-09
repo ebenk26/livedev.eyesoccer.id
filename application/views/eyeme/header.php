@@ -95,7 +95,7 @@
             </a>
             <div class="btn-login"> 
             <?php   
-                echo btnLogin($this->session->username);
+                echo btnLogin($this->session->id_member);
             ?>                       
             </div>                
         </div>                
