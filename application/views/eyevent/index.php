@@ -42,16 +42,16 @@
                 <div class="fl-l" style="width: max-content;">
                     <ul>
                         <li>
-                            <a href="">HASIL PERTANDINGAN</a>
+                            <a href="<?=base_url()?>eyevent/hasil">HASIL PERTANDINGAN</a>
                         </li>
                         <li>
-                            <a href="">JADWAL PERTANDINGAN</a>
+                            <a href="<?=base_url()?>eyevent">JADWAL PERTANDINGAN</a>
                         </li>
                         <li>
-                            <a href="">KLASEMEN</a>
+                            <a href="<?=base_url()?>eyevent/klasemen">KLASEMEN</a>
                         </li>
                         <li>
-                            <a href="">NONTON BARENG</a>
+                            <a href="<?=base_url()?>eyevent/nobar">NONTON BARENG</a>
                         </li>
                     </ul>
                 </div>
