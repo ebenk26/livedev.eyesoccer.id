@@ -210,7 +210,7 @@ class Home extends CI_Controller {
 				  else{
 				  	//get eyeme username 
 				  	$where   = array('id_member' => $user_id);
-				  	$profile  = $this->mod->getAll('me_profile',$where,array('username','id_member','display_picture'));
+				  	$profile  = $this->mod->getAll('tbl_member',$where,array('username','id_member','profile_pic'));
 
 					  	if(count($profile) > 0 ){
 
