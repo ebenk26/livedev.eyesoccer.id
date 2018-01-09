@@ -96,7 +96,7 @@ class Eyeme extends CI_Controller {
 			$usr  = $getUser[0];
 			//get Image 
 			$whereImg = array('id_member'=> $usr->id_member,'active'=> '1');
-			$getImg  		 = $this->mod->getAll('me_img',$whereImg,'',array('last_update'=>'DESC'));
+			$getImg  		= $this->mod->getAll('me_img',$whereImg,'',array('last_update'=>'DESC'));
 			//get following 
 			$whereFollowing = array('id_member'=> $usr->id_member,'block'=> '0');
 			$getFollowing   = $this->mod->getAll('me_follow',$whereFollowing);
@@ -140,6 +140,7 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/profile',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
 		$this->load->view('eyeme/img_upload',$this->data);
+		$this->load->view('eyeme/post_detail',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 
 	}
@@ -316,8 +317,9 @@ class Eyeme extends CI_Controller {
 	
 	
 	/**
+	*insert like::
 	*@param $id_img = id image yang di sukai
-		insert like 
+		
 	*/
 	public function like(){
 		$id_img = $this->input->post('id');
@@ -326,6 +328,9 @@ class Eyeme extends CI_Controller {
 		echo count($getLike);
 
 	}
+	/*
+	*fungsi unlike::
+	*/
 	public function unlike(){
 		$id_img = $this->input->post('id');
 		$this->db->where('id_member',$this->id_member);
