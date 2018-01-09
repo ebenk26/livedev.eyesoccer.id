@@ -3,7 +3,20 @@
     <head>
         <title></title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=1000">
+        <?php 
+            if ($kanal != 'eyemarket')
+            {
+        ?>
+                <meta name="viewport" content="width=1000">
+        <?php        
+            }
+            else
+            {
+        ?>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+        <?php        
+            }
+        ?>
 		
 		<?php
 		if(!isset($meta["share"]))
@@ -63,6 +76,16 @@
         ?>
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+				<style>
+					.center-dekstop{
+						width: 1065px;
+					}
+					.x-m {
+						font-size: .9em;
+						margin-left: -50px;
+						width: 1105px;
+					}
+				</style>
         <?php    
             }else if($kanal == 'registration')
 			{
@@ -71,6 +94,19 @@
                 <link href="<?=base_url()?>assets/registration/css/bs.css" rel="stylesheet">
 		<?php
 			}
+            if ($kanal == 'eyemarket')
+            {
+    ?>
+                <link href="<?php echo base_url(); ?>bs/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+                <link rel="stylesheet" href="<?php echo base_url(); ?>bs/jud/css/bootstrap.min.css ">
+                <link href="<?=base_url()?>bs/jud/css/animate.css" rel="stylesheet">
+                <link href="<?=base_url()?>bs/jud/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>bs/jud/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+                <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+        <?php
+            }
             else
             {
         ?>
@@ -87,7 +123,21 @@
             <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <?php
+        if ($kanal != 'eyemarket')
+        {
+    ?>
+            <body>
+    <?php    
+        }
+        else
+        {
+    ?>
+            <body style="overflow-x: unset;">
+    <?php
+        }
+    ?>
+    
         <nav>
             <div class="dekstop">
                 <div class="center-dekstop m-0">
@@ -147,9 +197,31 @@ else{
                 </div>
             </div>
         </div>
-        <div class="dekstop">
-			<?php echo $body;?>
-        </div>
+
+        <?php
+            if ($kanal == 'eyemarket')
+            {
+        ?>
+                <div id="content">
+                    <div class="container" style="font-size: 14px;">
+                        <div class="dekstop">
+                            <?php echo $body;?>
+                        </div>
+                    </div>
+                </div>
+        <?php    
+            }
+            else
+            {
+        ?>
+                <div class="dekstop">
+                    <?php echo $body;?>
+                </div>
+        <?php        
+            }
+        ?>
+        
+
     <script>
         (function(d, s, id)
         {

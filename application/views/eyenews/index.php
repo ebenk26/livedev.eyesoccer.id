@@ -39,18 +39,6 @@
                     <div>
                         <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="">
                     </div>
-                    <div class="container p-r panah-news">
-                        <div class="fl-l">
-                            <a href="<?=base_url()?>eyenews/detail/<?=$headline->url; ?>">
-                                <i class="material-icons">keyboard_arrow_left</i>
-                            </a>
-                        </div>
-                        <div class="fl-r">
-                            <a href="">
-                                <i class="material-icons">keyboard_arrow_right</i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
                 <div class="container h-news-r">
                     <table>
@@ -101,37 +89,38 @@
                     </div>
                 </div>
             </div>
-            <div class="container m-t-65">
+            <div class="container">
                 <div class="w1020 m-0">
                     <div class="subjudul2">
-                        <h4>BERITA TERKAIT</h4>
+                        <h4>BERITA TERBARU</h4>
                     </div>
                 </div>
                 <div class="container m-t-15">
                     <div class="w1020 m-0">
 						<?php
 						$this->load->helper('my');
-						foreach ($eyenews_similar as $similar)
+						foreach ($pagging['row'] as $similar)
 						{
 						?>
                         <div class="w30">
                             <div>
-                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar['thumb1']; ?>" style="width:100%;margin-right:20px;">
-                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar['url'];?>">
+                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar->thumb1; ?>" style="width:100%;margin-right:20px;">
+                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar->url;?>">
                                     <p class="sub-en">									
-									<?= $similar['title']; ?></p>
+									<?= $similar->title; ?></p>
                                 </a>
                                 <span class="time-view">
 								<?php
-	    						$date 		=  new DateTime($similar['createon']);
+	    						$date 		=  new DateTime($similar->createon);
 	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-	    						echo relative_time($tanggal) . ' lalu - '.$similar['news_view'].' views';
+	    						echo relative_time($tanggal) . ' lalu - '.$similar->news_view.' views';
 								?>								
 								</span>
                             </div>
                         </div>
 						<?php } ?>
+						<div style="margin-right: 30%;"><?php echo $pagging['pagging'];?></div>
                     </div>
                 </div>
             </div>
