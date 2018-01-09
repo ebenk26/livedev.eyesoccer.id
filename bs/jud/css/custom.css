@@ -1,5 +1,5 @@
 .dekstop {
-    width: 1280px;
+    width: 1065px;
     margin: 0 auto;
     vertical-align: middle;
 }
@@ -21,4 +21,7 @@ style.css:46
 style.css:50
 .m-0 {
     margin: 0 auto;
+}
+.center-dekstop{
+    width: 1065px;
 }

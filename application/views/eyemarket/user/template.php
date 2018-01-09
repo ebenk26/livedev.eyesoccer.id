@@ -129,9 +129,15 @@
                                 <span class="menu-title">Profile</span>
                             </a>
                         </li>
+                        <li class="nav-item" id="keranjang">
+                            <a class="nav-link" href="<?= base_url() ?>eyemarket/daftar_keranjang/<?= $id_member; ?>">
+                                <img src="<?=base_url()?>assets/eyemarket/user/images/icons/keranjang.png" alt="">
+                                <span class="menu-title">Keranjang</span>
+                            </a>
+                        </li>
                         <li class="nav-item" id="pesanan">
                             <a class="nav-link" href="<?= base_url() ?>eyemarket/pesanan/<?= $id_member; ?>">
-                                <img src="<?=base_url()?>assets/eyemarket/user/images/icons/2.png" alt="">
+                                <img src="<?=base_url()?>assets/eyemarket/user/images/icons/pesanan.png" alt="">
                                 <span class="menu-title">Pesanan</span>
                             </a>
                         </li>
