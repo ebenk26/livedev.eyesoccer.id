@@ -36,6 +36,16 @@
 		<link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
         <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
 		<link rel="stylesheet" href="<?=base_url()?>assets/eyenews/font-awesome/css/font-awesome.min.css">		
+		
+		<link href="assets/eyevent/css/style.css" rel="stylesheet">
+		<link href="assets/eyevent/css/bs.css" rel="stylesheet">		
+		<link rel="stylesheet" href="assets/eyevent/font-awesome/css/font-awesome.min.css">		
+		
+	    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
         <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">		
 	<!--End CSS-->	
 
