@@ -1,5 +1,9 @@
 
-
+		<style>
+			.pagination > .active > a {
+				z-index:1;
+			}
+		</style>
         <div class="center-desktop m-0">
             <div class="menu-4 w1020 m-0">
                 <ul>
@@ -120,7 +124,7 @@
                             </div>
                         </div>
 						<?php } ?>
-						<div style="margin-right: 30%;"><?php echo $pagging['pagging'];?></div>
+						<div><?php echo $pagging['pagging'];?></div>
                     </div>
                 </div>
             </div>

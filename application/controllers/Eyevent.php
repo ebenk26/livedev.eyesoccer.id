@@ -5,10 +5,9 @@ class Eyevent extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
-		    $this->load->model('Eyemarket_model');
+		    $this->load->model('Eyevent_model');
 			date_default_timezone_set('Asia/Jakarta');
-
-			
+			$this->load->helper('my');			
     }
 	public function index()
 	{	
@@ -68,14 +67,27 @@ class Eyevent extends CI_Controller {
 		}
 		$data["array"]=$array;
 		$data["page"]="home";
-		$data["popup"]=$array[14][3];
-		//$data["body"]=$this->load->view('home/index', '', true);
+		$data["popup"]=$array[14][3];		
+
+		$data['eyevent_main']		= $this->Eyevent_model->get_eyevent_main();
+		$data['eyevent_main_2']		= $this->Eyevent_model->get_eyevent_main_2();
+		$data['all_jadwal'] 		= $this->Eyevent_model->get_all_jadwal();
+		$data['all_jadwal2'] 		= $this->Eyevent_model->get_all_jadwal2();
+		
+		$data['jadwal_today'] 		= $this->Eyevent_model->get_jadwal_today();
+		$data['jadwal_yesterday'] 	= $this->Eyevent_model->get_jadwal_yesterday();
+		$data['jadwal_tomorrow'] 	= $this->Eyevent_model->get_jadwal_tomorrow();
+		$data['hasil_today'] 		= $this->Eyevent_model->get_hasil_today();
+		$data['hasil_today2'] 		= $this->Eyevent_model->get_hasil_today2();
+		$data['eyenews_main'] 		= $this->Eyevent_model->get_eyenews_main();
+		//$news_type 				= $data['eyenews_main']->news_type;
+		$data['video_eyetube']		= $this->Eyevent_model->get_eyetube_satu();		
+
 		
 		$data["extrascript"]=$this->load->view('eyetube/script_index', '', true);
 		
-		$data['kanal'] = "home";
 		$data["body"]=$this->load->view('eyevent/index', $data, true);
-		$this->load->view('template/static',$data);
+		$this->load->view('template-baru',$data);
 	}
 	
 	public function detail($eyevent_id=null,$action=null)

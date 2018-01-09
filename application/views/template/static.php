@@ -94,7 +94,7 @@
                 <link href="<?=base_url()?>assets/registration/css/bs.css" rel="stylesheet">
 		<?php
 			}
-            if ($kanal == 'eyemarket')
+            else if ($kanal == 'eyemarket')
             {
     ?>
                 <link href="<?php echo base_url(); ?>bs/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css">
