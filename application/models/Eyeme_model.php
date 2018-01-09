@@ -165,9 +165,27 @@ class Eyeme_model extends Master_model
 	*/
 	public function getProfile($id_or_username){
 
-		$this->db->where('id_member',$id_or_username);
-		$this->db->or_where('username',$id_or_username);
-		$get  = $this->db->get('me_profile');
+
+		$query = "SELECT 
+				A.id_member,
+				A.username,
+				A.name,
+				B.display_picture,
+				B.bio,
+				B.status
+
+				FROM tbl_member
+				AS A
+				INNER JOIN me_profile
+				AS B
+				ON A.id_member = B.id_member
+				where (A.id_member = '$id_or_username') OR (A.username = '$id_or_username')";
+
+		$get = $this->db->query($query);
+		#$this->db->where('id_member',$id_or_username);
+		#$this->db->or_where('username',$id_or_username);
+		//$this->db->get()
+		#$get  = $this->db->get('me_profile');
 		
 		if(count($get->num_rows()) > 0 ) {
 			$result = $get->result();
