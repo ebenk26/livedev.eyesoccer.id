@@ -152,6 +152,7 @@ class Eyeme_model extends Master_model
 			$getImg[$i]->display_pic = $dp[0]->display_picture;
 			$getImg[$i]->countLike = count($like);
 			$getImg[$i]->countComment = count($comment);
+
 			$getImg[$i]->comment      = $comment;
 		}
 		return $getImg;
@@ -258,7 +259,7 @@ class Eyeme_model extends Master_model
 	public function getAllImg($id_img){
 		$where      = array('id_img' => $id_img);
 
-		
+		$this->id_member = $this->session->id_member;
 		$getImg     = $this->emod->getImg($id_img,$where);
 		$hasLike    = $this->emod->hasLike($this->id_member,$id_img);
 		$getLike    = $this->mod->getAll('me_like',$where);
@@ -267,7 +268,8 @@ class Eyeme_model extends Master_model
 			redirect(MEURL,'refresh');
 
 		}
-		$getImg[0]->countLike = count($getLike);
+		$getImg[0]->like         = $getLike;
+		$getImg[0]->countLike    = count($getLike);
 		$getImg[0]->countComment = count($getComment);
 		$getImg[0]->comment      = $getComment;
 		$distance                = getDistance(NOW,$getImg[0]->last_update);#jarak waktu 

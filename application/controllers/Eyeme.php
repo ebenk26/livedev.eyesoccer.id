@@ -187,6 +187,14 @@ class Eyeme extends CI_Controller {
 		echo $json;
 		
 	}
+	public function get_img(){
+		$id_img  = $this->input->post('id');
+		$img = $this->emod->getAllImg($id_img);
+		$json = json_encode($img);
+		#p($img);
+		echo $json;
+
+	}
 	/**
 		*fungsi get_notif::
 	*/
