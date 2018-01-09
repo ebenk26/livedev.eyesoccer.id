@@ -87,7 +87,8 @@
 					}
 				</style>
         <?php    
-            }else if($kanal == 'registration')
+            }
+            else if($kanal == 'registration')
 			{
 		?>
 				<link href="<?=base_url()?>assets/registration/css/style.css" rel="stylesheet">
@@ -102,6 +103,7 @@
                 <link href="<?=base_url()?>bs/jud/css/animate.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+                <link href="<?=base_url()?>bs/jud/css/custom.css" rel="stylesheet">
 
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
@@ -202,11 +204,9 @@ else{
             if ($kanal == 'eyemarket')
             {
         ?>
-                <div id="content">
-                    <div class="container" style="font-size: 14px;">
-                        <div class="dekstop">
-                            <?php echo $body;?>
-                        </div>
+                <div class="m-0" style="width: 1065px;">
+                    <div style="width: 1065px; margin: 0 auto; vertical-align: middle;">
+                        <?php echo $body;?>
                     </div>
                 </div>
         <?php    
