@@ -152,6 +152,7 @@ class Eyeme_model extends Master_model
 			$getImg[$i]->display_pic = $dp[0]->display_picture;
 			$getImg[$i]->countLike = count($like);
 			$getImg[$i]->countComment = count($comment);
+
 			$getImg[$i]->comment      = $comment;
 		}
 		return $getImg;
@@ -237,6 +238,7 @@ class Eyeme_model extends Master_model
 
 	*/
 	public function getImg($id_img){
+
 		$query = "SELECT 
 				A.id_img,
 				A.img_caption,
@@ -252,13 +254,20 @@ class Eyeme_model extends Master_model
 				INNER JOIN me_profile as B
 				ON A.id_member = B.id_member
 				WHERE A.id_img = $id_img AND A.active = '1'";
-		$get  = $this->db->query($query);
-		return $get->result();
+
+		if($id_img == '' || $id_img == NULL){
+			return false;
+		}
+		else{
+			$get  = $this->db->query($query);
+
+			return $get->result();
+		}
 	}
 	public function getAllImg($id_img){
 		$where      = array('id_img' => $id_img);
 
-		
+		$this->id_member = $this->session->id_member;
 		$getImg     = $this->emod->getImg($id_img,$where);
 		$hasLike    = $this->emod->hasLike($this->id_member,$id_img);
 		$getLike    = $this->mod->getAll('me_like',$where);
@@ -267,7 +276,8 @@ class Eyeme_model extends Master_model
 			redirect(MEURL,'refresh');
 
 		}
-		$getImg[0]->countLike = count($getLike);
+		$getImg[0]->like         = $getLike;
+		$getImg[0]->countLike    = count($getLike);
 		$getImg[0]->countComment = count($getComment);
 		$getImg[0]->comment      = $getComment;
 		$distance                = getDistance(NOW,$getImg[0]->last_update);#jarak waktu 
@@ -307,11 +317,16 @@ class Eyeme_model extends Master_model
 					ASC
 						 ";
 		$query  = ($limit == null || !is_array($limit) ? $query: $query.'LIMIT '. $limit[0].','.$limit[1]);
+		if(!$id_img){
+			return false;
+		}
+		else{
+			$res    = $this->db->query($query);
+			$res    = $res->result();
+			return $res;
+		}
 
-		$res    = $this->db->query($query);
-		$res    = $res->result();
-
-		return $res;
+		
 
 
 	}

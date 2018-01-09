@@ -13,7 +13,7 @@
                                 <?php  // if id_member == session Id_member
 
                                 if(!$self){
-                                    
+                                    //checkFollowed is bool
                                     echo btnFol($id_member,$checkFollowed);
                                             
                                 }
