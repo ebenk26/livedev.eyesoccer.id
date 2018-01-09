@@ -76,16 +76,6 @@
         ?>
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
-				<style>
-					.center-dekstop{
-						width: 1065px;
-					}
-					.x-m {
-						font-size: .9em;
-						margin-left: -50px;
-						width: 1105px;
-					}
-				</style>
         <?php    
             }else if($kanal == 'registration')
 			{
@@ -94,7 +84,7 @@
                 <link href="<?=base_url()?>assets/registration/css/bs.css" rel="stylesheet">
 		<?php
 			}
-            if ($kanal == 'eyemarket')
+            else if ($kanal == 'eyemarket')
             {
     ?>
                 <link href="<?php echo base_url(); ?>bs/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css">
