@@ -780,6 +780,7 @@ th{
 }
 footer{
     background-color: #616161;
+    
 }
 .f-w{
     width: 870px;
@@ -1762,8 +1763,8 @@ ul, li {
    
 }
 .posisi-popup-notif{
-    right:140px;
-    top: 60px;
+    right:130px;
+    top: 185px;
     z-index: 99;
 }
 .panah-popup-notif{
@@ -1772,7 +1773,7 @@ ul, li {
     background-color: white;
     box-shadow: -1px -1px 0px 0px lightgrey;
     transform: rotate(45deg);
-    top: -7px;
+    top: 7px;
     left: 332px;
     z-index: 2;
 }
@@ -2293,7 +2294,7 @@ ul, li {
     border-radius: 10px;    
 }
 .me-head{
-    position: fixed;
+    
     height: 50px;
     left: 10%;
     display: block;
@@ -2301,6 +2302,8 @@ ul, li {
     border-bottom: 1px solid gainsboro;
     padding-bottom: 20px;
     z-index: 10;
+    position: relative;
+    
 }
 .detail-post-box{
     position: fixed;
@@ -2778,4 +2781,8 @@ loading animation
     background: #E5E5E5 !important;
     color:#969696 !important;
     cursor: not-allowed;
+}
+.cropit-preview-background {
+        opacity: .2;
+        cursor: auto;
 }

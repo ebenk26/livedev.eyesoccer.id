@@ -1,10 +1,10 @@
-<?php #p($img)?>
+
 <div class="desktop">
     <div class="center-desktop m-0">
         <div class="container mt-20">
         <div class="box-feed m-0">
             <div class="pd3">
-                <img class="feed-profil-foto m-t-15 m-l-20" src="<?php echo ($img[0]->display_picture == NULL || $img[0]->display_picture == '' ? MEIMG.DPIC : MEIMG.$img[0]->display_picture )?>" alt="user photo" />
+                <img class="feed-profil-foto m-t-15 m-l-20" src="<?php echo ($img[0]->display_picture == NULL || $img[0]->display_picture == '' ? DPIC : MEIMG.$img[0]->display_picture )?>" alt="user photo" />
                 <div class="nama-pro-feed p-r">
                     <a href="<?php echo MEPROFILE.$img[0]->username?>"><?php echo $img[0]->username?></a>
                 </div>
@@ -67,11 +67,7 @@
                                     echo '<span>'.$k->comment.'</span>';
                                 echo '</li>';
                              }
-                        }
-
-                           
-
-                        ?>
+                        }?>
                         
                     </ul>
                 </div>
@@ -80,6 +76,7 @@
             <div class="m-t-15 kolom-komentar">
                 <input type="text" placeholder="Tambah komentar..." name="comment" rel="<?php echo $img[0]->id_img?>" class="comment" autocomplete="off">
             </div>
+        </div>
         </div>
     </div>
 </div>

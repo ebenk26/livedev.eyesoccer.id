@@ -1,8 +1,9 @@
 <!-- Notification --> 
 <div class="p-a posisi-popup-notif">
+    <div class="panah-popup-notif p-r">
+    </div>
     <div class="kotak-popup-notif">
-        <div class="panah-popup-notif p-r">
-        </div>
+        
         <div class="isi-notif">
             <table>
                 <tbody id="notif-content" class="c">

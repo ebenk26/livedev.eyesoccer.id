@@ -60,6 +60,8 @@ class Home extends CI_Controller {
 		$data['eyevent_main_2']		= $this->Home_model->get_eyevent_main_2();
 		$data['eyevent_main_3']		= $this->Home_model->get_eyevent_main_3();
 		$data['jadwal_today'] 		= $this->Home_model->get_jadwal_today();
+		$data['jadwal_tomorrow1'] 		= $this->Home_model->get_jadwal_tomorrow1();
+		$data['jadwal_tomorrow2'] 		= $this->Home_model->get_jadwal_tomorrow2();
 		$data['jadwal_yesterday'] 	= $this->Home_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 	= $this->Home_model->get_jadwal_tomorrow();
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
@@ -222,7 +224,7 @@ class Home extends CI_Controller {
 				  $_SESSION['id_member']=$user_id;
 				  $_SESSION['img_profile']=load_top_avatar();;
 				  // header("location:".base_url().$page);  
-				  echo "true";
+				  echo $page;
 				  }  
 			}else{
 				// header('Refresh:0; url= '. base_url().'home/login'); 

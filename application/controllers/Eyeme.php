@@ -79,9 +79,15 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/home',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 		
 	}
+	/**
+		*fungsi profile::
+		*@param id_or_username 
+
+	*/
 	public function profile($id_or_username = ''){
 		
 		$getUser  = $this->emod->getProfile($id_or_username);
@@ -128,10 +134,12 @@ class Eyeme extends CI_Controller {
 		else{
 			$this->data['getImg'] = array();
 			$this->data['err'] = "username not found";
+			redirect(MEURL,'refresh');
 		}
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/profile',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 
 	}
@@ -248,7 +256,7 @@ class Eyeme extends CI_Controller {
 			$path       = set_realpath('img/eyeme');
 			file_put_contents($path.$fileName, $image);
 			$caption    = inputsecure($this->input->post('caption'));
-			$this->mod->resizeImg($path.$fileName,100,100);
+			$this->mod->resizeImg($path.$fileName,300,300);
 			$insert     = $this->emod->insertImg($fileName,$caption,$this->id_member);
 			if(!$insert){
 				echo 'error';
@@ -262,43 +270,21 @@ class Eyeme extends CI_Controller {
 		}
 
 		
-	
 
 	}
 	/**
 	*fungsi img::
-	*@param @id_img
+	*@param @id_img select id_img
 
 	*/
-
 	public function img($id_img){
-		$where      = array('id_img' => $id_img);
-
-		
-		$getImg     = $this->emod->getImg($id_img,$where);
-		$hasLike    = $this->emod->hasLike($this->id_member,$id_img);
-		$getLike    = $this->mod->getAll('me_like',$where);
-		$getComment = $this->emod->getComment($id_img);
-		if(!count($getImg) > 0 ){
-			redirect(MEURL,'refresh');
-
-		}
-		$getImg[0]->countLike = count($getLike);
-		$getImg[0]->countComment = count($getComment);
-		$getImg[0]->comment      = $getComment;
-		$distance                = getDistance(NOW,$getImg[0]->last_update);#jarak waktu 
-		$getTime                 = getTime($distance); #mengambil waktu last_update
-		$day                     = $getTime['day'];
-		$hours                   = $getTime['hours'];
-		$minute                  = $getTime['minute'];
-		$secon				     = $getTime['secon'];
-		$timeString              = $getTime['timeString'];
-		$getImg[0]->timeString   = $timeString;
-		$getImg[0]->has_like     = $hasLike;
-		$this->data['img']       = $getImg;
+		$getImg               = $this->emod->getAllImg($id_img);
+		$this->data['img']    = $getImg;
 		#p($hasLike);
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/image',$this->data);
+		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 	}
 	/**
@@ -309,6 +295,8 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/explore',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
+		$this->load->view('eyeme/img_upload',$this->data);
+		$this->load->view('eyeme/post_detail',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 
 		#echo 'explore test';
