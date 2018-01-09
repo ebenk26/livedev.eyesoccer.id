@@ -21,6 +21,7 @@ class Eyenews extends CI_Controller {
 		$data["page"] 					="eyenews";		
 		
 		$data['all_news'] 				= $this->Eyenews_model->get_all_news();
+		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
 		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
 		$data['eyenews_rekomendasi']	= $this->Eyenews_model->get_eyenews_rekomendasi();
 		$news_type 						= $data['eyenews_main']->news_type;
@@ -58,6 +59,7 @@ class Eyenews extends CI_Controller {
 		$data["page"] 					="eyenews";		
 		
 		$data['all_news'] 				= $this->Eyenews_model->get_all_news();
+		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
 		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
 		$data['eyenews_rekomendasi']	= $this->Eyenews_model->get_eyenews_rekomendasi();
 		$news_type 						= $data['eyenews_main']->news_type;

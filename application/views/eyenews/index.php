@@ -4,6 +4,13 @@
 				z-index:1;
 			}
 		</style>
+		<div class="crumb">
+			<ul>
+				<li>Home</li>
+				<li>EyeNews</li>
+				<!-- <li>Pemain</li> -->
+			</ul>
+		</div>
         <div class="center-desktop m-0">
             <div class="menu-4 w1020 m-0">
                 <ul>
@@ -40,9 +47,11 @@
         <div class="center-desktop m-0">
             <div class="w1020 m-0">
                 <div class="container h-news-l">
+					<a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
                     <div>
-                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="">
+                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="<?= $headline->title; ?>" title="<?= $headline->title; ?>">
                     </div>
+					</a>
                 </div>
                 <div class="container h-news-r">
                     <table>
@@ -107,21 +116,21 @@
 						{
 						?>
                         <div class="w30">
-                            <div>
-                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar->thumb1; ?>" style="width:100%;margin-right:20px;">
-                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar->url;?>">
-                                    <p class="sub-en">									
+							<a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar->url;?>">
+								<div>
+									<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar->thumb1; ?>" style="width:100%;margin-right:20px;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
+									<p class="sub-en">									
 									<?= $similar->title; ?></p>
-                                </a>
-                                <span class="time-view">
-								<?php
-	    						$date 		=  new DateTime($similar->createon);
-	    						$tanggal 	= date_format($date,"Y-m-d H:i:s");
+									<span class="time-view">
+									<?php
+									$date 		=  new DateTime($similar->createon);
+									$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-	    						echo relative_time($tanggal) . ' lalu - '.$similar->news_view.' views';
-								?>								
-								</span>
-                            </div>
+									echo relative_time($tanggal) . ' lalu - '.$similar->news_view.' views';
+									?>								
+									</span>
+								</div>
+							</a>
                         </div>
 						<?php } ?>
 						<div><?php echo $pagging['pagging'];?></div>
@@ -137,27 +146,27 @@
                             </div>
 							<?php
 							foreach($eyenews_rekomendasi as $rekomendasi){
-							?>							
-                            <div class="container garis-x4">
-                                <div class="container" style="width:240px;">
-                                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" alt="">
-                                </div>
-                                <div class="container news-rcm-z">
-                                    <div class="rr">
-                                        <span><?=$rekomendasi['createon'];?></span>
-                                    </div>
-                                    <a href="<?php echo base_url(); ?>eyenews/detail/<?= $rekomendasi['url'];?>">
-                                        <p>										
+							?>	
+							<a href="<?php echo base_url(); ?>eyenews/detail/<?= $rekomendasi['url'];?>">
+								<div class="container garis-x4">
+									<div class="container" style="width:240px;">
+										<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" alt="<?=$rekomendasi['title'];?>" title="<?=$rekomendasi['title'];?>">
+									</div>
+									<div class="container news-rcm-z">
+										<div class="rr">
+											<span><?=$rekomendasi['createon'];?></span>
+										</div>
+										<p>										
 										<?=$rekomendasi['title'];?></p>
-                                    </a>
-                                    <span>
-									<?php
-									$keterangan = strip_tags($rekomendasi['description']);
-									echo word_limiter($keterangan,15);
-									?>									
-									</span>
-                                </div>
-                            </div>
+										<span>
+										<?php
+										$keterangan = strip_tags($rekomendasi['description']);
+										echo word_limiter($keterangan,15);
+										?>									
+										</span>
+									</div>
+								</div>
+							</a>
 							<?php } ?>
 							
                         </div>
@@ -218,7 +227,7 @@
             <div class="container">
                 <div class="w1020 m-0">
                     <div class="subjudul2">
-                        <h4>VIDEO</h4>
+                        <h4>EyeTube</h4>
                     </div>
                 </div>
                 <div class="w1020 m-0">			
@@ -228,20 +237,21 @@
 					{
 					?>						
                         <div class="w30">
-                            <div>
-                                <img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="width:100%;margin-right:20px;">
-                                <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url'];?>">
-                                    <p class="sub-en">
-									<?= $videonya['title']; ?></p>
-                                </a>
-                                <span class="time-view">
-								<?php
-									$date 		=  new DateTime($videonya['createon']);
-									$tanggal 	= date_format($date,"Y-m-d H:i:s");
-									echo relative_time($tanggal) . ' ago - '.$videonya['tube_view'].' views';						
-								?>								
-								</span>
-                            </div>
+							
+							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url'];?>">
+								<div>
+									<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="width:100%;margin-right:20px;" alt="<?= $videonya['title']; ?>" title="<?= $videonya['title']; ?>">
+										<p class="sub-en">
+										<?= $videonya['title']; ?></p>
+									<span class="time-view">
+									<?php
+										$date 		=  new DateTime($videonya['createon']);
+										$tanggal 	= date_format($date,"Y-m-d H:i:s");
+										echo relative_time($tanggal) . ' ago - '.$videonya['tube_view'].' views';						
+									?>								
+									</span>
+								</div>
+							</a>
                         </div>
 					<?php }?>						
                     </div>
@@ -251,38 +261,39 @@
                 <div class="w1020 m-0 mt-10">
                     <div class="container news-rcm">
                         <div class="subjudul2">
-                            <h4>RAGAM</h4>
+                            <h4>SOCCER SERI</h4>
                         </div>
 						<?php
-						foreach($all_news as $row12){
+						// foreach($all_news as $row12){
+						foreach($soccer_seri as $row12){
 						?>
-                        <div class="container garis-x4">
-                            <div class="container" style="width:240px;">
-                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row12['thumb1']; ?>" alt="">
-                            </div>
-                            <div class="container news-rcm-z">
-                                <div class="rr">
-                                    <span>
-										<?php
-											$date 		=  new DateTime($row12['createon']);
-											$tanggal 	= date_format($date,"Y-m-d H:i:s");
+						<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row12['url'];?>">
+							<div class="container garis-x4">
+								<div class="container" style="width:240px;">
+									<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row12['thumb1']; ?>" alt="<?=$row12['title']?>" title="<?=$row12['title']?>">
+								</div>
+								<div class="container news-rcm-z">
+									<div class="rr">
+										<span>
+											<?php
+												$date 		=  new DateTime($row12['createon']);
+												$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
-											echo relative_time($tanggal) . ' lalu - '.$row12['news_view'].' views';
-										?>									
-									</span>
-                                </div>
-                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row12['url'];?>">
-                                    <p>									
+												echo relative_time($tanggal) . ' lalu - '.$row12['news_view'].' views';
+											?>									
+										</span>
+									</div>
+									<p>									
 									<?=$row12['title']?></p>
-                                </a>
-                                <span>
-									<?php
-									$keterangan = strip_tags($row12['description']);
-									echo word_limiter($keterangan,15);
-									?>								
-								</span>
-                            </div>
-                        </div>
+									<span>
+										<?php
+										$keterangan = strip_tags($row12['description']);
+										echo word_limiter($keterangan,15);
+										?>								
+									</span>
+								</div>
+							</div>
+						</a>
 					<?php } ?>
                     </div>
                     <div class="container news-rcm-r2">
