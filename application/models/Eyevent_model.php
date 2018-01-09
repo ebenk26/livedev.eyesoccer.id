@@ -8,6 +8,7 @@ class Eyevent_model extends CI_Model
 	{
 		$query = $this->db->query("SELECT
 									a.*,
+									a.jadwal_pertandingan,
 									c.club_id as club_id_a,
 									d.club_id as club_id_b,
 									c.logo as logo_a,
@@ -31,10 +32,11 @@ class Eyevent_model extends CI_Model
 		return $query;
 	}	
 	
-	public function get_all_jadwal_2()
+	public function get_all_jadwal2()
 	{
 		$query = $this->db->query("SELECT
 									a.*,
+									a.jadwal_pertandingan,
 									c.club_id as club_id_a,
 									d.club_id as club_id_b,
 									c.logo as logo_a,
@@ -56,7 +58,7 @@ class Eyevent_model extends CI_Model
 								LIMIT
 									6,6")->result_array();
 		return $query;
-	}
+	}	
 
 	public function get_jadwal_today()
 	{

@@ -83,19 +83,19 @@
                             </tr>
                         </thead>
 						<?php
-						foreach($hasil_today as $hasil){
+						foreach($all_jadwal as $jadwal){
 						?>						
                         <tbody>
                             <tr>
-                                <td><?=$hasil["club_a"]?>
-                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $hasil['logo_a']; ?>" alt="">
+                                <td><?=$jadwal["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jadwal['logo_a']; ?>" alt="">
                                 </td>
-                                <td><?=$hasil["score_a"]?>-<?=$hasil["score_b"]?>
+                                <td><?=date("H:i",strtotime($jadwal["jadwal_pertandingan"]))?>
                                     <span></span>
                                 </td>
                                 <td>
-                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $hasil['logo_b']; ?>" alt="">
-									<?=$hasil["club_b"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jadwal['logo_b']; ?>" alt="">
+									<?=$jadwal["club_b"]?>
                                 </td>
                             </tr>                            
                         </tbody>  
@@ -106,19 +106,19 @@
                             </tr>
                         </thead>					
 						<?php
-						foreach($hasil_today2 as $hasil2){
+						foreach($all_jadwal2 as $jadwal2){
 						?>						
                         <tbody>
                             <tr>
-                                <td><?=$hasil2["club_a"]?>
-                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $hasil2['logo_a']; ?>" alt="">
+                                <td><?=$jadwal2["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jadwal2['logo_a']; ?>" alt="">
                                 </td>
-                                <td><?=$hasil2["score_a"]?>-<?=$hasil2["score_b"]?>
+                                <td><?=date("H:i",strtotime($jadwal2["jadwal_pertandingan"]))?>
                                     <span></span>
                                 </td>
                                 <td>
-                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $hasil2['logo_b']; ?>" alt="">
-									<?=$hasil2["club_b"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jadwal2['logo_b']; ?>" alt="">
+									<?=$jadwal2["club_b"]?>
                                 </td>
                             </tr>                            
                         </tbody>  
