@@ -79,6 +79,31 @@ $('.me-post').click(function(event) {
         data: {id: ref},
     })
     .done(function(r) {
+        $.each(r,function(k, v) {
+            $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
+            $('#usern').text(v.username);
+            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo MEIMG?>' + v.display_picture));
+            $('#time-string').text(v.timeString);
+            $('#c-like').text(v.countLike);
+            $('#f-icon').addClass('first-icon-'+v.id_img);
+            $('#s-icon').attr('ref',v.id_img);
+            if(v.has_like === true){
+                
+                $('#f-icon').attr('style','display:none');
+                $('#s-icon').attr('status','active');
+
+            }
+            else{
+                $('#s-icon').addClass('second-icon');
+
+            }
+
+
+            /*$.each(v.like,function($k,$v){
+                $('#img-det').attr('src',)
+ ;           });*/
+            console.log(v.img_name);
+        });
         console.log(r[0].id_img);
     })
     .fail(function() {

@@ -238,6 +238,7 @@ class Eyeme_model extends Master_model
 
 	*/
 	public function getImg($id_img){
+
 		$query = "SELECT 
 				A.id_img,
 				A.img_caption,
@@ -253,8 +254,15 @@ class Eyeme_model extends Master_model
 				INNER JOIN me_profile as B
 				ON A.id_member = B.id_member
 				WHERE A.id_img = $id_img AND A.active = '1'";
-		$get  = $this->db->query($query);
-		return $get->result();
+
+		if($id_img == '' || $id_img == NULL){
+			return false;
+		}
+		else{
+			$get  = $this->db->query($query);
+
+			return $get->result();
+		}
 	}
 	public function getAllImg($id_img){
 		$where      = array('id_img' => $id_img);
@@ -309,11 +317,16 @@ class Eyeme_model extends Master_model
 					ASC
 						 ";
 		$query  = ($limit == null || !is_array($limit) ? $query: $query.'LIMIT '. $limit[0].','.$limit[1]);
+		if(!$id_img){
+			return false;
+		}
+		else{
+			$res    = $this->db->query($query);
+			$res    = $res->result();
+			return $res;
+		}
 
-		$res    = $this->db->query($query);
-		$res    = $res->result();
-
-		return $res;
+		
 
 
 	}
