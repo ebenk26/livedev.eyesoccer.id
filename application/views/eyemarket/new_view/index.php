@@ -1,6 +1,6 @@
     <p class="text-muted lead text-center">EYEMARKET PRODUCTS.</p>
 
-    <div class="row products">
+    <div class="row">
 
 <?php
     foreach ($products as $produk)

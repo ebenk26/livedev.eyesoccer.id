@@ -6,9 +6,11 @@
 
             <div class="col-md-12">
 
-                <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px;">
-                    <li><a href="<?= base_url(); ?>eyemarket">Home</a></li>
-                    <li><span>EyeMarket</span></li>
+                <br>
+
+                <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px; font-size: 14px;">
+                    <li><a href="<?= base_url(); ?>">Home</a></li>
+                    <li><a href="<?= base_url(); ?>eyemarket">EyeMarket</a></li>
                 </ol>
 
                     <img src="<?php echo base_url(); ?>assets/new_assets/ic_eyemarket.png">
@@ -107,10 +109,10 @@
                                 </p>
                                 <p>
                             <?php
-                                if ($username == NULL) 
+                                if ($id_member == NULL) 
                                 {
                             ?>
-                                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-template-main">
+                                    <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>">
                                         <i class="fa fa-shopping-cart"></i> Add to cart 
                                     </a>
                                     <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
@@ -134,10 +136,10 @@
                                 </p>
 
                                 <!-- Chart Modal -->
-                                <div class="modal fade" id="chart-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+                                <div class="modal fade" id="chart-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="font-size: 14px;">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form action="<?= base_url(); ?>eyemarket/keranjang/<?= $member_id."/".$data['id_product']; ?>" method="post">
+                                            <form action="<?= base_url(); ?>eyemarket/keranjang/<?= $id_member."/".$data['id_product']; ?>" method="post">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                     <h4 class="modal-title" id="Login">Customer login</h4>

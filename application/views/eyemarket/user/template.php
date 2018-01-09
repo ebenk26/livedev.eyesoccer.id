@@ -23,6 +23,83 @@
                 <button class="navbar-toggler navbar-toggler hidden-md-down align-self-center mr-3" type="button" data-toggle="minimize">
                   <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <style type="text/css">
+                    .menu{
+                        padding: 15px 24px;
+                    }
+                    .dekstop{
+                        width: 1280px;
+                        margin: 0 auto;
+                        vertical-align: middle;
+                    }
+                    .center-dekstop{
+                        width: 1065px;
+                    }
+                    .x-m{
+                        margin-left: -50px;
+                        width: 1105px;
+                    }
+                    .x-m>ul {
+                        list-style: none;
+                    }
+                    ul, li {
+                        list-style-type: none;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        margin: 0;
+                        display: inline-block;
+                    }
+                    .x-m ul ul {
+                        display: none;
+                        list-style: none;
+                        position: absolute;
+                        top: 125px;
+                        width: 220px;
+                        background-color: white;
+                        z-index: 1;
+                        box-shadow: 1px 1px 3px 0px #cecece;
+                        border-radius: 0px 0px 5px 5px;
+                        -webkit-animation-name: fade;
+                        -webkit-animation-duration: .7s;
+                        animation-name: fade;
+                        animation-duration: .7s;
+                    }
+                    .x-m>ul>li>a {
+                        display: block;
+                        text-align: center;
+                        text-decoration: none;
+                        color: #FFF3E0;
+                        font-weight: 500;
+                    }
+                </style>
+
+                <div class="menu">
+                    <div class="dekstop">
+                        <span class="x-m">
+                            <ul>
+                                <li><a href="">EyeProfile</a>
+                                    <ul>
+                                        <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                                        <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
+                                        <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
+                                        <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
+                                        <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
+                                <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
+                                <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
+                                <li><a href="<?=base_url()?>eyevent">EyeEvent</a></li>
+                                <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>                           
+                                <li><a href="<?=base_url()?>eyetransfer">EyeTransfer</a></li>
+                                <li><a href="<?=base_url()?>eyetiket">EyeTiket</a></li>
+                                <li><a href="<?=base_url()?>eyewallet">EyeWallet</a></li>
+                            </ul>   
+                        </span>
+                    </div>
+                </div>
+                
                 <form class="form-inline mt-2 mt-md-0 hidden-md-down">
                     <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
                 </form>

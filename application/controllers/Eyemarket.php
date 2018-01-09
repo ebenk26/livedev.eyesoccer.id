@@ -25,9 +25,10 @@ class Eyemarket extends CI_Controller {
 	public function index()
 	{	
 		$data['products']	= $this->Eyemarket_model->get_all_product();
-		$data["content"] 	= $this->load->view('/eyemarket/new_view/index', $data, true);
+		$data["body"] 		= $this->load->view('/eyemarket/new_view/index', $data, true);
+		$data["kanal"] 		= 'eyemarket';
 		
-		$this->load->view('/eyemarket/new_view/template', $data);
+		$this->load->view('/template/static', $data);
 	}
 
 	public function detail($toko,$title_slug)
@@ -37,7 +38,7 @@ class Eyemarket extends CI_Controller {
 		$data["ex_product"] 	= $this->Eyemarket_model->get_product_lain($id_product->id_product);
 		$created_date 		 	= "";
 		$data['username'] 		= $this->session->userdata('username');
-		$data['member_id'] 		= $this->session->userdata('id_member');
+		$data['id_member'] 		= $this->session->userdata('id_member');
 
 		foreach ($data["product"] as $produk)
 		{
@@ -48,11 +49,12 @@ class Eyemarket extends CI_Controller {
 
 		// $date =  new DateTime($created_date);
 		
-		$data["page"] 			= "home";
+		// $data["page"] 			= "home";
+		$data["kanal"] 		= 'eyemarket';
 		
-		$data["content"] 		= $this->load->view('eyemarket/new_view/detail', $data, true);
+		$data["body"] 		= $this->load->view('eyemarket/new_view/detail', $data, true);
 
-		$this->load->view('/eyemarket/new_view/template', $data);
+		$this->load->view('/template/static', $data);
 	}
 
 	public function login_view()
@@ -519,9 +521,11 @@ class Eyemarket extends CI_Controller {
 		$data['username'] 	= $this->session->userdata('username');
 		$data['member_id'] 	= $this->session->userdata('id_member');
 
-		$data["content"] 	= $this->load->view('eyemarket/new_view/basket', $data, true);
+		$data["kanal"] 		= 'eyemarket';
+		
+		$data["body"] 		=  $this->load->view('eyemarket/new_view/basket', $data, true);
 
-		$this->load->view('/eyemarket/new_view/template', $data);
+		$this->load->view('/template/static', $data);
 	}
 
 	public function edit_keranjang()
@@ -624,8 +628,12 @@ class Eyemarket extends CI_Controller {
 		$data['address'] 	= $this->Eyemarket_model->get_address($id_member);
 		$data['provinsi'] 	= $this->Eyemarket_model->get_all_provinsi();
 		$data['jumlah'] 	= count($data['address']);
+
+		$data["kanal"] 		= 'eyemarket';
 		
-		$this->load->view('/eyemarket/new_view/address', $data);
+		$data["body"] 		=  $this->load->view('eyemarket/new_view/address', $data, true);
+
+		$this->load->view('/template/static', $data);
 	}
 
 	public function input_address($id_member)
@@ -720,7 +728,11 @@ class Eyemarket extends CI_Controller {
 			}
 		}
 
-		$this->load->view('/eyemarket/new_view/delivery', $data);
+		$data["kanal"] 		= 'eyemarket';
+		
+		$data["body"] 		=  $this->load->view('/eyemarket/new_view/delivery', $data, true);
+
+		$this->load->view('/template/static', $data);
 	}
 
 	public function update_cart_delivery($id_member)
@@ -760,7 +772,12 @@ class Eyemarket extends CI_Controller {
 		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
 		$data['bank'] 		= $this->Eyemarket_model->get_all_bank();
 
-		$this->load->view('/eyemarket/new_view/payment', $data);
+		$data["kanal"] 		= 'eyemarket';
+		
+		$data["body"] 		=  $this->load->view('/eyemarket/new_view/payment', $data, true);
+
+		$this->load->view('/template/static', $data);
+
 	}
 
 	public function start_order($id_member)
@@ -851,7 +868,11 @@ class Eyemarket extends CI_Controller {
 			$data['berat_all']		= $val['berat_all'];
 		}
 
-		$this->load->view('/eyemarket/new_view/review', $data);
+		$data["kanal"] 		= 'eyemarket';
+		
+		$data["body"] 		=  $this->load->view('/eyemarket/new_view/review', $data, true);
+
+		$this->load->view('/template/static', $data);
 	}
 
 	public function order_fix($id_member)
@@ -859,7 +880,7 @@ class Eyemarket extends CI_Controller {
 		$tahun 		= date("Y");
 		$bulan 		= date("m");
 
-		$data['model'] 	= $this->Eyemarket_model->get_order($id_member);
+		$data['model'] 	= $this->Eyemarket_model->get_order(NULL,$id_member);
 
 		$id_order 		= $data['model']->id;
 
@@ -1268,7 +1289,7 @@ class Eyemarket extends CI_Controller {
 
 		$update 	= $this->Eyemarket_model->set_status_lunas($id,$objek);
 
-		$data['model'] 		= $this->Eyemarket_model->get_order($id);
+		$data['model'] 		= $this->Eyemarket_model->get_order($id,NULL);
 		$data['prod_lain'] 	= $this->Eyemarket_model->get_product_lain($id);
 		
 		$data["profile"] 	= $this->Eyemarket_model->get_member($data['model']->id_member);

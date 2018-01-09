@@ -1,1 +1,24 @@
-/* your styles go here */
+.dekstop {
+    width: 1280px;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+.menu{
+    background-color: #FFA726;
+    padding: 15px 0px;
+}
+.garis-x, .garis-banner, .x-m, footer, .banner-150, .rek-ber, .box-vl, .tab, .et-content, nav, .trending, .menu, .jadwal, .pemain, .bx-pemain, .container {
+    width: 100%;
+    float: left;
+}
+.center-dekstop {
+    width: 1065px;
+}
+style.css:46
+.m-0 {
+    margin: 0 auto;
+}
+style.css:50
+.m-0 {
+    margin: 0 auto;
+}

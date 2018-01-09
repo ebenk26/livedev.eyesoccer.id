@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-md-12">
-        <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px;">
-            <li><a href="#">Home</a></li>
-            <li><span>EyeMarket</span></li>
+        <br>
+        <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px;font-size: 14px;">
+            <li><a href="<?= base_url(); ?>">Home</a></li>
+            <li><a href="<?= base_url(); ?>eyemarket">EyeMarket</a></li>
             <li><span>Keranjang Anda</span></li>
         </ol>
         <p class="text-muted lead">Anda mempunyai <?= $jumlah->jumlah; ?> barang di keranjang.</p>
