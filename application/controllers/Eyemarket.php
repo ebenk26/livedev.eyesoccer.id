@@ -528,6 +528,34 @@ class Eyemarket extends CI_Controller {
 		$this->load->view('/template/static', $data);
 	}
 
+	public function daftar_keranjang($id_member)
+	{
+		$url 	= uri_string();
+		
+		$this->mod->checkLogin($url);
+		
+		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
+		
+		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
+		$data['jumlah']		= $this->Eyemarket_model->get_count_keranjang($id_member);
+
+		$data["id_member"] 	= $id_member;
+
+		$data["profile"] 	= $this->Eyemarket_model->get_member($id_member);
+
+		foreach ($data["profile"] as $value)
+		{
+			$data['username'] 		= $value['name'];
+			$data['nama_lengkap'] 	= $value['fullname'];
+		}
+
+		$data["active"] 	= "keranjang";
+
+		$data["content"] 	= $this->load->view('eyemarket/user/keranjang',$data,TRUE);
+		
+		$this->load->view('/eyemarket/user/template', $data);
+	}
+
 	public function edit_keranjang()
 	{
 		$id_member 		= $_POST['id_member'];
