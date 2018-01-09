@@ -71,6 +71,9 @@ class Eyevent extends CI_Controller {
 
 		$data['eyevent_main']		= $this->Eyevent_model->get_eyevent_main();
 		$data['eyevent_main_2']		= $this->Eyevent_model->get_eyevent_main_2();
+		$data['all_jadwal'] 		= $this->Eyevent_model->get_all_jadwal();
+		$data['all_jadwal2'] 		= $this->Eyevent_model->get_all_jadwal2();
+		
 		$data['jadwal_today'] 		= $this->Eyevent_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 	= $this->Eyevent_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 	= $this->Eyevent_model->get_jadwal_tomorrow();
