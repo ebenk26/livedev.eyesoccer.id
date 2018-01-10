@@ -286,6 +286,7 @@ class Eyenews_model extends CI_Model
 										tbl_eyenews a
 									WHERE
 										a.publish_on<='".date("Y-m-d H:i:s")."'
+										and category_news='2'
 									ORDER BY
 										a.eyenews_id ASC
 									LIMIT
@@ -337,7 +338,7 @@ class Eyenews_model extends CI_Model
 									ORDER BY
 										a.news_view DESC
 									LIMIT
-										3
+										2
 								")->result_array();
 		return $query;
 	}	
@@ -387,7 +388,7 @@ public function get_jadwal_today()
 										AND
 										jadwal_pertandingan>='".date("Y-m-d")."' 
 									ORDER BY
-										jadwal_pertandingan ASC LIMIT 5
+										jadwal_pertandingan ASC LIMIT 6
 								")->result_array();
 		return $query;
 	}
@@ -500,6 +501,20 @@ public function get_trending_eyenews()
 		return $query;
 	}
 	
+	public function get_soccer_seri()
+	{
+		$query = $this->db->query(" SELECT
+                                        A.*
+                                    FROM
+                                        tbl_eyenews A
+									WHERE
+										A.news_type = 'Soccer Seri'
+                                    ORDER BY 
+                                        A.eyenews_id DESC
+                                    Limit 3
+                                        ")->result_array();
+            return $query; 
+	}
 }
 
 /* End of file Eyenews_model.php */

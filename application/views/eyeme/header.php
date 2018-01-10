@@ -79,7 +79,7 @@
     
     ?>
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="<?php echo JSPATH?>jquery.cropit.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -95,7 +95,7 @@
             </a>
             <div class="btn-login"> 
             <?php   
-                echo btnLogin($this->session->username);
+                echo btnLogin($this->session->id_member);
             ?>                       
             </div>                
         </div>                
@@ -118,7 +118,7 @@
                                         anchor(pSUPPORT,'Supporter')),
                                 anchor(EYETUBE,'EyeTube'),
                                 anchor(EYENEWS,'EyeNews'),
-                                anchor(EYEME,'EYEME'),
+                                anchor(EYEME,'Eyeme'),
                                 anchor(EYEEVENT,'EyeEvent'),
                                 anchor(EYEMARKET,'EyeMarket'),
                                 anchor(EYETRANSFER,'EyeTransfer'),

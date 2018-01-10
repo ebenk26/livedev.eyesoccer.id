@@ -49,7 +49,7 @@
             //parsing data explore
             foreach($ex as $k => $v){  
                 ?>
-                <div class="me-post" id="<?php echo $v->id_img?>">
+                <div class="me-post" ref="<?php echo $v->id_img?>">
                     <img src="<?php echo MEIMG.$v->img_thumb?>" class="me-gambar-post" alt="">
                     <div class="tengah tx-c">
                         <i class="material-icons">favorite</i>
@@ -63,15 +63,4 @@
          </div>
     </div>
 </div>
-
-
-<script>
-     obj = JSON.parse('{"img":"http://localhost/eyesoccer/img/eyeme/thumb_05012018013108.jpeg"}');
-$('.me-post').click(function(event) {
-    /* Act on the event */
-    $('.dpb').css('display','block');
-    $('#img-det').attr('src',obj.img);
-    /*alert($(this).attr('id'));*/
-});
-</script>
 

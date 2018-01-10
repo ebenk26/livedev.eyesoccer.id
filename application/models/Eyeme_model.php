@@ -139,19 +139,26 @@ class Eyeme_model extends Master_model
 		$getImg = $this->mod->getAll('me_img','','',array('last_update'=> 'DESC'));
 
 		for($i= 0 ; $i < count($getImg); $i++){
-			$dp      = $this->mod->getAll('me_profile',
-								array('id_member'=> $getImg[$i]->id_member),
-								array('display_picture','username'));
+			$qry     = "SELECT 
+							* 
+						FROM tbl_member AS A
+						INNER JOIN me_profile AS B
+						WHERE A.id_member = {$getImg[$i]->id_member}";
+
+			$dp      = $this->db->query($qry)->result();
+			
 			$like    = $this->mod->getAll('me_like',
 								array('id_img'=>$getImg[$i]->id_img),
 								array('id_like','id_member'));
+
 			$comment = $this->mod->getAll('me_comment',
 								array('id_img' => $getImg[$i]->id_img));
 			
-			$getImg[$i]->username  = $dp[0]->username;
-			$getImg[$i]->display_pic = $dp[0]->display_picture;
-			$getImg[$i]->countLike = count($like);
+			$getImg[$i]->username     = $dp[0]->username;
+			$getImg[$i]->display_pic  = $dp[0]->display_picture;
+			$getImg[$i]->countLike    = count($like);
 			$getImg[$i]->countComment = count($comment);
+
 			$getImg[$i]->comment      = $comment;
 		}
 		return $getImg;
@@ -164,9 +171,27 @@ class Eyeme_model extends Master_model
 	*/
 	public function getProfile($id_or_username){
 
-		$this->db->where('id_member',$id_or_username);
-		$this->db->or_where('username',$id_or_username);
-		$get  = $this->db->get('me_profile');
+
+		$query = "SELECT 
+				A.id_member,
+				A.username,
+				A.name,
+				B.display_picture,
+				B.bio,
+				B.status
+
+				FROM tbl_member
+				AS A
+				INNER JOIN me_profile
+				AS B
+				ON A.id_member = B.id_member
+				where (A.id_member = '$id_or_username') OR (A.username = '$id_or_username')";
+
+		$get = $this->db->query($query);
+		#$this->db->where('id_member',$id_or_username);
+		#$this->db->or_where('username',$id_or_username);
+		//$this->db->get()
+		#$get  = $this->db->get('me_profile');
 		
 		if(count($get->num_rows()) > 0 ) {
 			$result = $get->result();
@@ -199,24 +224,27 @@ class Eyeme_model extends Master_model
 	*/
 	public function getImgFollowing($id_member){
 		$query = "SELECT 
-					a.id_img,
-					a.img_caption,
-					a.id_member,
-					a.img_name,
-					a.img_thumb,
-					a.img_alt,
-					a.last_update,
-					a.date_create,
-					b.display_picture,
-					b.username
+					A.id_img,
+					A.img_caption,
+					A.id_member,
+					A.img_name,
+					A.img_thumb,
+					A.img_alt,
+					A.last_update,
+					A.date_create,
+					B.display_picture,
+					C.username
 
-				 FROM me_img  as a 
-				 LEFT JOIN me_profile as b 
-				 ON a.id_member = b.id_member  
+				 FROM me_img  as A 
+				 LEFT JOIN me_profile as B 
+				 ON A.id_member = B.id_member 
+				 LEFT JOIN tbl_member as C 
+				 on A.id_member = C.id_member
 				 WHERE  a.id_member IN
 				 (SELECT id_following from me_follow where id_member = $id_member) 
-				 AND active='1' 
-				 ORDER BY a.last_update DESC";
+				 AND A.active='1' 
+				 ORDER BY A.last_update DESC";
+
 		$res = $this->db->query($query);
 
 		if(count($res) > 0 ){
@@ -237,6 +265,7 @@ class Eyeme_model extends Master_model
 
 	*/
 	public function getImg($id_img){
+
 		$query = "SELECT 
 				A.id_img,
 				A.img_caption,
@@ -247,18 +276,27 @@ class Eyeme_model extends Master_model
 				A.date_create,
 				A.last_update,
 				B.display_picture,
-				B.username
+				C.username
 				FROM me_img AS A
 				INNER JOIN me_profile as B
 				ON A.id_member = B.id_member
+				INNER JOIN tbl_member as C
+				ON A.id_member = C.id_member
 				WHERE A.id_img = $id_img AND A.active = '1'";
-		$get  = $this->db->query($query);
-		return $get->result();
+
+		if($id_img == '' || $id_img == NULL){
+			return false;
+		}
+		else{
+			$get  = $this->db->query($query);
+
+			return $get->result();
+		}
 	}
 	public function getAllImg($id_img){
 		$where      = array('id_img' => $id_img);
 
-		
+		$this->id_member = $this->session->id_member;
 		$getImg     = $this->emod->getImg($id_img,$where);
 		$hasLike    = $this->emod->hasLike($this->id_member,$id_img);
 		$getLike    = $this->mod->getAll('me_like',$where);
@@ -267,7 +305,8 @@ class Eyeme_model extends Master_model
 			redirect(MEURL,'refresh');
 
 		}
-		$getImg[0]->countLike = count($getLike);
+		$getImg[0]->like         = $getLike;
+		$getImg[0]->countLike    = count($getLike);
 		$getImg[0]->countComment = count($getComment);
 		$getImg[0]->comment      = $getComment;
 		$distance                = getDistance(NOW,$getImg[0]->last_update);#jarak waktu 
@@ -298,20 +337,27 @@ class Eyeme_model extends Master_model
 						a.date_create,
 						a.last_update,
 						b.display_picture,
-						b.username
+						c.username
 					FROM me_comment AS a
 					INNER JOIN me_profile AS b
 					ON a.id_member=b.id_member
+					INNER JOIN tbl_member AS c
+					ON a.id_member = c.id_member
 					WHERE a.id_img = $id_img
 					ORDER BY last_update
 					ASC
 						 ";
 		$query  = ($limit == null || !is_array($limit) ? $query: $query.'LIMIT '. $limit[0].','.$limit[1]);
+		if(!$id_img){
+			return false;
+		}
+		else{
+			$res    = $this->db->query($query);
+			$res    = $res->result();
+			return $res;
+		}
 
-		$res    = $this->db->query($query);
-		$res    = $res->result();
-
-		return $res;
+		
 
 
 	}
@@ -365,11 +411,14 @@ class Eyeme_model extends Master_model
 					a.id_member,
 					a.id_img,
 					a.last_update,
-					b.username,
+					c.username,
 					b.display_picture
 				  FROM me_like as a
 				  INNER JOIN me_profile as b
 				  ON a.id_member = b.id_member
+				  INNER JOIN tbl_member as c
+				  ON a.id_member =  c.id_member
+				  
 				  WHERE id_img = $id_img";
 
 		$res   = $this->db->query($query);
@@ -463,10 +512,12 @@ class Eyeme_model extends Master_model
 						A.`last_update`,
 						A.`read`,
 						B.`display_picture`,
-						B.`username`
+						C.`username`
 					FROM `me_notif` AS A
 					INNER JOIN `me_profile` AS B
 					ON A.`id_member_act` = B.`id_member`
+					INNER JOIN `tbl_member` AS C
+					ON A.`id_member` = C.`id_member`
 					WHERE A.`id_member` = $id_member
 					ORDER BY last_update DESC
 					";

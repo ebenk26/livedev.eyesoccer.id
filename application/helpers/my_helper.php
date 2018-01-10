@@ -75,7 +75,7 @@ define('MEPROFILE',base_url().'eyeme/profile/');
 define('DPIC',sIMGPATH.'user-discover.png');
 define('NOW',date('Y-m-d G:i:s'));
 define('LOGIN',base_url().'home/login');
-define('IMGSTORE',imgUrl().'systems/image_store/');
+define('IMGSTORE',imgUrl().'systems/img_storage/');
 define('MEMBERAREA',base_url().'home/member_area');
 define('EYEPROFILE',base_url().'eyeprofile/');
 define('pCLUB',EYEPROFILE.'klub');

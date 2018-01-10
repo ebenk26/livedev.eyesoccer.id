@@ -11,8 +11,8 @@
             </div>
             <div class="d-p-b-r p-r">
                 <div class="detail-n-p">
-                    <img class="pp" src="assets/img/d.jpg" alt="">
-                    <a href="">rndymlna_</a>
+                    <img class="pp" src="assets/img/d.jpg" alt="" id="img-user">
+                    <a href="" id="usern"></a>
                 </div>
                 <div class="container d-comment">
                     <table>
@@ -43,11 +43,13 @@
                     </table>
                 </div>
                 <div class="container d-like">
-                    <i class="material-icons">favorite</i>
-                    <a href="">678</a>
+                    <i class="material-icons first-icon" id="f-icon" >favorite_border</i>
+                    <i class="material-icons click-like r" id="s-icon" >favorite</i>
+                   
+                    <a href="" id="c-like"></a>
                     <span>suka</span>
                     <div class="d-waktu-post">
-                        <span>3 hari lalu</span>
+                        <span id="time-string"></span>
                     </div>
                 </div>
                 <div class="container d-komen">

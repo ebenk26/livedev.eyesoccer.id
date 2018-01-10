@@ -1849,7 +1849,7 @@ ul, li {
     display: none;
     color: red;
     position: relative;
-    left: -29px;
+    margin-left:-29px;
 }
 .first-icon:hover~.second-icon, .second-icon:hover{
     display: inline-block;
@@ -2344,6 +2344,7 @@ ul, li {
     width: 550px;
     height: 550px;
     margin-left: 42px;
+    background:#e4e4e4;
 }
 .d-p-b-r{
     width: 350px;
@@ -2406,14 +2407,12 @@ ul, li {
     height: 35px;
     width: 330px;
 }
-.d-like i{
-    color: red;
-}
+
 .d-like span, .d-like a{
     position: relative;
     font-size: .6em;
     font-weight: 500;
-    padding-right: 6px;
+    padding-right: 2px;
     top: -5px;
 }
 .d-like a{
