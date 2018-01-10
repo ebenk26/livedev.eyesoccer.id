@@ -138,9 +138,6 @@
 <?php        
     }
 ?>
-        <div class="form-edit-">
-            
-        </div>
     </div>
 
 </div>
