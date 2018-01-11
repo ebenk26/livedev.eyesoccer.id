@@ -59,6 +59,32 @@ if( ! function_exists('relative_time'))
         } else {
             $period = strtolower($CI->lang->line('date_'.$periods[$j]));
         }
+		
+		if($period == 'second' || $period == 'seconds')
+		{
+			$period = 'detik';
+		}else if($period == 'minute' || $period == 'minutes')
+		{
+			$period = 'menit';
+		}else if($period == 'hour' || $period == 'hours')
+		{
+			$period = 'jam';
+		}else if ($period == 'day' || $period == 'days')
+		{
+			$period = 'hari';
+		}else if($period == 'week' || $period == 'weeks')
+		{
+			$period = 'minggu';
+		}else if($period == 'year' || $period == 'years')
+		{
+			$period = 'tahun';
+		}else if($period == 'month' || $period == 'months')
+		{
+			$period = 'bulan';
+		}else
+		{
+			$period = 'dekade';
+		}
 
         return "$difference $period $ending";
     }

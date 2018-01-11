@@ -244,7 +244,7 @@ class Eyemarket extends CI_Controller {
 
         $this->upload->initialize($config);
 
-        if (!empty($this->input->post('img_hidden1')))
+        if (!$this->input->post('img_hidden1'))
         {
         	if(!$this->upload->do_upload('image1')) 
         	{  
@@ -271,7 +271,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden2')))
+        if (!$this->input->post('img_hidden2'))
         {
         	if(!$this->upload->do_upload('image2')) 
         	{  
@@ -298,7 +298,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden3')))
+        if (!$this->input->post('img_hidden3'))
         {
         	if(!$this->upload->do_upload('image3')) 
         	{  
@@ -325,7 +325,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden4')))
+        if (!$this->input->post('img_hidden4'))
         {
         	if(!$this->upload->do_upload('image4')) 
         	{  
@@ -352,7 +352,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden5')))
+        if (!$this->input->post('img_hidden5'))
         {
         	if(!$this->upload->do_upload('image5')) 
         	{  
