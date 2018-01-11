@@ -371,5 +371,5 @@ function pathUrl()
 	if($_SERVER['SERVER_NAME'] == 'localhost')
     return "./";
 	else
-	return "/home/admin/web/beta.eyesoccer.id/public_html/";
+	return "/home/admin/web/".$_SERVER['SERVER_NAME']."/public_html/";
 }
