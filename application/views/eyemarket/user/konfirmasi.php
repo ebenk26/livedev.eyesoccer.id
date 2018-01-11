@@ -10,7 +10,7 @@
     				<div class="col-md-6" style="padding-left: unset;">
     					<div class="form-group">
     					    <label>No. Order</label>
-    					    <input type="number" name="no_order" class="form-control p-input" placeholder="e.g : 201801xxxxxx">
+    					    <input type="number" name="no_order" class="form-control p-input" value="<?= $model->no_order; ?>">
     					</div>
     				</div>
     			</div>

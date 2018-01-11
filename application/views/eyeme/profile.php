@@ -49,7 +49,7 @@
 
                         for($j= 0; $j<count($getImg); $j++){?>
 
-                        <div class="me-post">
+                        <div class="me-post" ref="<?php echo $getImg[$j]->id_img?>">
 
                             <img src="<?php echo MEIMG.$getImg[$j]->img_thumb?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
 
