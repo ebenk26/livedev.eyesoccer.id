@@ -365,3 +365,11 @@ function load_top_name()
 	
 	return $prof_name;
 }
+
+function pathUrl()
+{
+	if($_SERVER['SERVER_NAME'] == 'localhost')
+    return "./";
+	else
+	return "/home/admin/web/beta.eyesoccer.id/public_html/";
+}
