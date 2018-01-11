@@ -1148,7 +1148,7 @@ class Eyemarket extends CI_Controller {
 		$this->load->library('upload');
 		
 		//===== atur upload bukti
-		$config['upload_path'] = "./img/eyemarket/bukti/";
+		$config['upload_path'] = base_url()."img/eyemarket/bukti/";
 		$config['allowed_types'] = '*';
 		$config['max_size']  = '10000';
 		$config['max_width']  = '0';
