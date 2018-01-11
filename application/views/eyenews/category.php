@@ -33,97 +33,36 @@
         </div>
         <div class="center-desktop m-0">
             <div class="w1020 m-0">
-                <div class="container h-news-l">
-					<a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
-                    <div>
-                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="<?= $headline->title; ?>" title="<?= $headline->title; ?>">
-                    </div>
-					</a>
-                </div>
-                <div class="container h-news-r">
-                    <table>
-                        <tr>
-                            <td>
-                                <h4>HEADLINE</h4>
-                            </td>
-                            <td>
-                                <div class="rr">
-                                    <span><?= $headline->createon; ?></span>
+                <div class="container ">
+				
+					<?php
+					$this->load->helper('my');
+					foreach ($pagging['row'] as $similar)
+					{
+					?>
+					<div class="w30">
+						<a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar->url;?>">
+							<div>
+								<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar->thumb1; ?>" style="width:100%;margin-right:20px;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
+								<p class="sub-en">									
+								<?= $similar->title; ?></p>
+								<span class="time-view">
+								<?php
+								$date 		=  new DateTime($similar->createon);
+								$tanggal 	= date_format($date,"Y-m-d H:i:s");
+								$real_time = relative_time($tanggal);
 
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="pd" style="height: 370px;overflow: hidden;">
-                        <div>
-                            <a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
-                                <h1><?= $headline->title; ?></h1>
-                            </a>
-                            <span>
-							<?php
-								$keterangan = strip_tags($headline->description);
-								echo word_limiter($keterangan,25);
-							?>							
-							</span>
-                            <ul class="list-1 mt-10">
-						<?php
-						$i = 0;
-						foreach ($eyenews_similar as $row)
-						{
-						if ($i != 0)
-						{
-						?>							
-                                <li>
-                                    <span>
-									<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
-									<?= $row['title']; ?></a>									
-									</span>
-                                </li>
-						<?php			
-						}
-						$i++;
-						}
-						?>								
-                            </ul>
-                        </div>
-                    </div>
+								echo relative_time($tanggal) . ' lalu - '.$similar->news_view.' views';
+								?>								
+								</span>
+							</div>
+						</a>
+					</div>
+					<?php } ?>
+					<div><?php echo $pagging['pagging'];?></div>
                 </div>
             </div>
-            <div class="container">
-                <div class="w1020 m-0">
-                    <div class="subjudul2">
-                        <h4>BERITA TERBARU</h4>
-                    </div>
-                </div>
-                <div class="container m-t-15">
-                    <div class="w1020 m-0">
-						<?php
-						$this->load->helper('my');
-						foreach ($pagging['row'] as $similar)
-						{
-						?>
-                        <div class="w30">
-							<a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar->url;?>">
-								<div>
-									<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $similar->thumb1; ?>" style="width:100%;margin-right:20px;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
-									<p class="sub-en">									
-									<?= $similar->title; ?></p>
-									<span class="time-view">
-									<?php
-									$date 		=  new DateTime($similar->createon);
-									$tanggal 	= date_format($date,"Y-m-d H:i:s");
-
-									echo relative_time($tanggal) . ' lalu - '.$similar->news_view.' views';
-									?>								
-									</span>
-								</div>
-							</a>
-                        </div>
-						<?php } ?>
-						<div><?php echo $pagging['pagging'];?></div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="w1020 m-0">
                 <div class="container m-t-5">
                     <div class="w1020 m-0">

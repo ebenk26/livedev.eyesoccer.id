@@ -678,6 +678,36 @@ class Home_model extends CI_Model
 		return $query;
 	}
 	
+	public function get_gallery_member()
+	{
+		$query = $this->db->query("SELECT * FROM tbl_member a LEFT JOIN tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["id_member"]."' LIMIT 1")->row_array();
+		return $query;
+	}
+	
+	public function get_player_member($id_player)
+	{
+		$query = $this->db->query("SELECT * FROM tbl_player WHERE player_id='".$id_player."' LIMIT 1")->row_array();
+		return $query;
+	}
+	
+	public function get_check_member()
+	{
+		$query = $this->db->query("SELECT * FROM tbl_member_player WHERE id_member='".$_SESSION["id_member"]."' LIMIT 1");
+		return $query;
+	}
+	
+	public function get_profile_member()
+	{
+		$query = $this->db->query("SELECT a.*,b.name,b.fullname,b.address,b.about FROM tbl_member_player a left join tbl_member b on b.id_member = a.id_member WHERE a.id_member='".$_SESSION["id_member"]."' LIMIT 1")->row_array();
+		return $query;
+	}
+	
+	public function get_pic_member()
+	{
+		$query = $this->db->query("SELECT a.*,b.pic as profile_pics FROM tbl_member a LEFT JOIN tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["id_member"]."' LIMIT 1")->row_array();
+		return $query;
+	}
+	
 }
 
 /* End of file Home_model.php */
