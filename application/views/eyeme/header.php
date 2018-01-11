@@ -118,7 +118,7 @@
                                         anchor(pSUPPORT,'Supporter')),
                                 anchor(EYETUBE,'EyeTube'),
                                 anchor(EYENEWS,'EyeNews'),
-                                anchor(EYEME,'EYEME'),
+                                anchor(EYEME,'Eyeme'),
                                 anchor(EYEEVENT,'EyeEvent'),
                                 anchor(EYEMARKET,'EyeMarket'),
                                 anchor(EYETRANSFER,'EyeTransfer'),
