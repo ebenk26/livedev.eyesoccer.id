@@ -1829,6 +1829,8 @@ ul, li {
 }
 .komen{
     display: block;
+    overflow-y: scroll;
+    height: 350px;
 }
 .komen>ul>li>span{
     padding-left: 5px;
@@ -2784,4 +2786,79 @@ loading animation
 .cropit-preview-background {
         opacity: .2;
         cursor: auto;
+}
+.tbl-com{
+    padding-right:5px;
+}
+.box-fol{
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border-radius: 5px;
+    color: rgb(59, 59, 59);
+    position: relative;
+    top: 15px;
+    left: 340px;
+}
+.box-fol h4, .box-fol h5{
+    margin: 20px 15px;
+    font-weight: 700;
+}
+.bbg2{
+    border-bottom: 2px solid gainsboro;
+}
+.list-fol{
+    overflow-y: scroll;
+    height: 530px;
+}
+.tb-list-fol{
+    padding: 0px 15px;
+    height: auto;
+    overflow: hidden;
+}
+.tb-list-fol a{
+    text-decoration: none;
+    color: rgb(59, 59, 59);
+    font-size: .7em;
+    font-weight: 500;
+}
+.tb-list-fol td{
+    padding: 10px 0;
+}
+.tb-list-fol tr{
+    border-bottom: 1px solid ghostwhite;
+}
+.tb-list-fol td:nth-of-type(1){
+    width: 35px;
+    padding-right: 15px;
+}
+.tb-list-fol td:nth-of-type(2){
+    width: 340px;
+}
+.tb-list-fol td:nth-of-type(3){
+    text-align: right;
+}
+.btn-fol, .btn-follower{
+    background-color: deepskyblue;
+    border-color: deepskyblue;
+    color: white;
+    font-size: .7em;
+    font-weight: 500;
+    width: max-content;
+    border-radius: 5px;
+    padding: 8px 20px;
+    border: 0;
+}
+.btn-fol:hover{
+    background-color: skyblue;
+    /* font-weight: 600; */
+}
+.btn-follower{
+    background-color: whitesmoke !important;
+    color: black !important;
+}
+.btn-follower:hover{
+    background-color: red !important;
+    color: white !important;
+
 }

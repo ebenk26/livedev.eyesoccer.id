@@ -7,7 +7,7 @@
                 <i class="material-icons">keyboard_arrow_right</i>
             </div>
             <div class="d-p-b-l">
-                <img src="<?php echo MEIMG?>d.jpg" alt="" id="img-det">
+                <img src="" alt="loading" id="img-det">
             </div>
             <div class="d-p-b-r p-r">
                 <div class="detail-n-p">
@@ -15,32 +15,7 @@
                     <a href="" id="usern"></a>
                 </div>
                 <div class="container d-comment">
-                    <table>
-                        <tr>
-                            <td>
-                                <a href="">rndymlna_</a>
-                                <span>Lorem ipsum dolor sit amet. consectetur adipiscing elit.</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="">lorem</a>
-                                <span>set du eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
-                            </td>
-                            <td>
-                                <i class="material-icons del-com-detail">close</i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="">ipsum</a>
-                                <span>incididunt ut labore et dolore magna aliqua</span>
-                            </td>
-                            <td>
-                                <i class="material-icons del-com-detail">close</i>
-                            </td>
-                        </tr>
-                    </table>
+                    
                 </div>
                 <div class="container d-like">
                     <i class="material-icons first-icon" id="f-icon" >favorite_border</i>
@@ -53,7 +28,7 @@
                     </div>
                 </div>
                 <div class="container d-komen">
-                    <input type="text" placeholder="Tambah komentar">
+                    <input type="text" placeholder="Tambah komentar" name="comment" class="comment" autocomplete="off">
                 </div>
             </div>
         </div>

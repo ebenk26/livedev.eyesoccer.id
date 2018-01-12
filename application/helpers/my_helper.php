@@ -114,11 +114,23 @@ function getDistance($time1,$time2){
 function getTime($timeStamp){
     $timeString = ""; 
     $day       = floor($timeStamp / (3600 * 24));
+    $week      = floor($day/7);
+    $month     = ($week > 4 ? floor($day/30) : 0 );
+    $years     = ($month > 12 ? floor($day / 365) : 0);
     $hours     = floor(($timeStamp % (3600 * 24)) / 3600 );
     $minute    = (floor($timeStamp) / 60) % 60;
     $secon     = floor($timeStamp % 60);
 
-    if($day  > 0){
+    if($years > 0 ){
+        $timeString .= $years.'Tahun yang lalu';
+    }
+    elseif($month > 0 AND $years == 0 ){
+        $timeString .= $month.'Bulan yang lalu';
+    }
+    elseif($week > 0 AND $month== 0 AND $years == 0 ){
+         $timeString  .= $week.' Pekan yang lalu';
+    }
+    elseif($day  > 0 AND $week == 0 AND $month== 0 AND $years == 0 ){
         $timeString  .= $day.' Hari yang lalu';
     }
     elseif($hours > 0 AND $day <= 0 ){
