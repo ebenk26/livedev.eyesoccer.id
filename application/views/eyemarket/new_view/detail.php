@@ -15,7 +15,7 @@
 
                     <img src="<?php echo base_url(); ?>assets/new_assets/ic_eyemarket.png">
                     <span style="font-family: Montserratbold; color:#F9C241;font-size: 20px;">eyeMarket</span>
-                    <img src="<?php echo base_url(); ?>assets/new_assets/line-eyemarket.png" style="width: 89%;height: 4px;">
+                    <img src="<?php echo base_url(); ?>assets/new_assets/line-eyemarket.png" style="width: 100%;height: 4px;">
 
                 <div class="row" id="productMain">
                     <div class="col-sm-6">

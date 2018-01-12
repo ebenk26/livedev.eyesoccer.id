@@ -59,6 +59,32 @@ if( ! function_exists('relative_time'))
         } else {
             $period = strtolower($CI->lang->line('date_'.$periods[$j]));
         }
+		
+		if($period == 'second' || $period == 'seconds')
+		{
+			$period = 'detik';
+		}else if($period == 'minute' || $period == 'minutes')
+		{
+			$period = 'menit';
+		}else if($period == 'hour' || $period == 'hours')
+		{
+			$period = 'jam';
+		}else if ($period == 'day' || $period == 'days')
+		{
+			$period = 'hari';
+		}else if($period == 'week' || $period == 'weeks')
+		{
+			$period = 'minggu';
+		}else if($period == 'year' || $period == 'years')
+		{
+			$period = 'tahun';
+		}else if($period == 'month' || $period == 'months')
+		{
+			$period = 'bulan';
+		}else
+		{
+			$period = 'dekade';
+		}
 
         return "$difference $period $ending";
     }
@@ -350,4 +376,12 @@ function load_top_name()
 	$prof_name=$CI->db->query("SELECT a.name FROM tbl_member a left join tbl_gallery b ON b.id_gallery=a.profile_pic WHERE id_member='".$_SESSION["id_member"]."'")->row()->name;
 	
 	return $prof_name;
+}
+
+function pathUrl()
+{
+	if($_SERVER['SERVER_NAME'] == 'localhost')
+    return "./";
+	else
+	return "/home/admin/web/".$_SERVER['SERVER_NAME']."/public_html/";
 }

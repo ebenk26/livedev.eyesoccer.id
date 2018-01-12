@@ -244,7 +244,7 @@ class Eyemarket extends CI_Controller {
 
         $this->upload->initialize($config);
 
-        if (!empty($this->input->post('img_hidden1')))
+        if (!$this->input->post('img_hidden1'))
         {
         	if(!$this->upload->do_upload('image1')) 
         	{  
@@ -271,7 +271,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden2')))
+        if (!$this->input->post('img_hidden2'))
         {
         	if(!$this->upload->do_upload('image2')) 
         	{  
@@ -298,7 +298,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden3')))
+        if (!$this->input->post('img_hidden3'))
         {
         	if(!$this->upload->do_upload('image3')) 
         	{  
@@ -325,7 +325,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden4')))
+        if (!$this->input->post('img_hidden4'))
         {
         	if(!$this->upload->do_upload('image4')) 
         	{  
@@ -352,7 +352,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!empty($this->input->post('img_hidden5')))
+        if (!$this->input->post('img_hidden5'))
         {
         	if(!$this->upload->do_upload('image5')) 
         	{  
@@ -964,13 +964,23 @@ class Eyemarket extends CI_Controller {
 			$objMail 	= $this->phpmailer_library->load();
 
 				//Server settings
-				// $objMail->SMTPDebug 	= 4;                                 // Enable verbose debug output
+				// $objMail->SMTPDebug = 2;                                 // Enable verbose debug output
 				$objMail->isSMTP();                                      // Set objMailer to use SMTP
-				$objMail->Host 			= "smtp.gmail.com";  // Specify main and backup SMTP servers
-				$objMail->SMTPAuth 		= true;                               // Enable SMTP authentication
-				$objMail->SMTPSecure	= 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+				$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+				$objMail->SMTPAuth = true;                               // Enable SMTP authentication
+				$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
+				$objMail->Password = 'BolaSepak777#';                           // SMTP password
+				$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+				$objMail->Port = 465;                                    // TCP port to connect to
+
+				//Server settings
+				// $objMail->SMTPDebug 	= 4;                                 // Enable verbose debug output
+				// $objMail->isSMTP();                                      // Set objMailer to use SMTP
+				// $objMail->Host 			= "smtp.gmail.com";  // Specify main and backup SMTP servers
+				// $objMail->SMTPAuth 		= true;                               // Enable SMTP authentication
+				// $objMail->SMTPSecure	= 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 				
-				$objMail->Port 			= 465;                                    // TCP port to connect to
+				// $objMail->Port 			= 465;                                    // TCP port to connect to
 				$objMail->isHTML(true);                                  // Set eobjMail format to HTML
 
 				$objMail->SMTPOptions = array(
@@ -981,8 +991,8 @@ class Eyemarket extends CI_Controller {
 					)
 				);
 
-				$objMail->Username 		= 'robidummy665@gmail.com';                 // SMTP username
-				$objMail->Password 		= 'robionepiece32';                           // SMTP password
+				// $objMail->Username 		= 'robidummy665@gmail.com';
+				// $objMail->Password 		= 'robionepiece32';
 
 				//Recipients
 				$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
@@ -1138,7 +1148,7 @@ class Eyemarket extends CI_Controller {
 		$this->load->library('upload');
 		
 		//===== atur upload bukti
-		$config['upload_path'] = "./img/eyemarket/bukti/";
+		$config['upload_path'] = pathUrl()."img/eyemarket/bukti/";
 		$config['allowed_types'] = '*';
 		$config['max_size']  = '10000';
 		$config['max_width']  = '0';
@@ -1187,24 +1197,41 @@ class Eyemarket extends CI_Controller {
 			//===== set email ke admin eyemarket (mba Aya)
 			$objMail 	= $this->phpmailer_library->load();
 
-			$objMail->isSMTP();
-			$objMail->Host 			= "smtp.gmail.com";
-			$objMail->SMTPAuth 		= true;
-			$objMail->SMTPSecure	= 'ssl';
+			// $objMail->isSMTP();
+			// $objMail->Host 			= "smtp.gmail.com";
+			// $objMail->SMTPAuth 		= true;
+			// $objMail->SMTPSecure	= 'ssl';
 			
-			$objMail->Port 			= 465;
-			$objMail->isHTML(true);
+			// $objMail->Port 			= 465;
+			// $objMail->isHTML(true);
 
-			$objMail->SMTPOptions = array(
-				'ssl' => array(
-				'verify_peer' => false,
-				'verify_peer_name' => false,
-				'allow_self_signed' => true
-				)
-			);
+			// $objMail->SMTPOptions = array(
+			// 	'ssl' => array(
+			// 	'verify_peer' => false,
+			// 	'verify_peer_name' => false,
+			// 	'allow_self_signed' => true
+			// 	)
+			// );
 
-			$objMail->Username 		= 'robidummy665@gmail.com';
-			$objMail->Password 		= 'robionepiece32';
+			// $objMail->Username 		= 'robidummy665@gmail.com';
+			// $objMail->Password 		= 'robionepiece32';
+
+				$objMail->isSMTP();                                      // Set objMailer to use SMTP
+				$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+				$objMail->SMTPAuth = true;                               // Enable SMTP authentication
+				$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
+				$objMail->Password = 'BolaSepak777#';                           // SMTP password
+				$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+				$objMail->Port = 465;           
+				$objMail->isHTML(true);                                  // Set eobjMail format to HTML
+
+				$objMail->SMTPOptions = array(
+					'ssl' => array(
+					'verify_peer' => false,
+					'verify_peer_name' => false,
+					'allow_self_signed' => true
+					)
+				);
 
 			//Recipients
 			$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
