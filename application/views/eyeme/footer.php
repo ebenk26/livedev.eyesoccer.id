@@ -29,13 +29,10 @@
 <!--<script src="<?php #echo JSPATH?>home.js"></script>-->
 <!--<script src="<?php #echo JSPATH?>sw.js"></script>-->
 <script type="text/javascript">
- /*
-    * Eyeme js v.0.0.1
-    * author : sofyan waldy
 
-*/
 var html      = "",//html comment 
     tbl       = "",//table notification
+    tbl_com   = "",
     $com      = $('.comment'), //class comment
     $notif    = $('#notif-content'),
     DPIC      = '<?php echo DPIC?>',
@@ -174,8 +171,16 @@ $('#upload').click(function(e) {
 $(document).keyup(function(e) {  
     /* Act on the event */
      if(e.keyCode == 27){
-         $('#upload_pop').css('display','none');
-         $('.dpb').css('display','none');
+        $('#upload_pop').css('display','none');
+        $('.dpb').css('display','none');
+        $('#fol-box').css('display','none');//box follow-list
+        $('#f-icon').removeAttr('class');
+        $('#f-icon').attr('class','material-icons first-icon');
+        $('#f-icon').removeAttr('style');
+        $('#s-icon').removeAttr('status');
+        $('#s-icon').removeAttr('class');
+        $('#s-icon').attr('class','material-icons click-like r');
+        $('#c-like').removeAttr('class');
     }
  });
 
@@ -185,6 +190,14 @@ $(window).click(function(e) {
      if(e.pageX <= 182  || e.pageX >= 1183){
         $('#upload_pop').css('display','none');
         $('.dpb').css('display','none');
+        $('#f-icon').removeAttr('class');
+        $('#f-icon').attr('class','material-icons first-icon');
+        $('#f-icon').removeAttr('style');
+        $('#s-icon').removeAttr('status');
+        $('#s-icon').removeAttr('class');
+        $('#s-icon').attr('class','material-icons click-like r');
+        $('#c-like').removeAttr('class');
+        $('#fol-box').css('display','none');//box follow-list
 
      }
 });
@@ -428,15 +441,77 @@ $('#upload-act').click(function(event) {
     
 });
 /*
+    fungsi get_follow
+*/
+$('.a-fol').click(function(event) {
+    var tbl_fol = '';
+    /* Act on the event */
+    event.preventDefault();
+   attr   = $(this).attr('ref');
+    split  = attr.split('-');
+    ref    = split[0];
+    id     = split[1];
+
+     
+    $.ajax({
+        url: '<?php echo MEURL?>get_follow',
+        type: 'GET',
+        dataType: 'JSON',
+        data: {data:ref,id:id},
+    })
+    .done(function(r) {
+        $('#fol-box').css('display','block');
+        
+
+        $.each(r,function(k,v){
+            tbl_fol += '<tr>';
+                tbl_fol += '<td>';
+                     tbl_fol += '<div class="me-img">';
+                        tbl_fol += '<img src="' + 
+                            (v.profile_pic == '' ? 
+                            '<?php echo DPIC?>': 
+                            '<?php echo MEIMG?>' + v.profile_pic) + '" alt="' + v.profile_pic +'" class="w-100">';
+                     tbl_fol += '</div>';
+                tbl_fol += '</td>';
+                tbl_fol += '<td>';
+                    tbl_fol += '<a href="' + '<?php echo MEPROFILE?>' + v.username + '"> '+ v.username + '</a>';
+                tbl_fol += '</td>';
+                tbl_fol += '<td>';
+                    tbl_fol += v.btnFol;
+                tbl_fol += '</td>';
+            tbl_fol += '</tr>';
+
+
+        });
+
+       
+        $('#tbl-fol').html(tbl_fol);
+        //tbl_fol  += 
+
+
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+
+   
+});
+
+
+/*
     fungsi image-detail::
 
 */
-  obj = JSON.parse('{"img":"http://localhost/eyesoccer/img/eyeme/thumb_05012018013108.jpeg"}');
+ // obj = JSON.parse('{"img":"http://localhost/eyesoccer/img/eyeme/thumb_05012018013108.jpeg"}');
 $('.me-post').click(function(event) {
     var ref  = $(this).attr('ref');
+
     /* Act on the event */
     $('.dpb').css('display','block');
-    $('#img-det').attr('src',obj.img);
+    //$('#img-det').attr('src',obj.img);
     $.ajax({
         url: '<?php echo MEURL?>get_img',
         type: 'POST',
@@ -444,6 +519,7 @@ $('.me-post').click(function(event) {
         data: {id: ref},
     })
     .done(function(r) {
+        //console.log(r);
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('#usern').text(v.username);
@@ -453,6 +529,23 @@ $('.me-post').click(function(event) {
             $('#c-like').text(v.countLike);
             $('#f-icon').addClass('first-icon-'+v.id_img);
             $('#s-icon').attr('ref',v.id_img);
+            $('.comment').attr('rel',v.id_img);
+            //tbl_com += '<table>';
+            tbl_com += '<div class="komen">';
+            tbl_com += '<ul class="plus-c' + v.id_img + '">';
+            $.each(v.comment,function($k,$v){
+                //tbl_com += '<tr>';
+                    tbl_com += '<li>';
+                        tbl_com += '<a href="<?php echo MEPROFILE?>'+ $v.username +'" class="tbl-com">'+ $v.username +'</a>';
+                        tbl_com += '<span>' + $v.comment+ '</span>'
+                    tbl_com += '</li>';
+                //tbl_com += '</tr>';
+           });
+            tbl_com += '</ul>';
+            tbl_com += '</div>';
+            //tbl_com += '</table>';
+            $('.d-comment').html(tbl_com);
+            tbl_com ='';
             if(v.has_like === true){
                 
                 $('#f-icon').attr('style','display:none');
@@ -476,7 +569,8 @@ $('.me-post').click(function(event) {
         console.log("error");
     })
     .always(function() {
-        console.log("complete");
+
+       
     });
    
     

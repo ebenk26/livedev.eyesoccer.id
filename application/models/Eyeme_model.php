@@ -240,7 +240,7 @@ class Eyeme_model extends Master_model
 				 ON A.id_member = B.id_member 
 				 LEFT JOIN tbl_member as C 
 				 on A.id_member = C.id_member
-				 WHERE  a.id_member IN
+				 WHERE  A.id_member IN
 				 (SELECT id_following from me_follow where id_member = $id_member) 
 				 AND A.active='1' 
 				 ORDER BY A.last_update DESC";
@@ -324,8 +324,6 @@ class Eyeme_model extends Master_model
 	*fungsi getComment::  to get comment 
 	*@param $id_img id dari gambar yang dikomen
 	*@param $limit array, array[0] =offset array[1] = limit
-
-		
 
 	*/
 	public function getComment($id_img,$limit=array()){
@@ -527,12 +525,12 @@ class Eyeme_model extends Master_model
 		$getNotif  = $this->db->query($query);
 		return $getNotif->result();
 	}
+
 	/**
 	*function checkFollowed melihat kondisi apakah member telah follow akun 
 	*@param id_member = id member has login
 	*@param id_follow = id user yang di follow
 	
-
 	*/
 	public function checkFollowed($id_member,$id_follow){
 		$where    = array('id_member' => $id_member,
@@ -542,9 +540,6 @@ class Eyeme_model extends Master_model
 			return TRUE;
 		}
 		else return FALSE;
-
-
-
 	}
 	/**
 	*follow::
@@ -574,9 +569,6 @@ class Eyeme_model extends Master_model
 		$return         = array('follower' => count($getFollower),
 								'following' => count($getFollowing));
 		                //mengambil jumlah follower dari member yang kita ikuti
-
-
-
 		return $return;
 
 	}
@@ -594,10 +586,55 @@ class Eyeme_model extends Master_model
 								'following' => count($getFollowing));
 		                //mengambil jumlah follower dari member yang kita ikuti
 
-
-
 		return $return;
 		
+
+	}
+	/**
+		*@param id_member id_member yang login 
+		*fungsi getFollow::
+
+	*/
+	public function getFollow($id_member,$find = 'following'){
+		#echo $id_member;
+
+		
+		$qry     = "SELECT
+					A.id_member,
+					A.id_following,
+					A.id_follow,
+					B.username,
+					B.name,
+					B.profile_pic
+
+					FROM 
+					me_follow As A
+					INNER JOIN 
+					tbl_member As B
+					ON 
+					".($find == "follower" ?
+					 "A.id_member = B.id_member WHERE A.id_following = {$id_member}"
+					 : "A.id_following = B.id_member WHERE A.id_member   = {$id_member}")."
+
+					";
+		#echo $qry;
+				
+		$exe     = $this->db->query($qry);
+		$exe     = $exe->result();
+		//ganti profile pic
+		for($i=0;$i<count($exe);$i++){
+			#echo $exe[$i]->profile_pic;
+			$where   = array('id_gallery' => $exe[$i]->profile_pic);
+			$getProfilePic     = $this->getAll('tbl_gallery',$where);
+
+			//ganti profile_pic ,menjadi nama gambar 
+			$exe[$i]->profile_pic   = (count($getProfilePic) > 0 ? $getProfilePic[0]->pic : '' );
+		
+			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member);
+
+		}
+		
+	return $exe;
 
 	}
 
@@ -622,8 +659,6 @@ class Eyeme_model extends Master_model
 		if($exe == TRUE){
 
 			echo 'success';
-
-
 		}
 		else{
 			echo 'Failed';
