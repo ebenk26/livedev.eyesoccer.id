@@ -36,6 +36,7 @@
 */
 var html      = "",//html comment 
     tbl       = "",//table notification
+    tbl_com   = "",
     $com      = $('.comment'), //class comment
     $notif    = $('#notif-content'),
     DPIC      = '<?php echo DPIC?>',
@@ -174,8 +175,15 @@ $('#upload').click(function(e) {
 $(document).keyup(function(e) {  
     /* Act on the event */
      if(e.keyCode == 27){
-         $('#upload_pop').css('display','none');
-         $('.dpb').css('display','none');
+        $('#upload_pop').css('display','none');
+        $('.dpb').css('display','none');
+        $('#f-icon').removeAttr('class');
+        $('#f-icon').attr('class','material-icons first-icon');
+        $('#f-icon').removeAttr('style');
+        $('#s-icon').removeAttr('status');
+        $('#s-icon').removeAttr('class');
+        $('#s-icon').attr('class','material-icons click-like r');
+        $('#c-like').removeAttr('class');
     }
  });
 
@@ -185,6 +193,13 @@ $(window).click(function(e) {
      if(e.pageX <= 182  || e.pageX >= 1183){
         $('#upload_pop').css('display','none');
         $('.dpb').css('display','none');
+        $('#f-icon').removeAttr('class');
+        $('#f-icon').attr('class','material-icons first-icon');
+        $('#f-icon').removeAttr('style');
+        $('#s-icon').removeAttr('status');
+        $('#s-icon').removeAttr('class');
+        $('#s-icon').attr('class','material-icons click-like r');
+        $('#c-like').removeAttr('class');
 
      }
 });
@@ -428,15 +443,27 @@ $('#upload-act').click(function(event) {
     
 });
 /*
+    fungsi get_follow
+*/
+$('.a-fol').click(function(event) {
+    /* Act on the event */
+    event.preventDefault();
+    ref = $(this).attr('ref');
+    split = ref.split('-');
+    
+});
+
+/*
     fungsi image-detail::
 
 */
-  obj = JSON.parse('{"img":"http://localhost/eyesoccer/img/eyeme/thumb_05012018013108.jpeg"}');
+ // obj = JSON.parse('{"img":"http://localhost/eyesoccer/img/eyeme/thumb_05012018013108.jpeg"}');
 $('.me-post').click(function(event) {
     var ref  = $(this).attr('ref');
+
     /* Act on the event */
     $('.dpb').css('display','block');
-    $('#img-det').attr('src',obj.img);
+    //$('#img-det').attr('src',obj.img);
     $.ajax({
         url: '<?php echo MEURL?>get_img',
         type: 'POST',
@@ -444,6 +471,7 @@ $('.me-post').click(function(event) {
         data: {id: ref},
     })
     .done(function(r) {
+        //console.log(r);
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('#usern').text(v.username);
@@ -453,6 +481,23 @@ $('.me-post').click(function(event) {
             $('#c-like').text(v.countLike);
             $('#f-icon').addClass('first-icon-'+v.id_img);
             $('#s-icon').attr('ref',v.id_img);
+            $('.comment').attr('rel',v.id_img);
+            //tbl_com += '<table>';
+            tbl_com += '<div class="komen">';
+            tbl_com += '<ul class="plus-c' + v.id_img + '">';
+            $.each(v.comment,function($k,$v){
+                //tbl_com += '<tr>';
+                    tbl_com += '<li>';
+                        tbl_com += '<a href="<?php echo MEPROFILE?>'+ $v.username +'" class="tbl-com">'+ $v.username +'</a>';
+                        tbl_com += '<span>' + $v.comment+ '</span>'
+                    tbl_com += '</li>';
+                //tbl_com += '</tr>';
+           });
+            tbl_com += '</ul>';
+            tbl_com += '</div>';
+            //tbl_com += '</table>';
+            $('.d-comment').html(tbl_com);
+            tbl_com ='';
             if(v.has_like === true){
                 
                 $('#f-icon').attr('style','display:none');
@@ -476,7 +521,8 @@ $('.me-post').click(function(event) {
         console.log("error");
     })
     .always(function() {
-        console.log("complete");
+
+       
     });
    
     

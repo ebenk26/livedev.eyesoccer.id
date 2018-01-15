@@ -136,11 +136,13 @@ class Eyeme extends CI_Controller {
 			$this->data['err'] = "username not found";
 			redirect(MEURL,'refresh');
 		}
+		$this->data['foll'] = $this->get_follow();
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/profile',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
 		$this->load->view('eyeme/img_upload',$this->data);
 		$this->load->view('eyeme/post_detail',$this->data);
+		$this->load->view('eyeme/list_fol',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
 
 	}
@@ -176,9 +178,10 @@ class Eyeme extends CI_Controller {
 		
 	}
 	/**
-		*fungsin unfollow::
+		*fungsi unfollow::
 	*/
 	public function unfollow(){
+
 		$id_friend = inputSecure($this->input->post('id_friend'));
 		$exe       = $this->emod->unFollow($this->id_member,$id_friend);
 		$response  = array('msg' => 'success',
@@ -188,6 +191,20 @@ class Eyeme extends CI_Controller {
 		echo $json;
 		
 	}
+	/**
+		*fungsi getFollow::
+			
+	*/
+	public function get_follow(){
+		$get = $this->input->get('get');
+		$res = $this->emod->getFollow($this->id_member,$get);
+		/*for($i = 0; $i< count($res) ; $i++){
+			$res[$i]->pro
+		}*/
+		#p($res);
+		return $res;
+	}
+	
 	public function get_img(){
 		$id_img  = $this->input->post('id');
 		if(!$id_img){
@@ -195,6 +212,7 @@ class Eyeme extends CI_Controller {
 			exit;
 		}
 		$img = $this->emod->getAllImg($id_img);
+		#p($img);
 		$json = json_encode($img);
 		#p($img);
 		echo $json;
