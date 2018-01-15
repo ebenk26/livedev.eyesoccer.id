@@ -29,11 +29,7 @@
 <!--<script src="<?php #echo JSPATH?>home.js"></script>-->
 <!--<script src="<?php #echo JSPATH?>sw.js"></script>-->
 <script type="text/javascript">
- /*
-    * Eyeme js v.0.0.1
-    * author : sofyan waldy
 
-*/
 var html      = "",//html comment 
     tbl       = "",//table notification
     tbl_com   = "",
@@ -177,6 +173,7 @@ $(document).keyup(function(e) {
      if(e.keyCode == 27){
         $('#upload_pop').css('display','none');
         $('.dpb').css('display','none');
+        $('#fol-box').css('display','none');//box follow-list
         $('#f-icon').removeAttr('class');
         $('#f-icon').attr('class','material-icons first-icon');
         $('#f-icon').removeAttr('style');
@@ -200,6 +197,7 @@ $(window).click(function(e) {
         $('#s-icon').removeAttr('class');
         $('#s-icon').attr('class','material-icons click-like r');
         $('#c-like').removeAttr('class');
+        $('#fol-box').css('display','none');//box follow-list
 
      }
 });
@@ -446,12 +444,62 @@ $('#upload-act').click(function(event) {
     fungsi get_follow
 */
 $('.a-fol').click(function(event) {
+    var tbl_fol = '';
     /* Act on the event */
     event.preventDefault();
-    ref = $(this).attr('ref');
-    split = ref.split('-');
-    
+   attr   = $(this).attr('ref');
+    split  = attr.split('-');
+    ref    = split[0];
+    id     = split[1];
+
+     
+    $.ajax({
+        url: '<?php echo MEURL?>get_follow',
+        type: 'GET',
+        dataType: 'JSON',
+        data: {data:ref,id:id},
+    })
+    .done(function(r) {
+        $('#fol-box').css('display','block');
+        
+
+        $.each(r,function(k,v){
+            tbl_fol += '<tr>';
+                tbl_fol += '<td>';
+                     tbl_fol += '<div class="me-img">';
+                        tbl_fol += '<img src="' + 
+                            (v.profile_pic == '' ? 
+                            '<?php echo DPIC?>': 
+                            '<?php echo MEIMG?>' + v.profile_pic) + '" alt="' + v.profile_pic +'" class="w-100">';
+                     tbl_fol += '</div>';
+                tbl_fol += '</td>';
+                tbl_fol += '<td>';
+                    tbl_fol += '<a href="' + '<?php echo MEPROFILE?>' + v.username + '"> '+ v.username + '</a>';
+                tbl_fol += '</td>';
+                tbl_fol += '<td>';
+                    tbl_fol += v.btnFol;
+                tbl_fol += '</td>';
+            tbl_fol += '</tr>';
+
+
+        });
+
+       
+        $('#tbl-fol').html(tbl_fol);
+        //tbl_fol  += 
+
+
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+
+   
 });
+
 
 /*
     fungsi image-detail::
