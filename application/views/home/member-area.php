@@ -164,7 +164,7 @@
 	<div class="head-content full-width">
 		<form method="POST" action="profile_upload" enctype="multipart/form-data">
 			<div class="img-radius">
-				<img src="<?=base_url()?>img/img_storage/<?=$pic?>" alt="" class="blah">
+				<img src="<?=base_url()?>assets/img_storage/<?=$pic?>" alt="" class="blah">
 			</div>
 			<div class="full-width">
 				<label class="btn-blue" style="cursor: pointer;">

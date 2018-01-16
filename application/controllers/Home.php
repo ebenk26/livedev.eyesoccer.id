@@ -385,7 +385,7 @@ class Home extends CI_Controller {
 			$date =date("Y-m-d H:i:s");
 			$pic="foto-"."profile-".rand("1000","9999")."-".$_FILES['pic']['name'];
 			$pic = preg_replace('/\s+/', '', $pic);
-			move_uploaded_file($_FILES['pic']['tmp_name'], pathUrl()."img/img_storage/".$pic);
+			move_uploaded_file($_FILES['pic']['tmp_name'], pathUrl()."assets/img_storage/".$pic);
 			// var_dump(pathUrl());exit();
 				$last_id = $_SESSION["member_id"];
 			$post_data = array(
