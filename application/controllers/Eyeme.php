@@ -104,7 +104,7 @@ class Eyeme extends CI_Controller {
 			$whereFollower  = array('id_following'=>$usr->id_member,'block'=> '0');
 			$getFollower    = $this->mod->getAll('me_follow',$whereFollower);
 		
-			$check          = $this->emod->checkFollowed($this->id_member,$usr->id_member);
+			$check          = $this->checkFollowed($this->id_member,$usr->id_member);
 			//mengambil jumlah comment dan jumlah like setiap gambar 
 
 			for($i = 0; $i < count($getImg); $i++){
@@ -136,7 +136,7 @@ class Eyeme extends CI_Controller {
 			$this->data['err'] = "username not found";
 			redirect(MEURL,'refresh');
 		}
-		$this->data['foll'] = $this->get_follow();
+		//$this->data['foll'] = $this->get_follow();
 		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/profile',$this->data);
 		$this->load->view('eyeme/notif',$this->data);
@@ -192,19 +192,38 @@ class Eyeme extends CI_Controller {
 		
 	}
 	/**
-		*fungsi getFollow::
+		*fungsi get_follow::
 			
 	*/
-	public function get_follow(){
-		$get = $this->input->get('get');
-		$res = $this->emod->getFollow($this->id_member,$get);
-		/*for($i = 0; $i< count($res) ; $i++){
-			$res[$i]->pro
-		}*/
-		#p($res);
-		return $res;
+	public function get_follow($id = ''){
+		$get = $this->input->get('data');
+		$id  = ($id == '' ? $this->input->get('id'): $this->id_member);
+		$res = $this->emod->getFollow($id,$get);
+		for($i = 0; $i <count($res);$i++){
+			$res[$i]->btnFol = btnFol($this->id_member,$res[$i]->id_following,'btn-fol');
+		}
+		$response = json_encode($res);
+		echo  $response;
 	}
-	
+	/**
+		*fungsi checkFollowed::
+		*@param id_member = id_member has login
+		*@param id_follow = id user yang akan di check mengikuti atau tidak 
+		*@return bool 
+
+	*/
+	public function checkFollowed($id_member,$id_follow){
+		$check = $this->emod->checkFollowed($id_member,$id_follow);
+		return $check;
+	}
+
+	/**
+
+		*fungsi get_img::
+		*untuk mengambil gambar 
+		*@response Json
+
+	*/
 	public function get_img(){
 		$id_img  = $this->input->post('id');
 		if(!$id_img){
@@ -212,9 +231,9 @@ class Eyeme extends CI_Controller {
 			exit;
 		}
 		$img = $this->emod->getAllImg($id_img);
-		#p($img);
+		
 		$json = json_encode($img);
-		#p($img);
+		
 		echo $json;
 
 	}
@@ -232,31 +251,6 @@ class Eyeme extends CI_Controller {
 				
 				$sub[$j][0] = substr($v->notif_type,0,3);
 				$sub[$j][1] = substr($v->notif_type,3);
-
-					/*if($sub[$j][0] == 'COM'){
-
-						$get = $this->emod->whereImageIn('comment',$sub[$j][1]);
-						
-						$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-						$dataNotif[$j]->img_name  = $get[0]->img_name;
-						$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
-						$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
-					}
-					elseif($sub[$j][0] == 'LIK'){
-
-						$get = $this->emod->whereImageIn('like',$sub[$j][1]);
-						if(count($get) > 0 ){
-							$dataNotif[$j]->link = 'img/'.$get[0]->id_img;
-							$dataNotif[$j]->img_name  = $get[0]->img_name;
-							$dataNotif[$j]->img_thumb = $get[0]->img_thumb;
-							$dataNotif[$j]->img_alt   = 'img/'.$get[0]->img_alt;
-						}
-						
-
-					}
-					else{
-						$dataNotif[$j]->link = 'profile/'.$sub[$j][1];
-					}*/
 				$distance    = getDistance(NOW,$v->last_update);
 				$getTime     = getTime($distance);
 				$dataNotif[$j]->timeString = $getTime['timeString'];

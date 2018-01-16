@@ -109,6 +109,21 @@
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
         <?php
             }
+            else if ($kanal == 'eyetube')
+            {
+        ?>
+                <link href="<?= base_url(); ?>assets/eyetube/css/bs.css" rel="stylesheet">
+                <!-- <link href="<?= base_url(); ?>assets/eyetube/css/style.css" rel="stylesheet"> -->
+                <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+        <?php
+            }
+            else if ($kanal == 'eyetube_detail')
+            {
+        ?>
+                <link href="<?=base_url()?>assets/eyetube/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
+        <?php        
+            }
             else
             {
         ?>
