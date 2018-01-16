@@ -308,6 +308,25 @@
 				</div>
 			</div>
 	<?php
+		}else if($check->num_rows()>0 && $pm["active"]=="0"){
+?>
+
+		<div id="player_reg" class="modal fade" role="dialog">
+		  <div class="modal-dialog" id="set7" style="max-width: 100%;">
+			<div class="modal-content" id="set8">
+			<div class="modal-header text-center"><h1 id="t3">Daftar Sebagai Pemain</h1></div>
+			  <div class="modal-body">
+			  Anda telah mendaftar sebagai pemain :
+			 
+			  <div class="form-group" id="t1"><span>Nama : </span><b><?=$get_player["name"]?></b></div>
+			  <div class="form-group" id="t1"><span>Tanggal Daftar : </span><b><?=$pm["add_date"]?></b></div>
+			  <div class="form-group" id="t1"><span><a href="<?=base_url("home/batal_daftar_player")?>" class="btn btn-danger">Batal Daftar</a></span></div>
+			  <br style="clear:both"/>
+			  </div>
+			</div>
+		  </div>
+		</div>
+<?php
 		}else{
 	?>
 			<div id="myModal" class="modal">
