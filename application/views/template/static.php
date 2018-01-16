@@ -107,6 +107,14 @@
 
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+		<?php
+            }
+            else if ($kanal == 'home')
+            {
+        ?>
+                <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
         <?php
             }
             else
@@ -160,7 +168,7 @@ else{
 	
 	?>
 	
-	<span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/member_area"><img src="<?=imgUrl()?>systems/img_storage/<?=load_top_avatar() ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name()?></a></span>
+	<span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/member_area"><img src="<?=imgUrl()?>assets/img_storage/<?=load_top_avatar() ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name()?></a></span>
 	<?php
 }
 ?>

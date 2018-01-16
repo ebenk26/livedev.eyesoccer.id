@@ -97,7 +97,8 @@ class Eyenews extends CI_Controller {
 		$eyenews_id2 = $eyenews_id; //update rizki
 		$query=$this->db->query("SELECT * FROM tbl_eyenews WHERE url='".$eyenews_id."' LIMIT 1");
 		$row=$query->row_array();
-		
+		$data['news_type'] 				= $this->Master_model->getAll('tbl_news_types', $where = array(), $select = array('news_type'), $order = array(), $limit = '', $offset = '', $whereNotin = array('news_type',array('tulisan kamu')), $like = array());
+		$data['kategori']	= $this->Master_model->getAll('tbl_eyenews', $where = array('url'=>$eyenews_id), $select = array('news_type'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array());
 		if($query->num_rows()>0){
 			$eyenews_id=$row["eyenews_id"];
 			$linksite=$row["url"];
@@ -113,7 +114,7 @@ class Eyenews extends CI_Controller {
 				exit();
 			}
 		}
-		
+		$data['kanal']	= "eyenews";
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
@@ -199,7 +200,7 @@ class Eyenews extends CI_Controller {
 		// $data["body"]=$this->load->view('eyenews/new_detail', $data, true);
 		$data["body"]=$this->load->view('eyenews/detail', $data, true);
 		//$this->load->view('template-front-end',$data);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 	}
 
 	public function getUserIP()
