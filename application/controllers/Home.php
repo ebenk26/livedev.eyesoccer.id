@@ -163,8 +163,71 @@ class Home extends CI_Controller {
 				redirect("home/index");
 	}
 	public function request_player(){
-		$this->db->query("INSERT INTO tbl_member_player SET id_player='".$_POST["player_id"]."',id_member='".$_SESSION["id_member"]."', add_date='".date("Y-m-d H:i:s")."'");
-		redirect("home/member_area");
+		$file_ktp =null;
+		$file_akte =null;
+		$file_passport =null;
+		$file_ijazah =null;
+		$file_bukurek =null;
+		$file_srtrekssb =null;
+		if(isset($_FILES['file_ktp']['name']) && !empty($_FILES['file_ktp']['name'])){
+			$file_ktp="player_member-".rand("1000","9999")."-".$_FILES['file_ktp']['name'];
+			$file_ktp = preg_replace('/\s+/', '', $file_ktp);
+			move_uploaded_file($_FILES['file_ktp']['tmp_name'], "systems/img_storage/".$file_ktp);
+			$file_ktp = "systems/img_storage/".$file_ktp;
+		}
+		
+		if(isset($_FILES['file_akte']['name']) && !empty($_FILES['file_akte']['name'])){
+			$file_akte="player_member-".rand("1000","9999")."-".$_FILES['file_akte']['name'];
+			$file_akte = preg_replace('/\s+/', '', $file_akte);
+			move_uploaded_file($_FILES['file_akte']['tmp_name'], "systems/img_storage/".$file_akte);
+			$file_akte = "systems/img_storage/".$file_akte;
+		}
+		
+		if(isset($_FILES['file_kk']['name']) && !empty($_FILES['file_kk']['name'])){
+			$file_kk="player_member-".rand("1000","9999")."-".$_FILES['file_kk']['name'];
+			$file_kk = preg_replace('/\s+/', '', $file_kk);
+			move_uploaded_file($_FILES['file_kk']['tmp_name'], "systems/img_storage/".$file_kk);
+			$file_kk = "systems/img_storage/".$file_kk;
+		}
+		
+		if(isset($_FILES['file_passport']['name']) && !empty($_FILES['file_passport']['name'])){
+			$file_passport="player_member-".rand("1000","9999")."-".$_FILES['file_passport']['name'];
+			$file_passport = preg_replace('/\s+/', '', $file_passport);
+			move_uploaded_file($_FILES['file_passport']['tmp_name'], "systems/img_storage/".$file_passport);
+			$file_passport = "systems/img_storage/".$file_passport;
+		}
+		
+		if(isset($_FILES['file_ijazah']['name']) && !empty($_FILES['file_ijazah']['name'])){
+			$file_ijazah="player_member-".rand("1000","9999")."-".$_FILES['file_ijazah']['name'];
+			$file_ijazah = preg_replace('/\s+/', '', $file_ijazah);
+			move_uploaded_file($_FILES['file_ijazah']['tmp_name'], "systems/img_storage/".$file_ijazah);
+			$file_ijazah = "systems/img_storage/".$file_ijazah;
+		}
+		
+		if(isset($_FILES['file_bukurek']['name']) && !empty($_FILES['file_bukurek']['name'])){
+			$file_bukurek="player_member-".rand("1000","9999")."-".$_FILES['file_bukurek']['name'];
+			$file_bukurek = preg_replace('/\s+/', '', $file_bukurek);
+			move_uploaded_file($_FILES['file_bukurek']['tmp_name'], "systems/img_storage/".$file_bukurek);
+			$file_bukurek = "systems/img_storage/".$file_bukurek;
+		}
+		
+		if(isset($_FILES['file_srtrekssb']['name']) && !empty($_FILES['file_srtrekssb']['name'])){
+			$file_srtrekssb="player_member-".rand("1000","9999")."-".$_FILES['file_srtrekssb']['name'];
+			$file_srtrekssb = preg_replace('/\s+/', '', $file_srtrekssb);
+			move_uploaded_file($_FILES['file_srtrekssb']['tmp_name'], "systems/img_storage/".$file_srtrekssb);
+			$file_srtrekssb = "systems/img_storage/".$file_srtrekssb;
+		}
+		
+		$player_id = (explode(" - ",$_POST["player_id"]));
+		if(isset($player_id[2])){
+			$this->db->query("INSERT INTO tbl_member_player SET id_player='".$player_id[2]."',id_member='".$_SESSION["member_id"]."', add_date='".date("Y-m-d H:i:s")."', file_ktp='".$file_ktp."', file_akte='".$file_akte."', file_kk='".$file_kk."', file_passport='".$file_passport."', file_ijazah='".$file_ijazah."', file_bukurek='".$file_bukurek."', file_srtrekssb='".$file_srtrekssb."', file_ibukandung='".$_POST["file_ibukandung"]."'");
+			redirect("home/member_area");
+		}else{
+			echo '<script type="text/javascript">'; 
+			echo 'alert("Nama tidak terdaftar.");'; 
+			echo 'window.location.href = "member_area";';
+			echo '</script>';
+		}
 		
 	}
 
