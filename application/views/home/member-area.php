@@ -196,7 +196,7 @@
 			<?php
 				}else{
 			?>
-					<a onclick="return false;">
+					<a class="myBtn" onclick="return false;">
 						<div class="col-1">
 							<img style="width:50px;" src="<?=base_url()?>assets/img/ic_eyeprofile@2x.png" alt="" srcset="">
 							Pemain
