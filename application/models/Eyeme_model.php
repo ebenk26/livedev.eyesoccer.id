@@ -240,7 +240,7 @@ class Eyeme_model extends Master_model
 				 ON A.id_member = B.id_member 
 				 LEFT JOIN tbl_member as C 
 				 on A.id_member = C.id_member
-				 WHERE  a.id_member IN
+				 WHERE  A.id_member IN
 				 (SELECT id_following from me_follow where id_member = $id_member) 
 				 AND A.active='1' 
 				 ORDER BY A.last_update DESC";
@@ -597,10 +597,16 @@ class Eyeme_model extends Master_model
 	*/
 	public function getFollow($id_member,$find = 'following'){
 		#echo $id_member;
-		$where   = array('id_member'=> $id_member);
-		$getFol  = $this->mod->getAll('me_follow',$where);
+
+		
 		$qry     = "SELECT
-					*
+					A.id_member,
+					A.id_following,
+					A.id_follow,
+					B.username,
+					B.name,
+					B.profile_pic
+
 					FROM 
 					me_follow As A
 					INNER JOIN 
@@ -611,22 +617,24 @@ class Eyeme_model extends Master_model
 					 : "A.id_following = B.id_member WHERE A.id_member   = {$id_member}")."
 
 					";
+		#echo $qry;
+				
 		$exe     = $this->db->query($qry);
 		$exe     = $exe->result();
-
 		//ganti profile pic
 		for($i=0;$i<count($exe);$i++){
 			#echo $exe[$i]->profile_pic;
 			$where   = array('id_gallery' => $exe[$i]->profile_pic);
 			$getProfilePic     = $this->getAll('tbl_gallery',$where);
 
-			//if(count($getProfilePic) > 0){}
-			//p($getProfilePic);
 			//ganti profile_pic ,menjadi nama gambar 
-			$exe[$i]->profile_pic = (count($getProfilePic) > 0 ? $getProfilePic[0]->pic : '' );
+			$exe[$i]->profile_pic   = (count($getProfilePic) > 0 ? $getProfilePic[0]->pic : '' );
+		
+			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member);
 
 		}
-		return $exe;
+		
+	return $exe;
 
 	}
 

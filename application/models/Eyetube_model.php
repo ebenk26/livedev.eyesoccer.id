@@ -25,6 +25,58 @@ class Eyetube_model extends CI_Model
 								")->result_array();
 		return $query;
 	}
+
+	public function get_eyetube_detail($url)
+	{
+		$query = $this->db->query("	SELECT
+										a.eyetube_id,
+										a.title,
+										a.category_name,
+										b.fullname,
+										a.description,
+										a.thumb,
+										a.video,
+										a.url,
+										a.createon,
+										a.tube_view
+									FROM
+										tbl_eyetube a
+									LEFT JOIN
+										tbl_admin b	ON b.admin_id = a.admin_id
+									WHERE
+										a.url LIKE '%$url%'
+								")->row();
+		return $query;
+	}
+
+	public function get_eyetube_lain($category_name,$eyetube_id)
+	{
+		$query = $this->db->query("	SELECT
+										a.eyetube_id,
+										a.title,
+										a.category_name,
+										a.description,
+										a.thumb,
+										a.video,
+										a.url,
+										a.createon,
+										a.tube_view,
+										a.url
+									FROM
+										tbl_eyetube a
+									WHERE
+										a.active = 1
+									AND
+										a.category_name = '$category_name'
+									AND
+										a.eyetube_id != '$eyetube_id'
+									ORDER BY
+										a.eyetube_id DESC
+									LIMIT
+										10
+								")->result_array();
+		return $query;
+	}
 	
 	public function get_eyetube_satu2()
 	{
@@ -293,6 +345,30 @@ class Eyetube_model extends CI_Model
 										4
 								")->result_array();
 		return $query;
+	}
+
+	public function get_all_eyetube_populer()
+	{
+		$query = $this->db->query("	SELECT
+										a.eyetube_id,
+										a.title,
+										a.description,
+										a.thumb,
+										a.video,
+										a.url,
+										a.createon,
+										a.tube_view,
+										a.category_name
+									FROM
+										tbl_eyetube a
+									WHERE
+										a.tube_view
+									ORDER BY
+										a.tube_view DESC
+									LIMIT
+										5,12 
+								")->result_array();
+		return $query;
 	}	
 	
 	public function get_eyetube_ssb()
@@ -346,11 +422,11 @@ class Eyetube_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_eyetube_detail()
-	{
-		$query = $this->db->query("select a.*,b.fullname from tbl_eyetube a INNER JOIN tbl_admin b ON b.admin_id=a.admin_id where eyetube_id='$eyetube_id' LIMIT 1")->row();
-		return $query;
-	}
+	// public function get_eyetube_detail()
+	// {
+	// 	$query = $this->db->query("select a.*,b.fullname from tbl_eyetube a INNER JOIN tbl_admin b ON b.admin_id=a.admin_id where eyetube_id='$eyetube_id' LIMIT 1")->row();
+	// 	return $query;
+	// }
 	
 }
 

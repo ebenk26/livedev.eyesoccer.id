@@ -33,9 +33,9 @@
                                     <tr style="font-size:18px !important;">
                                         <td><?php echo count($getImg)?></td>
 
-                                        <td><?php echo anchor('eyeme/follower/'.$id_member,count($follower),'class="a-fol " ref="follower-'.$id_member.'"')?></td>
+                                        <td><?php echo anchor('eyeme/follower/'.$id_member,count($follower),'class="a-fol follower " ref="follower-'.$id_member.'"')?></td>
                                         
-                                        <td><?php echo anchor('eyeme/following/'.$id_member,count($following),'class="a-fol" ref="following-'.$id_member.'"')?></td>
+                                        <td><?php echo anchor('eyeme/following/'.$id_member,count($following),'class="a-fol following" ref="following-'.$id_member.'"')?></td>
                                     </tr>
                                 </table>
                             </li>
@@ -46,20 +46,20 @@
             <div class="w900 m-0">
                 <?php if(count($getImg) > 0 ){
 
-
                         for($j= 0; $j<count($getImg); $j++){?>
 
-                        <div class="me-post" ref="<?php echo $getImg[$j]->id_img?>">
+                            <div class="me-post" ref="<?php echo $getImg[$j]->id_img?>">
 
-                            <img src="<?php echo MEIMG.$getImg[$j]->img_thumb?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
+                                <img src="<?php echo MEIMG.$getImg[$j]->img_thumb?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
 
-                            <div class="tengah tx-c">
-                                <i class="material-icons">favorite</i>
-                                <span><?php echo $getImg[$j]->countLike?></span>
-                                <i class="material-icons">chat_bubble</i>
-                                <span><?php echo $getImg[$j]->countComment?></span>
+                                <div class="tengah tx-c">
+                                    <i class="material-icons">favorite</i>
+                                    <span><?php echo $getImg[$j]->countLike?></span>
+                                    <i class="material-icons">chat_bubble</i>
+                                    <span><?php echo $getImg[$j]->countComment?></span>
+                                </div>
                             </div>
-                        </div>
+
                         <?php
 
                         }
