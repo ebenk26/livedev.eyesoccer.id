@@ -310,22 +310,24 @@
 	<?php
 		}else if($check->num_rows()>0 && $pm["active"]=="0"){
 ?>
-
-		<div id="myModal" class="modal">
-		  <div class="modal-dialog" id="set7" style="max-width: 100%;">
-			<div class="modal-content" id="set8">
-			<div class="modal-header text-center"><h1 id="t3">Daftar Sebagai Pemain</h1></div>
-			  <div class="modal-body">
-			  Anda telah mendaftar sebagai pemain :
-			 
-			  <div class="form-group" id="t1"><span>Nama : </span><b><?=$get_player["name"]?></b></div>
-			  <div class="form-group" id="t1"><span>Tanggal Daftar : </span><b><?=$pm["add_date"]?></b></div>
-			  <div class="form-group" id="t1"><span><a href="<?=base_url("home/batal_daftar_player")?>" class="btn btn-danger">Batal Daftar</a></span></div>
-			  <br style="clear:both"/>
-			  </div>
+			<div id="myModal" class="modal">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<div style="height: 400px;overflow-y: scroll;">
+						<h2>Informasi Pemain</h2>
+						<div class="informasi">
+							<span>Nama</span>
+							<input type="text" name="name" id="" value="<?=$get_player["name"]?>" disabled>
+							<span>Tanggal Daftar</span>
+							<input type="text" name="fullname" id="" value="<?=$pm["add_date"]?>" disabled>
+							<a target="_blank"href="<?=base_url("eyeprofile/pemain_detail/".$get_player["url"])?>" style="text-decoration: unset;color: white;">
+							</a>
+						</div>
+						<h2>Menunggu Konfirmasi Admin</h2>
+					</div>
+				</div>
 			</div>
-		  </div>
-		</div>
 <?php
 		}else{
 	?>
