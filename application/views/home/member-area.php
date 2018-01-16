@@ -311,7 +311,7 @@
 		}else if($check->num_rows()>0 && $pm["active"]=="0"){
 ?>
 
-		<div id="player_reg" class="modal fade" role="dialog">
+		<div id="myModal" class="modal">
 		  <div class="modal-dialog" id="set7" style="max-width: 100%;">
 			<div class="modal-content" id="set8">
 			<div class="modal-header text-center"><h1 id="t3">Daftar Sebagai Pemain</h1></div>
