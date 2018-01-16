@@ -128,6 +128,9 @@ class Home extends CI_Controller {
 			{
 				$pm=$check->row_array();
 				$get_player=$this->Home_model->get_player_member($pm["id_player"]);
+			}else{
+				$pm['active']=0;
+				$get_player='';
 			}
 			// var_dump($profile);exit();
 			$profile_pic	=	$this->Home_model->get_pic_member();
