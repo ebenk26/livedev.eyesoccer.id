@@ -1,4 +1,18 @@
 <style>
+	.des-p{
+		color: #2b2b2b;
+		font-size: .7em;
+		font-weight: 600;
+		margin-top: 2px;
+		width: 95%;
+	}
+	.des-p td{
+		width: max-content;
+		padding: 0 2px 0 0;
+	}
+	.des-p td:nth-of-type(1){
+		width: 92px !important;
+	}
 	.vid-box-vl-img{
 		width: 100%;
     	height: 145px;
@@ -158,7 +172,7 @@
                 <a href="<?php echo base_url()?>eyeprofile/klub" class="kl">Klub Lainnya</a>
                 <i class="material-icons r-kl">keyboard_arrow_right</i>                                
             </span>            
-            <div id="epSlide" class="carousel slide">			  
+            <div id="epSlide" class="carousel slide" style="overflow:hidden;">			  
 				<div role="listbox" class="carousel-inner"> 
 					<div class="box item active">
 						<?php 
@@ -265,7 +279,7 @@
                 <i class="material-icons right i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
 			<h3 class="o">Pemain Profesional</h3>
-			<div class="carousel slide" id="topPemain" >			
+			<div class="carousel slide" id="topPemain" style="overflow:hidden;">			
                 <div class="bx-pemain carousel-inner" role="listbox">
                     <div class="item active">
 						<?php 
@@ -310,9 +324,13 @@
 											}
 										?>
 										<h3><?= $player['nama']; ?></h3>
-										<p style="color: black;font-weight: 500;">Posisi: <?= $player['posisi']; ?><br>
-										Klub: <?= $player['klub']; ?><br>
-										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>                        
 									</div>
 								</div>
 							</a>
@@ -349,9 +367,13 @@
 											}
 										?>
 										<h3><?= $player['nama']; ?></h3>
-										<p style="color: black;font-weight: 500;">Posisi: <?= $player['posisi']; ?><br>
-										Klub: <?= $player['klub']; ?><br>
-										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>  
 									</div>
 								</div>
 							</a>
@@ -388,9 +410,13 @@
 											}
 										?>
 										<h3><?= $player['nama']; ?></h3>
-										<p style="color: black;font-weight: 500;">Posisi: <?= $player['posisi']; ?><br>
-										Klub: <?= $player['klub']; ?><br>
-										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>  
 									</div>
 								</div>
 							</a>
@@ -496,6 +522,7 @@
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
 										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">
+										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
 									</div>
 									<div class="container" style="height:45px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -524,6 +551,7 @@
 									<!--<img src="assets/img/video-small.png" alt="">-->
 									<div class="vid-box-vl-img">
 										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">
+										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
 									</div>
 									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -551,6 +579,7 @@
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
 										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
+										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
 									</div>
 									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -577,7 +606,7 @@
                     <h2 class="title en">EyeNews</h2>
                     <hr class="x-en">
 					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
-						<div class="t-en-content2" style="margin-top:-19px; z-index:1; top:283px; padding:10px; width:580px; background-color:#00000050;"> 
+						<div class="t-en-content2" style="margin-top:1px; z-index:1; top:283px; padding:10px; width:580px; background-color:#00000050;"> 
 							<span class="et-st">	  					<small>
 								<?php
 									$date 		=  new DateTime($eyenews_main->createon);
@@ -776,7 +805,7 @@
                 <i class="material-icons r-el">keyboard_arrow_right</i>                                
             </span>
             <div class="container">
-                <div id="evSlide" class="carousel slide t-30" style="width: 100% !important;">
+                <div id="evSlide" class="carousel slide t-30" style="width: 100% !important;overflow:hidden;">
                     <div role="listbox" class="carousel-inner" style="width: max-content;">  				
                         <div class="box item active">	
 						<?php
