@@ -131,6 +131,7 @@ class Home extends CI_Controller {
 			}
 			// var_dump($profile);exit();
 			$profile_pic	=	$this->Home_model->get_pic_member();
+			$gallery	=	$this->Home_model->get_galleri_member();
 			if(isset($profile_pic["profile_pics"]) && $profile_pic["profile_pics"]!="")
 			{
 				$data["pic"]=$profile_pic["profile_pics"];
@@ -142,8 +143,9 @@ class Home extends CI_Controller {
 			$data["pm"]=$pm;
 			$data["get_player"]=$get_player;
 			$data["profile"]=$profile;
+			$data["gallery"]=$gallery;
 			$data["kanal"]="home";
-			$data["extrascript"]=$this->load->view('home/script_member_area', $data, true);
+			// $data["extrascript"]=$this->load->view('home/script_member_area', $data, true);
 			$data["body"]=$this->load->view('home/member-area', $data, true);
 			//$this->load->view('template-front-end',$data);
 			$this->load->view('template/static',$data);
@@ -366,6 +368,151 @@ class Home extends CI_Controller {
 			echo "true"; 
 		} catch (Exception $e) {
 			echo "false";
+		}
+	}
+	
+	public function profile_upload(){
+		if($_FILES['pic']['size'] > 10485760){
+			$return = 'File too large. Maximum file size is 1MB.';		
+		}else{
+			$return = 'Success.';
+			$caption = "Profile Picture";
+			$lat = $_POST['lat'];
+			$lon = $_POST['lon'];
+			$date =date("Y-m-d H:i:s");
+			$pic="foto-"."profile-".rand("1000","9999")."-".$_FILES['pic']['name'];
+			$pic = preg_replace('/\s+/', '', $pic);
+			move_uploaded_file($_FILES['pic']['tmp_name'], pathUrl()."assets/img_storage/".$pic);
+				$last_id = $_SESSION["member_id"];
+			$post_data = array(
+				'title'			=> $caption,
+				'tags'   		=>  'profil',
+				'pic'   		=>  $pic,
+				'thumb1'		=> $pic,
+				'lat'     		=>  $lat,
+				'lon'       	=>  $lon,
+				'upload_date'  	=>  date("Y-m-d H:i:s"),
+				'publish_by'   	=>  'member',
+				'publish_type'	=>  'public',
+				'upload_user'	=>  $last_id
+			);
+			$cmd=$this->db->insert("tbl_gallery",$post_data);	
+			$this->db->trans_complete();
+			$pic_id = $this->db->insert_id();
+			
+			$this->db->query("UPDATE tbl_member SET profile_pic='".$pic_id."' WHERE id_member='".$_SESSION["member_id"]."'");
+			if($this->db->affected_rows()>0){
+				redirect("home/member_area");
+			}else{
+				// redirect("home/member_area");
+				echo "<script>alert('Data gagal di update');</script>";
+			}
+		}
+	}
+	
+	public function foto_upload(){
+		if($_FILES['add_foto']['size'] > 10485760){
+			$return = 'File too large. Maximum file size is 1MB.';		
+		}else{
+			$return = 'Success.';
+			$caption = "";
+			$lat = $_POST['lat'];
+			$lon = $_POST['lon'];
+			$date =date("Y-m-d H:i:s");
+			$pic="foto-".rand("1000","9999")."-".$_FILES['add_foto']['name'];
+			$pic = preg_replace('/\s+/', '', $pic);
+			move_uploaded_file($_FILES['add_foto']['tmp_name'], pathUrl()."assets/img_storage/".$pic);
+				$last_id = $_SESSION["member_id"];
+			$post_data = array(
+				'title'			=> $caption,
+				'tags'   		=>  '',
+				'pic'   		=>  $pic,
+				'thumb1'		=> $pic,
+				'lat'     		=>  $lat,
+				'lon'       	=>  $lon,
+				'upload_date'  	=>  date("Y-m-d H:i:s"),
+				'publish_by'   	=>  'member',
+				'publish_type'	=>  'private',
+				'upload_user'	=>  $last_id
+			);
+			$this->db->insert("tbl_gallery",$post_data);
+			if($this->db->affected_rows()>0){
+				redirect("home/member_area");
+			}else{
+				// redirect("home/member_area");
+				echo "<script>alert('Data gagal di update');</script>";
+			}
+		}
+	}
+	
+	public function video_upload(){
+		$configVideo['upload_path'] = pathUrl()."assets/video_storage"; # check path is correct
+		$configVideo['max_size'] = '102400';
+		$configVideo['allowed_types'] = 'mp4'; # add video extenstion on here
+		$configVideo['overwrite'] = FALSE;
+		$configVideo['remove_spaces'] = TRUE;
+		$video_name = rand("1000","9999");
+		$configVideo['file_name'] = 'video-'.$video_name;
+		$lat = $this->input->post('lat');
+		$lon = $this->input->post('lon');
+
+		$this->load->library('upload', $configVideo);
+		$this->upload->initialize($configVideo);
+		if (!$this->upload->do_upload('add_video')) # form input field attribute
+		{
+			# Upload Failed
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+			redirect("home/member_area");
+			echo "<script>alert('Video gagal di upload.');</script>";
+		}
+		else
+		{
+			# Upload Successfull
+			// $url = 'assets/gallery/images'.$video_name;
+			$vid = $configVideo['file_name'];
+			$set1 =  $this->Home_model->uploadVideo($vid,$lat,$lon);
+			if($set1>0){
+				$this->session->set_flashdata('success', 'Video berhasil di upload.');
+				redirect("home/member_area");
+				echo "<script>alert('Video berhasil di upload.');</script>";
+			}else{
+				redirect("home/member_area");
+				echo "<script>alert('Video gagal di update');</script>";
+			}
+		}
+	}
+	
+	public function profile_upload_data(){
+		$post_data = array(
+			'name'		=> $_POST['name'],
+			'fullname'	=> $_POST['fullname'],
+			'address'	=> $_POST['address'],
+			'about'		=> $_POST['about']
+		);
+		$this->db->where('id_member', $_SESSION["member_id"]);
+		$this->db->update('tbl_member', $post_data); 
+		
+		if($this->db->affected_rows()>0){
+			redirect("home/member_area");
+		}else{
+			echo "<script>alert('Data gagal di update');</script>";
+		}
+	}
+	
+	public function search_player(){
+		if (isset($_GET['term'])){
+			$return_arr = array();
+			$player=$this->db->query("SELECT a.player_id,a.name,b.name as club_name FROM tbl_player a LEFT JOIN tbl_club b ON b.club_id=a.club_id WHERE a.member_id='0' and a.name like '%".$_GET['term']."%'  ORDER BY a.name ASC ");
+			foreach ($player->result() as $row)
+			{
+				$return_arr[] =  $row->name." - ".$row->club_name." - ".$row->player_id;
+				// array_push($return_arr[],$row->player_id,$row->name." - ".$row->club_name);
+			}
+
+
+			// /* Toss back results as json encoded array. */
+			echo json_encode($return_arr);
+			// echo "SELECT a.*,b.name as club_name FROM tbl_player a LEFT JOIN tbl_club b ON b.club_id=a.club_id WHERE a.member_id='0' and a.name like '%".$_GET['term']."%'  ORDER BY a.name ASC";
 		}
 	}
 }
