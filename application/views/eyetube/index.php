@@ -8,24 +8,16 @@
         <div class="center-desktop m-0">
             <div class="menu-3 w1020 m-0">
                 <ul>
-                    <li>
-                        <a href="">EYESOCCER FACT</a>
-                    </li>
-                    <li>
-                        <a href="">EYESOCCER FLASH</a>
-                    </li>
-                    <li>
-                        <a href="">EYESOCCER PEDIA</a>
-                    </li>
-                    <li>
-                        <a href="">EYESOCCER PREVIEW</a>
-                    </li>
-                    <li>
-                        <a href="">EYESOCCER HITS</a>
-                    </li>
-                    <li class="m-0-0">
-                        <a href="">EYESOCCER STAR</a>
-                    </li>
+                    <?php 
+                        foreach ($tube_type as $value)
+                        {
+                    ?>
+                            <li>
+                                <a href="<?= base_url(); ?>eyetube/kategori/<?= $value->category_name; ?>"><?= $value->category_name; ?></a>
+                            </li>
+                    <?php  
+                        }
+                    ?>
                 </ul>
             </div>
         </div>

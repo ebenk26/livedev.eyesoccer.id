@@ -3,10 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Eyetube extends CI_Controller {
 
-	public function __construct(){
+	public function __construct()
+	{
         parent::__construct();
 		    //$this->load->model('Eyemarket_model');
 		    $this->load->model('Eyetube_model');
+		    $this->load->model('Eyenews_model');
+		    $this->load->model('Master_model');
 			$this->load->helper(array('form','url','text','date'));			
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper('my');
@@ -43,7 +46,7 @@ class Eyetube extends CI_Controller {
 		$data["popup"] 	=  $array[14][3];		
 		
 		$data['video_eyetube'] 			=  $this->Eyetube_model->get_eyetube_satu();
-		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer();
+		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(4);
 		$data['all_eyetube_populer'] 	=  $this->Eyetube_model->get_all_eyetube_populer();
 		$data['eyetube_rekomendasi'] 	=  $this->Eyetube_model->get_eyetube_rekomendasi();
 		$data['eyetube_rekomendasi_2']	=  $this->Eyetube_model->get_eyetube_rekomendasi_2();
@@ -53,6 +56,9 @@ class Eyetube extends CI_Controller {
 		$data['eyetube_kamu_2'] 		=  $this->Eyetube_model->get_eyetube_kamu_2();
 		$data['eyetube_ssb'] 			=  $this->Eyetube_model->get_eyetube_ssb();
 		$data['eyetube_ssb_2'] 			=  $this->Eyetube_model->get_eyetube_ssb_2();
+
+		$data['tube_type'] 				= $this->Master_model->getAll('tbl_category_eyetube', $where = array(), $select = array('category_name'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array());
+
 		
 		$data["extrascript"] 			=  $this->load->view('eyetube/script_index', '', true);
 
@@ -105,27 +111,27 @@ class Eyetube extends CI_Controller {
 		// 	$eyetube_id 	= $row["eyetube_id"];
 		// }
 
-// 		$data["meta"]["title"] 			= "";
-// 		$data["meta"]["image"] 			= base_url()."/assets/img/tab_icon.png";
-// 		$data["meta"]["description"] 	= "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-// 		$data["meta"]["share"] 			= '<title>Eyesoccer - '.$row['title'].'</title><meta name= "twitter:card" content= "summary" />
-// 		<meta name= "twitter:site" content= "@eyesoccer_id" />
-// 		<meta name= "twitter:title" content= "'.$row['title'].'" />
-// 		<meta name= "twitter:description" content= "'.substr(strip_tags($row['description']),0,100).'" />
-// 		<meta name= "twitter:image" content= "'.base_url().'/systems/eyetube_storage/'.$row['thumb1'].'" />
-// 		<meta property= "og:title" content= "'.$row['title'].'" />
-// 		<meta property= "og:url" content= "'.base_url().'/eyetube/detail/'.$linksite.'" />
-// 		<meta property= "og:type" content= "article" />
-// 		<meta property= "og:image" content= "'.base_url().'/systems/eyetube_storage/'.$row['thumb1'].'" />
-// 		<meta property= "og:description" content= "'.substr(strip_tags($row['description']),0,100).'" />
-// 		<meta property= "fb:app_id" content= "966242223397117" />
-// ';
+		// 		$data["meta"]["title"] 			= "";
+		// 		$data["meta"]["image"] 			= base_url()."/assets/img/tab_icon.png";
+		// 		$data["meta"]["description"] 	= "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+		// 		$data["meta"]["share"] 			= '<title>Eyesoccer - '.$row['title'].'</title><meta name= "twitter:card" content= "summary" />
+		// 		<meta name= "twitter:site" content= "@eyesoccer_id" />
+		// 		<meta name= "twitter:title" content= "'.$row['title'].'" />
+		// 		<meta name= "twitter:description" content= "'.substr(strip_tags($row['description']),0,100).'" />
+		// 		<meta name= "twitter:image" content= "'.base_url().'/systems/eyetube_storage/'.$row['thumb1'].'" />
+		// 		<meta property= "og:title" content= "'.$row['title'].'" />
+		// 		<meta property= "og:url" content= "'.base_url().'/eyetube/detail/'.$linksite.'" />
+		// 		<meta property= "og:type" content= "article" />
+		// 		<meta property= "og:image" content= "'.base_url().'/systems/eyetube_storage/'.$row['thumb1'].'" />
+		// 		<meta property= "og:description" content= "'.substr(strip_tags($row['description']),0,100).'" />
+		// 		<meta property= "fb:app_id" content= "966242223397117" />
+		// ';
 		
 		$data['eyetube_lain']  			=  $this->Eyetube_model->get_eyetube_lain($category_name,$eyetube_id);
 		$data['video_eyetube']  		=  $this->Eyetube_model->get_eyetube_satu2();
 		$data['eyetube_right_detail'] 	=  $this->Eyetube_model->get_eyetube_right_detail();
 		$data['eyetube_rekomendasi'] 	=  $this->Eyetube_model->get_eyetube_rekomendasi2();
-		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer();
+		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(9);
 		
 		$data["meta"]["title"] 			= "";
 		$data["meta"]["image"] 			= base_url()."/assets/img/tab_icon.png";
@@ -158,6 +164,83 @@ class Eyetube extends CI_Controller {
 		$this->load->view('template/static',$data);
 
 		// $this->load->view('eyetube/detail', $data);
+	}
+
+	public function new_emot($id=null)
+	{			
+		$date 	= date("Y-m-d H:i:s");
+		$ip 	= $this->getUserIP();
+		$tipe 	= $_POST["type"];
+
+		
+		$cek_emot 	= $this->Eyetube_model->cek_view_smile($id,$ip,$tipe);
+		// var_dump($cek_emot);exit();
+		if ($cek_emot < 1 )
+		{
+			$update 	= $this->Eyetube_model->set_news_emot($id,$tipe);
+
+			$object 	= array(
+							'visit_date' 	=> $date,
+							'type_visit' 	=> $tipe,
+							'place_visit' 	=> 'eyetube',
+							'place_id' 		=> $id,
+							'session_ip' 	=> $ip,
+			);
+
+			$insert 	= $this->Eyenews_model->set_tbl_view($object);
+
+			$jumlah 	= $this->Eyetube_model->get_jumlah_emot($id,$tipe);
+			
+			if ($tipe == "proud")
+			{
+				$html["html"] 	= $jumlah->tube_proud;
+			}
+			else
+				if ($tipe == "smile")
+			{
+				$html["html"] 	= $jumlah->tube_smile;
+			}
+			else
+			if ($tipe == "shock")
+			{
+				$html["html"] 	= $jumlah->tube_shock;
+			}
+			else
+			if ($tipe == "inspired")
+			{
+				$html["html"] 	= $jumlah->tube_inspired;
+			}
+			else
+			if ($tipe == "happy")
+			{
+				$html["html"] 	= $jumlah->tube_happy;
+			}
+			else
+			if ($tipe == "sad")
+			{
+				$html["html"] 	= $jumlah->tube_sad;
+			}
+			else
+			if ($tipe == "fear")
+			{
+				$html["html"] 	= $jumlah->tube_fear;
+			}
+			else
+			if ($tipe == "angry")
+			{
+				$html["html"] 	= $jumlah->tube_angry;
+			}
+			else
+			if ($tipe == "fun")
+			{
+				$html["html"] 	= $jumlah->tube_fun;
+			}
+
+			$html["status"] 	= 1;
+
+			echo json_encode($html);
+			
+		}
 	}
 	
 	public function detail2($eyetube_id= null,$action= null)
@@ -243,9 +326,6 @@ class Eyetube extends CI_Controller {
 	public function search($search= null,$pg= null)
 	{
 		
-		
-		
-
 		$data["meta"]["title"]= "";
 		$data["meta"]["image"]= base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]= "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
@@ -272,10 +352,12 @@ class Eyetube extends CI_Controller {
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
 	}
-	public function emot($id= null){
+
+	public function emot($id= null)
+	{
 		
-$date2= date("Y-m-d H:i:s");
-$ip= $this->getUserIP();
+		$date2= date("Y-m-d H:i:s");
+		$ip= $this->getUserIP();
 		if(isset($_POST["type"]) && $_POST["type"]== "smile")
 		{
 		  
@@ -372,24 +454,24 @@ $ip= $this->getUserIP();
 	
 	public function getUserIP()
 	{
-    $client  =  @$_SERVER['HTTP_CLIENT_IP'];
-    $forward =  @$_SERVER['HTTP_X_FORWARDED_FOR'];
-    $remote  =  $_SERVER['REMOTE_ADDR'];
+	    $client  =  @$_SERVER['HTTP_CLIENT_IP'];
+	    $forward =  @$_SERVER['HTTP_X_FORWARDED_FOR'];
+	    $remote  =  $_SERVER['REMOTE_ADDR'];
 
-    if(filter_var($client, FILTER_VALIDATE_IP))
-    {
-        $ip =  $client;
-    }
-    elseif(filter_var($forward, FILTER_VALIDATE_IP))
-    {
-        $ip =  $forward;
-    }
-    else
-    {
-        $ip =  $remote;
-    }
+	    if(filter_var($client, FILTER_VALIDATE_IP))
+	    {
+	        $ip =  $client;
+	    }
+	    elseif(filter_var($forward, FILTER_VALIDATE_IP))
+	    {
+	        $ip =  $forward;
+	    }
+	    else
+	    {
+	        $ip =  $remote;
+	    }
 
-    return $ip;
+	    return $ip;
 	}
 
 
@@ -419,6 +501,42 @@ $ip= $this->getUserIP();
 		$data["body"]= $this->load->view('eyetube/newtube', $data, true);
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
+	}
+
+	public function kategori($kategori)
+	{
+		$data["meta"]["title"]= "";
+		$data["meta"]["image"]= base_url()."/assets/img/tab_icon.png";
+		$data["meta"]["description"]= "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+		$data["extrascript"] 			= $this->load->view('eyetube/script_index', '', true);
+
+		$data['eyetube_rekomendasi'] 	= $this->Eyetube_model->get_eyetube_rekomendasi();
+		$data['eyetube_populer'] 		= $this->Eyetube_model->get_eyetube_populer(3);
+		$data['eyenews_populer2']		= $this->Eyenews_model->get_eyenews_populer2();
+		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
+		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
+
+		$data['tube_type'] 				= $this->Master_model->getAll('tbl_category_eyetube', $where = array(), $select = array('category_name'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array());
+
+		$where    	= array('category_name'=> urldecode ( $kategori ));
+		$selectID 	= 'eyetube_id';
+		$tbl      	= 'tbl_eyetube';
+		$limit    	= 12;
+		$offset   	= $this->uri->segment(4);
+		$uri_segment = 4;
+		$url      	= 'eyetube/kategori/'.$kategori;
+		$like 		= array();
+
+		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		// var_dump($data['pagging']);exit();
+
+		$this->load->view('config-session',$data);
+		
+		$data['kanal'] 	=  "eyenews";
+		$data["body"]	=  $this->load->view('eyetube/category', $data, true);
+
+		$this->load->view('template/static',$data);
 	}
 	
 }

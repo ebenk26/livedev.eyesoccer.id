@@ -98,7 +98,6 @@
             else if ($kanal == 'eyemarket')
             {
     ?>
-                <link href="<?php echo base_url(); ?>bs/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css">
                 <link rel="stylesheet" href="<?php echo base_url(); ?>bs/jud/css/bootstrap.min.css ">
                 <link href="<?=base_url()?>bs/jud/css/animate.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/style.css" rel="stylesheet">
@@ -115,6 +114,11 @@
                 <link href="<?= base_url(); ?>assets/eyetube/css/bs.css" rel="stylesheet">
                 <!-- <link href="<?= base_url(); ?>assets/eyetube/css/style.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+                <style type="text/css">
+                    .x-m{
+                        margin-left: unset;
+                    }
+                </style>
         <?php
             }
             else if ($kanal == 'eyetube_detail')
@@ -122,6 +126,11 @@
         ?>
                 <link href="<?=base_url()?>assets/eyetube/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
+                <style type="text/css">
+                    .center-dekstop{
+                        width: 1065px;
+                    }
+                </style>
         <?php        
             }
             else
@@ -132,6 +141,8 @@
         <?php
             }
         ?>
+
+            <link href="<?php echo base_url(); ?>bs/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     		
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
