@@ -17,9 +17,10 @@
                 <?php 
                     foreach ($tube_type as $value)
                     {
+                        $url1   = str_replace(' ', '-', $value->category_name);
                 ?>
                         <li>
-                            <a href="<?= base_url(); ?>eyetube/kategori/<?= $value->category_name; ?>"><?= $value->category_name; ?></a>
+                            <a href="<?= base_url(); ?>eyetube/kategori/<?= $url1; ?>"><?= $value->category_name; ?></a>
                         </li>
                 <?php  
                     }
@@ -233,19 +234,23 @@
                 </div>      
                 <div>
                     <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
-                    <div class="tube-komen mt-10">
+
+                    <!-- <div class="tube-komen mt-10">
                         <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
                         <input type="text" placeholder="Tulis komentar kamu...">
                     </div>
                     <div class="fl-r">
                         <button class="btn-abu" type="button">Batal</button>
                         <button class="btn-blue" type="button">Kirim</button>
-                    </div>
-                    <div class="garis-x3 mt-20"></div>
+                    </div> -->
+                    <!-- <div class="garis-x3 mt-20"></div> -->
                 </div>
+
+                <div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
+
                 <div>
                     <div class="tube-komen">
-                        <table>
+                        <!-- <table>
                             <tr>
                                 <td>
                                     <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
@@ -369,11 +374,11 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="garis-x3 m-t-10"></div>
+                        <div class="garis-x3 m-t-10"></div> -->
 
-                        <div class="tx-c">
+                        <!-- <div class="tx-c">
                             <button class="btn-white mt-10" type="button">Lihat komentar lainnya</button>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>

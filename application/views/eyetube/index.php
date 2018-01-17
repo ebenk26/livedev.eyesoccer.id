@@ -11,9 +11,10 @@
                     <?php 
                         foreach ($tube_type as $value)
                         {
+                            $url1   = str_replace(' ', '-', $value->category_name);
                     ?>
                             <li>
-                                <a href="<?= base_url(); ?>eyetube/kategori/<?= $value->category_name; ?>"><?= $value->category_name; ?></a>
+                                <a href="<?= base_url(); ?>eyetube/kategori/<?= $url1; ?>"><?= $value->category_name; ?></a>
                             </li>
                     <?php  
                         }

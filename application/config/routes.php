@@ -56,6 +56,21 @@ $route['eyeprofile_player_sitemap\.xml'] = "eyeprofile_player_sitemap";
 $route['eyeprofile_club_sitemap\.xml'] = "eyeprofile_club_sitemap";
 $route['eyeprofile_official_sitemap\.xml'] = "eyeprofile_official_sitemap";
 
+$route['eyetube/kategori/Eye-Soccer-Flash'] 	= "eyetube/kategori/1";
+$route['eyetube/kategori/Eye-Soccer-Funny'] 	= "eyetube/kategori/2";
+$route['eyetube/kategori/Eye-Soccer-Hits'] 		= "eyetube/kategori/3";
+$route['eyetube/kategori/VIDEO-KAMU'] 			= "eyetube/kategori/4";
+$route['eyetube/kategori/Eyesoccerpedia'] 		= "eyetube/kategori/5";
+$route['eyetube/kategori/Highlight'] 			= "eyetube/kategori/6";
+$route['eyetube/kategori/Eyesoccer-History'] 	= "eyetube/kategori/7";
+$route['eyetube/kategori/Eyesoccer-Fact-'] 		= "eyetube/kategori/8";
+$route['eyetube/kategori/Eyesoccer-Profile'] 	= "eyetube/kategori/9";
+$route['eyetube/kategori/Eyesoccer-Science'] 	= "eyetube/kategori/11";
+$route['eyetube/kategori/Match-Preview'] 		= "eyetube/kategori/12";
+$route['eyetube/kategori/SSB-/-Akademi'] 		= "eyetube/kategori/13";
+$route['eyetube/kategori/Eyesoccer-Star'] 		= "eyetube/kategori/14";
+$route['eyetube/kategori/Profile-SSB'] 			= "eyetube/kategori/15";
+
 //$route['seo/sitemap\.xml'] = "seo/sitemap";
 
 
