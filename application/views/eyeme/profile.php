@@ -43,6 +43,7 @@
                     </div>
                 </div>
             </div>
+        
             <div class="w900 m-0">
                 <?php if(count($getImg) > 0 ){
 

@@ -1,3 +1,8 @@
+<style type="text/css">
+    .col-emoji{
+        cursor: pointer;
+    }
+</style>
 
 <div class="crumb">
     <ul>
@@ -9,24 +14,16 @@
     <div class="center-desktop m-0">
         <div class="menu-3 w1020 m-0">
             <ul>
-                <li>
-                    <a href="">EYESOCCER FACT</a>
-                </li>
-                <li>
-                    <a href="">EYESOCCER FLASH</a>
-                </li>
-                <li>
-                    <a href="">EYESOCCER PEDIA</a>
-                </li>
-                <li>
-                    <a href="">EYESOCCER PREVIEW</a>
-                </li>
-                <li>
-                    <a href="">EYESOCCER HITS</a>
-                </li>
-                <li class="m-0-0">
-                    <a href="">EYESOCCER STAR</a>
-                </li>
+                <?php 
+                    foreach ($tube_type as $value)
+                    {
+                ?>
+                        <li>
+                            <a href="<?= base_url(); ?>eyetube/kategori/<?= $value->category_name; ?>"><?= $value->category_name; ?></a>
+                        </li>
+                <?php  
+                    }
+                ?>
             </ul>
         </div>
     </div>
@@ -88,13 +85,13 @@
                                 <li>
                                     <i class="fa fa-heart-o" aria-hidden="true"></i>
                                     <!-- <i class="material-icons">favorite</i> -->
-                                    <span>123</span>
+                                    <span><?= $eyetube_headline->tube_like; ?></span>
                                 </li>
                                 <li>
 
-                                    <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                    <!-- <i class="material-icons">comment</i> -->
-                                    <span>456</span>
+                                    <!-- <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                    <i class="material-icons">comment</i>
+                                    <span>456</span> -->
                                 </li>
                                 <li>
                                     <span style="cursor: pointer;" id="showBtnShare">
@@ -134,78 +131,102 @@
                     <div class="garis-x3"></div>
                 </div>
                 <!-- EMOTICON -->
-                <input type="hidden" id="eyetube_id22" value="" />
+                <input type="hidden" id="eyetube-id" value="<?= $eyetube_headline->eyetube_id; ?>" />
                 <h3 id="t1">Bagaimana reaksi Anda tentang video ini?</h3>                   
                 <div class="container mt-45 mb-30">
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="proud"> <!-- tadinya happy -->
                             <div class="img-box">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
                             </div>
-                            <span></span>
+                            <span class="replace_proud"><?= $eyetube_headline->tube_proud; ?></span>
+                            <span class="load-proud" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
                             <span>bangga</span>
                         </a>
                     </div>
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="inspired">
                             <div class="img-box">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
                             </div>
-                            <span></span>
-                            <span>bingung</span>
+                            <span class="replace_inspired"><?= $eyetube_headline->tube_inspired; ?></span>
+                            <span class="load-inspired" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
+                            <span>terinspirasi</span>
                         </a>
                     </div>
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="happy"> <!-- tadinya smile -->
                             <div class="img-box box-img-90">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/gembira.png" alt="">
                             </div>
-                            <span></span>
+                            <span class="replace_happy"><?= $eyetube_headline->tube_happy; ?></span>
+                            <span class="load-happy" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
                             <span>gembira</span>
                         </a>
                     </div>
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="sad">
                             <div class="img-box">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/sedih.png" alt="">
                             </div>
-                            <span></span>
+                            <span class="replace_sad"><?= $eyetube_headline->tube_sad; ?></span>
+                            <span class="load-sad" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
                             <span>sedih</span>
                         </a>
                     </div>
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="angry">
                             <div class="img-box">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
                             </div>
-                            <span></span>
-                            <span>suka</span>
+                            <span class="replace_angry"><?= $eyetube_headline->tube_angry; ?></span>
+                            <span class="load-angry" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
+                            <span>marah</span>
                         </a>
                     </div>
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="fear">
                             <div class="img-box">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/takut.png" alt="">
                             </div>
-                            <span></span>
+                            <span class="replace_fear"><?= $eyetube_headline->tube_fear; ?></span>
+                            <span class="load-fear" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
                             <span>takut</span>
                         </a>
                     </div>
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="fun">
                             <div class="img-box">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/terhibur.png" alt="">
                             </div>
-                            <span></span>
+                            <span class="replace_fun"><?= $eyetube_headline->tube_fun; ?></span>
+                            <span class="load-fun" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
                             <span>terhibur</span>
                         </a>
                     </div>
                     <div class="col-2 col-emoji">
-                        <a href="">
+                        <a class="emoticon" type_emot="shock">
                             <div class="img-box">
                                 <img src="<?=base_url()?>assets/eyenews/img/emoji/terkejut.png" alt="">
                             </div>
-                            <span></span>
+                            <span class="replace_shock"><?= $eyetube_headline->tube_shock; ?></span>
+                            <span class="load-shock" style="display:none;">
+                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                             </span>
                             <span>terkejut</span>
                         </a>
                     </div>
@@ -373,7 +394,7 @@
                                         <a href="<?= base_url() ?>eyetube/detail/<?= $tube_lain['url']; ?>">
                                             <div class="container h105">
                                                 <div>
-                                                    <img src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $tube_lain['thumb']; ?>"" alt="">
+                                                    <img src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $tube_lain['thumb']; ?>" alt="">
                                                     <div class="upr" style="background-color: unset;">
                                                         <span style="visibility: hidden;">2:30</span>
                                                     </div>
@@ -407,132 +428,36 @@
                                 <h4>REKOMENDASI</h4>
                             </div>
                             <div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="container h105">
-                                    <img src="<?= base_url() ?>assets/img/a.jpg" alt="">
-                                    <div class="upr">
-                                        <span>2:30</span>
-                                    </div>
-                                    <div class="container rb">
-                                        <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                        <div class="rr">
-                                            <span>2 jam yang lalu</span>
-                                            <span>-</span>
-                                            <span>123 view</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php
+                                    foreach ($eyetube_populer as $populer)
+                                    {
+                                ?>
+                                        <a href="<?= base_url() ?>eyetube/detail/<?= $populer['url']; ?>">
+                                            <div class="container h105">
+                                                <img src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $populer['thumb']; ?>" alt="">
+                                                <div class="upr">
+                                                    <span style="visibility: hidden;">2:30</span>
+                                                </div>
+                                                <div class="container rb">
+                                                    <span><?= $populer['title']; ?></span>
+                                                    <div class="rr">
+                                                        <span>
+                                                            <?php
+                                                                    $date       =  new DateTime($populer['createon']);
+                                                                    $tanggal    = date_format($date,"Y-m-d H:i:s");
+
+                                                                    echo relative_time($tanggal) . ' lalu';
+                                                            ?>
+                                                        </span>
+                                                        <span>-</span>
+                                                        <span><?= $populer['tube_view']; ?> view</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                <?php        
+                                    }
+                                ?>
                             </div>
 
                         </div>
@@ -545,11 +470,44 @@
         </div>
     </div>
 </div>
+
 <script type='text/javascript' src='<?=base_url()?>bs/js/sharethis.js#property=596cf64cb69de60011989f08&product=inline-share-buttons' async='async'></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("#showBtnShare").click(function(){
             $(".btn-share").toggle();
         });
     });
-</script>   
+</script>
+
+<script>
+    $(document).ready(function () 
+    {
+        $(".emoticon").click(function()
+        {
+            
+            id      = $("#eyetube-id").val();
+            type    = $(this).attr("type_emot");
+            link    = "eyetube";
+            // alert(id+"."+type+"."+link);
+            $.ajax({
+
+                type: "POST",
+                data: { 'type': type, 'id': id, 'link': link },
+                url: "<?=base_url()?>eyetube/new_emot/" + id,
+                dataType: "json",
+
+                success: function (data) {
+                    $(".load-"+type).attr('style', 'display:block');
+
+                    setTimeout(function () {
+                        $(".load-"+type).attr('style', 'display:none');
+                        $(".replace_"+type).empty().html(data.html);
+                    }, 2000); 
+                }
+
+            });
+        });
+    });
+</script>

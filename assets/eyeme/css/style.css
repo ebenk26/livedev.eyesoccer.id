@@ -1830,7 +1830,7 @@ ul, li {
 .komen{
     display: block;
     overflow-y: scroll;
-    height: 350px;
+    max-height: 350px;
 }
 .komen>ul>li>span{
     padding-left: 5px;
@@ -2860,5 +2860,4 @@ loading animation
 .btn-follower:hover{
     background-color: red !important;
     color: white !important;
-
 }
