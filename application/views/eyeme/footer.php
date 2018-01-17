@@ -61,33 +61,46 @@ $('#notif').click(function(event){ //event notif click
             
             if(r.length > 0 ){
             $.each(r,function(k, v) { //parsing jsondata
+                var tc='';
                tbl += '<tr class="notif-link" rel="' + v.id_img + '">';
                     tbl += '<td>';
                         tbl += '<img class="notif-profil-foto" src="' +
                         (v.display_picture == '' ? DPIC : MEIMG + v.display_picture ) +' " alt="user photo" />';
                     tbl += '</td>';
-                    tbl += '<td>';
+
+                    if(v.notif_type.substr(0,3) == 'COM'){
+                        tbl += '<td onclick="location.href=\'<?php echo MEURL.'img/'?>'+ v.id_img +'\'">';
                         tbl += '<a href="'+ MEPROFILE + v.username +'">'+ v.username +'</a>';
                         tbl += '<span class="ntf">';
-
-                        if(v.notif_type.substr(0,3) == 'COM'){
-                            tbl += 'Mengomentari Foto Anda </br><span style="margin:auto">' + v.notif_content + '</span>'; 
-
-                        }
-                        else if(v.notif_type.substr(0,3) == 'LIK'){
-                            tbl += 'Menyukai Foto Anda'; 
-                        }
-                        else if(v.notif_type.substr(0,3) == 'FOL'){
-                            tbl += 'Mengikuti Anda';
-
-                        }
-                        else{
-                             tbl += 'Mengikuti Anda'; 
-                        }
+                        tbl += 'Mengomentari Foto Anda </br><span style="margin:auto">' + v.notif_content + '</span>'; 
                         tbl += '</span>';
-                        //(v.notif_type.substr(0,3) == '') + '</span>';
                         tbl += '<span class="time-notif">'+ v.timeString +'</span>';
-                    tbl += '</td>';
+                        tbl += '</td>';
+
+                    }
+                    else if(v.notif_type.substr(0,3) == 'LIK'){
+                        tbl += '<td onclick="location.href=\'<?php echo MEURL.'img/'?>'+ v.id_img +'\'">';
+                        tbl += '<a href="'+ MEPROFILE + v.username +'">'+ v.username +'</a>';
+                        tbl += '<span class="ntf">';
+                        tbl += 'Menyukai Foto Anda'; 
+                        tbl += '</span>';
+                        tbl += '<span class="time-notif">'+ v.timeString +'</span>';
+                        tbl += '</td>';
+
+                    }
+                    else if(v.notif_type.substr(0,3) == 'FOL'){
+                        tbl += '<td onclick="location.href=\'<?php echo MEPROFILE?>\'' + v.username +'">';
+                        tbl += '<a href="'+ MEPROFILE + v.username +'">'+ v.username +'</a>';
+                        tbl += '<span class="ntf">';
+                        tbl += 'Mengikuti Anda';
+                        tbl += '</span>';
+                        tbl += '<span class="time-notif">'+ v.timeString +'</span>';
+                        tbl += '</td>';
+                    }
+                    else{
+                         tbl += 'Mengikuti Anda'; 
+                    }
+                      
                     tbl += '<td class="fl-r mr-7">';
                         tbl += (v.img_thumb == null ? '' : '<img src="'+ MEIMG + v.img_thumb + '" alt="post photo" class="notif-photo">');
                     tbl += '</td>';
@@ -206,6 +219,9 @@ $('.click-like').click(function(event) {
     var $this = $(this);
     var status = $this.attr('status');
     var img = $(this).attr('ref');
+    if($this.data('requestRunning')){
+        return;
+    }
 
     if(typeof status !== typeof undefined && status !== false ){//check apakah attribut ref terdefenisi 
         //fitur like 
@@ -226,8 +242,8 @@ $('.click-like').click(function(event) {
         .fail(function() {
             console.log("error");
         })
-        .always(function() {
-            console.log("complete");
+        .complete(function() {
+            $this.data('requestRunning',false);
         });
        
 
@@ -258,11 +274,16 @@ $('.click-like').click(function(event) {
     
     //alert($(this).attr('ref'));
 });
+
 //follow 
-$('.btn-white-follow').click(function(event) {
+$('.btn-white-follow,.btn-fol').click(function(event) {
+  
 
     var id_friend = $(this).attr('rel');
     $this   = $(this);
+    if($this.data('requestRunning')){
+        return;
+    }
     /* Act on the event */
     if($this.hasClass('fol')){
         $.ajax({
@@ -284,8 +305,8 @@ $('.btn-white-follow').click(function(event) {
         .fail(function() {
             console.log("error");
         })
-        .always(function() {
-            console.log("complete");
+        .complete(function() {
+            $this.data('requestRunning',false);
         });
     }
     else{
@@ -462,7 +483,6 @@ $('.a-fol').click(function(event) {
     .done(function(r) {
         $('#fol-box').css('display','block');
         
-
         $.each(r,function(k,v){
             tbl_fol += '<tr>';
                 tbl_fol += '<td>';
@@ -499,7 +519,24 @@ $('.a-fol').click(function(event) {
 
    
 });
-
+function folclick(id,ref){
+    $.ajax({
+        url: '/path/to/file',
+        type: 'default GET (Other values: POST)',
+        dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+        data: {param1: 'value1'},
+    })
+    .done(function() {
+        console.log("success");
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+    
+}
 
 /*
     fungsi image-detail::

@@ -200,7 +200,13 @@ class Eyeme extends CI_Controller {
 		$id  = ($id == '' ? $this->input->get('id'): $this->id_member);
 		$res = $this->emod->getFollow($id,$get);
 		for($i = 0; $i <count($res);$i++){
-			$res[$i]->btnFol = btnFol($this->id_member,$res[$i]->id_following,'btn-fol');
+			#echo '<script>alert(\''.$res[$i]->id_member_fol.'\')</script>';
+			
+			$checkFol  = $res[$i]->checkFollowed;
+			$attr[$i]  = 
+				array('onclick'=> 'folclick(\''.$res[$i]->id_member_fol.'\',\''.($checkFol == TRUE ? 'followed':'notfollowed').'\')');
+			$checkSelf = $this->checkSelf($this->id_member,$res[$i]->id_member_fol);
+			$res[$i]->btnFol = btnFol($this->id_member,$checkFol,$attr[$i],'btn-fol',$checkSelf);
 		}
 		$response = json_encode($res);
 		echo  $response;
@@ -215,6 +221,13 @@ class Eyeme extends CI_Controller {
 	public function checkFollowed($id_member,$id_follow){
 		$check = $this->emod->checkFollowed($id_member,$id_follow);
 		return $check;
+	}
+	public function checkSelf($id_member,$id_follow){
+		if($id_member === $id_follow){
+			return true;
+		}
+		else return false;
+
 	}
 
 	/**

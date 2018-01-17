@@ -733,6 +733,89 @@ class Home_model extends CI_Model
 		return $status;
 	}
 	
+	public function getAllLeftJoin($table, $where = array(), $select = array(), $order = array(), $limit = '', $offset = '', $whereNotin = '', $like = array(), $leftjoin = array()){
+		if($limit != ''){
+			if($offset == '')
+			{
+				if(is_numeric($limit)){
+					$this->db->limit($limit);
+				}
+			}else{
+				if(is_numeric($offset)){
+					$this->db->limit($limit, $offset);
+				}else{
+					$this->db->limit($limit);
+				}
+			}
+		}
+		
+		if(count($like) > 0 && $like != ''){
+			foreach($like as $k=>$v){
+				$this->db->like($k,$v);
+			}
+		}
+		
+		#p($whereNotin);
+		if(is_array($whereNotin)){
+			if(count($whereNotin) > 0){
+				$field = $whereNotin[0];
+				
+				$ItemWhere = $whereNotin[1] != ''  > 0 ? $whereNotin[1] : array();  #ditambahin ini kemaren
+				
+				#echo count($whereNotin[1]);
+				#p($whereNotin[1]);				
+				foreach($ItemWhere as $k=>$v){
+					$this->db->where_not_in($field,$v);
+				}
+			}
+		}
+		
+		if(is_array($where)){
+			if(count($where) > 0){
+				foreach($where as $k=>$v){
+					$this->db->where($k,$v);
+				}			
+			}
+		}
+		
+		if(is_array($leftjoin)){
+			if(count($leftjoin) > 0){
+				foreach($leftjoin as $k=>$v){
+					$this->db->join($k,$v, 'left');
+				}			
+			}
+		}
+		
+		if(is_array($order)){
+			if(count($order) > 0){
+				foreach($order as $ko=>$vo){				
+					$this->db->order_by($ko, $vo); 
+				}
+			}
+		}
+		
+		$s = '';
+		if(is_array($select)){
+			if(count($select) > 0){
+				foreach($select as $vs){				
+					$s .= ','.$vs;
+				}
+				$s = substr($s,1);
+				$this->db->select($s);
+			}
+		}
+		
+		$q = $this->db->get($table);
+		
+		if($q->num_rows() > 0){
+			$r = $q->result();
+		}else{
+			$r = array();
+		}
+		
+		return $r;		
+	}
+	
 }
 
 /* End of file Home_model.php */

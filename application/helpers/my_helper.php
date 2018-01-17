@@ -132,11 +132,27 @@ function inputSecure($input){
     
     return $input;
 }
+/**
+    *fungsi getDistance::
+    *untuk menentukan jarak dari 2 waktu
+    *@param $time1
+    *@param $time2
+    *@return $distance timestamp
+
+*/
 function getDistance($time1,$time2){
     $distance =  strtotime($time1) - strtotime($time2);
     return $distance;
 
 }
+/**
+    *fungsi getTime:: untuk mengambil detail waktu 
+    *gunakan getDistance untuk menentukan jarak waktu 
+    *@param $timeStamp
+    *@return string;
+
+
+*/
 function getTime($timeStamp){
     $timeString = ""; 
     $day       = floor($timeStamp / (3600 * 24));
@@ -170,11 +186,37 @@ function getTime($timeStamp){
     }
     return array('day' => $day,'hours'=> $hours,'minute'=> $minute,'secon'=>$secon,'timeString' => $timeString);
 }
-//button follow and unfollow
-function btnFol($id_member,$has_follow = TRUE,$class='btn-white-follow'){
-    return '<button class="'.$class.' '.(!$has_follow ? 'fol' : 'unfol').'" type="button" rel="'.$id_member.'">'
-    .(!$has_follow ? 'ikuti':'Mengikuti').'</button>';
 
+
+
+/**
+    *fungsi btnFol::
+    *untuk memamnggil button follow
+    *@param $id_member = id member yang sedang aktif
+    *@param $has_follow = default (bool) TRUE check sudah di follow
+    *@param $attr       = default (array) tambahan attribut bila diperlukan
+    *@param $class      = default btn-white-follow class css
+    *@param $checkSelf  = periksa akun sendiri yang atau bukan if TRUE return '': else return button
+    *@return string button  
+
+*/
+function btnFol($id_member,$has_follow = TRUE,$attr=array(),$class='btn-white-follow',$checkSelf = FALSE){
+
+    $addAttr = '';
+    if(is_array($attr)){
+        foreach($attr as $k => $v){
+        $addAttr .= "{$k}=\"{$v}\"";
+
+        }
+    }
+
+        if($checkSelf == TRUE){
+            return '';
+        }
+        else{
+            return '<button class="'.$class.' '.(!$has_follow ? 'fol' : 'unfol').'" type="button" rel="'.$id_member.'" '.$addAttr.'>'
+            .(!$has_follow ? 'ikuti':'Mengikuti').'</button>';
+        }
 }
 //button login 
 function btnLogin($login){
