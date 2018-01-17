@@ -708,6 +708,31 @@ class Home_model extends CI_Model
 		return $query;
 	}
 	
+	public function get_galleri_member()
+	{
+		$query = $this->db->query("SELECT * FROM tbl_gallery WHERE upload_user='".$_SESSION["member_id"]."' AND publish_by='member' AND active='1'")->result_array();
+		return $query;
+	}
+	
+	public function uploadVideo($vid,$lat,$lon)
+	{
+		$member_id = $_SESSION["member_id"];
+
+		$data = array(
+			'video'   		=>  $vid.'.mp4',
+			'lat'     		=>  $lat,
+			'lon'       	=>  $lon,
+			'upload_date'  	=>  date("Y-m-d H:i:s"),
+			'publish_by'   	=>  'member',
+			'publish_type'	=>  'private',
+			'upload_user'	=>  $member_id
+		);
+
+		$this->db->insert('tbl_gallery', $data);
+		$status = $this->db->affected_rows();
+		return $status;
+	}
+	
 }
 
 /* End of file Home_model.php */

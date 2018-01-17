@@ -83,3 +83,11 @@ window.onclick = function(event) {
         srcbox.style.display = "none";
     }
 }
+// $('#kal').datepicker({
+//     inline: true,
+//     altField: '#ind'
+// });
+
+// $('#ind').change(function(){
+//     $('#kal').datepicker('setDate', $(this).val());
+// });

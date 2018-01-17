@@ -509,51 +509,66 @@ class Eyemarket extends CI_Controller {
 
 	public function view_keranjang($id_member)
 	{
-		$url 	= uri_string();
-		
-		$this->mod->checkLogin($url);
-		
-		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
-		
-		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
-		$data['jumlah']		= $this->Eyemarket_model->get_count_keranjang($id_member);
+		if ($id_member != $this->session->userdata('id_member'))
+		{
+			redirect('eyemarket/view_keranjang/'.$this->session->userdata('id_member'));
+		}
+		else
+		{
+			$url 	= uri_string();
+			
+			$this->mod->checkLogin($url);
+			
+			$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
+			
+			$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
+			$data['jumlah']		= $this->Eyemarket_model->get_count_keranjang($id_member);
 
-		$data['username'] 	= $this->session->userdata('username');
-		$data['member_id'] 	= $this->session->userdata('id_member');
+			$data['username'] 	= $this->session->userdata('username');
+			$data['member_id'] 	= $this->session->userdata('id_member');
 
-		$data["kanal"] 		= 'eyemarket';
-		
-		$data["body"] 		=  $this->load->view('eyemarket/new_view/basket', $data, true);
+			$data["kanal"] 		= 'eyemarket';
+			
+			$data["body"] 		=  $this->load->view('eyemarket/new_view/basket', $data, true);
 
-		$this->load->view('/template/static', $data);
+			$this->load->view('/template/static', $data);
+		}
 	}
 
 	public function daftar_keranjang($id_member)
 	{
-		$url 	= uri_string();
-		
-		$this->mod->checkLogin($url);
-		
-		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
-		
-		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
-		$data['jumlah']		= $this->Eyemarket_model->get_count_keranjang($id_member);
-
-		$data["id_member"] 	= $id_member;
-
-		$data["profile"] 	= $this->Eyemarket_model->get_member($id_member);
-
-		foreach ($data["profile"] as $value)
+		// var_dump($id_member != $this->session->userdata('id_member'));exit();
+		if ($id_member != $this->session->userdata('id_member'))
 		{
-			$data['username'] 		= $value['name'];
-			$data['nama_lengkap'] 	= $value['fullname'];
+			redirect('eyemarket/user/'.$this->session->userdata('id_member'));
 		}
+		else
+		{
+			$url 	= uri_string();
+			
+			$this->mod->checkLogin($url);
+			
+			$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
+			
+			$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
+			$data['jumlah']		= $this->Eyemarket_model->get_count_keranjang($id_member);
 
-		$data["active"] 	= "keranjang";
+			$data["id_member"] 	= $id_member;
 
-		$data["content"] 	= $this->load->view('eyemarket/user/keranjang',$data,TRUE);
-		
-		$this->load->view('/eyemarket/user/template', $data);
+			$data["profile"] 	= $this->Eyemarket_model->get_member($id_member);
+
+			foreach ($data["profile"] as $value)
+			{
+				$data['username'] 		= $value['name'];
+				$data['nama_lengkap'] 	= $value['fullname'];
+			}
+
+			$data["active"] 	= "keranjang";
+
+			$data["content"] 	= $this->load->view('eyemarket/user/keranjang',$data,TRUE);
+			
+			$this->load->view('/eyemarket/user/template', $data);
+		}
 	}
 
 	public function edit_keranjang()
