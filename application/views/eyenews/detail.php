@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title></title>
-    <meta name="viewport" content="width=1000">    
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-    <div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>EyeProfile</li>
-            <li>Klub</li>
-            <!-- <li>Pemain</li> -->
-        </ul>
-    </div>
+		<style>
+			.pagination > .active > a {
+				z-index:1;
+			}
+		</style>
+		<div class="crumb">
+			<ul>
+				<li>Home</li>
+				<li>EyeNews</li>
+				<li><?php echo $kategori[0]->news_type;?></li>
+			</ul>
+		</div>
 
 <?php
     foreach ($model as $value)
@@ -44,34 +36,20 @@
         
 ?>
 	
-    <div class="desktop">
         <div class="center-desktop m-0">
             <div class="menu-4 w1020 m-0">
                 <ul>
-                    <li>
-                        <a href="">LIGA</a>
-                    </li>
-                    <li>
-                        <a href="">PEMBINAAN</a>
-                    </li>
-                    <li>
-                        <a href="">UMPAN LAMBUNG</a>
-                    </li>
-                    <li>
-                        <a href="">PREDIKSI</a>
-                    </li>
-                    <li>
-                        <a href="">PERISTIWA</a>
-                    </li>
-                    <li>
-                        <a href="">SOCCER SAINS</a>
-                    </li>
-                    <li>
-                        <a href="">ULAS TUNTAS</a>
-                    </li>
-                    <li class="m-0-0">
-                        <a href="">PINGGIR LAPANGAN</a>
-                    </li>
+					<?php
+						foreach ($news_type as $cat_name)
+						{
+					?>
+						<li>
+							<a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
+						</li>
+					<?php
+						}
+					?>
+                    
                 </ul>
             </div>
         </div>
@@ -350,7 +328,6 @@
                 </div>
             </div>
         </div>
-    </div>
 	<?php
 	}
 	?>

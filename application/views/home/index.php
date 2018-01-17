@@ -1,4 +1,103 @@
-
+<style>
+	.des-p{
+		color: #2b2b2b;
+		font-size: .7em;
+		font-weight: 600;
+		margin-top: 2px;
+		width: 95%;
+	}
+	.des-p td{
+		width: max-content;
+		padding: 0 2px 0 0;
+	}
+	.des-p td:nth-of-type(1){
+		width: 92px !important;
+	}
+	.vid-box-vl-img{
+		width: 100%;
+    	height: 145px;
+    	overflow: hidden;
+	}
+	.vid-box-vl-img img{
+		width: 100%;
+    	min-height: 100%;
+	}
+	.h-berita-terkait>ul>li>a {
+    	font-size: .85em;
+    	color: darkslategray;
+    	font-weight: 500;
+	}
+	.h-berita-terkait>ul>li>a>img {
+    	padding-right: 5px
+	}
+	.em-btn:hover{
+		background-color: #66b7f3;
+    	color: white;
+	}
+	.rek-ber-c>p {
+    	font-size: .7em;
+    	color: #aba6a6;
+    	width: 430px;
+    	float: right;
+    	margin: 0px;
+    	max-height: 46px;
+    	overflow: hidden;
+	}
+	.m-b-35{
+		margin-bottom: -35px
+	}
+	.beli{
+		border: 1px solid #FFB300;
+	}
+	.beli:hover, .beli a:hover{
+		background-color: #ffd400;
+    	border-color: #ffd400;
+    	color: white !important;
+	}
+	.ev-box-content {
+    	width: 340px;
+    	height: 210px;
+		overflow: hidden;
+		margin: 0 20px 0 0 !important;
+	}
+	.el{
+		font-weight: 500;
+	}
+	.jp{
+		color: #25ab2a;
+	}
+	.ctn-pemain, .ctn-pemain img{
+		border-radius: 5px;
+	}
+	.ctn-pemain img {
+		width: 100%;
+		height: auto;
+	}
+	.des {
+		top: 5px;
+	}
+	.des h3 {
+		margin: 10px 0;
+	}
+	.des p {
+    	font-size: .8em;
+    	margin: 0;
+    	max-height: 56px;
+    	overflow: hidden;
+	}
+	.btn-green:hover{
+		background-color: #8BC34A;
+		border-color: #8BC34A;
+		color: white;
+	}
+	.btn-play2{
+		position: relative;
+    	width: 50px;
+    	height: 50px;
+    	left: 190px;
+    	top: -210px;
+	}
+</style>
 		<!-- JADWAL -->
         <div id="jadwal" class="jadwal carousel slide">
             <div class="left navigate" href="#jadwal" role="button">
@@ -73,7 +172,7 @@
                 <a href="<?php echo base_url()?>eyeprofile/klub" class="kl">Klub Lainnya</a>
                 <i class="material-icons r-kl">keyboard_arrow_right</i>                                
             </span>            
-            <div id="epSlide" class="carousel slide">			  
+            <div id="epSlide" class="carousel slide" style="overflow:hidden;">			  
 				<div role="listbox" class="carousel-inner"> 
 					<div class="box item active">
 						<?php 
@@ -180,7 +279,7 @@
                 <i class="material-icons right i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
 			<h3 class="o">Pemain Profesional</h3>
-			<div class="carousel slide" id="topPemain" >			
+			<div class="carousel slide" id="topPemain" style="overflow:hidden;">			
                 <div class="bx-pemain carousel-inner" role="listbox">
                     <div class="item active">
 						<?php 
@@ -204,8 +303,9 @@
 							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 								<div class="ctn-pemain">
 									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
-									<div class="des">
+								  <div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;">
+									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+									<div class="container des" style="width: 70%;display:  inline-block;float:  right;padding:  0px;color: orange;font-weight: 600;">
 										<?php
 											$str_name = strlen($player['nama']);
 											if($str_name > 20){
@@ -224,9 +324,13 @@
 											}
 										?>
 										<h3><?= $player['nama']; ?></h3>
-										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
-										Klub: <?= $player['klub']; ?><br>
-										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>                        
 									</div>
 								</div>
 							</a>
@@ -243,8 +347,8 @@
 							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 								<div class="ctn-pemain">
 									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
-									<div class="des">
+									<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+									<div class="container des" style="width: 70%;display:  inline-block;float:  right;padding:  0px;color: orange;font-weight: 600;"
 										<?php
 											$str_name = strlen($player['nama']);
 											if($str_name > 20){
@@ -263,9 +367,13 @@
 											}
 										?>
 										<h3><?= $player['nama']; ?></h3>
-										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
-										Klub: <?= $player['klub']; ?><br>
-										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>  
 									</div>
 								</div>
 							</a>
@@ -282,8 +390,8 @@
 							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 								<div class="ctn-pemain">
 									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt="">
-									<div class="des">
+									<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+									<div class="container des" style="width: 70%;display:  inline-block;float:  right;padding:  0px;color: orange;font-weight: 600;"
 										<?php
 											$str_name = strlen($player['nama']);
 											if($str_name > 20){
@@ -302,9 +410,13 @@
 											}
 										?>
 										<h3><?= $player['nama']; ?></h3>
-										<p style="color: black;">Posisi: <?= $player['posisi']; ?><br>
-										Klub: <?= $player['klub']; ?><br>
-										Tanggal Lahir: <?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></p>                        
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>  
 									</div>
 								</div>
 							</a>
@@ -346,7 +458,7 @@
 					<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>" style="text-decoration: unset;">
 						<h1 class="et-title"><?= $videonya['title']; ?></h1>
 					</a>
-                    <p class="et-d">
+                    <p class="et-d" style="max-height:95px; overflow:hidden;">
 					<?php
 						$keterangan = strip_tags($videonya['description']);
 						echo word_limiter($keterangan,25);
@@ -358,7 +470,7 @@
 					?>
                 </div>
                 <div class="et-content2">				
-                    <div class="v-et-content2">
+                    <div class="v-et-content2" style="margin-top: 78px;">
 					<?php
 								$i = 0;
 								foreach ($video_eyetube as $videonya)
@@ -367,15 +479,17 @@
 									{
 					?>			
 						<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>" style="text-decoration: unset;">
-                        <div class="t-et-content2">
+                        <!-- judul eyetube
+						<div class="t-et-content2">
                             <span class="et-st"><?php
 						$date 		=  new DateTime($videonya['createon']);
 						$tanggal 	= date_format($date,"Y-m-d H:i:s");
 						echo relative_time($tanggal) . ' ago - '.$videonya['tube_view'].' views';						
 					?></span>
                             <p class="et-st-det"><?= $videonya['title']; ?></p>
-                        </div>
-                        <img class="v-et-2 v-et-100" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
+                        </div> -->
+						<img class="v-et-2 v-et-100 m-b-35" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
+							<div class="container btn-play2"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	
 						</a>
 					<?php
 					}
@@ -406,8 +520,11 @@
 							?>
 							<a href="<?=base_url().'eyetube/detail/'.$stars['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
-									<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">
-									<span class="vid-ttl"><?= $stars['title']; ?></span><br>
+									<div class="vid-box-vl-img">
+										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">
+										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
+									</div>
+									<div class="container" style="height:45px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($stars['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -432,8 +549,11 @@
 							<a href="<?=base_url().'eyetube/detail/'.$populer['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<!--<img src="assets/img/video-small.png" alt="">-->
-									<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">
-									<span class="vid-ttl"><?= $populer['title']; ?></span><br>
+									<div class="vid-box-vl-img">
+										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">
+										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
+									</div>
+									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($populer['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -457,8 +577,11 @@
 							?>							
 							<a href="<?=base_url().'eyetube/detail/'.$kamu['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
-									<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
-									<span class="vid-ttl"><?= $kamu['title']; ?></span><br>
+									<div class="vid-box-vl-img">
+										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
+										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
+									</div>
+									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($kamu['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -483,7 +606,7 @@
                     <h2 class="title en">EyeNews</h2>
                     <hr class="x-en">
 					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
-						<div class="t-en-content2" style="z-index: 1;top: 260px;left: 20px;"> 
+						<div class="t-en-content2" style="margin-top:1px; z-index:1; top:283px; padding:10px; width:580px; background-color:#00000050;"> 
 							<span class="et-st">	  					<small>
 								<?php
 									$date 		=  new DateTime($eyenews_main->createon);
@@ -495,10 +618,10 @@
 							<p class="et-st-det"><?php echo $eyenews_main->title; ?></p>
 						</div>					
                     <!--<img class="v-et-2 w-100" src="assets/img/video-small.png" alt="">-->
-						<img class="v-et-2 w-100" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>">
+					<div style="width:100%;height:374px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
 					</a>
-                    <div class="h-berita-terkait" style="margin-bottom:26px;">
-                        <h3>Berita Terkait</h3>
+                    <div class="h-berita-terkait" style="margin:40px 0;height:125px;overflow:hidden;">
+                        <h3 class="mb-10">Berita Terkait</h3>
 						<?php
 						$i = 0;
 						foreach ($eyenews_similar as $similar)
@@ -523,7 +646,7 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
-                    <div class="c-em-content2">
+                    <div class="c-em-content2" style="top: -20px;">
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
@@ -533,7 +656,9 @@
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">	
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">					
-                        <button type="text" class="em-btn">Lihat Foto Lainnya</button>
+                        <div style="padding:8px; text-align:center">
+							<button type="text" class="em-btn">Lihat Foto Lainnya</button>
+						</div>
                     </div>
                 </div>
             </div>
@@ -559,16 +684,17 @@
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
 											<!--<img src="assets/img/video-small.png" style="width:150px" alt="">-->
-											<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:150px" alt="">
-											<span><?=$populer['createon'];?></span>
-											<h1>
+											<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
+											<div class="container" style="width: 70%;float:  right;">
+												<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$populer['createon'];?></span>
+											<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
 												<a href="<?=base_url().'eyenews/detail/'.$populer['url']; ?>" style="text-decoration: unset;color:black;"><?=$populer['title'];?>
 												</a>
 											</h1>
-											<p><?php
+											<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
 												$keterangan = strip_tags($populer['description']);
 												echo word_limiter($keterangan,25);
-											?></p>
+											?></p></div>
 										</div>
                                         <hr>                                        
                                     </div>
@@ -586,17 +712,18 @@
 								?>
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
-											<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" style="width:150px" alt="">
-											<span><?=$rekomendasi['createon'];?></span>
-											<h1>
+										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>"style="width:100%; min-height:100%;" alt=""></div>
+										<div class="container" style="width: 70%;float:  right;">	
+										<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$rekomendasi['createon'];?></span>
+										<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
 												<a href="<?=base_url().'eyenews/detail/'.$rekomendasi['url']; ?>" style="text-decoration: unset;color:black;">
 												<?=$rekomendasi['title'];?>
 												</a>
 											</h1>
-											<p><?php
+											<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
 												$keterangan = strip_tags($rekomendasi['description']);
 												echo word_limiter($keterangan,15);
-											?></p>
+											?></p></div>
 										</div>
                                         <hr>
                                     </div>
@@ -614,17 +741,18 @@
 								?>
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
-											<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:150px" alt="">
-											<span><?=$muda['createon'];?></span>
-											<h1>
+										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
+											<div class="container" style="width: 70%;float:  right;">	
+										<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$muda['createon'];?></span>
+											<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
 												<a href="<?=base_url().'eyenews/detail/'.$muda['url']; ?>" style="text-decoration: unset;color:black;">
 												<?=$muda['title'];?>
 												</a>
 											</h1>
-											<p><?php
+											<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
 												$keterangan = strip_tags($muda['description']);
 												echo word_limiter($keterangan,15);
-											?></p>
+											?></p></div>
 										</div>
                                         <hr>
                                     </div>
@@ -640,18 +768,20 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
                     <h2 class="title emar">EyeMarket</h2>
                     <hr class="x-emar">
-                        <div class="rek-ber m-t-14">
+                        <div class="rek-ber" style="margin-top: -8px;">
 						<?php
 							foreach ($eyemarket_main as $row1){
 						?>						
-                            <div class="rek-ber-c">
-								<img src="<?php echo base_url()?>assets/home/img/video-small.png" alt="" style="width:110px; height:90px;">
+                            <div class="rek-ber-c" style="border-bottom: 1px solid slategray;padding: 10px 0 15px 0; margin-top: 0;">
+							<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo base_url()?>assets/home/img/video-small.png" alt="" style="width:100%; min-height:100%;"></div>
 								<!--<img src="systems/eyemarket_storage/<?=$row1["pic"]?>" alt="" style="width:110px; height:90px;">-->
-                                <h1><?php echo $row1['product_name'];  ?> </h1>
-                                <span class="price">HARGA</span>
-                                <p class="prices">Rp.<?php echo number_format($row1['price'],2,",","."); ?></p>
-                                <a href="<?=base_url()?>eyemarket/detail/<?php print $row1['id_product']; ?>"><button type="text" class="beli">Beli</a></button>
-                            </div>
+                                <div class="container" style="width: 75%;display:  inline-block;float:  right;">
+    <h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 34px;overflow: hidden;"><?php echo $row1['product_name'];  ?> </h1>
+                                <span class="price" style="font-size: .7em;color: gray;font-weight: 400;text-transform: uppercase;top: 20px;">HARGA</span>
+                                <p class="prices" style="font-size: 1em;color: black;font-weight: 500;margin:  0;">Rp.<?php echo number_format($row1['price'],2,",","."); ?></p>
+                                <a href="<?=base_url()?>eyemarket/detail/<?php print $row1['id_product']; ?>" style="text-decoration:  none;color: #ff9900;font-weight:  500;"><button type="text" class="beli" style="float:  right;position:  relative;top: -25px;">Beli</a></button></div>
+								
+							</div>
 							<?php
 							}
 							?>							
@@ -675,7 +805,7 @@
                 <i class="material-icons r-el">keyboard_arrow_right</i>                                
             </span>
             <div class="container">
-                <div id="evSlide" class="carousel slide t-30" style="width: 100% !important;">
+                <div id="evSlide" class="carousel slide t-30" style="width: 100% !important;overflow:hidden;">
                     <div role="listbox" class="carousel-inner" style="width: max-content;">  				
                         <div class="box item active">	
 						<?php
@@ -722,7 +852,7 @@
             <div class="container t-40">
                 <div class="et-content1">
                     <span class="jp green">JADWAL PERTANDINGAN</span>
-                    <div class="border-box">
+                    <div class="border-box" style="margin-top: 23px;">
                         <div class="container bg-g">						
                             <div class="t-tab">
 								<div class="day-choose t-active" id="jadwal_today">
