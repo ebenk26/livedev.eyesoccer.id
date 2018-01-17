@@ -588,11 +588,11 @@ class Home extends CI_Controller {
 		$data['kanal']	= "home";
 		$search = $this->input->get('q');
 		
-		$data['eyenews']	= $this->mod->getAll('tbl_eyenews', $where = array(), $select = array('title','description','url','thumb1'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array('title'=>$search));
+		$data['eyenews']	= $this->mod->getAll('tbl_eyenews', $where = array(), $select = array('title','description','url','thumb1'), $order = array('eyenews_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('title'=>$search));
 		
-		$data['eyetube']	= $this->mod->getAll('tbl_eyetube', $where = array(), $select = array('title','description','url','thumb1'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array('title'=>$search));
+		$data['eyetube']	= $this->mod->getAll('tbl_eyetube', $where = array(), $select = array('title','description','url','thumb1'), $order = array('eyetube_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('title'=>$search));
 		
-		$data['player']	= $this->Home_model->getAllLeftJoin('tbl_player', $where = array(), $select = array('tbl_player.name as name','tbl_player.position as position','tbl_player.number as number','tbl_player.url as url','tbl_club.name as club'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array('tbl_player.name'=>$search), $leftjoin = array('tbl_club'=>'tbl_club.club_id = tbl_player.club_id'));
+		$data['player']	= $this->Home_model->getAllLeftJoin('tbl_player', $where = array(), $select = array('tbl_player.name as name','tbl_player.position as position','tbl_player.number as number','tbl_player.url as url','tbl_club.name as club'), $order = array('tbl_player.player_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('tbl_player.name'=>$search), $leftjoin = array('tbl_club'=>'tbl_club.club_id = tbl_player.club_id'));
 		
 		$data["body"]=$this->load->view('home/search', $data, TRUE);
 		$this->load->view('template/static',$data);
