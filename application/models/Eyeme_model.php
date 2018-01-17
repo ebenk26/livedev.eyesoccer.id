@@ -605,7 +605,8 @@ class Eyeme_model extends Master_model
 					A.id_follow,
 					B.username,
 					B.name,
-					B.profile_pic
+					B.profile_pic,
+					B.id_member AS id_member_fol
 
 					FROM 
 					me_follow As A

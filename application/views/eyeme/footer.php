@@ -274,8 +274,10 @@ $('.click-like').click(function(event) {
     
     //alert($(this).attr('ref'));
 });
+
 //follow 
 $('.btn-white-follow,.btn-fol').click(function(event) {
+  
 
     var id_friend = $(this).attr('rel');
     $this   = $(this);
@@ -481,7 +483,6 @@ $('.a-fol').click(function(event) {
     .done(function(r) {
         $('#fol-box').css('display','block');
         
-
         $.each(r,function(k,v){
             tbl_fol += '<tr>';
                 tbl_fol += '<td>';
@@ -518,7 +519,24 @@ $('.a-fol').click(function(event) {
 
    
 });
-
+function folclick(id,ref){
+    $.ajax({
+        url: '/path/to/file',
+        type: 'default GET (Other values: POST)',
+        dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+        data: {param1: 'value1'},
+    })
+    .done(function() {
+        console.log("success");
+    })
+    .fail(function() {
+        console.log("error");
+    })
+    .always(function() {
+        console.log("complete");
+    });
+    
+}
 
 /*
     fungsi image-detail::
