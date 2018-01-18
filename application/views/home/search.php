@@ -9,7 +9,7 @@
 		{
 	?>
 		<div>
-			<a href="<?php echo base_url()?>eyenews/detail/<?php echo $value->url?>"><?php echo $value->title?></a><br>
+			<a href="<?php echo base_url()?>eyenews/detail/<?php echo $value->url?>"><?php echo str_replace(array($_GET["q"],ucwords($_GET["q"]),strtoupper($_GET["q"]),strtolower($_GET["q"])),'<span style="background-color:yellow;">'.$_GET["q"].'</span>',$value->title)?></a><br>
 			<?php echo strip_tags(word_limiter($value->description,25));?>
 		</div>
 		<hr>
@@ -27,7 +27,7 @@
 		{
 	?>
 		<div>
-			<a href="<?php echo base_url()?>eyetube/detail/<?php echo $value->url?>"><?php echo $value->title?></a><br>
+			<a href="<?php echo base_url()?>eyetube/detail/<?php echo $value->url?>"><?php echo str_replace(array($_GET["q"],ucwords($_GET["q"]),strtoupper($_GET["q"]),strtolower($_GET["q"])),'<span style="background-color:yellow;">'.$_GET["q"].'</span>',$value->title)?></a><br>
 			<?php echo strip_tags(word_limiter($value->description,25));?>
 		</div>
 		<hr>
@@ -45,7 +45,7 @@
 		{
 	?>
 		<div>
-			<a href="<?php echo base_url()?>eyeprofile/pemain_detail/<?php echo $value->url?>"><?php echo $value->name?></a>
+			<a href="<?php echo base_url()?>eyeprofile/pemain_detail/<?php echo $value->url?>"><?php echo str_replace(array($_GET["q"],ucwords($_GET["q"]),strtoupper($_GET["q"]),strtolower($_GET["q"])),'<span style="background-color:yellow;">'.$_GET["q"].'</span>',$value->name)?></a>
 			<br>
 			Posisi : <?php echo $value->position;?>
 			<br>

@@ -1,4 +1,9 @@
-
+<style>
+    .slc-musim{
+        font-size: .95em !important;
+        padding: 7px 20px !important;
+    }
+</style>
         <div class="center-dekstop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
@@ -260,7 +265,7 @@
 					}?>
                     </tbody>
                 </table>
-                <div class="nav-pencetak-gol">
+                <div class="nav-pencetak-gol" style="margin-bottom:50px;">
                     <ul>
                         <li>
                             <i class="material-icons left">keyboard_arrow_left</i>

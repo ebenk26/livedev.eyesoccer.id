@@ -274,66 +274,85 @@ $('.click-like').click(function(event) {
     
     //alert($(this).attr('ref'));
 });
-
-//follow 
-$('.btn-white-follow,.btn-fol').click(function(event) {
-  
-
-    var id_friend = $(this).attr('rel');
-    $this   = $(this);
-    if($this.data('requestRunning')){
-        return;
+class fol{
+    constructor(instance){
+        this.in = instance;
+        this.class = 'fol'; 
     }
-    /* Act on the event */
-    if($this.hasClass('fol')){
-        $.ajax({
-            url: '<?php echo EYEMEPATH?>' + 'follow',
-            type: 'POST',
-            dataType: 'JSON',
-            data: {id_friend: id_friend},
-        })
-        .done(function(r) {
-            if(r.msg == 'success'){
+    get do(){
+        return this.actfoll();
+    }
+    actfoll(){
+        var id_friend = this.in.attr('rel');
+        var $this= this.in;
+          
+        if(this.in.data('requestRunning')){
+            return;
+        }
+        if(this.in.hasClass('fol')){
+            
+            $.ajax({
+                url: '<?php echo EYEMEPATH?>' + 'follow',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {id_friend : id_friend},
+            })
+            .done(function(r) {
+                if(r.msg == 'success'){
                 $('.following').text(r.following);
                 $('.follower').text(r.follower);
                 $this.removeClass('fol');
                 $this.addClass('unfol');
                 $this.text('Mengikuti');
+       
             }
            
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .complete(function() {
-            $this.data('requestRunning',false);
-        });
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .complete(function(data) {
+                $this.data('requestRunning',false);
+            });
+            
+        }
+        else{
+            
+             $.ajax({
+                url: '<?php echo EYEMEPATH?>' + 'unfollow',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {id_friend: id_friend},
+            })
+            .done(function(r) {
+                if(r.msg == 'success'){
+                    $('.following').text(r.following);
+                    $('.follower').text(r.follower);
+                    $this.removeClass('unfol');
+                    $this.addClass('fol');
+                    $this.text('ikuti');
+                     
+                }
+               
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .complete(function() {
+                $this.data('requestRunning',false);
+            });
+        }
+       // t='coba';
+       // return id_friend;
     }
-    else{
-         $.ajax({
-            url: '<?php echo EYEMEPATH?>' + 'unfollow',
-            type: 'POST',
-            dataType: 'JSON',
-            data: {id_friend: id_friend},
-        })
-        .done(function(r) {
-            if(r.msg == 'success'){
-                $('.following').text(r.following);
-                $('.follower').text(r.follower);
-                $this.removeClass('unfol');
-                $this.addClass('fol');
-                $this.text('ikuti');
-            }
-           
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
 
-    }
+}
+
+//follow 
+$('.btn-white-follow,.btn-fol').click(function(event) {
+  // alert($(this));
+    var follow = new fol($(this));
+    follow.do;
     
 });
 //unlike 
