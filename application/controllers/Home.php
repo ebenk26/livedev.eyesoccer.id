@@ -77,7 +77,7 @@ class Home extends CI_Controller {
 
 	}
 	
-	public function tentang_kami()
+	/* public function tentang_kami()
 	{	
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
@@ -101,7 +101,7 @@ class Home extends CI_Controller {
 		$data["body"]=$this->load->view('home/tentang', $data, true);
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
-	}
+	} */
 	public function member_area(){
 		if(isset($_SESSION["id_member"])){
 			$data["meta"]["title"]="";
@@ -604,7 +604,8 @@ class Home extends CI_Controller {
 	public function tentang_kami()
 	{
 		$data['kanal'] 				= "registration";
-		$data["body"]=$this->load->view('home/tentang_kami', $data);
+		$data["body"]=$this->load->view('home/tentang_kami', $data, TRUE);
+		$this->load->view('template/static',$data);
 	}
 
 	public function set_emot($id = null)

@@ -393,7 +393,7 @@
                 });
             })
 			
-			//Start infinite scroll
+		/* //Start infinite scroll
 		var offset = 1;
         // create a long list of items
         var container = $("#containerss");
@@ -431,9 +431,10 @@
 			});
 			offset = offset+5;
 			//end getjson
-        }
+			*/
+        }); 
 
-        container.bind("infinite-scroll", function(args) {
+        /* container.bind("infinite-scroll", function(args) {
           console.log("Received", args);
 		  $('.load-gif').show();
           setTimeout(function(){ appendToList(); }, 1500);
@@ -441,7 +442,7 @@
 
         var infiniteScroll = new $.InfiniteScroll('#containerss', true).setup();
         setTimeout(function(){ appendToList(); }, 1500);
-        }) 
+        })  */
     </script>	
 </body>
 
