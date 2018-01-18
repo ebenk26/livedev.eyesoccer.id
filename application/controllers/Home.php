@@ -603,7 +603,7 @@ class Home extends CI_Controller {
 	
 	public function tentang_kami()
 	{
-		$data['kanal'] 				= "registration";
+		$data['kanal'] 				= "home";
 		$data["body"]=$this->load->view('home/tentang_kami', $data, TRUE);
 		$this->load->view('template/static',$data);
 	}
@@ -686,5 +686,40 @@ class Home extends CI_Controller {
 			echo json_encode($html);
 			
 		}
+	}
+	
+	public function tim_eyesoccer()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/tim_eyesoccer', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function pedoman_media_siber()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/pedoman_media_siber', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function kebijakan_privasi()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/kebijakan_privasi', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function panduan_komunitas()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/panduan_komunitas', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function kontak_kami()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/kontak_kami', $data, TRUE);
+		$this->load->view('template/static',$data);
 	}
 }
