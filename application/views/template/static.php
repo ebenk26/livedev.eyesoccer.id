@@ -269,7 +269,7 @@ else{
         <!-- FOOTER -->
         <footer>
             <div class="f-w">
-                <a class="p-d-l-0" href="">Tentang Kami</a>
+                <a class="p-d-l-0" href="<?php echo base_url() ?>tentang-kami">Tentang Kami</a>
                 <a href="">Tim EyeSoccer</a>
                 <a href="">Pedoman Media Siber</a>
                 <a href="">Kebijakan Privasi</a>

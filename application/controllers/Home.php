@@ -66,6 +66,7 @@ class Home extends CI_Controller {
 		$data['jadwal_tomorrow'] 	= $this->Home_model->get_jadwal_tomorrow();
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
 		$data['klasemen'] 			= $this->Home_model->get_klasemen();
+		$data['products']	= $this->Home_model->get_all_product();
 		$data['kanal'] 				= "home";
 		
 		$data["body"]=$this->load->view('home/index', $data, TRUE);
@@ -592,9 +593,17 @@ class Home extends CI_Controller {
 		
 		$data['eyetube']	= $this->mod->getAll('tbl_eyetube', $where = array(), $select = array('title','description','url','thumb1'), $order = array('eyetube_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('title'=>$search));
 		
-		$data['player']	= $this->Home_model->getAllLeftJoin('tbl_player', $where = array(), $select = array('tbl_player.name as name','tbl_player.position as position','tbl_player.number as number','tbl_player.url as url','tbl_club.name as club'), $order = array('tbl_player.player_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('tbl_player.name'=>$search), $leftjoin = array('tbl_club'=>'tbl_club.club_id = tbl_player.club_id'));
+		$data['player']	= $this->Home_model->getAllLeftJoin('tbl_player', $where = array(), $select = array('tbl_player.name as name','tbl_player.position as position','tbl_player.number as number','tbl_player.url as url','tbl_player.pic as pic','tbl_club.name as club'), $order = array('tbl_player.player_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('tbl_player.name'=>$search), $leftjoin = array('tbl_club'=>'tbl_club.club_id = tbl_player.club_id'));
+		
+		$data['club']	= $this->Home_model->getAllLeftJoin('tbl_club', $where = array(), $select = array('name','address','stadium','url','logo'), $order = array('club_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('name'=>$search), $leftjoin = array());
 		
 		$data["body"]=$this->load->view('home/search', $data, TRUE);
 		$this->load->view('template/static',$data);
+	}
+	
+	public function tentang_kami()
+	{
+		$data['kanal'] 				= "registration";
+		$data["body"]=$this->load->view('home/tentang_kami', $data);
 	}
 }

@@ -38,13 +38,16 @@
 <div class="carous center-dekstop m-t-35" style="margin: auto;margin-left: 8px;">
 	<img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
 	<h2 class="title ep">EyeProfile</h2>
-	Pemain Result : <?php echo count($player)?>
+	Result : <?php echo count($player)+count($club)?>
 	<hr class="x-ep">
 	<?php
 		foreach ($player as $value)
 		{
 	?>
 		<div>
+			<div class="box-img-radius" style="float: left;width: 50px;top: -8px;height: 55px;left: 0;padding: 10px;box-shadow: 3px 4px 5px #888888;margin-right: 20px;">
+				<img src="<?php echo imgUrl()?>systems/player_storage/<?php echo $value->pic?>">                
+			</div>
 			<a href="<?php echo base_url()?>eyeprofile/pemain_detail/<?php echo $value->url?>"><?php echo str_replace(array($_GET["q"],ucwords($_GET["q"]),strtoupper($_GET["q"]),strtolower($_GET["q"])),'<span style="background-color:yellow;">'.$_GET["q"].'</span>',$value->name)?></a>
 			<br>
 			Posisi : <?php echo $value->position;?>
@@ -52,6 +55,25 @@
 			No. Punggung: <?php echo $value->number;?>
 			<br>
 			Klub : <?php echo $value->club;?>
+		</div>
+		<hr>
+	<?php
+		}
+	?>
+	
+	<?php
+		foreach ($club as $value)
+		{
+	?>
+		<div>
+			<div class="box-img-radius" style="float: left;width: 50px;top: -8px;height: 55px;left: 0;padding: 10px;box-shadow: 3px 4px 5px #888888;margin-right: 20px;">
+				<img src="<?php echo imgUrl()?>systems/club_logo/<?php if(!empty($value->logo)){echo $value->logo;}else{echo 'LOGO UNTUK APLIKASI.jpg';}?>">                
+			</div>
+			<a href="<?php echo base_url()?>eyeprofile/klub_detail/<?php echo $value->url?>"><?php echo str_replace(array($_GET["q"],ucwords($_GET["q"]),strtoupper($_GET["q"]),strtolower($_GET["q"])),'<span style="background-color:yellow;">'.$_GET["q"].'</span>',$value->name)?></a>
+			<br>
+			Alamat : <?php echo strip_tags($value->address);?>
+			<br>
+			Stadion : <?php echo strip_tags($value->stadium);?>
 		</div>
 		<hr>
 	<?php
