@@ -70,6 +70,12 @@ $route['eyetube/kategori/Match-Preview'] 		= "eyetube/kategori/12";
 $route['eyetube/kategori/SSB-/-Akademi'] 		= "eyetube/kategori/13";
 $route['eyetube/kategori/Eyesoccer-Star'] 		= "eyetube/kategori/14";
 $route['eyetube/kategori/Profile-SSB'] 			= "eyetube/kategori/15";
+$route['tentang-kami'] 							= "home/tentang_kami";
+$route['tim-eyesoccer'] 						= "home/tim_eyesoccer";
+$route['pedoman-media-siber'] 					= "home/pedoman_media_siber";
+$route['kebijakan-privasi'] 					= "home/kebijakan_privasi";
+$route['panduan-komunitas'] 					= "home/panduan_komunitas";
+$route['kontak'] 								= "home/kontak_kami";
 
 //$route['seo/sitemap\.xml'] = "seo/sitemap";
 

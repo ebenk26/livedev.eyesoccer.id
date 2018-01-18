@@ -46,7 +46,7 @@ class Eyetube extends CI_Controller {
 		$data["popup"] 	=  $array[14][3];		
 		
 		$data['video_eyetube'] 			=  $this->Eyetube_model->get_eyetube_satu();
-		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(4);
+		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(4,0);
 		$data['all_eyetube_populer'] 	=  $this->Eyetube_model->get_all_eyetube_populer();
 		$data['eyetube_rekomendasi'] 	=  $this->Eyetube_model->get_eyetube_rekomendasi();
 		$data['eyetube_rekomendasi_2']	=  $this->Eyetube_model->get_eyetube_rekomendasi_2();
@@ -131,7 +131,7 @@ class Eyetube extends CI_Controller {
 		$data['video_eyetube']  		=  $this->Eyetube_model->get_eyetube_satu2();
 		$data['eyetube_right_detail'] 	=  $this->Eyetube_model->get_eyetube_right_detail();
 		$data['eyetube_rekomendasi'] 	=  $this->Eyetube_model->get_eyetube_rekomendasi2();
-		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(9);
+		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(9,0);
 
 		$data['tube_type'] 				= $this->Master_model->getAll('tbl_category_eyetube', $where = array(), $select = array('category_name'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array());
 		
@@ -513,8 +513,8 @@ class Eyetube extends CI_Controller {
 		$data["extrascript"] 			= $this->load->view('eyetube/script_index', '', true);
 
 		$data['eyetube_rekomendasi'] 	= $this->Eyetube_model->get_eyetube_rekomendasi();
-		$data['eyetube_populer'] 		= $this->Eyetube_model->get_eyetube_populer(3);
-		$data['eyenews_populer2']		= $this->Eyenews_model->get_eyenews_populer2();
+		$data['eyetube_populer'] 		= $this->Eyetube_model->get_eyetube_populer(1,0);
+		$data['eyetube_sub_populer']	= $this->Eyetube_model->get_eyetube_populer(4,1);
 		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
 		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();

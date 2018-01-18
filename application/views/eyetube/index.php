@@ -1,4 +1,10 @@
-        <div class="crumb">
+<style>
+    .w30 a {
+    	color: darkslategray ;
+	}
+
+</style>
+    <div class="crumb">
             <ul>
                 <li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
                 <li>EyeTube</li>

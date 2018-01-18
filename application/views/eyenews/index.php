@@ -1,9 +1,30 @@
 
-		<style>
-			.pagination > .active > a {
-				z-index:1;
-			}
-		</style>
+<style>
+	.pagination > .active > a {
+		z-index:1;
+	}
+	.pagination>li>a, .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+        color: rgb(200,0,0);
+    }
+    .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+        background-color: rgb(200,0,0) !important;
+        border-color: rgb(200,0,0) !important;
+	}
+	.h-news-r span {
+	    text-align: justify;
+    	display: inline-block;
+	}
+	.list-1{
+		padding-right: 10px;
+	}
+	.menu-4{
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.menu-4 li{
+		margin-right: 18.7px;
+	}
+</style>
 		<div class="crumb">
 			<ul>
 				<li>Home</li>
@@ -12,7 +33,7 @@
 			</ul>
 		</div>
         <div class="center-desktop m-0">
-            <div class="menu-4 w1020 m-0">
+            <div class="menu-4 w1020 m-0 bbg">
                 <ul>
 					<?php
 						foreach ($news_type as $cat_name)
@@ -28,15 +49,12 @@
                 </ul>
             </div>
         </div>
-        <div class="m-0 w1020">
-            <div class="garis-x m-t-30"></div>
-        </div>
         <div class="center-desktop m-0">
             <div class="w1020 m-0">
                 <div class="container h-news-l">
 					<a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
-                    <div>
-                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="<?= $headline->title; ?>" title="<?= $headline->title; ?>">
+                    <div style="width:690px; height:400px; overflow:hidden; margin-bottom:10px;">
+                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="<?= $headline->title; ?>" title="<?= $headline->title; ?>" style="width:100%; min-height:100%;">
                     </div>
 					</a>
                 </div>
@@ -54,7 +72,7 @@
                             </td>
                         </tr>
                     </table>
-                    <div class="pd" style="height: 370px;overflow: hidden;">
+                    <div class="pd" style="height:370px; width:310px; overflow: hidden;">
                         <div>
                             <a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
                                 <h1><?= $headline->title; ?></h1>
@@ -292,10 +310,13 @@
                             <table>
 							<?php
 							foreach($jadwal_today as $row){
-							?>							
+							?>	
+								<!-- <tr>
+									<td colspan="5"><p></p></td>
+								</tr>						 -->
                                 <tr>
-                                    <td colspan="5">
-                                        
+                                    <td colspan="5" style="padding-top:5px; color:rgb(200,0,0);">
+										<span><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -306,7 +327,7 @@
                                         <img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt="">
                                     </td>
                                     <td>
-                                        <span><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></span>
+                                        <!-- <span><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></span> -->
                                         <p><?=$row['live_pertandingan']?></p>
                                     </td>
                                     <td>
@@ -317,12 +338,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="5" class="garis-x4"></td>
+                                    <td colspan="5" class="garis-x4" style="padding-top:5px;"></td>
                                 </tr>
 							<?php } ?>
                             </table>
                             <div class="line-b"></div>
-                            <div class="fl-r">
+                            <div class="fl-r mb-30">
                                 <a href="">
                                     <p class="lp" style="margin:0px;">Lihat selengkapnya ></p>
                                 </a>

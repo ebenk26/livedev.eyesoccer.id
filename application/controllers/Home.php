@@ -66,6 +66,7 @@ class Home extends CI_Controller {
 		$data['jadwal_tomorrow'] 	= $this->Home_model->get_jadwal_tomorrow();
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
 		$data['klasemen'] 			= $this->Home_model->get_klasemen();
+		$data['products']	= $this->Home_model->get_all_product();
 		$data['kanal'] 				= "home";
 		
 		$data["body"]=$this->load->view('home/index', $data, TRUE);
@@ -76,7 +77,7 @@ class Home extends CI_Controller {
 
 	}
 	
-	public function tentang_kami()
+	/* public function tentang_kami()
 	{	
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
@@ -100,7 +101,7 @@ class Home extends CI_Controller {
 		$data["body"]=$this->load->view('home/tentang', $data, true);
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
-	}
+	} */
 	public function member_area(){
 		if(isset($_SESSION["id_member"])){
 			$data["meta"]["title"]="";
@@ -592,9 +593,133 @@ class Home extends CI_Controller {
 		
 		$data['eyetube']	= $this->mod->getAll('tbl_eyetube', $where = array(), $select = array('title','description','url','thumb1'), $order = array('eyetube_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('title'=>$search));
 		
-		$data['player']	= $this->Home_model->getAllLeftJoin('tbl_player', $where = array(), $select = array('tbl_player.name as name','tbl_player.position as position','tbl_player.number as number','tbl_player.url as url','tbl_club.name as club'), $order = array('tbl_player.player_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('tbl_player.name'=>$search), $leftjoin = array('tbl_club'=>'tbl_club.club_id = tbl_player.club_id'));
+		$data['player']	= $this->Home_model->getAllLeftJoin('tbl_player', $where = array(), $select = array('tbl_player.name as name','tbl_player.position as position','tbl_player.number as number','tbl_player.url as url','tbl_player.pic as pic','tbl_club.name as club'), $order = array('tbl_player.player_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('tbl_player.name'=>$search), $leftjoin = array('tbl_club'=>'tbl_club.club_id = tbl_player.club_id'));
+		
+		$data['club']	= $this->Home_model->getAllLeftJoin('tbl_club', $where = array(), $select = array('name','address','stadium','url','logo'), $order = array('club_id'=>'desc'), $limit = '', $offset = '', $whereNotin = array(), $like = array('name'=>$search), $leftjoin = array());
 		
 		$data["body"]=$this->load->view('home/search', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function tentang_kami()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/tentang_kami', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+
+	public function set_emot($id = null)
+	{
+		$date 		= date("Y-m-d H:i:s");
+		$ip 		= $this->input->ip_address();
+		$tipe 		= $_POST["type"];
+		$tbl 		= $_POST["tbl"];
+		$kanal 		= $_POST["kanal"];
+		$sub_field 	= $_POST["sub_field"];
+		$field  	= "$sub_field$tipe";
+		
+		$cek_emot 	= $this->mod->cek_ip_view($kanal,$id,$ip,$tipe);
+		
+		if ($cek_emot < 1 )
+		{
+			$update_emot = $this->mod->set_news_emot($tbl,$kanal,$id,$field);
+
+			$object 		= array(
+								'visit_date' 	=> $date,
+								'type_visit' 	=> $tipe,
+								'place_visit' 	=> $kanal,
+								'place_id' 		=> $id,
+								'session_ip' 	=> $ip,
+			);
+
+			$set_tbl_view 		= $this->mod->set_tbl_view($object);
+
+			$get_jumlah_emot 	= $this->mod->get_jumlah_emot($tbl,$id,$field,$kanal);
+			
+			if ($tipe == "proud")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+				if ($tipe == "smile")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "shock")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "inspired")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "happy")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "sad")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "fear")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "angry")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "fun")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+
+			$html["status"] 	= 1;
+
+			echo json_encode($html);
+			
+		}
+	}
+	
+	public function tim_eyesoccer()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/tim_eyesoccer', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function pedoman_media_siber()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/pedoman_media_siber', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function kebijakan_privasi()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/kebijakan_privasi', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function panduan_komunitas()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/panduan_komunitas', $data, TRUE);
+		$this->load->view('template/static',$data);
+	}
+	
+	public function kontak_kami()
+	{
+		$data['kanal'] 				= "home";
+		$data["body"]=$this->load->view('home/kontak_kami', $data, TRUE);
 		$this->load->view('template/static',$data);
 	}
 }

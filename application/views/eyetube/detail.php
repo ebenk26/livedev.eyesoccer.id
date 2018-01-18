@@ -440,7 +440,7 @@
                                         <a href="<?= base_url() ?>eyetube/detail/<?= $populer['url']; ?>">
                                             <div class="container h105">
                                                 <img src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $populer['thumb']; ?>" alt="">
-                                                <div class="upr">
+                                                <div class="upr" style="background-color: unset;">
                                                     <span style="visibility: hidden;">2:30</span>
                                                 </div>
                                                 <div class="container rb">
@@ -492,15 +492,18 @@
         $(".emoticon").click(function()
         {
             
-            id      = $("#eyetube-id").val();
-            type    = $(this).attr("type_emot");
-            link    = "eyetube";
-            // alert(id+"."+type+"."+link);
+            id          = $("#eyetube-id").val();
+            type        = $(this).attr("type_emot");
+            link        = "eyetube";
+            tbl         = "tbl_eyetube";
+            kanal       = "eyetube";
+            sub_field   = "tube_";
+            
             $.ajax({
 
                 type: "POST",
-                data: { 'type': type, 'id': id, 'link': link },
-                url: "<?=base_url()?>eyetube/new_emot/" + id,
+                data: { 'type': type, 'id': id, 'link': link, 'tbl': tbl, 'kanal': kanal, 'sub_field': sub_field },
+                url: "<?=base_url()?>home/set_emot/" + id,
                 dataType: "json",
 
                 success: function (data) {

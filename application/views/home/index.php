@@ -768,23 +768,25 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
                     <h2 class="title emar">EyeMarket</h2>
                     <hr class="x-emar">
-                        <div class="rek-ber" style="margin-top: -8px;">
-						<?php
-							foreach ($eyemarket_main as $row1){
-						?>						
-                            <div class="rek-ber-c" style="border-bottom: 1px solid slategray;padding: 10px 0 15px 0; margin-top: 0;">
-							<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo base_url()?>assets/home/img/video-small.png" alt="" style="width:100%; min-height:100%;"></div>
-								<!--<img src="systems/eyemarket_storage/<?=$row1["pic"]?>" alt="" style="width:110px; height:90px;">-->
+                        <div class="rek-ber" style="margin-top: -8px;">			
+							<?php foreach ($products as $produk)
+							{
+							?>
+							<div class="rek-ber-c" style="border-bottom: 1px solid slategray;padding: 10px 0 15px 0; margin-top: 0;">
+								<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;">
+									<img src="<?= base_url(); ?>img/eyemarket/produk/<?= $produk['image1'] ?>" alt="" style="width:100%; min-height:100%;">
+								</div>
                                 <div class="container" style="width: 75%;display:  inline-block;float:  right;">
-    <h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 34px;overflow: hidden;"><?php echo $row1['product_name'];  ?> </h1>
-                                <span class="price" style="font-size: .7em;color: gray;font-weight: 400;text-transform: uppercase;top: 20px;">HARGA</span>
-                                <p class="prices" style="font-size: 1em;color: black;font-weight: 500;margin:  0;">Rp.<?php echo number_format($row1['price'],2,",","."); ?></p>
-                                <a href="<?=base_url()?>eyemarket/detail/<?php print $row1['id_product']; ?>" style="text-decoration:  none;color: #ff9900;font-weight:  500;"><button type="text" class="beli" style="float:  right;position:  relative;top: -25px;">Beli</a></button></div>
+									<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 34px;overflow: hidden;"><?= $produk['nama']; ?></h1>
+									<span class="price" style="font-size: .7em;color: gray;font-weight: 400;text-transform: uppercase;top: 20px;">HARGA</span>
+									<p class="prices" style="font-size: 1em;color: black;font-weight: 500;margin:  0;">Rp.<?= number_format($produk['harga'],0,',','.'); ?></p>
+									<a href="<?= base_url(); ?>eyemarket/detail/<?= $produk['toko']; ?>/<?= $produk['title_slug']; ?>" style="text-decoration:  none;color: #ff9900;font-weight:  500;"><button type="text" class="beli" style="float:  right;position:  relative;top: -25px;">Beli</a></button>
+								</div>
 								
 							</div>
-							<?php
+							<?php 
 							}
-							?>							
+							?>
                         </div>
                 </div>
             </div>
