@@ -61,8 +61,15 @@ var srcbox = document.getElementById('srcbox');
 var src = document.getElementById("src");
 var srcS = document.getElementById("srcSub");
 var close = document.getElementsByClassName("close")[0];
+var clickSearch = 0;
 src.onclick = function() {
-    srcbox.style.display = "block";
+	if(clickSearch == 0){
+		srcbox.style.display = "block";
+		clickSearch = 1;
+	}else{
+		srcbox.style.display = "none";
+		clickSearch = 0;
+	}    
 }
 srcS.onclick = function() {
     srcbox.style.display = "none";

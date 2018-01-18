@@ -278,7 +278,7 @@ else{
                 <a href="">Karir</a>
                 <div class="container">
                     <div class="center50 c-l">
-                        Copyright 2017 eyesoccer.com. All Rights Reserved.
+                        Copyright 2018 eyesoccer.id. All Rights Reserved.
                     </div>
                     <div class="center50">
                         <a href="" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
@@ -289,9 +289,11 @@ else{
             </div>
         </footer>
         <!-- SEARCHBOX -->
+			<form id="global_search" action="<?php echo base_url(); ?>home/search" method="get">
         <div id="srcbox" class="searchbox">
-            <input type="text"><button id="srcSub" type="submit">Cari</button>
+            <input type="search" name="q" required><button id="srcSub" type="submit" style="cursor:pointer;">Cari</button>
         </div>
+			</form>
     <script src="<?=base_url()?>bs/js/bootstrapvalidator.min.js"></script>
     <script src="<?=base_url()?>assets/js/home.js"></script>
     </body>
