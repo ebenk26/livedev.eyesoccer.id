@@ -2,6 +2,9 @@
 			.pagination > .active > a {
 				z-index:1;
 			}
+            .col-emoji{
+                cursor: pointer;
+            }
 		</style>
 		<div class="crumb">
 			<ul>
@@ -130,29 +133,38 @@
 					<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
                     <div class="container mt-45 mb-30">
                         <div class="col-2 col-emoji">
-                            <a class="emoticon" type_emot="smile">
+                            <a class="emoticon" type_emot="proud">
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
                                 </div>
-                                <span><?=$value['news_smile']?></span>
+                                <span class="replace_proud"><?=$value['news_smile']?></span>
+                                <span class="load-proud" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
                                 <span>bangga</span>
                             </a>
                         </div>
                         <div class="col-2 col-emoji">
-                            <a class="emoticon" type_emot="shock">
+                            <a class="emoticon" type_emot="inspired">
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
                                 </div>
-                                <span><?=$value['news_shock']?></span>
-                                <span>bingung</span>
+                                <span class="replace_inspired"><?=$value['news_inspired']?></span>
+                                <span class="load-inspired" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>terinspirasi</span>
                             </a>
                         </div>
                         <div class="col-2 col-emoji">
-                            <a class="emoticon" type_emot="happy">
+                            <a class="emoticon" type_emot="happy"> <!-- tadinya smile -->
                                 <div class="img-box box-img-90">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/gembira.png" alt="">
                                 </div>
-                                <span><?=$value['news_happy']?></span>
+                                <span class="replace_happy"><?=$value['news_happy']?></span>
+                                <span class="load-happy" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
                                 <span>gembira</span>
                             </a>
                         </div>
@@ -161,17 +173,23 @@
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/sedih.png" alt="">
                                 </div>
-                                <span><?=$value['news_sad']?></span>
+                                <span class="replace_sad"><?=$value['news_sad']?></span>
+                                <span class="load-sad" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
                                 <span>sedih</span>
                             </a>
                         </div>
                         <div class="col-2 col-emoji">
-                            <a class="emoticon" type_emot="inspired">
+                            <a class="emoticon" type_emot="angry">
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
                                 </div>
-                                <span><?=$value['news_inspired']?></span>
-                                <span>suka</span>
+                                <span class="replace_angry"><?=$value['news_angry']?></span>
+                                <span class="load-angry" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>marah</span>
                             </a>
                         </div>
                         <div class="col-2 col-emoji">
@@ -179,7 +197,10 @@
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/takut.png" alt="">
                                 </div>
-                                <span><?=$value['news_fear']?></span>
+                                <span class="replace_fear"><?=$value['news_fear']?></span>
+                                <span class="load-fear" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
                                 <span>takut</span>
                             </a>
                         </div>
@@ -188,16 +209,22 @@
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/terhibur.png" alt="">
                                 </div>
-                                <span><?=$value['news_fun']?></span>
+                                <span class="replace_fun"><?=$value['news_fun']?></span>
+                                <span class="load-fun" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
                                 <span>terhibur</span>
                             </a>
                         </div>
                         <div class="col-2 col-emoji">
-                            <a ="emoticon" type_emot="angry">
+                            <a class="emoticon" type_emot="shock">
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/terkejut.png" alt="">
                                 </div>
-                                <span><?=$value['news_angry']?></span>
+                                <span class="replace_shock"><?=$value['news_shock']?></span>
+                                <span class="load-shock" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
                                 <span>terkejut</span>
                             </a>
                         </div>
@@ -343,15 +370,24 @@
                 id = $("#eyenews_id22").val();
                 type = $(this).attr("type_emot");
                 link = "eyenews";
+                tbl         = "tbl_eyenews";
+                kanal       = "eyenews";
+                sub_field   = "news_";
+
                 $.ajax({
 
                     type: "POST",
-                    data: { 'type': type, 'id': id, 'link': link },
-                    url: "<?=base_url()?>eyenews/new_emot/" + id,
+                    data: { 'type': type, 'id': id, 'link': link, 'tbl': tbl, 'kanal': kanal, 'sub_field': sub_field },
+                    url: "<?=base_url()?>home/set_emot/" + id,
                     dataType: "json",
-                    success: function (data) {
 
-                        $(".replace_" + type).empty().html(data.html);
+                    success: function (data) {
+                        $(".load-"+type).attr('style', 'display:block');
+
+                        setTimeout(function () {
+                            $(".load-"+type).attr('style', 'display:none');
+                            $(".replace_"+type).empty().html(data.html);
+                        }, 2000); 
                     }
 
                 });

@@ -316,7 +316,7 @@ class Eyetube_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_eyetube_populer($limit)
+	public function get_eyetube_populer($limit,$offset)
 	{
 		$query = $this->db->query("	SELECT
 										a.eyetube_id,
@@ -332,11 +332,13 @@ class Eyetube_model extends CI_Model
 									FROM
 										tbl_eyetube a
 									WHERE
-										a.tube_view
+										a.url != ''
 									ORDER BY
 										a.tube_view DESC
 									LIMIT
 										$limit
+									OFFSET
+										$offset
 								")->result_array();
 		return $query;
 	}
