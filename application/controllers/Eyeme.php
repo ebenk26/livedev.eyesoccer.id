@@ -204,7 +204,8 @@ class Eyeme extends CI_Controller {
 			
 			$checkFol  = $res[$i]->checkFollowed;
 			$attr[$i]  = 
-				array('onclick'=> 'folclick(\''.$res[$i]->id_member_fol.'\',\''.($checkFol == TRUE ? 'followed':'notfollowed').'\')');
+				array('onclick'=> 'folclick(this.id,\''.($checkFol == TRUE ? 'followed':'notfollowed').'\')',
+					'id'=>'c12i'.$res[$i]->id_member_fol);
 			$checkSelf = $this->checkSelf($this->id_member,$res[$i]->id_member_fol);
 			$res[$i]->btnFol = btnFol($this->id_member,$checkFol,$attr[$i],'btn-fol',$checkSelf);
 		}

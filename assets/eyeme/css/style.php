@@ -1,3 +1,5 @@
+<?php
+header("Content-type:text/css");?>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 body, html{
     margin: 0 auto;
@@ -2861,3 +2863,4 @@ loading animation
     background-color: red !important;
     color: white !important;
 }
+ 
