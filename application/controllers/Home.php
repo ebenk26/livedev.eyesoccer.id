@@ -597,4 +597,84 @@ class Home extends CI_Controller {
 		$data["body"]=$this->load->view('home/search', $data, TRUE);
 		$this->load->view('template/static',$data);
 	}
+
+	public function set_emot($id = null)
+	{
+		$date 		= date("Y-m-d H:i:s");
+		$ip 		= $this->input->ip_address();
+		$tipe 		= $_POST["type"];
+		$tbl 		= $_POST["tbl"];
+		$kanal 		= $_POST["kanal"];
+		$sub_field 	= $_POST["sub_field"];
+		$field  	= "$sub_field$tipe";
+		
+		$cek_emot 	= $this->mod->cek_ip_view($kanal,$id,$ip,$tipe);
+		
+		if ($cek_emot < 1 )
+		{
+			$update_emot = $this->mod->set_news_emot($tbl,$kanal,$id,$field);
+
+			$object 		= array(
+								'visit_date' 	=> $date,
+								'type_visit' 	=> $tipe,
+								'place_visit' 	=> $kanal,
+								'place_id' 		=> $id,
+								'session_ip' 	=> $ip,
+			);
+
+			$set_tbl_view 		= $this->mod->set_tbl_view($object);
+
+			$get_jumlah_emot 	= $this->mod->get_jumlah_emot($tbl,$id,$field,$kanal);
+			
+			if ($tipe == "proud")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+				if ($tipe == "smile")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "shock")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "inspired")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "happy")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "sad")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "fear")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "angry")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+			else
+			if ($tipe == "fun")
+			{
+				$html["html"] 	= $get_jumlah_emot->$field;
+			}
+
+			$html["status"] 	= 1;
+
+			echo json_encode($html);
+			
+		}
+	}
 }
