@@ -2880,3 +2880,6 @@ loading animation
     clear:both;
     
 }
+.list-usr li{
+    display: block
+}
