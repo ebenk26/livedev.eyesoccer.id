@@ -270,20 +270,20 @@ else{
         <footer>
             <div class="f-w">
                 <a class="p-d-l-0" href="<?php echo base_url() ?>tentang-kami">Tentang Kami</a>
-                <a href="">Tim EyeSoccer</a>
-                <a href="">Pedoman Media Siber</a>
-                <a href="">Kebijakan Privasi</a>
-                <a href="">Panduan Komunitas</a>
-                <a href="">Kontak</a>
-                <a href="">Karir</a>
+                <a href="<?php echo base_url() ?>tim-eyesoccer">Tim EyeSoccer</a>
+                <a href="<?php echo base_url() ?>pedoman-media-siber">Pedoman Media Siber</a>
+                <a href="<?php echo base_url() ?>kebijakan-privasi">Kebijakan Privasi</a>
+                <a href="<?php echo base_url() ?>panduan-komunitas">Panduan Komunitas</a>
+                <a href="<?php echo base_url() ?>kontak">Kontak</a>
+                <a href="#">Karir</a>
                 <div class="container">
                     <div class="center50 c-l">
                         Copyright 2018 eyesoccer.id. All Rights Reserved.
                     </div>
                     <div class="center50">
-                        <a href="" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
-                        <a href="" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
-                        <a href="" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
+                        <a target="_blank" href="https://www.facebook.com/eyesoccerindonesia/?ref=content_filter" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
+                        <a target="_blank" href="https://twitter.com/eyesoccer_id" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
+                        <a target="_blank" href="https://instagram.com/eyesoccer" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
                     </div>
                 </div>
             </div>
