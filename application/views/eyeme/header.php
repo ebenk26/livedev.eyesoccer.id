@@ -139,6 +139,7 @@
         <div class="container">
             <div class="fl-r pd-t-20 p-r">
             <?php 
+               
                 //icon setting 
                 $icon = array(
                             array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),

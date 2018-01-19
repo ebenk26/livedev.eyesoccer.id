@@ -75,12 +75,7 @@ class Eyeme extends CI_Controller {
 		$this->data['id_member']       = $id_member;
 		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
-
-		$this->load->view('eyeme/header',$this->data);
-		$this->load->view('eyeme/home',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/footer',$this->data);
+		$this->load->view('eyeme/home',$this->data);	
 		
 	}
 	/**
@@ -137,13 +132,14 @@ class Eyeme extends CI_Controller {
 			redirect(MEURL,'refresh');
 		}
 		//$this->data['foll'] = $this->get_follow();
-		$this->load->view('eyeme/header',$this->data);
+		$this->data['uri_segment'] = $this->uri->segment(2);	
 		$this->load->view('eyeme/profile',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/post_detail',$this->data);
-		$this->load->view('eyeme/list_fol',$this->data);
+	}
+	public function create_profile($id_or_username){
+		echo $id_or_username;
+		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
+
 
 	}
 	/**
@@ -204,7 +200,8 @@ class Eyeme extends CI_Controller {
 			
 			$checkFol  = $res[$i]->checkFollowed;
 			$attr[$i]  = 
-				array('onclick'=> 'folclick(\''.$res[$i]->id_member_fol.'\',\''.($checkFol == TRUE ? 'followed':'notfollowed').'\')');
+				array('onclick'=> 'folclick(this.id,\''.($checkFol == TRUE ? 'followed':'notfollowed').'\')',
+					'id'=>'c12i'.$res[$i]->id_member_fol);
 			$checkSelf = $this->checkSelf($this->id_member,$res[$i]->id_member_fol);
 			$res[$i]->btnFol = btnFol($this->id_member,$checkFol,$attr[$i],'btn-fol',$checkSelf);
 		}
@@ -310,6 +307,10 @@ class Eyeme extends CI_Controller {
 		
 
 	}
+	public function upload_profile(){
+
+		
+	}
 	/**
 	*fungsi img::
 	*@param @id_img select id_img
@@ -319,23 +320,15 @@ class Eyeme extends CI_Controller {
 		$getImg               = $this->emod->getAllImg($id_img);
 		$this->data['img']    = $getImg;
 		#p($hasLike);
-		$this->load->view('eyeme/header',$this->data);
-		$this->load->view('eyeme/image',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/footer',$this->data);
+		$this->load->view('eyeme/image',$this->data);	
 	}
 	/**
 		*fungsi explore::
 	*/
 	public function explore(){
 		$this->data['ex'] = $this->emod->getExplore();
-		$this->load->view('eyeme/header',$this->data);
+		
 		$this->load->view('eyeme/explore',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/post_detail',$this->data);
-		$this->load->view('eyeme/footer',$this->data);
 
 		#echo 'explore test';
 	}

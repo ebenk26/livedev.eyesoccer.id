@@ -3,3 +3,6 @@ RewriteCond $1 !^(index\.php|resources|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+
+RewriteRule assets/eyeme/css/style.css assets/eyeme/css/style.php [L]
+RewriteRule assets/eyeme/js/sw.js assets/eyeme/js/sw.php [L]

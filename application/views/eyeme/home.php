@@ -1,3 +1,5 @@
+<?php $this->load->view('eyeme/header');?>
+
 <div class="desktop">
     <div class="center-desktop m-0">
         <div class="container mt-20">
@@ -107,5 +109,10 @@
         </div>
     </div>
 </div>
+<?php 
+$this->load->view('eyeme/notif');
+$this->load->view('eyeme/img_upload');
+$this->load->view('eyeme/footer');
+?>
     
 

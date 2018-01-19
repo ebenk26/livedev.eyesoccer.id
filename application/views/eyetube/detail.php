@@ -2,6 +2,13 @@
     .col-emoji{
         cursor: pointer;
     }
+    .up-r-tube-cont{
+        height: 357px;
+    }
+    .t-title {
+        width: 690px;
+        margin-top: -65px;
+    }
 </style>
 
 <div class="crumb">
@@ -11,8 +18,8 @@
     </ul>
 </div>
 <div class="desktop">
-    <div class="center-desktop m-0">
-        <div class="menu-3 w1020 m-0">
+    <div class="center-desktop center-dekstop m-0">
+        <div class="menu-3 m-0">
             <ul>
                 <?php 
                     foreach ($tube_type as $value)
@@ -28,14 +35,14 @@
             </ul>
         </div>
     </div>
-    <div class="m-0 w1020">
+    <div class="center-desktop center-dekstop m-0">
         <div class="garis-x m-t-30"></div>
     </div>
     <div class="center-desktop m-0">
-        <div class="w1020 m-0">
+        <div class="m-0">
             <div class="container tube-l">
                 <div>
-                    <video width="690px" height="380px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
+                    <video width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
                         <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4">
                     </video>
                     <div class="top-r ">
@@ -89,10 +96,11 @@
                                     <span><?= $eyetube_headline->tube_like; ?></span>
                                 </li>
                                 <li>
-
-                                    <!-- <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                    <i class="material-icons">comment</i>
-                                    <span>456</span> -->
+                                    <a href="#div-komen" id="scroll-komen">
+                                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        <!-- <i class="material-icons">comment</i> -->
+                                        <span style="visibility:hidden;">456</span>
+                                    </a>
                                 </li>
                                 <li>
                                     <span style="cursor: pointer;" id="showBtnShare">
@@ -231,22 +239,24 @@
                             <span>terkejut</span>
                         </a>
                     </div>
-                </div>      
-                <div>
-                    <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
-
-                    <!-- <div class="tube-komen mt-10">
-                        <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
-                        <input type="text" placeholder="Tulis komentar kamu...">
-                    </div>
-                    <div class="fl-r">
-                        <button class="btn-abu" type="button">Batal</button>
-                        <button class="btn-blue" type="button">Kirim</button>
-                    </div> -->
-                    <!-- <div class="garis-x3 mt-20"></div> -->
                 </div>
+                <div id="div-komen">      
+                    <div>
+                        <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
 
-                <div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
+                        <!-- <div class="tube-komen mt-10">
+                            <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
+                            <input type="text" placeholder="Tulis komentar kamu...">
+                        </div>
+                        <div class="fl-r">
+                            <button class="btn-abu" type="button">Batal</button>
+                            <button class="btn-blue" type="button">Kirim</button>
+                        </div> -->
+                        <!-- <div class="garis-x3 mt-20"></div> -->
+                    </div>
+                    
+                    <div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
+                </div>
 
                 <div>
                     <div class="tube-komen">
@@ -383,7 +393,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container tube-r">
+            <div class="container tube-r" style="float:right;">
                 <div>
                     <div class="up-r-tube">
                         <span><?= $eyetube_headline->category_name; ?></span>
@@ -516,6 +526,17 @@
                 }
 
             });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+
+        $("#scroll-komen").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#div-komen").offset().top
+            }, 1000);
         });
     });
 </script>

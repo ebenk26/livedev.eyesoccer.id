@@ -173,10 +173,12 @@ var valCom = $(this).val();
 });
 
 //upload click event
-$('#upload').click(function(e) {
+$('#upload,.upl').click(function(e) {
     /* Act on the event */
     e.preventDefault();
+    //alert('test');
      $('#upload_pop').css('display','block');
+
 
 });
 
@@ -275,54 +277,66 @@ $('.click-like').click(function(event) {
     //alert($(this).attr('ref'));
 });
 class fol{
-    constructor(instance){
+    constructor(instance,id_friend = null,ref = null){
         this.in = instance;
-        this.class = 'fol'; 
+        this.id_friend = (id_friend == null ? this.in.attr('rel'): this.id_friend);
+        this.ref       = ref;
+        this.class     = 'fol'; 
+        
     }
-    get do(){
-        return this.actfoll();
-    }
-    actfoll(){
-        var id_friend = this.in.attr('rel');
-        var $this= this.in;
-          
-        if(this.in.data('requestRunning')){
-            return;
-        }
+    wanna_do(){
+
         if(this.in.hasClass('fol')){
-            
-            $.ajax({
-                url: '<?php echo EYEMEPATH?>' + 'follow',
-                type: 'POST',
-                dataType: 'JSON',
-                data: {id_friend : id_friend},
-            })
-            .done(function(r) {
-                if(r.msg == 'success'){
-                $('.following').text(r.following);
-                $('.follower').text(r.follower);
-                $this.removeClass('fol');
-                $this.addClass('unfol');
-                $this.text('Mengikuti');
-       
-            }
-           
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .complete(function(data) {
-                $this.data('requestRunning',false);
-            });
-            
+            this.do_fol();
         }
         else{
-            
+            this.do_unfol();
+        }
+    }
+    do(){
+        /*if(this.ref != null && this.ref== 'followed'){
+            do_
+
+        }*/
+    }
+    do_fol(){
+         var $this  = this.in;
+         if($this.data('requestRunning')){
+            return;
+         }
+             $this.data('requestRunning',true);
              $.ajax({
+                    url: '<?php echo EYEMEPATH?>' + 'follow',
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: {id_friend : this.id_friend},
+                })
+                .done(function(r) {
+                    if(r.msg == 'success'){
+                    $('.following').text(r.following);
+                    $('.follower').text(r.follower);
+                    $this.removeClass('fol');
+                    $this.addClass('unfol');
+                    $this.text('Mengikuti');
+           
+                }
+               
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .complete(function(data) {
+                    console.log($this.data());
+                    $this.data('requestRunning',false);
+                });
+    }
+    do_unfol(){
+        var $this  = this.in;
+        $.ajax({
                 url: '<?php echo EYEMEPATH?>' + 'unfollow',
                 type: 'POST',
                 dataType: 'JSON',
-                data: {id_friend: id_friend},
+                data: {id_friend: this.id_friend},
             })
             .done(function(r) {
                 if(r.msg == 'success'){
@@ -341,9 +355,6 @@ class fol{
             .complete(function() {
                 $this.data('requestRunning',false);
             });
-        }
-       // t='coba';
-       // return id_friend;
     }
 
 }
@@ -352,7 +363,7 @@ class fol{
 $('.btn-white-follow,.btn-fol').click(function(event) {
   // alert($(this));
     var follow = new fol($(this));
-    follow.do;
+    follow.wanna_do();
     
 });
 //unlike 
@@ -522,24 +533,66 @@ $('.a-fol').click(function(event) {
 
 
         });
-
-       
+    
         $('#tbl-fol').html(tbl_fol);
         //tbl_fol  += 
-
-
-    })
-    .fail(function() {
-        console.log("error");
-    })
-    .always(function() {
-        console.log("complete");
-    });
-
-   
+    })  
 });
-function folclick(id,ref){
-    $.ajax({
+function folclick($ref,ref){
+    var $split = $ref.split('i');
+    var $thisId = $split[1];
+    var $this  = $('#'+$ref);
+    if(ref == 'followed'){
+        $.ajax({
+            url: '<?php echo MEURL?>unfollow',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {id_friend: $thisId},
+        })
+        .done(function(r) {
+            if(r.msg == 'success'){
+                $this.removeClass('unfol');
+                $this.addClass('fol');
+                $this.text('ikuti');
+                $this.attr('onclick','folclick(this.id,\'notfollowed\')');
+            }
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    }
+    else{
+        $.ajax({
+            url: '<?php echo MEURL?>follow',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {id_friend: $thisId},
+        })
+        .done(function(r) {
+            
+            if(r.msg == 'success'){
+                $this.removeClass('fol');
+                $this.addClass('unfol');
+                $this.text('mengikuti');
+                $this.attr('onclick','folclick(this.id,\'followed\')');
+            }
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+    }
+        
+   
+
+    //$('#' + $ref).hide();
+  
+    /*$.ajax({
         url: '/path/to/file',
         type: 'default GET (Other values: POST)',
         dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
@@ -553,7 +606,7 @@ function folclick(id,ref){
     })
     .always(function() {
         console.log("complete");
-    });
+    });*/
     
 }
 

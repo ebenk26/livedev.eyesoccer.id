@@ -141,6 +141,24 @@
                 </style>
         <?php        
             }
+            else if ($kanal == 'eyevent')
+            {
+        ?>
+                <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+                <style>
+                    .center-dekstop{
+                        width: 1065px;
+                    }
+                    .x-m {
+                        font-size: .9em;
+                        margin-left: -50px;
+                        width: 1105px;
+                    }
+                </style>
+                <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">
+        <?php        
+            }
             else
             {
         ?>
@@ -222,7 +240,7 @@ else{
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
                             <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
                             <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
-                            <li><a href="<?=base_url()?>eyevent">EyeEvent</a></li>
+                            <li><a href="<?=base_url()?>eyevent">EyEvent</a></li>
                             <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>							
                             <li><a href="<?=base_url()?>eyetransfer">EyeTransfer</a></li>
                             <li><a href="<?=base_url()?>eyetiket">EyeTiket</a></li>
