@@ -96,10 +96,11 @@
                                     <span><?= $eyetube_headline->tube_like; ?></span>
                                 </li>
                                 <li>
-
-                                    <!-- <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                    <i class="material-icons">comment</i>
-                                    <span>456</span> -->
+                                    <a href="#div-komen" id="scroll-komen">
+                                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                        <!-- <i class="material-icons">comment</i> -->
+                                        <span style="visibility:hidden;">456</span>
+                                    </a>
                                 </li>
                                 <li>
                                     <span style="cursor: pointer;" id="showBtnShare">
@@ -238,22 +239,24 @@
                             <span>terkejut</span>
                         </a>
                     </div>
-                </div>      
-                <div>
-                    <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
-
-                    <!-- <div class="tube-komen mt-10">
-                        <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
-                        <input type="text" placeholder="Tulis komentar kamu...">
-                    </div>
-                    <div class="fl-r">
-                        <button class="btn-abu" type="button">Batal</button>
-                        <button class="btn-blue" type="button">Kirim</button>
-                    </div> -->
-                    <!-- <div class="garis-x3 mt-20"></div> -->
                 </div>
+                <div id="div-komen">      
+                    <div>
+                        <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
 
-                <div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
+                        <!-- <div class="tube-komen mt-10">
+                            <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
+                            <input type="text" placeholder="Tulis komentar kamu...">
+                        </div>
+                        <div class="fl-r">
+                            <button class="btn-abu" type="button">Batal</button>
+                            <button class="btn-blue" type="button">Kirim</button>
+                        </div> -->
+                        <!-- <div class="garis-x3 mt-20"></div> -->
+                    </div>
+                    
+                    <div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
+                </div>
 
                 <div>
                     <div class="tube-komen">
@@ -523,6 +526,17 @@
                 }
 
             });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function(){
+
+        $("#scroll-komen").click(function() {
+            $('html, body').animate({
+                scrollTop: $("#div-komen").offset().top
+            }, 1000);
         });
     });
 </script>
