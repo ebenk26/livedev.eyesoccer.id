@@ -159,6 +159,8 @@ class Home extends CI_Controller {
 	}
 	
 	public function logout(){
+		$id_member = $_SESSION['id_member'];
+		$this->db->query("update tbl_member set last_online='".NOW."' where id_member='".$id_member."'");
 		unset($_SESSION["id_member"],$_SESSION["user_id"]);
 				session_destroy();
 				redirect("home/index");
