@@ -128,7 +128,7 @@
                                 <a href=""><?php echo $usr[$i]->username?></a>
                             </li>
                             <li>
-                                <button class="btn-blue" type="button">Ikuti</button>
+                                <?php echo $usr[$i]->btnFol;?>
                             </li>
                         </ul>
                     </div>

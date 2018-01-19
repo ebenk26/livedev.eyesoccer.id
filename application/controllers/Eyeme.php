@@ -318,12 +318,10 @@ class Eyeme extends CI_Controller {
 			$getPP = $this->mod->getAll('tbl_gallery',$where,array('pic','thumb1'));
 			$allUsr[$i]->profile_pic = (count($getPP) > 0 ? $getPP[0]->pic:'');
 			$allUsr[$i]->followed  = ($this->emod->checkFollowed($this->id_member,$allUsr[$i]->id_member) == true ? '1':'0');
-			#echo $this->id_member;
-			#echo $allMember[$i]->followed;
-
+			$allUsr[$i]->btnFol = btnFol($this->id_member,$allUsr[$i]->followed);
 
 		}
-		
+
 		return $allUsr;
 
 
