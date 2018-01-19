@@ -9,6 +9,30 @@
         width: 690px;
         margin-top: -65px;
     }
+    .over-x{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.w-max{
+    width: max-content;
+}
+.over-x::-webkit-scrollbar {
+    height: 5px;
+}
+.over-x::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #d2d2d2; 
+    border-radius: 10px;
+}
+.over-x::-webkit-scrollbar-thumb {
+    background: gainsboro; 
+    border-radius: 10px;
+}
+.over-x::-webkit-scrollbar-thumb:hover {
+    background: #5b99db; 
+}
+.menu-3 a {
+    padding-bottom: 4px;
+}
 </style>
 
 <div class="crumb">
@@ -20,6 +44,8 @@
 <div class="desktop">
     <div class="center-desktop center-dekstop m-0">
         <div class="menu-3 m-0">
+        <div class="container over-x">
+            <div class="w-max">
             <ul>
                 <?php 
                     foreach ($tube_type as $value)
@@ -32,7 +58,7 @@
                 <?php  
                     }
                 ?>
-            </ul>
+            </ul></div></div>
         </div>
     </div>
     <div class="center-desktop center-dekstop m-0">
@@ -96,11 +122,10 @@
                                     <span><?= $eyetube_headline->tube_like; ?></span>
                                 </li>
                                 <li>
-                                    <a href="#div-komen" id="scroll-komen">
-                                        <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                        <!-- <i class="material-icons">comment</i> -->
-                                        <span style="visibility:hidden;">456</span>
-                                    </a>
+
+                                    <!-- <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                    <i class="material-icons">comment</i>
+                                    <span>456</span> -->
                                 </li>
                                 <li>
                                     <span style="cursor: pointer;" id="showBtnShare">
@@ -239,24 +264,22 @@
                             <span>terkejut</span>
                         </a>
                     </div>
-                </div>
-                <div id="div-komen">      
-                    <div>
-                        <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
+                </div>      
+                <div>
+                    <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
 
-                        <!-- <div class="tube-komen mt-10">
-                            <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
-                            <input type="text" placeholder="Tulis komentar kamu...">
-                        </div>
-                        <div class="fl-r">
-                            <button class="btn-abu" type="button">Batal</button>
-                            <button class="btn-blue" type="button">Kirim</button>
-                        </div> -->
-                        <!-- <div class="garis-x3 mt-20"></div> -->
+                    <!-- <div class="tube-komen mt-10">
+                        <img src="<?= base_url() ?>assets/img/EYEME/user-discover.png" alt="profil foto">
+                        <input type="text" placeholder="Tulis komentar kamu...">
                     </div>
-                    
-                    <div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
+                    <div class="fl-r">
+                        <button class="btn-abu" type="button">Batal</button>
+                        <button class="btn-blue" type="button">Kirim</button>
+                    </div> -->
+                    <!-- <div class="garis-x3 mt-20"></div> -->
                 </div>
+
+                <div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>
 
                 <div>
                     <div class="tube-komen">
@@ -526,17 +549,6 @@
                 }
 
             });
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function(){
-
-        $("#scroll-komen").click(function() {
-            $('html, body').animate({
-                scrollTop: $("#div-komen").offset().top
-            }, 1000);
         });
     });
 </script>
