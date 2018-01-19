@@ -1,10 +1,10 @@
 <?php $this->load->view('eyeme/header');?>
-
 <div class="desktop">
     <div class="center-desktop m-0">
         <div class="container mt-20">
     	<?php 
-    		#p($imgFollowing);
+    	if(count($imgFollowing) > 0){
+
     		foreach($imgFollowing as $k=> $v){?>
 
     		<div class="box-feed m-0">
@@ -99,14 +99,25 @@
             </div>
 
         </div>
-        <?php }?>
+        <?php }
+    }else{
+
+
+        
+
+
+        
+    }
+
+
+    ?>
             
-    </div>   
-        <div class="container m-0">
+        </div>   
+        <!--<div class="container m-0">
             <div class="tx-c mt-53">
                 <button class="btn-white" type="button">Lihat lainnya</button>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 <?php 

@@ -307,9 +307,16 @@ class Eyeme extends CI_Controller {
 		
 
 	}
+	public function get_all_user(){
+		$select = array('name','username','fullname','email','profile');
+
+		$allMember = $this->mod->getAll('tbl_member','',$select);
+
+
+	}
 	public function upload_profile(){
 
-		
+
 	}
 	/**
 	*fungsi img::
