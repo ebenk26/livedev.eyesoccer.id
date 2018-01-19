@@ -494,7 +494,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="assets/js/home.js">
+    <script type="text/javascript">
         function ShowAllVideo()
         {
             $('#all-populer').attr('style', 'display:block');
