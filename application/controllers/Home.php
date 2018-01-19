@@ -285,15 +285,11 @@ class Home extends CI_Controller {
 				  else{
 				  	//get eyeme username 
 				  	$where   = array('id_member' => $user_id);
-				  	$profile  = $this->mod->getAll('tbl_member',$where);
-
-					  	if(count($profile) > 0 ){
-
-					  		$this->session->id_member  = $profile[0]->id_member;
-					  		$this->session->username   = $profile[0]->username;
-					  		$this->session->img_profile   = load_top_avatar();
-
-					  	}
+				  	
+				  	$profile = $this->mod->getAll('me_profile',$where);
+				  	$this->session->me_profile   = (count($profile) > 0 ? '1': '0');
+				  	$this->session->username     = $row['username'];
+				  	
 					 //end
 				  $_SESSION['member_id']=$user_id;
 				  $_SESSION['id_member']=$user_id;

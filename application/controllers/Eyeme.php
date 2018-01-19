@@ -75,12 +75,7 @@ class Eyeme extends CI_Controller {
 		$this->data['id_member']       = $id_member;
 		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
-
-		$this->load->view('eyeme/header',$this->data);
-		$this->load->view('eyeme/home',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/footer',$this->data);
+		$this->load->view('eyeme/home',$this->data);	
 		
 	}
 	/**
@@ -137,13 +132,15 @@ class Eyeme extends CI_Controller {
 			redirect(MEURL,'refresh');
 		}
 		//$this->data['foll'] = $this->get_follow();
-		$this->load->view('eyeme/header',$this->data);
+		$this->data['uri_segment'] = $this->uri->segment(2);	
 		$this->load->view('eyeme/profile',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/post_detail',$this->data);
-		$this->load->view('eyeme/list_fol',$this->data);
+	}
+	public function create_profile($id_or_username){
+		echo $id_or_username;
+		$this->load->view('eyeme/header',$this->data);
 		$this->load->view('eyeme/footer',$this->data);
+
+
 
 	}
 	/**
@@ -320,23 +317,15 @@ class Eyeme extends CI_Controller {
 		$getImg               = $this->emod->getAllImg($id_img);
 		$this->data['img']    = $getImg;
 		#p($hasLike);
-		$this->load->view('eyeme/header',$this->data);
-		$this->load->view('eyeme/image',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/footer',$this->data);
+		$this->load->view('eyeme/image',$this->data);	
 	}
 	/**
 		*fungsi explore::
 	*/
 	public function explore(){
 		$this->data['ex'] = $this->emod->getExplore();
-		$this->load->view('eyeme/header',$this->data);
+		
 		$this->load->view('eyeme/explore',$this->data);
-		$this->load->view('eyeme/notif',$this->data);
-		$this->load->view('eyeme/img_upload',$this->data);
-		$this->load->view('eyeme/post_detail',$this->data);
-		$this->load->view('eyeme/footer',$this->data);
 
 		#echo 'explore test';
 	}

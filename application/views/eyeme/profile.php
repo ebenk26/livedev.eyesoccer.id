@@ -1,7 +1,7 @@
-
+<?php $this->load->view('eyeme/header');?>
 <div class="desktop">
         <div class="center-desktop m-0">
-            <div class="w900 m-0 ">
+            <div class="w900 m-0 mb-20">
                 <div class="mt-30 fl-l">
                     <img class="me-profil-foto" src="<?php echo ($display_pic == '' ? DPIC : MEIMG.$display_pic)?>" alt="foto profil">
                 </div>
@@ -75,3 +75,10 @@
         </div>
     </div>
 </body>
+<?php 
+$this->load->view('eyeme/notif');
+$this->load->view('eyeme/img_upload');
+$this->load->view('eyeme/post_detail');
+$this->load->view('eyeme/list_fol');
+$this->load->view('eyeme/footer');
+?>
