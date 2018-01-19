@@ -1,7 +1,13 @@
 <style>
     .w30 a {
     	color: darkslategray ;
-	}
+    }
+    .a{
+        text-decoration:none;
+    }
+    .carousel-inner{
+        overflow: hidden;
+    }
     .bbg{
         border-bottom: 1px solid gainsboro;
     }
@@ -16,6 +22,9 @@
     .gambar3 img{
         width: 100%;
         min-height: 100%;
+    }
+    .btn-play{
+        width: 65px;
     }
     .btn-play2{
         position: relative;
@@ -103,7 +112,10 @@
                         ?>                  
                         <div class="gambar3">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">
-                                <div style="width:100%; height:100%; overflow:hidden;"><img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" ></div>
+                                <div style="width:100%; height:100%; overflow:hidden;">
+                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" >
+                                    <div class="btn-play"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" kasperskylab_antibanner="on"></div>
+                                </div>
                                 
                             </a>
                         </div>
@@ -119,7 +131,10 @@
                     ?>                  
                         <div class="gambar3" style="padding-left:1.8%;">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">                     
-                            <div style="width:100%; height:100%; overflow:hidden;"><img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" ></div>
+                            <div style="width:100%; height:100%; overflow:hidden;">
+                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" >
+                                <div class="btn-play"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" kasperskylab_antibanner="on"></div>
+                            </div>
                             
                             </a>
                         </div>
@@ -494,7 +509,7 @@
         </div>
     </div>
 
-    <script type="text/javascript">
+    <script type="text/javascript" src="assets/js/home.js">
         function ShowAllVideo()
         {
             $('#all-populer').attr('style', 'display:block');
