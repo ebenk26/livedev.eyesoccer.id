@@ -86,8 +86,9 @@ class Eyevent extends CI_Controller {
 		
 		$data["extrascript"]=$this->load->view('eyetube/script_index', '', true);
 		
+		$data['kanal'] 	=  "eyevent";
 		$data["body"]=$this->load->view('eyevent/index', $data, true);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 	}
 	
 	public function detail($eyevent_id=null,$action=null)

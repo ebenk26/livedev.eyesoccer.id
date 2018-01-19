@@ -631,7 +631,7 @@ class Eyeme_model extends Master_model
 			//ganti profile_pic ,menjadi nama gambar 
 			$exe[$i]->profile_pic   = (count($getProfilePic) > 0 ? $getProfilePic[0]->pic : '' );
 		
-			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member);
+			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member_fol);
 
 		}
 		

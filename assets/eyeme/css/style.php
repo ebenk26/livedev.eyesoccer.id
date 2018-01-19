@@ -1,3 +1,5 @@
+<?php
+header("Content-type:text/css");?>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 body, html{
     margin: 0 auto;
@@ -1721,16 +1723,22 @@ ul, li {
     width: 600px;
     height: 600px;
     overflow: hidden;
+    text-align:center;
 }
 .post-photo img{
-    min-height: 100%;
-    min-width: 100%;
+    height:90%;
+    width: 90%;
+    min-height: 60%;
+    min-width: 60%;
 }
 .m-t-15{
     margin-top: 15px;
 }
 .m-l-20{
     margin-left: 20px;
+}
+.mb-20{
+    margin-bottom:20px;
 }
 .titik3{
     margin-top: -60px;
@@ -1830,7 +1838,7 @@ ul, li {
 .komen{
     display: block;
     overflow-y: scroll;
-    max-height: 350px;
+    max-height: 300px;
 }
 .komen>ul>li>span{
     padding-left: 5px;
@@ -2861,3 +2869,4 @@ loading animation
     background-color: red !important;
     color: white !important;
 }
+ 
