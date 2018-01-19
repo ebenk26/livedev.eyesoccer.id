@@ -38,7 +38,6 @@
 
         
 ?>
-	
         <div class="center-desktop m-0">
             <div class="menu-4 w1020 m-0">
                 <ul>
@@ -94,30 +93,15 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <a href="">
-                                            <img src="<?=base_url()?>assets/eyenews/img/icon/logo_fb.png" alt="">
-                                        </a>
+                                        <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
                                     </td>
                                     <td>
-                                        <a href="">
-                                            <img src="<?=base_url()?>assets/eyenews/img/icon/logo_twitter.png" alt="">
+                                        <a href="#coba" id="scroll-komen">
+                                            <button class="cc" type="button"  style="cursor: pointer;">
+                                                <i class="fa fa-comment" aria-hidden="true"></i>
+                                            <!-- <span>16</span> -->
+                                            </button>
                                         </a>
-                                    </td>
-                                    <td>
-                                        <a href="">
-                                            <img src="<?=base_url()?>assets/eyenews/img/icon/logo_g_plus.png" alt="">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="">
-                                            <img src="<?=base_url()?>assets/eyenews/img/icon/logo_email.png" alt="">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <button class="cc" type="button">
-                                            <i class="fa fa-comment" aria-hidden="true"></i>
-                                            <span>16</span>
-                                        </button>
                                     </td>
                                 </tr>
                             </table>
@@ -229,7 +213,7 @@
                             </a>
                         </div>
                     </div>					
-                    <div style="margin-top: 20px;">
+                    <div style="margin-top: 20px;" id="coba">
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                     </div>
 					<div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
@@ -361,12 +345,12 @@
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+    <script type='text/javascript' src='<?=base_url()?>bs/js/sharethis.js#property=596cf64cb69de60011989f08&product=inline-share-buttons' async='async'></script>
     <script>
         $(document).ready(function () 
         {
             $(".emoticon").click(function()
             {
-                // alert("tes");
                 id = $("#eyenews_id22").val();
                 type = $(this).attr("type_emot");
                 link = "eyenews";
@@ -444,6 +428,33 @@
         setTimeout(function(){ appendToList(); }, 1500);
         })  */
     </script>	
+
+    <script>
+    $(document).ready(function(){
+      // Add smooth scrolling to all links
+      $("#scroll-komen").on('click', function(event) {
+
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+
+          // Store hash
+          var hash = this.hash;
+
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+       
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+    </script>
 </body>
 
 </html>
