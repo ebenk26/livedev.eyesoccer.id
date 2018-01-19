@@ -3,7 +3,7 @@
         <div class="center-desktop m-0">
             <div class="w900 m-0 mb-20">
                 <div class="mt-30 fl-l">
-                    <img class="me-profil-foto" src="<?php echo ($display_pic == '' ? DPIC : MEIMG.$display_pic)?>" alt="foto profil">
+                    <img class="me-profil-foto" src="<?php echo ($display_pic == '' ? DPIC : IMGSTORE.$display_pic)?>" alt="foto profil">
                 </div>
                 <div class="container" style="margin-top:-149px; margin-left: 200px;">
                     <div class="fl-l me-profile" style="margin-bottom: 10px;">
@@ -43,38 +43,50 @@
                     </div>
                 </div>
             </div>
-        
-            <div class="w900 m-0">
-                <?php if(count($getImg) > 0 ){
+           
+            <?php if(count($getImg) > 0 ){
+                echo ' <div class="w900 m-0 mb-20">';
+                    for($j= 0; $j<count($getImg); $j++){?>
 
-                        for($j= 0; $j<count($getImg); $j++){?>
+                        <div class="me-post" ref="<?php echo $getImg[$j]->id_img?>">
 
-                            <div class="me-post" ref="<?php echo $getImg[$j]->id_img?>">
+                            <img src="<?php echo MEIMG.$getImg[$j]->img_thumb?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
 
-                                <img src="<?php echo MEIMG.$getImg[$j]->img_thumb?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
-
-                                <div class="tengah tx-c">
-                                    <i class="material-icons">favorite</i>
-                                    <span><?php echo $getImg[$j]->countLike?></span>
-                                    <i class="material-icons">chat_bubble</i>
-                                    <span><?php echo $getImg[$j]->countComment?></span>
-                                </div>
+                            <div class="tengah tx-c">
+                                <i class="material-icons">favorite</i>
+                                <span><?php echo $getImg[$j]->countLike?></span>
+                                <i class="material-icons">chat_bubble</i>
+                                <span><?php echo $getImg[$j]->countComment?></span>
                             </div>
 
-                        <?php
+                        </div>
 
-                        }
+                    <?php
                     }
-                ?>
-            </div>
-        </div>
-        <div class="container">
-            <div class="w900 m-0 mt-53 tx-c">
-                <button class="btn-white" type="button">Lihat Lainnya</button>
-            </div>
-        </div>
+                    echo '<!--<div class="container">
+                            <div class="w900 m-0 mt-53 tx-c">
+                                <button class="btn-white" type="button">Lihat Lainnya</button>
+                            </div>
+                        </div>-->';
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
+                }
+
+                else{
+                echo '</div>';
+            echo '</div>';
+                echo '<div class="bl-img mb-20">';
+                    echo 'Anda Belum Memiliki Photo Silahkah Upload Photo</br>';
+                    echo '<i class="material-icons upl" style="font-size:3em" >camera_enhance</i></a>';
+                echo '</div>';
+               
+                }
+            ?>
+           
+        
     </div>
-</body>
+
 <?php 
 $this->load->view('eyeme/notif');
 $this->load->view('eyeme/img_upload');
@@ -82,3 +94,4 @@ $this->load->view('eyeme/post_detail');
 $this->load->view('eyeme/list_fol');
 $this->load->view('eyeme/footer');
 ?>
+</body>

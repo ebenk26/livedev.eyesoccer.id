@@ -139,13 +139,13 @@
         <div class="container">
             <div class="fl-r pd-t-20 p-r">
             <?php 
-                $profile = ($this->session->me_profile == '0' ? 'create_profile/' : 'profile/');
+               
                 //icon setting 
                 $icon = array(
                             array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),
                             array('icon'=> 'notifications_none','link'=> '#','title'=> 'Pemberitahuan','id'=>'notif'),
                             array('icon'=> 'camera_alt','link'=> '#','title'=> 'Upload Gambar','id'=>'upload'),
-                            array('icon'=> 'person_outline','link'=> MEURL.$profile.$myusername,'title'=> 'Profil','id'=> 'prof'));
+                            array('icon'=> 'person_outline','link'=> MEURL.'profile/'.$myusername,'title'=> 'Profil','id'=> 'prof'));
                 //icon menu 
                 foreach($icon as $k => $v){
 
