@@ -270,11 +270,9 @@ class Eyeme_model extends Master_model
 				A.img_alt,
 				A.date_create,
 				A.last_update,
-				B.display_picture,
+				C.profile_pic,
 				C.username
 				FROM me_img AS A
-				INNER JOIN me_profile as B
-				ON A.id_member = B.id_member
 				INNER JOIN tbl_member as C
 				ON A.id_member = C.id_member
 				WHERE A.id_img = $id_img AND A.active = '1'";
@@ -284,8 +282,15 @@ class Eyeme_model extends Master_model
 		}
 		else{
 			$get  = $this->db->query($query);
+			$get  = $get->result();
+			if(count($get) > 0 ){
+				$where = array('id_gallery' => $get[0]->profile_pic);
+				$getGallery = $this->getAll('tbl_gallery',$where,array('pic','thumb1'));
+				$get[0]->display_picture = (count($getGallery) > 0 ? $getGallery[0]->pic : '');
 
-			return $get->result();
+			}
+
+			return $get;
 		}
 	}
 	public function getAllImg($id_img){

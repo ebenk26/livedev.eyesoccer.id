@@ -75,6 +75,7 @@ class Eyeme extends CI_Controller {
 		$this->data['id_member']       = $id_member;
 		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
+		$this->data['usr']	           = $this->get_all_user();
 		$this->load->view('eyeme/home',$this->data);	
 		
 	}
@@ -307,9 +308,27 @@ class Eyeme extends CI_Controller {
 		
 
 	}
+	public function get_all_user(){
+		$select = array('id_member','name','username','fullname','email','profile_pic');
+		$order  = array('last_online','DESC');
+		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5');
+	
+		for($i= 0; $i <count($allUsr); $i++){
+			$where = array('id_gallery'=> $allUsr[$i]->profile_pic);
+			$getPP = $this->mod->getAll('tbl_gallery',$where,array('pic','thumb1'));
+			$allUsr[$i]->profile_pic = (count($getPP) > 0 ? $getPP[0]->pic:'');
+			$allUsr[$i]->followed  = ($this->emod->checkFollowed($this->id_member,$allUsr[$i]->id_member) == true ? '1':'0');
+			$allUsr[$i]->btnFol = btnFol($this->id_member,$allUsr[$i]->followed);
+
+		}
+
+		return $allUsr;
+
+
+	}
 	public function upload_profile(){
 
-		
+
 	}
 	/**
 	*fungsi img::
@@ -330,7 +349,6 @@ class Eyeme extends CI_Controller {
 		
 		$this->load->view('eyeme/explore',$this->data);
 
-		#echo 'explore test';
 	}
 	
 	

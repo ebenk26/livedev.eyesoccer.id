@@ -1,10 +1,10 @@
 <?php $this->load->view('eyeme/header');?>
-
 <div class="desktop">
     <div class="center-desktop m-0">
         <div class="container mt-20">
     	<?php 
-    		#p($imgFollowing);
+    	if(count($imgFollowing) > 0){
+
     		foreach($imgFollowing as $k=> $v){?>
 
     		<div class="box-feed m-0">
@@ -99,14 +99,62 @@
             </div>
 
         </div>
-        <?php }?>
+        <?php }
+    }else{
+
+?>
+        <div class="w900 m-0">
+            <div class="container" style="margin-top: 90px;">
+                <div class="me-sub">
+                    <span>TEMUKAN ORANG DI SEKITARMU</span>
+                </div>
+                <!--<div class="fl-r lihatlainnya">
+                    <a href="">Lihat Lainnya ></a>
+                </div>-->
+            </div>
+        </div>
+        <div class="w900 m-0">
+            <div class="container">
+              <?php 
+              for($i=0;$i < count($usr);$i++){?>
+
+                <div class="me-explr-find mb-20">
+                    <div class="me-explr-find-isi m-0">
+                        <ul class="list-usr">
+                            <li>
+                                <img src="<?php echo ($usr[$i]->profile_pic == '' || $usr[$i]->profile_pic == NULL ? DPIC : IMGSTORE.$usr[$i]->profile_pic)?>" class="gambar-explr-people" alt="foto profil explore org baru">
+                            </li>
+                            <li>
+                                <a href=""><?php echo $usr[$i]->username?></a>
+                            </li>
+                            <li>
+                                <?php echo $usr[$i]->btnFol;?>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+             <?php } ?>
+                
+
+
+            </div>
+        </div>
+
+
+
+   <?php }
+
+
+    ?>
             
-    </div>   
-        <div class="container m-0">
+        </div>   
+        <!--<div class="container m-0">
             <div class="tx-c mt-53">
                 <button class="btn-white" type="button">Lihat lainnya</button>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 <?php 
