@@ -141,7 +141,6 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/footer',$this->data);
 
 
-
 	}
 	/**
 		*fungsi post komentar ke database
@@ -307,6 +306,10 @@ class Eyeme extends CI_Controller {
 
 		
 
+	}
+	public function upload_profile(){
+
+		
 	}
 	/**
 	*fungsi img::

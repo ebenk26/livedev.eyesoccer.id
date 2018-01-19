@@ -173,10 +173,12 @@ var valCom = $(this).val();
 });
 
 //upload click event
-$('#upload').click(function(e) {
+$('#upload,.upl').click(function(e) {
     /* Act on the event */
     e.preventDefault();
+    //alert('test');
      $('#upload_pop').css('display','block');
+
 
 });
 

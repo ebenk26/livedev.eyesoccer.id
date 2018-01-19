@@ -2328,6 +2328,7 @@ ul, li {
     animation-name: fade;
     animation-duration: .8s;
     z-index: 500;
+    top:0;
 }
 .detail-post-box-cont{
     width: 1000px;
@@ -2869,4 +2870,13 @@ loading animation
     background-color: red !important;
     color: white !important;
 }
- 
+.bl-img{
+    width:300px;
+    height: 300px;
+    text-align:center;
+    color:#727272;
+    margin:auto;
+    padding:100px;
+    clear:both;
+    
+}
