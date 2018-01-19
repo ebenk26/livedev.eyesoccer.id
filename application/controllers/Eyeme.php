@@ -323,7 +323,7 @@ class Eyeme extends CI_Controller {
 
 
 		}
-		#p($allUsr);
+		
 		return $allUsr;
 
 

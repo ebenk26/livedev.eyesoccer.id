@@ -112,7 +112,7 @@
                     <a href="">Lihat Lainnya ></a>
                 </div>-->
             </div>
-        </div>-->
+        </div>
         <div class="w900 m-0">
             <div class="container">
               <?php 
