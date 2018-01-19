@@ -2,6 +2,13 @@
     .col-emoji{
         cursor: pointer;
     }
+    .up-r-tube-cont{
+        height: 357px;
+    }
+    .t-title {
+        width: 690px;
+        margin-top: -65px;
+    }
 </style>
 
 <div class="crumb">
@@ -11,8 +18,8 @@
     </ul>
 </div>
 <div class="desktop">
-    <div class="center-desktop m-0">
-        <div class="menu-3 w1020 m-0">
+    <div class="center-desktop center-dekstop m-0">
+        <div class="menu-3 m-0">
             <ul>
                 <?php 
                     foreach ($tube_type as $value)
@@ -28,14 +35,14 @@
             </ul>
         </div>
     </div>
-    <div class="m-0 w1020">
+    <div class="center-desktop center-dekstop m-0">
         <div class="garis-x m-t-30"></div>
     </div>
     <div class="center-desktop m-0">
-        <div class="w1020 m-0">
+        <div class="m-0">
             <div class="container tube-l">
                 <div>
-                    <video width="690px" height="380px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
+                    <video width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
                         <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4">
                     </video>
                     <div class="top-r ">
@@ -383,7 +390,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container tube-r">
+            <div class="container tube-r" style="float:right;">
                 <div>
                     <div class="up-r-tube">
                         <span><?= $eyetube_headline->category_name; ?></span>

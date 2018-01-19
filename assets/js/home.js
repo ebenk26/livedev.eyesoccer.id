@@ -82,3 +82,40 @@ window.onclick = function(event) {
         srcbox.style.display = "none";
     }
 }
+$(document).ready(function(){
+    $("#topPemain").carousel();
+    $(".left").click(function(){
+        $("#topPemain").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#topPemain").carousel("next");
+    });
+    $("#profilssb").carousel();
+    $(".left").click(function(){
+        $("#profilssb").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#profilssb").carousel("next");
+    });
+    $("#rekom").carousel();
+    $(".left").click(function(){
+        $("#rekom").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#rekom").carousel("next");
+    });
+    $("#soccersains").carousel();
+    $(".left").click(function(){
+        $("#soccersains").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#soccersains").carousel("next");
+    });
+    $("#videokamu").carousel();
+    $(".left").click(function(){
+        $("#videokamu").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#videokamu").carousel("next");
+    });
+});
