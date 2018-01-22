@@ -5,9 +5,11 @@
         <div class="box-feed m-0">
             <div class="pd3">
                 <img class="feed-profil-foto m-t-15 m-l-20" src="<?php echo ($img[0]->display_picture == NULL || $img[0]->display_picture == '' ? DPIC : MEIMG.$img[0]->display_picture )?>" alt="user photo" />
+
                 <div class="nama-pro-feed p-r">
                     <a href="<?php echo MEPROFILE.$img[0]->username?>"><?php echo $img[0]->username?></a>
                 </div>
+                
                 <div class="p-r titik3 fl-r">
                     <img src="<?php echo sIMGPATH?>ic-more.png" class="img_more" ref="v-<?php echo $img[0]->id_img?>">
                     <div class="posisi-kotak-popup p-a v-<?php echo $img[0]->id_img?>" style="display:none;">

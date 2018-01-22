@@ -96,12 +96,13 @@ define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
 define('MEURL',base_url().'eyeme/');
 define('MEIMG',base_url().'img/eyeme/');
+define('IMGPATH','./img/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
 define('DPIC',sIMGPATH.'user-discover.png');
 define('NOW',date('Y-m-d G:i:s'));
 define('LOGIN',base_url().'home/login');
-define('IMGSTORE',imgUrl().'systems/img_storage/');
+define('IMGSTORE',base_url().'assets/img_storage/');
 define('MEMBERAREA',base_url().'home/member_area');
 define('EYEPROFILE',base_url().'eyeprofile/');
 define('pCLUB',EYEPROFILE.'klub');
@@ -231,7 +232,19 @@ function btnLogin($login){
             </span>';
 }
 
+function discard_img($id_img){
 
+    return '<div class="posisi-kotak-popup p-a v-'.$id_img.'" style="display:none;">
+                <div class="kotak-popup">
+                    <div class="panah-popup p-r m-0">
+                    </div>
+                    <span class="teks-popup p-r">Laporkan</span>
+                    <span class="teks-popup p-r">Bagikan</span>
+                </div>
+            </div>';
+
+
+}
 if ( ! function_exists('image_resize'))
 {
     function image_resize($width, $height, $crop=0, $src, $dst='')
@@ -426,4 +439,15 @@ function pathUrl()
     return "./";
 	else
 	return "/home/admin/web/".$_SERVER['SERVER_NAME']."/public_html/";
+}
+
+function get_date($rentang = "")
+{
+    $tanggal    = new DateTime(date("Y-m-d"));;
+
+    $modif      = $tanggal->modify($rentang.' day');
+
+    $tanggalnya = $modif->format('Y-m-d');
+
+    return array('tanggalnya'    => $tanggalnya,);
 }

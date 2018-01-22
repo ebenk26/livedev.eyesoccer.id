@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Eyevent_model extends CI_Model
 {
 
-	public function get_all_jadwal()
+	public function get_all_jadwal($tanggalnya)
 	{
 		$query = $this->db->query("SELECT
 									a.*,
@@ -24,7 +24,7 @@ class Eyevent_model extends CI_Model
 									INNER JOIN
 										tbl_club d ON d.club_id=a.tim_b
 								WHERE
-									a.jadwal_pertandingan <= '".date('Y-m-d H:i:s')."'
+									a.jadwal_pertandingan BETWEEN '$tanggalnya 00:00:01' AND '$tanggalnya 23:59:59'
 								order by
 									jadwal_pertandingan DESC
 								LIMIT
@@ -129,16 +129,16 @@ class Eyevent_model extends CI_Model
 	{
 		$query = $this->db->query("	SELECT
 										id_event,
-									title,
-									description,
-									pic,
-									publish_on,
-									updateon,
-									thumb1
+										title,
+										description,
+										pic,
+										publish_on,
+										updateon,
+										thumb1
 									FROM
 										tbl_event
 									ORDER BY 
-									id_event
+										id_event
 									LIMIT
 										1
 								")->result_array();

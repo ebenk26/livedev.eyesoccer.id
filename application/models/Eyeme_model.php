@@ -696,7 +696,24 @@ class Eyeme_model extends Master_model
 			return 'success';
 		}
 	}
-	
+	public function getUser(){
+		$where  = array('active'=> '1','verification'=> '1');
+		$select = array('id_member','name','fullname','username','email','profile_pic');
+		$order  = array('last_online');
+		$limit  = '5';
+		$user   = $this->getAll('tbl_member',$where,$select,$order,$limit);
+		if(count($user) > 0 ){
+			for($i = 0; $i< count($user);$i++){
+
+			$whereImg = array('id_gallery' => $user[0]->profile_pic);
+			$select   = array('pic');
+			$img      = $this->mod->getAll('tbl_gallery',$whereImg,$select);
+			$user[0]->profile_pic = (count($img) > 0 ? $img[0]->profile_pic : '' );
+			
+			}
+		}
+		return $user;
+	}
 	
 	//sw::end
 	/*public function unlike($arr = array()){
