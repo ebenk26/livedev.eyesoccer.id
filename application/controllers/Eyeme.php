@@ -75,7 +75,7 @@ class Eyeme extends CI_Controller {
 		$this->data['id_member']       = $id_member;
 		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
-		$this->data['usr']	           = $this->get_all_user();
+		$this->data['usr']	           = $this->get_all_user($id_member);
 		$this->load->view('eyeme/home',$this->data);	
 		
 	}
@@ -114,7 +114,7 @@ class Eyeme extends CI_Controller {
 				$getImg[$i]->countComment = count($comment);
 
 			}
-			
+			#p($usr);
 			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] 	 = $getFollower;
 			$this->data['following']	 = $getFollowing;
@@ -259,12 +259,14 @@ class Eyeme extends CI_Controller {
 		if(count($dataNotif) > 0 ){ #check result dataNotif
 			$j=0;
 			foreach($dataNotif as $k => $v){
-				
+				$where      = array('id_gallery'=> $v->profile_pic);
+				$profile    = $this->mod->getAll('tbl_gallery',$where,array('pic'));
 				$sub[$j][0] = substr($v->notif_type,0,3);
 				$sub[$j][1] = substr($v->notif_type,3);
 				$distance    = getDistance(NOW,$v->last_update);
 				$getTime     = getTime($distance);
 				$dataNotif[$j]->timeString = $getTime['timeString'];
+				$dataNotif[$j]->display_picture = ($profile > 0 ? $profile[0]->pic : '');
 				
 				$j++;
 
@@ -308,10 +310,10 @@ class Eyeme extends CI_Controller {
 		
 
 	}
-	public function get_all_user(){
+	public function get_all_user($id_member){
 		$select = array('id_member','name','username','fullname','email','profile_pic');
 		$order  = array('last_online','DESC');
-		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5');
+		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5','',array('id_member',array($id_member)));
 	
 		for($i= 0; $i <count($allUsr); $i++){
 			$where = array('id_gallery'=> $allUsr[$i]->profile_pic);
@@ -383,6 +385,29 @@ class Eyeme extends CI_Controller {
 	}
 	public function test_notif(){
 		$this->load->view('eyeme/test');
+	}
+
+	public function discard_post($id_img){
+		$where = array('id_img'=> $id_img);
+		$img = $this->mod->getAll('me_img',$where,array('id_img','img_name','img_thumb'));
+		if(count($img) > 0 ){
+			$imgName = $img[0]->img_name;
+			$imgThumb = $img[0]->img_thumb;
+			$id_img   = $img[0]->id_img;
+			@unlink(IMGPATH.$imgName) OR die ('gagal delete image');
+			@unlink(IMGPATH.$imgThumb) OR die ('gagal delete thumb');
+			$this->emod->rm('me_img',array('id_img'=> $id_img));
+			$arr = array('msg'=> 'success');
+			$response  = json_encode($arr);
+			echo $response;
+
+		}
+		else{
+			$arr = array('msg'=> 'failed','error'=> 'gambar tidak ditemukan');
+			$response = json_encode($arr);
+			echo $response;
+		}
+
 	}
 	/**
 	sw::end
@@ -652,15 +677,6 @@ class Eyeme extends CI_Controller {
 		redirect('eyeme/explore');
 	}
 
-	public function discard_post($id)
-	{
-		$model 		= $this->db->get_where('tbl_eyeme', array('id'=>$id))->row();
-		$filenya 	= './gambar/'.$model->gambar;
-		$hapus 		= unlink($filenya);
-
-		$this->db->delete('tbl_eyeme', array('id' => $id));
-		redirect('eyeme/explore');
-	}
 	
 	public function add_friend($id_yg_diajak)
 	{

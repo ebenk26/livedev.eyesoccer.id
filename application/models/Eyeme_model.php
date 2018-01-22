@@ -334,11 +334,8 @@ class Eyeme_model extends Master_model
 						a.comment,
 						a.date_create,
 						a.last_update,
-						b.display_picture,
 						c.username
 					FROM me_comment AS a
-					INNER JOIN me_profile AS b
-					ON a.id_member=b.id_member
 					INNER JOIN tbl_member AS c
 					ON a.id_member = c.id_member
 					WHERE a.id_img = $id_img
@@ -509,11 +506,10 @@ class Eyeme_model extends Master_model
 						A.`notif_content`,
 						A.`last_update`,
 						A.`read`,
-						B.`display_picture`,
+						C.`profile_pic`,
 						C.`username`
 					FROM `me_notif` AS A
-					INNER JOIN `me_profile` AS B
-					ON A.`id_member_act` = B.`id_member`
+					
 					INNER JOIN `tbl_member` AS C
 					ON A.`id_member` = C.`id_member`
 					WHERE A.`id_member` = $id_member
@@ -696,7 +692,24 @@ class Eyeme_model extends Master_model
 			return 'success';
 		}
 	}
-	
+	public function getUser(){
+		$where  = array('active'=> '1','verification'=> '1');
+		$select = array('id_member','name','fullname','username','email','profile_pic');
+		$order  = array('last_online');
+		$limit  = '5';
+		$user   = $this->getAll('tbl_member',$where,$select,$order,$limit);
+		if(count($user) > 0 ){
+			for($i = 0; $i< count($user);$i++){
+
+			$whereImg = array('id_gallery' => $user[0]->profile_pic);
+			$select   = array('pic');
+			$img      = $this->mod->getAll('tbl_gallery',$whereImg,$select);
+			$user[0]->profile_pic = (count($img) > 0 ? $img[0]->profile_pic : '' );
+			
+			}
+		}
+		return $user;
+	}
 	
 	//sw::end
 	/*public function unlike($arr = array()){
