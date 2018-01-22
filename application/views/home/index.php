@@ -24,7 +24,17 @@
 	}
 	.vid-box-vl-img img{
 		width: 100%;
-    	min-height: 100%;
+		min-height: 100%;
+		-webkit-filter: grayscale(.6);
+		filter: grayscale(.6);
+		cursor: pointer;
+	}
+	.vid-box-vl-img img:hover{
+		filter: unset;
+	}
+	.vid-box-vl .h41{
+		max-height: 48px;
+		overflow: hidden;
 	}
 	.h-berita-terkait>ul>li>a {
     	font-size: .85em;
@@ -525,10 +535,9 @@
 							<a href="<?=base_url().'eyetube/detail/'.$stars['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
-										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">
-										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
+										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">										
 									</div>
-									<div class="container" style="height:45px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
+									<div class="container h41"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($stars['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -554,10 +563,9 @@
 								<div class="vid-box-vl">
 									<!--<img src="assets/img/video-small.png" alt="">-->
 									<div class="vid-box-vl-img">
-										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">
-										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
+										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">										
 									</div>
-									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
+									<div class="container h41"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($populer['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -583,9 +591,8 @@
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
 										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
-										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
 									</div>
-									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
+									<div class="container h41" ><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($kamu['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
