@@ -503,26 +503,26 @@ class Home_model extends CI_Model
 									ORDER BY
 										a.eyenews_id DESC
 									LIMIT
-										4
+										3
 								")->result_array();
 		return $query;
 	}
 
 	public function get_jadwal_today()
 	{
-		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' order by jadwal_pertandingan ASC LIMIT 5
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' order by jadwal_pertandingan ASC LIMIT 8
 								")->result_array();
 		return $query;
 	}
 	public function get_jadwal_tomorrow1()
 	{
-		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' + INTERVAL 1 DAY order by jadwal_pertandingan ASC LIMIT 5
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' + INTERVAL 1 DAY order by jadwal_pertandingan ASC LIMIT 8
 								")->result_array();
 		return $query;
 	}
 	public function get_jadwal_tomorrow2()
 	{
-		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' + INTERVAL 2 DAY order by jadwal_pertandingan ASC LIMIT 5
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' + INTERVAL 2 DAY order by jadwal_pertandingan ASC LIMIT 8
 								")->result_array();
 		return $query;
 	}
@@ -602,7 +602,7 @@ class Home_model extends CI_Model
 									ORDER BY 
 									product_name
 									LIMIT
-										4
+										3
 								")->result_array();
 		return $query;
 	}
@@ -848,7 +848,7 @@ class Home_model extends CI_Model
                                         status_publish = 1
                                     ORDER BY 
                                         A.id_product DESC
-									LIMIT 4
+									LIMIT 3
                                         ")->result_array();
             return $query; 
     }

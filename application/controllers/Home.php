@@ -68,7 +68,7 @@ class Home extends CI_Controller {
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
 		$data['klasemen'] 			= $this->Home_model->get_klasemen();
 		$data['products']	= $this->Home_model->get_all_product();
-		$data['kompetisi']	= array(array('competition'=>'Liga Indonesia 1','value'=>'liga_indonesia'),array('competition'=>'Liga Inggris','value'=>'liga_inggris'),array('competition'=>'Liga Italia','value'=>'liga_italia'),array('competition'=>'Liga Spanyol','value'=>'liga_spanyol'));
+		$data['kompetisi']	= array(array('competition'=>'Liga Inggris','value'=>'liga_inggris'),array('competition'=>'Liga Italia','value'=>'liga_italia'),array('competition'=>'Liga Spanyol','value'=>'liga_spanyol'),array('competition'=>'Liga Indonesia 1','value'=>'liga_indonesia'));
 		$data['kanal'] 				= "home";
 		$data['usrEyeme']           = $this->emod->getUser();
 		

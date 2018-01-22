@@ -53,7 +53,32 @@ class Eyeprofile_model extends CI_Model
 		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,b.name as nama_manager,count(c.name) as squad
 									FROM tbl_club a INNER JOIN tbl_official_team b on a.club_id = b.club_now LEFT JOIN tbl_player c on a.club_id = c.club_id
 									WHERE b.position  = 'Manager' AND a.id_liga = '0' 
-									GROUP BY a.club_id ASC LIMIT 8")->result_array();
+									GROUP BY a.club_id ASC LIMIT 18")->result_array();
+		return $query;
+	}
+	
+	public function get_club_liga($liga,$limit=18)
+	{
+		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,b.name as nama_manager,count(c.name) as squad
+									FROM tbl_club a INNER JOIN tbl_official_team b on a.club_id = b.club_now LEFT JOIN tbl_player c on a.club_id = c.club_id
+									WHERE a.id_liga = '0' and a.name not in ('ebenktestlagijgndidelete') and a.competition='".$liga."'
+									GROUP BY a.club_id ASC LIMIT ".$limit."")->result_array();
+		return $query;
+	}
+	
+	public function get_player_liga($liga,$nationality)
+	{
+		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
+									join tbl_club b on a.club_id=b.club_id
+									where b.competition = '".$liga."' and nationality in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."')")->result_array();
+		return $query;
+	}
+	
+	public function get_player_liga_strange($liga,$nationality='indonesia')
+	{
+		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
+									join tbl_club b on a.club_id=b.club_id
+									where b.competition = '".$liga."' and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."')")->result_array();
 		return $query;
 	}
 	
@@ -75,6 +100,69 @@ class Eyeprofile_model extends CI_Model
 									AND a.jadwal_pertandingan<='".date("Y-m-d H:i:s")."' 
 									order by 
 									jadwal_pertandingan DESC LIMIT 6")->result_array();
+		return $query;
+	}
+	
+	public function get_jadwal_tomorrow_1()
+	{
+		$query = $this->db->query("SELECT 
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub
+									FROM tbl_jadwal_event a 
+									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
+									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
+									where b.title like '%Liga 1%' 
+									AND a.jadwal_pertandingan<='".date("Y-m-d H:i:s")."' 
+									order by 
+									jadwal_pertandingan DESC LIMIT 6")->result_array();
+		return $query;
+	}
+	
+	public function get_jadwal_tomorrow_2()
+	{
+		$query = $this->db->query("SELECT 
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub
+									FROM tbl_jadwal_event a 
+									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
+									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
+									where b.title like '%Liga 1%' 
+									AND a.jadwal_pertandingan<='".date("Y-m-d H:i:s")."' 
+									order by 
+									jadwal_pertandingan DESC LIMIT 6,6")->result_array();
+		return $query;
+	}
+	
+	public function get_jadwal_tomorrow_3()
+	{
+		$query = $this->db->query("SELECT 
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub
+									FROM tbl_jadwal_event a 
+									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
+									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
+									where b.title like '%Liga 1%' 
+									AND a.jadwal_pertandingan<='".date("Y-m-d H:i:s")."' 
+									order by 
+									jadwal_pertandingan DESC LIMIT 12,6")->result_array();
 		return $query;
 	}
 	
@@ -134,6 +222,11 @@ class Eyeprofile_model extends CI_Model
 	public function get_kompetisi()
 	{
 		$query = $this->db->query("select * from tbl_competitions")->result_array();
+		return $query;
+	}
+	public function get_kompetisi_pro()
+	{
+		$query = $this->db->query("select * from tbl_competitions where competition not in ('Liga Usia Muda','SSB / Akademi Sepakbola','Liga Eyesoccer','Liga Indonesia 3','Liga Desa 2017')")->result_array();
 		return $query;
 	}	
 	public function get_provinsi()

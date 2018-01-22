@@ -87,7 +87,8 @@
 <div class="m-0">
 <nav>
     <div class="desktop">
-        <div class="center-desktop m-0">
+        <!-- <div class="center-desktop"> -->
+            <div class="x-m">
             <a href="<?php echo base_url()?>">
                 <div class="logo">
                     <img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
@@ -96,8 +97,9 @@
             <div class="btn-login"> 
             <?php   
                 echo btnLogin($this->session->id_member);
-            ?>                       
-            </div>                
+            ?>   
+            </div>                    
+            <!-- </div>                 -->
         </div>                
     </div>
 </nav>

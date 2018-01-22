@@ -1,18 +1,14 @@
-<style>
+<!-- <style>
 	.des-p{
 		color: #2b2b2b;
 		font-size: .7em;
 		font-weight: 600;
-		margin-top: 5px;
-		width: max-content;
+		margin-top: 2px;
+		width: 95%;
 	}
 	.des-p td{
 		width: max-content;
-		padding: 4px 2px 0 0;
-		font-size: .9em;
-		overflow: hidden;
-		height: 13px;
-		display: inline-block;
+		padding: 0 2px 0 0;
 	}
 	.des-p td:nth-of-type(1){
 		width: 92px !important;
@@ -70,11 +66,12 @@
 	.jp{
 		color: #25ab2a;
 	}
-	.ctn-pemain{
+	.ctn-pemain, .ctn-pemain img{
 		border-radius: 5px;
 	}
 	.ctn-pemain img {
-		height: 100%;
+		width: 100%;
+		height: auto;
 	}
 	.des {
 		top: 5px;
@@ -100,19 +97,15 @@
     	left: 190px;
     	top: -210px;
 	}
-	#epSlide td{
-		padding: 2px 0px 0px 4px;
-		display: inline-block;
-	}
-</style>
+</style> -->
 		<!-- JADWAL -->
-		<div id="jadwal" class="jadwal carousel slide" style="overflow:  hidden;">
+        <div id="jadwal" class="jadwal carousel slide">
             <div class="left navigate" href="#jadwal" role="button">
                 <i class="material-icons">keyboard_arrow_left</i>
             </div>
             <div role="listbox" class="j-box carousel-inner">
                 <div class="over item active">
-				<?php foreach ($jadwal as $jadual){
+					<?php foreach ($jadwal as $jadual){
 					?>	
 						<div class="j-content">
 							<span class="t"><?=date("d M Y",strtotime($jadual["jadwal_pertandingan"]))?></span><br>
@@ -141,17 +134,14 @@
              <div class="right navigate" href="#jadwal" role="button">
                 <i class="material-icons">keyboard_arrow_right</i>
             </div>
-        </div>
-		<!-- TRENDING -->
-		<div class="trending">
+		</div>
+		
+        <!-- TRENDING -->
+        <div class="trending">
             <span class="x-c">
                 <span>Trending</span>
-<<<<<<< HEAD
-                <?php 
-					 $this->load->helper('my');
-=======
 					<?php 
->>>>>>> 9432f78a1e802cf56d83c514288ae2c71919adca
+					 $this->load->helper('my');
 					foreach ($trend_eyetube as $trendnya_tube)
 					{
 						$judul_trend 	= word_limiter($trendnya_tube['title'],3);
@@ -174,8 +164,8 @@
 					?>
             </span>
         </div>
-		<!-- EYEPROFILE -->
-		<div class="carous center-desktop" style="margin-top: -30px;">
+        <!-- EYEPROFILE -->
+        <div class="carous center-dekstop m-t-35" style="margin-top: -20px;">
             <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
             <h2 class="title ep">EyeProfile</h2>
             <hr class="x-ep">
@@ -183,10 +173,10 @@
                 <a href="<?php echo base_url()?>eyeprofile/klub" class="kl">Klub Lainnya</a>
                 <i class="material-icons r-kl">keyboard_arrow_right</i>                                
             </span>            
-            <div id="epSlide" class="carousel slide">
-                <div role="listbox" class="carousel-inner" style="height: 165px;overflow:  hidden;">                    
-                    <div class="box item active" style="margin-top: 3px;margin-left: 3px;">
-                        <?php 
+            <div id="epSlide" class="carousel slide" style="overflow:hidden;">			  
+				<div role="listbox" class="carousel-inner"> 
+					<div class="box item active">
+						<?php 
 							foreach ($profile_club as $club)
 							{
 						?>			
@@ -195,7 +185,7 @@
 									<div class="box-content">
 										<!--<img src="assets/img/ss-img.png" alt="">-->
 										<!--<img height="100px;" src="assets/img/ss-img.png">-->
-										<img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+										<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
 										<div class="detail">
 											<h2><?= $club['nama_club']; ?></h2>
 											<h3><?= $club['competition']; ?></h3>
@@ -215,230 +205,232 @@
 						<?php 
 						}
 						?>
-                        </div>
-                        <div class="box item" style="margin-top: 3px;margin-left: 3px;">
+					</div>
+					<div class="box item">
 						<?php 
-						foreach ($profile_club_2 as $club)
-						{
-					?>			
-							<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
-								<div class="box-content">
-									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-									<div class="detail">
-										<h2><?= $club['nama_club']; ?></h2>
-										<h3><?= $club['competition']; ?></h3>
-										<table>
-											<tr>
-												<td>Squad</td>
-												<td><?= $club['squad']; ?></td>
-											</tr>
-											<tr>
-												<td>Manager</td>
-												<td><?= $club['nama_manager']; ?></td>
-											</tr>
-										</table>                        
+							foreach ($profile_club_2 as $club)
+							{
+						?>			
+								<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
+									<div class="box-content">
+										<!--<img src="assets/img/ss-img.png" alt="">-->
+										<!--<img height="100px;" src="assets/img/ss-img.png">-->
+										<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+										<div class="detail">
+											<h2><?= $club['nama_club']; ?></h2>
+											<h3><?= $club['competition']; ?></h3>
+											<table>
+												<tr>
+													<td>Squad</td>
+													<td><?= $club['squad']; ?></td>
+												</tr>
+												<tr>
+													<td>Manager</td>
+													<td><?= $club['nama_manager']; ?></td>
+												</tr>
+											</table>                        
+										</div>
 									</div>
-								</div>
-							</a>
-					<?php 
-					}
-					?>
-                        </div>
-                        <div class="box item" style="margin-top: 3px;margin-left: 3px;">
+								</a>
 						<?php 
-						foreach ($profile_club_3 as $club)
-						{
-					?>			
-							<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
-								<div class="box-content">
-									<!--<img src="assets/img/ss-img.png" alt="">-->
-									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-									<div class="detail">
-										<h2><?= $club['nama_club']; ?></h2>
-										<h3><?= $club['competition']; ?></h3>
-										<table>
-											<tr>
-												<td>Squad</td>
-												<td><?= $club['squad']; ?></td>
-											</tr>
-											<tr>
-												<td>Manager</td>
-												<td><?= $club['nama_manager']; ?></td>
-											</tr>
-										</table>                        
+						}
+						?>
+					</div>
+					<div class="box item">
+						<?php 
+							foreach ($profile_club_3 as $club)
+							{
+						?>			
+								<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
+									<div class="box-content">
+										<!--<img src="assets/img/ss-img.png" alt="">-->
+										<!--<img height="100px;" src="assets/img/ss-img.png">-->
+										<img height="100px;" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+										<div class="detail">
+											<h2><?= $club['nama_club']; ?></h2>
+											<h3><?= $club['competition']; ?></h3>
+											<table>
+												<tr>
+													<td>Squad</td>
+													<td><?= $club['squad']; ?></td>
+												</tr>
+												<tr>
+													<td>Manager</td>
+													<td><?= $club['nama_manager']; ?></td>
+												</tr>
+											</table>                        
+										</div>
 									</div>
-								</div>
-							</a>
-					<?php 
-					}
-					?>
-                        </div>
-                </div>  
-    
+								</a>
+						<?php 
+						}
+						?>
+					</div>
+				</div>    
                 <div class="carousel-indicators bx-dot ep-dot">
                     <span data-target="#epSlide" data-slide-to="0" class="dot active"></span>
                     <span data-target="#epSlide" data-slide-to="1" class="dot"></span>
                     <span data-target="#epSlide" data-slide-to="2" class="dot"></span> 
-                </div>  
+                </div> 
+
             </div>
         <div class="pemain">
             <div class="bx-nav">
                 <i class="material-icons left i-bx-nav" href="#topPemain" role="button">keyboard_arrow_left</i>
                 <i class="material-icons right i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
-            <h3 class="o">Pemain Paling Banyak Dilihat</h3>
-            <div class="carousel slide" id="topPemain" >
+			<h3 class="o">Pemain Profesional</h3>
+			<div class="carousel slide" id="topPemain" style="overflow:hidden;">			
                 <div class="bx-pemain carousel-inner" role="listbox">
                     <div class="item active">
-					<?php 
-					$bulan 	= array(
-									'01' => 'Jan',
-									'02' => 'Feb',
-									'03' => 'Mar',
-									'04' => 'Apr',
-									'05' => 'Mei',
-									'06' => 'Juni',
-									'07' => 'Juli',
-									'08' => 'Agust',
-									'09' => 'Sept',
-									'10' => 'Okt',
-									'11' => 'Nov',
-									'12' => 'Des',
-							);
-					foreach ($profile_player as $player)
-					{	
-					?>		
-						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
-							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-							  <div style="max-width: 100px;height:  100px;overflow:  hidden;display:  inline-block;float: left;">
-								<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des" style="width: max-content;display:  inline-block;float:  left;padding:  0px;color: orange;font-weight: 600;">
-									<?php
-										$str_name = strlen($player['nama']);
-										if($str_name > 20){
-											$player['nama'] = substr($player['nama'],0,18);
-											$player['nama'] = $player['nama'].'...';
-										}else{
-											$player['nama'] = $player['nama'];
-										}
-										
-										$str_klub = strlen($player['klub']);
-										if($str_klub > 20){
-											$player['klub'] = substr($player['klub'],0,18);
-											$player['klub'] = $player['klub'].'...';
-										}else{
-											$player['klub'] = $player['klub'];
-										}
-									?>
-									<h3><?= $player['nama']; ?></h3>
-									<p style="color: black;font-weight: 500;">
-									<table class="des-p">
-									<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
-									<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
-									<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
-									</table>
-									</p>                        
+						<?php 
+						$bulan 	= array(
+										'01' => 'Jan',
+										'02' => 'Feb',
+										'03' => 'Mar',
+										'04' => 'Apr',
+										'05' => 'Mei',
+										'06' => 'Juni',
+										'07' => 'Juli',
+										'08' => 'Agust',
+										'09' => 'Sept',
+										'10' => 'Okt',
+										'11' => 'Nov',
+										'12' => 'Des',
+								);
+						foreach ($profile_player as $player)
+						{	
+						?>		
+							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
+								<div class="ctn-pemain">
+									<!--<img src="assets/img/ss-img.png" alt="">-->
+								  <div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;">
+									<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+									<div class="container des" style="width: 70%;display:  inline-block;float:  right;padding:  0px;color: orange;font-weight: 600;">
+										<?php
+											$str_name = strlen($player['nama']);
+											if($str_name > 20){
+												$player['nama'] = substr($player['nama'],0,18);
+												$player['nama'] = $player['nama'].'...';
+											}else{
+												$player['nama'] = $player['nama'];
+											}
+											
+											$str_klub = strlen($player['klub']);
+											if($str_klub > 20){
+												$player['klub'] = substr($player['klub'],0,18);
+												$player['klub'] = $player['klub'].'...';
+											}else{
+												$player['klub'] = $player['klub'];
+											}
+										?>
+										<h3><?= $player['nama']; ?></h3>
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>                        
+									</div>
 								</div>
-							</div>
-						</a>
-					<?php
-					}
-					?>	
-                    </div>
-                    <div class="item">
-					<?php
-					foreach ($profile_player_2 as $player)
-					{	
-					?>		
-						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
-							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<div style="max-width: 100px;height:  100px;overflow:  hidden;display:  inline-block;float: left;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des" style="width: max-content;display:  inline-block;float:  left;padding:  0px;color: orange;font-weight: 600;">
-									<?php
-										$str_name = strlen($player['nama']);
-										if($str_name > 20){
-											$player['nama'] = substr($player['nama'],0,18);
-											$player['nama'] = $player['nama'].'...';
-										}else{
-											$player['nama'] = $player['nama'];
-										}
-										
-										$str_klub = strlen($player['klub']);
-										if($str_klub > 20){
-											$player['klub'] = substr($player['klub'],0,18);
-											$player['klub'] = $player['klub'].'...';
-										}else{
-											$player['klub'] = $player['klub'];
-										}
-									?>
-									<h3><?= $player['nama']; ?></h3>
-									<p style="color: black;font-weight: 500;">
-									<table class="des-p">
-									<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
-									<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
-									<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
-									</table>
-									</p>  
+							</a>
+						<?php
+						}
+						?>	
+					</div>
+						
+					<div class="item">
+						<?php
+						foreach ($profile_player_2 as $player)
+						{	
+						?>		
+							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
+								<div class="ctn-pemain">
+									<!--<img src="assets/img/ss-img.png" alt="">-->
+									<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+									<div class="container des" style="width: 70%;display:  inline-block;float:  right;padding:  0px;color: orange;font-weight: 600;"
+										<?php
+											$str_name = strlen($player['nama']);
+											if($str_name > 20){
+												$player['nama'] = substr($player['nama'],0,18);
+												$player['nama'] = $player['nama'].'...';
+											}else{
+												$player['nama'] = $player['nama'];
+											}
+											
+											$str_klub = strlen($player['klub']);
+											if($str_klub > 20){
+												$player['klub'] = substr($player['klub'],0,18);
+												$player['klub'] = $player['klub'].'...';
+											}else{
+												$player['klub'] = $player['klub'];
+											}
+										?>
+										<h3><?= $player['nama']; ?></h3>
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>  
+									</div>
 								</div>
-							</div>
-						</a>
-					<?php
-					}
-					?>
-                    </div>
-                    <div class="item">
-					<?php
-					foreach ($profile_player_3 as $player)
-					{	
-					?>			
-						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
-							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<div style="max-width: 100px;height:  100px;overflow:  hidden;display:  inline-block;float: left;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des" style="width: max-content;display:  inline-block;float:  left;padding:  0px;color: orange;font-weight: 600;">
-									<?php
-										$str_name = strlen($player['nama']);
-										if($str_name > 20){
-											$player['nama'] = substr($player['nama'],0,18);
-											$player['nama'] = $player['nama'].'...';
-										}else{
-											$player['nama'] = $player['nama'];
-										}
-										
-										$str_klub = strlen($player['klub']);
-										if($str_klub > 20){
-											$player['klub'] = substr($player['klub'],0,18);
-											$player['klub'] = $player['klub'].'...';
-										}else{
-											$player['klub'] = $player['klub'];
-										}
-									?>
-									<h3><?= $player['nama']; ?></h3>
-									<p style="color: black;font-weight: 500;">
-									<table class="des-p">
-									<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
-									<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
-									<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
-									</table>
-									</p>  
+							</a>
+						<?php
+						}
+						?>
+					</div>
+					
+					<div class="item">
+						<?php
+						foreach ($profile_player_3 as $player)
+						{	
+						?>			
+							<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
+								<div class="ctn-pemain">
+									<!--<img src="assets/img/ss-img.png" alt="">-->
+									<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+									<div class="container des" style="width: 70%;display:  inline-block;float:  right;padding:  0px;color: orange;font-weight: 600;"
+										<?php
+											$str_name = strlen($player['nama']);
+											if($str_name > 20){
+												$player['nama'] = substr($player['nama'],0,18);
+												$player['nama'] = $player['nama'].'...';
+											}else{
+												$player['nama'] = $player['nama'];
+											}
+											
+											$str_klub = strlen($player['klub']);
+											if($str_klub > 20){
+												$player['klub'] = substr($player['klub'],0,18);
+												$player['klub'] = $player['klub'].'...';
+											}else{
+												$player['klub'] = $player['klub'];
+											}
+										?>
+										<h3><?= $player['nama']; ?></h3>
+										<p style="color: black;font-weight: 500;">
+										<table class="des-p">
+										<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
+										<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
+										<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
+										</table>
+										</p>  
+									</div>
 								</div>
-							</div>
-						</a>
-					<?php
-					}
-					?>
-                    </div>
-                </div>
-            </div>
+							</a>
+						<?php
+						}
+						?>
+					</div>
+				</div>            
         </div>
-		</div>
+        </div>
+        </div>
         <!-- EYETUBE -->
-        <div class="center-desktop">        
+        <div class="center-dekstop pd-l-100">        
             <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyetube.png" alt="">
             <h2 class="title et">EyeTube</h2>
             <hr class="x-et">
@@ -512,7 +504,7 @@
             </div>
 
             <div class="container tab" style="padding-top: 30px;">
-                <span href="" data-target="#esTab" data-slide-to="0" class="active">eyesoccer star</span>
+                <span href="" data-target="#esTab" data-slide-to="0" class="">eyesoccer star</span>
                 <span href="" data-target="#esTab" data-slide-to="1" class="">video popular</span>
                 <span href="" data-target="#esTab" data-slide-to="2" class="">video kamu</span>
                 <hr>
@@ -608,14 +600,14 @@
             </div>
         </div>
         <!-- EYENEWS -->
-        <div class="center-desktop">
+        <div class="center-dekstop pd-l-100">
             <div class="et-content m-b-150">
                 <div class="et-content1">
                     <img class="img-title" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
                     <h2 class="title en">EyeNews</h2>
                     <hr class="x-en">
 					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
-						<div class="t-en-content2" style="margin-top:-20px; z-index:1; top:283px; padding:10px; width:580px; background-color:#00000050;"> 
+						<div class="t-en-content2" style="margin-top:1px; z-index:1; top:283px; padding:10px; width:580px; background-color:#00000050;"> 
 							<span class="et-st">	  					<small>
 								<?php
 									$date 		=  new DateTime($eyenews_main->createon);
@@ -629,7 +621,7 @@
                     <!--<img class="v-et-2 w-100" src="assets/img/video-small.png" alt="">-->
 					<div style="width:100%;height:374px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
 					</a>
-                    <div class="h-berita-terkait" style="margin:40px 0;height:135px;overflow:hidden;">
+                    <div class="h-berita-terkait" style="margin:40px 0;height:125px;overflow:hidden;">
                         <h3 class="mb-10">Berita Terkait</h3>
 						<?php
 						$i = 0;
@@ -655,7 +647,7 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
-                    <div class="c-em-content2" style="top: -14px;">
+                    <div class="c-em-content2" style="top: -20px;">
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
                         <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
@@ -672,7 +664,7 @@
                 </div>
             </div>
         </div>
-        <div class="center-desktop">
+        <div class="center-dekstop pd-l-100">
             <div class="et-content">
                 <div class="et-content1">
                     <div class="container tab2">
@@ -704,7 +696,8 @@
 												$keterangan = strip_tags($populer['description']);
 												echo word_limiter($keterangan,25);
 											?></p></div>
-										</div>                                      
+										</div>
+                                        <hr>                                        
                                     </div>
 								<?php
 								}
@@ -733,6 +726,7 @@
 												echo word_limiter($keterangan,15);
 											?></p></div>
 										</div>
+                                        <hr>
                                     </div>
 									<?php
 									}
@@ -761,6 +755,7 @@
 												echo word_limiter($keterangan,15);
 											?></p></div>
 										</div>
+                                        <hr>
                                     </div>
 									<?php
 									}
@@ -774,11 +769,11 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
                     <h2 class="title emar">EyeMarket</h2>
                     <hr class="x-emar">
-                        <div class="rek-ber" style="margin-top: -14px;">			
+                        <div class="rek-ber" style="margin-top: -8px;">			
 							<?php foreach ($products as $produk)
 							{
 							?>
-							<div class="rek-ber-c">
+							<div class="rek-ber-c" style="border-bottom: 1px solid slategray;padding: 10px 0 15px 0; margin-top: 0;">
 								<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;">
 									<img src="<?= base_url(); ?>img/eyemarket/produk/<?= $produk['image1'] ?>" alt="" style="width:100%; min-height:100%;">
 								</div>
@@ -798,13 +793,13 @@
             </div>
         </div>
         <!-- BANNER -->
-        <div class="center-desktop">
-            <div class="banner-150" style="margin-top: 20px;">
+        <div class="center-dekstop pd-l-100">
+            <div class="banner-150">
                 <img src="" alt="">
             </div>
         </div>
         <!-- EYEVENT -->
-        <div class="center-desktop">
+        <div class="center-dekstop pd-l-100">
             <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyevent.png" alt="">
             <h2 class="title ee">EyeVent</h2>
             <hr class="x-ee">
@@ -813,8 +808,8 @@
                 <i class="material-icons r-el">keyboard_arrow_right</i>                                
             </span>
             <div class="container">
-                <div id="evSlide" class="carousel slide t-30" style="width: 100% !important;overflow:hidden;height: 250px;">
-                    <div role="listbox" class="carousel-inner" style="width: max-content;height: 225px;">  				
+                <div id="evSlide" class="carousel slide t-30" style="width: 100% !important;overflow:hidden;">
+                    <div role="listbox" class="carousel-inner" style="width: max-content;">  				
                         <div class="box item active">	
 						<?php
 						foreach($eyevent_main as $row){
@@ -856,8 +851,8 @@
             </div>
         </div>
         <!-- JADWAL PERTANDINGAN & KLASEMEN -->
-        <div class="center-desktop pd-b-100 t-40">
-            <div class="container">
+        <div class="center-dekstop pd-l-100 pd-b-100">
+            <div class="container t-40">
                 <div class="et-content1">
                     <span class="jp green">JADWAL PERTANDINGAN</span>
                     <div class="border-box" style="margin-top: 23px;">
@@ -900,13 +895,11 @@
 							?>
 								<tbody>
 									<tr>
-										<td class="tx-r"><?=$row["club_a"]?></td>
-										<td><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td class="tx-r"><?=$row["club_a"]?><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
 										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
-										<td><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-										<td class="tx-l"><?=$row["club_b"]?></td>
+										<td class="tx-l"><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span><?=$row["club_b"]?></td>
 									</tr>
 								</tbody>
 							<?php }?>
@@ -920,13 +913,11 @@
 						?>
                             <tbody>
                                 <tr>
-									<td class="tx-r"><?=$row["club_a"]?></td>
-									<td><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+                                    <td class="tx-r"><?=$row["club_a"]?><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
                                     <td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 									<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 									</td>
-									<td><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-                                    <td class="tx-l"><?=$row["club_b"]?></td>
+                                    <td class="tx-l"><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span><?=$row["club_b"]?></td>
                                 </tr>
                             </tbody>
 						<?php }?>
@@ -940,13 +931,11 @@
 							?>
 								<tbody>
 									<tr>
-										<td class="tx-r"><?=$row["club_a"]?></td>
-										<td><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td class="tx-r"><?=$row["club_a"]?><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
 										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
-										<td><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-										<td class="tx-l"><?=$row["club_b"]?></td>
+										<td class="tx-l"><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span><?=$row["club_b"]?></td>
 									</tr>
 								</tbody>
 							<?php }?>
@@ -969,7 +958,7 @@
 				?>
                 </select>
                     <div class="border-box">
-                        <table id="liga_indonesia" class="table table-striped" style="display:none;">
+                        <table id="liga_indonesia" class="table table-striped">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -983,7 +972,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents(LinkScrapingLigaIndonesia()); //get the html returned from the following url
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=629'); //get the html returned from the following url
 
 								$premiere_doc = new DOMDocument();
 
@@ -1030,7 +1019,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_inggris" class="table table-striped">
+						<table id="liga_inggris" class="table table-striped" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -1044,7 +1033,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents(LinkScrapingLigaInggris());
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=8');
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned
@@ -1099,7 +1088,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents(LinkScrapingLigaItalia());
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=13');
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned
@@ -1154,7 +1143,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents(LinkScrapingLigaSpanyol());
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=7');
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned

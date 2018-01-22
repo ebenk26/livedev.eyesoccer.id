@@ -441,6 +441,28 @@ function pathUrl()
 	return "/home/admin/web/".$_SERVER['SERVER_NAME']."/public_html/";
 }
 
+function LinkScrapingLigaIndonesia()
+{
+	// return "http://www.klasemenliga.com/?page=competition&id=629";
+	return "http://www.klasemenliga.com/?page=season&id=15105";
+}
+
+function LinkScrapingLigaInggris()
+{
+	return "http://www.klasemenliga.com/?page=competition&id=8";
+}
+
+function LinkScrapingLigaItalia()
+{
+	return "http://www.klasemenliga.com/?page=competition&id=13";
+}
+
+function LinkScrapingLigaSpanyol()
+{
+	// return file_get_contents("http://www.klasemenliga.com/?page=competition&id=7");
+	return "http://www.klasemenliga.com/?page=competition&id=7";
+}
+
 function get_date($rentang = "")
 {
     $tanggal    = new DateTime(date("Y-m-d"));;

@@ -194,7 +194,7 @@
     
         <nav>
             <div class="dekstop">
-                <div class="center-dekstop m-0">
+                <div class="x-m">
 					<a href="<?php echo base_url()?>">
 						<div class="logo">
 							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
@@ -228,9 +228,9 @@ else{
                 <div class="center-dekstop m-0">
                     <span class="x-m">
                         <ul>
-                            <li><a href="">EyeProfile</a>
+                            <li><a href="" onclick="return false">EyeProfile</a>
                                 <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/liga/Liga%20Indonesia%201">Klub</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
