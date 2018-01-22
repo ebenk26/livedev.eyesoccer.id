@@ -956,7 +956,7 @@
 				?>
                 </select>
                     <div class="border-box">
-                        <table id="liga_indonesia" class="table table-striped">
+                        <table id="liga_indonesia" class="table table-striped" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -1017,7 +1017,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_inggris" class="table table-striped" style="display:none;">
+						<table id="liga_inggris" class="table table-striped">
 							<thead>
 								<tr>
 									<th>#</th>

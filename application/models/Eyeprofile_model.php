@@ -226,7 +226,7 @@ class Eyeprofile_model extends CI_Model
 	}
 	public function get_kompetisi_pro()
 	{
-		$query = $this->db->query("select * from tbl_competitions where competition not in ('Liga Usia Muda','SSB / Akademi Sepakbola','Liga Eyesoccer','Liga Indonesia 3')")->result_array();
+		$query = $this->db->query("select * from tbl_competitions where competition not in ('Liga Usia Muda','SSB / Akademi Sepakbola','Liga Eyesoccer','Liga Indonesia 3','Liga Desa 2017')")->result_array();
 		return $query;
 	}	
 	public function get_provinsi()
