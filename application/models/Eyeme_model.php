@@ -227,12 +227,10 @@ class Eyeme_model extends Master_model
 					A.img_alt,
 					A.last_update,
 					A.date_create,
-					B.display_picture,
+					C.profile_pic,
 					C.username
 
 				 FROM me_img  as A 
-				 LEFT JOIN me_profile as B 
-				 ON A.id_member = B.id_member 
 				 LEFT JOIN tbl_member as C 
 				 on A.id_member = C.id_member
 				 WHERE  A.id_member IN

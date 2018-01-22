@@ -46,6 +46,9 @@ class Eyeme extends CI_Controller {
 		if($getImgFollowing > 0 ){
 
 			foreach($getImgFollowing as $k => $v){
+				$where = array('id_gallery'=> $v->profile_pic);
+				$select = array('pic');
+				$getPic = $this->mod->getAll('tbl_gallery',$where,$select);
 
 				$arr[$i]['id_img'] 		= $v->id_img;
 				$arr[$i]['img_caption'] = $v->img_caption;
@@ -56,7 +59,7 @@ class Eyeme extends CI_Controller {
 				$arr[$i]['img_name']    = $v->img_name;
 				$arr[$i]['img_thumb']   = $v->img_thumb;
 				$arr[$i]['img_alt']     = $v->img_alt;
-				$arr[$i]['dp']          = $v->display_picture;
+				$arr[$i]['dp']          = (count($getPic) > 0 ? $getPic[0]->pic : '');
 				$arr[$i]['username']    = $v->username;	
 				$arr[$i]['last_update'] = $v->last_update;
 				$arr[$i]['date_create'] = $v->date_create;
