@@ -75,7 +75,7 @@ class Eyeme extends CI_Controller {
 		$this->data['id_member']       = $id_member;
 		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
-		$this->data['usr']	           = $this->get_all_user();
+		$this->data['usr']	           = $this->get_all_user($id_member);
 		$this->load->view('eyeme/home',$this->data);	
 		
 	}
@@ -310,10 +310,10 @@ class Eyeme extends CI_Controller {
 		
 
 	}
-	public function get_all_user(){
+	public function get_all_user($id_member){
 		$select = array('id_member','name','username','fullname','email','profile_pic');
 		$order  = array('last_online','DESC');
-		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5');
+		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5','',array('id_member',array($id_member)));
 	
 		for($i= 0; $i <count($allUsr); $i++){
 			$where = array('id_gallery'=> $allUsr[$i]->profile_pic);
