@@ -117,7 +117,32 @@
 					<?php
 					}
 					?>
-					
+					<?php
+					foreach($get_jadwal_tomorrow_2 as $club){
+					?>
+					<div class="over item">			
+						<div class="j-content">
+							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+						</div>								
+					</div>		
+					<?php
+					}
+					?>
+					<?php
+					foreach($get_jadwal_tomorrow_3 as $club){
+					?>
+					<div class="over item">			
+						<div class="j-content">
+							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+						</div>								
+					</div>		
+					<?php
+					}
+					?>
                 </div>
                 <div class="right navigate" href="#jadwal" role="button">
                     <i class="material-icons">keyboard_arrow_right</i>

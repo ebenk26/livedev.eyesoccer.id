@@ -118,7 +118,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
 									where b.title like '%Liga 1%' 
-									AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' 
+									AND a.jadwal_pertandingan<='".date("Y-m-d H:i:s")."' 
 									order by 
 									jadwal_pertandingan DESC LIMIT 6")->result_array();
 		return $query;
@@ -139,7 +139,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
 									where b.title like '%Liga 1%' 
-									AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' 
+									AND a.jadwal_pertandingan<='".date("Y-m-d H:i:s")."' 
 									order by 
 									jadwal_pertandingan DESC LIMIT 6,6")->result_array();
 		return $query;
@@ -160,7 +160,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
 									where b.title like '%Liga 1%' 
-									AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' 
+									AND a.jadwal_pertandingan<='".date("Y-m-d H:i:s")."' 
 									order by 
 									jadwal_pertandingan DESC LIMIT 12,6")->result_array();
 		return $query;
