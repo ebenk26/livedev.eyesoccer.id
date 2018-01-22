@@ -334,11 +334,8 @@ class Eyeme_model extends Master_model
 						a.comment,
 						a.date_create,
 						a.last_update,
-						b.display_picture,
 						c.username
 					FROM me_comment AS a
-					INNER JOIN me_profile AS b
-					ON a.id_member=b.id_member
 					INNER JOIN tbl_member AS c
 					ON a.id_member = c.id_member
 					WHERE a.id_img = $id_img

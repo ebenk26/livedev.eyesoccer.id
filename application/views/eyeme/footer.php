@@ -632,7 +632,7 @@ $('.me-post').click(function(event) {
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('#usern').text(v.username);
-            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo MEIMG?>' + v.display_picture));
+            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
             $('#time-string').text(v.timeString);
             $('#c-like').addClass('ref-'+ v.id_img);
             $('#c-like').text(v.countLike);
