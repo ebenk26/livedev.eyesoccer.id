@@ -440,3 +440,14 @@ function pathUrl()
 	else
 	return "/home/admin/web/".$_SERVER['SERVER_NAME']."/public_html/";
 }
+
+function get_date($rentang = "")
+{
+    $tanggal    = new DateTime(date("Y-m-d"));;
+
+    $modif      = $tanggal->modify($rentang.' day');
+
+    $tanggalnya = $modif->format('Y-m-d');
+
+    return array('tanggalnya'    => $tanggalnya,);
+}
