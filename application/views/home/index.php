@@ -146,8 +146,12 @@
 		<div class="trending">
             <span class="x-c">
                 <span>Trending</span>
+<<<<<<< HEAD
                 <?php 
 					 $this->load->helper('my');
+=======
+					<?php 
+>>>>>>> 9432f78a1e802cf56d83c514288ae2c71919adca
 					foreach ($trend_eyetube as $trendnya_tube)
 					{
 						$judul_trend 	= word_limiter($trendnya_tube['title'],3);
@@ -965,7 +969,7 @@
 				?>
                 </select>
                     <div class="border-box">
-                        <table id="liga_indonesia" class="table table-striped">
+                        <table id="liga_indonesia" class="table table-striped" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -979,7 +983,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=629'); //get the html returned from the following url
+								$html = file_get_contents(LinkScrapingLigaIndonesia()); //get the html returned from the following url
 
 								$premiere_doc = new DOMDocument();
 
@@ -1026,7 +1030,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_inggris" class="table table-striped" style="display:none;">
+						<table id="liga_inggris" class="table table-striped">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -1040,7 +1044,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=8');
+								$html = file_get_contents(LinkScrapingLigaInggris());
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned
@@ -1095,7 +1099,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=13');
+								$html = file_get_contents(LinkScrapingLigaItalia());
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned
@@ -1150,7 +1154,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=7');
+								$html = file_get_contents(LinkScrapingLigaSpanyol());
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned

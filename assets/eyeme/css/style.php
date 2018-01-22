@@ -2333,7 +2333,7 @@ ul, li {
 .detail-post-box-cont{
     width: 1000px;
     height: 550px;
-    top: -15px;
+    top: 20px;
 }
 .takepic-box{
     width: 1000px;

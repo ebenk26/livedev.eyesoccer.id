@@ -38,6 +38,7 @@ var html      = "",//html comment
     DPIC      = '<?php echo DPIC?>',
     MEIMG     = '<?php echo MEIMG?>',
     MEPROFILE = '<?php echo MEPROFILE?>',
+    IMGSTORE  = '<?php echo IMGSTORE?>';
     MYPROFILE = MEPROFILE + '<?php echo $myusername?>';
     loadingAni= $('#loading'); //Loading Animation 
     
@@ -65,7 +66,7 @@ $('#notif').click(function(event){ //event notif click
                tbl += '<tr class="notif-link" rel="' + v.id_img + '">';
                     tbl += '<td>';
                         tbl += '<img class="notif-profil-foto" src="' +
-                        (v.display_picture == '' ? DPIC : MEIMG + v.display_picture ) +' " alt="user photo" />';
+                        (v.display_picture == '' ? DPIC : IMGSTORE + v.display_picture ) +' " alt="user photo" />';
                     tbl += '</td>';
 
                     if(v.notif_type.substr(0,3) == 'COM'){
@@ -632,7 +633,7 @@ $('.me-post').click(function(event) {
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('#usern').text(v.username);
-            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo MEIMG?>' + v.display_picture));
+            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
             $('#time-string').text(v.timeString);
             $('#c-like').addClass('ref-'+ v.id_img);
             $('#c-like').text(v.countLike);
