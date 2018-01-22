@@ -146,12 +146,7 @@
 		<div class="trending">
             <span class="x-c">
                 <span>Trending</span>
-<<<<<<< HEAD
-                <?php 
-					 $this->load->helper('my');
-=======
 					<?php 
->>>>>>> 9432f78a1e802cf56d83c514288ae2c71919adca
 					foreach ($trend_eyetube as $trendnya_tube)
 					{
 						$judul_trend 	= word_limiter($trendnya_tube['title'],3);
@@ -1058,7 +1053,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 20){
+											if($i < 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1113,7 +1108,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 20){
+											if($i < 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1168,7 +1163,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 20){
+											if($i < 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
