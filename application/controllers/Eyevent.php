@@ -54,29 +54,39 @@ class Eyevent extends CI_Controller {
 
 		';
 		
-		$cmd_ads=$this->db->query("select * from tbl_ads")->result_array();
-		$i=0;
+		$cmd_ads 	= $this->db->query("select * from tbl_ads")->result_array();
+		$i = 0;
 		foreach($cmd_ads as $ads){
-		$e=0;
-		foreach($ads as $key => $val)
-		{
-		$array[$i][$e] =  $val;
-		$e++;
-		}		
-		$i++;
+			$e = 0;
+			foreach($ads as $key => $val)
+			{
+				$array[$i][$e] =  $val;
+				$e++;
+			}		
+			$i++;
 		}
-		$data["array"]=$array;
-		$data["page"]="home";
-		$data["popup"]=$array[14][3];		
+		$data["array"] 	= $array;
+		$data["page"] 	= "home";
+		$data["popup"] 	= $array[14][3];
+
+		$tanggal = get_date("-2");
+
+		$data["kemarin_lusa"] 		= get_date("-2");
+		$data["kemarin"] 			= get_date("-1");
+		$data["hari_ini"] 			= get_date("+0");
+		$data["besok"] 				= get_date("+1");
+		$data["besok_lusa"] 		= get_date("+2");
+		$data["tiga_hari_besok"] 	= get_date("+3");
+
 
 		$data['eyevent_main']		= $this->Eyevent_model->get_eyevent_main();
 		$data['eyevent_main_2']		= $this->Eyevent_model->get_eyevent_main_2();
-		$data['all_jadwal'] 		= $this->Eyevent_model->get_all_jadwal();
-		$data['all_jadwal2'] 		= $this->Eyevent_model->get_all_jadwal2();
+
+		$data['jadwal_yesterday'] 		= $this->Eyevent_model->get_all_jadwal($data["kemarin"]["tanggalnya"]);
+		$data['jadwal_today'] 			= $this->Eyevent_model->get_all_jadwal($data["hari_ini"]["tanggalnya"]);
+		$data['jadwal_tomorrow'] 		= $this->Eyevent_model->get_all_jadwal($data["besok"]["tanggalnya"]);
+		$data['jadwal_next_tomorrow'] 	= $this->Eyevent_model->get_all_jadwal($data["besok_lusa"]["tanggalnya"]);
 		
-		$data['jadwal_today'] 		= $this->Eyevent_model->get_jadwal_today();
-		$data['jadwal_yesterday'] 	= $this->Eyevent_model->get_jadwal_yesterday();
-		$data['jadwal_tomorrow'] 	= $this->Eyevent_model->get_jadwal_tomorrow();
 		$data['hasil_today'] 		= $this->Eyevent_model->get_hasil_today();
 		$data['hasil_today2'] 		= $this->Eyevent_model->get_hasil_today2();
 		$data['eyenews_main'] 		= $this->Eyevent_model->get_eyenews_main();
@@ -182,6 +192,33 @@ class Eyevent extends CI_Controller {
 		$data["body"]=$this->load->view('eyevent/eventlainnya', $data, true);
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
-	}	
+	}
+
+	public function get_jadwal($tanggal)
+	{
+		$jadwalnya 		= $this->Eyevent_model->get_all_jadwal($tanggal);
+		$txt = '';
+		foreach ($jadwalnya as $value)
+		{
+
+			$txt.= "	<tr>
+	                        <td>".$value['club_a']."
+	                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
+	                        </td> \
+	                        <td>".date("H:i",strtotime($value["jadwal_pertandingan"]))."
+	                            <span></span>
+	                        </td>
+	                        <td>
+	                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
+	                            ".$value["club_b"]."
+	                        </td>
+	                    </tr>	";
+
+		}
+
+		echo json_encode(array(	'status' 	=> '1',
+								'txt' 		=> $txt,
+							));
+	}
 	
 }
