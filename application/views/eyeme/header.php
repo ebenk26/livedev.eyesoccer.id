@@ -137,8 +137,12 @@
 <div class="center-desktop container me-head">
     <div class="w1020 m-0">
         <div class="container">
+            <div class="pd-t-20 p-r" style="float:left">
+            <a href="<?php echo MEURL?>" title="test" style="text-decoration: none;""><i class="material-icons ikon">home</i></a>
+            </div>
             <div class="fl-r pd-t-20 p-r">
             <?php 
+               
                 //icon setting 
                 $icon = array(
                             array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),

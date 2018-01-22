@@ -947,47 +947,242 @@
                 </div>
                 <div class="et-content2">
                     <span class="jp">KLASEMEN</span>
-                <select id="" name="" selected="true" class="slc-musim fl-r">
+                <select id="select_league" name="" selected="true" class="slc-musim fl-r">
 				<?php
 					foreach($kompetisi as $row){
 				?>
-					<option><?=$row['competition']?></option>';  
+					<option value="<?=$row['value']?>"><?=$row['competition']?></option>';  
 				<?php
 					}
 				?>
                 </select>
                     <div class="border-box">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Klub</th>
-                                    <th>Main</th>
-                                    <th>M</th>
-                                    <th>S</th>
-                                    <th>K</th>
-                                    <th>Poin</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <table id="liga_indonesia" class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Klub</th>
+									<th>MN</th>
+									<th>M</th>
+									<th>S</th>
+									<th>K</th>
+									<th>P</th>
+								</tr>
+							</thead>
+							<tbody>
 							<?php
-							$no=1;
-							foreach($klasemen as $classe){
-								?>
-                        <tr>
-                            <td><?=$no++?></td>
-                            <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-							<?php }?>
-                            </tbody>
-                        </table>
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=629'); //get the html returned from the following url
+
+								$premiere_doc = new DOMDocument();
+
+								libxml_use_internal_errors(TRUE); //disable libxml errors
+
+								if(!empty($html)){ //if any html is actually returned
+
+									$premiere_doc->loadHTML($html);
+									libxml_clear_errors(); //remove errors for yucky html
+									
+									$pokemon_xpath = new DOMXPath($premiere_doc);
+
+									//get all the h2's with an id
+									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
+									$pokemon_list = array();
+									$i = 0;
+									if($pokemon_row->length > 0){
+										foreach($pokemon_row as $row){
+											echo "<tr>";
+											if($i < 18){
+												$types = $pokemon_xpath->query('td', $row);
+												$n = 0;
+												foreach($types as $type){
+													if(!empty($type->nodeValue)){
+														if($n != 7){
+															if($n != 8){
+																if($n != 9){
+																	if($n != 11){
+																		$nodeValue = "<td>".$type->nodeValue.'</td>';
+																		echo $nodeValue;
+																	}
+																}
+															}
+														}
+													}
+													$n++;
+												}
+												$i ++;
+											}
+											echo "</tr>";
+										}
+									}
+								} 
+							?>
+							</tbody>
+						</table>
+						<table id="liga_inggris" class="table table-striped" style="display:none;">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Klub</th>
+									<th>MN</th>
+									<th>M</th>
+									<th>S</th>
+									<th>K</th>
+									<th>P</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=8');
+								$premiere_doc = new DOMDocument();
+								libxml_use_internal_errors(TRUE); //disable libxml errors
+								if(!empty($html)){ //if any html is actually returned
+									$premiere_doc->loadHTML($html);
+									libxml_clear_errors(); //remove errors for yucky html
+									$pokemon_xpath = new DOMXPath($premiere_doc);
+									//get all the h2's with an id
+									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
+									$pokemon_list = array();
+									$i = 0;
+									if($pokemon_row->length > 0){
+										foreach($pokemon_row as $row){
+											echo "<tr>";
+											if($i < 20){
+												$types = $pokemon_xpath->query('td', $row);
+												$n = 0;
+												foreach($types as $type){
+													if(!empty($type->nodeValue)){
+														if($n != 7){
+															if($n != 8){
+																if($n != 9){
+																	if($n != 11){
+																		$nodeValue = "<td>".$type->nodeValue.'</td>';
+																		echo $nodeValue;
+																	}
+																}
+															}
+														}
+													}
+													$n++;
+												}
+												$i ++;
+											}
+											echo "</tr>";
+										}
+									}
+								} 
+							?>
+							</tbody>
+						</table>
+						<table id="liga_italia" class="table table-striped" style="display:none;">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Klub</th>
+									<th>MN</th>
+									<th>M</th>
+									<th>S</th>
+									<th>K</th>
+									<th>P</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=13');
+								$premiere_doc = new DOMDocument();
+								libxml_use_internal_errors(TRUE); //disable libxml errors
+								if(!empty($html)){ //if any html is actually returned
+									$premiere_doc->loadHTML($html);
+									libxml_clear_errors(); //remove errors for yucky html
+									$pokemon_xpath = new DOMXPath($premiere_doc);
+									//get all the h2's with an id
+									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
+									$pokemon_list = array();
+									$i = 0;
+									if($pokemon_row->length > 0){
+										foreach($pokemon_row as $row){
+											echo "<tr>";
+											if($i < 20){
+												$types = $pokemon_xpath->query('td', $row);
+												$n = 0;
+												foreach($types as $type){
+													if(!empty($type->nodeValue)){
+														if($n != 7){
+															if($n != 8){
+																if($n != 9){
+																	if($n != 11){
+																		$nodeValue = "<td>".$type->nodeValue.'</td>';
+																		echo $nodeValue;
+																	}
+																}
+															}
+														}
+													}
+													$n++;
+												}
+												$i ++;
+											}
+											echo "</tr>";
+										}
+									}
+								} 
+							?>
+							</tbody>
+						</table>
+						<table id="liga_spanyol" class="table table-striped" style="display:none;">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Klub</th>
+									<th>MN</th>
+									<th>M</th>
+									<th>S</th>
+									<th>K</th>
+									<th>P</th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php
+								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=7');
+								$premiere_doc = new DOMDocument();
+								libxml_use_internal_errors(TRUE); //disable libxml errors
+								if(!empty($html)){ //if any html is actually returned
+									$premiere_doc->loadHTML($html);
+									libxml_clear_errors(); //remove errors for yucky html
+									$pokemon_xpath = new DOMXPath($premiere_doc);
+									//get all the h2's with an id
+									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
+									$pokemon_list = array();
+									$i = 0;
+									if($pokemon_row->length > 0){
+										foreach($pokemon_row as $row){
+											echo "<tr>";
+											if($i < 20){
+												$types = $pokemon_xpath->query('td', $row);
+												$n = 0;
+												foreach($types as $type){
+													if(!empty($type->nodeValue)){
+														if($n != 7){
+															if($n != 8){
+																if($n != 9){
+																	if($n != 11){
+																		$nodeValue = "<td>".$type->nodeValue.'</td>';
+																		echo $nodeValue;
+																	}
+																}
+															}
+														}
+													}
+													$n++;
+												}
+												$i ++;
+											}
+											echo "</tr>";
+										}
+									}
+								} 
+							?>
+							</tbody>
+						</table>
                         <span>
                             <a href="" class="ttl">Lihat Selengkapnya</a>
                             <i class="material-icons r-ttl">keyboard_arrow_right</i>                                
@@ -1017,6 +1212,21 @@
 					$('.day-choose').removeClass('t-active');
 					$('#jadwal_tomorrow2').addClass('t-active');
 					$('#tbl_jadwal_tomorrow2').show();
+				});
+				$("#select_league").change(function(){
+					if($("#select_league").val() == "liga_indonesia"){
+						$("#liga_inggris,#liga_italia,#liga_spanyol").hide();
+						$("#liga_indonesia").show();
+					}else if($("#select_league").val() == "liga_inggris"){
+						$("#liga_indonesia,#liga_italia,#liga_spanyol").hide();
+						$("#liga_inggris").show();
+					}else if($("#select_league").val() == "liga_italia"){
+						$("#liga_indonesia,#liga_inggris,#liga_spanyol").hide();
+						$("#liga_italia").show();
+					}else if($("#select_league").val() == "liga_spanyol"){
+						$("#liga_indonesia,#liga_inggris,#liga_italia").hide();
+						$("#liga_spanyol").show();
+					}
 				});
 			})
 		</script>

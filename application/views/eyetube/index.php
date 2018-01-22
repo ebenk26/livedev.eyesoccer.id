@@ -1,7 +1,13 @@
 <style>
     .w30 a {
     	color: darkslategray ;
-	}
+    }
+    .a{
+        text-decoration:none;
+    }
+    .carousel-inner{
+        overflow: hidden;
+    }
     .bbg{
         border-bottom: 1px solid gainsboro;
     }
@@ -16,6 +22,9 @@
     .gambar3 img{
         width: 100%;
         min-height: 100%;
+    }
+    .btn-play{
+        width: 65px;
     }
     .btn-play2{
         position: relative;
@@ -50,9 +59,6 @@
         border-radius: 5px;
         float: right;
     }
-    .w4:hover, .w-4:hover{
-        background-color: #f5f4f4; 
-    }
     .w4, .w-4 {
         width: 251.25px;
         float: left;
@@ -69,6 +75,36 @@
     .panah{
         z-index: 1;
     }
+    .panahkiri {
+        right: 1046px;
+    }
+    i, button{
+        cursor: pointer;
+    }
+    .over-x{
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.w-max{
+    width: max-content;
+}
+.over-x::-webkit-scrollbar {
+    height: 5px;
+}
+.over-x::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #d2d2d2; 
+    border-radius: 10px;
+}
+.over-x::-webkit-scrollbar-thumb {
+    background: gainsboro; 
+    border-radius: 10px;
+}
+.over-x::-webkit-scrollbar-thumb:hover {
+    background: #5b99db; 
+}
+.menu-3 a {
+    padding-bottom: 4px;
+}
 </style>
     <div class="crumb">
             <ul>
@@ -77,8 +113,10 @@
                 <!-- <li>Pemain</li> -->
             </ul>
         </div>
-        <div class="center-desktop center-dekstop m-0 bbg" style="margin-bottom: 20px">
+        <div class="center-desktop center-dekstop m-0" style="margin-bottom: 50px">
             <div class="menu-3 m-0">
+            <div class="container over-x">
+                <div class="w-max">
                 <ul>
                     <?php 
                         foreach ($tube_type as $value)
@@ -91,7 +129,7 @@
                     <?php  
                         }
                     ?>
-                </ul>
+                </ul></div></div>
             </div>
         </div>
         <div class="center-desktop center-dekstop m-0">
@@ -103,7 +141,10 @@
                         ?>                  
                         <div class="gambar3">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">
-                                <div style="width:100%; height:100%; overflow:hidden;"><img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" ></div>
+                                <div style="width:100%; height:100%; overflow:hidden;">
+                                    <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" >
+                                    <div class="btn-play"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" kasperskylab_antibanner="on"></div>
+                                </div>
                                 
                             </a>
                         </div>
@@ -119,7 +160,10 @@
                     ?>                  
                         <div class="gambar3" style="padding-left:1.8%;">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">                     
-                            <div style="width:100%; height:100%; overflow:hidden;"><img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" ></div>
+                            <div style="width:100%; height:100%; overflow:hidden;">
+                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" >
+                                <div class="btn-play"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" kasperskylab_antibanner="on"></div>
+                            </div>
                             
                             </a>
                         </div>
@@ -405,12 +449,17 @@
                             <div class="w4">
                             <a href="">
                             <div style="width:100%; height:160px; overflow:hidden;">
-                                <img src="assets/img/a.jpg" style="min-width:100%;height:100%;">
+                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb']; ?>" style="min-width:100%;height:100%;">
                                 <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                             </div>
-                                    <p class="sub-en">Lorem ipsum dolor sit amet, consectur adipiscing elit.</p>
+                                    <p class="sub-en"><?=$kamu['title']?></p>
                                     <span class="time-view">
-                                    
+                                    <?php
+                                            $date       =  new DateTime($kamu['createon']);
+                                            $tanggal    = date_format($date,"Y-m-d H:i:s");
+
+                                            echo relative_time($tanggal) . ' lalu - '.$kamu['tube_view'].' views';
+                                        ?>
                                     </span>
                                 </a>
                             </div>
@@ -494,7 +543,7 @@
         </div>
     </div>
 
-    <script type="text/javascript">
+    <script type="text/javascript" src="assets/js/home.js">
         function ShowAllVideo()
         {
             $('#all-populer').attr('style', 'display:block');

@@ -1,13 +1,15 @@
-
+<?php $this->load->view('eyeme/header',$this->data);?>
 <div class="desktop">
     <div class="center-desktop m-0">
-        <div class="container mt-20">
+        <div class="container mt-20 mb-20">
         <div class="box-feed m-0">
             <div class="pd3">
                 <img class="feed-profil-foto m-t-15 m-l-20" src="<?php echo ($img[0]->display_picture == NULL || $img[0]->display_picture == '' ? DPIC : MEIMG.$img[0]->display_picture )?>" alt="user photo" />
+
                 <div class="nama-pro-feed p-r">
                     <a href="<?php echo MEPROFILE.$img[0]->username?>"><?php echo $img[0]->username?></a>
                 </div>
+                
                 <div class="p-r titik3 fl-r">
                     <img src="<?php echo sIMGPATH?>ic-more.png" class="img_more" ref="v-<?php echo $img[0]->id_img?>">
                     <div class="posisi-kotak-popup p-a v-<?php echo $img[0]->id_img?>" style="display:none;">
@@ -80,3 +82,8 @@
         </div>
     </div>
 </div>
+<?php 
+$this->load->view('eyeme/notif');
+$this->load->view('eyeme/img_upload');
+$this->load->view('eyeme/footer');
+?>

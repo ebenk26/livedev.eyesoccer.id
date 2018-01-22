@@ -1,11 +1,11 @@
  <div class="detail-post-box dpb" style="display:none">
         <div class="detail-post-box-cont m-0 p-r">
-            <div class="arrow-l p-r">
+            <!--<div class="arrow-l p-r">
                 <i class="material-icons">keyboard_arrow_left</i>
             </div>
             <div class="arrow-r p-r">
                 <i class="material-icons">keyboard_arrow_right</i>
-            </div>
+            </div>-->
             <div class="d-p-b-l">
                 <img src="" alt="loading" id="img-det">
             </div>

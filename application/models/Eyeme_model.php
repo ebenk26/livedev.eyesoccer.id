@@ -171,33 +171,28 @@ class Eyeme_model extends Master_model
 	*/
 	public function getProfile($id_or_username){
 
-
 		$query = "SELECT 
 				A.id_member,
 				A.username,
 				A.name,
-				B.display_picture,
-				B.bio,
-				B.status
+				A.profile_pic,
+				A.gender,
+				A.about AS bio
 
 				FROM tbl_member
 				AS A
-				INNER JOIN me_profile
-				AS B
-				ON A.id_member = B.id_member
 				where (A.id_member = '$id_or_username') OR (A.username = '$id_or_username')";
 
 		$get = $this->db->query($query);
-		#$this->db->where('id_member',$id_or_username);
-		#$this->db->or_where('username',$id_or_username);
-		//$this->db->get()
-		#$get  = $this->db->get('me_profile');
-		
-		if(count($get->num_rows()) > 0 ) {
-			$result = $get->result();
+		$result  = $get->result();
+		if(count($result) > 0){
+			//get profile_pic name from tbl_gallery
+			$where = array('id_gallery'=> $result[0]->profile_pic);
+			$select = array('pic','thumb1');
+			$getPic = $this->getAll('tbl_gallery',$where,$select);
 
+			$result[0]->display_picture = (count($getPic) > 0 ? $getPic[0]->pic : '');
 		}
-		else {$result = array();}
 		return $result;
 
 	}
@@ -275,11 +270,9 @@ class Eyeme_model extends Master_model
 				A.img_alt,
 				A.date_create,
 				A.last_update,
-				B.display_picture,
+				C.profile_pic,
 				C.username
 				FROM me_img AS A
-				INNER JOIN me_profile as B
-				ON A.id_member = B.id_member
 				INNER JOIN tbl_member as C
 				ON A.id_member = C.id_member
 				WHERE A.id_img = $id_img AND A.active = '1'";
@@ -289,8 +282,15 @@ class Eyeme_model extends Master_model
 		}
 		else{
 			$get  = $this->db->query($query);
+			$get  = $get->result();
+			if(count($get) > 0 ){
+				$where = array('id_gallery' => $get[0]->profile_pic);
+				$getGallery = $this->getAll('tbl_gallery',$where,array('pic','thumb1'));
+				$get[0]->display_picture = (count($getGallery) > 0 ? $getGallery[0]->pic : '');
 
-			return $get->result();
+			}
+
+			return $get;
 		}
 	}
 	public function getAllImg($id_img){
@@ -631,7 +631,7 @@ class Eyeme_model extends Master_model
 			//ganti profile_pic ,menjadi nama gambar 
 			$exe[$i]->profile_pic   = (count($getProfilePic) > 0 ? $getProfilePic[0]->pic : '' );
 		
-			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member);
+			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member_fol);
 
 		}
 		
@@ -696,7 +696,24 @@ class Eyeme_model extends Master_model
 			return 'success';
 		}
 	}
-	
+	public function getUser(){
+		$where  = array('active'=> '1','verification'=> '1');
+		$select = array('id_member','name','fullname','username','email','profile_pic');
+		$order  = array('last_online');
+		$limit  = '5';
+		$user   = $this->getAll('tbl_member',$where,$select,$order,$limit);
+		if(count($user) > 0 ){
+			for($i = 0; $i< count($user);$i++){
+
+			$whereImg = array('id_gallery' => $user[0]->profile_pic);
+			$select   = array('pic');
+			$img      = $this->mod->getAll('tbl_gallery',$whereImg,$select);
+			$user[0]->profile_pic = (count($img) > 0 ? $img[0]->profile_pic : '' );
+			
+			}
+		}
+		return $user;
+	}
 	
 	//sw::end
 	/*public function unlike($arr = array()){

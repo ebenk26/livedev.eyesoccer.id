@@ -9,6 +9,7 @@ class Home extends CI_Controller {
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->model('Home_model');
 			$this->load->model('Master_model','mod');
+			$this->load->model('Eyeme_model','emod');
 			$this->load->helper(array('form','url','text','date'));
 			$this->load->helper('my');
 			$this->load->library("PHPMailer_Library");
@@ -67,7 +68,9 @@ class Home extends CI_Controller {
 		$data['eyemarket_main'] 	= $this->Home_model->get_eyemarket_main();
 		$data['klasemen'] 			= $this->Home_model->get_klasemen();
 		$data['products']	= $this->Home_model->get_all_product();
+		$data['kompetisi']	= array(array('competition'=>'Liga Indonesia 1','value'=>'liga_indonesia'),array('competition'=>'Liga Inggris','value'=>'liga_inggris'),array('competition'=>'Liga Italia','value'=>'liga_italia'),array('competition'=>'Liga Spanyol','value'=>'liga_spanyol'));
 		$data['kanal'] 				= "home";
+		$data['usrEyeme']           = $this->emod->getUser();
 		
 		$data["body"]=$this->load->view('home/index', $data, TRUE);
 		$this->load->view('template/static',$data);		
@@ -159,6 +162,8 @@ class Home extends CI_Controller {
 	}
 	
 	public function logout(){
+		$id_member = $_SESSION['id_member'];
+		$this->db->query("update tbl_member set last_online='".NOW."' where id_member='".$id_member."'");
 		unset($_SESSION["id_member"],$_SESSION["user_id"]);
 				session_destroy();
 				redirect("home/index");
@@ -285,15 +290,11 @@ class Home extends CI_Controller {
 				  else{
 				  	//get eyeme username 
 				  	$where   = array('id_member' => $user_id);
-				  	$profile  = $this->mod->getAll('tbl_member',$where);
-
-					  	if(count($profile) > 0 ){
-
-					  		$this->session->id_member  = $profile[0]->id_member;
-					  		$this->session->username   = $profile[0]->username;
-					  		$this->session->img_profile   = load_top_avatar();
-
-					  	}
+				  	
+				  	$profile = $this->mod->getAll('me_profile',$where);
+				  	$this->session->me_profile   = (count($profile) > 0 ? '1': '0');
+				  	$this->session->username     = $row['username'];
+				  	
 					 //end
 				  $_SESSION['member_id']=$user_id;
 				  $_SESSION['id_member']=$user_id;
