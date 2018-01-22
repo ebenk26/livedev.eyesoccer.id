@@ -194,7 +194,7 @@
     
         <nav>
             <div class="dekstop">
-                <div class="center-dekstop m-0">
+                <div class="x-m">
 					<a href="<?php echo base_url()?>">
 						<div class="logo">
 							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
