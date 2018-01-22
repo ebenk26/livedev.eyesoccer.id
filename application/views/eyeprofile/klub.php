@@ -14,11 +14,12 @@
                     <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter" style="text-decoration:none;">supporter</a></li>
                 </ul>
-                <select id="" name="" selected="true" class="slc-musim fl-r">
+                <select id="" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+					<option value="">--Pilih Liga--</option>
 				<?php
-					foreach($kompetisi as $row){
+					foreach($kompetisi_pro as $row){
 				?>
-					<option><?=$row['competition']?></option>';  
+					<option value="<?php echo base_url()."eyeprofile/liga/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
 				<?php
 					}
 				?>
@@ -35,30 +36,21 @@
                     <table>
                         <tr>
                             <td>Level Liga</td>
-                            <td>: <?php echo $club_header->competition; ?></td>
+                            <td>: <?php echo $title_liga; ?></td>
                         </tr>
                         <tr>
-							<?php 							
-								$jml=$this->db->query("select name from tbl_club where competition='liga indonesia 1'");
-								$total=$jml->result_array();?>
                             <td>Jumlah Klub</td>
-                            <td>: <?php $count = $jml->num_rows($jml);?> <?php echo "$count";?> Klub</td>
+                            <td>: <?php echo count($club_main)?> Klub</td>
                         </tr>
                         <tr>
                             <td>Jumlah Pemain</td>
                             <td>:
-							<?php 							
-							$jmlp=$this->db->query("select name from tbl_player where status!='amatir' AND status!=''");
-							$total=$jmlp->result_array();							
-							$count = $jmlp->num_rows($jmlp);?> <?php echo "$count";?> Pemain</td>
+							<?php echo count($get_player_liga);?> Pemain</td>
                         </tr>
                         <tr>
                             <td>Pemain Asing</td>
                             <td>:
-							<?php 							
-							$jmln=$this->db->query("select nationality from tbl_player where nationality !='indonesia' AND nationality !=''");
-							$total=$jmln->result_array();							
-							$count = $jmln->num_rows($jmln);?> <?php echo "$count";?> Pemain</td>
+							<?php echo count($get_player_liga_strange);?> Pemain</td>
                         </tr>
                     </table>
                 </div>
@@ -67,10 +59,6 @@
                         <tr>
                             <td>Rekor Juara</td>
                             <td>: -</td>
-                        </tr>
-                        <tr>
-                            <td>Usia Rata-rata</td>
-                            <td>: -
                         </tr>
                         <tr>
                             <td>Juara Bertahan</td>
@@ -85,24 +73,25 @@
 				<?php 				
 				foreach($club_main as $main){
 				?>
-                <div class="box-content ep2 fl-l">
-                    <a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['club_id']; ?>">
-					<img src="<?=imgUrl()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt=""></a>
-                    <div class="detail">
-                        <h2><?=$main['nama_club'];?></h2>
-                        <h3><?=$main['competition'];?></h3>
-                        <table>
-                            <tr>
-                                <td>Squad</td>
-                                <td>: <?=$main['squad'];?></td>
-                            </tr>
-                            <tr>
-                                <td>Manager</td>
-                                <td>: <?=$main['nama_manager'];?></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+				<a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['club_id']; ?>" style="text-decoration:unset;color:#424242;">
+					<div class="box-content ep2 fl-l">
+						<img src="<?=imgUrl()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt="">
+						<div class="detail">
+							<h2><?=$main['nama_club'];?></h2>
+							<h3><?=$main['competition'];?></h3>
+							<table>
+								<tr>
+									<td>Squad</td>
+									<td>: <?=$main['squad'];?></td>
+								</tr>
+								<tr>
+									<td>Manager</td>
+									<td>: <?=$main['nama_manager'];?></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</a>
 				<?php
 				}
 				?>
@@ -116,18 +105,44 @@
                 </div>
                 <div role="listbox" class="j-box carousel-inner">
                     <?php
-					foreach($profile_club as $club){
+					foreach($get_jadwal_tomorrow_1 as $club){
 					?>
-				<div class="over item active">			
-					<div class="j-content">
-						<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
-						<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
-						<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
-					</div>								
-				</div>		
-				<?php
-				}
-				?>
+					<div class="over item active">			
+						<div class="j-content">
+							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+						</div>								
+					</div>		
+					<?php
+					}
+					?>
+					<?php
+					foreach($get_jadwal_tomorrow_2 as $club){
+					?>
+					<div class="over item">			
+						<div class="j-content">
+							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+						</div>								
+					</div>		
+					<?php
+					}
+					?>
+					<?php
+					foreach($get_jadwal_tomorrow_3 as $club){
+					?>
+					<div class="over item">			
+						<div class="j-content">
+							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+						</div>								
+					</div>		
+					<?php
+					}
+					?>
                 </div>
                 <div class="right navigate" href="#jadwal" role="button">
                     <i class="material-icons">keyboard_arrow_right</i>
@@ -138,50 +153,89 @@
         <div class="center-dekstop m-0">
             <div class="w-60 m-r-1 pd-t-20 formasi">
             <div class="container">
-                <h3>Klasemen Liga 1 Indonesia</h3>
-                <div class="box-slc-musim">
+                <h3>Klasemen <?php echo $title_liga?></h3>
+                <!--<div class="box-slc-musim">
                     <span>Pilih Musim</span>
                     <select id="" name="" selected="true" class="slc-musim">
-                        <option value="">2017/18</option>
-                        <option value="">2017/18</option>
-                        <option value="">2017/18</option>
-                        <option value="">2017/18</option>
+                        <option value="">2018</option>
+                        <option value="">2017</option>
                     </select>                    
-                </div>
-                <table class="radius table table-striped" cellspacing="0" cellpadding="0">
-                    <thead>
-                        <tr>
-                            <th class="t-b-b">No</th>
-                            <th class="t-b-b">Klub</th>
-                            <th class="t-b-b">Main</th>
-                            <th class="t-b-b">M</th>
-                            <th class="t-b-b">S</th>
-                            <th class="t-b-b">K</th>
-                            <th class="t-b-b">SG</th>
-                            <th class="t-b-b">Poin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-						<?php
-						$no=1;
-						foreach($klasemen as $classe){
-						?>
-                        <tr>
-                            <td><?=$no++?></td>
-                            <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $classe['logo']; ?>" alt="" width="15px"> <?=$classe['name']?></td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-						<?php
+                </div>-->
+				
+				<table id="liga_indonesia" class="radius table table-striped" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Klub</th>
+							<th>MN</th>
+							<th>M</th>
+							<th>S</th>
+							<th>K</th>
+							<th>P</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+					if($title_liga == 'Liga Indonesia 1'){
+						$html = file_get_contents(LinkScrapingLigaIndonesia());
+						$premiere_doc = new DOMDocument();
+						libxml_use_internal_errors(TRUE);
+						if(!empty($html)){
+							$premiere_doc->loadHTML($html);
+							libxml_clear_errors();
+							$pokemon_xpath = new DOMXPath($premiere_doc);
+
+							//get all the tr's with an attribute
+							$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
+							$pokemon_list = array();
+							$i = 0;
+							if($pokemon_row->length > 0){
+								foreach($pokemon_row as $row){
+									echo "<tr>";
+									if($i < 18){
+										$types = $pokemon_xpath->query('td', $row);
+										$n = 0;
+										foreach($types as $type){
+											if(!empty($type->nodeValue)){
+												if($n != 7){
+													if($n != 8){
+														if($n != 9){
+															if($n != 11){
+																$nodeValue = "<td>".$type->nodeValue.'</td>';
+																echo $nodeValue;
+															}
+														}
+													}
+												}
+											}
+											$n++;
+										}
+										$i ++;
+									}
+									echo "</tr>";
+								}
+							}
 						}
-						?>						
-                    </tbody>
-                </table>
+						?>
+					</tbody>
+				</table>
+					<?php
+					}else{
+					?>
+								<tr>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>						
+							</tbody>
+						</table>
+					<?php
+					}
+				?>
                 <span class="next-right">Lihat Klasemen Lengkap
                     <i class="material-icons t-8">keyboard_arrow_right</i>
                 </span>				

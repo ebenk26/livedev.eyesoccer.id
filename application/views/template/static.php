@@ -230,7 +230,7 @@ else{
                         <ul>
                             <li><a href="">EyeProfile</a>
                                 <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/liga/indonesia_1">Klub</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>

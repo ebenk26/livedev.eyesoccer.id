@@ -140,7 +140,6 @@
             <span class="x-c">
                 <span>Trending</span>
 					<?php 
-					 $this->load->helper('my');
 					foreach ($trend_eyetube as $trendnya_tube)
 					{
 						$judul_trend 	= word_limiter($trendnya_tube['title'],3);
@@ -971,7 +970,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=629'); //get the html returned from the following url
+								$html = file_get_contents(LinkScrapingLigaIndonesia()); //get the html returned from the following url
 
 								$premiere_doc = new DOMDocument();
 
@@ -1032,7 +1031,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=8');
+								$html = file_get_contents(LinkScrapingLigaInggris());
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned
@@ -1087,7 +1086,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=13');
+								$html = file_get_contents(LinkScrapingLigaItalia());
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned
@@ -1142,7 +1141,7 @@
 							</thead>
 							<tbody>
 							<?php
-								$html = file_get_contents('http://www.klasemenliga.com/?page=competition&id=7');
+								$html = file_get_contents(LinkScrapingLigaSpanyol());
 								$premiere_doc = new DOMDocument();
 								libxml_use_internal_errors(TRUE); //disable libxml errors
 								if(!empty($html)){ //if any html is actually returned
