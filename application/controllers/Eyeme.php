@@ -384,6 +384,29 @@ class Eyeme extends CI_Controller {
 	public function test_notif(){
 		$this->load->view('eyeme/test');
 	}
+
+	public function discard_post($id_img){
+		$where = array('id_img'=> $id_img);
+		$img = $this->mod->getAll('me_img',$where,array('id_img','img_name','img_thumb'));
+		if(count($img) > 0 ){
+			$imgName = $img[0]->img_name;
+			$imgThumb = $img[0]->img_thumb;
+			$id_img   = $img[0]->id_img;
+			@unlink(IMGPATH.$imgName) OR die ('gagal delete image');
+			@unlink(IMGPATH.$imgThumb) OR die ('gagal delete thumb');
+			$this->emod->rm('me_img',array('id_img'=> $id_img));
+			$arr = array('msg'=> 'success');
+			$response  = json_encode($arr);
+			echo $response;
+
+		}
+		else{
+			$arr = array('msg'=> 'failed','error'=> 'gambar tidak ditemukan');
+			$response = json_encode($arr);
+			echo $response;
+		}
+
+	}
 	/**
 	sw::end
 	*/
@@ -652,15 +675,6 @@ class Eyeme extends CI_Controller {
 		redirect('eyeme/explore');
 	}
 
-	public function discard_post($id)
-	{
-		$model 		= $this->db->get_where('tbl_eyeme', array('id'=>$id))->row();
-		$filenya 	= './gambar/'.$model->gambar;
-		$hapus 		= unlink($filenya);
-
-		$this->db->delete('tbl_eyeme', array('id' => $id));
-		redirect('eyeme/explore');
-	}
 	
 	public function add_friend($id_yg_diajak)
 	{
