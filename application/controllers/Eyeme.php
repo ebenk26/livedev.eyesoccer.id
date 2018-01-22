@@ -259,12 +259,14 @@ class Eyeme extends CI_Controller {
 		if(count($dataNotif) > 0 ){ #check result dataNotif
 			$j=0;
 			foreach($dataNotif as $k => $v){
-				
+				$where      = array('id_gallery'=> $v->profile_pic);
+				$profile    = $this->mod->getAll('tbl_gallery',$where,array('pic'));
 				$sub[$j][0] = substr($v->notif_type,0,3);
 				$sub[$j][1] = substr($v->notif_type,3);
 				$distance    = getDistance(NOW,$v->last_update);
 				$getTime     = getTime($distance);
 				$dataNotif[$j]->timeString = $getTime['timeString'];
+				$dataNotif[$j]->display_picture = ($profile > 0 ? $profile[0]->pic : '');
 				
 				$j++;
 

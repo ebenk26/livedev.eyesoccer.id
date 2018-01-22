@@ -506,11 +506,10 @@ class Eyeme_model extends Master_model
 						A.`notif_content`,
 						A.`last_update`,
 						A.`read`,
-						B.`display_picture`,
+						C.`profile_pic`,
 						C.`username`
 					FROM `me_notif` AS A
-					INNER JOIN `me_profile` AS B
-					ON A.`id_member_act` = B.`id_member`
+					
 					INNER JOIN `tbl_member` AS C
 					ON A.`id_member` = C.`id_member`
 					WHERE A.`id_member` = $id_member

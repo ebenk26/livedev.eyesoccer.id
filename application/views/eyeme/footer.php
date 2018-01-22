@@ -38,6 +38,7 @@ var html      = "",//html comment
     DPIC      = '<?php echo DPIC?>',
     MEIMG     = '<?php echo MEIMG?>',
     MEPROFILE = '<?php echo MEPROFILE?>',
+    IMGSTORE  = '<?php echo IMGSTORE?>';
     MYPROFILE = MEPROFILE + '<?php echo $myusername?>';
     loadingAni= $('#loading'); //Loading Animation 
     
@@ -65,7 +66,7 @@ $('#notif').click(function(event){ //event notif click
                tbl += '<tr class="notif-link" rel="' + v.id_img + '">';
                     tbl += '<td>';
                         tbl += '<img class="notif-profil-foto" src="' +
-                        (v.display_picture == '' ? DPIC : MEIMG + v.display_picture ) +' " alt="user photo" />';
+                        (v.display_picture == '' ? DPIC : IMGSTORE + v.display_picture ) +' " alt="user photo" />';
                     tbl += '</td>';
 
                     if(v.notif_type.substr(0,3) == 'COM'){
