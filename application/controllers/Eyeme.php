@@ -114,7 +114,7 @@ class Eyeme extends CI_Controller {
 				$getImg[$i]->countComment = count($comment);
 
 			}
-			
+			p($usr);
 			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] 	 = $getFollower;
 			$this->data['following']	 = $getFollowing;
