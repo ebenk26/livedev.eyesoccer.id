@@ -98,51 +98,51 @@
             </div>
             <div class="container t-b-b pd-b-20 pd-t-20"></div>
             <div class="container">
-                <h3 class="h3-oranye">Jadwal pertandingan liga 1 indonesia</h3>
+                <h3 class="h3-oranye">Hasil pertandingan liga 1 indonesia</h3>
             <div id="jadwal" class="jadwal carousel slide m-0 p-d-l-0">
                 <div class="left navigate" href="#jadwal" role="button">
                     <i class="material-icons">keyboard_arrow_left</i>
                 </div>
                 <div role="listbox" class="j-box carousel-inner">
-                    <?php
-					foreach($get_jadwal_tomorrow_1 as $club){
-					?>
-					<div class="over item active">			
-						<div class="j-content">
-							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
-							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
-							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
-						</div>								
-					</div>		
-					<?php
-					}
-					?>
-					<?php
-					foreach($get_jadwal_tomorrow_2 as $club){
-					?>
-					<div class="over item">			
-						<div class="j-content">
-							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
-							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
-							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
-						</div>								
-					</div>		
-					<?php
-					}
-					?>
-					<?php
-					foreach($get_jadwal_tomorrow_3 as $club){
-					?>
-					<div class="over item">			
-						<div class="j-content">
-							<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
-							<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
-							<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
-						</div>								
-					</div>		
-					<?php
-					}
-					?>
+					<div class="over item active">
+						<?php
+						foreach($get_jadwal_tomorrow_1 as $club){
+						?>			
+							<div class="j-content">
+								<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+								<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+								<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+							</div>		
+						<?php
+						}
+						?>								
+					</div>
+					<div class="over item">	
+						<?php
+						foreach($get_jadwal_tomorrow_2 as $club){
+						?>		
+							<div class="j-content">
+								<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+								<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+								<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+							</div>		
+						<?php
+						}
+						?>							
+					</div>	
+					<div class="over item">	
+						<?php
+						foreach($get_jadwal_tomorrow_3 as $club){
+						?>		
+							<div class="j-content">
+								<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+								<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+								<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+							</div>	
+						<?php
+						}
+						?>								
+					</div>	
                 </div>
                 <div class="right navigate" href="#jadwal" role="button">
                     <i class="material-icons">keyboard_arrow_right</i>
