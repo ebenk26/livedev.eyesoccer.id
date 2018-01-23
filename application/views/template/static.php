@@ -82,8 +82,11 @@
 					}
 					.x-m {
 						font-size: .9em;
-						margin-left: -50px;
-						width: 1105px;
+                        width: 1065px;
+                        margin: 0 auto;
+                        float: unset;
+                        display: block;
+                        height: 61px;
 					}
 				</style>
         <?php    
@@ -122,11 +125,7 @@
                 <link href="<?= base_url(); ?>assets/eyetube/css/bs.css" rel="stylesheet">
                 <!-- <link href="<?= base_url(); ?>assets/eyetube/css/style.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
-                <style type="text/css">
-                    .x-m{
-                        margin-left: unset;
-                    }
-                </style>
+                
         <?php
             }
             else if ($kanal == 'eyetube_detail')
@@ -149,11 +148,6 @@
                 <style>
                     .center-desktop{
                         width: 1065px;
-                    }
-                    .x-m {
-                        font-size: .9em;
-                        margin-left: -50px;
-                        width: 1105px;
                     }
                 </style>
                 <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">

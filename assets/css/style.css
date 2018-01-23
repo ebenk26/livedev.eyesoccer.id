@@ -1623,7 +1623,7 @@ ul, li {
 }
 .menu-3 li:active, .menu-2 li:hover{
     color: gray;
-    border-bottom: 1px solid gainsboro;
+    border-bottom: 4px solid #FFC107;
 }
 .bottom-left{
     position: relative;
