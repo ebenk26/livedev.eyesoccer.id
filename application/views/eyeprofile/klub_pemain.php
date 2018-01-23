@@ -95,14 +95,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>-->
     </div>
     <div class="dekstop pd-t-280">
-    <div class="center-dekstop m-0 option">
+    <div class="center-desktop m-0 option">
         <span>Pilih Musim</span>
         <select id="" name="" selected="true" class="slc-musim">
             <option value="">2017/18</option>
         </select>
         <button class="fl-r btn-orange" type="button"><img src="<?=imgUrl()?>newassets/img/" alt=""> Tambah Pemain</button>
     </div>	
-			<div class="center-dekstop m-0 pd-t-20">
+			<div class="center-desktop m-0 pd-t-20">
 			<?php
 			$no = 1;
 			foreach($pemain_klub as $row){
@@ -150,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div><?php }?>                                      
     </div>
 	
-    <div class="center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="w-60 m-r-1 pd-t-20 formasi">
             <h3 class="">Formasi terakhir</h3>
             <table class="radius" cellspacing="0" cellpadding="0">
@@ -304,10 +304,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <div class="container pd-b-50">
+        <div class="container pd-b-50" style="padding-bottom: 100px;">
             <div id="em2Slide" class="carousel slide">
                 <div role="listbox" class="carousel-inner">
-                    <div class="box item active">
+                    <div class="box item active" style="height: 225px;">
 						<?php
 						foreach ($eyemarket_main as $data){
 						?>					
@@ -326,7 +326,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
 						<?php } ?>						
                     </div>
-                    <div class="carousel-indicators bx-dot ep-dot pd-l-48">
+                    <div class="carousel-indicators bx-dot ep-dot">
                         <span data-target="#em2Slide" data-slide-to="0" class="dot active"></span>
                         <span data-target="#em2Slide" data-slide-to="1" class="dot"></span>
                         <span data-target="#em2Slide" data-slide-to="2" class="dot"></span>

@@ -46,6 +46,9 @@ class Eyeme extends CI_Controller {
 		if($getImgFollowing > 0 ){
 
 			foreach($getImgFollowing as $k => $v){
+				$where = array('id_gallery'=> $v->profile_pic);
+				$select = array('pic');
+				$getPic = $this->mod->getAll('tbl_gallery',$where,$select);
 
 				$arr[$i]['id_img'] 		= $v->id_img;
 				$arr[$i]['img_caption'] = $v->img_caption;
@@ -56,7 +59,7 @@ class Eyeme extends CI_Controller {
 				$arr[$i]['img_name']    = $v->img_name;
 				$arr[$i]['img_thumb']   = $v->img_thumb;
 				$arr[$i]['img_alt']     = $v->img_alt;
-				$arr[$i]['dp']          = $v->display_picture;
+				$arr[$i]['dp']          = (count($getPic) > 0 ? $getPic[0]->pic : '');
 				$arr[$i]['username']    = $v->username;	
 				$arr[$i]['last_update'] = $v->last_update;
 				$arr[$i]['date_create'] = $v->date_create;
@@ -75,7 +78,7 @@ class Eyeme extends CI_Controller {
 		$this->data['id_member']       = $id_member;
 		$this->data['myusername']      = $this->username;
 		$this->data['imgFollowing']    = $arr;
-		$this->data['usr']	           = $this->get_all_user();
+		$this->data['usr']	           = $this->get_all_user($id_member);
 		$this->load->view('eyeme/home',$this->data);	
 		
 	}
@@ -114,7 +117,7 @@ class Eyeme extends CI_Controller {
 				$getImg[$i]->countComment = count($comment);
 
 			}
-			
+			#p($usr);
 			$this->data['checkFollowed'] = $check;
 			$this->data['follower'] 	 = $getFollower;
 			$this->data['following']	 = $getFollowing;
@@ -259,12 +262,14 @@ class Eyeme extends CI_Controller {
 		if(count($dataNotif) > 0 ){ #check result dataNotif
 			$j=0;
 			foreach($dataNotif as $k => $v){
-				
+				$where      = array('id_gallery'=> $v->profile_pic);
+				$profile    = $this->mod->getAll('tbl_gallery',$where,array('pic'));
 				$sub[$j][0] = substr($v->notif_type,0,3);
 				$sub[$j][1] = substr($v->notif_type,3);
 				$distance    = getDistance(NOW,$v->last_update);
 				$getTime     = getTime($distance);
 				$dataNotif[$j]->timeString = $getTime['timeString'];
+				$dataNotif[$j]->display_picture = (count($profile) > 0 ? $profile[0]->pic : '');
 				
 				$j++;
 
@@ -308,17 +313,17 @@ class Eyeme extends CI_Controller {
 		
 
 	}
-	public function get_all_user(){
+	public function get_all_user($id_member){
 		$select = array('id_member','name','username','fullname','email','profile_pic');
 		$order  = array('last_online','DESC');
-		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5');
+		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5','',array('id_member',array($id_member)));
 	
 		for($i= 0; $i <count($allUsr); $i++){
 			$where = array('id_gallery'=> $allUsr[$i]->profile_pic);
 			$getPP = $this->mod->getAll('tbl_gallery',$where,array('pic','thumb1'));
 			$allUsr[$i]->profile_pic = (count($getPP) > 0 ? $getPP[0]->pic:'');
 			$allUsr[$i]->followed  = ($this->emod->checkFollowed($this->id_member,$allUsr[$i]->id_member) == true ? '1':'0');
-			$allUsr[$i]->btnFol = btnFol($this->id_member,$allUsr[$i]->followed);
+			$allUsr[$i]->btnFol = btnFol($allUsr[$i]->id_member,$allUsr[$i]->followed);
 
 		}
 
@@ -385,17 +390,20 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/test');
 	}
 
-	public function discard_post($id_img){
+	public function discard_post(){
+
+		$id_img = inputSecure($this->input->post('id_img'));
 		$where = array('id_img'=> $id_img);
 		$img = $this->mod->getAll('me_img',$where,array('id_img','img_name','img_thumb'));
+		
 		if(count($img) > 0 ){
 			$imgName = $img[0]->img_name;
 			$imgThumb = $img[0]->img_thumb;
 			$id_img   = $img[0]->id_img;
-			@unlink(IMGPATH.$imgName) OR die ('gagal delete image');
-			@unlink(IMGPATH.$imgThumb) OR die ('gagal delete thumb');
+			unlink(IMGPATH.$imgName) OR die ('gagal delete image');
+			unlink(IMGPATH.$imgThumb) OR die ('gagal delete thumb');
 			$this->emod->rm('me_img',array('id_img'=> $id_img));
-			$arr = array('msg'=> 'success');
+			$arr = array('msg'=> 'Berhasil Hapus Photo');
 			$response  = json_encode($arr);
 			echo $response;
 

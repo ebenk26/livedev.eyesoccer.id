@@ -227,12 +227,10 @@ class Eyeme_model extends Master_model
 					A.img_alt,
 					A.last_update,
 					A.date_create,
-					B.display_picture,
+					C.profile_pic,
 					C.username
 
 				 FROM me_img  as A 
-				 LEFT JOIN me_profile as B 
-				 ON A.id_member = B.id_member 
 				 LEFT JOIN tbl_member as C 
 				 on A.id_member = C.id_member
 				 WHERE  A.id_member IN
@@ -334,11 +332,8 @@ class Eyeme_model extends Master_model
 						a.comment,
 						a.date_create,
 						a.last_update,
-						b.display_picture,
 						c.username
 					FROM me_comment AS a
-					INNER JOIN me_profile AS b
-					ON a.id_member=b.id_member
 					INNER JOIN tbl_member AS c
 					ON a.id_member = c.id_member
 					WHERE a.id_img = $id_img
@@ -509,11 +504,10 @@ class Eyeme_model extends Master_model
 						A.`notif_content`,
 						A.`last_update`,
 						A.`read`,
-						B.`display_picture`,
+						C.`profile_pic`,
 						C.`username`
 					FROM `me_notif` AS A
-					INNER JOIN `me_profile` AS B
-					ON A.`id_member_act` = B.`id_member`
+					
 					INNER JOIN `tbl_member` AS C
 					ON A.`id_member` = C.`id_member`
 					WHERE A.`id_member` = $id_member
@@ -659,10 +653,10 @@ class Eyeme_model extends Master_model
 		$exe  = $this->db->delete($tbl);
 		if($exe == TRUE){
 
-			echo 'success';
+			return 'success';
 		}
 		else{
-			echo 'Failed';
+			return 'Failed';
 		}
 	}
 	/**

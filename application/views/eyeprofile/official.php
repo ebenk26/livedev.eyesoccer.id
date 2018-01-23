@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-    <div class="center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>
                     <li><a href="<?=base_url()?>" style="text-decoration:none; color:#3d3d3d;">Home</a></li>
@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </select>
         </div>
     </div>
-    <div class="center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="container box-border-radius fl-l mt-30">					
                 <div class="fl-l img-80">				
                     <img src="<?=imgUrl()?>assets/img/content_11.jpg" alt="" height="100%">
@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
         </div>
     </div>
-    <div class="center-dekstop m-0">
+    <div class="center-desktop m-0">
     <input type="text" name="" id="" placeholder="Cari ..." class="src-200 mt-30">
     <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
     <table class="radius table table-striped pd-18 mt-10" cellspacing="0" cellpadding="0">

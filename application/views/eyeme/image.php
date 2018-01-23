@@ -4,7 +4,7 @@
         <div class="container mt-20 mb-20">
         <div class="box-feed m-0">
             <div class="pd3">
-                <img class="feed-profil-foto m-t-15 m-l-20" src="<?php echo ($img[0]->display_picture == NULL || $img[0]->display_picture == '' ? DPIC : MEIMG.$img[0]->display_picture )?>" alt="user photo" />
+                <img class="feed-profil-foto m-t-15 m-l-20" src="<?php echo ($img[0]->display_picture == NULL || $img[0]->display_picture == '' ? DPIC : IMGSTORE.$img[0]->display_picture )?>" alt="user photo" />
 
                 <div class="nama-pro-feed p-r">
                     <a href="<?php echo MEPROFILE.$img[0]->username?>"><?php echo $img[0]->username?></a>
@@ -54,7 +54,7 @@
             </div>
             <div class="p-r comment m-l-20">
                 <div>
-                    <a href=""><?php echo $img[0]->username?></a>
+                    <a href="<?php echo MEPROFILE?>"><?php echo $img[0]->username?></a>
                     <span><?php echo $img[0]->img_caption?></span>
                     
                 </div>

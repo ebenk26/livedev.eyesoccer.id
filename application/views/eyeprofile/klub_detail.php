@@ -78,7 +78,7 @@ $total_official=($official->num_rows());
     </div>
 
     <div class="dekstop pd-t-280">
-    <div class="center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="w-60 m-r-1 pd-t-20 formasi">
             <div class="container ofisial-detail">
                 <h3>Latar Belakang</h3>

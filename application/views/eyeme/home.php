@@ -2,15 +2,16 @@
 <div class="desktop">
     <div class="center-desktop m-0">
         <div class="container mt-20">
+            
     	<?php 
     	if(count($imgFollowing) > 0){
 
-    		foreach($imgFollowing as $k=> $v){?>
+    		foreach($imgFollowing as $k=> $v){ ?>
 
-    		<div class="box-feed m-0">
+    		<div class="box-feed m-0" id="meuid<?php echo $v['id_img']?>">
             <div>
                 <img class="feed-profil-foto m-t-15 m-l-20" 
-                src="<?php echo ($v['dp'] == NULL || $v['dp'] == '' ? DPIC : MEIMG.$v['dp'])?>" alt="user photo" />
+                src="<?php echo ($v['dp'] == NULL || $v['dp'] == '' ? DPIC : IMGSTORE.$v['dp'])?>" alt="user photo" />
                 <div class="nama-pro-feed p-r">
 
                     <a href="<?php echo MEPROFILE.$v['username']?>">
@@ -18,16 +19,13 @@
                     </a>
 
                 </div>
+
                 <div class="p-r titik3 fl-r">
-                    <img src="<?php echo sIMGPATH?>ic-more.png" class="img_more" ref="v-<?php echo $v['id_img']?>">
-                    <div class="posisi-kotak-popup p-a v-<?php echo $v['id_img']?>" style="display:none;">
-                        <div class="kotak-popup">
-                            <div class="panah-popup p-r m-0">
-                            </div>
-                            <span class="teks-popup p-r">Laporkan</span>
-                            <span class="teks-popup p-r">Bagikan</span>
-                        </div>
-                    </div>
+                    <?php if($v['id_member'] == $id_member){
+                        echo '<i class="material-icons ikon" onclick="discard_img('.$v['id_img'].','.count($imgFollowing).')">delete</i>';
+                    }?>
+                    
+                    
                 </div>
             </div>
 

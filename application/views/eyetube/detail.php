@@ -33,6 +33,19 @@
 .menu-3 a {
     padding-bottom: 4px;
 }
+.menu-3 li:nth-last-of-type(){
+    margin-right: 0px;
+}
+.up-r-tube{
+    margin-top: 1px;
+    height: 57px;
+}
+.fb-comments span{
+    width: 680px !important;
+}
+.fb-comments iframe{
+    width: 100% !important;
+}
 </style>
 
 <div class="crumb">
@@ -42,7 +55,7 @@
     </ul>
 </div>
 <div class="desktop">
-    <div class="center-desktop center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="menu-3 m-0">
         <div class="container over-x">
             <div class="w-max">
@@ -61,7 +74,7 @@
             </ul></div></div>
         </div>
     </div>
-    <div class="center-desktop center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="garis-x m-t-30"></div>
     </div>
     <div class="center-desktop m-0">
@@ -500,8 +513,8 @@
 
                         </div>
                     </div>
-                    <div class="container tx-c">
-                        <button class="btn-white mt-10" type="button">Tampilkan lebih banyak</button>
+                    <div class="container tx-c mb-30">
+                        <button class="btn-white mt-10 mb-30" type="button">Tampilkan lebih banyak</button>
                     </div>
                 </div>
             </div>

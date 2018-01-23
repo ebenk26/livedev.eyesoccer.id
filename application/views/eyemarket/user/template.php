@@ -25,20 +25,21 @@
                 </button>
 
                 <style type="text/css">
-                    .menu{
-                        padding: 15px 24px;
-                    }
                     .dekstop{
                         width: 1280px;
                         margin: 0 auto;
                         vertical-align: middle;
                     }
-                    .center-dekstop{
+                    .center-desktop{
                         width: 1065px;
                     }
                     .x-m{
-                        margin-left: -50px;
-                        width: 1105px;
+                        font-size: .9em;
+                        width: 1065px;
+                        margin: 0 auto;
+                        float: unset;
+                        display: block;
+                        height: 61px;
                     }
                     .x-m>ul {
                         list-style: none;
@@ -66,11 +67,15 @@
                         animation-duration: .7s;
                     }
                     .x-m>ul>li>a {
+                        float: left;
                         display: block;
                         text-align: center;
                         text-decoration: none;
                         color: #FFF3E0;
+                        margin-right: 27px;
                         font-weight: 500;
+                        padding-bottom: 13px;
+                        margin-top: 20px;
                     }
                 </style>
 

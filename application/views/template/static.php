@@ -77,13 +77,16 @@
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
 				<style>
-					.center-dekstop{
+					.center-desktop{
 						width: 1065px;
 					}
 					.x-m {
 						font-size: .9em;
-						margin-left: -50px;
-						width: 1105px;
+                        width: 1065px;
+                        margin: 0 auto;
+                        float: unset;
+                        display: block;
+                        height: 61px;
 					}
 				</style>
         <?php    
@@ -122,11 +125,7 @@
                 <link href="<?= base_url(); ?>assets/eyetube/css/bs.css" rel="stylesheet">
                 <!-- <link href="<?= base_url(); ?>assets/eyetube/css/style.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
-                <style type="text/css">
-                    .x-m{
-                        margin-left: unset;
-                    }
-                </style>
+                
         <?php
             }
             else if ($kanal == 'eyetube_detail')
@@ -135,7 +134,7 @@
                 <link href="<?=base_url()?>assets/eyetube/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
                 <style type="text/css">
-                    .center-dekstop{
+                    .center-desktop{
                         width: 1065px;
                     }
                 </style>
@@ -147,13 +146,8 @@
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
                 <style>
-                    .center-dekstop{
+                    .center-desktop{
                         width: 1065px;
-                    }
-                    .x-m {
-                        font-size: .9em;
-                        margin-left: -50px;
-                        width: 1105px;
                     }
                 </style>
                 <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">
@@ -194,7 +188,7 @@
     
         <nav>
             <div class="dekstop">
-                <div class="center-dekstop m-0">
+                <div class="x-m">
 					<a href="<?php echo base_url()?>">
 						<div class="logo">
 							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
@@ -225,12 +219,12 @@ else{
         <!-- MENU -->
         <div class="menu">
             <div class="dekstop">
-                <div class="center-dekstop m-0">
+                <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
-                            <li><a href="">EyeProfile</a>
+                            <li><a href="" onclick="return false">EyeProfile</a>
                                 <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/liga/Liga%20Indonesia%201">Klub</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
