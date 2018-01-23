@@ -686,7 +686,9 @@ $('.me-post').click(function(event) {
     
     /*alert($(this).attr('id'));*/
 });
-
+//function discard_img(id){
+    //$
+//}
 
 /*$('.box-pic').on({
     dragover:function(event){

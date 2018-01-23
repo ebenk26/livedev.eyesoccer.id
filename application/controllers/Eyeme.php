@@ -269,7 +269,7 @@ class Eyeme extends CI_Controller {
 				$distance    = getDistance(NOW,$v->last_update);
 				$getTime     = getTime($distance);
 				$dataNotif[$j]->timeString = $getTime['timeString'];
-				$dataNotif[$j]->display_picture = ($profile > 0 ? $profile[0]->pic : '');
+				$dataNotif[$j]->display_picture = (count($profile) > 0 ? $profile[0]->pic : '');
 				
 				$j++;
 
@@ -323,7 +323,7 @@ class Eyeme extends CI_Controller {
 			$getPP = $this->mod->getAll('tbl_gallery',$where,array('pic','thumb1'));
 			$allUsr[$i]->profile_pic = (count($getPP) > 0 ? $getPP[0]->pic:'');
 			$allUsr[$i]->followed  = ($this->emod->checkFollowed($this->id_member,$allUsr[$i]->id_member) == true ? '1':'0');
-			$allUsr[$i]->btnFol = btnFol($this->id_member,$allUsr[$i]->followed);
+			$allUsr[$i]->btnFol = btnFol($allUsr[$i]->id_member,$allUsr[$i]->followed);
 
 		}
 

@@ -13,7 +13,7 @@ body{
     font-size: 18px;
 }
 .desktop{
-    width: 1280px;
+    width: 1080px;
     margin: 0 auto;
     vertical-align: middle;
 }
@@ -2142,6 +2142,7 @@ ul, li {
     font-size: 27px;
     padding-left: 15px;
     color: gray;
+    cursor:pointer;
 }
 .ikon:hover{
     color: #55a5ca;
@@ -2882,4 +2883,7 @@ loading animation
 }
 .list-usr li{
     display: block
+}
+.upl{
+    cursor:pointer;
 }
