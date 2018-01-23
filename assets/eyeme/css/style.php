@@ -781,6 +781,7 @@ th{
     right: -160px;
 }
 footer{
+    margin-top:20px;
     background-color: #616161;
     
 }

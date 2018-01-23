@@ -653,10 +653,10 @@ class Eyeme_model extends Master_model
 		$exe  = $this->db->delete($tbl);
 		if($exe == TRUE){
 
-			echo 'success';
+			return 'success';
 		}
 		else{
-			echo 'Failed';
+			return 'Failed';
 		}
 	}
 	/**

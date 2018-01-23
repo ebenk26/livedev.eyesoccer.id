@@ -686,9 +686,37 @@ $('.me-post').click(function(event) {
     
     /*alert($(this).attr('id'));*/
 });
-//function discard_img(id){
-    //$
-//}
+function discard_img(id,more = 1){
+    var c = confirm('yakin ingin menghapus gambar ? ');
+    if(c == true){
+        $.ajax({
+        url: '<?php echo MEURL?>discard_post',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {id_img: id},
+        })
+        .done(function(r) {
+            alert(r.msg);
+            if(more == 1 ){
+                location.reload();
+            }
+            else{
+                $('#meuid'+id).hide();
+            }
+           
+            
+        })
+        .fail(function() {
+            //console.log("error" + e);
+        })
+        .always(function() {
+            console.log("complete");
+        });
+
+    }
+    
+    
+}
 
 /*$('.box-pic').on({
     dragover:function(event){

@@ -6,9 +6,9 @@
     	<?php 
     	if(count($imgFollowing) > 0){
 
-    		foreach($imgFollowing as $k=> $v){?>
+    		foreach($imgFollowing as $k=> $v){ ?>
 
-    		<div class="box-feed m-0">
+    		<div class="box-feed m-0" id="meuid<?php echo $v['id_img']?>">
             <div>
                 <img class="feed-profil-foto m-t-15 m-l-20" 
                 src="<?php echo ($v['dp'] == NULL || $v['dp'] == '' ? DPIC : IMGSTORE.$v['dp'])?>" alt="user photo" />
@@ -22,7 +22,7 @@
 
                 <div class="p-r titik3 fl-r">
                     <?php if($v['id_member'] == $id_member){
-                        echo '<i class="material-icons ikon" onclick="discard_img('.$v['id_img'].')">delete</i>';
+                        echo '<i class="material-icons ikon" onclick="discard_img('.$v['id_img'].','.count($imgFollowing).')">delete</i>';
                     }?>
                     
                     

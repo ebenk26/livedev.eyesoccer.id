@@ -390,17 +390,20 @@ class Eyeme extends CI_Controller {
 		$this->load->view('eyeme/test');
 	}
 
-	public function discard_post($id_img){
+	public function discard_post(){
+
+		$id_img = inputSecure($this->input->post('id_img'));
 		$where = array('id_img'=> $id_img);
 		$img = $this->mod->getAll('me_img',$where,array('id_img','img_name','img_thumb'));
+		
 		if(count($img) > 0 ){
 			$imgName = $img[0]->img_name;
 			$imgThumb = $img[0]->img_thumb;
 			$id_img   = $img[0]->id_img;
-			@unlink(IMGPATH.$imgName) OR die ('gagal delete image');
-			@unlink(IMGPATH.$imgThumb) OR die ('gagal delete thumb');
+			unlink(IMGPATH.$imgName) OR die ('gagal delete image');
+			unlink(IMGPATH.$imgThumb) OR die ('gagal delete thumb');
 			$this->emod->rm('me_img',array('id_img'=> $id_img));
-			$arr = array('msg'=> 'success');
+			$arr = array('msg'=> 'Berhasil Hapus Photo');
 			$response  = json_encode($arr);
 			echo $response;
 
