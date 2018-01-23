@@ -4,124 +4,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Eyevent_model extends CI_Model
 {
 
-	public function get_all_jadwal($tanggalnya)
+	public function get_all_jadwal($tanggalnya,$liganya)
 	{
-		$query = $this->db->query("SELECT
-									a.*,
-									a.jadwal_pertandingan,
-									c.club_id as club_id_a,
-									d.club_id as club_id_b,
-									c.logo as logo_a,
-									d.logo as logo_b,
-									c.name as club_a,
-									d.name as club_b
-								FROM
-									tbl_jadwal_event a
-									LEFT JOIN
-										tbl_event b ON b.id_event=a.id_event
-									INNER JOIN
-										tbl_club c ON c.club_id=a.tim_a
-									INNER JOIN
-										tbl_club d ON d.club_id=a.tim_b
-								WHERE
-									a.jadwal_pertandingan BETWEEN '$tanggalnya 00:00:01' AND '$tanggalnya 23:59:59'
-								order by
-									jadwal_pertandingan DESC
-								LIMIT
-									6")->result_array();
-		return $query;
-	}	
-	
-	public function get_all_jadwal2()
-	{
-		$query = $this->db->query("SELECT
-									a.*,
-									a.jadwal_pertandingan,
-									c.club_id as club_id_a,
-									d.club_id as club_id_b,
-									c.logo as logo_a,
-									d.logo as logo_b,
-									c.name as club_a,
-									d.name as club_b
-								FROM
-									tbl_jadwal_event a
-									LEFT JOIN
-										tbl_event b ON b.id_event=a.id_event
-									INNER JOIN
-										tbl_club c ON c.club_id=a.tim_a
-									INNER JOIN
-										tbl_club d ON d.club_id=a.tim_b
-								WHERE
-									a.jadwal_pertandingan <= '".date('Y-m-d H:i:s')."'
-								order by
-									jadwal_pertandingan DESC
-								LIMIT
-									6,6")->result_array();
-		return $query;
-	}	
+		// $query = $this->db->query("SELECT
+		// 							a.jadwal_pertandingan,
+		// 							c.club_id as club_id_a,
+		// 							d.club_id as club_id_b,
+		// 							c.logo as logo_a,
+		// 							d.logo as logo_b,
+		// 							c.name as club_a,
+		// 							d.name as club_b
+		// 						FROM
+		// 							tbl_jadwal_event a
+		// 							LEFT JOIN
+		// 								tbl_event b ON b.id_event=a.id_event
+		// 							INNER JOIN
+		// 								tbl_club c ON c.club_id=a.tim_a
+		// 							INNER JOIN
+		// 								tbl_club d ON d.club_id=a.tim_b
+		// 						WHERE
+		// 							a.jadwal_pertandingan BETWEEN '$tanggalnya 00:00:01' AND '$tanggalnya 23:59:59'
+		// 							AND
+		// 							a.id_event = $liganya
+		// 						order by
+		// 							jadwal_pertandingan DESC
+		// 						LIMIT
+		// 							6")->result_array();
 
-	public function get_jadwal_today()
-	{
-		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' order by jadwal_pertandingan ASC LIMIT 5
-								")->result_array();
-		return $query;
-	}
+		$this->db->select('	a.jadwal_pertandingan,
+							c.club_id as club_id_a,
+							d.club_id as club_id_b,
+							c.logo as logo_a,
+							d.logo as logo_b,
+							c.name as club_a,
+							d.name as club_b');
 
-	public function get_jadwal_yesterday()
-	{
-		$kemarin 	= date('Y-m-d',strtotime("-1 days"));
+		$this->db->from('tbl_jadwal_event AS a');
 
-		$query = $this->db->query("	SELECT
-										a.id_jadwal_event,
-										a.id_event,
-										a.jadwal_pertandingan,
-										a.tim_a,
-										a.tim_b,
-										a.live_pertandingan,
-										b.name,
-										b.logo,
-										c.name,
-										c.logo
-									FROM
-										tbl_jadwal_event a
-									LEFT JOIN
-										tbl_club b ON b.club_id = a.tim_a
-									LEFT JOIN
-										tbl_club c ON c.club_id = a.tim_b
-									WHERE
-										a.jadwal_pertandingan like '%".$kemarin."%'
-									LIMIT
-										5
-								")->result_array();
-		return $query;
-	}
+		$this->db->join('tbl_event AS b', 'b.id_event=a.id_event', 'LEFT');
+		$this->db->join('tbl_club AS c', 'c.club_id=a.tim_a', 'INNER');
+		$this->db->join('tbl_club AS d', 'd.club_id=a.tim_b', 'INNER');
 
-	public function get_jadwal_tomorrow()
-	{
-		$besok	 = date('Y-m-d',strtotime("+1 days"));
+		$this->db->where('a.jadwal_pertandingan >=', $tanggalnya.' 00:00:01');
+		$this->db->where('a.jadwal_pertandingan <=', $tanggalnya.' 23:59:59');
+		
+		if ($liganya != null)
+		{
+			$this->db->where('a.id_event', $liganya);
+		}
 
-		$query = $this->db->query("	SELECT
-										a.id_jadwal_event,
-										a.id_event,
-										a.jadwal_pertandingan,
-										a.tim_a,
-										a.tim_b,
-										a.live_pertandingan,
-										b.name,
-										b.logo,
-										c.name,
-										c.logo
-									FROM
-										tbl_jadwal_event a
-									LEFT JOIN
-										tbl_club b ON b.club_id = a.tim_a
-									LEFT JOIN
-										tbl_club c ON c.club_id = a.tim_b
-									WHERE
-										a.jadwal_pertandingan like '%".$besok."%'
-									LIMIT
-										5
-								")->result_array();
+		$this->db->order_by('a.jadwal_pertandingan', 'desc');
+
+		$query = $this->db->get()->result_array();
+
 		return $query;
 	}
 		
@@ -255,6 +190,28 @@ class Eyevent_model extends CI_Model
 								")->result_array();
 		return $query;
 	}	
+
+	public function get_all_liga()
+	{
+		$this->db->select('id_event,title');
+		$this->db->from('tbl_event');
+		$this->db->where('id_event', '6');
+		$this->db->or_where('id_event', '16');
+		$this->db->or_where('id_event', '18');
+		$this->db->or_where('id_event', '19');
+		$this->db->or_where('id_event', '20');
+		$this->db->or_where('id_event', '34');
+		$this->db->or_where('id_event', '57');
+		$this->db->or_where('id_event', '58');
+		$this->db->or_where('id_event', '74');
+		$this->db->or_where('id_event', '75');
+		$this->db->or_where('id_event', '89');
+		$this->db->or_where('id_event', '92');
+		
+		$query = $this->db->get()->result_array();
+
+		return $query;
+	}
 	
 }
 

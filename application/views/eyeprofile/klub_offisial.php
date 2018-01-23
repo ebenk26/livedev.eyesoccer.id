@@ -101,14 +101,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>-->
     </div>
     <div class="dekstop pd-t-280">
-    <div class="center-dekstop m-0 option">
+    <div class="center-desktop m-0 option">
         <span>Pilih Musim</span>
         <select id="" name="" selected="true" class="slc-musim">
             <option value="">2017/18</option>
         </select>
         <button class="fl-r btn-orange" type="button"><img src="assets/img/" alt=""> Tambah Ofisial</button>
     </div>
-    <div class="center-dekstop m-0 pd-t-20">
+    <div class="center-desktop m-0 pd-t-20">
 			<?php
 			$no = 1;
 			foreach($official_klub as $data){

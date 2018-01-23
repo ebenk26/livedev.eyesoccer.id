@@ -55,7 +55,7 @@
     </ul>
 </div>
 <div class="desktop">
-    <div class="center-desktop center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="menu-3 m-0">
         <div class="container over-x">
             <div class="w-max">
@@ -74,7 +74,7 @@
             </ul></div></div>
         </div>
     </div>
-    <div class="center-desktop center-dekstop m-0">
+    <div class="center-desktop m-0">
         <div class="garis-x m-t-30"></div>
     </div>
     <div class="center-desktop m-0">

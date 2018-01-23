@@ -1,56 +1,152 @@
-<?php
-$ev=$this->db->query("SELECT a.*,b.fullname FROM tbl_jadwal_event a INNER JOIN tbl_admin b ON b.admin_id=a.admin_id WHERE id_jadwal_event='".$id_jadwal_event."'")->row_array();
-?>
-<div class="container">
-<div class="col-lg-12 col-md-12">
-<h4 id="t100" style="padding-top:20px;"><a href="<?=base_url()?>eyevent" class="btn btn-info btn-sm" style="border-radius:0px;">&ensp;HOME&ensp;</a></div>
+<div class="container eyv m-t-20">
+    <table class="tb-hasil" id="tbl-date-jadwal" style="display: none;">                    
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <div id="ajax-tgl-jadwal"></div>                              
+                </th>
+                <th style="text-align: right;">
+                    <button class="btn-merah" id="btn-tutup" style="cursor: pointer;">Tutup</button>
+                </th>
+            </tr>
+        </thead>
+            <tbody id="body-ajax-jadwal">
+                                            
+            </tbody>
+    </table>
+    <table class="tb-hasil">
+        <thead>
+            <tr>
+                <th colspan="3"><?=date("d F Y")?> (Hari Ini)</th>
+            </tr>
+        </thead>
+        <?php 
+            if (empty($jadwal_today))
+            {
+        ?>
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align: center;">
+                            Tidak Ada Jadwal Pada Tanggal Ini
+                        </td>
+                    </tr>                            
+                </tbody>  
+        <?php        
+            }
+            else
+            {
+                foreach($jadwal_today as $jdwl_today)
+                {
+        ?>
+                    <tbody>
+                        <tr>
+                            <td><?=$jdwl_today["club_a"]?>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_a']; ?>" alt="">
+                            </td>
+                            <td><?=date("H:i",strtotime($jdwl_today["jadwal_pertandingan"]))?>
+                                <span></span>
+                            </td>
+                            <td>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_b']; ?>" alt="">
+                                <?=$jdwl_today["club_b"]?>
+                            </td>
+                        </tr>                            
+                    </tbody>
+        <?php            
+                }
+            }
+        ?>
+        <thead>
+            <tr>
+                <th colspan="3">
+                    <?php
+                        $tomorrow = new DateTime($besok["tanggalnya"]);
+                        echo $tomorrow->format('d F Y');
+                    ?>                              
+                </th>
+            </tr>
+        </thead>
+        <?php 
+            if (empty($jadwal_tomorrow))
+            {
+        ?>
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align: center;">
+                            Tidak Ada Jadwal Pada Tanggal Ini
+                        </td>
+                    </tr>                            
+                </tbody>  
+        <?php        
+            }
+            else
+            {
+                foreach($jadwal_tomorrow as $jdwl_tmrw)
+                {
+        ?>
+                    <tbody>
+                        <tr>
+                            <td><?=$jdwl_tmrw["club_a"]?>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_a']; ?>" alt="">
+                            </td>
+                            <td><?=date("H:i",strtotime($jdwl_tmrw["jadwal_pertandingan"]))?>
+                                <span></span>
+                            </td>
+                            <td>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_b']; ?>" alt="">
+                                <?=$jdwl_tmrw["club_b"]?>
+                            </td>
+                        </tr>                            
+                    </tbody>
+        <?php            
+                }
+            }
+        ?>
+        <thead>
+            <tr>
+                <th colspan="3">
+                    <?php
+                        $yesterday = new DateTime($besok_lusa["tanggalnya"]);
+                        echo $yesterday->format('d F Y');
+                    ?>                              
+                </th>
+            </tr>
+        </thead>
+        <?php 
+            if (empty($jadwal_next_tomorrow))
+            {
+        ?>
+                <tbody>
+                    <tr>
+                        <td colspan="3" style="text-align: center;">
+                            Tidak Ada Jadwal Pada Tanggal Ini
+                        </td>
+                    </tr>                            
+                </tbody>  
+        <?php        
+            }
+            else
+            {
+                foreach($jadwal_next_tomorrow as $jdwl_nxt_tmrw)
+                {
+        ?>
+                    <tbody>
+                        <tr>
+                            <td><?=$jdwl_nxt_tmrw["club_a"]?>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_a']; ?>" alt="">
+                            </td>
+                            <td><?=date("H:i",strtotime($jdwl_nxt_tmrw["jadwal_pertandingan"]))?>
+                                <span></span>
+                            </td>
+                            <td>
+                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_b']; ?>" alt="">
+                                <?=$jdwl_nxt_tmrw["club_b"]?>
+                            </td>
+                        </tr>                            
+                    </tbody>  
+        <?php            
+                }
+            }
+        ?>    
+    </table>
 </div>
-</div>
-
-<div class="container">
-<div class="col-lg-8 col-md-8">
-<div class="row">
-
-<div class="col-lg-12 col-md-12">
-<div class="set100">
-  
-</div>  
-</div>
-
-<div class="col-lg-12 col-md-12">
-
-<hr></hr>
-
-</div>
-
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-<div class="hidden-lg hidden-md"><br></div>
-<img src="img/ronaldo.jpg" class="img img-responsive">
-<h4 id="t101" style="padding-top:10px;"><i class="fa fa-calendar"></i> EVENT LAINNYA</h4> 
-<hr></hr>
-<?php
-$cmd1=$this->db->query("select * from tbl_event where publish_on<='".date("Y-m-d H:i:s")."' order by publish_on desc  limit 5");
-foreach($cmd1->result_array() as $row1){
-$id_event=$row1['id_event']; 
-  if(strstr($row1["thumb1"], "."))
-  {
-    $row1['pic']=$row1['thumb1'];
-  }
-print '
-
-  <div class="media">
-    <div class="media-left ">
-      <a href="'.base_url().'eyevent/detail/'.$id_event.'"><img src="'.base_url().'systems/eyevent_storage/'.$row1['pic'].'" class="media-object" style="width:70px;height:55px;" ></a>
-    </div>
-    <div class="media-body ">
-      <h6 class="media-heading" id="t102">'.$row1['publish_on'].'</h6>
-    <a href="'.base_url().'eyevent/detail/'.$id_event.'" id="a100"><p id="p101">'.$row1['title'].'</p></a>
-    </div>
-  </div>
-';  
-}
-?> 
-</div>
-</div><br><br><br>

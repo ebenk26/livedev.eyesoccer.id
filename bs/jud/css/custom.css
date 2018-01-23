@@ -11,7 +11,7 @@
     width: 100%;
     float: left;
 }
-.center-dekstop {
+.center-desktop {
     width: 1065px;
 }
 style.css:46
@@ -22,6 +22,6 @@ style.css:50
 .m-0 {
     margin: 0 auto;
 }
-.center-dekstop{
+.center-desktop{
     width: 1065px;
 }

@@ -741,7 +741,7 @@
             </div>
         </div>
         <!-- JADWAL PERTANDINGAN & KLASEMEN -->
-        <div class="center-desktop pd-b-100 t-40">
+        <div class="center-desktop t-40">
             <div class="container">
                 <div class="et-content1">
                     <span class="jp green">JADWAL PERTANDINGAN</span>

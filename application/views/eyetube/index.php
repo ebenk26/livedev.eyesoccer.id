@@ -113,7 +113,7 @@
                 <!-- <li>Pemain</li> -->
             </ul>
         </div>
-        <div class="center-desktop center-dekstop m-0" style="margin-bottom: 50px">
+        <div class="center-desktop center-desktop m-0" style="margin-bottom: 50px">
             <div class="menu-3 m-0">
             <div class="container over-x">
                 <div class="w-max">
@@ -132,7 +132,7 @@
                 </ul></div></div>
             </div>
         </div>
-        <div class="center-desktop center-dekstop m-0">
+        <div class="center-desktop center-desktop m-0">
             <div class="container">
                 <div class="m-0 m-t-14">
                     <div class="half">
@@ -178,13 +178,13 @@
             </div>
         </div>
         <div class="container">
-            <div class="center-desktop center-dekstop m-0 m-t-100">
+            <div class="center-desktop center-desktop m-0 m-t-100">
                 <div class="subjudul">
                     <h4>VIDEO POPULAR</h4>
                 </div>
             </div>
             <div class="container">
-            <div class="center-desktop center-dekstop m-0 m-t-45">
+            <div class="center-desktop center-desktop m-0 m-t-45">
                 <?php
                     $this->load->helper('my');          
                     foreach ($eyetube_populer as $populer)
@@ -218,7 +218,7 @@
 
         </div>
         <div class="container" id="all-populer" style="display: none;">
-            <div class="center-desktop center-dekstop m-0 m-t-45">
+            <div class="center-desktop center-desktop m-0 m-t-45">
                 <?php
                     $this->load->helper('my');          
                     foreach ($all_eyetube_populer as $all_populer)
@@ -255,19 +255,19 @@
                 <button class="btn-white" type="button" style="margin-left: unset; margin-bottom: 20px; cursor: pointer;" onclick="ShowAllVideo()">Tutup Video Lainnya</button>
             </div>
         </div>
-        <div class="m-0 center-desktop center-dekstop">
+        <div class="m-0 center-desktop center-desktop">
             <div class="garis-x"></div>
         </div>
 
         <div class="container">
-            <div class="center-dekstop center-desktop m-0">
+            <div class="center-desktop center-desktop m-0">
                 <div class="subjudul">
                     <h4>REKOMENDASI</h4>
                 </div>
             </div>
         </div>
         <div class="container use-opacity">
-            <div class="center-desktop center-dekstop m-0 m-t-14 p-r">
+            <div class="center-desktop center-desktop m-0 m-t-14 p-r">
                 <i class="material-icons left panah panahkiri" href="#rekom" role="button">keyboard_arrow_left</i>
                 <i class="material-icons right panah panahkanan" href="#rekom" role="button">keyboard_arrow_right</i>
 
@@ -331,18 +331,18 @@
             </div>
         </div>
 
-        <div class="m-0 center-desktop center-dekstop">
+        <div class="m-0 center-desktop center-desktop">
             <div class="garis-x"></div>
 
         <div class="container">
-            <div class="center-desktop center-dekstop m-0">
+            <div class="center-desktop center-desktop m-0">
                 <div class="subjudul">
                     <h4>SOCCER SAINS</h4>
                 </div>
             </div>
         </div>
         <div class="container use-opacity">
-            <div class="center-desktop center-dekstop m-0 m-t-14 p-r">
+            <div class="center-desktop center-desktop m-0 m-t-14 p-r">
                 <i class="material-icons left panah panahkiri" href="#soccersains" role="button">keyboard_arrow_left</i>
                 <i class="material-icons right panah panahkanan" href="#soccersains" role="button">keyboard_arrow_right</i>
                 <div id="soccersains" class="carousel slide">
@@ -404,18 +404,18 @@
             </div>
         </div>
 
-        <div class="m-0 center-desktop center-dekstop">
+        <div class="m-0 center-desktop center-desktop">
             <div class="garis-x"></div>
         </div>
         <div class="container">
-            <div class="center-desktop center-dekstop m-0">
+            <div class="center-desktop center-desktop m-0">
                 <div class="subjudul">
                     <h4>VIDEO KAMU</h4>
                 </div>
             </div>
         </div>
         <div class="container use-opacity">
-            <div class="center-desktop center-dekstop m-0 m-t-14 p-r">
+            <div class="center-desktop center-desktop m-0 m-t-14 p-r">
                 <i class="material-icons left panah panahkiri" href="#videokamu" role="button">keyboard_arrow_left</i>
                 <i class="material-icons right panah panahkanan" href="#videokamu" role="button">keyboard_arrow_right</i>
                 <div id="videokamu" class="carousel slide">
@@ -471,18 +471,18 @@
         </div>
 
 
-        <div class="m-0 center-desktop center-dekstop">
+        <div class="m-0 center-desktop center-desktop">
             <div class="garis-x"></div>
         </div>
         <div class="container">
-            <div class="center-desktop center-dekstop m-0">
+            <div class="center-desktop center-desktop m-0">
                 <div class="subjudul">
                     <h4>PROFIL SSB</h4>
                 </div>
             </div>
         </div>
         <div class="container use-opacity">
-            <div class="center-desktop center-dekstop m-0 m-t-14 p-r">
+            <div class="center-desktop center-desktop m-0 m-t-14 p-r">
                 <i class="material-icons left panah panahkiri" href="#profilssb" role="button">keyboard_arrow_left</i>
                 <i class="material-icons right panah panahkanan" href="#profilssb" role="button">keyboard_arrow_right</i>
                 <div id="profilssb" class="carousel slide">

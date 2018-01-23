@@ -1,5 +1,5 @@
 <div style="width: 1065px;margin: auto;text-align: center;margin-top: 150px;">Search Query : <?php echo $_GET['q']?></div>
-<div class="center-dekstop m-t-35" style="margin: auto;">
+<div class="center-desktop m-t-35" style="margin: auto;">
 	<img class="img-title" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
 	<h2 class="title en">EyeNews</h2>
 	result : <?php echo count($eyenews)?>
@@ -17,7 +17,7 @@
 		}
 	?>
 </div>
-<div class="center-dekstop m-t-35" style="margin: auto;">
+<div class="center-desktop m-t-35" style="margin: auto;">
 	<img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyetube.png" alt="">
 	<h2 class="title et">EyeTube</h2>
 	result : <?php echo count($eyetube)?>
@@ -35,7 +35,7 @@
 		}
 	?>
 </div>
-<div class="carous center-dekstop m-t-35" style="margin: auto;margin-left: 8px;">
+<div class="carous center-desktop m-t-35" style="margin: auto;margin-left: 8px;">
 	<img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
 	<h2 class="title ep">EyeProfile</h2>
 	Result : <?php echo count($player)+count($club)?>
