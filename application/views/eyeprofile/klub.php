@@ -4,7 +4,7 @@
         padding: 7px 20px !important;
     }
 </style>
-        <div class="center-dekstop m-0">
+        <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
                     <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
@@ -25,7 +25,7 @@
                 </select>
             </div>
         </div>
-        <div class="center-dekstop m-0">		
+        <div class="center-desktop m-0">		
             <div class="container box-border-radius fl-l mt-30">
 				
                 <div class="fl-l img-80">				
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="center-dekstop m-0">
+        <div class="center-desktop m-0">
             <div class="ep2box fl-l pd-t-20">
 				<?php 				
 				foreach($club_main as $main){
@@ -149,7 +149,7 @@
             </div>
         </div>
         <div class="container t-b-b pd-t-20"></div>
-        <div class="center-dekstop m-0">
+        <div class="center-desktop m-0">
             <div class="w-60 m-r-1 pd-t-20 formasi">
             <div class="container">
                 <h3>Klasemen <?php echo $title_liga?></h3>

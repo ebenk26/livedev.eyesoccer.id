@@ -111,13 +111,15 @@ video{
 	list-style:none;
 } 
 .x-m>ul>li>a {
-	float:left; 
-	display:block; 
-	text-align:center; 
-    text-decoration:none;
+	float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
     color: #FFF3E0;
     margin-right: 27px;
-	font-weight: 500;
+    font-weight: 500;
+    padding-bottom: 13px;
+    margin-top: 20px;
 } 
 .x-m>ul>li>a:hover {
     border-bottom: 5px solid #feea95;

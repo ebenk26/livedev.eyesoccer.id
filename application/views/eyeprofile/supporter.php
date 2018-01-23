@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-        <div class="center-dekstop m-0">
+        <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
                     <li><a href="<?=base_url()?>" style="text-decoration:none; color:#3d3d3d;">Home</a></li>
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </select>
             </div>
         </div>
-        <div class="center-dekstop m-0">
+        <div class="center-desktop m-0">
             <div class="container box-border-radius fl-l mt-30">					
                 <div class="fl-l img-80">				
                     <img src="<?=base_url()?>assets/img/content_11.jpg" alt="" height="100%">
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        <div class="center-dekstop m-0">
+        <div class="center-desktop m-0">
             <select id="" name="" selected="true" class="slc-musim mt-20">
 				<?php
 					foreach($provinsi as $row){
@@ -112,6 +112,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php } ?>
             </div>
         </div>
-        <div class="center-dekstop m-0 mt-20 pd-b-100">
+        <div class="center-desktop m-0 mt-20 pd-b-100">
                 <button class="btn-white btn-white-orange" type="button">Lihat lainnya</button>
         </div>
