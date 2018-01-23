@@ -54,22 +54,20 @@ class Eyevent extends CI_Controller {
 
 		';
 		
-		$cmd_ads 	= $this->db->query("select * from tbl_ads")->result_array();
-		$i = 0;
-		foreach($cmd_ads as $ads){
-			$e = 0;
-			foreach($ads as $key => $val)
-			{
-				$array[$i][$e] =  $val;
-				$e++;
-			}		
-			$i++;
-		}
-		$data["array"] 	= $array;
-		$data["page"] 	= "home";
-		$data["popup"] 	= $array[14][3];
-
-		$tanggal = get_date("-2");
+		// $cmd_ads 	= $this->db->query("select * from tbl_ads")->result_array();
+		// $i = 0;
+		// foreach($cmd_ads as $ads){
+		// 	$e = 0;
+		// 	foreach($ads as $key => $val)
+		// 	{
+		// 		$array[$i][$e] =  $val;
+		// 		$e++;
+		// 	}		
+		// 	$i++;
+		// }
+		// $data["array"] 	= $array;
+		// $data["page"] 	= "home";
+		// $data["popup"] 	= $array[14][3];
 
 		$data["kemarin_lusa"] 		= get_date("-2");
 		$data["kemarin"] 			= get_date("-1");
@@ -82,22 +80,28 @@ class Eyevent extends CI_Controller {
 		$data['eyevent_main']		= $this->Eyevent_model->get_eyevent_main();
 		$data['eyevent_main_2']		= $this->Eyevent_model->get_eyevent_main_2();
 
-		$data['jadwal_yesterday'] 		= $this->Eyevent_model->get_all_jadwal($data["kemarin"]["tanggalnya"]);
-		$data['jadwal_today'] 			= $this->Eyevent_model->get_all_jadwal($data["hari_ini"]["tanggalnya"]);
-		$data['jadwal_tomorrow'] 		= $this->Eyevent_model->get_all_jadwal($data["besok"]["tanggalnya"]);
-		$data['jadwal_next_tomorrow'] 	= $this->Eyevent_model->get_all_jadwal($data["besok_lusa"]["tanggalnya"]);
+		$data['all_liga']			= $this->Eyevent_model->get_all_liga();
+
+		$data['jadwal_yesterday'] 		= $this->Eyevent_model->get_all_jadwal($data["kemarin"]["tanggalnya"],null);
+		$data['jadwal_today'] 			= $this->Eyevent_model->get_all_jadwal($data["hari_ini"]["tanggalnya"],null);
+		$data['jadwal_tomorrow'] 		= $this->Eyevent_model->get_all_jadwal($data["besok"]["tanggalnya"],null);
+		$data['jadwal_next_tomorrow'] 	= $this->Eyevent_model->get_all_jadwal($data["besok_lusa"]["tanggalnya"],null);
 		
 		$data['hasil_today'] 		= $this->Eyevent_model->get_hasil_today();
 		$data['hasil_today2'] 		= $this->Eyevent_model->get_hasil_today2();
 		$data['eyenews_main'] 		= $this->Eyevent_model->get_eyenews_main();
-		//$news_type 				= $data['eyenews_main']->news_type;
+		
 		$data['video_eyetube']		= $this->Eyevent_model->get_eyetube_satu();		
 
 		
-		$data["extrascript"]=$this->load->view('eyetube/script_index', '', true);
+		$data["extrascript"] 	= $this->load->view('eyetube/script_index', '', true);
 		
-		$data['kanal'] 	=  "eyevent";
-		$data["body"]=$this->load->view('eyevent/index', $data, true);
+		$data['kanal'] 	= "eyevent";
+		$data["kanan"]	= $this->load->view('eyevent/right_content', $data, true);
+		$data["jadwal"]	= $this->load->view('eyevent/jadwal', $data, true);
+		$data["hasil"]	= $this->load->view('eyevent/hasil', $data, true);
+		$data["body"] 	= $this->load->view('eyevent/index', $data, true);
+
 		$this->load->view('template/static',$data);
 	}
 	
@@ -196,29 +200,76 @@ class Eyevent extends CI_Controller {
 
 	public function get_jadwal($tanggal)
 	{
-		$jadwalnya 		= $this->Eyevent_model->get_all_jadwal($tanggal);
+		$jadwalnya 		= $this->Eyevent_model->get_all_jadwal($tanggal,null);
 		$txt = '';
 		foreach ($jadwalnya as $value)
 		{
-
-			$txt.= "	<tr>
-	                        <td>".$value['club_a']."
-	                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
-	                        </td> \
-	                        <td>".date("H:i",strtotime($value["jadwal_pertandingan"]))."
-	                            <span></span>
-	                        </td>
-	                        <td>
-	                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
-	                            ".$value["club_b"]."
-	                        </td>
-	                    </tr>	";
+			if (!empty($value['club_a']))
+			{
+				$txt.= "	<tr>
+		                        <td>".$value['club_a']."
+		                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
+		                        </td> \
+		                        <td>".date("H:i",strtotime($value["jadwal_pertandingan"]))."
+		                            <span></span>
+		                        </td>
+		                        <td>
+		                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
+		                            ".$value["club_b"]."
+		                        </td>
+		                    </tr>	";
+			}
+			else
+			{
+				$txt.= "	<tr>
+	                            <td colspan='3' style='text-align: center;'>
+	                                Tidak Ada Jadwal Pada Tanggal Ini
+	                            </td>
+	                        </tr>    ";
+			}
+			
 
 		}
 
 		echo json_encode(array(	'status' 	=> '1',
 								'txt' 		=> $txt,
 							));
+	}
+
+	public function liga($nama_liga)
+	{
+		$data["kemarin_lusa"] 		= get_date("-2");
+		$data["kemarin"] 			= get_date("-1");
+		$data["hari_ini"] 			= get_date("+0");
+		$data["besok"] 				= get_date("+1");
+		$data["besok_lusa"] 		= get_date("+2");
+		$data["tiga_hari_besok"] 	= get_date("+3");
+
+
+		$data['eyevent_main']		= $this->Eyevent_model->get_eyevent_main();
+		$data['eyevent_main_2']		= $this->Eyevent_model->get_eyevent_main_2();
+
+		$data['jadwal_yesterday'] 		= $this->Eyevent_model->get_all_jadwal($data["kemarin"]["tanggalnya"],$nama_liga);
+		$data['jadwal_today'] 			= $this->Eyevent_model->get_all_jadwal($data["hari_ini"]["tanggalnya"],$nama_liga);
+		$data['jadwal_tomorrow'] 		= $this->Eyevent_model->get_all_jadwal($data["besok"]["tanggalnya"],$nama_liga);
+		$data['jadwal_next_tomorrow'] 	= $this->Eyevent_model->get_all_jadwal($data["besok_lusa"]["tanggalnya"],$nama_liga);
+		
+		$data['hasil_today'] 		= $this->Eyevent_model->get_hasil_today();
+		$data['hasil_today2'] 		= $this->Eyevent_model->get_hasil_today2();
+		$data['eyenews_main'] 		= $this->Eyevent_model->get_eyenews_main();
+		
+		$data['video_eyetube']		= $this->Eyevent_model->get_eyetube_satu();		
+
+		
+		$data["extrascript"] 	= $this->load->view('eyetube/script_index', '', true);
+		
+		$data['kanal'] 	= "eyevent";
+		$data["kanan"]	= $this->load->view('eyevent/right_content', $data, true);
+		$data["jadwal"]	= $this->load->view('eyevent/jadwal', $data, true);
+		$data["hasil"]	= $this->load->view('eyevent/hasil', $data, true);
+		$data["body"] 	= $this->load->view('eyevent/index', $data, true);
+
+		$this->load->view('template/static',$data);
 	}
 	
 }
