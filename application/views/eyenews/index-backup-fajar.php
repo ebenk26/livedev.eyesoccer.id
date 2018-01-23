@@ -1,39 +1,62 @@
-<div class="crumb">
-        <ul>
-            <li>Home</li>
-            <li>EyeNews</li>
-        </ul>
-    </div>
-    <div class="desktop">
+
+<style>
+	.pagination > .active > a {
+		z-index:1;
+	}
+	.pagination>li>a, .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+        color: rgb(200,0,0);
+    }
+    .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+        background-color: rgb(200,0,0) !important;
+        border-color: rgb(200,0,0) !important;
+	}
+	.h-news-r span {
+	    text-align: justify;
+    	display: inline-block;
+	}
+	.list-1{
+		padding-right: 10px;
+	}
+	.menu-4{
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.menu-4 li{
+		margin-right: 18.7px;
+	}
+</style>
+		<div class="crumb">
+			<ul>
+				<li>Home</li>
+				<li>EyeNews</li>
+				<!-- <li>Pemain</li> -->
+			</ul>
+		</div>
         <div class="center-desktop m-0">
-            <div class="menu-3 m-0">
-                <div class="w1020 over-x m-0">
-                    <div class="w-max">
-                        <ul>
-                            <?php
-                                foreach ($news_type as $cat_name)
-                                {
-                            ?>
-                                <li>
-                                    <a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
-                                </li>
-                            <?php
-                                }
-                            ?>
-                            
-                        </ul>
-                    </div>
-                </div>
+            <div class="menu-4 w1020 m-0 bbg">
+                <ul>
+					<?php
+						foreach ($news_type as $cat_name)
+						{
+					?>
+						<li>
+							<a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
+						</li>
+					<?php
+						}
+					?>
+                    
+                </ul>
             </div>
         </div>
-        <div class="center-desktop m-0 mt-20">
+        <div class="center-desktop m-0">
             <div class="w1020 m-0">
                 <div class="container h-news-l">
-                    <a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
-                        <div class="img-highlight-enews">
-                            <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="<?= $headline->title; ?>" title="<?= $headline->title; ?>">
-                        </div>
-                    </a>
+					<a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
+                    <div style="width:690px; height:400px; overflow:hidden; margin-bottom:10px;">
+                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?php print $headline->thumb1; ?>" alt="<?= $headline->title; ?>" title="<?= $headline->title; ?>" style="width:100%; min-height:100%;">
+                    </div>
+					</a>
                 </div>
                 <div class="container h-news-r">
                     <table>
@@ -44,40 +67,41 @@
                             <td>
                                 <div class="rr">
                                     <span><?= $headline->createon; ?></span>
+
                                 </div>
                             </td>
                         </tr>
                     </table>
-                    <div class="pd o-h-3">
+                    <div class="pd" style="height:370px; width:310px; overflow: hidden;">
                         <div>
                             <a href="<?=base_url();?>eyenews/detail/<?=$headline->url; ?>">
                                 <h1><?= $headline->title; ?></h1>
                             </a>
                             <span>
-                                <?php
-                                    $keterangan = strip_tags($headline->description);
-                                    echo word_limiter($keterangan,27);
-                                ?>
-                            </span>
+							<?php
+								$keterangan = strip_tags($headline->description);
+								echo word_limiter($keterangan,25);
+							?>							
+							</span>
                             <ul class="list-1 mt-10">
-                                <?php
-                                $i = 0;
-                                foreach ($eyenews_similar as $row)
-                                {
-                                if ($i != 0)
-                                {
-                                ?>							
-                                        <li>
-                                            <span>
-                                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
-                                            <?= $row['title']; ?></a>									
-                                            </span>
-                                        </li>
-                                <?php			
-                                }
-                                $i++;
-                                }
-                                ?>
+						<?php
+						$i = 0;
+						foreach ($eyenews_similar as $row)
+						{
+						if ($i != 0)
+						{
+						?>							
+                                <li>
+                                    <span>
+									<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
+									<?= $row['title']; ?></a>									
+									</span>
+                                </li>
+						<?php			
+						}
+						$i++;
+						}
+						?>								
                             </ul>
                         </div>
                     </div>
@@ -86,12 +110,12 @@
             <div class="container">
                 <div class="w1020 m-0">
                     <div class="subjudul2">
-                        <h4>BERITA TERKAIT</h4>
+                        <h4>BERITA TERBARU</h4>
                     </div>
                 </div>
                 <div class="container m-t-15">
-                    <div class="w-max m-0">
-                        <?php
+                    <div class="w1020 m-0">
+						<?php
 						$this->load->helper('my');
 						foreach ($pagging['row'] as $similar)
 						{
@@ -114,7 +138,7 @@
 							</a>
                         </div>
 						<?php } ?>
-						<div class="pagging-enews-home"><?php echo $pagging['pagging'];?></div>
+						<div><?php echo $pagging['pagging'];?></div>
                     </div>
                 </div>
             </div>
@@ -125,7 +149,7 @@
                             <div class="subjudul2">
                                 <h4>REKOMENDASI</h4>
                             </div>
-                            <?php
+							<?php
 							foreach($eyenews_rekomendasi as $rekomendasi){
 							?>	
 							<a href="<?php echo base_url(); ?>eyenews/detail/<?= $rekomendasi['url'];?>">
@@ -149,6 +173,7 @@
 								</div>
 							</a>
 							<?php } ?>
+							
                         </div>
                         <div class="container news-rcm-r">
                             <div class="subjudul2">
@@ -171,33 +196,34 @@
                                 </div>
 							<?php break; } ?>
                             </div>
-                            <?php
+							<?php
 							foreach ($eyenews_populer2 as $populer2)
 							{
-							?>	
-                            <div class="container news-rcm-d">
+							?>							
+                            <div class="container news-rcm-d">							
                                 <a href="" class="nn">
                                     <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer2['thumb1']; ?>" alt="">
                                 </a>
                                 <div class="container rm">
                                     <a href="<?php echo base_url(); ?>eyenews/detail/<?= $populer2['url'];?>">
-                                        <span><?=$populer2['title'];?></span>
+                                        <span>
+										<?=$populer2['title'];?></span>
                                     </a>
                                     <div class="rr">
                                         <span>
-                                            <?php
+										<?php
 											$date 		=  new DateTime($populer2['createon']);
 											$tanggal 	= date_format($date,"Y-m-d H:i:s");
 
 											echo relative_time($tanggal) . ' lalu - '.$populer2['news_view'].' views';
-                                            ?>
-                                        </span>
+										?>
+										</span>
                                     </div>
                                 </div>
                             </div>
 							<?php
-                            }
-                            ?>	
+							}
+							?>							
                         </div>
                     </div>
                 </div>
@@ -209,12 +235,12 @@
                         <h4>EyeTube</h4>
                     </div>
                 </div>
-                <div class="w1020 m-0">
+                <div class="w1020 m-0">			
                     <div class="container m-t-5 bbg">
-                        <?php
-                        foreach ($video_eyetube as $videonya)
-                        {
-                        ?>						
+					<?php
+					foreach ($video_eyetube as $videonya)
+					{
+					?>						
                         <div class="w30">
 							
 							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url'];?>">
@@ -232,7 +258,7 @@
 								</div>
 							</a>
                         </div>
-					    <?php }?>
+					<?php }?>						
                     </div>
                 </div>
             </div>
@@ -242,7 +268,7 @@
                         <div class="subjudul2">
                             <h4>SOCCER SERI</h4>
                         </div>
-                        <?php
+						<?php
 						// foreach($all_news as $row12){
 						foreach($soccer_seri as $row12){
 						?>
@@ -317,7 +343,7 @@
 							<?php } ?>
                             </table>
                             <div class="line-b"></div>
-                            <div class="fl-r">
+                            <div class="fl-r mb-30">
                                 <a href="">
                                     <p class="lp" style="margin:0px;">Lihat selengkapnya ></p>
                                 </a>
@@ -327,5 +353,3 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>

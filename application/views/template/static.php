@@ -119,7 +119,7 @@
     ?>
     
         <nav>
-            <div class="dekstop">
+            <div class="desktop">
                 <div class="x-m">
 					<a href="<?php echo base_url()?>">
 						<div class="logo">
@@ -150,7 +150,7 @@ else{
         </nav>
         <!-- MENU -->
         <div class="menu">
-            <div class="dekstop">
+            <div class="desktop">
                 <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
@@ -192,7 +192,7 @@ else{
             else
             {
         ?>
-                <div class="dekstop">
+                <div class="desktop">
                     <?php echo $body;?>
                 </div>
         <?php        

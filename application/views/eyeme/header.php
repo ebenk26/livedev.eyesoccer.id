@@ -154,7 +154,7 @@
                 //icon menu 
                 foreach($icon as $k => $v){
 
-                    echo  '<a href="'.$v['link'].'" title="'.$v['title'].'" style="text-decoration:none;" id="'.$v['id'].'">
+                    echo  '<a href="'.$v['link'].'" title="'.$v['title'].'"  id="'.$v['id'].'">
                     <i class="material-icons ikon">'.$v['icon'].'</i></a>';
                 }
 

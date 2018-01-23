@@ -26,13 +26,6 @@
     .btn-play{
         width: 65px;
     }
-    .btn-play2{
-        position: relative;
-        top: -90px;
-        left: 110px;
-        width: 40px;
-        height: 40px;
-    }
     .wkt{
         position: relative;
         bottom: 288px;
@@ -68,20 +61,15 @@
         margin-right: 0px;
     }
     .sub-en {
-        height: 41px;
+        max-height: 39px;
         overflow: hidden;
-        color: darkslategray;
-    }
-    .panah{
-        z-index: 1;
-    }
-    .panahkiri {
-        right: 1046px;
+        color: #333;
+        margin-bottom: 5px;
     }
     i, button{
         cursor: pointer;
     }
-    .over-x{
+.over-x{
     overflow-x: scroll;
     overflow-y: hidden;
 }
@@ -191,10 +179,9 @@
                     {
                 ?>          
                         <div class="w4">
-                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer['url']; ?>" style="text-decoration:none;">
+                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer['url']; ?>" >
                             <div style="width:100%; height:160px; overflow:hidden;">
-                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb']; ?>" style="min-width:100%; height:100%;">
-                                <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
+                                <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb']; ?>" style="min-width:100%; height:100%;">                                
                             </div>
                             
                                 <p class="sub-en">
@@ -225,10 +212,9 @@
                     {
                 ?>          
                         <div class="w4">
-                        <a href="<?php echo base_url(); ?>eyetube/detail/<?= $all_populer['url']; ?>" style="text-decoration:none;">    
+                        <a href="<?php echo base_url(); ?>eyetube/detail/<?= $all_populer['url']; ?>" >    
                             <div style="width:100%; height:160px; overflow:hidden;">
                                 <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $all_populer['thumb']; ?>" style="min-width:100%;height:100%;">
-                                <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                             </div>
                         
                                 <p class="sub-en"><?= $all_populer['title']; ?></p>
@@ -278,10 +264,9 @@
                             foreach($eyetube_rekomendasi as $rekomendasi){
                             ?>                      
                             <div class="w4">
-                                <a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi['url']; ?>" style="text-decoration:none;">
+                                <a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi['url']; ?>" >
                                     <div style="width:100%; height:160px; overflow:hidden;">
                                         <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $rekomendasi['thumb']; ?>" style="min-width:100%;height:100%;">
-                                        <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                                     </div>
                                     
                                     <p class="sub-en"><?=$rekomendasi['title']?></p>
@@ -305,10 +290,9 @@
                             foreach($eyetube_rekomendasi_2 as $rekomendasi_2){
                             ?>                      
                             <div class="w4">
-                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi_2['url']; ?>" style="text-decoration:none;">
+                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi_2['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
                                     <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $rekomendasi_2['thumb']; ?>" style="min-width:100%;height:100%;">
-                                    <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                                 </div>
                                 
                                     <p class="sub-en">
@@ -352,10 +336,9 @@
                                 foreach($eyetube_science as $science){
                             ?>
                             <div class="w4">
-                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $science['url']; ?>" style="text-decoration:none;">
+                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $science['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
                                     <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $science['thumb']; ?>" style="min-width:100%;height:100%;">
-                                    <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                                 </div>
                                 
                                     <p class="sub-en">
@@ -378,10 +361,9 @@
                                 foreach($eyetube_science_2 as $science2){
                             ?>                      
                             <div class="w4">
-                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $science2['url']; ?>" style="text-decoration:none;">
+                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $science2['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
                                     <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $science2['thumb']; ?>" style="min-width:100%;height:100%;">
-                                    <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                                 </div>
                                 
                                     <p class="sub-en">
@@ -425,10 +407,9 @@
                         foreach($eyetube_kamu as $kamu){
                         ?>                      
                             <div class="w4">
-                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $kamu['url']; ?>" style="text-decoration:none;">
+                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $kamu['url']; ?>" >
                             <div style="width:100%; height:160px; overflow:hidden;">
                                 <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb']; ?>" style="min-width:100%;height:100%;">
-                                <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                             </div>    
                                     <p class="sub-en">
                                     
@@ -450,7 +431,6 @@
                             <a href="">
                             <div style="width:100%; height:160px; overflow:hidden;">
                                 <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb']; ?>" style="min-width:100%;height:100%;">
-                                <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                             </div>
                                     <p class="sub-en"><?=$kamu['title']?></p>
                                     <span class="time-view">
@@ -492,10 +472,9 @@
                         foreach($eyetube_ssb as $ssb){
                         ?>                      
                             <div class="w4">
-                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb['url']; ?>" style="text-decoration:none;">
+                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
                                     <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $ssb['thumb']; ?>" style="min-width:100%;height:100%;">
-                                    <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                                 </div>
                                     <p class="sub-en">
                                     
@@ -517,10 +496,9 @@
                         foreach($eyetube_ssb_2 as $ssb_2){
                         ?>                      
                             <div class="w4">
-                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb_2['url']; ?>" style="text-decoration:none;">
+                            <a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb_2['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
                                     <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $ssb_2['thumb']; ?>" style="min-width:100%;height:100%;">
-                                    <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                                 </div>
                                     <p class="sub-en">
                                     
