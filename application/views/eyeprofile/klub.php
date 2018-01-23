@@ -7,13 +7,12 @@
         <div class="center-dekstop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
-                    <li><a href="<?=base_url()?>" style="text-decoration:none;">Home</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;">Klub</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;">Pemain</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/official" style="text-decoration:none;">Offisial</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;">Perangkat Pertandingan</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/supporter" style="text-decoration:none;">supporter</a></li>
-                </ul>
+                    <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;color:#3d3d3d;">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub_offisial" style="text-decoration:none;color:#3d3d3d;">Ofisial</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;color:#3d3d3d;">Perangkat Pertandingan</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/supporter" style="text-decoration:none;color:#3d3d3d;">supporter</a></li>
+            </ul>
                 <select id="" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
 					<option value="">--Pilih Liga--</option>
 				<?php

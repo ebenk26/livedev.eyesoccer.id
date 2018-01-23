@@ -2,7 +2,6 @@
     <div class="center-dekstop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>
-                    <li><a href="<?=base_url()?>" style="text-decoration:none; color:#3d3d3d;">Home</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;color:#3d3d3d;">Pemain</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/klub_offisial" style="text-decoration:none;color:#3d3d3d;">Ofisial</a></li>
