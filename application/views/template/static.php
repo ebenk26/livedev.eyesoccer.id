@@ -77,7 +77,7 @@
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
 				<style>
-					.center-dekstop{
+					.center-desktop{
 						width: 1065px;
 					}
 					.x-m {
@@ -135,7 +135,7 @@
                 <link href="<?=base_url()?>assets/eyetube/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
                 <style type="text/css">
-                    .center-dekstop{
+                    .center-desktop{
                         width: 1065px;
                     }
                 </style>
@@ -147,7 +147,7 @@
                 <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
                 <style>
-                    .center-dekstop{
+                    .center-desktop{
                         width: 1065px;
                     }
                     .x-m {
@@ -225,7 +225,7 @@ else{
         <!-- MENU -->
         <div class="menu">
             <div class="dekstop">
-                <div class="center-dekstop m-0">
+                <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
                             <li><a href="" onclick="return false">EyeProfile</a>

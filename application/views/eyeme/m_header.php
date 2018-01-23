@@ -57,7 +57,7 @@
     <body>
         <nav>
             <div class="dekstop">
-                <div class="center-dekstop m-0">
+                <div class="center-desktop m-0">
 					<a href="<?php echo base_url()?>">
 						<div class="logo">
 							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
@@ -87,8 +87,8 @@ else{
         </nav>
         <!-- MENU -->
         <div class="menu">
-            <div class="dekstop">
-                <div class="center-dekstop m-0">
+            <div class="desktop">
+                <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
                             <li><a href="">EyeProfile</a>

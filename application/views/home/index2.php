@@ -172,7 +172,7 @@
             </span>
         </div>
 		<!-- EYEPROFILE -->
-        <div class="carous center-dekstop m-t-35">
+        <div class="carous center-desktop m-t-35">
             <img class="img-title" src="assets/img/ic_eyeprofile.png" alt="">
             <h2 class="title ep">EyeProfile</h2>
             <hr class="x-ep">
@@ -762,7 +762,7 @@
         </div>
 
 		<!-- EYETUBE -->
-        <div class="center-dekstop pd-l-100">        
+        <div class="center-desktop pd-l-100">        
             <img class="img-title" src="assets/img/ic_eyetube.png" alt="">
             <h2 class="title et">EyeTube</h2>
             <hr class="x-et">
@@ -914,7 +914,7 @@
         </div>
 
 <!-- EYENEWS -->
-        <div class="center-dekstop pd-l-100">
+        <div class="center-desktop pd-l-100">
             <div class="et-content m-b-150">
                 <div class="et-content1">
                     <img class="img-title" src="assets/img/ic_eyenews.png" alt="">
@@ -986,7 +986,7 @@
                 </div>
             </div>
         </div>
-        <div class="center-dekstop pd-l-100">
+        <div class="center-desktop pd-l-100">
             <div class="et-content">
                 <div class="et-content1">
                     <div class="container tab2">
@@ -1095,14 +1095,14 @@
             </div>
         </div>
         <!-- BANNER -->
-        <div class="center-dekstop pd-l-100">
+        <div class="center-desktop pd-l-100">
             <div class="banner-150">
                 <img src="" alt="">
             </div>
         </div>
 
 <!-- EYEVENT -->
-        <div class="center-dekstop pd-l-100">
+        <div class="center-desktop pd-l-100">
             <img class="img-title" src="assets/img/ic_eyevent.png" alt="">
             <h2 class="title ee">EyeVent</h2>
             <hr class="x-ee">
@@ -1214,7 +1214,7 @@
         </div>
 
  <!-- JADWAL PERTANDINGAN & KLASEMEN -->
-        <div class="center-dekstop pd-l-100 pd-b-100">
+        <div class="center-desktop pd-l-100 pd-b-100">
             <div class="container t-40">
                 <div class="et-content1">
                     <div class="border-box">

@@ -33,7 +33,7 @@
                         margin: 0 auto;
                         vertical-align: middle;
                     }
-                    .center-dekstop{
+                    .center-desktop{
                         width: 1065px;
                     }
                     .x-m{
