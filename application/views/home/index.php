@@ -1,110 +1,3 @@
-<style>
-	.des-p{
-		color: #2b2b2b;
-		font-size: .7em;
-		font-weight: 600;
-		margin-top: 5px;
-		width: max-content;
-	}
-	.des-p td{
-		width: max-content;
-		padding: 4px 2px 0 0;
-		font-size: .9em;
-		overflow: hidden;
-		height: 13px;
-		display: inline-block;
-	}
-	.des-p td:nth-of-type(1){
-		width: 92px !important;
-	}
-	.vid-box-vl-img{
-		width: 100%;
-    	height: 145px;
-    	overflow: hidden;
-	}
-	.vid-box-vl-img img{
-		width: 100%;
-    	min-height: 100%;
-	}
-	.h-berita-terkait>ul>li>a {
-    	font-size: .85em;
-    	color: darkslategray;
-    	font-weight: 500;
-	}
-	.h-berita-terkait>ul>li>a>img {
-    	padding-right: 5px
-	}
-	.em-btn:hover{
-		background-color: #66b7f3;
-    	color: white;
-	}
-	.rek-ber-c>p {
-    	font-size: .7em;
-    	color: #aba6a6;
-    	width: 430px;
-    	float: right;
-    	margin: 0px;
-    	max-height: 46px;
-    	overflow: hidden;
-	}
-	.m-b-35{
-		margin-bottom: -35px
-	}
-	.beli{
-		border: 1px solid #FFB300;
-	}
-	.beli:hover, .beli a:hover{
-		background-color: #ffd400;
-    	border-color: #ffd400;
-    	color: white !important;
-	}
-	.ev-box-content {
-    	width: 340px;
-    	height: 210px;
-		overflow: hidden;
-		margin: 0 20px 0 0 !important;
-	}
-	.el{
-		font-weight: 500;
-	}
-	.jp{
-		color: #25ab2a;
-	}
-	.ctn-pemain{
-		border-radius: 5px;
-	}
-	.ctn-pemain img {
-		height: 100%;
-	}
-	.des {
-		top: 5px;
-	}
-	.des h3 {
-		margin: 10px 0;
-	}
-	.des p {
-    	font-size: .8em;
-    	margin: 0;
-    	max-height: 56px;
-    	overflow: hidden;
-	}
-	.btn-green:hover{
-		background-color: #8BC34A;
-		border-color: #8BC34A;
-		color: white;
-	}
-	.btn-play2{
-		position: relative;
-    	width: 50px;
-    	height: 50px;
-    	left: 190px;
-    	top: -210px;
-	}
-	#epSlide td{
-		padding: 2px 0px 0px 4px;
-		display: inline-block;
-	}
-</style>
 		<!-- JADWAL -->
 		<div id="jadwal" class="jadwal carousel slide" style="overflow:  hidden;">
             <div class="left navigate" href="#jadwal" role="button">
@@ -146,12 +39,7 @@
 		<div class="trending">
             <span class="x-c">
                 <span>Trending</span>
-<<<<<<< HEAD
-                <?php 
-					 $this->load->helper('my');
-=======
 					<?php 
->>>>>>> 9432f78a1e802cf56d83c514288ae2c71919adca
 					foreach ($trend_eyetube as $trendnya_tube)
 					{
 						$judul_trend 	= word_limiter($trendnya_tube['title'],3);
@@ -314,9 +202,9 @@
 						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 							<div class="ctn-pemain">
 								<!--<img src="assets/img/ss-img.png" alt="">-->
-							  <div style="max-width: 100px;height:  100px;overflow:  hidden;display:  inline-block;float: left;">
+							  <div class="des-img">
 								<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des" style="width: max-content;display:  inline-block;float:  left;padding:  0px;color: orange;font-weight: 600;">
+								<div class="container des">
 									<?php
 										$str_name = strlen($player['nama']);
 										if($str_name > 20){
@@ -357,8 +245,8 @@
 						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 							<div class="ctn-pemain">
 								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<div style="max-width: 100px;height:  100px;overflow:  hidden;display:  inline-block;float: left;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des" style="width: max-content;display:  inline-block;float:  left;padding:  0px;color: orange;font-weight: 600;">
+								<div class="des-img"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+								<div class="container des">
 									<?php
 										$str_name = strlen($player['nama']);
 										if($str_name > 20){
@@ -399,8 +287,8 @@
 						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 							<div class="ctn-pemain">
 								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<div style="max-width: 100px;height:  100px;overflow:  hidden;display:  inline-block;float: left;"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des" style="width: max-content;display:  inline-block;float:  left;padding:  0px;color: orange;font-weight: 600;">
+								<div class="des-img"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+								<div class="container des">
 									<?php
 										$str_name = strlen($player['nama']);
 										if($str_name > 20){
@@ -530,10 +418,9 @@
 							<a href="<?=base_url().'eyetube/detail/'.$stars['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
-										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">
-										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
+										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">										
 									</div>
-									<div class="container" style="height:45px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
+									<div class="container h41"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($stars['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -559,10 +446,9 @@
 								<div class="vid-box-vl">
 									<!--<img src="assets/img/video-small.png" alt="">-->
 									<div class="vid-box-vl-img">
-										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">
-										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
+										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">										
 									</div>
-									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
+									<div class="container h41"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($populer['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -588,9 +474,8 @@
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
 										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
-										<div class="container btn-play2" style="top:-90px; left:110px; width:40px; height:40px;"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>
 									</div>
-									<div class="container" style="height:67px; overflow:hidden; margin-bottom:5px;"><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
+									<div class="container h41" ><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
 									<p class="vid-time"><?php
 									$date 		=  new DateTime($kamu['createon']);
 									$tanggal 	= date_format($date,"Y-m-d H:i:s");
@@ -1058,7 +943,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 20){
+											if($i < 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1113,7 +998,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 20){
+											if($i < 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1168,7 +1053,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 20){
+											if($i < 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
