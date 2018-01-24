@@ -31,7 +31,10 @@ class Eyevent_model extends CI_Model
 		// 						LIMIT
 		// 							6")->result_array();
 
-		$this->db->select('	a.jadwal_pertandingan,
+		$this->db->select('	a.score_a,
+							a.score_b,
+							a.jadwal_pertandingan,
+							a.lokasi_pertandingan,
 							c.club_id as club_id_a,
 							d.club_id as club_id_b,
 							c.logo as logo_a,
@@ -207,8 +210,15 @@ class Eyevent_model extends CI_Model
 		$this->db->or_where('id_event', '75');
 		$this->db->or_where('id_event', '89');
 		$this->db->or_where('id_event', '92');
-		
+
 		$query = $this->db->get()->result_array();
+
+		return $query;
+	}
+
+	public function get_row_event($id)
+	{
+		$query 	= $this->db->get_where('tbl_event', array('id_event' => $id))->row();
 
 		return $query;
 	}

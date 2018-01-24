@@ -25,7 +25,7 @@
 ?>
 
 
-<div class="dekstop">
+<div class="desktop">
 	<!-- JADWAL -->
     <div id="jadwal" class="jadwal carousel slide">
         <div class="left navigate" href="#jadwal" role="button">

@@ -3,7 +3,7 @@
         <div class="kalender mt-20">
             <div id="z"></div>
             <!-- <input type="text" id="d" /> -->
-            <button class="btn-white-g" type="button" id="btn-date">Lihat</button>
+            <button class="btn-white-g" type="button" id="btn-date-jadwal">Lihat</button>
         </div>
     </div>
     <div class="container down-r-vent mt-30">

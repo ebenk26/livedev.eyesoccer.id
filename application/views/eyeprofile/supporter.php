@@ -5,12 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
-                    <li><a href="<?=base_url()?>" style="text-decoration:none; color:#3d3d3d;">Home</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/klub" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;color:#3d3d3d;">Pemain</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/official" style="text-decoration:none;color:#3d3d3d;">Ofisial</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;color:#3d3d3d;">Perangkat Pertandingan</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/supporter" style="text-decoration:none;color:#3d3d3d;">supporter</a></li>
+                    <li><a href="<?=base_url()?>">Home</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
+                    <li class="active"><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
                 </ul>
                 <select id="" name="" selected="true" class="slc-musim fl-r">
 				<?php
@@ -89,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </select>
             <input type="text" name="" id="" placeholder="Cari ..." class="src-200 mt-30">
             <img src="assets/img/ic_search.png" alt="" class="img-src-200">
-            <div class="ep2box fl-l pd-t-20">
+            <div class="ep3box fl-l pd-t-20">
 				<?php 				
 				foreach($supporter as $row){			
 				?>
