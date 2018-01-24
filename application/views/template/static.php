@@ -88,7 +88,7 @@
             {
         ?>
 				<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-                <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet">
+                <!-- <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
         <?php
