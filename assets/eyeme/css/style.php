@@ -2888,3 +2888,6 @@ loading animation
 .upl{
     cursor:pointer;
 }
+a{
+    text-decoration:none;
+}
