@@ -541,17 +541,16 @@
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
                     <div class="c-em-content2" style="top: -14px;">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">	
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">					
+                    	<?php 
+                    		for($i=0;$i < 9 ; $i++){
+                    			echo '<a href="'.(isset($imgEyeme[$i]) ? MEPROFILE.$imgEyeme[$i]->username : '#').'">';
+                    			echo '<img src="'.(isset($imgEyeme[$i]) ? MEIMG.$imgEyeme[$i]->img_name :  DEFAULTIMG ).'" class="c-em-content2-img">';
+                    			echo '</a>';
+                    		}
+                    	?>
+                       		
                         <div style="padding:8px; text-align:center">
-							<button type="text" class="em-btn">Lihat Foto Lainnya</button>
+							<a href="<?php echo MEURL.'explore'?>" class="em-btn"">Lihat Foto Lainnya</a>
 						</div>
                     </div>
                 </div>
