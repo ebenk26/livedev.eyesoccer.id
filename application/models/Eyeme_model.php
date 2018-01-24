@@ -404,18 +404,23 @@ class Eyeme_model extends Master_model
 					a.id_member,
 					a.id_img,
 					a.last_update,
-					c.username,
-					b.display_picture
+					b.username,
+					b.profile_pic
 				  FROM me_like as a
-				  INNER JOIN me_profile as b
-				  ON a.id_member = b.id_member
-				  INNER JOIN tbl_member as c
-				  ON a.id_member =  c.id_member
+				
+				  INNER JOIN tbl_member as b
+				  ON a.id_member =  b.id_member
 				  
-				  WHERE id_img = $id_img";
+				  WHERE a.id_img = $id_img";
 
 		$res   = $this->db->query($query);
 		$res   = $res->result();
+		for($i=0;$i < count($res);$i++){
+
+			$where = array('id_gallery',$res[$i]->profile_pic);
+			$get   = $this->getAll('tbl_gallery',$where,array('pic'));
+			$res[$i]->display_picture = (count($get) > 0 ? $get[0]->pic : '');
+		}
 		#echo $this->db->last_query();
 		return $res; 
 
@@ -507,9 +512,8 @@ class Eyeme_model extends Master_model
 						C.`profile_pic`,
 						C.`username`
 					FROM `me_notif` AS A
-					
 					INNER JOIN `tbl_member` AS C
-					ON A.`id_member` = C.`id_member`
+					ON A.`id_member_act` = C.`id_member`
 					WHERE A.`id_member` = $id_member
 					ORDER BY last_update DESC
 					";

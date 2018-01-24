@@ -388,7 +388,7 @@ video{
     color: #e62d2d;
 }
 .et{
-    color: #3a7dc6;
+    color: #039BE5;
 }
 .em{
     color: #60b8ee;
@@ -1568,8 +1568,8 @@ ul, li {
     color: gray
 }
 .menu-3 a:hover{
-    border-bottom: 3px solid #3a7dc6;
-    color: #3a7dc6;
+    border-bottom: 3px solid #039BE5;
+    color: #039BE5;
 }
 .menu-3 li:active, .menu-2 li:hover{
     color: gray;
@@ -1597,7 +1597,7 @@ ul, li {
     color: white;
 }
 .btn-biru{
-    background-color: #3a7dc6;
+    background-color: #039BE5;
     width: 100px;
     border-radius: 5px;
     color: white;
@@ -1608,7 +1608,7 @@ ul, li {
     border: 0;
 }
 .btn-biru:hover{
-    color: #3a7dc6;
+    color: #039BE5;
     background-color: white; 
     border: 1px solid lightgray;
 }
@@ -1656,7 +1656,7 @@ ul, li {
     overflow: hidden;
 }
 .subjudul{
-    color: #3a7dc6;
+    color: #039BE5;
     float: left;
 }
 .sub-en{
@@ -1680,7 +1680,7 @@ ul, li {
     border-radius: 50%;
     position: absolute;
     z-index: 2;
-    color: #3a7dc6;
+    color: #039BE5;
     box-shadow: 1px 1px 1px 1px grey
 }
 .panahkanan{
@@ -1693,7 +1693,7 @@ ul, li {
 }
 .panahkiri:hover, .panahkanan:hover{
     color: white;
-    background-color: #3a7dc6;
+    background-color: #039BE5;
 }
 .p-r{
     position: relative;
@@ -1891,16 +1891,16 @@ ul, li {
 .btn-white{
     background-color: white;
     width: 220px;
-    border: 1px solid #3a7dc6;
+    border: 1px solid #039BE5;
     border-radius: 5px;
-    color: #3a7dc6;
+    color: #039BE5;
     padding: 8px 20px;
     font-size: .8em;
     bottom: 20px;
 }
 .btn-white:hover{
     color: white;
-    background-color: #3a7dc6;
+    background-color: #039BE5;
 }
 .ep2box{
     width: 102%;
@@ -1908,9 +1908,9 @@ ul, li {
 .btn-white-follow{
     background-color: white;
     width: 120px;
-    border: 1px solid #3a7dc6;
+    border: 1px solid #039BE5;
     border-radius: 5px;
-    color: #3a7dc6;
+    color: #039BE5;
     padding: 5px 15px;
     font-size: .9em;
     font-weight: 600;
@@ -1918,7 +1918,7 @@ ul, li {
 }
 .btn-white-follow:hover{
     color: white;
-    background-color: #3a7dc6;
+    background-color: #039BE5;
 }
 .ep2box{
     width: 102%;
@@ -2130,7 +2130,7 @@ ul, li {
     overflow: hidden;
 }
 .btn-blue, .btn-me-submit, .btn-abu{
-    background-color: #3a7dc6;
+    background-color: #039BE5;
     width: 100px;
     border-radius: 5px;
     color: white;
@@ -2152,7 +2152,7 @@ ul, li {
     font-size: .6em !important;
 }
 .btn-blue:hover, .btn-me-submit:hover{
-    color: #3a7dc6;
+    color: #039BE5;
     background-color: rgb(230, 230, 230); 
     /* border: 1px solid lightgray; */
 }
@@ -2291,7 +2291,7 @@ ul, li {
     margin-top: -5px;
 }
 .btn-blue-notif{
-    background-color: #3a7dc6;
+    background-color: #039BE5;
     width: 100px;
     border-radius: 5px;
     color: white;
@@ -2301,7 +2301,7 @@ ul, li {
     border: 0;
 }
 .btn-blue-notif:hover{
-    color: #3a7dc6;
+    color: #039BE5;
     background-color: white; 
     border: 1px solid lightgray;
 }
@@ -2489,7 +2489,7 @@ ul, li {
     color: rgb(39, 39, 39);
 }
 .btn-browse{
-    background-color: #3a7dc6;
+    background-color: #039BE5;
     width: 100px;
     border-radius: 5px;
     color: white;
@@ -2500,7 +2500,7 @@ ul, li {
     /* z-index: -1; */
 }
 .btn-browse:hover{
-    color: #3a7dc6;
+    color: #039BE5;
     background-color: white; 
     border: 1px solid lightgray;
 }

@@ -53,7 +53,7 @@
 <body>
 <!--Nav-->
         <nav>
-            <div class="dekstop">
+            <div class="desktop">
                 <div class="center-desktop m-0">
                     <div class="logo">
                         <img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
@@ -68,7 +68,7 @@
 
         <!-- MENU -->
         <div class="menu">
-            <div class="dekstop">
+            <div class="desktop">
                 <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>

@@ -71,7 +71,34 @@
 		?>
 
         <?php 
-            if ($kanal == 'eyemarket')
+            if ($kanal == 'eyenews')
+            {
+        ?>
+                <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+				<style>
+					.center-desktop{
+						width: 1065px;
+					}
+					.x-m {
+						font-size: .9em;
+                        width: 1065px;
+                        margin: 0 auto;
+                        float: unset;
+                        display: block;
+                        height: 61px;
+					}
+				</style>
+        <?php    
+            }
+            else if($kanal == 'registration')
+			{
+		?>
+				<link href="<?=base_url()?>assets/registration/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/registration/css/bs.css" rel="stylesheet">
+		<?php
+			}
+            else if ($kanal == 'eyemarket')
             {
     ?>
                 <link rel="stylesheet" href="<?php echo base_url(); ?>bs/jud/css/bootstrap.min.css ">
@@ -84,10 +111,51 @@
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
 		<?php
             }
-            else
+            else if ($kanal == 'home')
             {
         ?>
                 <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+        <?php
+            }
+            else if ($kanal == 'eyetube')
+            {
+        ?>
+                <link href="<?= base_url(); ?>assets/eyetube/css/bs.css" rel="stylesheet">
+                <!-- <link href="<?= base_url(); ?>assets/eyetube/css/style.css" rel="stylesheet"> -->
+                <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+                
+        <?php
+            }
+            else if ($kanal == 'eyetube_detail')
+            {
+        ?>
+                <link href="<?=base_url()?>assets/eyetube/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/css/bs.css" rel="stylesheet">
+                <style type="text/css">
+                    .center-desktop{
+                        width: 1065px;
+                    }
+                </style>
+        <?php        
+            }
+            else if ($kanal == 'eyevent')
+            {
+        ?>
+                <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+                <style>
+                    .center-desktop{
+                        width: 1065px;
+                    }
+                </style>
+                <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">
+        <?php        
+            }
+            else
+            {
+        ?>
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
         <?php

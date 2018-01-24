@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
         </div>-->
     </div>
-    <div class="dekstop pd-t-280">
+    <div class="desktop pd-t-280">
     <div class="center-desktop m-0 option">
         <span>Pilih Musim</span>
         <select id="" name="" selected="true" class="slc-musim">
@@ -146,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</tr>
 						</tbody>
 					</table>
-					<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>" style="text-decoration:none;"><button class="btn-orange-2" type="">Lihat Detail Pemain</a></button>
+					<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="">Lihat Detail Pemain</a></button>
 				</div><?php }?>                                      
     </div>
 	
@@ -320,7 +320,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="w-60">
                                     <span>Harga</span>
                                     <h5>Rp. <?=number_format($data['price'],2,",",".")?></h5>
-                                    <a href="<?=base_url()?>eyemarket/detail/<?php print $data['id_product']; ?>" style="text-decoration:none;"><button type="submit" class="beli">Beli</a></button>
+                                    <a href="<?=base_url()?>eyemarket/detail/<?php print $data['id_product']; ?>" ><button type="submit" class="beli">Beli</a></button>
                                 </div>
                             </div>
                         </div>

@@ -25,7 +25,7 @@
                 </button>
 
                 <style type="text/css">
-                    .dekstop{
+                    .desktop{
                         width: 1280px;
                         margin: 0 auto;
                         vertical-align: middle;
@@ -80,7 +80,7 @@
                 </style>
 
                 <div class="menu">
-                    <div class="dekstop">
+                    <div class="desktop">
                         <span class="x-m">
                             <ul>
                                 <li><a href="">EyeProfile</a>
