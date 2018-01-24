@@ -39,20 +39,24 @@
         
 ?>
         <div class="center-desktop m-0">
-            <div class="menu-4 w1020 m-0">
-                <ul>
-					<?php
-						foreach ($news_type as $cat_name)
-						{
-					?>
-						<li>
-							<a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
-						</li>
-					<?php
-						}
-					?>
-                    
-                </ul>
+            <div class="menu-3 m-0">
+                <div class="w1020 over-x m-0">
+                    <div class="w-max">
+                        <ul>
+                            <?php
+                                foreach ($news_type as $cat_name)
+                                {
+                            ?>
+                                <li>
+                                    <a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
+                                </li>
+                            <?php
+                                }
+                            ?>
+                            
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="m-0 w1020">
@@ -216,7 +220,7 @@
                     <div style="margin-top: 20px;" id="coba">
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                     </div>
-					<div class="fb-comments" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
+					<div class="fb-comments fb-comments-enews-detail" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
                 </div>
 
                 <div class="container tube-r">

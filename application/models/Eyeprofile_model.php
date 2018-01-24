@@ -70,7 +70,7 @@ class Eyeprofile_model extends CI_Model
 	{
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
 									join tbl_club b on a.club_id=b.club_id
-									where b.competition = '".$liga."' and nationality in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."')")->result_array();
+									where b.competition = '".$liga."'")->result_array();
 		return $query;
 	}
 	
@@ -371,6 +371,113 @@ class Eyeprofile_model extends CI_Model
 								WHERE 								
 								pelatih!='0' AND negara!='' AND karir_id Limit 5")->result_array();
 		return $query;
+	}
+	
+	public function get_list_pemain($requestData,$liga)
+	{
+		// print_r($requestData['search']['regex']);exit();
+		$columns = array( 
+		// datatable column index  => database column name
+			0 =>'player_id', 
+			1 => 'nama',
+			2=> 'tanggal',
+			3=> 'posisi',
+			4=> 'klub',
+			5=> 'timnas',
+			6=> '',
+			7=> '',
+			8=> ''
+		);
+		
+		if( !empty($requestData['search']['value']) ) {  
+		$sql=" AND ( a.name LIKE '%".$requestData['search']['value']."%' ";    
+			$sql.=" OR b.name LIKE '%".$requestData['search']['value']."%' ";
+
+			$sql.=" OR a.position LIKE '%".$requestData['search']['value']."%' ";
+			$sql.=" OR a.nationality LIKE '%".$requestData['search']['value']."%' )";
+		}
+		else{
+			$sql="";
+		}
+		
+		$query = $this->db->query("SELECT
+										a.player_id,
+										a.club_id,
+										a.birth_date as tgl_lahir,
+										SUBSTRING(a.birth_date,1,2) as tanggal,
+										SUBSTRING(a.birth_date,4,2) as bulan,
+										SUBSTRING(a.birth_date,7,4) as tahun,
+										a.name as nama,
+										a.pic as foto,
+										a.position as posisi,
+										a.nationality as timnas,
+										a.url,
+										b.name as klub
+									FROM
+										tbl_player a
+									LEFT JOIN
+										tbl_club b on a.club_id = b.club_id
+									WHERE
+										b.competition = '".$liga."'
+										".$sql."
+										");
+		$totalData = count($query->result_array());
+		$totalFiltered = $totalData;
+		
+		$result_with_limit=$this->db->query("SELECT
+										a.player_id,
+										a.club_id,
+										a.birth_date as tgl_lahir,
+										SUBSTRING(a.birth_date,1,2) as tanggal,
+										SUBSTRING(a.birth_date,4,2) as bulan,
+										SUBSTRING(a.birth_date,7,4) as tahun,
+										a.name as nama,
+										a.pic as foto,
+										a.position as posisi,
+										a.nationality as timnas,
+										a.url,
+										b.name as klub
+									FROM
+										tbl_player a
+									LEFT JOIN
+										tbl_club b on a.club_id = b.club_id
+									WHERE
+										b.competition = '".$liga."'
+									".$sql." order by ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."");
+		$totalFiltered=$query->num_rows();
+		if($requestData['start']==0){
+			$i=1;
+		}else{
+			$i=$requestData['start']+1;
+		}
+		foreach ($result_with_limit->result() as $data)
+		{
+			$nestedData=array(); 
+			$nestedData[] = $i;
+			$nestedData[] = "<a target='_blank' href='".base_url()."eyeprofile/pemain_detail/".$data->url."'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;'>
+						<img style='width: 100%;' src='".imgUrl()."systems/player_storage/".$data->foto."' alt='".$data->nama."'>
+					</div><div style='float:right;width: 75%;cursor:pointer;'>".$data->nama."</div></a>";
+			$nestedData[] = $data->tanggal."-".$data->bulan."-".$data->tahun;
+			$nestedData[] = $data->posisi;
+			$nestedData[] = $data->klub;
+			$nestedData[] = $data->timnas;
+			$nestedData[] = '';
+			$nestedData[] = '';
+			$nestedData[] = '';
+			
+			$data2[] = $nestedData;
+			$i++;
+		}
+
+
+		$json_data = array(
+					"draw"            => intval( $requestData['draw'] ), 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ),
+					"data"            => $data2   // total data array
+					);
+
+		echo json_encode($json_data); 
 	}
 	
 }

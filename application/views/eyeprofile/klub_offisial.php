@@ -100,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
         </div>-->
     </div>
-    <div class="dekstop pd-t-280">
+    <div class="desktop pd-t-280">
     <div class="center-desktop m-0 option">
         <span>Pilih Musim</span>
         <select id="" name="" selected="true" class="slc-musim">
@@ -152,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                 </tbody>
             </table>
-            <button class="btn-orange-2" type=""><a href="<?=base_url()?>eyeprofile/official_detail/<?=$data["official_id"]?>" style="text-decoration:none;">Lihat Detail Offisial</a></button>
+            <button class="btn-orange-2" type=""><a href="<?=base_url()?>eyeprofile/official_detail/<?=$data["official_id"]?>" >Lihat Detail Offisial</a></button>
         </div> 
 		<?php }?>
     </div>

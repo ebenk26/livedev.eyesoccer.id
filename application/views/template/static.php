@@ -122,7 +122,7 @@
     ?>
     
         <nav>
-            <div class="dekstop">
+            <div class="desktop">
                 <div class="x-m">
 					<a href="<?php echo base_url()?>">
 						<div class="logo">
@@ -153,13 +153,13 @@ else{
         </nav>
         <!-- MENU -->
         <div class="menu">
-            <div class="dekstop">
+            <div class="desktop">
                 <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
                             <li><a href="" onclick="return false">EyeProfile</a>
                                 <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/liga/Liga%20Indonesia%201">Klub</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
@@ -195,7 +195,7 @@ else{
             else
             {
         ?>
-                <div class="dekstop">
+                <div class="desktop">
                     <?php echo $body;?>
                 </div>
         <?php        
