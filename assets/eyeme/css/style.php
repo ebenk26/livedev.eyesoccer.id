@@ -605,7 +605,6 @@ video{
     width: 130px;
     padding: 8px;
 }
-
 .mb-100{
     margin-bottom: -100px;
 }

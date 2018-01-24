@@ -705,7 +705,7 @@ class Master_model extends CI_Model
 			
 		} 
 		else{
-			return true
+			return true;
 		}
 		
 	}
