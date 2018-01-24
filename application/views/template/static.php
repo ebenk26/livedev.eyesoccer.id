@@ -87,6 +87,7 @@
             else
             {
         ?>
+				<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
@@ -102,6 +103,8 @@
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/dataTables.responsive.min.js"></script>	
+			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/jquery.dataTables.js">	</script>
     </head>
     <?php
         if ($kanal != 'eyemarket')

@@ -7,7 +7,7 @@
         <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
-                    <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/liga/Liga%20Indonesia%201" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;color:#3d3d3d;">Pemain</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/klub_offisial" style="text-decoration:none;color:#3d3d3d;">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;color:#3d3d3d;">Perangkat Pertandingan</a></li>

@@ -74,6 +74,12 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
+	public function get_pic_liga($liga)
+	{
+		$query = $this->db->query("select * from tbl_event where title like '%".$liga."%'")->row();
+		return $query;
+	}
+	
 	public function get_player_liga_strange($liga,$nationality='indonesia')
 	{
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a

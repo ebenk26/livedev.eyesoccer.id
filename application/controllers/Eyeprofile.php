@@ -55,7 +55,7 @@ class Eyeprofile extends CI_Controller {
 			$jml_klub = 32;
 			$data["title_liga"] = $nama_liga;
 		}
-		$data['club_header'] = $this->Eyeprofile_model->get_club_header();
+		// $data['club_header'] = $this->Eyeprofile_model->get_club_header();
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
 		// $data['profile_club'] = $this->Eyeprofile_model->get_profile_club();
 		$data['get_jadwal_tomorrow_1'] = $this->Eyeprofile_model->get_jadwal_tomorrow_1();

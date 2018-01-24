@@ -1,8 +1,7 @@
-
     <div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>
-                    <li><a href="<?=base_url()?>eyeprofile/klub_pemain" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/liga/Liga%20Indonesia%201" style="text-decoration:none;color:#3d3d3d;">Klub</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/pemain" style="text-decoration:none;color:#3d3d3d;">Pemain</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/klub_offisial" style="text-decoration:none;color:#3d3d3d;">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee" style="text-decoration:none;color:#3d3d3d;">Perangkat Pertandingan</a></li>
@@ -79,6 +78,19 @@
     <div class="center-desktop m-0">
     <input type="text" name="" id="" placeholder="Cari ..." class="src-200 mt-30">
     <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
+	<table class="table table-striped table-bordered display" id="example">
+		<thead id="back900">
+			<th>No</th>
+			<th>Image</th>
+			<th>Title</th>
+			<th>News Type</th>
+			<th>Create On</th><th>Publish On</th><th>Views</th><th>Create By</th>
+			<th>Options</th>	
+		</thead>
+		<tbody >
+
+		</tbody>
+	</table>
     <table class="radius table table-striped pd-18 mt-10" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
@@ -136,3 +148,14 @@
             </tbody>
         </table>
     </div>
+	<script>
+		$('#example').DataTable( {
+  			"order":[[5,"desc"]],
+            "processing": true,
+            "serverSide": true,
+            "ajax":{
+                url :"eyenews_load.php", // json datasource
+                type: "post",  // method  , by default get
+            }
+        } );
+	</script>
