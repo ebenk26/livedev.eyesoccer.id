@@ -1,4 +1,9 @@
-
+<style type="text/css">
+    .nav > li > a {
+        position: relative;
+        display: block;
+        padding: 10px 7px;
+</style>
         <div class="center-desktop m-0">
             <div class="container">
 				<div class="half2">
@@ -43,11 +48,8 @@
                 <div class="fl-l" style="width: max-content;">
                     <div class="tab">
                         <ul class="nav nav-tabs" id="tab-nav" style="width: 100%;">
-                            <li>
-                                <a href="#hasil-pertandingan" data-toggle="tab">HASIL PERTANDINGAN</a>
-                            </li>
                             <li class="active">
-                                <a href="#jadwal-pertandingan" data-toggle="tab">JADWAL PERTANDINGAN</a>
+                                <a href="#jadwal-pertandingan" data-toggle="tab">JADWAL & HASIL PERTANDINGAN</a>
                             </li>
                             <li>
                                 <a href="<?=base_url()?>eyevent/klasemen">KLASEMEN</a>
@@ -116,7 +118,6 @@
         <input type="hidden" id="hdn-date" value="">
 
     <script>
-
         var tgl = "";
 
         $('#z').datepicker({
@@ -130,7 +131,7 @@
                 }
         });
 
-        $('#btn-date').click(function(event) {
+        $('#btn-date-jadwal').click(function(event) {
 
             var tanggal = tgl.getDate();
 
@@ -146,11 +147,11 @@
 
             $('#ajax-tgl-jadwal').html(tanggal + " " + nm_bulan + " " + tahun);
 
-            $('#btn-tutup').click(function(event) {
-                $('#tbl-date').attr('style', 'display:none');
-            });
-
             var urlnya          = "<?= base_url(); ?>Eyevent/get_jadwal/"+txt_tanggal;
+
+            $('#btn-tutup-jadwal').click(function(event) {
+                $('#tbl-date-jadwal').attr('style', 'display:none');
+            });
 
             $.ajax({
                 url: urlnya,
