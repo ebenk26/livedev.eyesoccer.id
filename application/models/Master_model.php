@@ -701,8 +701,12 @@ class Master_model extends CI_Model
 		$userid = $this->session->userdata('id_member');
 		if($userid == ''){
 			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().($page == '' ? 'home/login' : 'home/login?page='.$page));
+			return false;
 			
 		} 
+		else{
+			return true
+		}
 		
 	}
 		

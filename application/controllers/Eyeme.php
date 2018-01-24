@@ -36,8 +36,11 @@ class Eyeme extends CI_Controller {
 
 	public function index(){
 	#echo $this->id_member;	
-		$this->mod->checkLogin();// check if user comming from home
-		#exit;
+		$checkLogin = $this->mod->checkLogin();// check if user comming from home
+		if(!$checkLogin){
+			exit;
+		}
+	
 		$id_member       = $this->id_member;
 		$getImgFollowing = $this->emod->getImgFollowing($id_member);
 		
@@ -313,7 +316,7 @@ class Eyeme extends CI_Controller {
 		
 
 	}
-	
+
 	public function get_all_user($id_member){
 		$select = array('id_member','name','username','fullname','email','profile_pic');
 		$order  = array('last_online','DESC');
