@@ -2515,3 +2515,8 @@ ul, li {
     display: inline-block;
     padding-bottom: 5px;
 }
+.c-em-content2 > a > img{
+     width: 130px !important;
+    padding: 8px;
+    cursor: pointer;
+}

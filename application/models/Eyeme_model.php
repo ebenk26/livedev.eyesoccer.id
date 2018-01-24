@@ -690,9 +690,7 @@ class Eyeme_model extends Master_model
 					 'last_update'  => NOW,
 					 'active'      => '1');
 		$insert = $this->db->insert('me_img',$data);
-		if($insert){
-			return 'success';
-		}
+		return $insert;
 	}
 	public function getUser(){
 		$where  = array('active'=> '1','verification'=> '1');
@@ -711,6 +709,22 @@ class Eyeme_model extends Master_model
 			}
 		}
 		return $user;
+	}
+	public function getImgUser(){
+		$where  = array('active'=> '1');
+		$select = '';
+		$order = array('last_update','ASC');
+		$limit = '10';
+
+		$get   = $this->mod->getAll('me_img',$where,$select,$order,$limit);
+		foreach($get as $k => $v){
+			$whereUser = array('id_member'=> $v->id_member);
+			$user      = $this->mod->getAll('tbl_member',$whereUser,array('username'));
+			$v->username = (count($user) > 0 ? $user[0]->username : '' );
+		}
+
+		return $get;
+
 	}
 	
 	//sw::end

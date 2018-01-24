@@ -67,7 +67,7 @@ class Master_model extends CI_Model
 
 	*/
 	
-	public function getAll($table, $where = array(), $select = array(), $order = array(), $limit = '', $offset = '', $whereNotin = '', $like = array()){
+	public function getAll($table, $where = array(), $select = array(), $order = array(), $limit = '', $offset = '', $whereNotin = '', $like = array(),$whereIn=array()){
 		if($limit != ''){
 			if($offset == '')
 			{
@@ -88,7 +88,26 @@ class Master_model extends CI_Model
 				$this->db->like($k,$v);
 			}
 		}
-		
+		if(is_array($whereIn)){
+			if(count($whereIn) > 0){
+				foreach($whereIn as $a => $b){
+					if(is_array($b)){
+						$str = '';
+						$i = 0;
+						foreach($b as $c => $d){
+							$str .= $d.($i == count($d) ? '' : ',');
+							$i++;
+
+						}
+						
+					}
+					else{
+						$str = $b;
+					}
+					$this->db->where_in($a,$str);
+				}
+			}
+		}
 		#p($whereNotin);
 		if(is_array($whereNotin)){
 			if(count($whereNotin) > 0){

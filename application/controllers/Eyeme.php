@@ -313,6 +313,7 @@ class Eyeme extends CI_Controller {
 		
 
 	}
+	
 	public function get_all_user($id_member){
 		$select = array('id_member','name','username','fullname','email','profile_pic');
 		$order  = array('last_online','DESC');
