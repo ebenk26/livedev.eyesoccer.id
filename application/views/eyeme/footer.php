@@ -387,9 +387,11 @@ function readImg(input){
         var reader = new FileReader();
         reader.onload = function(e){
             $('.box-up').hide();
-           
-            $('#show_img').removeClass('hidden');
+            $('.up-pic').css({"top":"0px","height":"auto"});
+            $('.box-pic').css({"background":"none","border":"none"});
+          
             $('#dropzone').attr('src',e.target.result);
+            $('#dropzone').css({"background":"none","border-radius":"5px","padding":"5px","background":"#e5e5e5"});
 
         }
         reader.readAsDataURL(input.files[0]);
@@ -451,13 +453,14 @@ $('.fileimg').change(function(event) {
 //fileimg::change
 $('.fileimg').on('change',function(){
 
-    $('#cancel').removeClass('hidden');
-    $('#crop').removeClass('hidden');
-    $('.cropit-preview-background-container').show();
     $('.c-p').remove();
      
     $('#browse').hide();
   
+});
+$('#dropzone').click(function(){
+     $('.fileimg').click();
+
 });
 //cancel::click
 $('#cancel').click(function(event) {

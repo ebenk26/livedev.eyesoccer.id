@@ -50,7 +50,7 @@
 
                         <div class="me-post" ref="<?php echo $getImg[$j]->id_img?>">
 
-                            <img src="<?php echo MEIMG.$getImg[$j]->img_thumb?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
+                            <img src="<?php echo MEIMG.$getImg[$j]->img_name?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
 
                             <div class="tengah tx-c">
                                 <i class="material-icons">favorite</i>

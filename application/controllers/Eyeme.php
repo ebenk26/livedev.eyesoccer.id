@@ -318,6 +318,7 @@ class Eyeme extends CI_Controller {
 	}
 
 	public function get_all_user($id_member){
+
 		$select = array('id_member','name','username','fullname','email','profile_pic');
 		$order  = array('last_online','DESC');
 		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5','',array('id_member',array($id_member)));
@@ -338,11 +339,11 @@ class Eyeme extends CI_Controller {
 	public function upload_foto()
 	{ 
 		$imgCaption  = $this->input->post('caption');
-		$uploadPath = './upload';
+		$uploadPath = './upload/eyeme';
 		#$imageName  = $_;
 		$name      = $_FILES['upl_img']['name'];
 		$ext       = pathinfo($name,PATHINFO_EXTENSION);
-		$newName  = 'ori_'.date('dmyGis').'.'.$ext;
+		$newName   = 'ori_'.date('dmyGis').'.'.$ext;
 		$maxSize   = 2024;
 		$maxWidth  = 2000;
 		$maxHeight = 2000; 
@@ -352,11 +353,14 @@ class Eyeme extends CI_Controller {
 						'img_caption' => $imgCaption,
 						'img_name'    => $newName,
 						'date_create' => NOW,
-						'last_update' => NOW);
+						'last_update' => NOW,
+						'active'      => '1');
+
 		$this->db->insert('me_img',$dataImg);
 		$arr      = array('msg'=> 'Berhasil Upload Gambar');
 		$response = json_encode($arr);
-		echo $response;
+		echo '<script>alert(\''.$arr['msg'].'\')</script>';
+		redirect(MEPROFILE.$this->username,'refresh');
 		
 
 	}

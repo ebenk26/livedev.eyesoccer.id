@@ -1721,8 +1721,8 @@ ul, li {
     color: rgb(59, 59, 59);
 }
 .post-photo{
-    width: 600px;
-    height: 600px;
+    max-width: 100%;
+    max-height: 100%;
     overflow: hidden;
     text-align:center;
 }
@@ -2338,8 +2338,8 @@ ul, li {
     top: 20px;
 }
 .takepic-box{
-    width: 1000px;
-    height: 600px;
+    width: 950px;
+    height: 530px;
     border-radius: 5px;
     top: 20px;
     background-color: white;
@@ -2460,7 +2460,7 @@ ul, li {
 }
 .up-pic{
     height: 100%;
-    top: 36%;
+    top: 20%;
 }
 .up-pic li{
     display: block;
@@ -2469,6 +2469,11 @@ ul, li {
     color: rgb(39, 39, 39);
     font-size: .5em;
     font-weight: 500;
+}
+.up-pic button{
+    top:40%;
+    position: absolute;
+    left:38%;
 }
 .up-pic i{
     font-size: 20px;
@@ -2499,12 +2504,9 @@ ul, li {
     font-size: .6em;
     position: relative;
     border: 0;
+    display: none;
 }
-.btn-danger:hover{
-    color: #EE2525;
-    background-color: white; 
-    border: 1px solid lightgray;
-}
+
 .pull-right{
     float:right;
 }
@@ -2553,7 +2555,7 @@ ul, li {
     font-weight: 500;
 }
 .com-tag input{
-    padding: 8px 220px 75px 10px;
+    padding: 8px 160px 75px 10px;
     border-radius: 5px;
     border: 1px solid gray;
 }
@@ -2891,12 +2893,33 @@ loading animation
 a{
     text-decoration:none;
 }
+.fileimg{
+    display: none;
+}
 #dropzone{
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 85%;
+    max-height: 85%;
     margin:auto;
 }
-.drp{
-    height: 400px;
-    width: 400px;
+
+.dz:before{
+    content: 'Pilih Photo';
+    display: none;
+    position: absolute;
+    top:40%;
+    left: 35%;
+    display: none;
+    font-weight: bold;
+    color:#3E3E3E!important;
+    font-style: normal;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.dz img:hover{
+    cursor: pointer;
+    opacity: 0.6;
+   
+}
+.dz:hover:before{
+   display: inline-block;
 }

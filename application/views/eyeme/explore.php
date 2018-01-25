@@ -51,7 +51,7 @@
         foreach($ex as $k => $v){  
             ?>
             <div class="me-post" ref="<?php echo $v->id_img?>">
-                <img src="<?php echo MEIMG.$v->img_thumb?>" class="me-gambar-post" alt="">
+                <img src="<?php echo MEIMG.$v->img_name?>" class="me-gambar-post" alt="">
                 <div class="tengah tx-c">
                     <i class="material-icons">favorite</i>
                     <span><?php echo $v->countLike?></span>
