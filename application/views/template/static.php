@@ -160,7 +160,7 @@ else{
                             <li><a href="" onclick="return false">EyeProfile</a>
                                 <ul>
                                     <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
