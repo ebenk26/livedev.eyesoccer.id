@@ -3,6 +3,7 @@
         position: relative;
         display: block;
         padding: 10px 7px;
+        font-size: .8em;
 </style>
         <div class="center-desktop m-0">
             <div class="container">

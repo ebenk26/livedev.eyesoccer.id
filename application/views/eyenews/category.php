@@ -12,20 +12,24 @@
 			</ul>
 		</div>
         <div class="center-desktop m-0">
-            <div class="menu-4 w1020 m-0">
-                <ul>
-					<?php
-						foreach ($news_type as $cat_name)
-						{
-					?>
-						<li>
-							<a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
-						</li>
-					<?php
-						}
-					?>
-                    
-                </ul>
+            <div class="menu-3 m-0">
+                <div class="w1020 over-x m-0">
+                    <div class="w-max">
+                        <ul>
+                            <?php
+                                foreach ($news_type as $cat_name)
+                                {
+                            ?>
+                                <li>
+                                    <a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
+                                </li>
+                            <?php
+                                }
+                            ?>
+                            
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="m-0 w1020">
