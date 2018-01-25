@@ -14,9 +14,15 @@
                 Copyright 2017 eyesoccer.com. All Rights Reserved.
             </div>
             <div class="center50">
-                <a href="" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
-                <a href="" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
-                <a href="" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
+                <a href="" id="i-fb">
+                    <img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt="">
+                    <img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
+                <a href="" id="i-tw">
+                    <img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt="">
+                    <img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
+                <a href="" id="i-in">
+                    <img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt="">
+                    <img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -376,26 +382,26 @@ $('#browse').click(function(event) {
     /* Act on the event */
     $('.fileimg').click();
 });
-/*function readImg(input){
+function readImg(input){
     if(input.files && input.files[0]){
         var reader = new FileReader();
         reader.onload = function(e){
             $('.box-up').hide();
-            $('.up-pic').css('top','0px');
+           
             $('#show_img').removeClass('hidden');
-            $('#show_img').attr('src',e.target.result);
+            $('#dropzone').attr('src',e.target.result);
 
         }
         reader.readAsDataURL(input.files[0]);
 
     }
-}*/
-/*$('.fileimg').change(function(event) {
-    Act on the event 
+}
+$('.fileimg').change(function(event) {
+   //Act on the event 
     readImg(this);
-});*/
+});
 /*cropit:: function*/
-$(function() {
+/*$(function() {
     $('.image-editor').cropit({
         
         imageBackground: true,
@@ -405,10 +411,10 @@ $(function() {
        
     });     
 
-});
+});*/
 //crop::click
-$('#crop').click(function(event) {
-    /* Act on the event */
+/*$('#crop').click(function(event) {
+   
     $('.cropit-preview-background-container').hide();
      imageData = $('.image-editor').cropit('export');
     $('.hidden-image-data').val(imageData);
@@ -426,7 +432,7 @@ $('#crop').click(function(event) {
     $('#upload-act').removeAttr('disabled');
    // console.log(imageData);
 
-});
+});*/
 
    /* $('#browse').submit(function() {
       // Move cropped image data to hidden input

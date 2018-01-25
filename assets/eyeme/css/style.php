@@ -2891,3 +2891,12 @@ loading animation
 a{
     text-decoration:none;
 }
+#dropzone{
+    max-width: 100%;
+    max-height: 100%;
+    margin:auto;
+}
+.drp{
+    height: 400px;
+    width: 400px;
+}
