@@ -109,7 +109,7 @@ $('#notif').click(function(event){ //event notif click
                     }
                       
                     tbl += '<td class="fl-r mr-7">';
-                        tbl += (v.img_thumb == null ? '' : '<img src="'+ MEIMG + v.img_thumb + '" alt="post photo" class="notif-photo">');
+                        tbl += (v.img_name == null ? '' : '<img src="'+ MEIMG + v.img_name + '" alt="post photo" class="notif-photo">');
                     tbl += '</td>';
                 tbl += '</tr>';
                 tbl += '<tr>';
