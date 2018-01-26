@@ -641,10 +641,11 @@ $('.me-post').click(function(event) {
         data: {id: ref},
     })
     .done(function(r) {
-        //console.log(r);
+        console.log(r);
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('.usern').text(v.username);
+            $('.cap').text(v.img_caption);
             $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
             $('#time-string').text(v.timeString);
             $('#c-like').addClass('ref-'+ v.id_img);
@@ -653,6 +654,7 @@ $('.me-post').click(function(event) {
             $('#s-icon').attr('ref',v.id_img);
             $('.comment').attr('rel',v.id_img);
             //tbl_com += '<table>';
+            tbl_com += '<div class="c-title">Komentar</div>';
             tbl_com += '<div class="komen">';
             tbl_com += '<ul class="plus-c' + v.id_img + '">';
             $.each(v.comment,function($k,$v){

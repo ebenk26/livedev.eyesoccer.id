@@ -15,7 +15,15 @@
                     <a href="" class="usern"></a>
                 </div>
 
+                <div class="detail-cap">
+                    <div class="container">
+                    <li><a href="" class="usern"></a></li>
+                    <li><span class="cap"></span></li>
+                    </div>
+                </div>
+               
                 <div class="container d-comment">
+                    
                     
                 </div>
                 <div class="container d-like">
@@ -33,4 +41,4 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
