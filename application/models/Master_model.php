@@ -67,7 +67,7 @@ class Master_model extends CI_Model
 
 	*/
 	
-	public function getAll($table, $where = array(), $select = array(), $order = array(), $limit = '', $offset = '', $whereNotin = '', $like = array()){
+	public function getAll($table, $where = array(), $select = array(), $order = array(), $limit = '', $offset = '', $whereNotin = '', $like = array(),$whereIn=array()){
 		if($limit != ''){
 			if($offset == '')
 			{
@@ -88,7 +88,26 @@ class Master_model extends CI_Model
 				$this->db->like($k,$v);
 			}
 		}
-		
+		if(is_array($whereIn)){
+			if(count($whereIn) > 0){
+				foreach($whereIn as $a => $b){
+					if(is_array($b)){
+						$str = '';
+						$i = 0;
+						foreach($b as $c => $d){
+							$str .= $d.($i == count($d) ? '' : ',');
+							$i++;
+
+						}
+						
+					}
+					else{
+						$str = $b;
+					}
+					$this->db->where_in($a,$str);
+				}
+			}
+		}
 		#p($whereNotin);
 		if(is_array($whereNotin)){
 			if(count($whereNotin) > 0){
@@ -338,7 +357,7 @@ class Master_model extends CI_Model
 		}
 
 	}
-	public function uploadImg($uploadPath, $ImgName, $maxSize, $maxWidth, $maxHeight, $inputName, $allowtypefile = '')
+	public function uploadImg($uploadPath, $ImgName, $maxSize, $maxWidth, $maxHeight, $inputName, $allowtypefile = '',$resize = false)
 	{
 		$allowtype = $allowtypefile == '' ? 'gif|jpg|png|jpeg' : $allowtypefile;
 		
@@ -357,20 +376,25 @@ class Master_model extends CI_Model
 		$this->upload->initialize($config);
 		#echo $inputName;
 		#exit;
-		if (!$this->upload->do_upload('img'))					
+		if (!$this->upload->do_upload($inputName))					
 		{
-			$error = $this->upload->display_errors('','');
+			$error = $this->upload->display_errors();
+			$error = str_replace("'", "\' ", $error);
 			echo "
 			<script>
 				alert('".$error."');
 				//window.history.go(-1);
 			</script>
 			";
+			#echo $error;
+			return false;
 			exit;
 		}else{
 			$uploadData = $this->upload->data();
-			echo $uploadPath.$uploadData['file_name'];
-			$this->resizeImg($uploadPath.$uploadData['file_name']);
+			if($resize == true ){
+				$this->resizeImg($uploadPath.$uploadData['file_name']);
+			}
+			
 			return $uploadData;
 		}		
 	}
@@ -682,8 +706,12 @@ class Master_model extends CI_Model
 		$userid = $this->session->userdata('id_member');
 		if($userid == ''){
 			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().($page == '' ? 'home/login' : 'home/login?page='.$page));
+			return false;
 			
 		} 
+		else{
+			return true;
+		}
 		
 	}
 		

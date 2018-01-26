@@ -385,8 +385,8 @@
 					?></span>
                             <p class="et-st-det"><?= $videonya['title']; ?></p>
                         </div> -->
-						<img class="v-et-2 v-et-100 m-b-35" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
-							<div class="container btn-play2"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	
+						<img class="v-et-2 v-et-100" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="" style="margin-bottom: 10px;">
+							<!-- <div class="container btn-play2"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	 -->
 						</a>
 					<?php
 					}
@@ -540,19 +540,18 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
-                    <div class="c-em-content2" style="top: -14px;">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">	
-                        <img src="<?php echo base_url()?>assets/home/img/eyeme-photo thumbnail.png" alt="">					
-                        <div style="padding:8px; text-align:center">
-							<button type="text" class="em-btn">Lihat Foto Lainnya</button>
-						</div>
+                    <div class="c-em-content2-container" style="top: -14px;">
+                    	<?php 
+                    		for($i=0;$i < 9 ; $i++){
+                    			echo '<div class="eyeme-list">';
+	                    			echo '<a href="'.(isset($imgEyeme[$i]) ? MEPROFILE.$imgEyeme[$i]->username : '#').'">';
+	                    			echo '<img src="'.(isset($imgEyeme[$i]) ? MEIMG.$imgEyeme[$i]->img_name :  DEFAULTIMG ).'" class="c-em-content2-img">';
+	                    			echo '</a>';
+                    			echo '</div>';
+                    		}
+                    	?>
+                       		
+                       
                     </div>
                 </div>
             </div>

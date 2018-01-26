@@ -95,7 +95,7 @@ define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
 define('MEURL',base_url().'eyeme/');
-define('MEIMG',base_url().'img/eyeme/');
+define('MEIMG',base_url().'upload/eyeme/');
 define('IMGPATH','./img/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
@@ -118,7 +118,8 @@ define('EYEMARKET',base_url().'eyemarket');
 define('EYETRANSFER',base_url().'eyetransfer');
 define('EYETIKET',base_url().'eyetiket');
 define('EYEWALLET',base_url().'wallet');
-
+define('IMAGE','http://static.eyesoccer.id/v1/');
+define('DEFAULTIMG',base_url().'assets/home/img/eyeme-photo%20thumbnail.png');
 function p($arr){
     echo '<pre>';
      print_r($arr);

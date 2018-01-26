@@ -364,12 +364,12 @@ class Eyeme_model extends Master_model
 		$insertComment = $this->db->insert('me_comment',$data);
 		$comment_id    = $this->db->insert_id();
 
-		$select      = array('id_member','id_img','img_thumb','img_name','img_alt');
+		$select      = array('id_member','id_img','img_name','img_name','img_alt');
 		$getIdMember = $this->getAll('me_img',array('id_img'=> $data['id_img']),$select); 
 		#mengambil id_member yang mempunyai gambar
 		$id_img        = $getIdMember[0]->id_img;
 		$id_member_img = $getIdMember[0]->id_member;
-		$img_thumb     = $getIdMember[0]->img_thumb;
+		$img_name     = $getIdMember[0]->img_name;
 		$img_alt  	   = $getIdMember[0]->img_name;
 
 		$dataNotif     = array(
@@ -378,7 +378,7 @@ class Eyeme_model extends Master_model
 				'id_img'		=> $id_img,
 				'notif_type'    => 'COM'.$comment_id,
 				'notif_content' => $data['comment'],
-				'img_thumb'		=> $img_thumb,
+				'img_name'		=> $img_name,
 				'img_alt'	    => $img_alt,
 				'date_create'   => NOW,
 				'last_update'   => NOW);
@@ -503,7 +503,7 @@ class Eyeme_model extends Master_model
 						A.`id_member`,
 						A.`id_member_act`,
 						A.`id_img`,
-						A.`img_thumb`,
+						A.`img_name`,
 						A.`img_alt`,
 						A.`notif_type`,
 						A.`notif_content`,
@@ -690,9 +690,7 @@ class Eyeme_model extends Master_model
 					 'last_update'  => NOW,
 					 'active'      => '1');
 		$insert = $this->db->insert('me_img',$data);
-		if($insert){
-			return 'success';
-		}
+		return $insert;
 	}
 	public function getUser(){
 		$where  = array('active'=> '1','verification'=> '1');
@@ -711,6 +709,22 @@ class Eyeme_model extends Master_model
 			}
 		}
 		return $user;
+	}
+	public function getImgUser(){
+		$where  = array('active'=> '1');
+		$select = '';
+		$order = array('last_update','ASC');
+		$limit = '10';
+
+		$get   = $this->mod->getAll('me_img',$where,$select,$order,$limit);
+		foreach($get as $k => $v){
+			$whereUser = array('id_member'=> $v->id_member);
+			$user      = $this->mod->getAll('tbl_member',$whereUser,array('username'));
+			$v->username = (count($user) > 0 ? $user[0]->username : '' );
+		}
+
+		return $get;
+
 	}
 	
 	//sw::end

@@ -5,37 +5,6 @@
     .up-r-tube-cont{
         height: 357px;
     }
-    .t-title {
-        width: 690px;
-        margin-top: -65px;
-    }
-    .over-x{
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
-.w-max{
-    width: max-content;
-}
-.over-x::-webkit-scrollbar {
-    height: 5px;
-}
-.over-x::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #d2d2d2; 
-    border-radius: 10px;
-}
-.over-x::-webkit-scrollbar-thumb {
-    background: gainsboro; 
-    border-radius: 10px;
-}
-.over-x::-webkit-scrollbar-thumb:hover {
-    background: #5b99db; 
-}
-.menu-3 a {
-    padding-bottom: 4px;
-}
-.menu-3 li:nth-last-of-type(){
-    margin-right: 0px;
-}
 .up-r-tube{
     margin-top: 1px;
     height: 57px;
@@ -72,11 +41,15 @@
                     }
                 ?>
             </ul></div></div>
+        <div class="container p-r ar-menu-3">
+			<i class="material-icons fl-l">keyboard_arrow_left</i>
+			<i class="material-icons fl-r">keyboard_arrow_right</i>
+		</div>
         </div>
     </div>
-    <div class="center-desktop m-0">
+    <!-- <div class="center-desktop m-0">
         <div class="garis-x m-t-30"></div>
-    </div>
+    </div> -->
     <div class="center-desktop m-0">
         <div class="m-0">
             <div class="container tube-l">

@@ -101,7 +101,8 @@
             else
             {
         ?>
-                <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet">
+				<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+                <!-- <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
         <?php
@@ -116,6 +117,8 @@
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/dataTables.responsive.min.js"></script>	
+			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/jquery.dataTables.js">	</script>
     </head>
     <?php
         if ($kanal != 'eyemarket')
@@ -170,11 +173,11 @@ else{
                         <ul>
                             <li><a href="" onclick="return false">EyeProfile</a>
                                 <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/liga/Liga%20Indonesia%201">Klub</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/referee/Liga%20Indonesia%201">Perangkat Pertandingan</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/supporter/Liga%20Indonesia%201">Supporter</a></li>
                                 </ul>
                             </li>
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>

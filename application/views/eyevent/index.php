@@ -3,6 +3,7 @@
         position: relative;
         display: block;
         padding: 10px 7px;
+        font-size: .8em;
 </style>
         <div class="center-desktop m-0">
             <div class="container">
@@ -46,7 +47,7 @@
             <!-- <div class="w1020 m-0"> -->
             <div class="container menu-5 m-0 bbg" style="border-bottom: unset;">
                 <div class="fl-l" style="width: max-content;">
-                    <div class="tab">
+                    <div class="tab tab-event">
                         <ul class="nav nav-tabs" id="tab-nav" style="width: 100%;">
                             <li class="active">
                                 <a href="#jadwal-pertandingan" data-toggle="tab">JADWAL & HASIL PERTANDINGAN</a>

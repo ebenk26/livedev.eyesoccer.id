@@ -7,9 +7,9 @@
         <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
-                    <li class="active"><a href="<?=base_url()?>eyeprofile/klub_pemain" >Klub</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/klub_offisial">Ofisial</a></li>
+                    <li class="active"><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201" >Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
@@ -18,7 +18,7 @@
 				<?php
 					foreach($kompetisi_pro as $row){
 				?>
-					<option value="<?php echo base_url()."eyeprofile/liga/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+					<option value="<?php echo base_url()."eyeprofile/klub/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
 				<?php
 					}
 				?>
@@ -72,7 +72,7 @@
 				<?php 				
 				foreach($club_main as $main){
 				?>
-				<a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['club_id']; ?>" style="text-decoration:unset;color:#424242;">
+				<a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['url']; ?>" style="text-decoration:unset;color:#424242;">
 					<div class="box-content ep2 fl-l">
 						<img src="<?=imgUrl()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt="">
 						<div class="detail">

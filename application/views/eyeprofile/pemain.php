@@ -1,22 +1,31 @@
-
-    <div class="center-desktop m-0">
+<style>
+    .slc-musim{
+        font-size: .95em !important;
+        padding: 7px 20px !important;
+    }
+	input{
+		font-size: .95em !important;
+	}
+</style>
+	<div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>
-                    <li><a href="<?=base_url()?>eyeprofile/klub_pemain">Klub</a></li>
-                    <li class="active"><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/klub_offisial">Ofisial</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
+                    <li class="active"><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
-            <select id="" name="" selected="true" class="slc-musim fl-r">
+            <select id="competition_change" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+					<option value="">--Pilih Liga--</option>
 				<?php
-					foreach($kompetisi as $row){
+					foreach($kompetisi_pro as $row){
 				?>
-					<option><?=$row['competition']?></option>';  
+					<option value="<?php echo base_url()."eyeprofile/pemain/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
 				<?php
 					}
 				?>
-            </select>
+                </select>
         </div>
     </div>
     <div class="center-desktop m-0">
@@ -28,30 +37,21 @@
                     <table>
                         <tr>
                             <td>Level Liga</td>
-                            <td>: <?php echo $club_header->competition; ?></td>
+                            <td>: <?php echo $title_liga; ?></td>
                         </tr>
                         <tr>
-							<?php 							
-								$jml=$this->db->query("select name from tbl_club where competition='liga indonesia 1'");
-								$total=$jml->result_array();?>
                             <td>Jumlah Klub</td>
-                            <td>: <?php $count = $jml->num_rows($jml);?> <?php echo "$count";?> Klub</td>
+                            <td>: <?php echo count($club_main)?> Klub</td>
                         </tr>
                         <tr>
                             <td>Jumlah Pemain</td>
                             <td>:
-							<?php 							
-							$jmlp=$this->db->query("select name from tbl_player where status!='amatir' AND status!=''");
-							$total=$jmlp->result_array();							
-							$count = $jmlp->num_rows($jmlp);?> <?php echo "$count";?> Pemain</td>
+							<?php echo count($get_player_liga);?> Pemain</td>
                         </tr>
                         <tr>
                             <td>Pemain Asing</td>
                             <td>:
-							<?php 							
-							$jmln=$this->db->query("select nationality from tbl_player where nationality !='indonesia' AND nationality !=''");
-							$total=$jmln->result_array();							
-							$count = $jmln->num_rows($jmln);?> <?php echo "$count";?> Pemain</td>
+							<?php echo count($get_player_liga_strange);?> Pemain</td>
                         </tr>
                     </table>
                 </div>
@@ -77,62 +77,37 @@
         </div>
     </div>
     <div class="center-desktop m-0">
-    <input type="text" name="" id="" placeholder="Cari ..." class="src-200 mt-30">
     <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
-    <table class="radius table table-striped pd-18 mt-10" cellspacing="0" cellpadding="0">
-            <thead>
-                <tr>
-                    <th class="t-b-b">No</th>
-					<th class="t-b-b"></th>
-                    <th class="t-b-b">Pemain</th>
-                    <th class="t-b-b">Tgl Lahir</th>
-                    <th class="t-b-b">Posisi</th>
-                    <th class="t-b-b">Klub</th>
-                    <th class="t-b-b">Kewarganegaraan</th>
-                    <th class="t-b-b">Main</th>
-                    <th class="t-b-b">Gol</th>
-                    <th class="t-b-b">Assist</th>
-                </tr>
-            </thead>
-            <tbody>
-					<?php
-					$no = 1;		
-					foreach($pemain_klub as $row){
-					$bulan 	= array(
-			                '01' => 'Januari',
-			                '02' => 'Februari',
-			                '03' => 'Maret',
-			                '04' => 'April',
-			                '05' => 'Mei',
-			                '06' => 'Juni',
-			                '07' => 'Juli',
-			                '08' => 'Agustus',
-			                '09' => 'September',
-			                '10' => 'Oktober',
-			                '11' => 'November',
-			                '12' => 'Desember',
-						);
-				?>						
-                <tr>
-                    <td><?=$no++?></td>
-                    <td>
-					<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>">
-					<div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;">
-						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["foto"]?>" alt="">
-					</div>
-					</a>					
-					</td>
-                    <td>
-						<!--<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>"><div style="width: 40px;height:40px; overflow:hidden; border-radius:50%;"><img src="<?=base_url()?>systems/player_storage/<?=$row["foto"]?>"></div></a>-->
-					<?=$row['nama']?>	
-                    </td>
-                    <td><?=$row['tanggal']?> <?=$bulan[$row['bulan']]?> <?=$row['tahun']?></td>
-                    <td><?=$row['posisi']?></td>
-                    <td><?=$row['klub']?></td>
-                    <td><?=$row['timnas']?></td>
-                    <td>-</td>
-                </tr>
-				<?php }?>
-            </tbody>
-        </table>
+	<table class="stripe cell-border" cellspacing="0" width="100%" id="example">
+		<thead id="back900">
+			<th>No</th>
+			<th>Pemain</th>
+			<th>Tgl. Lahir</th>
+			<th>Posisi</th>
+			<th>Klub</th>
+			<th>Kewarganegaraan</th>
+			<th>Main</th>
+			<th>Gol</th>
+			<th>Assist</th>	
+		</thead>
+		<tbody >
+
+		</tbody>
+	</table>
     </div>
+	<script>
+		var url = $(location).attr('href');
+		var fn = url.split('/').reverse()[0];
+		$('#example').DataTable( {
+  			"order":[[5,"desc"]],
+            "processing": true,
+            "serverSide": true,
+            "ajax":{
+                url :"<?php echo base_url()?>eyeprofile/get_list_pemain/"+fn, // json datasource
+                type: "post",  // method  , by default get
+            },
+			"language": {
+				"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+			}
+        } );
+	</script>

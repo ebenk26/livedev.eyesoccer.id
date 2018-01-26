@@ -36,8 +36,11 @@ class Eyeme extends CI_Controller {
 
 	public function index(){
 	#echo $this->id_member;	
-		$this->mod->checkLogin();// check if user comming from home
-		#exit;
+		$checkLogin = $this->mod->checkLogin();// check if user comming from home
+		if(!$checkLogin){
+			exit;
+		}
+	
 		$id_member       = $this->id_member;
 		$getImgFollowing = $this->emod->getImgFollowing($id_member);
 		
@@ -313,7 +316,9 @@ class Eyeme extends CI_Controller {
 		
 
 	}
+
 	public function get_all_user($id_member){
+
 		$select = array('id_member','name','username','fullname','email','profile_pic');
 		$order  = array('last_online','DESC');
 		$allUsr = $this->mod->getAll('tbl_member','',$select,$order,'5','',array('id_member',array($id_member)));
@@ -331,6 +336,35 @@ class Eyeme extends CI_Controller {
 
 
 	}
+	public function upload_foto()
+	{ 
+		$imgCaption  = $this->input->post('caption');
+		$uploadPath = './upload/eyeme';
+		#$imageName  = $_;
+		$name      = $_FILES['upl_img']['name'];
+		$ext       = pathinfo($name,PATHINFO_EXTENSION);
+		$newName   = 'ori_'.date('dmyGis').'.'.$ext;
+		$maxSize   = 2024;
+		$maxWidth  = 2000;
+		$maxHeight = 2000; 
+		$inputName = 'upl_img';
+		$do        = $this->mod->uploadImg($uploadPath, $newName, $maxSize,$maxWidth, $maxHeight,$inputName);
+		$dataImg   = array('id_member' => $this->id_member,
+						'img_caption' => $imgCaption,
+						'img_name'    => $newName,
+						'date_create' => NOW,
+						'last_update' => NOW,
+						'active'      => '1');
+
+		$this->db->insert('me_img',$dataImg);
+		$arr      = array('msg'=> 'Berhasil Upload Gambar');
+		$response = json_encode($arr);
+		echo '<script>alert(\''.$arr['msg'].'\')</script>';
+		redirect(MEPROFILE.$this->username,'refresh');
+		
+
+	}
+
 	public function upload_profile(){
 
 
@@ -611,48 +645,6 @@ class Eyeme extends CI_Controller {
 		{
 			echo json_encode(array('status'=>'0'));
 		}
-	}
-
-
-	public function upload_foto()
-	{ 
-		$this->load->library('session');
-		$config['upload_path'] = "./gambar/";
-		$config['allowed_types'] = '*';
-		$config['max_size']  = '10000';
-		$config['max_width']  = '0';
-		$config['max_height']  = '0';
-
-		$this->upload->initialize($config);
-
-// var_dump($_FILES);exit();
-		if (!$this->upload->do_upload('berkas')) {
-            $error = $this->upload->display_errors();
-            // menampilkan pesan error
-            redirect('eyeme/explore');
-        }
-        else
-        { 	
-        	$this->load->library('session'); 
-            $result = $this->upload->data();
-
-        	$object = 	array(
-        				'id_member' => $this->session->userdata('member_id'),
-        				'gambar' => $result['file_name'],
-        				'keterangan' => 'Null',
-        				'suka' => '0',
-        				'created_date' => date("Y-m-d H:i:s"),
-        	);
-
-        	$insert 	= $this->db->insert('tbl_eyeme', $object);
-        	$last_id 	= $this->db->insert_id();
-
-            //$this->session->set_flashdata('message','Gambar berhasil di upload'); 
-            redirect('eyeme/edit_konten/'.$last_id);
-        }
-
-		//$this->load->view('/eyeme/cobafoto');
-
 	}
 
 	public function edit_konten($id_eyeme)
