@@ -1,5 +1,7 @@
  <div class="detail-post-box dpb" style="display:none">
+
         <div class="detail-post-box-cont m-0 p-r">
+
             <!--<div class="arrow-l p-r">
                 <i class="material-icons">keyboard_arrow_left</i>
             </div>
@@ -10,6 +12,7 @@
                 <img src="" alt="loading" id="img-det">
             </div>
             <div class="d-p-b-r p-r">
+                <span class="del-icon"><i class="material-icons " id="del" >delete</i></span>
                 <div class="detail-n-p">
                     <img class="pp" src="#" id="img-user">
                     <a href="" class="usern"></a>
@@ -23,7 +26,7 @@
                 </div>
                
                 <div class="container d-comment">
-                    
+
                     
                 </div>
                 <div class="container d-like">

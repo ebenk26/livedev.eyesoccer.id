@@ -2961,3 +2961,9 @@ a{
     font-style: italic;
 
 }
+.del-icon{
+    color: #e4e4e4;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+}

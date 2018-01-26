@@ -41,6 +41,7 @@ var html      = "",//html comment
     tbl_com   = "",
     $com      = $('.comment'), //class comment
     $notif    = $('#notif-content'),
+    $id_member = '<?php echo $id_member?>';
     DPIC      = '<?php echo DPIC?>',
     MEIMG     = '<?php echo MEIMG?>',
     MEPROFILE = '<?php echo MEPROFILE?>',
@@ -653,6 +654,14 @@ $('.me-post').click(function(event) {
             $('#f-icon').addClass('first-icon-'+v.id_img);
             $('#s-icon').attr('ref',v.id_img);
             $('.comment').attr('rel',v.id_img);
+
+            if($id_member == v.id_member){
+
+                $('#del').attr('onclick','discard_img(' + v.id_img +',3)');
+
+                }
+                
+            
             //tbl_com += '<table>';
             tbl_com += '<div class="c-title">Komentar</div>';
             tbl_com += '<div class="komen">';
@@ -711,12 +720,8 @@ function discard_img(id,more = 1){
         })
         .done(function(r) {
             alert(r.msg);
-            if(more == 1 ){
-                location.reload();
-            }
-            else{
-                $('#meuid'+id).hide();
-            }
+            location.reload();
+           
            
             
         })

@@ -435,7 +435,7 @@ class Eyeme extends CI_Controller {
 			$imgThumb = $img[0]->img_thumb;
 			$id_img   = $img[0]->id_img;
 			unlink(IMGPATH.$imgName) OR die ('gagal delete image');
-			unlink(IMGPATH.$imgThumb) OR die ('gagal delete thumb');
+			
 			$this->emod->rm('me_img',array('id_img'=> $id_img));
 			$arr = array('msg'=> 'Berhasil Hapus Photo');
 			$response  = json_encode($arr);
