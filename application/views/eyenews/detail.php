@@ -5,6 +5,16 @@
             .col-emoji{
                 cursor: pointer;
             }
+            .news-pic h2 {
+                font-weight: 600;
+            }
+            .menu-3 a:hover{
+                border-bottom: 3px solid rgb(200, 0, 0);
+                color: rgb(200, 0, 0);
+            }
+            .tube-l, .h-news-l {
+                width: 730px;
+            }
 		</style>
 		<div class="crumb">
 			<ul>
@@ -40,7 +50,7 @@
 ?>
         <div class="center-desktop m-0">
             <div class="menu-3 m-0">
-                <div class="w1020 over-x m-0">
+                <div class="over-x m-0">
                     <div class="w-max">
                         <ul>
                             <?php
@@ -57,17 +67,20 @@
                         </ul>
                     </div>
                 </div>
+                <div class="container p-r ar-menu-3">
+			        <i class="material-icons fl-l">keyboard_arrow_left</i>
+			        <i class="material-icons fl-r">keyboard_arrow_right</i>
+		        </div>
             </div>
         </div>
-        <div class="m-0 w1020">
-            <div class="garis-x m-t-30"></div>
-        </div>
         <div class="center-desktop m-0">
-            <div class="w1020 m-0">
+            <div class="m-0">
                 <div class="container tube-l">
                     <div class="news-pic">
                         <h2><?= $value['title']; ?></h2>
-                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $value['pic']; ?>" alt="">
+                        <div style="width:100%;height:445px;overflow:hidden;">
+                            <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $value['pic']; ?>" alt="" style="width:100%;min-height:100%;">
+                        </div>
                     </div>
                     <div class="container mt-10">
                         <div class="fl-l n-c">
@@ -223,7 +236,7 @@
 					<div class="fb-comments fb-comments-enews-detail" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
                 </div>
 
-                <div class="container tube-r">
+                <div class="container tube-r fl-r">
                     <div class="up-r-news">
                         <h4>TRENDING</h4>
 						<?php

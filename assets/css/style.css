@@ -55,8 +55,8 @@ hr{
     border-bottom: 1px solid gainsboro;
 }
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
+    /* width: 0px; */
+    /* background: transparent; */
 }
 ::scrollbar {
     width: 0px;
@@ -1625,6 +1625,7 @@ ul, li {
 .menu-3 a{
     text-decoration: none;
     color: #3d3d3d;
+    padding-bottom: 4px;
 }
 .menu-3 a:hover{
     border-bottom: 3px solid #039BE5;
@@ -1634,6 +1635,9 @@ ul, li {
     color: gray;
     border-bottom: 4px solid #FFC107;
     padding-bottom: 3px;
+}
+.menu-3 li:nth-last-of-type(){
+    margin-right: 0px;
 }
 .bottom-left{
     position: relative;
@@ -1681,6 +1685,11 @@ ul, li {
     margin-bottom: 10px;
     margin-top: -60px;
 }
+.garis-x4 {
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
 .m-t-45{
     margin-top: 0px;
 }
@@ -1707,6 +1716,10 @@ ul, li {
     font-size: .8em;
     position: relative;
     top: -10px;
+    height: 39px;
+    overflow: hidden;
+    color: #4e4e4e;
+    margin-bottom: 7px;
 }
 .time-view{
     font-size: .6em;
@@ -1726,11 +1739,11 @@ ul, li {
 }
 .panahkanan{
     right: 10px;
-    top: 57px;
+    top: 61px;
 }
 .panahkiri{
     right: 1016px;
-    top: 57px;
+    top: 61px;
 }
 .panahkiri:hover, .panahkanan:hover{
     color: white;
@@ -1864,7 +1877,7 @@ ul, li {
     font-size: .8em;
     bottom: 20px;
     /* border-color: #039BE5; */
-    margin-left: 40%;
+    /* margin-left: 40%; */
 }
 .btn-white:hover{
     color: white;
@@ -3158,11 +3171,11 @@ ul, li {
     top: -32px;
 }
 .t-title{
-    width: 600px;
+    width: 690px;
+    margin-top: -65px;
     font-size: 23px;
     font-weight: 600;
     display: block;
-    margin-top: -80px;
 }
 .m-t-70{
     margin-top: -70px;
@@ -3184,6 +3197,7 @@ ul, li {
     font-size: 14px;
     font-weight: 500;
     color: rgb(61, 61, 61);
+    display: inline-block;
 }
 .zz2 a{
     color: gray !important;
@@ -3502,7 +3516,7 @@ ul, li {
 .h-news-r h1{
     font-size: 1.62em;
     color: #333;
-    max-height: 108px;
+    max-height: 110px;
     overflow: hidden;
     margin: 5px 0px 10px;
     display: block;
@@ -3624,6 +3638,7 @@ ul, li {
     margin-bottom: 10px;
     max-height: 66px;
     overflow: hidden;
+    font-weight: 500;
 }
 .news-rcm-d{
     border: 1px solid gainsboro;
@@ -4402,7 +4417,13 @@ ey{
     width: max-content;
 }
 .over-x::-webkit-scrollbar {
-    height: 5px;
+    height: 7px;
+}
+.over-x::-webkit-scrollbar-button:horizontal:decrement{
+	background-color: transparent;
+}
+.over-x::-webkit-scrollbar-button:horizontal:increment{
+	background-color: transparent;
 }
 .over-x::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #d2d2d2; 
@@ -4411,13 +4432,22 @@ ey{
 .over-x::-webkit-scrollbar-thumb {
     background: gainsboro; 
     border-radius: 10px;
+    box-shadow: 0 -1px 1px 0px grey;
 }
 .over-x::-webkit-scrollbar-thumb:hover {
-    background: #5b99db; 
+    background: rgb(185, 185, 185); 
+}
+.ar-menu-3{
+	z-index: -1;
+	top: -11px;
+}
+.ar-menu-3 i{
+	font-size: 1.2em;
+    font-weight: 600;
 }
 .img-highlight-enews{
     width:690px;
-    height:400px;
+    height:381px;
     overflow:hidden;
     margin-bottom:10px;
 }
@@ -4425,7 +4455,7 @@ ey{
     width:100%; min-height:100%;
 }
 .o-h-3{
-    height: 370px;
+    height: 350px;
     overflow: hidden;
 }
 .pagging-enews-home{
@@ -4445,4 +4475,47 @@ ey{
 }
 .h105{
     height: 105px;
+}
+.w4{
+    width: 251.25px;
+    float: left;
+    margin-right: 20px;
+}
+.w4:nth-of-type(4n+4){
+    margin-right: 0px;
+}
+.w4-f{
+width: 100%;
+height: 160px;
+overflow: hidden;
+}
+.w4-f img{
+min-width: 100%;
+height: 100%;
+}
+.bbg{
+    border-bottom: 1px solid gainsboro;
+}
+.w2{
+    width: 290px;
+    float: left;
+    margin-right: 20px;
+}
+.w2:nth-of-type(2n+2){
+    margin-right: 0px;
+}
+.w2-f{
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+.tab-event{
+    color: rgb(82, 82, 82);
+}
+.nav-tabs > li > a {
+    font-weight: 600;
+}
+.tab-event .nav-tabs > li.active > a{
+    color: rgb(61, 139, 61) !important;
+    font-weight: 600;
 }
