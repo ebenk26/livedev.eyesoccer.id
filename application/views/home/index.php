@@ -540,18 +540,18 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
-                    <div class="c-em-content2" style="top: -14px;">
+                    <div class="c-em-content2-container" style="top: -14px;">
                     	<?php 
                     		for($i=0;$i < 9 ; $i++){
-                    			echo '<a href="'.(isset($imgEyeme[$i]) ? MEPROFILE.$imgEyeme[$i]->username : '#').'">';
-                    			echo '<img src="'.(isset($imgEyeme[$i]) ? MEIMG.$imgEyeme[$i]->img_name :  DEFAULTIMG ).'" class="c-em-content2-img">';
-                    			echo '</a>';
+                    			echo '<div class="eyeme-list">';
+	                    			echo '<a href="'.(isset($imgEyeme[$i]) ? MEPROFILE.$imgEyeme[$i]->username : '#').'">';
+	                    			echo '<img src="'.(isset($imgEyeme[$i]) ? MEIMG.$imgEyeme[$i]->img_name :  DEFAULTIMG ).'" class="c-em-content2-img">';
+	                    			echo '</a>';
+                    			echo '</div>';
                     		}
                     	?>
                        		
-                        <div style="padding:8px; text-align:center">
-							<a href="<?php echo MEURL.'explore'?>" class="em-btn"">Lihat Foto Lainnya</a>
-						</div>
+                       
                     </div>
                 </div>
             </div>

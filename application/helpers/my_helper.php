@@ -95,7 +95,7 @@ define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
 define('MEURL',base_url().'eyeme/');
-define('MEIMG',base_url().'img/eyeme/');
+define('MEIMG',base_url().'upload/eyeme/');
 define('IMGPATH','./img/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');

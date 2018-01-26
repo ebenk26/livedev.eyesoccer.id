@@ -3,68 +3,14 @@
 			.pagination > .active > a {
 				z-index:1;
 			}
-			.over-x{
-    overflow-x: scroll;
-	overflow-y: hidden;
-}
-.w-max{
-    width: max-content;
-}
-.over-x::-webkit-scrollbar {
-    height: 7px;
-}
-.over-x::-webkit-scrollbar-button:horizontal:decrement{
-	background-image: url(scrollbar/arrow-left.png), -webkit-linear-gradient(top,  #f9f9f9 50%,#e2e2e2 100%) ;
-	background-repeat: no-repeat;
-    background-position: 4px 3px, 0 0;
-}
-.over-x::-webkit-scrollbar-button:horizontal:increment{
-	background-image: url(scrollbar/arrow-right.png), -webkit-linear-gradient(top,  #f9f9f9 50%,#e2e2e2 100%) ;
-	background-repeat: no-repeat;
-    background-position: 5px 3px, 0 0;
-}
-.over-x::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px #d2d2d2; 
-    border-radius: 10px;
-}
-.over-x::-webkit-scrollbar-thumb {
-    background: gainsboro; 
-    border-radius: 10px;
-}
-.over-x::-webkit-scrollbar-thumb:hover {
-    background: #5b99db; 
-}
-.menu-3 a {
-    padding-bottom: 4px;
-}
 .time-view{
 	top: -25px;
-}
-	.w4{
-        width: 251.25px;
-        float: left;
-		margin-right: 20px;
-    }
-    .w4:nth-of-type(4n+4){
-        margin-right: 0px;
-    }
-.w4-f{
-	width: 100%;
-    height: 160px;
-    overflow: hidden;
-}
-.w4-f img{
-	min-width: 100%;
-    height: 100%;
 }
 .news-rcm {
     width: 690px;
 }
 .n-rcm-up{
 	border: none;
-}
-.n-rcm-up-teks{
-	font-weight: 500;
 }
 .news-rcm img {
     min-width: 100%;
@@ -84,8 +30,6 @@
     width: 40px;
     height: 40px;
 }
-
-
 		</style>
 
 
@@ -116,10 +60,15 @@
             </ul>
             </div>
         </div>
+		<div class="container p-r ar-menu-3">
+			<i class="material-icons fl-l">keyboard_arrow_left</i>
+			<i class="material-icons fl-r">keyboard_arrow_right</i>
+		</div>
+
         </div>
         </div>
         <div class="center-desktop  m-0">
-            <div class="m-0 mt-53">
+            <div class="m-0">
                 <div class="container ">
 				
 					<?php
@@ -167,7 +116,7 @@
 							?>	
 									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi['url'];?>">
 										<div class="container garis-x4">
-											<div class="container" style="width:240px;height:150px;overflow:hidden;">
+											<div class="container" style="width:240px;height:145px;overflow:hidden;">
 												<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $rekomendasi['thumb1']; ?>" alt="<?=$rekomendasi['title'];?>" title="<?=$rekomendasi['title'];?>">
 												<div class="container btn-play2" style="left: 100px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
 											</div>
@@ -203,8 +152,8 @@
 								?>
 									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $row['url'];?>">
 										<div class="container" style="border:1px solid gainsboro;">
-										<div style="width:100%; height:210px; overflow:hidden;">
-											<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $row['thumb1']; ?>" alt="" style="height:100%;">
+										<div style="width:100%; height:200px; overflow:hidden;">
+											<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $row['thumb1']; ?>" alt="" style="width:100%;">
 											<div class="container btn-play2" style="width:60px; height:60px; top:-130px; left:150px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
 										</div>
 		                                <div class="n-rcm-up-teks">
