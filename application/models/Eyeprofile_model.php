@@ -59,7 +59,7 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_club_liga($liga,$limit=18)
 	{
-		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,b.name as nama_manager,count(c.name) as squad
+		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,b.name as nama_manager,count(c.name) as squad,a.url
 									FROM tbl_club a INNER JOIN tbl_official_team b on a.club_id = b.club_now LEFT JOIN tbl_player c on a.club_id = c.club_id
 									WHERE a.id_liga = '0' and a.name not in ('ebenktestlagijgndidelete') and a.competition='".$liga."'
 									GROUP BY a.club_id ASC LIMIT ".$limit."")->result_array();
@@ -450,6 +450,7 @@ class Eyeprofile_model extends CI_Model
 		}else{
 			$i=$requestData['start']+1;
 		}
+		$data2 = array();
 		foreach ($result_with_limit->result() as $data)
 		{
 			$nestedData=array(); 
@@ -480,6 +481,131 @@ class Eyeprofile_model extends CI_Model
 		echo json_encode($json_data); 
 	}
 	
+	public function get_list_official($requestData,$liga)
+	{
+		// print_r($requestData['search']['regex']);exit();
+		$columns = array( 
+		// datatable column index  => database column name
+			0 =>'official_id', 
+			1 => 'nama_manager',
+			2=> 'klub',
+			3=> 'tgl_lahir',
+			4=> 'position',
+			5=> 'nationality',
+			6=> 'license',
+			7=> 'contract',
+		);
+		
+		if( !empty($requestData['search']['value']) ) {  
+		$sql=" AND ( a.name LIKE '%".$requestData['search']['value']."%' ";    
+			$sql.=" OR b.name LIKE '%".$requestData['search']['value']."%' ";
+
+			$sql.=" OR a.position LIKE '%".$requestData['search']['value']."%' ";
+			$sql.=" OR a.nationality LIKE '%".$requestData['search']['value']."%' )";
+		}
+		else{
+			$sql="";
+		}
+		
+		$query = $this->db->query("select a.official_id,b.club_id,a.name as nama_manager,
+									a.position,a.contract,a.nationality,
+									a.birth_date as tgl_lahir,
+									a.official_photo,a.license,
+									b.name as nama_club,b.logo as logo_club 
+									from tbl_official_team a
+									join tbl_club b on a.club_now=b.club_id
+									where b.competition ='".$liga."'
+										".$sql."
+										");
+		$totalData = count($query->result_array());
+		$totalFiltered = $totalData;
+		
+		$result_with_limit=$this->db->query("select a.official_id,b.club_id,a.name as nama_manager,
+									a.position,a.contract,a.nationality,
+									a.birth_date as tgl_lahir,
+									a.official_photo,a.license,
+									b.name as nama_club,b.logo as logo_club 
+									from tbl_official_team a
+									join tbl_club b on a.club_now=b.club_id
+									where b.competition ='".$liga."'
+									".$sql." order by ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."");
+		$totalFiltered=$query->num_rows();
+		if($requestData['start']==0){
+			$i=1;
+		}else{
+			$i=$requestData['start']+1;
+		}
+		$data2 = array();
+		foreach ($result_with_limit->result() as $data)
+		{
+			$nestedData=array(); 
+			$nestedData[] = $i;
+			$nestedData[] = "<a target='_blank' href='#'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;'>
+						<img style='width: 100%;' src='".imgUrl()."systems/player_storage/".$data->official_photo."' alt='".$data->nama_manager."'>
+					</div><div style='float:right;width: 75%;cursor:pointer;'>".$data->nama_manager."</div></a>";
+			$nestedData[] = $data->nama_club;
+			$nestedData[] = $data->tgl_lahir;
+			$nestedData[] = $data->position;
+			$nestedData[] = $data->nationality;
+			$nestedData[] = $data->license;
+			$nestedData[] = $data->contract;
+			
+			$data2[] = $nestedData;
+			$i++;
+		}
+
+
+		$json_data = array(
+					"draw"            => intval( $requestData['draw'] ), 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ),
+					"data"            => $data2   // total data array
+					);
+
+		echo json_encode($json_data); 
+	}
+	
+	public function get_klub_detail($url){
+		$query = $this->db->query("select * from tbl_club where url='".$url."'")->result_array();
+		return $query;
+	}
+	
+	public function get_klub_detail_row_array($url){
+		$query = $this->db->query("select * from tbl_club where url='".$url."'")->row_array();
+		return $query;
+	}
+	
+	public function get_official_list($club_id){
+		$query = $this->db->query("select * from tbl_official_team where club_now='".$club_id."'")->result_array();
+		return $query;
+	}
+	
+	public function get_player_list($club_id){
+		$query = $this->db->query("select * from tbl_player where club_id='".$club_id."'")->result_array();
+		return $query;
+	}
+	
+	public function get_hasil_klub($club_name)
+	{
+		$query = $this->db->query("SELECT 
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub,
+									c.competition
+									FROM tbl_jadwal_event a 
+									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
+									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
+									where a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' 
+									and c.name like '%".$club_name."%' or d.name like '%".$club_name."%'
+									order by 
+									a.id_jadwal_event DESC LIMIT 1")->result_array();
+		return $query;
+	}
 }
 
 /* End of file Berita_model.php */
