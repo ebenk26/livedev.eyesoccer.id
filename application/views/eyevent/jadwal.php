@@ -69,16 +69,20 @@
                     <tbody>
                         <tr>
                             <td>
-                                <?=$jdwl_nxt_ystd["club_a"]?>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_a']; ?>" alt="">
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_ystd['url_a']; ?>">
+                                    <?=$jdwl_nxt_ystd["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_a']; ?>" alt="">
+                                </a>
                             </td>
                             <td>
                                 <?= $jdwl_nxt_ystd["score_a"]; ?> - <?= $jdwl_nxt_ystd["score_b"]; ?>
                                 <span><?= $jdwl_nxt_ystd["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_b']; ?>" alt="">
-                                <?=$jdwl_nxt_ystd["club_b"]?>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_ystd['url_b']; ?>">
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_b']; ?>" alt="">
+                                    <?=$jdwl_nxt_ystd["club_b"]?>
+                                </a>
                             </td>
                         </tr>                            
                     </tbody>
@@ -117,16 +121,20 @@
                     <tbody>
                         <tr>
                             <td>
-                                <?=$jdwl_ystd["club_a"]?>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_a']; ?>" alt="">
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_ystd['url_a']; ?>">
+                                    <?=$jdwl_ystd["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_a']; ?>" alt="">
+                                </a>
                             </td>
                             <td>
                                 <?= $jdwl_ystd["score_a"]; ?> - <?= $jdwl_ystd["score_b"]; ?>
                                 <span><?= $jdwl_ystd["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_b']; ?>" alt="">
-                                <?=$jdwl_ystd["club_b"]?>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_ystd['url_b']; ?>">
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_b']; ?>" alt="">
+                                    <?=$jdwl_ystd["club_b"]?>
+                                </a>
                             </td>
                         </tr>                            
                     </tbody>
@@ -160,16 +168,20 @@
                     <tbody>
                         <tr>
                             <td>
-                                <?=$jdwl_today["club_a"]?>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_a']; ?>" alt="">
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_today['url_a']; ?>">
+                                    <?=$jdwl_today["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_a']; ?>" alt="">
+                                </a>
                             </td>
                             <td>
                                 <?=date("H:i",strtotime($jdwl_today["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_today["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_b']; ?>" alt="">
-                                <?=$jdwl_today["club_b"]?>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_today['url_b']; ?>">
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_b']; ?>" alt="">
+                                    <?=$jdwl_today["club_b"]?>
+                                </a>
                             </td>
                         </tr>                            
                     </tbody>
@@ -207,15 +219,20 @@
         ?>
                     <tbody>
                         <tr>
-                            <td><?=$jdwl_tmrw["club_a"]?>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_a']; ?>" alt="">
+                            <td>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_tmrw['url_a']; ?>">
+                                    <?=$jdwl_tmrw["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_a']; ?>" alt="">
+                                </a>
                             </td>
                             <td><?=date("H:i",strtotime($jdwl_tmrw["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_tmrw["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_b']; ?>" alt="">
-                                <?=$jdwl_tmrw["club_b"]?>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_tmrw['url_b']; ?>">
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_b']; ?>" alt="">
+                                    <?=$jdwl_tmrw["club_b"]?>
+                                </a>
                             </td>
                         </tr>                            
                     </tbody>
@@ -253,15 +270,20 @@
         ?>
                     <tbody>
                         <tr>
-                            <td><?=$jdwl_nxt_tmrw["club_a"]?>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_a']; ?>" alt="">
+                            <td>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_tmrw['url_a']; ?>">
+                                    <?=$jdwl_nxt_tmrw["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_a']; ?>" alt="">
+                                </a>
                             </td>
                             <td><?=date("H:i",strtotime($jdwl_nxt_tmrw["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_nxt_tmrw["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_b']; ?>" alt="">
-                                <?=$jdwl_nxt_tmrw["club_b"]?>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_tmrw['url_b']; ?>">
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_b']; ?>" alt="">
+                                    <?=$jdwl_nxt_tmrw["club_b"]?>
+                                </a>
                             </td>
                         </tr>                            
                     </tbody>  
@@ -299,15 +321,20 @@
         ?>
                     <tbody>
                         <tr>
-                            <td><?=$jdwl_three["club_a"]?>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_a']; ?>" alt="">
+                            <td>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_three['url_a']; ?>">
+                                    <?=$jdwl_three["club_a"]?>
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_a']; ?>" alt="">
+                                </a>
                             </td>
                             <td><?=date("H:i",strtotime($jdwl_three["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_three["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_b']; ?>" alt="">
-                                <?=$jdwl_three["club_b"]?>
+                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_three['url_b']; ?>">
+                                    <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_b']; ?>" alt="">
+                                    <?=$jdwl_three["club_b"]?>
+                                </a>
                             </td>
                         </tr>                            
                     </tbody>  

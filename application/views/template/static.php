@@ -85,6 +85,20 @@
 		<?php
             }
             else
+            if ($kanal == 'eyevent')
+            {
+        ?>
+                <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+                <style>
+                    .center-desktop{
+                        width: 1065px;
+                    }
+                </style>
+                <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">
+        <?php        
+            }
+            else
             {
         ?>
 				<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -161,9 +175,9 @@ else{
                                 <ul>
                                     <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/referee/Liga%20Indonesia%201">Perangkat Pertandingan</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/supporter/Liga%20Indonesia%201">Supporter</a></li>
                                 </ul>
                             </li>
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
