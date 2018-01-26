@@ -10,9 +10,9 @@
 	<div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>
-                    <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
-                    <li class="active"><a href="<?=base_url()?>eyeprofile/klub_offisial/Liga%20Indonesia%201">Ofisial</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
+                    <li class="active"><a href="<?=base_url()?>eyeprofile/klub_offisial">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
@@ -38,6 +38,7 @@
                         <tr>
                             <td>Level Liga</td>
                             <td>: <?php echo $title_liga; ?></td>
+							<input type="hidden" class="hidden_title" value="<?php echo $title_liga; ?>"/>
                         </tr>
                         <tr>
                             <td>Jumlah Klub</td>
@@ -96,7 +97,8 @@
     </div>
 	<script>
 		var url = $(location).attr('href');
-		var fn = url.split('/').reverse()[0];
+		// var fn = url.split('/').reverse()[0];
+		var fn = $(".hidden_title").val();
 		$('#example').DataTable( {
   			"order":[[5,"desc"]],
             "processing": true,

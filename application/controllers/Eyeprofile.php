@@ -35,8 +35,11 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);
 	}	
 	
-	public function klub($liga)
+	public function klub($liga=null)
 	{
+		if($liga==null){
+			$liga = "Liga%20Indonesia%201";
+		}
 		//$this->load->view('eyeprofile/klub');
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
@@ -145,14 +148,18 @@ class Eyeprofile extends CI_Controller {
 		$data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);	
 		$data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);	
 		$data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['name']);	
+		$data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);	
 		$data['kanal'] 				= "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/klub_pemain', $data, true);
 		$this->load->view('template/static',$data);
 	}	
 	
-	public function pemain($liga)
+	public function pemain($liga=null)
 	{
+		if($liga==null){
+			$liga = "Liga%20Indonesia%201";
+		}
 		//$this->load->view('eyeprofile/pemain');
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
@@ -216,8 +223,11 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}
 
-	public function official($liga)
+	public function official($liga=null)
 	{
+		if($liga==null){
+			$liga = "Liga%20Indonesia%201";
+		}
 		if(urldecode($liga) == 'Liga Indonesia 1'){
 			$nama_liga = 'Liga Indonesia 1';
 			$jml_klub = 18;	
@@ -265,8 +275,11 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);
 	}
 	
-	public function supporter($liga)
+	public function supporter($liga=null)
 	{
+		if($liga==null){
+			$liga = "Liga%20Indonesia%201";
+		}
 		if(urldecode($liga) == 'Liga Indonesia 1'){
 			$nama_liga = 'Liga Indonesia 1';
 			$jml_klub = 18;	
@@ -292,8 +305,11 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}	
 	
-	public function referee($liga)
+	public function referee($liga=null)
 	{
+		if($liga==null){
+			$liga = "Liga%20Indonesia%201";
+		}
 		if(urldecode($liga) == 'Liga Indonesia 1'){
 			$nama_liga = 'Liga Indonesia 1';
 			$jml_klub = 18;	

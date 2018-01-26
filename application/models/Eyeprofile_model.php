@@ -606,6 +606,15 @@ class Eyeprofile_model extends CI_Model
 									a.id_jadwal_event DESC LIMIT 1")->result_array();
 		return $query;
 	}
+	
+	public function get_manager($club_id){
+		$query = $this->db->query("select name,position 
+									from tbl_official_team 
+									where position like '%manager%' or position like '%manajer%' 
+									and position not in ('MANAJER TEKNIK','MANAJER BISNIS','Asisten Manager','ass manager','Assisten Manager','Asst.Manager','MANAGER BISNIS','MANAGER KEUANGAN','MANAGER KEUANGAN DAN UMUM','MANAGER MEDIA','MANAGER TECHNIK','MANAGER TEKHNIK','MANAGER TEKNIK','Wakil Manager')
+									and club_now = '".$club_id."' limit 1;")->row()->name;
+		return $query;
+	}
 }
 
 /* End of file Berita_model.php */
