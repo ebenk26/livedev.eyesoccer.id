@@ -41,6 +41,7 @@ var html      = "",//html comment
     tbl_com   = "",
     $com      = $('.comment'), //class comment
     $notif    = $('#notif-content'),
+    $id_member = '<?php echo $id_member?>';
     DPIC      = '<?php echo DPIC?>',
     MEIMG     = '<?php echo MEIMG?>',
     MEPROFILE = '<?php echo MEPROFILE?>',
@@ -641,10 +642,11 @@ $('.me-post').click(function(event) {
         data: {id: ref},
     })
     .done(function(r) {
-        //console.log(r);
+        console.log(r);
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('.usern').text(v.username);
+            $('.cap').text(v.img_caption);
             $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
             $('#time-string').text(v.timeString);
             $('#c-like').addClass('ref-'+ v.id_img);
@@ -652,7 +654,18 @@ $('.me-post').click(function(event) {
             $('#f-icon').addClass('first-icon-'+v.id_img);
             $('#s-icon').attr('ref',v.id_img);
             $('.comment').attr('rel',v.id_img);
+
+            if($id_member == v.id_member){
+
+                $('.del-icon').html('<i class="material-icons " id="del" onclick="discard_img(' + v.id_img +',3)" >delete</i>');
+                
+                
+
+                }
+                
+            
             //tbl_com += '<table>';
+            tbl_com += '<div class="c-title">Komentar</div>';
             tbl_com += '<div class="komen">';
             tbl_com += '<ul class="plus-c' + v.id_img + '">';
             $.each(v.comment,function($k,$v){
@@ -709,12 +722,8 @@ function discard_img(id,more = 1){
         })
         .done(function(r) {
             alert(r.msg);
-            if(more == 1 ){
-                location.reload();
-            }
-            else{
-                $('#meuid'+id).hide();
-            }
+            location.reload();
+           
            
             
         })

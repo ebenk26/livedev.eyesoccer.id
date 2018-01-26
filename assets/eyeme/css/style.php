@@ -1838,15 +1838,15 @@ ul, li {
 }
 .komen{
     display: block;
-    overflow-y: scroll;
-    max-height: 300px;
+    overflow-y: auto;
+    max-height: 260px;
 }
 .komen>ul>li>span{
     padding-left: 5px;
 }
 .komen>ul>li{
     display:block;
-    padding-top: 7px;
+    padding-top: 0px;
 }
 .td{
     text-decoration: none;
@@ -2401,8 +2401,9 @@ ul, li {
 }
 .d-comment{
     margin: 5px 0px 0px 20px;
-    height: 374px;
-    width: 315px;
+    height: 314px;
+    width: 320px;
+
 }
 .d-comment a{
     text-decoration: none;
@@ -2420,9 +2421,12 @@ ul, li {
     font-size: 16px;
 }
 .d-like{
-    margin: 0px 10px 0px 13px;
+   
     height: 35px;
     width: 330px;
+    position: absolute;
+    left:13px;
+    bottom:70px;
 }
 
 .d-like span, .d-like a{
@@ -2444,6 +2448,8 @@ ul, li {
     width: 100%;
     height: 65px;
     background-color: gainsboro;
+     position: absolute;
+    bottom: 0;
 }
 .d-komen input{
     width: 300px;
@@ -2926,4 +2932,38 @@ a{
 }
 .dz:hover:before{
    display: inline-block;
+}
+.detail-cap{
+    display: block;
+    max-height: 80px;
+    margin:10px 19px;
+     font-size: 14px;
+
+}
+.icom{
+    margin-left:16px;
+    font-weight: bold;
+    font-size: 12px;
+
+}
+
+
+.detail-cap a{
+    color:rgb(81, 81, 255);
+    font-weight: bold;
+
+}
+.c-title{
+    font-weight: bold;
+    font-size: 14px;
+    color:#4D4D4D;
+    
+    font-style: italic;
+
+}
+.del-icon{
+    color: #e4e4e4;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
 }
