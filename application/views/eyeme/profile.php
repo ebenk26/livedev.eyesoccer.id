@@ -1,6 +1,7 @@
 <?php $this->load->view('eyeme/header');?>
 <div class="desktop">
         <div class="center-desktop m-0">
+            <div class="container mt-20">
             <div class="w900 m-0 mb-20">
                 <div class="mt-30 fl-l">
                     <img class="me-profil-foto" src="<?php echo ($display_pic == '' ? DPIC : IMGSTORE.$display_pic)?>" alt="foto profil">
@@ -50,7 +51,7 @@
 
                         <div class="me-post" ref="<?php echo $getImg[$j]->id_img?>">
 
-                            <img src="<?php echo MEIMG.$getImg[$j]->img_thumb?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
+                            <img src="<?php echo MEIMG.$getImg[$j]->img_name?>" class="me-gambar-post" alt="<?php echo $getImg[$j]->img_alt?>">
 
                             <div class="tengah tx-c">
                                 <i class="material-icons">favorite</i>
@@ -86,6 +87,7 @@
            
         
     </div>
+</div>
 
 <?php 
 $this->load->view('eyeme/notif');

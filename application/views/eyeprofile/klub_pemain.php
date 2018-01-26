@@ -3,22 +3,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <br><br>
     <div class="container">
-        <div class="garis-banner">
+        <div class="garis-banner over-in profile-pemain">
 		<?php
-		foreach($klub_pemain as $row){
+		foreach($get_klub_detail as $row){
 		?>		
-            <div class="left">		
-                <img src="<?=base_url()?>assets/img/garis.svg" alt="">
-                <img class="epro-logo" src="<?=imgUrl()?>systems/club_logo/<?php  $row['logo_club']; ?>" alt="">
+			<div class="left">
+                <svg style="height: 189px;">
+                    <g id="Layer_2" data-name="Layer 2">
+                        <g id="Layer_1-2" data-name="Layer 1">
+                            <polygon class="fill" points="132 0 22 190 0 190 110 0 132 0" />
+                            <polygon class="fill" points="330 0 330 190 42 190 152 0 330 0" />
+                        </g>
+                    </g>
+                </svg>
+                <div class="box-img-radius">
+                    <img src="<?=imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
+                </div>
             </div>
-            <div class="right">
+            <div class="right fill">
                 <div class="t-30">
                     <h3>INFO</h3>
                     <table>
                         <tbody>
                             <tr>
                                 <td>Nama Klub</td>
-                                <td>: <?=$row["nama_club"]?></td>
+                                <td>: <?=$row["name"]?></td>
                             </tr>
                             <tr>
                                 <td>Tanggal Berdiri</td>
@@ -26,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td>: </td>
+                                <td>: <?=strip_tags($row["address"])?></td>
                             </tr>
                             <tr>
                                 <td>Situs</td>
@@ -54,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tr>
                             <tr>
                                 <td>Manajer</td>
-                                <td>: <?=$row["nama_manager"]?></td>
+                                <td>: <?=$row["manager"]?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -64,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tbody>
                             <tr>
                                 <td style="width:100px; ! important; display:block;">Jumlah Pemain</td>
-                                <td>: <?=$row["squad"]?> Pemain</td>
+                                <td>: <?=count($get_player_list)?> Pemain</td>
                             </tr>
                             <tr>
                                 <td>Rata-rata Usia</td>
@@ -76,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tr>
                             <tr>
                                 <td>Stadium</td>
-                                <td>: <?=$row["stadion"]?></td>
+                                <td>: <?=$row["stadium"]?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -86,13 +95,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 		?>
         </div>
-        <!--<div class="menu-2">
+        <div class="menu-2">
             <ul>
                 <li>Pemain</li>
                 <li>Ofisial</li>
                 <li>Supporter</li>
             </ul>
-        </div>-->
+        </div>
     </div>
     <div class="desktop pd-t-280">
     <div class="center-desktop m-0 option">
@@ -105,40 +114,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="center-desktop m-0 pd-t-20">
 			<?php
 			$no = 1;
-			foreach($pemain_klub as $row){
-			$bulan 	= array(
-			                '01' => 'Januari',
-			                '02' => 'Februari',
-			                '03' => 'Maret',
-			                '04' => 'April',
-			                '05' => 'Mei',
-			                '06' => 'Juni',
-			                '07' => 'Juli',
-			                '08' => 'Agustus',
-			                '09' => 'September',
-			                '10' => 'Oktober',
-			                '11' => 'November',
-			                '12' => 'Desember',
-						);			
+			foreach($get_player_list as $row){		
 			?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
 						<span><?=$no++?></span>
-						<h1><?=$row['nama']?></h1>
-						<span><?=$row['posisi']?></span>
+						<h1><?=$row['name']?></h1>
+						<span><?=$row['position']?></span>
 					</div>
 					<div class="img-pemain">
-						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["foto"]?>" alt="">                
+						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["pic"]?>" alt="">                
 					</div>
 					<table>
 						<tbody>
 							<tr>
 								<td>Kewarganegaraan</td>
-								<td><?=$row['timnas']?></td>
+								<td><?=$row['nationality']?></td>
 							</tr>
 							<tr>
 								<td>Tgl Lahir</td>
-								<td><?=$row['tanggal']?> <?=$bulan[$row['bulan']]?> <?=$row['tahun']?></td>
+								<td><?=$row['birth_date']?></td>
 							</tr>
 							<tr>
 								<td>Main</td>
@@ -146,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</tr>
 						</tbody>
 					</table>
-					<a href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="">Lihat Detail Pemain</a></button>
+					<a target="_blank" href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Pemain</button></a>
 				</div><?php }?>                                      
     </div>
 	
@@ -229,35 +224,66 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
         <div class="w-40 pd-t-20">
-            <h3 class="">Pertandingan</h3>
-            <div class="container box-pertandingan">
+            <h3 class="">Pertandingan Selanjutnya</h3>
+			<div class="container box-pertandingan">
                 <table>
                     <tbody>
-					<?php								
-					foreach($jadwal_pertandingan as $data){
-					?>
                         <tr>
                             <td colspan="3">
-                                <h4>LIGA 1 INDONESIA</h4>
-                                <span class="date-box-pertandingan"><?=date("d M Y",strtotime($data["jadwal_pertandingan"]))?>
-                                    <br><?=date("H:i",strtotime($data["jadwal_pertandingan"]))?> WIB
+								<?php foreach($get_klub_detail as $row){ ?>
+                                <h4><?php echo strtoupper($row['competition'])?></h4>
+								<?php } ?>
+								<?php foreach($get_hasil_klub as $row){
+									$datetime = new DateTime($row['jadwal_pertandingan']);
+									if($datetime->format('l') == 'Monday'){
+										$hari = 'Senin';
+									}else if($datetime->format('l') == 'Tuesday'){
+										$hari = 'Selasa';
+									}else if($datetime->format('l') == 'Wednesday'){
+										$hari = 'Rabu';
+									}else if($datetime->format('l') == 'Thursday'){
+										$hari = 'Kamis';
+									}else if($datetime->format('l') == 'Friday'){
+										$hari = 'Jumat';
+									}else if($datetime->format('l') == 'Saturday'){
+										$hari = 'Sabtu';
+									}else if($datetime->format('l') == 'Sunday'){
+										$hari = 'Minggu';
+									}else{
+										$hari = $datetime->format('l');
+									}
+								?>
+                                <span class="date-box-pertandingan"><?php echo $hari.", ".$datetime->format('d M Y')?>
+                                    <br><?php echo $datetime->format('H:i')." WIB";?>
+                                    <br><?php echo $row['lokasi_pertandingan']?>
                                 </span>
                             </td>
                         </tr>
                         <tr class="t-20">
                             <td width="40%">
-                                <i class="material-icons i-l-pertandingan"></i>
-                                <img src="<?=imgUrl()?>systems/club_logo/<?=$data["logo_a"]?>" alt=""> <?=$data["club_a"]?>
+                                <!--<i class="material-icons i-l-pertandingan">keyboard_arrow_left</i>-->
+                                <img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo_a']?>" alt=""> <?php echo $row['club_a'];?>
                             </td>
                             <td width="20%" style="font-weight: 600;">vs</td>
                             <td width="40%">
-                                <img src="<?=imgUrl()?>systems/club_logo/<?=$data["logo_a"]?>" alt=""> <?=$data["club_b"]?>
-                                <i class="material-icons i-r-pertandingan"></i>
+                                <img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo_b']?>" alt=""> <?php echo $row['club_b'];?>
+                                <!--<i class="material-icons i-r-pertandingan">keyboard_arrow_right</i>-->
                             </td>
-                        </tr><?php } ?>
+                        </tr>
+						<!--<tr class="t-20">
+							<td width="40%" style="font-size: 2em;font-weight: bold;color: orange;">
+								<?php // echo $row['score_a'];?>
+							</td>
+							<td width="20%" style="font-weight: 600;"></td>
+							<td width="40%" style="font-size: 2em;font-weight: bold;color: orange;">
+								<?php // echo $row['score_b']?>
+							</td>
+						</tr>-->
+						<?php } ?>
                     </tbody>
                 </table>
             </div>
+            
             <div class="container">
                 <h3 class="pd-t-20">Pencetak Gol Terbanyak</h3>
                 <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">

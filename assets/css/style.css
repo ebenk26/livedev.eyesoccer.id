@@ -666,7 +666,7 @@ nav .center-desktop, .x-m{
 .c-em-content2{
     top: -40px;
 }
-.c-em-content2>img{
+.c-em-content2 a >img{
     width: 130px;
     padding: 8px;
 }
@@ -4476,6 +4476,7 @@ ey{
 .h105{
     height: 105px;
 }
+<<<<<<< HEAD
 .w4{
     width: 251.25px;
     float: left;
@@ -4518,4 +4519,19 @@ height: 100%;
 .tab-event .nav-tabs > li.active > a{
     color: rgb(61, 139, 61) !important;
     font-weight: 600;
+=======
+.eyeme-list{
+    height: 130px;
+    width: 130px;
+    float:left;
+    padding:5px;
+     overflow: hidden;
+    backface-visibility: hidden;
+}
+.c-em-content2-img{
+    min-height: 90%;
+    min-width: 90%;
+   
+   
+>>>>>>> 426c237907f683e514e05b098dbe9705c90b9b7c
 }
