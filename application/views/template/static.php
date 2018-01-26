@@ -85,6 +85,20 @@
 		<?php
             }
             else
+            if ($kanal == 'eyevent')
+            {
+        ?>
+                <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
+                <style>
+                    .center-desktop{
+                        width: 1065px;
+                    }
+                </style>
+                <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">
+        <?php        
+            }
+            else
             {
         ?>
                 <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet">

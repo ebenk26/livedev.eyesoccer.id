@@ -22,7 +22,7 @@
             ?>
             <div>
                 <div class="container he">
-                    <a href="">
+                    <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terbaru['url'];?>">
                         <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terbaru['thumb1']; ?>" alt="">
                     </a>
                     <div class="container rx">
