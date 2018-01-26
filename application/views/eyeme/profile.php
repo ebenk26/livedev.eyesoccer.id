@@ -1,6 +1,7 @@
 <?php $this->load->view('eyeme/header');?>
 <div class="desktop">
         <div class="center-desktop m-0">
+            <div class="container mt-20">
             <div class="w900 m-0 mb-20">
                 <div class="mt-30 fl-l">
                     <img class="me-profil-foto" src="<?php echo ($display_pic == '' ? DPIC : IMGSTORE.$display_pic)?>" alt="foto profil">
@@ -86,6 +87,7 @@
            
         
     </div>
+</div>
 
 <?php 
 $this->load->view('eyeme/notif');
