@@ -657,7 +657,9 @@ $('.me-post').click(function(event) {
 
             if($id_member == v.id_member){
 
-                $('#del').attr('onclick','discard_img(' + v.id_img +',3)');
+                $('.del-icon').html('<i class="material-icons " id="del" onclick="discard_img(' + v.id_img +',3)" >delete</i>');
+                
+                
 
                 }
                 

@@ -12,7 +12,7 @@
                 <img src="" alt="loading" id="img-det">
             </div>
             <div class="d-p-b-r p-r">
-                <span class="del-icon"><i class="material-icons " id="del" >delete</i></span>
+                <span class="del-icon"></span>
                 <div class="detail-n-p">
                     <img class="pp" src="#" id="img-user">
                     <a href="" class="usern"></a>
