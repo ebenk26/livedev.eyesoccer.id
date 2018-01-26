@@ -14,9 +14,15 @@
                 Copyright 2017 eyesoccer.com. All Rights Reserved.
             </div>
             <div class="center50">
-                <a href="" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
-                <a href="" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
-                <a href="" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
+                <a href="" id="i-fb">
+                    <img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt="">
+                    <img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
+                <a href="" id="i-tw">
+                    <img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt="">
+                    <img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
+                <a href="" id="i-in">
+                    <img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt="">
+                    <img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -103,7 +109,7 @@ $('#notif').click(function(event){ //event notif click
                     }
                       
                     tbl += '<td class="fl-r mr-7">';
-                        tbl += (v.img_thumb == null ? '' : '<img src="'+ MEIMG + v.img_thumb + '" alt="post photo" class="notif-photo">');
+                        tbl += (v.img_name == null ? '' : '<img src="'+ MEIMG + v.img_name + '" alt="post photo" class="notif-photo">');
                     tbl += '</td>';
                 tbl += '</tr>';
                 tbl += '<tr>';
@@ -376,26 +382,31 @@ $('#browse').click(function(event) {
     /* Act on the event */
     $('.fileimg').click();
 });
-/*function readImg(input){
-    if(input.files && input.files[0]){
-        var reader = new FileReader();
-        reader.onload = function(e){
+function readImg(input){
+     var reader = new FileReader();
+     reader.onload = function(e){
             $('.box-up').hide();
-            $('.up-pic').css('top','0px');
-            $('#show_img').removeClass('hidden');
-            $('#show_img').attr('src',e.target.result);
+            $('.up-pic').css({"top":"0px","height":"auto"});
+            $('.box-pic').css({"background":"none","border":"none"});
+          
+            $('#dropzone').attr('src',e.target.result);
+            $('#dropzone').css({"background":"none","border-radius":"5px","padding":"5px","background":"#e5e5e5"});
 
         }
+    if(input.files && input.files[0]){
         reader.readAsDataURL(input.files[0]);
-
     }
-}*/
-/*$('.fileimg').change(function(event) {
-    Act on the event 
+    else{    
+        reader.readAsDataURL(input);    
+    }
+}
+$('.fileimg').change(function(event) {
+   //Act on the event 
     readImg(this);
-});*/
+
+});
 /*cropit:: function*/
-$(function() {
+/*$(function() {
     $('.image-editor').cropit({
         
         imageBackground: true,
@@ -405,10 +416,10 @@ $(function() {
        
     });     
 
-});
+});*/
 //crop::click
-$('#crop').click(function(event) {
-    /* Act on the event */
+/*$('#crop').click(function(event) {
+   
     $('.cropit-preview-background-container').hide();
      imageData = $('.image-editor').cropit('export');
     $('.hidden-image-data').val(imageData);
@@ -426,7 +437,7 @@ $('#crop').click(function(event) {
     $('#upload-act').removeAttr('disabled');
    // console.log(imageData);
 
-});
+});*/
 
    /* $('#browse').submit(function() {
       // Move cropped image data to hidden input
@@ -445,13 +456,14 @@ $('#crop').click(function(event) {
 //fileimg::change
 $('.fileimg').on('change',function(){
 
-    $('#cancel').removeClass('hidden');
-    $('#crop').removeClass('hidden');
-    $('.cropit-preview-background-container').show();
     $('.c-p').remove();
      
     $('#browse').hide();
   
+});
+$('#dropzone').click(function(){
+     $('.fileimg').click();
+
 });
 //cancel::click
 $('#cancel').click(function(event) {
@@ -632,7 +644,7 @@ $('.me-post').click(function(event) {
         //console.log(r);
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
-            $('#usern').text(v.username);
+            $('.usern').text(v.username);
             $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
             $('#time-string').text(v.timeString);
             $('#c-like').addClass('ref-'+ v.id_img);
@@ -736,5 +748,28 @@ function discard_img(id,more = 1){
         alert('test');
     }
 })*/
+$(function(){
+    $('.box-pic').on('dragenter',function(e){
+
+        e.stopPropagation();
+        e.preventDefault();
+
+        $(this).css('background','#e5e5e5');
+    })
+     $('.box-pic').on('dragover',function(e){
+           e.stopPropagation();
+        e.preventDefault();
+        $(this).css('background','#e5e5e5');
+    })
+      $('.box-pic').on('drop',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        readImg(e.originalEvent.dataTransfer.files[0]);
+        $(this).css('background','green');
+        console.log(e.originalEvent.dataTransfer.files);
+        
+    })
+
+});
 
   </script>

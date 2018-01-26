@@ -357,7 +357,7 @@ class Master_model extends CI_Model
 		}
 
 	}
-	public function uploadImg($uploadPath, $ImgName, $maxSize, $maxWidth, $maxHeight, $inputName, $allowtypefile = '')
+	public function uploadImg($uploadPath, $ImgName, $maxSize, $maxWidth, $maxHeight, $inputName, $allowtypefile = '',$resize = false)
 	{
 		$allowtype = $allowtypefile == '' ? 'gif|jpg|png|jpeg' : $allowtypefile;
 		
@@ -376,20 +376,25 @@ class Master_model extends CI_Model
 		$this->upload->initialize($config);
 		#echo $inputName;
 		#exit;
-		if (!$this->upload->do_upload('img'))					
+		if (!$this->upload->do_upload($inputName))					
 		{
-			$error = $this->upload->display_errors('','');
+			$error = $this->upload->display_errors();
+			$error = str_replace("'", "\' ", $error);
 			echo "
 			<script>
 				alert('".$error."');
 				//window.history.go(-1);
 			</script>
 			";
+			#echo $error;
+			return false;
 			exit;
 		}else{
 			$uploadData = $this->upload->data();
-			echo $uploadPath.$uploadData['file_name'];
-			$this->resizeImg($uploadPath.$uploadData['file_name']);
+			if($resize == true ){
+				$this->resizeImg($uploadPath.$uploadData['file_name']);
+			}
+			
 			return $uploadData;
 		}		
 	}
