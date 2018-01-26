@@ -975,7 +975,7 @@ footer{
     z-index: 2;
 }
 .h-142{
-    height: 142px;
+    height: 132px;
 }
 .t-65{
     top: 54px !important;
@@ -1079,7 +1079,7 @@ ul, li {
     width: 79%;
     height: 189px;
     float: left;
-    background-color: #184184;
+    /* background-color: #184184; */
     margin-left: -10px;
     padding-right: 10px;
 }
@@ -1259,8 +1259,9 @@ ul, li {
     overflow: hidden;
 }
 .img-pemain>img{
-    height: 100%;
-    border-radius: 50%;
+    min-height: 100%;
+    width: 100%;
+    /* border-radius: 50%; */
 }
 .box-pemain>table{
     position: relative;
@@ -1479,13 +1480,15 @@ ul, li {
     height: 150px;
     overflow: hidden;
     border-radius: 50%;
-    top: -85px;
+    top: 125px;
     left: 105px;
 }
 .box-img-radius img{
-    width: 100%;
+    /* width: 100%; */
     /* height: 100%; */
     /* margin-left: -20%; */
+    max-width: 130%;
+    min-height: 100%;
 }
 .over-in{
     overflow: inherit;
@@ -1497,7 +1500,8 @@ ul, li {
     font-weight: 600;
 }
 .profile-pemain>h3{
-    margin: 10px;
+    /* margin: 10px; */
+    margin: 10px 0 0 287px;
     font-size: 2em;
     font-weight: 100;
 }
@@ -3386,7 +3390,7 @@ ul, li {
     width: 100%;
 }
 .news-pic{
-    height: 533px;
+    /* height: 533px; */
 }
 .news-pic img{
     width:690px;
@@ -4557,4 +4561,41 @@ height: 100%;
 .teks-p{
     padding-left: 8px;
     font-size: .65em;
+}
+.dataTables_filter input{
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+.dataTables_wrapper table{
+    width: 100%;
+    margin-top: 30px;
+    display: block;
+    float: left;
+    border: 1px solid gainsboro;
+    box-sizing: border-box;
+    border-radius: 5px;
+    overflow: hidden;
+}
+#example_info, #example_paginate{
+    font-size: .8em;
+}
+#example_paginate a:hover{
+    font-weight: 600;
+}
+.w-blue{
+    position: absolute;
+    background-color: #1b3f89;
+    height: 320px;
+    top: 0px;
+    width: 100%;
+    z-index: -1;
+}
+.w-blue img{
+    height: 189px;
+    bottom: 0px;
+    position: absolute;
+}
+.cell-border .odd img, .cell-border .even img{
+    width: 170% !important;
+    margin-left: -35%;
 }
