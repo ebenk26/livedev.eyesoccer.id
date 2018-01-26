@@ -96,7 +96,7 @@ define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
 define('MEURL',base_url().'eyeme/');
 define('MEIMG',base_url().'upload/eyeme/');
-define('IMGPATH','./img/eyeme/');
+define('IMGPATH','./upload/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
 define('DPIC',sIMGPATH.'user-discover.png');

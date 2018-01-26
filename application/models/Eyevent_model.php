@@ -40,7 +40,9 @@ class Eyevent_model extends CI_Model
 							c.logo as logo_a,
 							d.logo as logo_b,
 							c.name as club_a,
-							d.name as club_b');
+							d.name as club_b,
+							c.url as url_a,
+							d.url as url_b');
 
 		$this->db->from('tbl_jadwal_event AS a');
 

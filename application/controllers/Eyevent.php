@@ -93,18 +93,44 @@ class Eyevent extends CI_Controller {
 		$data['hasil_today2'] 		= $this->Eyevent_model->get_hasil_today2();
 		$data['eyenews_main'] 		= $this->Eyevent_model->get_eyenews_main();
 		
-		$data['video_eyetube']		= $this->Eyevent_model->get_eyetube_satu();		
+		$data['video_eyetube']		= $this->Eyevent_model->get_eyetube_satu();
+		$data['kompetisi']			= array(array('competition'=>'Liga Inggris','value'=>'liga_inggris'),array('competition'=>'Liga Italia','value'=>'liga_italia'),array('competition'=>'Liga Spanyol','value'=>'liga_spanyol'));
 
 		
 		$data["extrascript"] 	= $this->load->view('eyetube/script_index', '', true);
 		
-		$data['kanal'] 	= "eyevent";
-		$data["kanan"]	= $this->load->view('eyevent/right_content', $data, true);
-		$data["jadwal"]	= $this->load->view('eyevent/jadwal', $data, true);
-		$data["hasil"]	= $this->load->view('eyevent/hasil', $data, true);
-		$data["body"] 	= $this->load->view('eyevent/index', $data, true);
+		$data['kanal'] 			= "eyevent";
+		$data["kanan_kalender"]	= $this->load->view('eyevent/date_picker', $data, true);
+		$data["kanan_topskor"]	= $this->load->view('eyevent/top_skor', $data, true);
+		$data["jadwal"]			= $this->load->view('eyevent/jadwal', $data, true);
+		$data["klasemen"]		= $this->load->view('eyevent/klasemen', $data, true);
+		$data["body"] 			= $this->load->view('eyevent/index', $data, true);
 
 		$this->load->view('template/static',$data);
+	}
+
+	public function api_detail($event_id)
+	{
+		$url 	= $this->config->item('api_url')."event/$event_id";
+		$cred 	= $this->config->item('credential');
+
+		$event_data	= array(
+								'startdate' => '',
+								'enddate' => '',
+								'related' => true,
+		);
+
+
+		$model 			=  $this->excurl->remoteCall($url,$cred,$event_data);
+
+		$data["model"] = json_decode($model);
+		// return json_decode($model);
+		
+		$html = $this->load->view('eyevent/detail',$data, true);
+
+		echo json_encode(array('html' => $html));
+
+
 	}
 	
 	public function detail($eyevent_id=null,$action=null)
@@ -112,27 +138,13 @@ class Eyevent extends CI_Controller {
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+
+		$data["event_id"] 	= $eyevent_id;
+
+		$data["body"] 	= $this->load->view('eyevent/detail_abu', $data, true);
+		$data['kanal'] 	= "eyevent";
 		
-		$cmd_ads=$this->db->query("select * from tbl_ads")->result_array();
-		$i=0;
-		foreach($cmd_ads as $ads){
-		$e=0;
-		foreach($ads as $key => $val)
-		{
-		$array[$i][$e] =  $val;
-		$e++;
-		}		
-		$i++;
-		}
-		$data["array"]=$array;
-		$data["eyevent_id"]=$eyevent_id;
-		$data["action"]=$action;
-		$data["page"]="home";
-		$data["popup"]=$array[14][3];
-		//$data["body"]=$this->load->view('home/index', '', true);
-		$data["body"]=$this->load->view('eyevent/detail', $data, true);
-		//$this->load->view('template-front-end',$data);
-		$this->load->view('template-baru',$data);
+		$this->load->view('template/static',$data);
 	}
 	
 	
@@ -287,12 +299,15 @@ class Eyevent extends CI_Controller {
 
 		
 		$data["extrascript"] 	= $this->load->view('eyetube/script_index', '', true);
+
+		$data['kompetisi']			= array(array('competition'=>'Liga Inggris','value'=>'liga_inggris'),array('competition'=>'Liga Italia','value'=>'liga_italia'),array('competition'=>'Liga Spanyol','value'=>'liga_spanyol'),array('competition'=>'Liga Indonesia 1','value'=>'liga_indonesia'));
 		
-		$data['kanal'] 	= "eyevent";
-		$data["kanan"]	= $this->load->view('eyevent/right_content', $data, true);
-		$data["jadwal"]	= $this->load->view('eyevent/jadwal', $data, true);
-		$data["hasil"]	= $this->load->view('eyevent/hasil', $data, true);
-		$data["body"] 	= $this->load->view('eyevent/index', $data, true);
+		$data['kanal'] 			= "eyevent";
+		$data["kanan_kalender"]	= $this->load->view('eyevent/date_picker', $data, true);
+		$data["kanan_topskor"]	= $this->load->view('eyevent/top_skor', $data, true);
+		$data["jadwal"]			= $this->load->view('eyevent/jadwal', $data, true);
+		$data["klasemen"]		= $this->load->view('eyevent/klasemen', $data, true);
+		$data["body"] 			= $this->load->view('eyevent/index', $data, true);
 
 		$this->load->view('template/static',$data);
 	}
