@@ -383,9 +383,8 @@ $('#browse').click(function(event) {
     $('.fileimg').click();
 });
 function readImg(input){
-    if(input.files && input.files[0]){
-        var reader = new FileReader();
-        reader.onload = function(e){
+     var reader = new FileReader();
+     reader.onload = function(e){
             $('.box-up').hide();
             $('.up-pic').css({"top":"0px","height":"auto"});
             $('.box-pic').css({"background":"none","border":"none"});
@@ -394,13 +393,17 @@ function readImg(input){
             $('#dropzone').css({"background":"none","border-radius":"5px","padding":"5px","background":"#e5e5e5"});
 
         }
+    if(input.files && input.files[0]){
         reader.readAsDataURL(input.files[0]);
-
+    }
+    else{    
+        reader.readAsDataURL(input);    
     }
 }
 $('.fileimg').change(function(event) {
    //Act on the event 
     readImg(this);
+
 });
 /*cropit:: function*/
 /*$(function() {
@@ -745,5 +748,28 @@ function discard_img(id,more = 1){
         alert('test');
     }
 })*/
+$(function(){
+    $('.box-pic').on('dragenter',function(e){
+
+        e.stopPropagation();
+        e.preventDefault();
+
+        $(this).css('background','#e5e5e5');
+    })
+     $('.box-pic').on('dragover',function(e){
+           e.stopPropagation();
+        e.preventDefault();
+        $(this).css('background','#e5e5e5');
+    })
+      $('.box-pic').on('drop',function(e){
+        e.stopPropagation();
+        e.preventDefault();
+        readImg(e.originalEvent.dataTransfer.files[0]);
+        $(this).css('background','green');
+        console.log(e.originalEvent.dataTransfer.files);
+        
+    })
+
+});
 
   </script>
