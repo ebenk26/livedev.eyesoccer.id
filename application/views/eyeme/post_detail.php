@@ -11,9 +11,10 @@
             </div>
             <div class="d-p-b-r p-r">
                 <div class="detail-n-p">
-                    <img class="pp" src="assets/img/d.jpg" alt="" id="img-user">
-                    <a href="" id="usern"></a>
+                    <img class="pp" src="#" id="img-user">
+                    <a href="" class="usern"></a>
                 </div>
+
                 <div class="container d-comment">
                     
                 </div>

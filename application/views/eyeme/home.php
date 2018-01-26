@@ -23,7 +23,7 @@
                     <div class="p-r titik3 fl-r">
                         <?php if($v['id_member'] == $id_member){
                             echo '<i class="material-icons ikon" onclick="discard_img('.$v['id_img'].','.count($imgFollowing).')">delete</i>';
-            }?> 
+                        }?> 
                     
                 </div>
             </div>

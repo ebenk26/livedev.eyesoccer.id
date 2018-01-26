@@ -2356,8 +2356,12 @@ ul, li {
 .d-p-b-l{
     width: 550px;
     height: 550px;
-    margin-left: 42px;
+    left: 42px;
     background:#e4e4e4;
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    max-height: 540px;
 }
 .d-p-b-r{
     width: 350px;
@@ -2368,8 +2372,8 @@ ul, li {
     margin-left: 42px;
 }
 .d-p-b-l i, .d-p-b-l img{
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 .arrow-l{
     top: 295px;
