@@ -3541,7 +3541,8 @@ ey{
     font-weight: 400;
     position: relative;
     top: 30px;
-    left: 383px;
+    float: unset;
+    margin: 0 auto;
 }
 .frm-login b{
     font-weight: 500;

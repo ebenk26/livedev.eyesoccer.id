@@ -37,7 +37,7 @@ nav{
     -webkit-font-smoothing: antialiased;
     outline: none;
 }
-a img, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content{
+a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content{
     cursor: pointer;
 }
 a{
@@ -4011,7 +4011,8 @@ ey{
     font-weight: 400;
     position: relative;
     top: 30px;
-    left: 383px;
+    float: unset;
+    margin: 0 auto;
 }
 .frm-login b{
     font-weight: 500;
@@ -4604,6 +4605,6 @@ height: 100%;
     position: absolute;
 }
 .cell-border .odd img, .cell-border .even img{
-    width: 170% !important;
-    margin-left: -35%;
+    width: 130% !important;
+    margin-left: -15%;
 }
