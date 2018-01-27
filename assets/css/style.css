@@ -105,7 +105,11 @@ input, button {
     outline: none;
 }
 video{
-    background-color: whitesmoke;
+    background-color: black;
+}
+video[poster=""]{
+    width: 100%;
+    object-fit: cover;
 }
 .w-100{
     width: 100% !important;
@@ -2119,6 +2123,7 @@ ul, li {
     left: 110px;
     width: 40px;
     height: 40px;
+    display: none;
 }
 #epSlide td{
     padding: 2px 0px 0px 4px;
@@ -4436,10 +4441,13 @@ ey{
 .over-x::-webkit-scrollbar-thumb {
     background: gainsboro; 
     border-radius: 10px;
-    box-shadow: 0 -1px 1px 0px grey;
+    /* box-shadow: 0 -1px 1px 0px grey; */
+    box-shadow: inset 0 -1px 1px 0px grey;
+    cursor: pointer;
 }
 .over-x::-webkit-scrollbar-thumb:hover {
-    background: rgb(185, 185, 185); 
+    /* background: rgb(185, 185, 185);  */
+    background-color: #1976D2;
 }
 .ar-menu-3{
 	z-index: -1;
