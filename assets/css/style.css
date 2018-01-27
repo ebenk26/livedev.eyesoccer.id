@@ -54,10 +54,10 @@ hr{
     border: none;
     border-bottom: 1px solid gainsboro;
 }
-::-webkit-scrollbar {
-    /* width: 0px; */
-    /* background: transparent; */
-}
+/* ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+} */
 ::scrollbar {
     width: 0px;
     background: transparent;
@@ -3394,9 +3394,9 @@ ul, li {
 .down-r-tube, rc{
     width: 100%;
 }
-.news-pic{
-    /* height: 533px; */
-}
+/* .news-pic{
+    height: 533px;
+} */
 .news-pic img{
     width:690px;
     height:445px;
@@ -4353,9 +4353,6 @@ ey{
 .col-emoji{
     padding-bottom: 15px;
 }
-.col-emoji a{
-
-}
 .col-emoji span{
     display: block;
     text-align: center;
@@ -4375,9 +4372,9 @@ ey{
 .box-img-90 img{
     width: 90%;
 }
-.enews-berita-terkait{
+/* .enews-berita-terkait{
 
-}
+} */
 .enews-berita-terkait h4{
     font-weight: 600;
     color: #E53935;

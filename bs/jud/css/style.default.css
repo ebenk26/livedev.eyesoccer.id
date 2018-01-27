@@ -1917,7 +1917,7 @@ fieldset[disabled] .btn-template-primary.active {
   display: inline;
   font-size: 50px;
   line-height: normal;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
 }
 .packages .package .price .period {
   line-height: normal;
