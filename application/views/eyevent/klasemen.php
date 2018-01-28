@@ -1,6 +1,6 @@
 <div class="container eyv m-t-20" style="width: 100%;">
 
-	<div class="et-content2" style="padding-left: 55px;padding-top: 13px;">
+	<div class="et-content2" style="padding-left: 55px;">
 	    <span class="jp">KLASEMEN</span>
 	    
         <div class="border-box">
@@ -236,7 +236,7 @@
             </span>                      
         </div>
 	</div>
-	<div class="et-content2">
+	<div class="et-content2" style="margin-top: 1px;">
 		<select id="select_league" name="" selected="true" class="slc-musim fl-r">
 			<?php
 				foreach($kompetisi as $row)

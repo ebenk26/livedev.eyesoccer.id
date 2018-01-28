@@ -2,24 +2,26 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".$id."'")->row_array();
-?>
-<br><br><br><br>
+?></div>
+<div class="w-blue">
+    <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
+</div><div class="desktop">
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
             <div class="left">
-                <svg style="height: 189px;">
+                <!-- <svg style="height: 189px;">
                     <g id="Layer_2" data-name="Layer 2">
                         <g id="Layer_1-2" data-name="Layer 1">
                             <polygon class="fill" points="132 0 22 190 0 190 110 0 132 0" />
                             <polygon class="fill" points="330 0 330 190 42 190 152 0 330 0" />
                         </g>
                     </g>
-                </svg>
+                </svg> -->
                 <div class="box-img-radius">
                     <img src="<?=imgUrl()?>systems/player_storage/<?=$ofisial["official_photo"]?>" alt="">                        
                 </div>
             </div>
-            <div class="right fill">
+            <div class="right">
                 <div class="t-30 mt-53">
                     <table>
                         <tbody>

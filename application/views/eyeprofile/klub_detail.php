@@ -4,24 +4,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $club=($this->db->query("SELECT * FROM tbl_club WHERE club_id='".$cid."' LIMIT 1")->row_array());
 $official=$this->db->query("SELECT * FROM tbl_official_team WHERE club_now='".$cid."' ORDER BY official_id ASC");
 $total_official=($official->num_rows());
-?>
-<br><br><br><br>
+?></div>
+<div class="w-blue">
+    <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
+</div><div class="desktop">
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
             <div class="left">
-                <svg style="height: 189px;">
+                <!-- <svg style="height: 189px;">
                     <g id="Layer_2" data-name="Layer 2">
                         <g id="Layer_1-2" data-name="Layer 1">
                             <polygon class="fill" points="132 0 22 190 0 190 110 0 132 0" />
                             <polygon class="fill" points="330 0 330 190 42 190 152 0 330 0" />
                         </g>
                     </g>
-                </svg>
+                </svg> -->
                 <div class="box-img-radius">
                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>" alt="">                        
                 </div>
             </div>
-            <div class="right fill">
+            <div class="right">
                 <div class="t-30 mt-53">
 					<table>
                         <tr>
@@ -77,9 +79,9 @@ $total_official=($official->num_rows());
         </div>
     </div>
 
-    <div class="desktop pd-t-280">
+    <div class="desktop">
     <div class="center-desktop m-0">
-        <div class="w-60 m-r-1 pd-t-20 formasi">
+        <div class="w-60 m-r-1 pd-t-100 formasi">
             <div class="container ofisial-detail">
                 <h3>Latar Belakang</h3>
                 <p>

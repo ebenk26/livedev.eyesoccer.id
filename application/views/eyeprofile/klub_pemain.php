@@ -1,26 +1,29 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<br><br>
+</div>
+<div class="w-blue">
+    <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
+</div><div class="desktop">
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
 		<?php
 		foreach($get_klub_detail as $row){
 		?>		
 			<div class="left">
-                <svg style="height: 189px;">
+                <!-- <svg style="height: 189px;">
                     <g id="Layer_2" data-name="Layer 2">
                         <g id="Layer_1-2" data-name="Layer 1">
                             <polygon class="fill" points="132 0 22 190 0 190 110 0 132 0" />
                             <polygon class="fill" points="330 0 330 190 42 190 152 0 330 0" />
                         </g>
                     </g>
-                </svg>
+                </svg> -->
                 <div class="box-img-radius">
                     <img src="<?=imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
                 </div>
             </div>
-            <div class="right fill">
+            <div class="right">
                 <div class="t-30">
                     <h3>INFO</h3>
                     <table>
@@ -107,8 +110,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
         </div>
     </div>
-    <div class="desktop pd-t-280">	
-		<div class="center-desktop m-0 pd-t-20 maintab" id="tabs-pemain">
+    <div class="desktop">	
+			<div class="center-desktop m-0 pd-t-100 maintab" id="tabs-pemain">
 			<?php
 			$no = 1;
 			foreach($get_player_list as $row){		
@@ -142,7 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div><?php }?>                                      
 		</div>
 		
-		<div class="center-desktop m-0 pd-t-20 maintab" style="display:none;" id="tabs-ofisial">
+		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-ofisial">
 			<?php
 			$no = 1;
 			foreach($get_official_list as $row){		
@@ -176,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div><?php }?>                                      
 		</div>
 		
-		<div class="center-desktop m-0 pd-t-20 maintab" style="display:none;" id="tabs-supporter">
+		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-supporter">
 			<div style="color: grey;padding-top: 100px;padding-bottom: 100px;">Segera Hadir...</div>
 		</div>
 	

@@ -1,3 +1,4 @@
+</div>
 <style type="text/css">
     .col-emoji{
         cursor: pointer;
