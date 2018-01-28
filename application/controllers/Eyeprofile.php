@@ -168,21 +168,19 @@ class Eyeprofile extends CI_Controller {
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
 		$data["page"]="eyeprofile";		
 		
-		if(urldecode($liga) == 'Liga Indonesia 1'){
-			$nama_liga = 'Liga Indonesia 1';
+		$jml_klub = null;
+		$nama_liga = urldecode($liga);
+		$data["title_liga"] = $nama_liga;
+		if($nama_liga == 'Liga Indonesia 1'){
 			$jml_klub = 18;	
-			$data["title_liga"] = $nama_liga;
-		}else if(urldecode($liga) == 'Liga Indonesia 2'){
+		}else if($nama_liga == 'Liga Indonesia 2'){
 			$nama_liga = 'Liga Indonesia 2';
 			$jml_klub = 24;
 			$data["title_liga"] = $nama_liga;
-		}else{
-			$nama_liga = 'Liga Indonesia 3';
-			$jml_klub = 32;
-			$data["title_liga"] = $nama_liga;
 		}
 		
-		$data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
+		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
+		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
 
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
@@ -230,21 +228,19 @@ class Eyeprofile extends CI_Controller {
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
 		}
-		if(urldecode($liga) == 'Liga Indonesia 1'){
-			$nama_liga = 'Liga Indonesia 1';
+		$jml_klub = null;
+		$nama_liga = urldecode($liga);
+		$data["title_liga"] = $nama_liga;
+		if($nama_liga == 'Liga Indonesia 1'){
 			$jml_klub = 18;	
-			$data["title_liga"] = $nama_liga;
-		}else if(urldecode($liga) == 'Liga Indonesia 2'){
+		}else if($nama_liga == 'Liga Indonesia 2'){
 			$nama_liga = 'Liga Indonesia 2';
 			$jml_klub = 24;
 			$data["title_liga"] = $nama_liga;
-		}else{
-			$nama_liga = 'Liga Indonesia 3';
-			$jml_klub = 32;
-			$data["title_liga"] = $nama_liga;
 		}
 		
-		$data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
+		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
+		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
 
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
@@ -296,7 +292,8 @@ class Eyeprofile extends CI_Controller {
 			$data["title_liga"] = $nama_liga;
 		}
 		
-		$data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
+		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
+		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
 
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);

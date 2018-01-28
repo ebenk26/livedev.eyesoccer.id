@@ -80,9 +80,14 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_player_liga($liga,$nationality)
 	{
+		if($liga == 'non liga'){
+			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
+		}else{
+			$compt = "b.competition = '".$liga."'";
+		}
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
 									join tbl_club b on a.club_id=b.club_id
-									where b.competition = '".$liga."'")->result_array();
+									where ".$compt."")->result_array();
 		return $query;
 	}
 	
@@ -94,9 +99,14 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_player_liga_strange($liga,$nationality='indonesia')
 	{
+		if($liga == 'non liga'){
+			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
+		}else{
+			$compt = "b.competition = '".$liga."'";
+		}
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
 									join tbl_club b on a.club_id=b.club_id
-									where b.competition = '".$liga."' and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."')")->result_array();
+									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."')")->result_array();
 		return $query;
 	}
 	

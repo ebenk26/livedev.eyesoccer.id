@@ -19,12 +19,13 @@
             <select id="competition_change" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
 					<option value="">--Pilih Liga--</option>
 				<?php
-					foreach($kompetisi_pro as $row){
+					foreach($get_all_kompetisi as $row){
 				?>
 					<option value="<?php echo base_url()."eyeprofile/official/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
 				<?php
 					}
 				?>
+					<option value="<?php echo base_url()."eyeprofile/official/non liga"?>">Non Liga</option>
                 </select>
         </div>
     </div>
