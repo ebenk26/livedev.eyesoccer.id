@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
-						<span><?=$no++?></span>
+						<span><?=$row['number']?></span>
 						<h1><?=$row['name']?></h1>
 						<span><?=$row['position']?></span>
 					</div>
@@ -152,7 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
-						<span><?=$no++?></span>
+						<span></span>
 						<h1><?=$row['name']?></h1>
 						<span><?=$row['position']?></span>
 					</div>
