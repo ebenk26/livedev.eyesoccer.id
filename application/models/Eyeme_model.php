@@ -510,7 +510,7 @@ class Eyeme_model extends Master_model
 					FROM `me_notif` AS A
 					INNER JOIN `tbl_member` AS C
 					ON A.`id_member_act` = C.`id_member`
-					WHERE A.`id_member` = $id_member
+					WHERE A.`id_member` = $id_member AND A.`id_member_act` <> $id_member
 					ORDER BY last_update DESC
 					";
 		if($limit != ''){

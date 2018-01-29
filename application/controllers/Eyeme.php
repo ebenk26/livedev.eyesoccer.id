@@ -60,7 +60,6 @@ class Eyeme extends CI_Controller {
 				$arr[$i]['has_like']    = $this->emod->hasLike($this->id_member,$v->id_img);#check kondisi like
 				$arr[$i]['id_member']   = $v->id_member;
 				$arr[$i]['img_name']    = $v->img_name;
-				$arr[$i]['img_thumb']   = $v->img_thumb;
 				$arr[$i]['img_alt']     = $v->img_alt;
 				$arr[$i]['dp']          = (count($getPic) > 0 ? $getPic[0]->pic : '');
 				$arr[$i]['username']    = $v->username;	
@@ -349,15 +348,23 @@ class Eyeme extends CI_Controller {
 		$maxHeight = 2000; 
 		$inputName = 'upl_img';
 		$do        = $this->mod->uploadImg($uploadPath, $newName, $maxSize,$maxWidth, $maxHeight,$inputName);
-		$dataImg   = array('id_member' => $this->id_member,
+		
+		if($do == false){
+			$arr['msg'] = 'gagal upload foto';
+
+		}
+		else{
+			$arr['msg'] = 'Berhasil Upload Foto';
+			$dataImg   = array('id_member' => $this->id_member,
 						'img_caption' => $imgCaption,
 						'img_name'    => $newName,
 						'date_create' => NOW,
 						'last_update' => NOW,
 						'active'      => '1');
 
-		$this->db->insert('me_img',$dataImg);
-		$arr['msg']  = (!$do ? 'Berhasil Upload Foto' : 'gagal upload Foto');
+			$this->db->insert('me_img',$dataImg);
+		}	
+	
 		$response = json_encode($arr);
 		echo '<script>alert(\''.$arr['msg'].'\')</script>';
 		redirect(MEPROFILE.$this->username,'refresh');
