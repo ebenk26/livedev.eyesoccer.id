@@ -223,7 +223,6 @@ class Eyeme_model extends Master_model
 					A.img_caption,
 					A.id_member,
 					A.img_name,
-					A.img_thumb,
 					A.img_alt,
 					A.last_update,
 					A.date_create,
@@ -264,7 +263,6 @@ class Eyeme_model extends Master_model
 				A.img_caption,
 				A.id_member,
 				A.img_name,
-				A.img_thumb,
 				A.img_alt,
 				A.date_create,
 				A.last_update,
@@ -461,12 +459,11 @@ class Eyeme_model extends Master_model
 		$insertLike = $this->db->insert('me_like',$dataLike);#insert data ke dalam table me_like
 		$like_id    = $this->db->insert_id();#mengambil last_id
 
-		$select      = array('id_member','id_img','img_thumb','img_name','img_alt');
+		$select      = array('id_member','id_img','img_name','img_alt');
 		$getIdMember = $this->getAll('me_img',array('id_img'=> $id_img),$select); 
 		#mengambil id_member yang mempunyai gambar
 		$id_img        = $getIdMember[0]->id_img;
 		$id_member_img = $getIdMember[0]->id_member;
-		$img_thumb     = $getIdMember[0]->img_thumb;
 		$img_alt  	   = $getIdMember[0]->img_name;
 
 		$dataNotif  = array(
@@ -475,7 +472,6 @@ class Eyeme_model extends Master_model
 				'id_img'	    => $id_img,#id gambar yang di beri notif
 				'notif_type'    => 'LIK'.$like_id,
 				'notif_content' => 'LIKE',
-				'img_thumb'		=> $img_thumb,
 				'img_alt'		=> $img_alt,
 				'date_create'   => NOW,
 				'last_update'   => NOW);
@@ -556,7 +552,6 @@ class Eyeme_model extends Master_model
 				'id_img'		=> NULL,
 				'notif_type'    => 'FOL',
 				'notif_content' => 'FOLLOW',
-				'img_thumb'		=> NULL,
 				'img_alt'	    => NULL,
 				'date_create'   => NOW,
 				'last_update'   => NOW);
@@ -684,7 +679,6 @@ class Eyeme_model extends Master_model
 		$data = array('img_name'=> $imageName,
 					 'id_member'  => $id_member,
 					 'img_caption' => $caption,
-					 'img_thumb'   => 'thumb_'.$imageName,
 					 'img_alt'    => substr($caption, 0,30),
 					 'date_create' => NOW,
 					 'last_update'  => NOW,
