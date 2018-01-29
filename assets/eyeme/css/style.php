@@ -2362,6 +2362,7 @@ ul, li {
     position: relative;
     vertical-align: middle;
     max-height: 540px;
+    text-align: center;
 }
 .d-p-b-r{
     width: 350px;
