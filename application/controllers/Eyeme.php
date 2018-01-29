@@ -357,7 +357,7 @@ class Eyeme extends CI_Controller {
 						'active'      => '1');
 
 		$this->db->insert('me_img',$dataImg);
-		$arr      = array('msg'=> 'Berhasil Upload Gambar');
+		$arr['msg']  = (!$do ? 'Berhasil Upload Foto' : 'gagal upload Foto');
 		$response = json_encode($arr);
 		echo '<script>alert(\''.$arr['msg'].'\')</script>';
 		redirect(MEPROFILE.$this->username,'refresh');
