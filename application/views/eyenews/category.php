@@ -1,4 +1,4 @@
-
+</div>
 		<style>
 			.pagination > .active > a {
 				z-index:1;
@@ -15,6 +15,7 @@
 				<!-- <li>Pemain</li> -->
 			</ul>
 		</div>
+		<div class="desktop">
         <div class="center-desktop m-0">
             <div class="menu-3 m-0">
                 <div class="over-x m-0">

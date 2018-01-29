@@ -10,21 +10,22 @@
 	<div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>
-                    <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
-                    <li class="active"><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                    <li class="active"><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
             <select id="competition_change" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
 					<option value="">--Pilih Liga--</option>
 				<?php
-					foreach($kompetisi_pro as $row){
+					foreach($get_all_kompetisi as $row){
 				?>
 					<option value="<?php echo base_url()."eyeprofile/pemain/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
 				<?php
 					}
 				?>
+					<option value="<?php echo base_url()."eyeprofile/pemain/non liga"?>">Non Liga</option>
                 </select>
         </div>
     </div>
@@ -38,6 +39,7 @@
                         <tr>
                             <td>Level Liga</td>
                             <td>: <?php echo $title_liga; ?></td>
+                            <input type="hidden" class="hidden_title" value="<?php echo $title_liga; ?>"/>
                         </tr>
                         <tr>
                             <td>Jumlah Klub</td>
@@ -97,7 +99,8 @@
     </div>
 	<script>
 		var url = $(location).attr('href');
-		var fn = url.split('/').reverse()[0];
+		// var fn = url.split('/').reverse()[0];
+		var fn = $(".hidden_title").val();
 		$('#example').DataTable( {
   			"order":[[5,"desc"]],
             "processing": true,

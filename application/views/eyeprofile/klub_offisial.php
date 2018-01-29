@@ -100,7 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
         </div>-->
     </div>
-    <div class="desktop pd-t-280">
+    <div class="desktop">
     <div class="center-desktop m-0 option">
         <span>Pilih Musim</span>
         <select id="" name="" selected="true" class="slc-musim">
@@ -108,7 +108,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </select>
         <button class="fl-r btn-orange" type="button"><img src="assets/img/" alt=""> Tambah Ofisial</button>
     </div>
-    <div class="center-desktop m-0 pd-t-20">
+    <div class="center-desktop m-0 pd-t-100">
 			<?php
 			$no = 1;
 			foreach($official_klub as $data){

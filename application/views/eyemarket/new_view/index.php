@@ -6,7 +6,7 @@
     foreach ($products as $produk)
     {
 ?>
-        <div class="col-md-3 col-sm-4">
+        <div class="col-md-3 col-sm-4 col-xs-6 col-xxs-12">
             <div class="product">
                 <div class="image">
                     <a href="<?= base_url(); ?>eyemarket/detail/<?= $produk['toko']; ?>/<?= $produk['title_slug']; ?>">

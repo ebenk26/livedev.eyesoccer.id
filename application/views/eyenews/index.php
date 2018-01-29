@@ -1,3 +1,4 @@
+</div>
 <style>
 .pagging-enews-home .pagination > li > a, .pagination > li > span {
     color: rgb(200,0,0);

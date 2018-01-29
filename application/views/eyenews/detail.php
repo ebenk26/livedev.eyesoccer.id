@@ -1,4 +1,5 @@
-		<style>
+</div>
+<style>
 			.pagination > .active > a {
 				z-index:1;
 			}
@@ -23,6 +24,7 @@
 				<li><?php echo $kategori[0]->news_type;?></li>
 			</ul>
 		</div>
+		<div class="desktop">
 
 <?php
     foreach ($model as $value)
