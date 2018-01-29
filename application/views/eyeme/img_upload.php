@@ -4,33 +4,22 @@
         <div class="takepic-box m-0 p-r">
             <div class="pic-l">
                 <div class="container ">
-                    <input type="file" class="fileimg" name="upl_img">
-                        <div class="box-pic drp">
+                    
+                       
 
-                            <div class="up-pic tx-c p-r ">
-                                <div class="dz">
-                                <img src="" id="dropzone" >
-                               
-                                </div>
-                                    <ul class="box-up">
-                                        <li>
-                                            <i class="material-icons">cloud_upload</i>
-
-                                        </li>
-                                        <li>
-                                            <span>Drag your photo here</span>
-                                            
-                                        </li>
-                                        <li>
-                                            <span>Or</span>
-                                        </li>
-                                        <li>
-                                            <button class="btn-browse" type="button" style="z-index: 999" id="browse">Choose File</button>
-
-                                        </li>
-                                    </ul>
-                                
-                            </div> 
+                            <div id="dropzone">
+                               <div class="uplda">
+                                Seret Gambar Kamu Disini 
+                                <br>
+                                atau 
+                                <br>
+                                 <br>
+                                <i class="material-icons">cloud_upload</i>
+                                <br>
+                                Klik Disini
+                               </div>
+                                <input type="file" name="upl_img" class="fileimg"/>
+                            </div>
                         <div class="container rsz mt-10">
                             <div id="slidecontainer">
                                 <!--<input type="range" min="1" max="100" value="1" class="slider cropit-image-zoom-input" id="myRange">-->
@@ -39,7 +28,7 @@
                            
                             
                         </div>
-                    </div>
+                   
                 </div>
             </div>
             <div class="pic-r p-r">

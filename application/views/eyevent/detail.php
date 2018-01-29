@@ -73,9 +73,35 @@
                 </div>
                 <div class="tab-content" style="margin-top: 1em;">
                     <div id="jadwal-pertandingan" class="tab-pane fade in active">
-                        <h1>aaaaaa</h1>
+                        <?php
+                            foreach ($model->data->match_event as $value)
+                            { 
+                        ?>
+                                <table class="tb-hasil">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                
+                                                    <?=$value->team_a;?>
+                                                    <img src="<?php echo $value->url_logo_a; ?>" alt="">
+                                            </td>
+                                            <td>
+                                                <?= $value->score_a; ?> - <?= $value->score_b; ?>
+                                                <span><?= $value->match_location; ?></span>
+                                            </td>
+                                            <td>
+                                                
+                                                    <img src="<?php echo $value->url_logo_b; ?>" alt="">
+                                                    <?=$value->team_b;?>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        <?php        
+                            }
+                        ?>
                     </div>
-                    <div id="klasemen-pertandingan" class="tab-pane fade">
+                    <div id="klasemen" class="tab-pane fade">
                         <h1>vvvvvv</h1>
                     </div>
                 </div>

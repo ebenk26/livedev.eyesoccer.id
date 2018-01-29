@@ -54,7 +54,7 @@
             </div>
             <div class="p-r comment m-l-20">
                 <div>
-                    <a href="<?php echo MEPROFILE?>"><?php echo $img[0]->username?></a>
+                    <a href="<?php echo MEPROFILE.$img[0]->username?>"><?php echo $img[0]->username?></a>
                     <span><?php echo $img[0]->img_caption?></span>
                     
                 </div>
@@ -65,7 +65,7 @@
 
                              foreach($img[0]->comment as $k){
                                 echo '<li>';
-                                    echo '<a href="" >'.$k->username.'</a>';
+                                    echo '<a href="'.MEPROFILE.$k->username.'" >'.$k->username.'</a>';
                                     echo '<span>'.$k->comment.'</span>';
                                 echo '</li>';
                              }
