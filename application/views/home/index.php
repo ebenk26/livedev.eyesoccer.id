@@ -540,7 +540,7 @@
                     <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
-                    <div class="c-em-content2-container" style="top: -14px;">
+                    <div class="c-em-content2 container" style="top: -14px;">
                     	<?php 
                     		for($i=0;$i < 9 ; $i++){
                     			echo '<div class="eyeme-list">';

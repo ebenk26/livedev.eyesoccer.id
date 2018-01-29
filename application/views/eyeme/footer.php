@@ -379,10 +379,7 @@ $('#unlike').click(function(event) {
     /* Act on the event */
     alert($(this).attr('ref'));
 });
-$('#browse').click(function(event) {
-    /* Act on the event */
-    $('.fileimg').click();
-});
+
 function readImg(input){
      var reader = new FileReader();
      reader.onload = function(e){
@@ -772,14 +769,57 @@ $(function(){
         $(this).css('background','#e5e5e5');
     })
       $('.box-pic').on('drop',function(e){
+       // $('.fileimg').val(e);
         e.stopPropagation();
         e.preventDefault();
         readImg(e.originalEvent.dataTransfer.files[0]);
         $(this).css('background','green');
+        $('.fileimg').change();
         console.log(e.originalEvent.dataTransfer.files);
         
     })
 
 });
+
+
+var dropzone = $("#dropzone"),
+    input    = dropzone.find('input');
+
+dropzone.on({
+    dragenter : dragin,
+    dragleave : dragout
+});
+
+input.on('change', drop);
+input.on('change',function(){
+      $('.uplda').css('margin-top','0px');
+  });
+
+function dragin(e) { //function for drag into element, just turns the bix X white
+    $(dropzone).addClass('hover');
+}
+
+function dragout(e) { //function for dragging out of element                         
+    $(dropzone).removeClass('hover');
+}
+
+function drop(e) {
+    var file = this.files[0];
+    
+    $('#dropzone').removeClass('hover').addClass('dropped').find('img').remove();
+  
+    // upload file here
+    showfile(file); // showing file for demonstration ... 
+}
+
+function showfile(file) {
+    var reader = new FileReader(file);
+    reader.readAsDataURL(file);
+
+    reader.onload = function(e) {
+        $('#dropzone div').html($('<img />').attr('src', e.target.result).fadeIn());
+    }
+}
+
 
   </script>
