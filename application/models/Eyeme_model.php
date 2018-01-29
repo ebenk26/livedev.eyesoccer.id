@@ -314,6 +314,7 @@ class Eyeme_model extends Master_model
 		$timeString              = $getTime['timeString'];
 		$getImg[0]->timeString   = $timeString;
 		$getImg[0]->has_like     = $hasLike;
+		$getImg[0]->self         = $this->id_member;
 		return $getImg;
 	}
 	/**

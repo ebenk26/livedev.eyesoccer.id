@@ -654,8 +654,9 @@ $('.me-post').click(function(event) {
             $('#f-icon').addClass('first-icon-'+v.id_img);
             $('#s-icon').attr('ref',v.id_img);
             $('.comment').attr('rel',v.id_img);
-
-            if($id_member == v.id_member){
+            console.log($id_member);
+            console.log(v.id_member);
+            if($id_member == v.self){
 
                 $('.del-icon').html('<i class="material-icons " id="del" onclick="discard_img(' + v.id_img +',3)" >delete</i>');
                 

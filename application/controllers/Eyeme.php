@@ -335,6 +335,11 @@ class Eyeme extends CI_Controller {
 
 
 	}
+	/**
+
+		*fungsi upload_foto::
+		
+	*/
 	public function upload_foto()
 	{ 
 		$imgCaption  = $this->input->post('caption');

@@ -7,6 +7,8 @@ class Eyeprofile extends CI_Controller {
         parent::__construct();
 		   // $this->load->model('Eyemarket_model');
 			date_default_timezone_set('Asia/Jakarta');
+			$this->load->model('Master_model','mod');
+			$this->load->model('Eyeprofile_model','pmod');
 			$this->load->model('Eyeprofile_model');
 			$this->load->model('Home_model');
 			$this->load->helper(array('form','url','text','date'));
