@@ -84,7 +84,7 @@
                                     <?=$jdwl_nxt_ystd["club_b"]?>
                                 </a>
                             </td>
-                        </tr>                            
+                        </tr>
                     </tbody>
         <?php            
                 }
