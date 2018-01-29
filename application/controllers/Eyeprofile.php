@@ -355,7 +355,7 @@ class Eyeprofile extends CI_Controller {
 		$limitnum = 12*$val;
 		$compt = "and a.competition='".urldecode($liga)."'";
 		
-		if($liga == 'non liga'){
+		if(urldecode($liga) == 'non liga'){
 			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
 		}
 		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url

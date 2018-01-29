@@ -408,7 +408,7 @@
 					<div role="listbox" class="carousel-inner">                    
                         <div class="box item active">
                             <div class="box-vl pd-b-10">
-                                <a href="" class="vl">Video Lainnya</a>
+                                <a href="<?=base_url()?>eyetube" class="vl">Video Lainnya</a>
                                 <i class="material-icons r-vl">keyboard_arrow_right</i>                                
                             </div>
 							<?php
@@ -568,7 +568,7 @@
                             <div role="listbox" class="carousel-inner">                    
                                 <div class="box item active">
 									<x>
-                                        <a href="">Berita Lainnya</a>
+                                        <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
 								<?php
@@ -596,7 +596,7 @@
                                 </div>
                                 <div class="box item">
 									<x>
-                                        <a href="">Berita Lainnya</a>
+                                        <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
                                     </x>
 								<?php
@@ -693,7 +693,7 @@
             <h2 class="title ee">EyeVent</h2>
             <hr class="x-ee">
             <span>
-                <a href="<?=base_url()?>eventlainnya" class="el">Event Lainnya</a>
+                <a href="<?=base_url()?>eyevent" class="el">Event Lainnya</a>
                 <i class="material-icons r-el">keyboard_arrow_right</i>                                
             </span>
             <div class="container">
@@ -837,7 +837,7 @@
 							</table>
 						</div>
                         <div class="t-c-b">
-                            <button type="" class="btn-green">Lihat Jadwal Lainnya</button>
+                            <a href="<?=base_url()?>eyevent"><button type="" class="btn-green">Lihat Jadwal Lainnya</button></a>
                         </div>
                     </div>
                 </div>
@@ -942,7 +942,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 18){
+											if($i < 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -997,7 +997,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 18){
+											if($i < 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1052,7 +1052,7 @@
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
 											echo "<tr>";
-											if($i < 18){
+											if($i < 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1079,8 +1079,8 @@
 							?>
 							</tbody>
 						</table>
-                        <span>
-                            <a href="" class="ttl">Lihat Selengkapnya</a>
+                        <span style="display: none;">
+                            <a href="<?=base_url()?>eyenews" class="ttl">Lihat Selengkapnya</a>
                             <i class="material-icons r-ttl">keyboard_arrow_right</i>                                
                         </span>                      
                     </div>

@@ -496,8 +496,7 @@ function getTotalClub($liga)
 		$limit = 'limit 24';
 	}else if(urldecode($liga) == 'Liga Indonesia 1'){
 		$limit = 'limit 18';
-	}
-	if($liga == 'non liga'){
+	}else if(urldecode($liga) == 'non liga'){
 		$compt = "and competition in('SSB / Akademi Sepakbola')";
 	}
     $CI =& get_instance();
