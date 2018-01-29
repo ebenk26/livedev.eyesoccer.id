@@ -36,7 +36,7 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);
 	}	
 	
-	public function klub($liga=null)
+	public function klub($liga=null, $page=1)
 	{
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
@@ -44,8 +44,9 @@ class Eyeprofile extends CI_Controller {
 		//$this->load->view('eyeprofile/klub');
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"]="eyeprofile";	
+		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+		$data["liga"]=$liga;		
+		$data["page"]=$page;
 		$jml_klub = null;
 		$nama_liga = urldecode($liga);
 		$data["title_liga"] = $nama_liga;
@@ -344,5 +345,48 @@ class Eyeprofile extends CI_Controller {
 		$requestData= $_REQUEST;
 		$res = $this->Eyeprofile_model->get_list_official($requestData,urldecode($liga));
 		return $res;
+	}
+	
+	public function getClub($liga,$limit=null){
+		$val = $_POST["val"];
+		$val = $val-1;
+		$limitnum = 12*$val;
+		$compt = "and a.competition='".urldecode($liga)."'";
+		
+		if($liga == 'non liga'){
+			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
+		}
+		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url
+									FROM tbl_club a
+									LEFT JOIN tbl_player c on a.club_id = c.club_id
+									WHERE a.name not in ('ebenktestlagijgndidelete') ".$compt."
+									GROUP BY a.club_id ASC limit ".$limitnum.",12")->result_array();
+		// print_r ($query);
+		
+		echo "<div class='ep2box fl-l pd-t-20'>";		
+				foreach($query as $main){
+				echo '<a href="'.base_url().'eyeprofile/klub_detail/'.$main['url'].'" style="text-decoration:unset;color:#424242;">'.'<div class="box-content ep2 fl-l">';
+							if($main['logo_club'] == ""){
+								$main['logo_club'] = "7288LOGO UNTUK APLIKASI.jpg";
+							}
+						echo '<img src="'.imgUrl().'/systems/club_logo/'.$main['logo_club'].'" alt="">';
+						echo '<div class="detail">';
+							echo '<h2>'.$main['nama_club'].'</h2>';
+							echo '<h3>'.$main['competition'].'</h3>';
+							echo "<table>
+								<tr>
+									<td>Squad</td>";
+									echo "<td>: ".$main['squad']."</td>";
+								echo "</tr>
+								<tr>";
+									echo "<td>Manager</td>";
+									echo "<td>: ".getManager($main['club_id'])."</td>";
+								echo "</tr>
+							</table>
+						</div>
+					</div>
+				</a>";
+				}
+            echo "</div>";
 	}
 }

@@ -6,6 +6,27 @@
 	.ep2 h3 {
 		line-height: unset;
 	}
+	#shownav {
+		float: right;
+		margin-top: 20px;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+
+	#nav_tab {
+		background: #2f4050;
+		padding: 8px 10px 8px 10px;
+		margin-left: 2px;
+		color: #fff;
+		font-size: 12px;
+		text-decoration: none;
+		border: 1px solid #2f4050;
+		cursor: pointer;
+	}
+
+	#nav_tab .actnet {
+		background: #c09d3d;
+	}
 </style>
         <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
@@ -72,38 +93,25 @@
             </div>
         </div>
         <div class="center-desktop m-0">
-            <div class="ep2box fl-l pd-t-20">
-				<?php 				
-				foreach($club_main as $main){
-				?>
-				<a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['url']; ?>" style="text-decoration:unset;color:#424242;">
-					<div class="box-content ep2 fl-l">
-						<?php
-							if($main['logo_club'] == ""){
-								$main['logo_club'] = "7288LOGO UNTUK APLIKASI.jpg";
-							}
-						?>
-						<img src="<?=imgUrl()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt="">
-						<div class="detail">
-							<h2><?=$main['nama_club'];?></h2>
-							<h3><?=$main['competition'];?></h3>
-							<table>
-								<tr>
-									<td>Squad</td>
-									<td>: <?=$main['squad'];?></td>
-								</tr>
-								<tr>
-									<td>Manager</td>
-									<td>: <?=$main['nama_manager'];?></td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</a>
-				<?php
-				}
-				?>
-            </div>
+			<div class='testlist'></div>
+				<!--test-->
+				<script>
+					$(document).ready(function(){
+						setTimeout(function(){
+							nav_page(<?php echo $page; ?>);
+						}, 500);
+					});
+				</script>
+				<div id='showlist' value='.testlist'></div>
+				<div id='showbaseurl' value='<?php echo base_url()?>'></div>
+				<div id='shownewurl' value='<?php echo base_url()."eyeprofile/klub/$liga"; ?>'></div>
+				<div id='showurl' value='<?php echo base_url()."eyeprofile/getClub/$liga"; ?>'></div>
+				<div id='showpage' value='<?=round(getTotalClub($liga)/12, 0);?>'></div>
+				<div id='showoff' value='4'></div>
+				<div id='showrun' value='2'></div>
+				<div id='shownav'>
+			 </div>
+			<!--test-->
             <div class="container t-b-b pd-b-20 pd-t-20"></div>
             <div class="container">
                 <h3 class="h3-oranye">Hasil pertandingan liga 1 indonesia</h3>
@@ -346,3 +354,4 @@
         </div>
         </div>
         </div>
+		

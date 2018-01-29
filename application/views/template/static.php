@@ -292,5 +292,6 @@ else{
 			</form>
     <script src="<?=base_url()?>bs/js/bootstrapvalidator.min.js"></script>
     <script src="<?=base_url()?>assets/js/home.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.pagination.js"></script>
     </body>
 </html>

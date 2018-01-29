@@ -69,9 +69,8 @@ class Eyeprofile_model extends CI_Model
 		if($liga == 'non liga'){
 			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
 		}
-		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,b.name as nama_manager,count(c.name) as squad,a.url
-									FROM tbl_club a 
-									LEFT JOIN tbl_official_team b on a.club_id = b.club_now 
+		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url
+									FROM tbl_club a
 									LEFT JOIN tbl_player c on a.club_id = c.club_id
 									WHERE a.name not in ('ebenktestlagijgndidelete') ".$compt."
 									GROUP BY a.club_id ASC ".$limit."")->result_array();
@@ -640,7 +639,12 @@ class Eyeprofile_model extends CI_Model
 	}
 	
 	public function get_pelatih($club_id){
-		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position like '%pelatih%' limit 1")->row()->name;
+		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position like '%pelatih%' limit 1");
+		if($query->num_rows()>0){
+			$query = $query->row()->name;
+		}else{
+			$query = null;
+		}
 		return $query;
 	}
 	

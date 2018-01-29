@@ -474,3 +474,34 @@ function get_date($rentang = "")
 
     return array('tanggalnya'    => $tanggalnya,);
 }
+
+function getManager($club_id = "")
+{
+    $CI =& get_instance();
+	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."'");
+	if($manager->num_rows()>0){
+		$manager = $manager->row()->name;
+	}else{
+		$manager = null;
+	}
+	
+	return $manager;
+}
+
+function getTotalClub($liga)
+{
+	$compt = "and competition='".urldecode($liga)."'";
+	$limit = '';
+	if(urldecode($liga) == 'Liga Indonesia 2'){
+		$limit = 'limit 24';
+	}else if(urldecode($liga) == 'Liga Indonesia 1'){
+		$limit = 'limit 18';
+	}
+	if($liga == 'non liga'){
+		$compt = "and competition in('SSB / Akademi Sepakbola')";
+	}
+    $CI =& get_instance();
+	$query=$CI->db->query("SELECT name FROM tbl_club WHERE club_id is not null $compt $limit")->result_array();
+	
+	return count($query);
+}
