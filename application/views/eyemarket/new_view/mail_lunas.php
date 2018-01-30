@@ -97,7 +97,7 @@
 	                    						<table>
 	                    							<tr>
 	                    								<td>
-	                    									<img src="<?= base_url(); ?>img/eyemarket/produk/<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" style="width: 200px; height: 200px;">
+	                    									<img src="<?= base_url(); ?>img/eyemarket/produk<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" style="width: 200px; height: 200px;">
 	                    								</td>
 	                    								<td width="150">
 	                    									<?= $value['nama']; ?>

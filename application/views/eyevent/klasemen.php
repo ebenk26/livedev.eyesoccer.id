@@ -113,6 +113,7 @@
 									$types = $pokemon_xpath->query('td', $row);
 									$n = 0;
 									$haha = array();
+
 									foreach($types as $type){
 
 										switch ($n) {
@@ -154,13 +155,14 @@
 										// $haha[$n] = $type->nodeValue;
 
 										if(!empty($type->nodeValue)){
-											if($n != 7){
-												if($n != 8){
-													if($n != 9){
-														if($n != 11){
-															
-															$nodeValue = "<td>".$type->nodeValue.'</td>';
-															echo $nodeValue;
+											if($n != 1){
+												if($n != 7){
+													if($n != 8){
+														if($n != 9){
+															if($n != 11){
+																$nodeValue = "<td>".$type->nodeValue.'</td>';
+																echo $nodeValue;
+															}
 														}
 													}
 												}
@@ -321,7 +323,7 @@
 	        	</thead>
 	        	<tbody>
 	        	<?php
-	        		$html = file_get_contents(LinkScrapingLigaInggris());
+	        		$html = file_get_contents(LinkScrapingTopLigaInggris());
 	        		$premiere_doc = new DOMDocument();
 	        		libxml_use_internal_errors(TRUE); //disable libxml errors
 	        		if(!empty($html)){ //if any html is actually returned
@@ -366,7 +368,7 @@
             	</thead>
             	<tbody>
             	<?php
-            		$html = file_get_contents(LinkScrapingLigaItalia());
+            		$html = file_get_contents(LinkScrapingTopLigaItalia());
             		$premiere_doc = new DOMDocument();
             		libxml_use_internal_errors(TRUE); //disable libxml errors
             		if(!empty($html)){ //if any html is actually returned
@@ -411,7 +413,7 @@
             	</thead>
             	<tbody>
             	<?php
-            		$html = file_get_contents(LinkScrapingLigaSpanyol());
+            		$html = file_get_contents(LinkScrapingTopLigaSpanyol());
             		$premiere_doc = new DOMDocument();
             		libxml_use_internal_errors(TRUE); //disable libxml errors
             		if(!empty($html)){ //if any html is actually returned

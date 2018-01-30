@@ -77,6 +77,8 @@ $route['kebijakan-privasi'] 					= "home/kebijakan_privasi";
 $route['panduan-komunitas'] 					= "home/panduan_komunitas";
 $route['kontak'] 								= "home/kontak_kami";
 
+$route['eyetube/detail/ini-dia-wajah-baru-stadion-gelora-bung-karno-yang-menghabiskan-dana-760-miliar'] 	= "eyetube/detail/ini-dia-wajah-baru-sation-gelora-bung-karno-yang-menghabiskan-dana-760-miliar";
+
 //$route['seo/sitemap\.xml'] = "seo/sitemap";
 
 

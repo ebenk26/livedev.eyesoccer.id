@@ -252,48 +252,29 @@ class Eyevent extends CI_Controller {
 
 	public function semua_event()
 	{
-		$cred 	= $this->config->item('credential');
+		$data["meta"]["title"]="";
+		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
+		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
 
-		//===== eyetube
-		$url_eyetube 	= $this->config->item('api_url')."video";
-		$tube_data		= array(
-								'page' => '1',
-								'limit' => '8',
-								'sortby' => 'newest',
-								'category' => '',
-		);
-		$eyetube 		=  $this->excurl->remoteCall($url_eyetube,$cred,$tube_data);
+		$data["body"] 	= $this->load->view('eyevent/semua_event', $data, true);
+		$data['kanal'] 	= "eyevent";
+		
+		$this->load->view('template/static',$data);
+	}
 
-		$data["eyetube"] = json_decode($eyetube);
-
-		//===== eyevent lain
+	public function api_semua_event()
+	{
+		//===== eyevent semua
 		$url_eyevent 	= $this->config->item('api_url')."event";
 		$event_data		= array(
 								'page' => '1',
-								'limit' => '',
-								'sortby' => 'mostview',
+								'limit' => '12',
+								'sortby' => 'newest',
 								'category' => '',
 		);
 		$eyevent 		=  $this->excurl->remoteCall($url_eyevent,$cred,$event_data);
 
-		//===== eyenews
-		$url_eyenews 	= $this->config->item('api_url')."news";
-		$event_data		= array(
-								'page' => '1',
-								'limit' => '4',
-								'sortby' => 'newest',
-								'category' => '',
-								'youngage' => '',
-								'recommended' => '',
-		);
-		$eyenews 		=  $this->excurl->remoteCall($url_eyenews,$cred,$event_data);
-
-		$data["eyetube"] = json_decode($eyetube);
 		$data["eyevent"] = json_decode($eyevent);
-		$data["eyenews"] = json_decode($eyenews);
-
-
-		
 		$html = $this->load->view('eyevent/detail_kanan',$data, true);
 
 		echo json_encode(array('html' => $html));

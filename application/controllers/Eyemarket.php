@@ -239,12 +239,14 @@ class Eyemarket extends CI_Controller {
 
 	public function tambah_gambar($id)
 	{ 	
-    	$config['upload_path'] = './produk_image/';  
+    	$config['upload_path'] = './img/eyemarket/produk/';  
         $config['allowed_types'] = '*';
+
+        $this->load->library('upload');
 
         $this->upload->initialize($config);
 
-        if (!$this->input->post('img_hidden1'))
+        if ($this->input->post('img_hidden1') != NULL)
         {
         	if(!$this->upload->do_upload('image1')) 
         	{  
@@ -271,7 +273,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!$this->input->post('img_hidden2'))
+        if ($this->input->post('img_hidden2') != NULL)
         {
         	if(!$this->upload->do_upload('image2')) 
         	{  
@@ -298,7 +300,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!$this->input->post('img_hidden3'))
+        if ($this->input->post('img_hidden3') != NULL)
         {
         	if(!$this->upload->do_upload('image3')) 
         	{  
@@ -325,7 +327,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!$this->input->post('img_hidden4'))
+        if ($this->input->post('img_hidden4') != NULL)
         {
         	if(!$this->upload->do_upload('image4')) 
         	{  
@@ -352,7 +354,7 @@ class Eyemarket extends CI_Controller {
         	}
         }
         else
-        if (!$this->input->post('img_hidden5'))
+        if ($this->input->post('img_hidden5') != NULL)
         {
         	if(!$this->upload->do_upload('image5')) 
         	{  

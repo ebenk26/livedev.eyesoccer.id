@@ -12,7 +12,7 @@
 	    	</thead>
 	    	<tbody>
 	    	<?php
-	    		$html = file_get_contents(LinkScrapingLigaInggris());
+	    		$html = file_get_contents(LinkScrapingTopLigaInggris());
 	    		$premiere_doc = new DOMDocument();
 	    		libxml_use_internal_errors(TRUE); //disable libxml errors
 	    		if(!empty($html)){ //if any html is actually returned
