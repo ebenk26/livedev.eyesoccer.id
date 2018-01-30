@@ -7,7 +7,7 @@
 	    			<th>Klub</th>
 	    			<th>Gol</th>
 	    			<th>Pinalti</th>
-	    			<th>S</th>
+	    			<th>Pertama</th>
 	    		</tr>
 	    	</thead>
 	    	<tbody>
