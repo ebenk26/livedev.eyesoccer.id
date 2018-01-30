@@ -90,14 +90,32 @@
             </div>
         </div>
 
-        <div class="container tube-r">
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                $(window).on('load',function() {
+                    var urlnya          = "<?= base_url(); ?>Eyevent/detail_kanan/";
+
+                    $.ajax({
+                        url: urlnya
+                    })
+                    .done(function(result) {
+                        result = JSON.parse(result);
+                        console.log(result);
+                        $('.kanan-video').html(result.html);
+                    });
+                })
+            });
+
+        </script>
+
+        <div class="container tube-r kanan-video">
             <div class="up-r-vent">
                 <h4>EVENT LAINNYA</h4>
                 <div class="pd">
                     <div>
                         <div class="container h100">
                             <a href="">
-                                <img src="assets/img/d.jpg" alt="">
+                                
                             </a>
                             <div class="container rn">
                                 <a href="">
@@ -247,120 +265,12 @@
                 </div>
                 <div class="pd">
                     <div>
-                        <div class="container h105">
+                        <div class="container h105" style="background-color: #f2d2d2;">
                             <a href="">
-                                <img src="assets/img/a.jpg" alt="">
+                                
                             </a>
                             <div class="drn">
-                                <span>2:30</span>
-                            </div>
-                            <div class="container rd">
-                                <a href="">
-                                    <span>Sed uperpisciatis unde omnis iste natus</span>
-                                </a>
-                                <div class="rr">
-                                    <span>2 jam yang lalu</span>
-                                    <span>-</span>
-                                    <span>123 view</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container h105">
-                            <a href="">
-                                <img src="assets/img/a.jpg" alt="">
-                            </a>
-                            <div class="drn">
-                                <span>2:30</span>
-                            </div>
-                            <div class="container rd">
-                                <a href="">
-                                    <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                </a>
-                                <div class="rr">
-                                    <span>2 jam yang lalu</span>
-                                    <span>-</span>
-                                    <span>123 view</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container h105">
-                            <a href="">
-                                <img src="assets/img/a.jpg" alt="">
-                            </a>
-                            <div class="drn">
-                                <span>2:30</span>
-                            </div>
-                            <div class="container rd">
-                                <a href="">
-                                    <span>Sed uperpisciatis unde omnis iste natus</span>
-                                </a>
-                                <div class="rr">
-                                    <span>2 jam yang lalu</span>
-                                    <span>-</span>
-                                    <span>123 view</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container h105">
-                            <a href="">
-                                <img src="assets/img/a.jpg" alt="">
-                            </a>
-                            <div class="drn">
-                                <span>2:30</span>
-                            </div>
-                            <div class="container rd">
-                                <a href="">
-                                    <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                </a>
-                                <div class="rr">
-                                    <span>2 jam yang lalu</span>
-                                    <span>-</span>
-                                    <span>123 view</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container h105">
-                            <a href="">
-                                <img src="assets/img/a.jpg" alt="">
-                            </a>
-                            <div class="drn">
-                                <span>2:30</span>
-                            </div>
-                            <div class="container rd">
-                                <a href="">
-                                    <span>Sed uperpisciatis unde omnis iste natus</span>
-                                </a>
-                                <div class="rr">
-                                    <span>2 jam yang lalu</span>
-                                    <span>-</span>
-                                    <span>123 view</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container h105">
-                            <a href="">
-                                <img src="assets/img/a.jpg" alt="">
-                            </a>
-                            <div class="drn">
-                                <span>2:30</span>
-                            </div>
-                            <div class="container rd">
-                                <a href="">
-                                    <span>Nemo enim ipsam voluptatem quia voluptas sit</span>
-                                </a>
-                                <div class="rr">
-                                    <span>2 jam yang lalu</span>
-                                    <span>-</span>
-                                    <span>123 view</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container h105">
-                            <a href="">
-                                <img src="assets/img/a.jpg" alt="">
-                            </a>
-                            <div class="drn">
-                                <span>2:30</span>
+                                <span style="visibility: hidden;">2:30</span>
                             </div>
                             <div class="container rd">
                                 <a href="">
@@ -378,5 +288,6 @@
                 </div>
             </div>
         </div>
+        <div style="clear: both;"></div>
     </div>
 </div>
