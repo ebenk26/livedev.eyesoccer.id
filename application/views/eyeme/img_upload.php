@@ -9,7 +9,7 @@
 
                             <div id="dropzone">
                                <div class="uplda">
-                                Seret Gambar Kamu Disini 
+                                Seret Photo Kamu Disini 
                                 <br>
                                 atau 
                                 <br>
