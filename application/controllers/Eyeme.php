@@ -372,7 +372,7 @@ class Eyeme extends CI_Controller {
 	
 		$response = json_encode($arr);
 		echo '<script>alert(\''.$arr['msg'].'\')</script>';
-		redirect(MEPROFILE.$this->username,'refresh');
+		redirect(MEURL,'refresh');
 		
 
 	}

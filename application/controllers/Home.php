@@ -320,14 +320,14 @@ class Home extends CI_Controller {
 	{
 		$objMail = $this->phpmailer_library->load();
 		if($this->input->post('username')){
-			$query=$this->db->query("select * FROM tbl_member WHERE username='".$this->input->post("username")."' LIMIT 1");
+			$query=$this->db->query("select id_member FROM tbl_member WHERE username='".$this->input->post("username")."' LIMIT 1");
 			$cek = $query->num_rows();
 			if($cek>0)
 			{
 				echo "exist username";
 			}else{
 				if($this->input->post('name')){
-					$this->db->select('*');
+					$this->db->select('id_member');
 					$this->db->where("email='".$this->input->post("email")."'");
 					$query2 = $this->db->get('tbl_member');
 					$num = $query2->num_rows();
@@ -344,9 +344,16 @@ class Home extends CI_Controller {
 						$insert_id = $this->db->insert_id();
 						$id=$insert_id;
 						
-						try {
+						// try {
 							//Server settings
-							$objMail->SMTPDebug = 2;                                 // Enable verbose debug output
+							$objMail->SMTPOptions = array(
+								'ssl' => array(
+								'verify_peer' => false,
+								'verify_peer_name' => false,
+								'allow_self_signed' => true
+								)
+							);
+							// $objMail->SMTPDebug = 2;                                 // Enable verbose debug output
 							$objMail->isSMTP();                                      // Set objMailer to use SMTP
 							$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 							$objMail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -364,18 +371,28 @@ class Home extends CI_Controller {
 							//Content
 							$objMail->isHTML(true);                                  // Set eobjMail format to HTML
 							$objMail->Subject = 'Registrasi Member Eyesoccer';
-							$objMail->Body    = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut https://www.eyesoccer.id/verifikasi?ver='.$randurl.' untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
+							$objMail->Body    = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.' untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
 							<br><br>
 							Salam Eyesoccer';
 
-							$objMail->send();
+							/* $objMail->send();
 							// echo 'Message has been sent';
-							echo "true"; 
-						} catch (Exception $e) {
+							echo "true";  */
+						/* } catch (Exception $e) {
 							// echo 'Message could not be sent.';
 							// echo 'objMailer Error: ' . $objMail->ErrorInfo;
 							$this->db->query("delete from tbl_member where id_member=".$id."");
 							echo "false";
+						} */
+						if ($objMail->send())
+						{
+							echo "true"; 
+						}
+						else
+						{
+							$this->db->query("delete from tbl_member where id_member=".$id."");
+							// echo "false";
+							echo "Mailer Error: " . $objMail->ErrorInfo;
 						}
 					}
 				}

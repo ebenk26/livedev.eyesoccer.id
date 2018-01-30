@@ -464,7 +464,7 @@ class Eyetube_model extends CI_Model
 	
 	public function select_view($date1,$date2,$eyenews_id,$ip)
     {
-        $query = $this->db->query("SELECT view_id FROM tbl_view WHERE visit_date>='".$date1."' AND visit_date<='".$date2."' AND type_visit='view' AND place_visit='eyenews' AND place_id='".$eyenews_id."' AND session_ip='".$ip."' LIMIT 1")->num_rows();
+        $query = $this->db->query("SELECT view_id FROM tbl_view WHERE visit_date>='".$date1."' AND visit_date<='".$date2."' AND type_visit='view' AND place_visit='eyetube' AND place_id='".$eyenews_id."' AND session_ip='".$ip."' LIMIT 1")->num_rows();
         return $query;
     }
 	
