@@ -344,7 +344,7 @@ class Home extends CI_Controller {
 						$insert_id = $this->db->insert_id();
 						$id=$insert_id;
 						
-						try {
+						// try {
 							//Server settings
 							$objMail->SMTPOptions = array(
 								'ssl' => array(
@@ -375,12 +375,21 @@ class Home extends CI_Controller {
 							<br><br>
 							Salam Eyesoccer';
 
-							$objMail->send();
+							/* $objMail->send();
 							// echo 'Message has been sent';
-							echo "true"; 
-						} catch (Exception $e) {
+							echo "true";  */
+						/* } catch (Exception $e) {
 							// echo 'Message could not be sent.';
 							// echo 'objMailer Error: ' . $objMail->ErrorInfo;
+							$this->db->query("delete from tbl_member where id_member=".$id."");
+							echo "false";
+						} */
+						if ($objMail->send())
+						{
+							echo "true"; 
+						}
+						else
+						{
 							$this->db->query("delete from tbl_member where id_member=".$id."");
 							echo "false";
 						}
