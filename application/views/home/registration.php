@@ -209,8 +209,8 @@
 							alert('Email sudah terpakai');
 						}else{
 							// alert(data);
-							alert('Registrasi berhasil, silahkan cek inbox atau spam pada email anda.');
-							window.location.href = "../home/index";
+							alert(data);
+							// window.location.href = "../home/index";
 						}
 					 },
 					 error: function(err){
