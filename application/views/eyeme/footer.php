@@ -473,36 +473,6 @@ $('#cancel').click(function(event) {
      //alert('test');
 });
 
-//upload-act::click
-
-
-$('#upload-act').click(function(event) {
-    var imageCaption  = $('.c-caption').val(); 
-    event.preventDefault();
-    //alert(imageCaption);
-    /* Act on the event */
-   $.ajax({
-        url: '<?php echo base_url()?>eyeme/upload_img',
-        type: 'POST',
-        dataType: 'HTML',
-        data: {imageData: imageData,
-                caption: imageCaption},
-    })
-    .done(function(e) {
-        alert(e);
-        window.location.replace(MEURL);
-        $(this).attr('disabled', 'disable');
-        $(this).addClass('disable');
-    })
-    .fail(function() {
-        console.log("error");
-    })
-    .always(function() {
-        console.log("complete");
-    });
-
-    
-});
 /*
     fungsi get_follow
 */
@@ -652,15 +622,18 @@ $('.me-post').click(function(event) {
             $('#f-icon').addClass('first-icon-'+v.id_img);
             $('#s-icon').attr('ref',v.id_img);
             $('.comment').attr('rel',v.id_img);
-            console.log($id_member);
-            console.log(v.id_member);
-            if($id_member == v.self){
+           
+           console.log(v.self);
+           console.log('break');
+           console.log(v.id_member);
+            if(v.id_member === v.self){
 
                 $('.del-icon').html('<i class="material-icons " id="del" onclick="discard_img(' + v.id_img +',3)" >delete</i>');
-                
-                
-
+                       
                 }
+            else{
+                 $('.del-icon').html('');
+            }
                 
             
             //tbl_com += '<table>';
