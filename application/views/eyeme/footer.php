@@ -153,7 +153,7 @@ var valCom = $(this).val();
         //console.log($(this).serializ  var com     = $(this).val();
         html        += "<li>";
         html        += "<a href=\"<?php echo MEPROFILE.$_SESSION['username']?>\"><?php echo $_SESSION['username']?></a>";
-        html        += "<span>"+ valCom+"</span>";
+        html        += "<span>"+ inputS(valCom)+"</span>";
         html        += "</li>";
         
          $.ajax({
@@ -623,9 +623,6 @@ $('.me-post').click(function(event) {
             $('#s-icon').attr('ref',v.id_img);
             $('.comment').attr('rel',v.id_img);
            
-           console.log(v.self);
-           console.log('break');
-           console.log(v.id_member);
             if(v.id_member === v.self){
 
                 $('.del-icon').html('<i class="material-icons " id="del" onclick="discard_img(' + v.id_img +',3)" >delete</i>');
@@ -795,5 +792,16 @@ function showfile(file) {
     }
 }
 
+function inputS(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+    
+  };
 
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
   </script>

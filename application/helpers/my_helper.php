@@ -126,13 +126,39 @@ function p($arr){
     echo '</pre>';
 
 }
+
 function cryptPass($str){
     return md5($str);
 }
-function inputSecure($input){
-    $input = trim(strip_tags(str_replace("'",'',$input)));
+function sql_injection($value){
     
-    return $input;
+        //$filter_sql = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($value,ENT_QUOTES))));
+        //return $filter_sql;
+    
+    $magic_quotes_active = get_magic_quotes_gpc();
+        $new_enough_php = function_exists("mysql_real_escape_string(unescaped_string)"); //i.e. PHP >= v4.3.0
+    
+    if($new_enough_php) { //PHP v4.3.0 or higher
+        //undo any magic quote effect so mysql_real_escape_string can do the work
+        
+        if($magic_quotes_active) {$value = stripslashes($value);}
+        
+        $value = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($value,ENT_QUOTES))));
+        
+    } else { //before PHP v4.3.0
+        
+        if(!$magic_quotes_active) {
+        $value = addslashes($value);
+        }
+    }
+    return $value;
+}
+
+function inputSecure($str){
+    $t = preg_replace('/<[^<|>]+?>/', '', htmlspecialchars_decode($str));
+    $t = htmlentities($t, ENT_QUOTES, "UTF-8");
+    
+    return sql_injection($t);
 }
 /**
     *fungsi getDistance::
