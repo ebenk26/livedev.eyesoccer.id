@@ -78,7 +78,7 @@ class Eyevent_model extends CI_Model
 									FROM
 										tbl_event
 									ORDER BY 
-										id_event
+										id_event DESC
 									LIMIT
 										1
 								")->result_array();
@@ -98,7 +98,7 @@ class Eyevent_model extends CI_Model
 									FROM
 										tbl_event
 									ORDER BY 
-									id_event
+									id_event DESC
 									LIMIT
 										1,1
 								")->result_array();

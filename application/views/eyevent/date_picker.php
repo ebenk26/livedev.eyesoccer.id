@@ -11,7 +11,7 @@
             <h4>BERITA TERBARU</h4>
         </div>
         <div class="fl-r bcd">
-            <a href="">
+            <a href="<?= base_url();?>eyenews">
                 <span>Berita Lainnya</span>
                 <i class="material-icons">keyboard_arrow_right</i>
             </a>
