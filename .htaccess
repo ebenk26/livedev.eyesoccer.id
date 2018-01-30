@@ -1,3 +1,4 @@
+php_value max_execution_time 1000000
 RewriteEngine on
 RewriteCond $1 !^(index\.php|resources|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f

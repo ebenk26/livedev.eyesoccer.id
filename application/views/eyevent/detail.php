@@ -73,39 +73,67 @@
                 </div>
                 <div class="tab-content" style="margin-top: 1em;">
                     <div id="jadwal-pertandingan" class="tab-pane fade in active">
-                        <?php
-                            foreach ($model->data->match_event as $value)
-                            { 
-                        ?>
-                                <table class="tb-hasil">
+                        <table class="tb-hasil">
+                            <?php 
+                                foreach ($model->data->match_event as $value)
+                                { 
+                            ?>
                                     <tbody>
                                         <tr>
+                                            <td style="text-align: left; width: unset;">
+                                                <span style="width: unset;">
+                                                    <?php
+                                                        $date       =  new DateTime($value->match_schedule);
+                                                        $tanggal    = date_format($date,"d M Y H:i:s");
+
+                                                        echo $tanggal;
+                                                    ?>
+                                                </span>
+                                            </td>
                                             <td>
-                                                
+                                                <a href="<?= $value->url_team_a; ?>">
                                                     <?=$value->team_a;?>
                                                     <img src="<?php echo $value->url_logo_a; ?>" alt="">
+                                                </a>
                                             </td>
+                                            <?php 
+                                            
+                                            if ($value->match_schedule <= date("Y-m-d H:i:s"))
+                                            {
+                                            ?>
+                                                <td style="text-align: center;">
+                                                    <?= $value->score_a; ?> - <?= $value->score_b; ?>
+                                                    <span style="width: unset;"><?= $value->match_location; ?></span>
+                                                </td>
+                                            <?php        
+                                            }
+                                            else
+                                            {
+                                        ?>
+                                                <td style="text-align: center;">
+                                                    <?= $value->match_live; ?>
+                                                    <span style="width: unset;"><?= $value->match_location; ?></span>
+                                                </td>
+                                        <?php        
+                                            }
+                                            ?>
+                                            
                                             <td>
-                                                <?= $value->score_a; ?> - <?= $value->score_b; ?>
-                                                <span><?= $value->match_location; ?></span>
-                                            </td>
-                                            <td>
-                                                
+                                                <a href="<?= $value->url_team_b; ?>">
                                                     <img src="<?php echo $value->url_logo_b; ?>" alt="">
                                                     <?=$value->team_b;?>
+                                                </a>
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
-                        <?php        
-                            }
-                        ?>
+                            <?php        
+                                }
+                            ?>
+                        </table>
                     </div>
                     <div id="klasemen" class="tab-pane fade">
-                        <h1>vvvvvv</h1>
+                        <span>Maaf Saat Ini Klasemen Belum Tersedia</span>
                     </div>
                 </div>
             </div>
         </div>
-
-       
