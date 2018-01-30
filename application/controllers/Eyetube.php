@@ -80,7 +80,7 @@ class Eyetube extends CI_Controller {
 		$date1=date("Y-m-d H:i:s",strtotime("-15 minutes",time()));
 		$date2=date("Y-m-d H:i:s");
 
-		$cekview=$this->Eyetube_model->select_view($date1,$date2,$eyenews_id,$_SESSION["ip"]);
+		$cekview=$this->Eyetube_model->select_view($date1,$date2,$eyetube_id,$_SESSION["ip"]);
 		if($cekview<1)
 		{
 		$this->db->trans_start();
