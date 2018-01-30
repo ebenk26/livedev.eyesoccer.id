@@ -359,8 +359,8 @@ class Home extends CI_Controller {
 							$objMail->SMTPAuth = true;                               // Enable SMTP authentication
 							$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
 							$objMail->Password = 'BolaSepak777#';                           // SMTP password
-							$objMail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-							$objMail->Port = 587;                                    // TCP port to connect to
+							$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+							$objMail->Port = 465;                                    // TCP port to connect to
 
 							//Recipients
 							$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
@@ -391,8 +391,8 @@ class Home extends CI_Controller {
 						else
 						{
 							$this->db->query("delete from tbl_member where id_member=".$id."");
-							// echo "false";
-							echo "Mailer Error: " . $objMail->ErrorInfo;
+							echo "false";
+							// echo "Mailer Error: " . $objMail->ErrorInfo;
 						}
 					}
 				}

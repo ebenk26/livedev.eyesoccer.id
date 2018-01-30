@@ -153,14 +153,16 @@ class Eyetube extends CI_Controller {
 		$date1=date("Y-m-d H:i:s",strtotime("-15 minutes",time()));
 		$date2=date("Y-m-d H:i:s");
 
-		$cekview=$this->Eyetube_model->select_view($date1,$date2,$eyetube_id,$_SESSION["ip"]);
-		if($cekview<1)
-		{
-		$this->db->trans_start();
-		$this->db->query("UPDATE tbl_eyetube SET tube_view= tube_view+1 WHERE eyetube_id= '".$eyetube_id."'");
-		$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','eyetube','".$eyetube_id."','".$_SESSION["ip"]."')");
-		$this->db->trans_complete();
-		}	
+		if(isset($_SESSION["ip"])){
+			$cekview=$this->Eyetube_model->select_view($date1,$date2,$eyetube_id,$_SESSION["ip"]);
+			if($cekview<1)
+			{
+			$this->db->trans_start();
+			$this->db->query("UPDATE tbl_eyetube SET tube_view= tube_view+1 WHERE eyetube_id= '".$eyetube_id."'");
+			$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','eyetube','".$eyetube_id."','".$_SESSION["ip"]."')");
+			$this->db->trans_complete();
+			}	
+		}
 		
 		$this->load->view('config-session',$data);
 		
