@@ -539,7 +539,7 @@ class Eyemarket extends CI_Controller {
 
 	public function daftar_keranjang($id_member)
 	{
-		// var_dump($id_member != $this->session->userdata('id_member'));exit();
+		
 		if ($id_member != $this->session->userdata('id_member'))
 		{
 			redirect('eyemarket/user/'.$this->session->userdata('id_member'));
