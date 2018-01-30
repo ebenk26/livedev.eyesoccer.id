@@ -249,6 +249,55 @@ class Eyevent extends CI_Controller {
 								'txt' 		=> $txt,
 							));
 	}
+
+	public function semua_event()
+	{
+		$cred 	= $this->config->item('credential');
+
+		//===== eyetube
+		$url_eyetube 	= $this->config->item('api_url')."video";
+		$tube_data		= array(
+								'page' => '1',
+								'limit' => '8',
+								'sortby' => 'newest',
+								'category' => '',
+		);
+		$eyetube 		=  $this->excurl->remoteCall($url_eyetube,$cred,$tube_data);
+
+		$data["eyetube"] = json_decode($eyetube);
+
+		//===== eyevent lain
+		$url_eyevent 	= $this->config->item('api_url')."event";
+		$event_data		= array(
+								'page' => '1',
+								'limit' => '',
+								'sortby' => 'mostview',
+								'category' => '',
+		);
+		$eyevent 		=  $this->excurl->remoteCall($url_eyevent,$cred,$event_data);
+
+		//===== eyenews
+		$url_eyenews 	= $this->config->item('api_url')."news";
+		$event_data		= array(
+								'page' => '1',
+								'limit' => '4',
+								'sortby' => 'newest',
+								'category' => '',
+								'youngage' => '',
+								'recommended' => '',
+		);
+		$eyenews 		=  $this->excurl->remoteCall($url_eyenews,$cred,$event_data);
+
+		$data["eyetube"] = json_decode($eyetube);
+		$data["eyevent"] = json_decode($eyevent);
+		$data["eyenews"] = json_decode($eyenews);
+
+
+		
+		$html = $this->load->view('eyevent/detail_kanan',$data, true);
+
+		echo json_encode(array('html' => $html));
+	}
 	
 	
 	public function search($search='',$pg=null)
