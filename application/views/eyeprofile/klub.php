@@ -213,12 +213,14 @@
 										$n = 0;
 										foreach($types as $type){
 											if(!empty($type->nodeValue)){
-												if($n != 7){
-													if($n != 8){
-														if($n != 9){
-															if($n != 11){
-																$nodeValue = "<td>".$type->nodeValue.'</td>';
-																echo $nodeValue;
+												if($n != 1){
+													if($n != 7){
+														if($n != 8){
+															if($n != 9){
+																if($n != 11){
+																	$nodeValue = "<td>".$type->nodeValue.'</td>';
+																	echo $nodeValue;
+																}
 															}
 														}
 													}

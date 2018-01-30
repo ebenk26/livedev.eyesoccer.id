@@ -76,16 +76,18 @@ class Eyetube extends CI_Controller {
 
 		$eyetube_id 	= $data['eyetube_headline']->eyetube_id;
 		$category_name 	= $data['eyetube_headline']->category_name;
-		$date1 			= date("Y-m-d H:i:s",strtotime("-15 minutes",time()));
-		$date2 			= date("Y-m-d H:i:s");
+		
+		$date1=date("Y-m-d H:i:s",strtotime("-15 minutes",time()));
+		$date2=date("Y-m-d H:i:s");
 
-		$cekview 		= $this->db->query("SELECT * FROM tbl_view WHERE visit_date>= '".$date1."' AND visit_date<= '".$date2."' AND type_visit= 'view' AND place_visit= 'eyetube' AND place_id= '".$eyetube_id."' AND session_ip= '".$_SESSION["ip"]."' LIMIT 1")->row_array();
-
-		if($cekview < 1)
+		$cekview=$this->Eyetube_model->select_view($date1,$date2,$eyenews_id,$_SESSION["ip"]);
+		if($cekview<1)
 		{
-			$this->db->query("UPDATE tbl_eyetube SET tube_view= tube_view+1 WHERE eyetube_id= '".$eyetube_id."'");
-			$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','eyetube','".$eyetube_id."','".$_SESSION["ip"]."')");
-		}			
+		$this->db->trans_start();
+		$this->db->query("UPDATE tbl_eyetube SET tube_view= tube_view+1 WHERE eyetube_id= '".$eyetube_id."'");
+		$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','eyetube','".$eyetube_id."','".$_SESSION["ip"]."')");
+		$this->db->trans_complete();
+		}		
 		
 		// $cmd 	= $this->db->query("select a.*,b.fullname from tbl_eyetube a INNER JOIN tbl_admin b ON b.admin_id= a.admin_id where eyetube_id= '$eyetube_id' LIMIT 1");
 		// $row 	= $cmd->row_array();	
