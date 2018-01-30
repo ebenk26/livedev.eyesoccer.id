@@ -175,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</tr>
 						</tbody>
 					</table>
-					<a target="_blank" href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["official_id"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Ofisial</button></a>
+					<a href="#" ><button class="btn-orange-2" type="button">Lihat Detail Ofisial</button></a>
 				</div><?php }?>                                      
 		</div>
 		

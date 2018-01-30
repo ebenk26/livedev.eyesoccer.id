@@ -76,16 +76,16 @@ class Eyetube extends CI_Controller {
 
 		$eyetube_id 	= $data['eyetube_headline']->eyetube_id;
 		$category_name 	= $data['eyetube_headline']->category_name;
-		// $date1 			= date("Y-m-d H:i:s",strtotime("-15 minutes",time()));
-		// $date2 			= date("Y-m-d H:i:s");
+		$date1 			= date("Y-m-d H:i:s",strtotime("-15 minutes",time()));
+		$date2 			= date("Y-m-d H:i:s");
 
-		// $cekview 		= $this->db->query("SELECT * FROM tbl_view WHERE visit_date>= '".$date1."' AND visit_date<= '".$date2."' AND type_visit= 'view' AND place_visit= 'eyetube' AND place_id= '".$eyetube_id."' AND session_ip= '".$_SESSION["ip"]."' LIMIT 1")->row_array();
+		$cekview 		= $this->db->query("SELECT * FROM tbl_view WHERE visit_date>= '".$date1."' AND visit_date<= '".$date2."' AND type_visit= 'view' AND place_visit= 'eyetube' AND place_id= '".$eyetube_id."' AND session_ip= '".$_SESSION["ip"]."' LIMIT 1")->row_array();
 
-		// if($cekview < 1)
-		// {
-		// 	$this->db->query("UPDATE tbl_eyetube SET tube_view= tube_view+1 WHERE eyetube_id= '".$eyetube_id."'");
-		// 	$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','eyetube','".$eyetube_id."','".$_SESSION["ip"]."')");
-		// }			
+		if($cekview < 1)
+		{
+			$this->db->query("UPDATE tbl_eyetube SET tube_view= tube_view+1 WHERE eyetube_id= '".$eyetube_id."'");
+			$this->db->query("INSERT INTO tbl_view (visit_date,type_visit,place_visit,place_id,session_ip) values ('".$date2."','view','eyetube','".$eyetube_id."','".$_SESSION["ip"]."')");
+		}			
 		
 		// $cmd 	= $this->db->query("select a.*,b.fullname from tbl_eyetube a INNER JOIN tbl_admin b ON b.admin_id= a.admin_id where eyetube_id= '$eyetube_id' LIMIT 1");
 		// $row 	= $cmd->row_array();	
@@ -114,18 +114,18 @@ class Eyetube extends CI_Controller {
 		// 		$data["meta"]["title"] 			= "";
 		// 		$data["meta"]["image"] 			= base_url()."/assets/img/tab_icon.png";
 		// 		$data["meta"]["description"] 	= "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-		// 		$data["meta"]["share"] 			= '<title>Eyesoccer - '.$row['title'].'</title><meta name= "twitter:card" content= "summary" />
-		// 		<meta name= "twitter:site" content= "@eyesoccer_id" />
-		// 		<meta name= "twitter:title" content= "'.$row['title'].'" />
-		// 		<meta name= "twitter:description" content= "'.substr(strip_tags($row['description']),0,100).'" />
-		// 		<meta name= "twitter:image" content= "'.base_url().'/systems/eyetube_storage/'.$row['thumb1'].'" />
-		// 		<meta property= "og:title" content= "'.$row['title'].'" />
-		// 		<meta property= "og:url" content= "'.base_url().'/eyetube/detail/'.$linksite.'" />
-		// 		<meta property= "og:type" content= "article" />
-		// 		<meta property= "og:image" content= "'.base_url().'/systems/eyetube_storage/'.$row['thumb1'].'" />
-		// 		<meta property= "og:description" content= "'.substr(strip_tags($row['description']),0,100).'" />
-		// 		<meta property= "fb:app_id" content= "966242223397117" />
-		// ';
+		$data["meta"]["share"] 			= '<title>Eyesoccer - '.$data['eyetube_headline']->title.'</title><meta name= "twitter:card" content= "summary" />
+		<meta name= "twitter:site" content= "@eyesoccer_id" />
+		<meta name= "twitter:title" content= "'.$data['eyetube_headline']->title.'" />
+		<meta name= "twitter:description" content= "'.substr(strip_tags($data['eyetube_headline']->description),0,100).'" />
+		<meta name= "twitter:image" content= "'.base_url().'/systems/eyetube_storage/'.$data['eyetube_headline']->thumb1.'" />
+		<meta property= "og:title" content= "'.$data['eyetube_headline']->title.'" />
+		<meta property= "og:url" content= "'.base_url().'/eyetube/detail/'.$url.'" />
+		<meta property= "og:type" content= "article" />
+		<meta property= "og:image" content= "'.base_url().'/systems/eyetube_storage/'.$data['eyetube_headline']->thumb1.'" />
+		<meta property= "og:description" content= "'.substr(strip_tags($data['eyetube_headline']->description),0,100).'" />
+		<meta property= "fb:app_id" content= "966242223397117" />
+		';
 		
 		$data['eyetube_lain']  			=  $this->Eyetube_model->get_eyetube_lain($category_name,$eyetube_id);
 		$data['video_eyetube']  		=  $this->Eyetube_model->get_eyetube_satu2();

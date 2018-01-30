@@ -234,7 +234,7 @@ class Eyeme_model extends Master_model
 				 on A.id_member = C.id_member
 				 WHERE  A.id_member IN
 				 (SELECT id_following from me_follow where id_member = $id_member) 
-				 AND A.active='1' 
+				 AND A.active='1' OR A.id_member = $id_member
 				 ORDER BY A.last_update DESC";
 
 		$res = $this->db->query($query);
@@ -314,6 +314,7 @@ class Eyeme_model extends Master_model
 		$timeString              = $getTime['timeString'];
 		$getImg[0]->timeString   = $timeString;
 		$getImg[0]->has_like     = $hasLike;
+		$getImg[0]->self         = $this->id_member;
 		return $getImg;
 	}
 	/**
@@ -510,7 +511,7 @@ class Eyeme_model extends Master_model
 					FROM `me_notif` AS A
 					INNER JOIN `tbl_member` AS C
 					ON A.`id_member_act` = C.`id_member`
-					WHERE A.`id_member` = $id_member
+					WHERE A.`id_member` = $id_member AND A.`id_member_act` <> $id_member
 					ORDER BY last_update DESC
 					";
 		if($limit != ''){

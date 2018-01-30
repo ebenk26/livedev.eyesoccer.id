@@ -2362,6 +2362,7 @@ ul, li {
     position: relative;
     vertical-align: middle;
     max-height: 540px;
+    text-align: center;
 }
 .d-p-b-r{
     width: 350px;
@@ -2903,9 +2904,7 @@ loading animation
 a{
     text-decoration:none;
 }
-.fileimg{
-    display: none;
-}
+
 #dropzone{
     max-width: 85%;
     max-height: 85%;
@@ -2966,4 +2965,59 @@ a{
     position: absolute;
     right: 0px;
     cursor: pointer;
+}
+
+/*Droped*/
+#dropzone {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    top: 20px;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    border: 1px dashed gray;
+    text-align:center;
+
+}
+.dropped{
+    height:auto !important;
+
+}
+.dropped:hover:before{
+      content: 'Pilih Photo';
+    display: none;
+    position: absolute;
+    top:40%;
+    left: 35%;
+    display: none;
+    font-weight: bold;
+    color:#3E3E3E!important;
+    font-style: normal;
+    cursor: pointer;
+    opacity: 0.6;
+
+
+}
+#dropzone img {
+    border-radius: 5px;
+    vertical-align: middle;
+    max-width: 95%;
+    max-height: 95%;
+    
+}
+.box-up{
+    margin-top:50%;
+}
+#dropzone [type="file"] {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width:100%;
+}
+.uplda{
+    margin-top:30% ; 
 }
