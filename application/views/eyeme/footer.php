@@ -46,6 +46,7 @@ var html      = "",//html comment
     MEIMG     = '<?php echo MEIMG?>',
     MEPROFILE = '<?php echo MEPROFILE?>',
     IMGSTORE  = '<?php echo IMGSTORE?>';
+    MEURL     = '<?php echo MEURL?>';
     MYPROFILE = MEPROFILE + '<?php echo $myusername?>';
     loadingAni= $('#loading'); //Loading Animation 
     
@@ -489,7 +490,7 @@ $('#upload-act').click(function(event) {
     })
     .done(function(e) {
         alert(e);
-        window.location.replace(MYPROFILE);
+        window.location.replace(MEURL);
         $(this).attr('disabled', 'disable');
         $(this).addClass('disable');
     })
