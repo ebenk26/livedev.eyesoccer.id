@@ -2666,7 +2666,7 @@ ul, li {
 }
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
+    /* appearance: none; */
     width: 20px;
     height: 20px;
     border-radius: 50%; 
@@ -3541,7 +3541,8 @@ ey{
     font-weight: 400;
     position: relative;
     top: 30px;
-    left: 383px;
+    float: unset;
+    margin: 0 auto;
 }
 .frm-login b{
     font-weight: 500;

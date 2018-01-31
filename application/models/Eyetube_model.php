@@ -462,6 +462,12 @@ class Eyetube_model extends CI_Model
 	    return $query;
 	}
 	
+	public function select_view($date1,$date2,$eyenews_id,$ip)
+    {
+        $query = $this->db->query("SELECT view_id FROM tbl_view WHERE visit_date>='".$date1."' AND visit_date<='".$date2."' AND type_visit='view' AND place_visit='eyetube' AND place_id='".$eyenews_id."' AND session_ip='".$ip."' LIMIT 1")->num_rows();
+        return $query;
+    }
+	
 	// public function get_eyetube_detail()
 	// {
 	// 	$query = $this->db->query("select a.*,b.fullname from tbl_eyetube a INNER JOIN tbl_admin b ON b.admin_id=a.admin_id where eyetube_id='$eyetube_id' LIMIT 1")->row();

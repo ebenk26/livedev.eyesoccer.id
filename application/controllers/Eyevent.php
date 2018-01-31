@@ -129,11 +129,58 @@ class Eyevent extends CI_Controller {
 		$html = $this->load->view('eyevent/detail',$data, true);
 
 		echo json_encode(array('html' => $html));
+	}
+
+	public function detail_kanan()
+	{
+		$cred 	= $this->config->item('credential');
+
+		//===== eyetube
+		$url_eyetube 	= $this->config->item('api_url')."video";
+		$tube_data		= array(
+								'page' => '1',
+								'limit' => '8',
+								'sortby' => 'newest',
+								'category' => '',
+		);
+		$eyetube 		=  $this->excurl->remoteCall($url_eyetube,$cred,$tube_data);
+
+		$data["eyetube"] = json_decode($eyetube);
+
+		//===== eyevent lain
+		$url_eyevent 	= $this->config->item('api_url')."event";
+		$event_data		= array(
+								'page' => '1',
+								'limit' => '4',
+								'sortby' => 'newest',
+								'category' => '',
+		);
+		$eyevent 		=  $this->excurl->remoteCall($url_eyevent,$cred,$event_data);
+
+		//===== eyenews
+		$url_eyenews 	= $this->config->item('api_url')."news";
+		$event_data		= array(
+								'page' => '1',
+								'limit' => '4',
+								'sortby' => 'newest',
+								'category' => '',
+								'youngage' => '',
+								'recommended' => '',
+		);
+		$eyenews 		=  $this->excurl->remoteCall($url_eyenews,$cred,$event_data);
+
+		$data["eyetube"] = json_decode($eyetube);
+		$data["eyevent"] = json_decode($eyevent);
+		$data["eyenews"] = json_decode($eyenews);
 
 
+		
+		$html = $this->load->view('eyevent/detail_kanan',$data, true);
+
+		echo json_encode(array('html' => $html));
 	}
 	
-	public function detail($eyevent_id=null,$action=null)
+	public function detail($eyevent_id=null)
 	{
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
@@ -146,7 +193,129 @@ class Eyevent extends CI_Controller {
 		
 		$this->load->view('template/static',$data);
 	}
-	
+
+	public function get_jadwal($tanggal)
+	{
+		$jadwalnya 		= $this->Eyevent_model->get_all_jadwal($tanggal,null);
+		$txt = '';
+		foreach ($jadwalnya as $value)
+		{
+			if (!empty($value['club_a']))
+			{
+				if ($value["jadwal_pertandingan"] < date('Y-m-d H:i:s'))
+				{
+					$txt.= "	<tr>
+			                        <td>".$value['club_a']."
+			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
+			                        </td> \
+			                        <td>".$value['score_a']." - ".$value['score_b']."
+			                            <span>".$value["lokasi_pertandingan"]."</span>
+			                        </td>
+			                        <td>
+			                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
+			                            ".$value["club_b"]."
+			                        </td>
+			                    </tr>	";
+				}
+				else
+				{
+					$txt.= "	<tr>
+			                        <td>".$value['club_a']."
+			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
+			                        </td> \
+			                        <td>".date("H:i",strtotime($value["jadwal_pertandingan"]))."
+			                            <span>".$value["lokasi_pertandingan"]."</span>
+			                        </td>
+			                        <td>
+			                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
+			                            ".$value["club_b"]."
+			                        </td>
+			                    </tr>	";
+				}
+			}
+			else
+			{
+				$txt.= "	<tr>
+	                            <td colspan='3' style='text-align: center;'>
+	                                Tidak Ada Jadwal Pada Tanggal Ini
+	                            </td>
+	                        </tr>    ";
+			}
+			
+
+		}
+
+		echo json_encode(array(	'status' 	=> '1',
+								'txt' 		=> $txt,
+							));
+	}
+
+	public function semua_event()
+	{
+		$data["meta"]["title"]="";
+		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
+		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+
+		$data["body"] 	= $this->load->view('eyevent/semua_event_abu', $data, true);
+		$data['kanal'] 	= "eyevent";
+		
+		$this->load->view('template/static',$data);
+	}
+
+	public function api_semua_event()
+	{
+		$cred 	= $this->config->item('credential');
+
+		//===== eyevent semua
+		$url_eyevent 	= $this->config->item('api_url')."event";
+		$event_data		= array(
+								'page' => '1',
+								'limit' => '12',
+								'sortby' => 'newest',
+								'category' => '',
+		);
+		$eyevent 		=  $this->excurl->remoteCall($url_eyevent,$cred,$event_data);
+
+		$data["eyevent"] = json_decode($eyevent);
+		$html = $this->load->view('eyevent/semua_event',$data, true);
+
+		echo json_encode(array('html' => $html));
+	}
+
+	public function api_semua_event_kanan()
+	{
+		$cred 	= $this->config->item('credential');
+		
+		//===== eyenews
+		$url_eyenews 	= $this->config->item('api_url')."news";
+		$event_data		= array(
+								'page' => '1',
+								'limit' => '4',
+								'sortby' => 'newest',
+								'category' => '',
+								'youngage' => '',
+								'recommended' => '',
+		);
+		$eyenews 		=  $this->excurl->remoteCall($url_eyenews,$cred,$event_data);
+
+		$data["eyenews"] = json_decode($eyenews);
+
+		//===== eyetube
+		$url_eyetube 	= $this->config->item('api_url')."video";
+		$tube_data		= array(
+								'page' => '1',
+								'limit' => '8',
+								'sortby' => 'newest',
+								'category' => '',
+		);
+		$eyetube 		=  $this->excurl->remoteCall($url_eyetube,$cred,$tube_data);
+
+		$data["eyetube"] = json_decode($eyetube);
+
+		$html = $this->load->view('eyevent/semua_event_kanan',$data, true);
+
+		echo json_encode(array('html' => $html));
+	}	
 	
 	public function search($search='',$pg=null)
 	{
@@ -210,62 +379,6 @@ class Eyevent extends CI_Controller {
 		$data["body"]=$this->load->view('eyevent/eventlainnya', $data, true);
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
-	}
-
-	public function get_jadwal($tanggal)
-	{
-		$jadwalnya 		= $this->Eyevent_model->get_all_jadwal($tanggal,null);
-		$txt = '';
-		foreach ($jadwalnya as $value)
-		{
-			if (!empty($value['club_a']))
-			{
-				if ($value["jadwal_pertandingan"] < date('Y-m-d H:i:s'))
-				{
-					$txt.= "	<tr>
-			                        <td>".$value['club_a']."
-			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
-			                        </td> \
-			                        <td>".$value['score_a']." - ".$value['score_b']."
-			                            <span>".$value["lokasi_pertandingan"]."</span>
-			                        </td>
-			                        <td>
-			                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
-			                            ".$value["club_b"]."
-			                        </td>
-			                    </tr>	";
-				}
-				else
-				{
-					$txt.= "	<tr>
-			                        <td>".$value['club_a']."
-			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
-			                        </td> \
-			                        <td>".date("H:i",strtotime($value["jadwal_pertandingan"]))."
-			                            <span>".$value["lokasi_pertandingan"]."</span>
-			                        </td>
-			                        <td>
-			                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
-			                            ".$value["club_b"]."
-			                        </td>
-			                    </tr>	";
-				}
-			}
-			else
-			{
-				$txt.= "	<tr>
-	                            <td colspan='3' style='text-align: center;'>
-	                                Tidak Ada Jadwal Pada Tanggal Ini
-	                            </td>
-	                        </tr>    ";
-			}
-			
-
-		}
-
-		echo json_encode(array(	'status' 	=> '1',
-								'txt' 		=> $txt,
-							));
 	}
 
 	public function liga($id_liga)

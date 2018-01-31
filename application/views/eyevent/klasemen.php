@@ -1,6 +1,6 @@
 <div class="container eyv m-t-20" style="width: 100%;">
 
-	<div class="et-content2" style="padding-left: 55px;padding-top: 13px;">
+	<div class="et-content2" style="padding-left: 55px;">
 	    <span class="jp">KLASEMEN</span>
 	    
         <div class="border-box">
@@ -47,6 +47,7 @@
 												if($n != 8){
 													if($n != 9){
 														if($n != 11){
+															
 															$nodeValue = "<td>".$type->nodeValue.'</td>';
 															echo $nodeValue;
 														}
@@ -57,12 +58,26 @@
 										$n++;
 									}
 									$i ++;
+
 								}
 								echo "</tr>";
 							}
 						}
 					} 
 				?>
+
+				<!-- 	n1 = nomor
+						n2 = club
+						n3 = main
+						n4 = menang
+						n5 = seri
+						n6 = kalah
+						n7 = memasukkan gol
+						n8 = kemasukan gol
+						n9 = selisih gol
+						n10 = point
+						n11 = 5 pertandingan terakhir
+						 -->
 				</tbody>
 			</table>
 			<table id="liga_inggris" class="table table-striped">
@@ -91,19 +106,63 @@
 						$pokemon_list = array();
 						$i = 0;
 						if($pokemon_row->length > 0){
+							
 							foreach($pokemon_row as $row){
 								echo "<tr>";
 								if($i < 18){
 									$types = $pokemon_xpath->query('td', $row);
 									$n = 0;
+									$haha = array();
+
 									foreach($types as $type){
+
+										switch ($n) {
+											case '2':
+												$haha['nama'] = $type->nodeValue;
+												break;
+											case '3':
+												$haha['main'] = $type->nodeValue;
+												break; 
+											case '4':
+												$haha['menang'] = $type->nodeValue;
+												break;
+											case '5':
+												$haha['seri'] = $type->nodeValue;
+												break;
+											case '6':
+												$haha['kalah'] = $type->nodeValue;
+												break;
+											case '7':
+												$haha['memasukan'] = $type->nodeValue;
+												break;
+											case '8':
+												$haha['kemasukan'] = $type->nodeValue;
+												break;
+											case '9':
+												$haha['selisih_gol'] = $type->nodeValue;
+												break;
+											case '10':
+												$haha['poin'] = $type->nodeValue;
+												break;
+											
+											default:
+												$haha['last_match'] = $type->nodeValue;
+												break;
+										}
+										$haha['id_event'] = "16";
+										$haha['updated_date'] = date('Y-m-d H:i:s');
+
+										// $haha[$n] = $type->nodeValue;
+
 										if(!empty($type->nodeValue)){
-											if($n != 7){
-												if($n != 8){
-													if($n != 9){
-														if($n != 11){
-															$nodeValue = "<td>".$type->nodeValue.'</td>';
-															echo $nodeValue;
+											if($n != 1){
+												if($n != 7){
+													if($n != 8){
+														if($n != 9){
+															if($n != 11){
+																$nodeValue = "<td>".$type->nodeValue.'</td>';
+																echo $nodeValue;
+															}
 														}
 													}
 												}
@@ -112,6 +171,8 @@
 										$n++;
 									}
 									$i ++;
+									// $query = $this->db->insert('event_klasemen', $haha);
+									// var_dump($query);exit();
 								}
 								echo "</tr>";
 							}
@@ -207,7 +268,7 @@
 									$types = $pokemon_xpath->query('td', $row);
 									$n = 0;
 									foreach($types as $type){
-										if(!empty($type->nodeValue)){
+										if($type->nodeValue != ""){
 											if($n != 7){
 												if($n != 8){
 													if($n != 9){
@@ -236,7 +297,7 @@
             </span>                      
         </div>
 	</div>
-	<div class="et-content2">
+	<div class="et-content2" style="margin-top: 1px;">
 		<select id="select_league" name="" selected="true" class="slc-musim fl-r">
 			<?php
 				foreach($kompetisi as $row)
@@ -262,7 +323,7 @@
 	        	</thead>
 	        	<tbody>
 	        	<?php
-	        		$html = file_get_contents(LinkScrapingLigaInggris());
+	        		$html = file_get_contents(LinkScrapingTopLigaInggris());
 	        		$premiere_doc = new DOMDocument();
 	        		libxml_use_internal_errors(TRUE); //disable libxml errors
 	        		if(!empty($html)){ //if any html is actually returned
@@ -307,7 +368,7 @@
             	</thead>
             	<tbody>
             	<?php
-            		$html = file_get_contents(LinkScrapingLigaItalia());
+            		$html = file_get_contents(LinkScrapingTopLigaItalia());
             		$premiere_doc = new DOMDocument();
             		libxml_use_internal_errors(TRUE); //disable libxml errors
             		if(!empty($html)){ //if any html is actually returned
@@ -352,7 +413,7 @@
             	</thead>
             	<tbody>
             	<?php
-            		$html = file_get_contents(LinkScrapingLigaSpanyol());
+            		$html = file_get_contents(LinkScrapingTopLigaSpanyol());
             		$premiere_doc = new DOMDocument();
             		libxml_use_internal_errors(TRUE); //disable libxml errors
             		if(!empty($html)){ //if any html is actually returned
@@ -392,6 +453,8 @@
 <script>
 	$(document).ready(function()
 	{
+		$("#liga_indonesia,#liga_italia,#liga_spanyol,#top_liga_italia,#top_liga_spanyol").hide();
+		
 		$("#select_league").change(function()
 		{
 			if($("#select_league").val() == "liga_indonesia")

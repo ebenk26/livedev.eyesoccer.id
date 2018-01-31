@@ -2,28 +2,25 @@
     foreach ($product as $data)
     {
 ?>
-        <div class="row">
+        <div class="row m-0-30">
 
             <div class="col-md-12">
-
-                <br>
-
-                <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px; font-size: 14px;">
+                <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px; font-size: 14px;    margin-top: 50px;">
                     <li><a href="<?= base_url(); ?>">Home</a></li>
                     <li><a href="<?= base_url(); ?>eyemarket">EyeMarket</a></li>
                 </ol>
 
-                    <img src="<?php echo base_url(); ?>assets/new_assets/ic_eyemarket.png">
+                    <!-- <img src="<?php echo base_url(); ?>assets/new_assets/ic_eyemarket.png">
                     <span style="font-family: Montserratbold; color:#F9C241;font-size: 20px;">eyeMarket</span>
-                    <img src="<?php echo base_url(); ?>assets/new_assets/line-eyemarket.png" style="width: 100%;height: 4px;">
+                    <img src="<?php echo base_url(); ?>assets/new_assets/line-eyemarket.png" style="width: 100%;height: 4px;"> -->
 
                 <div class="row" id="productMain">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" style="padding: 0px !important;">
                         <div id="mainImage" style="margin-top: 10%;">
                             <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="img-responsive">
                         </div>
-                            <div class="row" id="thumbs">
-                                <div class="col-xs-4">
+                            <div class="row" id="thumbs" style="margin-top: 10px !important;">
+                                <div class="col-xs-3">
                                     <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="thumb">
                                         <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
@@ -95,8 +92,8 @@
                         <!-- /.ribbon -->
 
                     </div>
-                    <div class="col-sm-6">
-                        <div class="box" style="padding-left: 45px;">
+                    <div class="col-sm-6" style="padding: 0px !important;">
+                        <div class="box">
                                 <div class="sizes" style="text-align: left;">
                                     <h3><?= $data['nama']; ?></h3>
                                 </div>
@@ -142,7 +139,7 @@
                                             <form action="<?= base_url(); ?>eyemarket/keranjang/<?= $id_member."/".$data['id_product']; ?>" method="post">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    <h4 class="modal-title" id="Login">Customer login</h4>
+                                                    <h4 class="modal-title" id="Login">Isi Keterangan Pemesanan</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
@@ -217,7 +214,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
+                    <div class="container">
                         <div class="box text-uppercase">
                             <h3>Produk Lainnya</h3>
                         </div>

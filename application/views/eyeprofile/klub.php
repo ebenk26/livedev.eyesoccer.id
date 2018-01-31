@@ -3,25 +3,50 @@
         font-size: .95em !important;
         padding: 7px 20px !important;
     }
+	.ep2 h3 {
+		line-height: unset;
+	}
+	#shownav {
+		float: right;
+		margin-top: 20px;
+		margin-right: 20px;
+		margin-bottom: 20px;
+	}
+
+	#nav_tab {
+		background: #2f4050;
+		padding: 8px 10px 8px 10px;
+		margin-left: 2px;
+		color: #fff;
+		font-size: 12px;
+		text-decoration: none;
+		border: 1px solid #2f4050;
+		cursor: pointer;
+	}
+
+	#nav_tab .actnet {
+		background: #c09d3d;
+	}
 </style>
         <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
-                    <li class="active"><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201" >Klub</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
+                    <li class="active"><a href="<?=base_url()?>eyeprofile/klub" >Klub</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
+                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
                 <select id="" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
 					<option value="">--Pilih Liga--</option>
 				<?php
-					foreach($kompetisi_pro as $row){
+					foreach($get_all_kompetisi as $row){
 				?>
 					<option value="<?php echo base_url()."eyeprofile/klub/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
 				<?php
 					}
 				?>
+					<option value="<?php echo base_url()."eyeprofile/klub/non liga"?>">Non Liga</option>
                 </select>
             </div>
         </div>
@@ -68,33 +93,53 @@
             </div>
         </div>
         <div class="center-desktop m-0">
-            <div class="ep2box fl-l pd-t-20">
-				<?php 				
-				foreach($club_main as $main){
-				?>
-				<a href="<?php echo base_url(); ?>eyeprofile/klub_detail/<?= $main['url']; ?>" style="text-decoration:unset;color:#424242;">
-					<div class="box-content ep2 fl-l">
-						<img src="<?=imgUrl()?>systems/club_logo/<?php print $main['logo_club']; ?>" alt="">
-						<div class="detail">
-							<h2><?=$main['nama_club'];?></h2>
-							<h3><?=$main['competition'];?></h3>
-							<table>
-								<tr>
-									<td>Squad</td>
-									<td>: <?=$main['squad'];?></td>
-								</tr>
-								<tr>
-									<td>Manager</td>
-									<td>: <?=$main['nama_manager'];?></td>
-								</tr>
-							</table>
-						</div>
-					</div>
-				</a>
-				<?php
+			<div class='testlist'>
+			<?php 
+				if($page == 1)
+				{
+					?> <div class='pageon' value='true'></div> <?php
 				}
-				?>
-            </div>
+			?>
+			</div>
+				<!--test-->
+				<script>
+					$(document).ready(function(){
+						setTimeout(function(){
+							<?php
+								$showpage = round(getTotalClub($liga)/12, 0);
+								if($page > 1)
+								{
+									if($showpage == $page OR $page == $showpage - 1)
+									{
+										if($showpage == 2) //Showrun
+										{
+											?> nav_first(<?php echo $page; ?>); <?php 
+										} else {
+											?> nav_last(<?php echo $page; ?>); <?php 
+										}
+									} else {
+										?> nav_page(<?php echo $page; ?>); <?php 
+									}
+								} else {
+									if($page > 0)
+									{
+										?> nav_first(<?php echo $page; ?>); <?php 
+									}
+								}
+							?>
+						}, 500);
+					});
+				</script>
+				<div id='showlist' value='.testlist'></div>
+				<div id='showbaseurl' value='<?php echo base_url()?>'></div>
+				<div id='shownewurl' value='<?php echo base_url()."eyeprofile/klub/$liga"; ?>'></div>
+				<div id='showurl' value='<?php echo base_url()."eyeprofile/getClub/$liga"; ?>'></div>
+				<div id='showpage' value='<?=$showpage;?>'></div>
+				<div id='showoff' value='4'></div>
+				<div id='showrun' value='2'></div>
+				<div id='shownav'>
+			 </div>
+			<!--test-->
             <div class="container t-b-b pd-b-20 pd-t-20"></div>
             <div class="container">
                 <h3 class="h3-oranye">Hasil pertandingan liga 1 indonesia</h3>
@@ -196,12 +241,14 @@
 										$n = 0;
 										foreach($types as $type){
 											if(!empty($type->nodeValue)){
-												if($n != 7){
-													if($n != 8){
-														if($n != 9){
-															if($n != 11){
-																$nodeValue = "<td>".$type->nodeValue.'</td>';
-																echo $nodeValue;
+												if($n != 1){
+													if($n != 7){
+														if($n != 8){
+															if($n != 9){
+																if($n != 11){
+																	$nodeValue = "<td>".$type->nodeValue.'</td>';
+																	echo $nodeValue;
+																}
 															}
 														}
 													}
@@ -337,3 +384,4 @@
         </div>
         </div>
         </div>
+		

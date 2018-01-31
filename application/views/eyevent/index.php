@@ -19,7 +19,7 @@
                         </a>
                         <div class="fl-l ae">
                             <a href="">
-                                <i class="material-icons">keyboard_arrow_left</i>
+                                <!-- <i class="material-icons">keyboard_arrow_left</i> -->
                             </a>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         </a>
                         <div class="fl-r ae">
                             <a href="">
-                                <i class="material-icons">keyboard_arrow_right</i>
+                                <!-- <i class="material-icons">keyboard_arrow_right</i> -->
                             </a>
                         </div>
                     </div>

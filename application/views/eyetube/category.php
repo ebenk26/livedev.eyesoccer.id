@@ -1,4 +1,4 @@
-
+</div>
 		<style>
 			.pagination > .active > a {
 				z-index:1;
@@ -23,13 +23,6 @@
 .news-rcm-r2 td {
 	padding: 4.5px 0px;
 }
-.btn-play2 {
-    position: relative;
-    top: -90px;
-    left: 110px;
-    width: 40px;
-    height: 40px;
-}
 		</style>
 
 
@@ -41,6 +34,7 @@
 				<!-- <li>Pemain</li> -->
 			</ul>
 		</div>
+		<div class="desktop">
         <div class="center-desktop m-0">
 		<div class="menu-3 m-0">
         <div class="container over-x">

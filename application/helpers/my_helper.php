@@ -126,13 +126,39 @@ function p($arr){
     echo '</pre>';
 
 }
+
 function cryptPass($str){
     return md5($str);
 }
-function inputSecure($input){
-    $input = trim(strip_tags(str_replace("'",'',$input)));
+function sql_injection($value){
     
-    return $input;
+        //$filter_sql = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($value,ENT_QUOTES))));
+        //return $filter_sql;
+    
+    $magic_quotes_active = get_magic_quotes_gpc();
+        $new_enough_php = function_exists("mysql_real_escape_string(unescaped_string)"); //i.e. PHP >= v4.3.0
+    
+    if($new_enough_php) { //PHP v4.3.0 or higher
+        //undo any magic quote effect so mysql_real_escape_string can do the work
+        
+        if($magic_quotes_active) {$value = stripslashes($value);}
+        
+        $value = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($value,ENT_QUOTES))));
+        
+    } else { //before PHP v4.3.0
+        
+        if(!$magic_quotes_active) {
+        $value = addslashes($value);
+        }
+    }
+    return $value;
+}
+
+function inputSecure($str){
+    $t = preg_replace('/<[^<|>]+?>/', '', htmlspecialchars_decode($str));
+    $t = htmlentities($t, ENT_QUOTES, "UTF-8");
+    
+    return sql_injection($t);
 }
 /**
     *fungsi getDistance::
@@ -445,22 +471,41 @@ function pathUrl()
 function LinkScrapingLigaIndonesia()
 {
 	// return "http://www.klasemenliga.com/?page=competition&id=629";
-	return "http://www.klasemenliga.com/?page=season&id=15105";
+	// return "http://www.klasemenliga.com/?page=season&id=15105";
+	return "https://id.soccerway.com/national/indonesia/super-liga/2018/regular-season/r45094/";
 }
 
 function LinkScrapingLigaInggris()
 {
-	return "http://www.klasemenliga.com/?page=competition&id=8";
+	// return "http://www.klasemenliga.com/?page=competition&id=8";
+	return "https://id.soccerway.com/national/england/premier-league/20172018/regular-season/r41547/";
+}
+
+function LinkScrapingTopLigaInggris()
+{
+    return "http://www.klasemenliga.com/?page=competition&id=8";
 }
 
 function LinkScrapingLigaItalia()
+{
+    // return "http://www.klasemenliga.com/?page=competition&id=13";
+    return "https://id.soccerway.com/national/italy/serie-a/20172018/regular-season/r42011/";
+}
+
+function LinkScrapingTopLigaItalia()
 {
 	return "http://www.klasemenliga.com/?page=competition&id=13";
 }
 
 function LinkScrapingLigaSpanyol()
 {
-	// return file_get_contents("http://www.klasemenliga.com/?page=competition&id=7");
+    // return file_get_contents("http://www.klasemenliga.com/?page=competition&id=7");
+    // return "http://www.klasemenliga.com/?page=competition&id=7";
+    return "https://id.soccerway.com/national/spain/primera-division/20172018/regular-season/r41509/";
+}
+
+function LinkScrapingTopLigaSpanyol()
+{
 	return "http://www.klasemenliga.com/?page=competition&id=7";
 }
 
@@ -473,4 +518,34 @@ function get_date($rentang = "")
     $tanggalnya = $modif->format('Y-m-d');
 
     return array('tanggalnya'    => $tanggalnya,);
+}
+
+function getManager($club_id = "")
+{
+    $CI =& get_instance();
+	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."'");
+	if($manager->num_rows()>0){
+		$manager = $manager->row()->name;
+	}else{
+		$manager = null;
+	}
+	
+	return $manager;
+}
+
+function getTotalClub($liga)
+{
+	$compt = "and competition='".urldecode($liga)."'";
+	$limit = '';
+	if(urldecode($liga) == 'Liga Indonesia 2'){
+		$limit = 'limit 24';
+	}else if(urldecode($liga) == 'Liga Indonesia 1'){
+		$limit = 'limit 18';
+	}else if(urldecode($liga) == 'non liga'){
+		$compt = "and competition in('SSB / Akademi Sepakbola')";
+	}
+    $CI =& get_instance();
+	$query=$CI->db->query("SELECT name FROM tbl_club WHERE club_id is not null $compt $limit")->result_array();
+	
+	return count($query);
 }

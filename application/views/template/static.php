@@ -78,25 +78,10 @@
                 <link href="<?=base_url()?>bs/jud/css/animate.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
-                <link href="<?=base_url()?>bs/jud/css/custom.css" rel="stylesheet">
-
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+                <link href="<?=base_url()?>bs/jud/css/custom.css" rel="stylesheet">
 		<?php
-            }
-            else
-            if ($kanal == 'eyevent')
-            {
-        ?>
-                <link href="<?=base_url()?>assets/eyenews/css/style.css" rel="stylesheet">
-                <link href="<?=base_url()?>assets/eyenews/css/bs.css" rel="stylesheet">
-                <style>
-                    .center-desktop{
-                        width: 1065px;
-                    }
-                </style>
-                <link href="<?=base_url()?>bs/css/arf-styles.css" rel="stylesheet">
-        <?php        
             }
             else
             {
@@ -130,11 +115,61 @@
         else
         {
     ?>
-            <body style="overflow-x: unset;">
+            <body class="over-x-unset">
+                <navmobile>
+                    <i id="menu" class="material-icons f-l">menu</i>
+                    <img src="https://www.eyesoccer.id/img/logo2.png" alt="">
+                    <i id="srcMobile" class="material-icons f-r">search</i>
+                </navmobile>
+                <div class="menu-mobile">
+                    <div class="m-top">
+                        <span class="m-log" href=""><i class="material-icons xClose">clear</i></span>
+                        <a class="m-reg" href=""><i class="material-icons">input</i>Login</a>
+                    </div>
+                    <span>kanal</span>
+                    <a href="<?=base_url()?>eyeprofile/klub"><img src="<?=base_url()?>assets/img/ic_eyeprofile.png" alt="">Eye Profile</a>
+                    <a href="<?=base_url()?>eyetube"><img src="<?=base_url()?>assets/img/ic_eyetube.png" alt="">Eye Tube</a>
+                    <a href="<?=base_url()?>eyenews"><img src="<?=base_url()?>assets/img/ic_eyenews.png" alt="">Eye News</a>
+                    <a href="<?=base_url()?>eyemarket"><img src="<?=base_url()?>assets/img/ic_eyemarket.png" alt="">Eye Market</a>
+                    <a href="<?=base_url()?>eyeme"><img src="<?=base_url()?>assets/img/ic-eyeme.png" alt="">Eye Me</a>
+                    <a href="<?=base_url()?>eyevent"><img src="<?=base_url()?>assets/img/ic_eyevent.png" alt="">Eye Vent</a>
+                </div>
+                <div id="srcboxMobile" class="searchbox-mobile">
+                    <input type="text" placeholder="cari apa hari ini?"><button id="srcSub" type="submit">Cari</button>
+                    <div class="close">
+                    </div>
+                </div>
+                <script>
+                    var menu = document.getElementById('menu');
+                    var xMenu = document.getElementsByClassName("menu-mobile")[0];
+                    var xClose = document.getElementsByClassName("xClose")[0];
+                    var srcMobile = document.getElementById('srcMobile');
+                    var srcS = document.getElementById("srcSub");
+                    var srcboxMobile = document.getElementById('srcboxMobile');
+                    var close = document.getElementsByClassName("close")[0];
+
+                    window.onload = function(){
+                        menu.onclick = function() {
+                            xMenu.style.display = "block";
+                        }
+                        xClose.onclick = function() {
+                            xMenu.style.display = "none";
+                        }
+                        srcMobile.onclick = function() {
+                            srcboxMobile.style.display = "block";
+                        }
+                        srcS.onclick = function() {
+                            srcboxMobile.style.display = "none";
+                        }
+                        close.onclick = function() {
+                            srcboxMobile.style.display = "none";
+                        }
+                    }
+                </script>
     <?php
         }
     ?>
-    
+
         <nav>
             <div class="desktop">
                 <div class="x-m">
@@ -173,11 +208,11 @@ else{
                         <ul>
                             <li><a href="" onclick="return false">EyeProfile</a>
                                 <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/referee/Liga%20Indonesia%201">Perangkat Pertandingan</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/supporter/Liga%20Indonesia%201">Supporter</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
+                                    <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
                                 </ul>
                             </li>
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
@@ -199,8 +234,8 @@ else{
             if ($kanal == 'eyemarket')
             {
         ?>
-                <div class="m-0" style="width: 1065px;">
-                    <div style="width: 1065px; margin: 0 auto; vertical-align: middle;">
+                <div class="m-0 center-desktop">
+                    <div class="center-desktop">
                         <?php echo $body;?>
                     </div>
                 </div>
@@ -257,5 +292,6 @@ else{
 			</form>
     <script src="<?=base_url()?>bs/js/bootstrapvalidator.min.js"></script>
     <script src="<?=base_url()?>assets/js/home.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.pagination.js"></script>
     </body>
 </html>

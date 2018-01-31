@@ -46,6 +46,7 @@ var html      = "",//html comment
     MEIMG     = '<?php echo MEIMG?>',
     MEPROFILE = '<?php echo MEPROFILE?>',
     IMGSTORE  = '<?php echo IMGSTORE?>';
+    MEURL     = '<?php echo MEURL?>';
     MYPROFILE = MEPROFILE + '<?php echo $myusername?>';
     loadingAni= $('#loading'); //Loading Animation 
     
@@ -152,7 +153,7 @@ var valCom = $(this).val();
         //console.log($(this).serializ  var com     = $(this).val();
         html        += "<li>";
         html        += "<a href=\"<?php echo MEPROFILE.$_SESSION['username']?>\"><?php echo $_SESSION['username']?></a>";
-        html        += "<span>"+ valCom+"</span>";
+        html        += "<span>"+ inputS(valCom)+"</span>";
         html        += "</li>";
         
          $.ajax({
@@ -379,10 +380,7 @@ $('#unlike').click(function(event) {
     /* Act on the event */
     alert($(this).attr('ref'));
 });
-$('#browse').click(function(event) {
-    /* Act on the event */
-    $('.fileimg').click();
-});
+
 function readImg(input){
      var reader = new FileReader();
      reader.onload = function(e){
@@ -475,36 +473,6 @@ $('#cancel').click(function(event) {
      //alert('test');
 });
 
-//upload-act::click
-
-
-$('#upload-act').click(function(event) {
-    var imageCaption  = $('.c-caption').val(); 
-    event.preventDefault();
-    //alert(imageCaption);
-    /* Act on the event */
-   $.ajax({
-        url: '<?php echo base_url()?>eyeme/upload_img',
-        type: 'POST',
-        dataType: 'HTML',
-        data: {imageData: imageData,
-                caption: imageCaption},
-    })
-    .done(function(e) {
-        alert(e);
-        window.location.replace(MYPROFILE);
-        $(this).attr('disabled', 'disable');
-        $(this).addClass('disable');
-    })
-    .fail(function() {
-        console.log("error");
-    })
-    .always(function() {
-        console.log("complete");
-    });
-
-    
-});
 /*
     fungsi get_follow
 */
@@ -654,14 +622,15 @@ $('.me-post').click(function(event) {
             $('#f-icon').addClass('first-icon-'+v.id_img);
             $('#s-icon').attr('ref',v.id_img);
             $('.comment').attr('rel',v.id_img);
-
-            if($id_member == v.id_member){
+           
+            if(v.id_member === v.self){
 
                 $('.del-icon').html('<i class="material-icons " id="del" onclick="discard_img(' + v.id_img +',3)" >delete</i>');
-                
-                
-
+                       
                 }
+            else{
+                 $('.del-icon').html('');
+            }
                 
             
             //tbl_com += '<table>';
@@ -771,14 +740,68 @@ $(function(){
         $(this).css('background','#e5e5e5');
     })
       $('.box-pic').on('drop',function(e){
+       // $('.fileimg').val(e);
         e.stopPropagation();
         e.preventDefault();
         readImg(e.originalEvent.dataTransfer.files[0]);
         $(this).css('background','green');
+        $('.fileimg').change();
         console.log(e.originalEvent.dataTransfer.files);
         
     })
 
 });
 
+
+var dropzone = $("#dropzone"),
+    input    = dropzone.find('input');
+
+dropzone.on({
+    dragenter : dragin,
+    dragleave : dragout
+});
+
+input.on('change', drop);
+input.on('change',function(){
+      $('.uplda').css('margin-top','0px');
+  });
+
+function dragin(e) { //function for drag into element, just turns the bix X white
+    $(dropzone).addClass('hover');
+}
+
+function dragout(e) { //function for dragging out of element                         
+    $(dropzone).removeClass('hover');
+}
+
+function drop(e) {
+    var file = this.files[0];
+    
+    $('#dropzone').removeClass('hover').addClass('dropped').find('img').remove();
+  
+    // upload file here
+    showfile(file); // showing file for demonstration ... 
+}
+
+function showfile(file) {
+    var reader = new FileReader(file);
+    reader.readAsDataURL(file);
+
+    reader.onload = function(e) {
+        $('#dropzone div').html($('<img />').attr('src', e.target.result).fadeIn());
+    }
+}
+
+function inputS(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+    
+  };
+
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
   </script>

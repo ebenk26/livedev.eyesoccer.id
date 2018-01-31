@@ -25,6 +25,7 @@
             <div class="post-photo m-t-10">
                 <img src="<?php echo MEIMG.$img[0]->img_name?>" alt="post photo">
             </div>
+            <span class="waktu-post"><?php echo $img[0]->timeString?></span>
             <div class="mt-10 m-l-20">
                 <?php 
                 /*ternary if button like clicked = has like 
@@ -54,7 +55,7 @@
             </div>
             <div class="p-r comment m-l-20">
                 <div>
-                    <a href="<?php echo MEPROFILE?>"><?php echo $img[0]->username?></a>
+                    <a href="<?php echo MEPROFILE.$img[0]->username?>"><?php echo $img[0]->username?></a>
                     <span><?php echo $img[0]->img_caption?></span>
                     
                 </div>
@@ -65,7 +66,7 @@
 
                              foreach($img[0]->comment as $k){
                                 echo '<li>';
-                                    echo '<a href="" >'.$k->username.'</a>';
+                                    echo '<a href="'.MEPROFILE.$k->username.'" >'.$k->username.'</a>';
                                     echo '<span>'.$k->comment.'</span>';
                                 echo '</li>';
                              }
@@ -73,7 +74,7 @@
                         
                     </ul>
                 </div>
-                <span class="waktu-post"><?php echo $img[0]->timeString?></span>
+                
             </div>
             <div class="m-t-15 kolom-komentar">
                 <input type="text" placeholder="Tambah komentar..." name="comment" rel="<?php echo $img[0]->id_img?>" class="comment" autocomplete="off">

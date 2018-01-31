@@ -78,8 +78,8 @@
                 echo '</div>';
             echo '</div>';
                 echo '<div class="bl-img mb-20">';
-                    echo 'Anda Belum Memiliki Photo Silahkah Upload Photo</br>';
-                    echo '<i class="material-icons upl" style="font-size:3em" >camera_enhance</i></a>';
+                    echo ($self == true ? 'Kamu ' : 'Pengguna Ini ').'Belum Memiliki Photo </br>';
+                    echo '<i class="material-icons '.($self == true ? 'upl' : '').'" style="font-size:3em" >camera_enhance</i></a>';
                 echo '</div>';
                
                 }

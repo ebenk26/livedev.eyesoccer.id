@@ -1,3 +1,4 @@
+</div>
 <style>
     .w30 a {
     	color: darkslategray ;
@@ -68,6 +69,7 @@
                 <!-- <li>Pemain</li> -->
             </ul>
         </div>
+		<div class="desktop">
         <div class="center-desktop m-0">
             <div class="menu-3 m-0">
             <div class="container over-x">
@@ -492,7 +494,7 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="assets/js/home.js">
+    <script type="text/javascript">
         function ShowAllVideo()
         {
             $('#all-populer').attr('style', 'display:block');

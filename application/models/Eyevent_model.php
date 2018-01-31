@@ -74,11 +74,12 @@ class Eyevent_model extends CI_Model
 										pic,
 										publish_on,
 										updateon,
-										thumb1
+										thumb1,
+										url
 									FROM
 										tbl_event
 									ORDER BY 
-										id_event
+										id_event DESC
 									LIMIT
 										1
 								")->result_array();
@@ -94,11 +95,12 @@ class Eyevent_model extends CI_Model
 									pic,
 									publish_on,
 									updateon,
-									thumb1
+									thumb1,
+									url
 									FROM
 										tbl_event
 									ORDER BY 
-									id_event
+									id_event DESC
 									LIMIT
 										1,1
 								")->result_array();
