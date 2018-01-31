@@ -481,17 +481,32 @@ function LinkScrapingLigaInggris()
 	return "https://id.soccerway.com/national/england/premier-league/20172018/regular-season/r41547/";
 }
 
+function LinkScrapingTopLigaInggris()
+{
+    return "http://www.klasemenliga.com/?page=competition&id=8";
+}
+
 function LinkScrapingLigaItalia()
 {
-	// return "http://www.klasemenliga.com/?page=competition&id=13";
-	return "https://id.soccerway.com/national/italy/serie-a/20172018/regular-season/r42011/";
+    // return "http://www.klasemenliga.com/?page=competition&id=13";
+    return "https://id.soccerway.com/national/italy/serie-a/20172018/regular-season/r42011/";
+}
+
+function LinkScrapingTopLigaItalia()
+{
+	return "http://www.klasemenliga.com/?page=competition&id=13";
 }
 
 function LinkScrapingLigaSpanyol()
 {
-	// return file_get_contents("http://www.klasemenliga.com/?page=competition&id=7");
-	// return "http://www.klasemenliga.com/?page=competition&id=7";
-	return "https://id.soccerway.com/national/spain/primera-division/20172018/regular-season/r41509/";
+    // return file_get_contents("http://www.klasemenliga.com/?page=competition&id=7");
+    // return "http://www.klasemenliga.com/?page=competition&id=7";
+    return "https://id.soccerway.com/national/spain/primera-division/20172018/regular-season/r41509/";
+}
+
+function LinkScrapingTopLigaSpanyol()
+{
+	return "http://www.klasemenliga.com/?page=competition&id=7";
 }
 
 function get_date($rentang = "")

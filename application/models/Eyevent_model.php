@@ -74,7 +74,8 @@ class Eyevent_model extends CI_Model
 										pic,
 										publish_on,
 										updateon,
-										thumb1
+										thumb1,
+										url
 									FROM
 										tbl_event
 									ORDER BY 
@@ -94,7 +95,8 @@ class Eyevent_model extends CI_Model
 									pic,
 									publish_on,
 									updateon,
-									thumb1
+									thumb1,
+									url
 									FROM
 										tbl_event
 									ORDER BY 

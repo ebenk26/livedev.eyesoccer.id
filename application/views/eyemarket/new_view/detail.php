@@ -144,7 +144,7 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                            <label>Nama Barang</label><?php var_dump($data['nama']);exit(); ?>
+                                                            <label>Nama Barang</label>
                                                             <div>
                                                                 <strong><?= $data['nama']; ?></strong>
                                                             </div>

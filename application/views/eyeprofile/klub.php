@@ -93,12 +93,40 @@
             </div>
         </div>
         <div class="center-desktop m-0">
-			<div class='testlist'></div>
+			<div class='testlist'>
+			<?php 
+				if($page == 1)
+				{
+					?> <div class='pageon' value='true'></div> <?php
+				}
+			?>
+			</div>
 				<!--test-->
 				<script>
 					$(document).ready(function(){
 						setTimeout(function(){
-							nav_page(<?php echo $page; ?>);
+							<?php
+								$showpage = round(getTotalClub($liga)/12, 0);
+								if($page > 1)
+								{
+									if($showpage == $page OR $page == $showpage - 1)
+									{
+										if($showpage == 2) //Showrun
+										{
+											?> nav_first(<?php echo $page; ?>); <?php 
+										} else {
+											?> nav_last(<?php echo $page; ?>); <?php 
+										}
+									} else {
+										?> nav_page(<?php echo $page; ?>); <?php 
+									}
+								} else {
+									if($page > 0)
+									{
+										?> nav_first(<?php echo $page; ?>); <?php 
+									}
+								}
+							?>
 						}, 500);
 					});
 				</script>
@@ -106,7 +134,7 @@
 				<div id='showbaseurl' value='<?php echo base_url()?>'></div>
 				<div id='shownewurl' value='<?php echo base_url()."eyeprofile/klub/$liga"; ?>'></div>
 				<div id='showurl' value='<?php echo base_url()."eyeprofile/getClub/$liga"; ?>'></div>
-				<div id='showpage' value='<?=round(getTotalClub($liga)/12, 0);?>'></div>
+				<div id='showpage' value='<?=$showpage;?>'></div>
 				<div id='showoff' value='4'></div>
 				<div id='showrun' value='2'></div>
 				<div id='shownav'>

@@ -238,7 +238,7 @@
                                                     <input type="file" name="image1" id="image1-<?= $value['id_product']; ?>">
                                                 </div>
                                                 <div id="uploaded_image1<?= $value['id_product']; ?>">
-                                                    <img src="<?= base_url()."produk_image/".$value['image1']; ?>" width="200" height="200">
+                                                    <img src="<?= base_url()."img/eyemarket/produk/".$value['image1']; ?>" width="200" height="200">
                                                 </div>
                                                 <input type="hidden" name="img_hidden1" value="image1">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
@@ -251,7 +251,7 @@
                                                     <input type="file" name="image2" id="image2-<?= $value['id_product']; ?>">
                                                 </div>
                                                 <div id="uploaded_image2<?= $value['id_product']; ?>">
-                                                    <img src="<?= base_url()."produk_image/".$value['image2']; ?>" width="200" height="200">
+                                                    <img src="<?= base_url()."img/eyemarket/produk/".$value['image2']; ?>" width="200" height="200">
                                                 </div>
                                                 <input type="hidden" name="img_hidden2" value="image2">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
@@ -264,7 +264,7 @@
                                                     <input type="file" name="image3" id="image3-<?= $value['id_product']; ?>">
                                                 </div>
                                                 <div id="uploaded_image3<?= $value['id_product']; ?>">
-                                                    <img src="<?= base_url()."produk_image/".$value['image3']; ?>" width="200" height="200">
+                                                    <img src="<?= base_url()."img/eyemarket/produk/".$value['image3']; ?>" width="200" height="200">
                                                 </div>
                                                 <input type="hidden" name="img_hidden3" value="image3">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
@@ -277,7 +277,7 @@
                                                     <input type="file" name="image4" id="image4-<?= $value['id_product']; ?>">
                                                 </div>
                                                 <div id="uploaded_image4<?= $value['id_product']; ?>">
-                                                    <img src="<?= base_url()."produk_image/".$value['image4']; ?>" width="200" height="200">
+                                                    <img src="<?= base_url()."img/eyemarket/produk/".$value['image4']; ?>" width="200" height="200">
                                                 </div>
                                                 <input type="hidden" name="img_hidden4" value="image4">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
@@ -290,7 +290,7 @@
                                                     <input type="file" name="image5" id="image5-<?= $value['id_product']; ?>">
                                                 </div>
                                                 <div id="uploaded_image5<?= $value['id_product']; ?>">
-                                                    <img src="<?= base_url()."produk_image/".$value['image5']; ?>" width="200" height="200">
+                                                    <img src="<?= base_url()."img/eyemarket/produk/".$value['image5']; ?>" width="200" height="200">
                                                 </div>
                                                 <input type="hidden" name="img_hidden5" value="image5">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
