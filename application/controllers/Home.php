@@ -345,36 +345,42 @@ class Home extends CI_Controller {
 						$id=$insert_id;
 						
 						// try {
-							//Server settings
-							$objMail->SMTPOptions = array(
-								'ssl' => array(
-								'verify_peer' => false,
-								'verify_peer_name' => false,
-								'allow_self_signed' => true
-								)
-							);
-							// $objMail->SMTPDebug = 2;                                 // Enable verbose debug output
-							$objMail->isSMTP();                                      // Set objMailer to use SMTP
-							$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-							$objMail->SMTPAuth = true;                               // Enable SMTP authentication
-							$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
-							$objMail->Password = 'BolaSepak777#';                           // SMTP password
-							$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-							$objMail->Port = 465;                                    // TCP port to connect to
-
-							//Recipients
-							$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
-							$objMail->addAddress("".$this->input->post("email")."");               // Name is optional
-							$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
-							$objMail->addBCC('ebenk.rzq@gmail.com');
-
-							//Content
-							$objMail->isHTML(true);                                  // Set eobjMail format to HTML
-							$objMail->Subject = 'Registrasi Member Eyesoccer';
-							$objMail->Body    = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.' untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
-							<br><br>
-							Salam Eyesoccer';
-
+							////Server settings
+							//$objMail->SMTPOptions = array(
+							//	'ssl' => array(
+							//	'verify_peer' => false,
+							//	'verify_peer_name' => false,
+							//	'allow_self_signed' => true
+							//	)
+							//);
+							//// $objMail->SMTPDebug = 2;                                 // Enable verbose debug output
+							//$objMail->isSMTP();                                      // Set objMailer to use SMTP
+							//$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+							//$objMail->SMTPAuth = true;                               // Enable SMTP authentication
+							//$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
+							//$objMail->Password = 'BolaSepak777#';                           // SMTP password
+							//$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+							//$objMail->Port = 465;                                    // TCP port to connect to
+							//
+							////Recipients
+							//$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
+							//$objMail->addAddress("".$this->input->post("email")."");               // Name is optional
+							//$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
+							//$objMail->addBCC('ebenk.rzq@gmail.com');
+							//
+							////Content
+							//$objMail->isHTML(true);                                  // Set eobjMail format to HTML
+							//$objMail->Subject = 'Registrasi Member Eyesoccer';
+							//$objMail->Body    = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.' untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
+							//<br><br>
+							//Salam Eyesoccer';
+							
+							//$message = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.'
+							//	    untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id <br><br> Salam Eyesoccer';
+							//
+							//$send = array('to' => $this->input->post("email"), 'subject' => 'Registrasi Member Eyesoccer', 'message' => $message);
+							//send_email($send);
+							
 							/* $objMail->send();
 							// echo 'Message has been sent';
 							echo "true";  */
@@ -400,6 +406,16 @@ class Home extends CI_Controller {
 		}else{
 			echo "false";
 		}
+	}
+	
+	function test_email()
+	{
+		$randurl = substr(md5(microtime()),rand(0,26),5);
+		$message = 'Kepada kharizuno@yahoo.com,<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.'
+			untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id <br><br> Salam Eyesoccer';
+	    
+		$send = array('to' => 'kharizuno@yahoo.com', 'subject' => 'Registrasi Member Eyesoccer', 'message' => $message);
+		send_email($send);
 	}
 	
 	public function forgot_password()
