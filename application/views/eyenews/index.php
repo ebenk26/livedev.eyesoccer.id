@@ -13,13 +13,13 @@
 	color: rgb(200, 0, 0);
     }
 </style>
-<div class="crumb">
+<div class="crumb redhover">
     <ul>
 	<li>Home</li>
 	<li>EyeNews</li>
     </ul>
 </div>
-<div class="desktop">
+<div class="desktop redhover">
     <?php $this->load->view('eyenews/category_menu'); ?>
     
     <div class="center-desktop m-0 mt-20">

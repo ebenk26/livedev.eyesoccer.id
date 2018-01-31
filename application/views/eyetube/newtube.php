@@ -1,11 +1,11 @@
 
-<div class="container">
+<div class="container bluehover">
 <div class="col-lg-12 col-md-12">
 <div class="hidden-md hidden-lg"><img src="<?=base_url()?>systems/eyeads_storage/<?php print $array[3][3]; ?>" class="img img-responsive" style="padding-top:10px;padding-left:5px;padding-right:5px;"></div>
 <h4 id="t100" style="padding-top:20px;"><i class="fa fa-play-circle-o fa-lg"></i> EYETUBE</h4></div>
 </div>
 
-<div class="container">
+<div class="container bluehover">
 <div class="col-lg-8 col-md-8">
 <div class="row">
 

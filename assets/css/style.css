@@ -1107,6 +1107,8 @@ ul, li {
     padding: 3px;
     color: white;
     font-size: .8em;
+    width: max-content;
+    min-width: 120px;
 }
 .table-pd-3 td{
     color: black;
@@ -4604,4 +4606,10 @@ height: 100%;
 .cell-border .odd img, .cell-border .even img{
     width: 130% !important;
     margin-left: -15%;
+}
+.bluehover a:hover{
+    color: #039BE5 !important;
+}
+.redhover a:hover, .redhover li:hover{
+    color: rgb(200, 0, 0) !important;
 }

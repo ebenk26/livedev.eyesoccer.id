@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container bluehover">
 <div class="hidden-md hidden-lg"><img src="<?=base_url()?>systems/eyeads_storage/<?php print $array[3][3]; ?>" class="img img-responsive" style="padding-top:10px;padding-left:5px;padding-right:5px;"></div>
 <div class="col-lg-12 col-md-12">
 </div>

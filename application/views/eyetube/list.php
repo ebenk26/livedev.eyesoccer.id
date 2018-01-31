@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row bluehover">
 
 <div class="col-lg-8 col-md-8"><br>
 <div class="hidden-md hidden-lg">

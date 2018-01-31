@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table>
                         <tbody>
                             <tr>
-                                <td style="width:100px; ! important; display:block;">Jumlah Pemain</td>
+                                <td>Jumlah Pemain</td>
                                 <td>: <?=$data["squad"]?> Pemain</td>
                             </tr>
                             <tr>

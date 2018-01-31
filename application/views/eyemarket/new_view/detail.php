@@ -204,7 +204,7 @@
                 </div>
 
                 <div class="box social" id="product-social">
-                    <h4>Bagikan</h4>
+                    <h4>Bagikan Ke Teman Anda</h4>
                     <p>
                         <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
                         <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
