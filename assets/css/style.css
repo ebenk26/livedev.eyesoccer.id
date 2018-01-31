@@ -1041,8 +1041,8 @@ ul, li {
    font-size: .9em;
    font-weight: 400;
    margin: 10px 0px 15px;
-   background-color: #fafafa7a;
-   box-shadow: inset 0 1px 20px -9px #00000061;
+   /* background-color: #fafafa7a;
+   box-shadow: inset 0 1px 20px -9px #00000061; */
 }
 .crumb li {
     color: #333;

@@ -12,12 +12,13 @@ body{
     font-family: 'Montserrat', sans-serif;  
     font-size: 18px;
 }
-.desktop{
-    width: 1080px;
+.dekstop, .desktop{
+    width: 1280px;
     margin: 0 auto;
     vertical-align: middle;
+    min-height: 1px;
 }
-.garis-x, .garis-banner, .x-m, footer, .banner-150, .box-vl, .tab, .et-content, nav, .trending, .menu, .jadwal, .pemain, .bx-pemain, .container{
+.garis-x, .garis-banner, .x-m, footer, .banner-150, .rek-ber, .box-vl, .tab, .et-content, nav, .trending, .menu, .jadwal, .pemain, .bx-pemain, .container{
     width: 100%;
     float: left;
 }
@@ -79,6 +80,7 @@ video{
     padding-top: 15px;
     padding-left: 0px !important;
     margin-left: -10px;
+    cursor: pointer;
 }
 .btn-login{
     padding: 25px 15px 25px 25px;
@@ -99,12 +101,14 @@ video{
 }
 .menu{
     background-color: #FFA726;
-    padding: 10px 0px 15px 0px;
 }
-.x-m{
+nav .center-desktop, .x-m{
     font-size: .9em;
-    margin-left: -50px;
-    width: 1105px;
+    width: 1065px;
+    margin: 0 auto;
+    float: unset;
+    display: block;
+    height: 61px;
 }
 .x-m>ul {
 	list-style:none;
@@ -116,12 +120,14 @@ video{
     text-decoration:none;
     color: #FFF3E0;
     margin-right: 27px;
-	font-weight: 500;
+    font-weight: 500;
+    padding-bottom: 13px;
+    margin-top: 20px;
 } 
 .x-m>ul>li>a:hover {
     border-bottom: 5px solid #feea95;
-    padding-bottom: 14px;
-    margin-bottom: -20px;
+    padding-bottom: 16px;
+    margin-bottom: -8px;
 } 
 .x-m>ul>li:hover ul {
 	display:block;
@@ -130,8 +136,8 @@ video{
 	display:none; 
 	list-style: none;
     position: absolute;
-    top: 136px;
-    width: 190px;
+    top: 125px;
+    width: 220px;
     background-color: white;
     z-index: 1;
     box-shadow: 1px 1px 3px 0px #cecece;
@@ -155,8 +161,8 @@ video{
     width: 220px;
     text-decoration: none;
     color: currentColor;
-    margin-left: -30px;
-    padding: 5px 0px;
+    /* margin-left: -30px; */
+    padding: 5px 10px;
 } 
 .x-m>ul ul>li>a:hover {
     color: #fca900;
@@ -222,11 +228,16 @@ video{
     font-size: 1em;
 }
 .x-c i, .x-m i{
-    top: 6px;
+    position: relative;
+    top: 20px;
     color: #FFF3E0;
 }
 .center-desktop{
+    float: unset;
+    margin: 0 auto;
     width: 1065px;
+    overflow: hidden;
+    min-height: 1px;
 }
 .carous .c{
     top: 54px;
@@ -1772,7 +1783,7 @@ ul, li {
    
 }
 .posisi-popup-notif{
-    right:130px;
+    right:98.5px;
     top: 185px;
     z-index: 99;
 }
@@ -1795,6 +1806,21 @@ ul, li {
     z-index: 1;
     display: none;
     overflow-y: scroll;
+}
+.kotak-popup-notif::-webkit-scrollbar {
+    width: 5px;
+}
+.kotak-popup-notif::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px transparent; 
+    border-radius: 10px;
+}
+.kotak-popup-notif::-webkit-scrollbar-thumb {
+    background: gainsboro; 
+    border-radius: 10px;
+    box-shadow: 0 -1px 1px 0px grey;
+}
+.kotak-popup-notif::-webkit-scrollbar-thumb:hover {
+    background: rgb(185, 185, 185); 
 }
 .teks-popup{
     padding-left: 15px;
@@ -1853,6 +1879,9 @@ ul, li {
     font-size: .85em;
 }
 .waktu-post{
+    position:relative;
+    float: right;
+    right:32px;
     font-size: .6em !important;
     margin-top: 20px !important;
 }
