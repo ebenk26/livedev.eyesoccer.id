@@ -25,6 +25,7 @@
             <div class="post-photo m-t-10">
                 <img src="<?php echo MEIMG.$img[0]->img_name?>" alt="post photo">
             </div>
+            <span class="waktu-post"><?php echo $img[0]->timeString?></span>
             <div class="mt-10 m-l-20">
                 <?php 
                 /*ternary if button like clicked = has like 
@@ -73,7 +74,7 @@
                         
                     </ul>
                 </div>
-                <span class="waktu-post"><?php echo $img[0]->timeString?></span>
+                
             </div>
             <div class="m-t-15 kolom-komentar">
                 <input type="text" placeholder="Tambah komentar..." name="comment" rel="<?php echo $img[0]->id_img?>" class="comment" autocomplete="off">

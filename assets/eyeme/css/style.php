@@ -1853,6 +1853,9 @@ ul, li {
     font-size: .85em;
 }
 .waktu-post{
+    position:relative;
+    float: right;
+    right:32px;
     font-size: .6em !important;
     margin-top: 20px !important;
 }
