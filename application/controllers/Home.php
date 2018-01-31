@@ -391,8 +391,8 @@ class Home extends CI_Controller {
 						else
 						{
 							$this->db->query("delete from tbl_member where id_member=".$id."");
-							echo "false";
-							// echo "Mailer Error: " . $objMail->ErrorInfo;
+							// echo "false";
+							echo "Mailer Error: " . $objMail->ErrorInfo;
 						}
 					}
 				}
