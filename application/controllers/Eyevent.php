@@ -256,7 +256,7 @@ class Eyevent extends CI_Controller {
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
 
-		$data["body"] 	= $this->load->view('eyevent/semua_event', $data, true);
+		$data["body"] 	= $this->load->view('eyevent/semua_event_abu', $data, true);
 		$data['kanal'] 	= "eyevent";
 		
 		$this->load->view('template/static',$data);
@@ -264,6 +264,8 @@ class Eyevent extends CI_Controller {
 
 	public function api_semua_event()
 	{
+		$cred 	= $this->config->item('credential');
+
 		//===== eyevent semua
 		$url_eyevent 	= $this->config->item('api_url')."event";
 		$event_data		= array(
@@ -275,11 +277,45 @@ class Eyevent extends CI_Controller {
 		$eyevent 		=  $this->excurl->remoteCall($url_eyevent,$cred,$event_data);
 
 		$data["eyevent"] = json_decode($eyevent);
-		$html = $this->load->view('eyevent/detail_kanan',$data, true);
+		$html = $this->load->view('eyevent/semua_event',$data, true);
 
 		echo json_encode(array('html' => $html));
 	}
-	
+
+	public function api_semua_event_kanan()
+	{
+		$cred 	= $this->config->item('credential');
+		
+		//===== eyenews
+		$url_eyenews 	= $this->config->item('api_url')."news";
+		$event_data		= array(
+								'page' => '1',
+								'limit' => '4',
+								'sortby' => 'newest',
+								'category' => '',
+								'youngage' => '',
+								'recommended' => '',
+		);
+		$eyenews 		=  $this->excurl->remoteCall($url_eyenews,$cred,$event_data);
+
+		$data["eyenews"] = json_decode($eyenews);
+
+		//===== eyetube
+		$url_eyetube 	= $this->config->item('api_url')."video";
+		$tube_data		= array(
+								'page' => '1',
+								'limit' => '8',
+								'sortby' => 'newest',
+								'category' => '',
+		);
+		$eyetube 		=  $this->excurl->remoteCall($url_eyetube,$cred,$tube_data);
+
+		$data["eyetube"] = json_decode($eyetube);
+
+		$html = $this->load->view('eyevent/semua_event_kanan',$data, true);
+
+		echo json_encode(array('html' => $html));
+	}	
 	
 	public function search($search='',$pg=null)
 	{

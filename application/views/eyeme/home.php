@@ -30,7 +30,9 @@
 
             <div class="post-photo m-t-10">
                 <img src="<?php echo MEIMG.$v['img_name']?>" alt="<?php echo $v['img_alt']?>">
+
             </div>
+            <span class="waktu-post"><?php echo $v['timeString']?></span>
             <div class="mt-10 m-l-20" ref= "ref-<?php echo $v['id_img']?>">
                 <?php 
                 /*ternary if button like clicked = has like 
@@ -55,15 +57,17 @@
                         <?php echo count($v['like'])?>
                     </div>
 
-                
+               
                 <div class="w567 m-t-15">
                     <div class="garis-x2"></div>
                 </div>
             </div>
+
             <div class="p-r comment m-l-20">
                
                     <a href="<?php echo MEURL.$v['username']?>"><?php echo $v['username']?></a>
                     <span><?php echo $v['img_caption']?> </span>
+
                     <!--<a href="test" class="c-g">selengkapnya</a>-->
                 
                 <div class="komen">
@@ -87,7 +91,7 @@
                        
                     </ul>
                 </div>
-                <span class="waktu-post"><?php echo $v['timeString']?></span>
+               
             </div>
             <div class="m-t-15 kolom-komentar">
             	
