@@ -767,7 +767,7 @@ class Home extends CI_Controller {
 		$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		$objMail->SMTPAuth = true;                               // Enable SMTP authentication
 		$objMail->Username = 'eyesoccerindonesia2@gmail.com';                 // SMTP username
-		$objMail->Password = 'bulukatakbaubingit2018$$$';                           // SMTP password
+		$objMail->Password = 'zbpqbixejvrbazwy';                           // SMTP password
 		$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 		$objMail->Port = 465;                                    // TCP port to connect to
 
