@@ -62,14 +62,14 @@
         cursor: pointer;
     }
 </style>
-    <div class="crumb">
+    <div class="crumb bluehover">
             <ul>
                 <li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
                 <li>EyeTube</li>
                 <!-- <li>Pemain</li> -->
             </ul>
         </div>
-		<div class="desktop">
+		<div class="desktop bluehover">
         <div class="center-desktop m-0">
             <div class="menu-3 m-0">
             <div class="container over-x">

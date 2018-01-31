@@ -15,13 +15,13 @@
             }
 
 </style>
-<div class="crumb">
+<div class="crumb redhover">
         <ul>
             <li>Home</li>
             <li>EyeNews</li>
         </ul>
     </div>
-    <div class="desktop">
+    <div class="desktop redhover">
         <div class="center-desktop m-0">
             <div class="menu-3 m-0">
                 <div class="over-x m-0">
@@ -107,7 +107,7 @@
             <div class="container">
                 <div class="m-0">
                     <div class="subjudul2">
-                        <h4>BERITA TERKAIT</h4>
+                        <h4>BERITA TERKINI</h4>
                     </div>
                 </div>
                 <div class="container m-t-15">
