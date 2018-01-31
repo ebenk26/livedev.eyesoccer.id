@@ -14,7 +14,16 @@
     .menu-3 a:hover{
 	border-bottom: 3px solid rgb(200, 0, 0);
 	color: rgb(200, 0, 0);
-    }
+	}
+	.trending .x-c a{
+		color: white;
+		background-color: #E53935;
+		font-weight: 600;
+	}
+	.trending .x-c a:hover{
+		background-color: #EF5350;
+		color: #FFEBEE !important;
+	}
 </style>
 <div class="crumb redhover">
     <ul>
