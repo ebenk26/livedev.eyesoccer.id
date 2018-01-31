@@ -218,7 +218,7 @@ else{
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
                             <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
                             <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
-                            <li><a href="<?=base_url()?>eyevent">EyEvent</a></li>
+                            <li><a href="<?=base_url()?>eyevent">EyeEvent</a></li>
                             <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>							
                             <li><a href="<?=base_url()?>eyetransfer">EyeTransfer</a></li>
                             <li><a href="<?=base_url()?>eyetiket">EyeTiket</a></li>

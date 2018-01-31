@@ -1072,7 +1072,7 @@ ul, li {
    color:#dd2c0d;
 }
 .garis-banner{
-    height: 189px;
+    height: 284px;
     overflow: hidden;
 }
 .garis-banner>.left{
@@ -1484,7 +1484,7 @@ ul, li {
     height: 150px;
     overflow: hidden;
     border-radius: 50%;
-    top: 125px;
+    top: -69px;
     left: 105px;
 }
 .box-img-radius img{
