@@ -4623,3 +4623,25 @@ height: 100%;
 .redhover a:hover, .redhover li:hover{
     color: rgb(200, 0, 0) !important;
 }
+.orange-default #nav_tab {
+    background: #fca900;
+    padding: 8px 10px;
+    margin-left: 2px;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    border: 1px solid #fca900;
+    cursor: pointer;
+    font-weight: 600;
+}
+.orange-default #nav_tab.actnet, .orange-default #nav_tab:hover{
+    background: #F57C00 !important;
+}
+.sticky{
+    position: fixed;
+    top: 60px;
+    z-index: 1;
+}
+.add60{
+    margin-top: 60px;
+}

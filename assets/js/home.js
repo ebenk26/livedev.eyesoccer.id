@@ -119,3 +119,21 @@ $(document).ready(function(){
         $("#videokamu").carousel("next");
     });
 });
+
+$(document).ready(function() {
+    var stickyWidgetTop = $('#sidebar').offset().top;
+    var stickyWidget = function(){
+    var scrollTop = $(window).scrollTop();    
+    if (scrollTop > stickyWidgetTop) {
+        $('#sidebar').addClass('sticky');
+        $('#sidebar').removeClass('add60');
+    } else {
+        $('#sidebar').removeClass('sticky');
+        $('#sidebar').addClass('add60');
+    }
+    };
+    stickyWidget();
+    $(window).scroll(function() {
+        stickyWidget();
+    });
+    });

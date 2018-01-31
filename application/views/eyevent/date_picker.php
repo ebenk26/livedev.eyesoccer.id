@@ -45,12 +45,11 @@
             <?php } ?>
         </div>
     </div>
-
-    <div class="d-r-v">
+    <div class="d-r-v container" id="sidebar" style="background-color: white; width: 450px; float: left;" >
         <div class="fl-l">
-            <h4>VIDEO</h4>
+            <h4 style="margin-top: 0px;">VIDEO</h4>
         </div>
-        <div class="fl-r bcd">
+        <div class="fl-r bcd" style="top: 9px;">
             <a href="">
                 <span>Berita Lainnya</span>
                 <i class="material-icons">keyboard_arrow_right</i>
