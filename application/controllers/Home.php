@@ -340,7 +340,7 @@ class Home extends CI_Controller {
 					}
 					else{
 						$randurl = substr(md5(microtime()),rand(0,26),5);
-						$this->db->query("INSERT INTO tbl_member (name,username,email,join_date,member_type,unique_code,password,verification) values ('".$this->input->post("name")."','".strtolower($this->input->post("username"))."','".$this->input->post("email")."','".date("Y-m-d H:i:s")."','Regular','".$randurl."','".md5($this->input->post("password"))."','0')");
+						$this->db->query("INSERT INTO tbl_member (name,username,email,join_date,member_type,unique_code,password,verification) values ('".$this->input->post("name")."','".strtolower($this->input->post("username"))."','".$this->input->post("email")."','".date("Y-m-d H:i:s")."','Regular','".$randurl."','".md5($this->input->post("password"))."','1')");
 						$insert_id = $this->db->insert_id();
 						$id=$insert_id;
 						
@@ -384,16 +384,16 @@ class Home extends CI_Controller {
 							$this->db->query("delete from tbl_member where id_member=".$id."");
 							echo "false";
 						} */
-						if ($objMail->send())
-						{
+						/* if ($objMail->send())
+						{ */
 							echo "true"; 
-						}
+						/* }
 						else
 						{
 							$this->db->query("delete from tbl_member where id_member=".$id."");
 							// echo "false";
 							echo "Mailer Error: " . $objMail->ErrorInfo;
-						}
+						} */
 					}
 				}
 			}
