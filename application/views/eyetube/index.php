@@ -227,8 +227,8 @@
         </div>
         <div class="container use-opacity">
             <div class="center-desktop m-0 m-t-14 p-r">
-                <i class="material-icons left panah panahkiri" href="#rekom" role="button">keyboard_arrow_left</i>
-                <i class="material-icons right panah panahkanan" href="#rekom" role="button">keyboard_arrow_right</i>
+                <i id="rekomleft" class="material-icons left1 panah panahkiri" href="#rekom" role="button">keyboard_arrow_left</i>
+                <i id="rekomright" class="material-icons right1 panah panahkanan" href="#rekom" role="button">keyboard_arrow_right</i>
 
                 <div id="rekom" class="carousel slide">
                     <div role="listbox" class="carousel-inner">
@@ -300,8 +300,8 @@
         </div>
         <div class="container use-opacity">
             <div class="center-desktop m-0 m-t-14 p-r">
-                <i class="material-icons left panah panahkiri" href="#soccersains" role="button">keyboard_arrow_left</i>
-                <i class="material-icons right panah panahkanan" href="#soccersains" role="button">keyboard_arrow_right</i>
+                <i class="material-icons left2 panah panahkiri" href="#soccersains" role="button">keyboard_arrow_left</i>
+                <i class="material-icons right2 panah panahkanan" href="#soccersains" role="button">keyboard_arrow_right</i>
                 <div id="soccersains" class="carousel slide">
                     <div role="listbox" class="carousel-inner">
                         <div class="box item active">
@@ -371,8 +371,8 @@
         </div>
         <div class="container use-opacity">
             <div class="center-desktop m-0 m-t-14 p-r">
-                <i class="material-icons left panah panahkiri" href="#videokamu" role="button">keyboard_arrow_left</i>
-                <i class="material-icons right panah panahkanan" href="#videokamu" role="button">keyboard_arrow_right</i>
+                <i class="material-icons left3 panah panahkiri" href="#videokamu" role="button">keyboard_arrow_left</i>
+                <i class="material-icons right3 panah panahkanan" href="#videokamu" role="button">keyboard_arrow_right</i>
                 <div id="videokamu" class="carousel slide">
                     <div role="listbox" class="carousel-inner">
                         <div class="box item active">
@@ -436,8 +436,8 @@
         </div>
         <div class="container use-opacity">
             <div class="center-desktop m-0 m-t-14 p-r">
-                <i class="material-icons left panah panahkiri" href="#profilssb" role="button">keyboard_arrow_left</i>
-                <i class="material-icons right panah panahkanan" href="#profilssb" role="button">keyboard_arrow_right</i>
+                <i class="material-icons left4 panah panahkiri" href="#profilssb" role="button">keyboard_arrow_left</i>
+                <i class="material-icons right4 panah panahkanan" href="#profilssb" role="button">keyboard_arrow_right</i>
                 <div id="profilssb" class="carousel slide">
                     <div role="listbox" class="carousel-inner">
                         <div class="box item active">

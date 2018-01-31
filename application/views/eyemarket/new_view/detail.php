@@ -220,12 +220,12 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-sm-6">
+                    <div class="container">
                 <?php
                     foreach ($ex_product as $value)
                     {
                 ?>
-                        <div class="product">
+                        <div class="product col-md-3 col-sm-6 col-xm-12">
                             <div class="image">
                                 <a href="#">
                                     <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">
