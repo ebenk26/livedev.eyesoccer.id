@@ -200,7 +200,8 @@
 						// console.log(data);
 						if(data=='true'){
 							alert('Registrasi berhasil, silahkan cek inbox atau spam pada email anda.');
-							window.location.href = "../home/index";
+							// window.location.href = "../home/index";
+							window.location.href = "../home/login";
 						}else if(data=='false'){
 							alert('Registrasi gagal, email tidak valid.');
 						}else if(data=='exist username'){

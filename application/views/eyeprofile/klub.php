@@ -142,51 +142,61 @@
 			<!--test-->
             <div class="container t-b-b pd-b-20 pd-t-20"></div>
             <div class="container">
-                <h3 class="h3-oranye">Hasil pertandingan liga 1 indonesia</h3>
+                <h3 class="h3-oranye">Hasil pertandingan <?php echo $title_liga?></h3>
             <div id="jadwal" class="jadwal carousel slide m-0 p-d-l-0">
                 <div class="left navigate" href="#jadwal" role="button">
                     <i class="material-icons">keyboard_arrow_left</i>
                 </div>
                 <div role="listbox" class="j-box carousel-inner">
-					<div class="over item active">
+				<?php if(count($get_jadwal_tomorrow_1)>0){?>
+						<div class="over item active">
+							<?php
+								foreach($get_jadwal_tomorrow_1 as $club){
+								?>			
+									<div class="j-content">
+										<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+										<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+										<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+									</div>		
+								<?php
+								}
+								?>
+						</div>
+						<div class="over item">	
+							<?php
+							foreach($get_jadwal_tomorrow_2 as $club){
+							?>		
+								<div class="j-content">
+									<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+									<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+									<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+								</div>		
+							<?php
+							}
+							?>							
+						</div>	
+						<div class="over item">	
+							<?php
+							foreach($get_jadwal_tomorrow_3 as $club){
+							?>		
+								<div class="j-content">
+									<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
+									<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
+									<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
+								</div>	
+							<?php
+							}
+							?>								
+						</div>
+					<?php
+					}else{
+						?>
+						<div style="background-color: #F5F5F5;font-weight: 500;color: #616161;font-size: x-large;height: 60px;text-align: center;line-height: 55px;">
+							<div>Belum ada hasil pertandingan.</div>
+						</div>
 						<?php
-						foreach($get_jadwal_tomorrow_1 as $club){
-						?>			
-							<div class="j-content">
-								<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
-								<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
-								<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
-							</div>		
-						<?php
-						}
-						?>								
-					</div>
-					<div class="over item">	
-						<?php
-						foreach($get_jadwal_tomorrow_2 as $club){
-						?>		
-							<div class="j-content">
-								<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
-								<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
-								<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
-							</div>		
-						<?php
-						}
-						?>							
-					</div>	
-					<div class="over item">	
-						<?php
-						foreach($get_jadwal_tomorrow_3 as $club){
-						?>		
-							<div class="j-content">
-								<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
-								<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
-								<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
-							</div>	
-						<?php
-						}
-						?>								
-					</div>	
+					}
+					?>
                 </div>
                 <div class="right navigate" href="#jadwal" role="button">
                     <i class="material-icons">keyboard_arrow_right</i>
@@ -320,7 +330,7 @@
 						?> 
                     </tbody>
                 </table>
-                <div class="nav-pencetak-gol">
+                <div class="nav-pencetak-gol" style="display:none;">
                     <ul>
                         <li>
                             <i class="material-icons left">keyboard_arrow_left</i>
@@ -336,7 +346,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="container">
+            <div class="container" style="margin-top:7px;">
                 <h3>Pencetak Gol Terbanyak</h3>
                 <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
                     <thead>
@@ -365,7 +375,7 @@
 					}?>
                     </tbody>
                 </table>
-                <div class="nav-pencetak-gol" style="margin-bottom:50px;">
+                <div class="nav-pencetak-gol" style="margin-bottom:50px;display:none;">
                     <ul>
                         <li>
                             <i class="material-icons left">keyboard_arrow_left</i>

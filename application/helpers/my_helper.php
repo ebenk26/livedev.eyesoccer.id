@@ -130,6 +130,7 @@ function p($arr){
 function cryptPass($str){
     return md5($str);
 }
+
 function sql_injection($value){
     
         //$filter_sql = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($value,ENT_QUOTES))));
@@ -160,6 +161,58 @@ function inputSecure($str){
     
     return sql_injection($t);
 }
+
+/**
+ *
+ *Config Email
+ *
+ */
+
+function config_email($host, $port, $user, $pass)
+{
+    $config['mailpath'] 	= '/usr/bin/sendmail';
+    $config['protocol'] 	= 'smtp';
+    $config['smtp_host'] 	= $host; //Yahoo | ssl://smtp.mail.yahoo.com, Gmail | ssl://smtp.gmail.com
+    $config['smtp_port'] 	= $port; //Port 25 | Yahoo/Gmail 465/587
+    $config['smtp_user'] 	= $user;
+    $config['smtp_pass'] 	= $pass;
+    $config['smtp_timeout'] = 5;
+    $config['priority'] 	= 3; //Email Priority. 1 = highest. 5 = lowest. 3 = normal.
+    $config['mailtype'] 	= 'html'; //text or html
+    $config['charset'] 	= 'iso-8859-1'; //utf-8 or iso-8859-1
+    $config['newline']  	= "\r\n";
+    $config['crlf'] 	= "\r\n";
+    $config['wordwrap'] 	= TRUE;
+    $this->email->initialize($config);
+}
+
+function send_email($opt = array(), $set = '')
+{
+    if($set)
+    {
+	$this->config_email('ssl://smtp.gmail.com', '587', 'eyesoccerindonesia@gmail.com', 'BolaSepak777#');
+	
+	$this->email->from('info@eyesoccer.id', 'Info Eyesoccer');
+	if(isset($opt['reply_to']))
+	{
+	    $this->email->reply_to($opt['from'], $opt['name']);
+	}
+	$this->email->to($opt['to']);
+	$this->email->bcc('ebenk.rzq@gmail.com');
+	$this->email->subject('Eyesoccer | '.$opt['subject']);
+	$this->email->message($opt['message']);
+	
+	if(!$this->email->send())
+	{
+	    $this->email->print_debugger(array('headers'));
+	} else {
+	    echo 'Email berhasil terkirim';
+	}
+	
+	exit;
+    }
+}
+
 /**
     *fungsi getDistance::
     *untuk menentukan jarak dari 2 waktu

@@ -13,15 +13,15 @@ function nav_first(pageon)
         var pageon = 1;
         
         if (showpage != showrun) {
-            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"first\");'>First</a>");
-            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"prev\");'>Prev</a>");
+            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"first\");'>Pertama</a>");
+            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"prev\");'>Sebelumnya</a>");
             $("#shownav").append("<a id='nav_page'></a>");
-            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"next\");'>Next</a>");
-            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"last\");'>Last</a>");
+            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"next\");'>Selanjutnya</a>");
+            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"last\");'>Terakhir</a>");
         } else {
-            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"prev\");'>Prev</a>");
+            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"prev\");'>Sebelumnya</a>");
             $("#shownav").append("<a id='nav_page'></a>");
-            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"next\");'>Next</a>");
+            $("#shownav").append("<a href='javascript:void(0)' id='nav_tab' onclick='nav_tab(\"next\");'>Selanjutnya</a>");
         }
     }
     

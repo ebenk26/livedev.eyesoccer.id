@@ -52,25 +52,32 @@ class Eyeprofile extends CI_Controller {
 		$jml_klub = null;
 		$nama_liga = urldecode($liga);
 		$data["title_liga"] = $nama_liga;
+		$nama_liga_event = 'Go-Jek Traveloka Liga 1 - 2017';
+		$above_datetime = '2017-12-29 00:00:00';
 		if($nama_liga == 'Liga Indonesia 1'){
 			$jml_klub = 18;	
 		}else if($nama_liga == 'Liga Indonesia 2'){
 			$nama_liga = 'Liga Indonesia 2';
 			$jml_klub = 24;
 			$data["title_liga"] = $nama_liga;
+			$nama_liga_event = 'Liga 2 Go-Jek Traveloka - Play Off';
+		}else if($nama_liga == 'Liga Indonesia 3'){
+			$nama_liga = 'Liga Indonesia 3';
+			$data["title_liga"] = $nama_liga;
+			$nama_liga_event = 'Liga Indonesia 3 Wilayah Jawa Barat';
 		}
 		// $data['club_header'] = $this->Eyeprofile_model->get_club_header();
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
 		// $data['profile_club'] = $this->Eyeprofile_model->get_profile_club();
-		$data['get_jadwal_tomorrow_1'] = $this->Eyeprofile_model->get_jadwal_tomorrow_1();
-		$data['get_jadwal_tomorrow_2'] = $this->Eyeprofile_model->get_jadwal_tomorrow_2();
-		$data['get_jadwal_tomorrow_3'] = $this->Eyeprofile_model->get_jadwal_tomorrow_3();
+		$data['get_jadwal_tomorrow_1'] = $this->Eyeprofile_model->get_jadwal_tomorrow_1($above_datetime,$nama_liga_event);
+		$data['get_jadwal_tomorrow_2'] = $this->Eyeprofile_model->get_jadwal_tomorrow_2($above_datetime,$nama_liga_event);
+		$data['get_jadwal_tomorrow_3'] = $this->Eyeprofile_model->get_jadwal_tomorrow_3($above_datetime,$nama_liga_event);
 		// $data['jumlah_klub'] = $this->Eyeprofile_model->get_jumlah_klub();
 		// $data['jumlah_pemain'] = $this->Eyeprofile_model->get_jumlah_pemain();
 		// $data['pemain_asing'] = $this->Eyeprofile_model->get_pemain_asing();
 		// $data['klasemen'] = $this->Eyeprofile_model->get_klasemen();
-		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain();
-		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
+		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain($nama_liga);
+		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol($nama_liga);
 		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();		
 		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();		
 		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia');		
