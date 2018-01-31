@@ -207,15 +207,37 @@ class Eyeprofile extends CI_Controller {
 		{
 			redirect("eyeprofile/pemain");			
 		}
-		//$pemain=$this->db->query("SELECT a.*,b.name as club_name,b.competition,b.logo FROM tbl_player a INNER JOIN tbl_club b ON b.club_id=a.club_id WHERE a.url='".$id."' LIMIT 1")->row_array();
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
+
+		
+		$data["meta"]["title"]  ="";
+		$data["meta"]["image"]  =base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
 		
-		$data["page"]="eyeprofile";
-		$data["pid"]=$id;
+		#$data["page"]="eyeprofile";
+		$data["pid"]   = $id;
 
-		$data['club_header'] = $this->Eyeprofile_model->get_club_header();
+		$url  = $this->config->item('api_url')."profile/{$id}";
+		$cred = $this->config->item('credential');
+
+		$event_data	= array(
+							'startdate' => '',
+							'enddate' => '',
+							'related' => true,
+		);
+		$obj      = $this->excurl->remoteCall($url,$cred,$event_data);
+
+		$response = json_decode($obj);
+
+		
+
+		$data["kanal"] = 'eyeprofile';
+		$data['res']   = $response->data;
+		$data['body']  = $this->load->view('eyeprofile/pemain_detail',$data,true);
+		
+		$this->load->view('template/static',$data);	
+
+
+		/*$data['club_header'] = $this->Eyeprofile_model->get_club_header();
 		$data['club_main'] = $this->Eyeprofile_model->get_club_main();
 		$data['profile_club'] = $this->Eyeprofile_model->get_profile_club();
 		$data['jumlah_klub'] = $this->Eyeprofile_model->get_jumlah_klub();
@@ -230,9 +252,26 @@ class Eyeprofile extends CI_Controller {
 		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/pemain_detail', $data, true);
-		$this->load->view('template/static',$data);		
+		$data['body'] = $this->load->view('eyeprofile/pemain_detail',$data,true);*/
+			
 	}
+	public function response_api($id){
+		$url  = $this->config->item('api_url')."profile/{$id}";
+		$cred = $this->config->item('credential');
 
+		$event_data	= array(
+							'startdate' => '',
+							'enddate' => '',
+							'related' => true,
+		);
+		$mod  = $this->excurl->remoteCall($url,$cred,$event_data);
+		$decode  = json_decode($mod);
+		p($decode);
+
+
+		#echo  $url;
+
+	}
 	public function official($liga=null)
 	{
 		if($liga==null){
