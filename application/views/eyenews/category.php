@@ -18,7 +18,8 @@
 	.trending .x-c a{
 		color: white;
 		background-color: #E53935;
-		font-weight: 600;
+		font-weight: 500;
+		padding: 5px 15px;
 	}
 	.trending .x-c a:hover{
 		background-color: #EF5350;
