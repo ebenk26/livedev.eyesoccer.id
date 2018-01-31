@@ -20,15 +20,15 @@
                         <tbody>
                             <tr>
                                 <td>Tempat Lahir </td>
-                                <td>:  <?php echo $res->birth_place;?></td>
+                                <td>:  <?php echo (isset($res->birth_place) ? $res->birth_place : '-');?></td>
                             </tr>
                             <tr>
                                 <td>Tanggal lahir</td>
-                                <td>: <?php echo $res->birth_date?></td>
+                                <td>: <?php echo (isset($res->birth_date) ? $res->birth_date: '-')?></td>
                             </tr>
                             <tr>
                                 <td>Kewarganegaraan</td>
-                                <td>: <?php echo $res->nationality?></td>
+                                <td>: <?php echo (isset($res->nationality) ? $res->nationality: '-') ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -38,11 +38,11 @@
                         <tbody>
                             <tr>
                                 <td>klub Sekarang </td>
-                                <td>: <?php echo $res->club?></td>
+                                <td>: <?php echo (isset($res->club) ? $res->club : '-')?></td>
                             </tr>
                             <tr>
                                 <td>Posisi</td>
-                                <td>: <?php echo $res->position?></td>
+                                <td>: <?php echo(isset($res->position) ? $res->position : '-')?></td>
                             </tr>
                             <tr>
                                 <td> Kontrak</td>
