@@ -108,22 +108,8 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="fl-r soc">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
-                                    </td>
-                                    <td>
-                                        <a href="#coba" id="scroll-komen">
-                                            <button class="cc" type="button"  style="cursor: pointer;">
-                                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                            <!-- <span>16</span> -->
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
+                        <div class="container" style="margin: 10px 0px 30px;">
+                            <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
                         </div>
                     </div>
 

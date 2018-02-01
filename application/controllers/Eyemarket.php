@@ -976,19 +976,19 @@ class Eyemarket extends CI_Controller {
 			}
 
 
-			$message=$this->load->view('eyemarket/new_view/mail_order',$data,TRUE);
+			$message = $this->load->view('eyemarket/new_view/mail_order',$data,TRUE);
 
-			$objMail 	= $this->phpmailer_library->load();
+			// $objMail 	= $this->phpmailer_library->load();
 
 				//Server settings
 				// $objMail->SMTPDebug = 2;                                 // Enable verbose debug output
-				$objMail->isSMTP();                                      // Set objMailer to use SMTP
-				$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-				$objMail->SMTPAuth = true;                               // Enable SMTP authentication
-				$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
-				$objMail->Password = 'BolaSepak777#';                           // SMTP password
-				$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-				$objMail->Port = 465;                                    // TCP port to connect to
+				// $objMail->isSMTP();                                      // Set objMailer to use SMTP
+				// $objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+				// $objMail->SMTPAuth = true;                               // Enable SMTP authentication
+				// $objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
+				// $objMail->Password = 'BolaSepak777#';                           // SMTP password
+				// $objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+				// $objMail->Port = 465;                                    // TCP port to connect to
 
 				//Server settings
 				// $objMail->SMTPDebug 	= 4;                                 // Enable verbose debug output
@@ -998,29 +998,35 @@ class Eyemarket extends CI_Controller {
 				// $objMail->SMTPSecure	= 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 				
 				// $objMail->Port 			= 465;                                    // TCP port to connect to
-				$objMail->isHTML(true);                                  // Set eobjMail format to HTML
+				// $objMail->isHTML(true);                                  // Set eobjMail format to HTML
 
-				$objMail->SMTPOptions = array(
-					'ssl' => array(
-					'verify_peer' => false,
-					'verify_peer_name' => false,
-					'allow_self_signed' => true
-					)
-				);
+				// $objMail->SMTPOptions = array(
+				// 	'ssl' => array(
+				// 	'verify_peer' => false,
+				// 	'verify_peer_name' => false,
+				// 	'allow_self_signed' => true
+				// 	)
+				// );
 
-				// $objMail->Username 		= 'robidummy665@gmail.com';
-				// $objMail->Password 		= 'robionepiece32';
+				// // $objMail->Username 		= 'robidummy665@gmail.com';
+				// // $objMail->Password 		= 'robionepiece32';
 
-				//Recipients
-				$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
-				$objMail->addAddress($data["email"]);               // Name is optional
-				$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
+				// //Recipients
+				// $objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
+				// $objMail->addAddress($data["email"]);               // Name is optional
+				// $objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
 
-				//Content
-				$objMail->Subject 		= 'Menunggu Pembayaran untuk Pemesanan '.$no_invoice;
-				$objMail->Body    		= $message;
+				// //Content
+				// $objMail->Subject 		= 'Menunggu Pembayaran untuk Pemesanan '.$no_invoice;
+				// $objMail->Body    		= $message;
 
-				if ($objMail->send())
+				$to 		= $data["email"];
+				$subject 	= 'Menunggu Pembayaran untuk Pemesanan '.$no_invoice;
+				$msg 		= $message;
+
+				$send_mail 	= send_mail($to,$subject,$msg);
+
+				if ($send_mail)
 				{
 					// echo "bisa";
 					$this->session->set_flashdata('sukses','<strong>Order anda berhasil</strong>, silahkan cek email anda untuk langkah selanjutnya');
@@ -1029,7 +1035,10 @@ class Eyemarket extends CI_Controller {
 				}
 				else
 				{
-					echo "Mailer Error: " . $objMail->ErrorInfo;
+					// echo "Mailer Error: " . $objMail->ErrorInfo;
+					$this->session->set_flashdata('gagal','<strong>Terjadi Kesalahan</strong> mohon tunggu beberapa saat');
+
+					redirect('/eyemarket/pesanan/'.$id_member);
 				}
 		}
 		else
