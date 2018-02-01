@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="down-r-vent">
+    <!-- <div class="down-r-vent">
         <div class="fl-l">
             <h4>Terbaru</h4>
         </div>
@@ -126,5 +126,5 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
