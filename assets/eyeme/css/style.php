@@ -2021,9 +2021,15 @@ ul, li {
     background-color: #33f104c9;
 }
 .me-profil-foto{
-    border-radius: 50%;
     width: 140px;
     height: 140px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.me-profil-foto img{
+    min-height: 100%;
+    width: unset;
+    border-radius: unset;
 }
 .uname{
     font-size: 18pt;
