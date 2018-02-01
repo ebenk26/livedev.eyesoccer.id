@@ -8,11 +8,13 @@ class Eyetube extends CI_Controller {
         parent::__construct();
 		    //$this->load->model('Eyemarket_model');
 		    $this->load->model('Eyetube_model');
+		    $this->load->model('Eyetube_model','tmod');
 		    $this->load->model('Eyenews_model');
+		    $this->load->model('Eyenews_model','nmod');
 		    $this->load->model('Master_model');
 			$this->load->helper(array('form','url','text','date'));			
 			date_default_timezone_set('Asia/Jakarta');
-			$this->load->helper('my');
+			$this->load->helper('my_helper');
 			
     }
 	public function index($pg= null)
@@ -520,7 +522,19 @@ class Eyetube extends CI_Controller {
 		$data['eyetube_rekomendasi'] 	= $this->Eyetube_model->get_eyetube_rekomendasi();
 		$data['eyetube_populer'] 		= $this->Eyetube_model->get_eyetube_populer(1,0);
 		$data['eyetube_sub_populer']	= $this->Eyetube_model->get_eyetube_populer(4,1);
-		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		#$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		$url                            = $this->config->item('api_url').'news';
+		$cred                           = $this->config->item('credential');
+
+		$event_data                 	= array(
+											'sort_by' => 'mostview',
+											'limit'   => '4');
+		$obj                            = $this->excurl->remoteCall($url,$cred,$event_data);
+
+		$response                       = json_decode($obj);
+		p($response);
+		$data['news']                   = $response->data;
+	
 		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
 

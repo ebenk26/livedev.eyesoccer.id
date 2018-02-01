@@ -66,7 +66,7 @@
                 <div class="container ">
 				
 					<?php
-						$this->load->helper('my');
+		
 						foreach ($pagging['row'] as $similar)
 						{
 					?>
@@ -206,33 +206,42 @@
             <div class="container">
                 <div class="m-0">
                     <div class="subjudul">
-                        <h4>EyeTube</h4>
+                        <h4>EyeNews</h4>
                     </div>
                 </div>
                 <div class="m-0">			
                     <div class="container m-t-5 bbg">
-					<?php
-					foreach ($video_eyetube as $videonya)
-					{
-					?>						
-                        <div class="w4">
-							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url'];?>" class="container">
-								<div class="w4-f">
-									<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="<?= $videonya['title']; ?>" title="<?= $videonya['title']; ?>">
-									<div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
-								</div>
-										<p class="sub-en">
-										<?= $videonya['title']; ?></p>
-									<span class="time-view">
-									<?php
-										$date 		=  new DateTime($videonya['createon']);
-										$tanggal 	= date_format($date,"Y-m-d H:i:s");
-										echo relative_time($tanggal) . ' ago - '.$videonya['tube_view'].' views';						
-									?>								
-									</span>
-							</a>
-                        </div>
-					<?php }?>						
+						<?php
+							#$news = $res->data
+							if(count($news) > 0 ){
+								foreach($news as $k => $v){
+								echo '<div class="4">';
+
+									echo '<a href="'.$v->url.'">';
+										echo "<div class=\"vid-box-vl\">";
+
+											echo "<div class=\"vid-box-vl-img\">";
+												echo "<img src=\"{$v->url_pic}/medium\" alt=\"{$v->title}\">";
+											echo '</div>';
+
+											echo '<p class="sub-en">';
+												echo $v->title;
+											echo '</p>';
+											echo '<span class="time-view" style="top:-5px !important">';
+												echo $v->publish_on;
+											echo '</span>';
+									
+										echo '</div>';
+									echo '</a>';
+
+								echo '</div>';
+
+
+								}
+
+							}
+
+						?>		
                     </div>
                 </div>
             </div>
