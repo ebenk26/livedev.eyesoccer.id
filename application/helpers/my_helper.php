@@ -120,6 +120,7 @@ define('EYETIKET',base_url().'eyetiket');
 define('EYEWALLET',base_url().'wallet');
 define('IMAGE','http://static.eyesoccer.id/v1/');
 define('DEFAULTIMG',base_url().'assets/home/img/eyeme-photo%20thumbnail.png');
+define('NEWSDETAIL',base_url().'eyenews/detail/');
 function p($arr){
     echo '<pre>';
      print_r($arr);
@@ -601,4 +602,36 @@ function getTotalClub($liga)
 	$query=$CI->db->query("SELECT name FROM tbl_club WHERE club_id is not null $compt $limit")->result_array();
 	
 	return count($query);
+}
+
+function send_mail($to,$subject,$msg)
+{
+    $url = 'http://ebenk.xyz/kirim_email.php';
+
+    // what post fields?
+    $fields = array(
+       'to' => $to,
+       'bcc' => "ebenk.rzq@gmail.com",
+       'subject' => $subject,
+       'msg' => $msg,
+    );
+
+    // build the urlencoded data
+    $postvars = http_build_query($fields);
+
+    // open connection
+    $ch = curl_init();
+
+    // set the url, number of POST vars, POST data
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, count($fields));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
+
+    // execute post
+    $result = curl_exec($ch);
+
+    // close connection
+    curl_close($ch);
+
+    return $result;
 }

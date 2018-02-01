@@ -76,4 +76,8 @@
             <div class="news-capt m-t-10">
                 <span><?= $model->data->description; ?></span>
             </div>
+            <div class="container">
+                <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
+            </div>
         </div>
+        <script type='text/javascript' src='<?=base_url()?>bs/js/sharethis.js#property=596cf64cb69de60011989f08&product=inline-share-buttons' async='async'></script>

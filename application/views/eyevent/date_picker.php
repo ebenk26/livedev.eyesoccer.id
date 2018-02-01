@@ -1,5 +1,6 @@
 <div class="container eyv-r mt-10">
     <div class="down-r-vent">
+    <h4>Lihat Berdasarkan Tanggal</h4>
         <div class="kalender mt-20">
             <div id="z"></div>
             <!-- <input type="text" id="d" /> -->
@@ -87,3 +88,22 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+    var stickyWidgetTop = $('#sidebar').offset().top;
+    var stickyWidget = function(){
+    var scrollTop = $(window).scrollTop();    
+    if (scrollTop > stickyWidgetTop) {
+        $('#sidebar').addClass('sticky');
+        $('#sidebar').removeClass('add60');
+    } else {
+        $('#sidebar').removeClass('sticky');
+        $('#sidebar').addClass('add60');
+    }
+    };
+    stickyWidget();
+    $(window).scroll(function() {
+        stickyWidget();
+    });
+    });
+</script>

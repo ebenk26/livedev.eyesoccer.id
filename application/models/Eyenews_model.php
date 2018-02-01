@@ -288,7 +288,7 @@ class Eyenews_model extends CI_Model
 										a.publish_on<='".date("Y-m-d H:i:s")."'
 										and category_news='2'
 									ORDER BY
-										a.eyenews_id ASC
+										a.eyenews_id DESC
 									LIMIT
 										3
 								")->result_array();

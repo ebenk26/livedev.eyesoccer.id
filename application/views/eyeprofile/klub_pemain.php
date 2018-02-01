@@ -1,9 +1,20 @@
+<style>
+	.sjrh{
+		font-size: 1.2em;
+		font-weight: 500;
+		text-transform: uppercase;
+		color: #1d3d8e;
+	}
+	.m-l-158{
+		margin-left: 158px;
+	}
+</style>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 </div>
 <div class="w-blue">
-    <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
+    <img src="<?php echo base_url()?>assets/img/segitiga-putih-01.png" alt="">
 </div><div class="desktop">
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
@@ -20,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </g>
                 </svg> -->
                 <div class="box-img-radius">
-                    <img src="<?=imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
+                    <img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
                 </div>
             </div>
             <div class="right">
@@ -98,9 +109,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </table>
                 </div>
             </div>
-		<?php
-		}
-		?>
         </div>
         <div class="menu-2">
             <ul>
@@ -111,7 +119,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="desktop">	
-			<div class="center-desktop m-0 pd-t-100 maintab" id="tabs-pemain">
+		<div class="container m-l-158">
+			<h3 class="sjrh">Sejarah</h3>
+			<p>
+				<?=$row["description"]?>
+			</p>
+		</div>
+		<?php
+		}
+		?>
+			<div class="center-desktop m-0 maintab" id="tabs-pemain">
+			
 			<?php
 			$no = 1;
 			foreach($get_player_list as $row){		
@@ -180,7 +198,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		
 		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-supporter">
-			<div style="color: grey;padding-top: 100px;padding-bottom: 100px;">Segera Hadir...</div>
+			<!-- <div style="color: grey;padding-top: 100px;padding-bottom: 100px;">Segera Hadir...</div> -->
+			<div class="container comingsoon">
+				<img src="<?=base_url()?>assets/img/ComingSoon.png" alt="">
+			</div>
 		</div>
 	
     <div class="center-desktop m-0">

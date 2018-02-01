@@ -57,9 +57,12 @@ class Home extends CI_Controller {
 		$data['eyenews_muda'] 		= $this->Home_model->get_eyenews_muda();
 		$data['eyenews_populer'] 	= $this->Home_model->get_eyenews_populer();
 		$data['eyenews_rekomendasi']= $this->Home_model->get_eyenews_rekomendasi();
+
+		// ===== eyevent
 		$data['eyevent_main']		= $this->Home_model->get_eyevent_main();
 		$data['eyevent_main_2']		= $this->Home_model->get_eyevent_main_2();
 		$data['eyevent_main_3']		= $this->Home_model->get_eyevent_main_3();
+
 		$data['jadwal_today'] 		= $this->Home_model->get_jadwal_today();
 		$data['jadwal_tomorrow1'] 		= $this->Home_model->get_jadwal_tomorrow1();
 		$data['jadwal_tomorrow2'] 		= $this->Home_model->get_jadwal_tomorrow2();
@@ -375,7 +378,7 @@ class Home extends CI_Controller {
 							//<br><br>
 							//Salam Eyesoccer';
 							
-							//$message = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.'
+							$message = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.'
 							//	    untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id <br><br> Salam Eyesoccer';
 							//
 							//$send = array('to' => $this->input->post("email"), 'subject' => 'Registrasi Member Eyesoccer', 'message' => $message);
@@ -392,7 +395,7 @@ class Home extends CI_Controller {
 						} */
 						/* if ($objMail->send())
 						{ */
-							echo "true"; 
+							// echo "true"; 
 						/* }
 						else
 						{
@@ -400,6 +403,19 @@ class Home extends CI_Controller {
 							// echo "false";
 							echo "Mailer Error: " . $objMail->ErrorInfo;
 						} */
+						$to = $this->input->post("email");
+						$subject = "Registrasi Member Eyesoccer";
+						$send_mail = send_mail($to,$subject,$message);
+						if ($send_mail)
+						{
+							echo "true"; 
+						}
+						else
+						{
+							$this->db->query("delete from tbl_member where id_member=".$id."");
+							// echo "false";
+							echo "Mailer Error: " . $objMail->ErrorInfo;
+						}
 					}
 				}
 			}
@@ -440,7 +456,7 @@ class Home extends CI_Controller {
 		$this->db->where('email', $email);
 		$this->db->update('tbl_member', $data); 
 		
-		try {
+		/* try {
 			//Server settings
 			$objMail->SMTPDebug = 2;                                 // Enable verbose debug output
 			$objMail->isSMTP();                                      // Set objMailer to use SMTP
@@ -469,6 +485,22 @@ class Home extends CI_Controller {
 			echo "true"; 
 		} catch (Exception $e) {
 			echo "false";
+		} */
+		$to = $this->input->post("email");
+		$subject = "Forgot Password Eyesoccer";
+		$message = 'Silahkan klik link berikut '.base_url().'forgot_ver?ver='.$randurl.' untuk memperbarui password anda. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
+			<br><br>
+			Salam Eyesoccer';
+		$send_mail = send_mail($to,$subject,$message);
+		if ($send_mail)
+		{
+			echo "true"; 
+		}
+		else
+		{
+			// $this->db->query("delete from tbl_member where id_member=".$id."");
+			echo "false";
+			// echo "Mailer Error: " . $objMail->ErrorInfo;
 		}
 	}
 	

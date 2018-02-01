@@ -4334,14 +4334,14 @@ ey{
     color: white !important;
 }
 .comingsoon{
-    font-family: sans-serif;
+    /* font-family: sans-serif;
     width: 300px;
     max-width: 80%;
     margin-left: 10%;
     margin-top: 10%;
-    /* display: inline-block; */
+    display: inline-block;
     color: #424242;
-    padding-bottom: 20px;
+    padding-bottom: 20px; */
 }
 .comingsoon h1{
     font-weight: 100;
@@ -4641,8 +4641,19 @@ height: 100%;
     position: absolute;
 }
 .cell-border .odd img, .cell-border .even img{
+<<<<<<< HEAD
     width: 130% !important;
     margin-left: -15%;
+=======
+    /* width: 130% !important;
+    margin-left: -15%; */
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+>>>>>>> e18d379493df655f19da3bc41eaf37d906dc56cf
 }
 .ev-ar-p{
     margin: -5px 0 30px 0;
@@ -4676,6 +4687,7 @@ height: 100%;
 }
 .evr-1:hover{
     color: rgb(61, 139, 61)
+<<<<<<< HEAD
     /* width: 130% !important;
     margin-left: -15%; */
     height: 100%;
@@ -4684,6 +4696,8 @@ height: 100%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+=======
+>>>>>>> e18d379493df655f19da3bc41eaf37d906dc56cf
 }
 .bluehover a:hover{
     color: #039BE5 !important;
@@ -4712,4 +4726,19 @@ height: 100%;
 }
 .add60{
     margin-top: 60px;
+<<<<<<< HEAD
+=======
+}
+.comingsoon{
+    position: relative;
+    height: 300px;
+}
+.comingsoon img{
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+>>>>>>> e18d379493df655f19da3bc41eaf37d906dc56cf
 }
