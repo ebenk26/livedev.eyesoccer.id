@@ -11,15 +11,18 @@
     .menu-3 a:hover{
 	border-bottom: 3px solid rgb(200, 0, 0);
 	color: rgb(200, 0, 0);
-    }
+	}
+	body{
+		margin-top: -10px;
+	}
 </style>
-<div class="crumb">
+<div class="crumb redhover">
     <ul>
 	<li>Home</li>
 	<li>EyeNews</li>
     </ul>
 </div>
-<div class="desktop">
+<div class="desktop redhover">
     <?php $this->load->view('eyenews/category_menu'); ?>
     
     <div class="center-desktop m-0 mt-20">
@@ -82,7 +85,7 @@
 	<div class="container">
 	    <div class="m-0">
 		<div class="subjudul2">
-		    <h4>BERITA TERKAIT</h4>
+		    <h4>BERITA TERKINI</h4>
 		</div>
 	    </div>
 	    <div class="container m-t-15">

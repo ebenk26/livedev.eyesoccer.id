@@ -486,8 +486,8 @@ class Eyeprofile_model extends CI_Model
 		{
 			$nestedData=array(); 
 			$nestedData[] = $i;
-			$nestedData[] = "<a target='_blank' href='".base_url()."eyeprofile/pemain_detail/".$data->url."'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;'>
-						<img style='width: 100%;' src='".imgUrl()."systems/player_storage/".$data->foto."' alt='".$data->nama."'>
+			$nestedData[] = "<a target='_blank' href='".base_url()."eyeprofile/pemain_detail/".$data->url."'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;position:relative;'>
+						<img src='".imgUrl()."systems/player_storage/".$data->foto."' alt='".$data->nama."'>
 					</div><div style='float:right;width: 75%;cursor:pointer;'>".$data->nama."</div></a>";
 			$nestedData[] = $data->tanggal."-".$data->bulan."-".$data->tahun;
 			$nestedData[] = $data->posisi;
@@ -573,8 +573,8 @@ class Eyeprofile_model extends CI_Model
 		{
 			$nestedData=array(); 
 			$nestedData[] = $i;
-			$nestedData[] = "<a target='_blank' href='#'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;'>
-						<img style='width: 100%;' src='".imgUrl()."systems/player_storage/".$data->official_photo."' alt='".$data->nama_manager."'>
+			$nestedData[] = "<a target='_blank' href='#'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;position:relative;'>
+						<img src='".imgUrl()."systems/player_storage/".$data->official_photo."' alt='".$data->nama_manager."'>
 					</div><div style='float:right;width: 75%;cursor:pointer;'>".$data->nama_manager."</div></a>";
 			$nestedData[] = $data->nama_club;
 			$nestedData[] = $data->tgl_lahir;

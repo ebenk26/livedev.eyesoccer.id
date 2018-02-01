@@ -125,7 +125,8 @@
                                 <img src="<?php echo ($usr[$i]->profile_pic == '' || $usr[$i]->profile_pic == NULL ? DPIC : IMGSTORE.$usr[$i]->profile_pic)?>" class="gambar-explr-people" alt="foto profil explore org baru">
                             </li>
                             <li>
-                                <a href="<?php echo MEPROFILE.$username?>"><?php echo $usr[$i]->username?></a>
+                               
+                                <a href="<?php echo MEPROFILE.$usr[$i]->username?>"><?php echo $usr[$i]->username?></a>
                             </li>
                             <li>
                                 <?php echo $usr[$i]->btnFol;?>

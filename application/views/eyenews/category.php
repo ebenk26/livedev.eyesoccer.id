@@ -1,20 +1,39 @@
 <style>
     .pagination > .active > a {
 	z-index:1;
-    }
+	background-color: rgb(200, 0, 0) !important;
+	border-color: rgb(200, 0, 0) !important;
+	}
+	.pagination > .active > a:hover{
+		color: white !important;
+    	background-color: #F44336 !important;
+	}
+	.pagination > li > a, .pagination > li > span{
+		color: rgb(200, 0, 0);
+	}
     .menu-3 a:hover{
 	border-bottom: 3px solid rgb(200, 0, 0);
 	color: rgb(200, 0, 0);
-    }
+	}
+	.trending .x-c a{
+		color: white;
+		background-color: #E53935;
+		font-weight: 500;
+		padding: 5px 15px;
+	}
+	.trending .x-c a:hover{
+		background-color: #EF5350;
+		color: #FFEBEE !important;
+	}
 </style>
-<div class="crumb">
+<div class="crumb redhover">
     <ul>
 	<li>Home</li>
 	<li>EyeNews</li>
 	<!-- <li>Pemain</li> -->
     </ul>
 </div>
-<div class="desktop">
+<div class="desktop redhover">
     <?php $this->load->view('eyenews/category_menu'); ?>
     
     <!-- <div class="m-0 w1020">
