@@ -124,6 +124,7 @@ class Eyevent extends CI_Controller {
 		$model 			=  $this->excurl->remoteCall($url,$cred,$event_data);
 
 		$data["model"] = json_decode($model);
+
 		// return json_decode($model);
 		
 		$html = $this->load->view('eyevent/detail',$data, true);

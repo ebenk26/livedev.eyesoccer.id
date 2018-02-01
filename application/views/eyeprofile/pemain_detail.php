@@ -245,7 +245,7 @@
                     </div>
                    
                    
-                    <div class="carousel-indicators bx-dot ep-dot pd-l-48">
+                    <div class="carousel-indicators bx-dot ep-dot">
                         <span data-target="#em2Slide" data-slide-to="0" class="dot active"></span>
                         
                     </div>

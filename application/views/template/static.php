@@ -78,7 +78,6 @@
                 <link href="<?=base_url()?>bs/jud/css/animate.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
-                <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/custom.css" rel="stylesheet">
 		<?php
@@ -136,7 +135,7 @@
                 </div>
                 <div id="srcboxMobile" class="searchbox-mobile">
                     <input type="text" placeholder="cari apa hari ini?"><button id="srcSub" type="submit">Cari</button>
-                    <div class="close">
+                    <div class="xclose">
                     </div>
                 </div>
                 <script>
@@ -289,8 +288,29 @@
             <input type="search" name="q" required><button id="srcSub" type="submit" style="cursor:pointer;">Cari</button>
         </div>
 			</form>
-    <script src="<?=base_url()?>bs/js/bootstrapvalidator.min.js"></script>
-    <script src="<?=base_url()?>assets/js/home.js"></script>
-    <script src="<?=base_url()?>assets/js/jquery.pagination.js"></script>
+
+    <?php 
+        if ($kanal == 'eyemarket')
+        {
+    ?>
+            <script src="<?=base_url()?>bs/jud/js/jquery.cookie.js"></script>
+            <script src="<?=base_url()?>bs/jud/js/waypoints.min.js"></script>
+            <script src="<?=base_url()?>bs/jud/js/jquery.counterup.min.js"></script>
+            <script src="<?=base_url()?>bs/jud/js/jquery.parallax-1.1.3.js"></script>
+            <script src="<?=base_url()?>bs/jud/js/front.js"></script>
+    <?php        
+        }
+        else
+        {
+    ?>
+            <script src="<?=base_url()?>bs/js/bootstrapvalidator.min.js"></script>
+            <script src="<?=base_url()?>assets/js/home.js"></script>
+            <script src="<?=base_url()?>assets/js/jquery.pagination.js"></script>
+    <?php        
+        }
+    ?>
+    
+
+    
     </body>
 </html>

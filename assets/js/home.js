@@ -60,7 +60,7 @@ $(window).scroll(function(){
 var srcbox = document.getElementById('srcbox');
 var src = document.getElementById("src");
 var srcS = document.getElementById("srcSub");
-var close = document.getElementsByClassName("close")[0];
+var close = document.getElementsByClassName("xclose")[0];
 var clickSearch = 0;
 src.onclick = function() {
 	if(clickSearch == 0){
