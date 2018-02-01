@@ -41,10 +41,10 @@
                     </p>
                 </div>
                 <!-- /.text -->
-                <!--<div class="ribbon new">
-                    <div class="theribbon">NEW</div>
+                <div class="ribbon new">
+                    <div class="theribbon">Available Soon</div>
                     <div class="ribbon-background"></div>
-                </div>-->
+                </div>
             </div>
             <!-- /.product -->
         </div>
