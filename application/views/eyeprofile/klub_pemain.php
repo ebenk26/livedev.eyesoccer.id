@@ -119,16 +119,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="desktop">	
-			<div class="center-desktop m-0 maintab" id="tabs-pemain">
-			<div class="container m-l-158">
-            <h3 class="sjrh">Sejarah</h3>
-                <p>
-					<?=$row["description"]?>
-                </p>
-			</div>
+		<div class="container m-l-158">
+			<h3 class="sjrh">Sejarah</h3>
+			<p>
+				<?=$row["description"]?>
+			</p>
+		</div>
 		<?php
 		}
 		?>
+			<div class="center-desktop m-0 maintab" id="tabs-pemain">
+			
 			<?php
 			$no = 1;
 			foreach($get_player_list as $row){		
