@@ -18,8 +18,8 @@
 </style>
 <div class="crumb redhover">
     <ul>
-	<li>Home</li>
-	<li>EyeNews</li>
+	<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
+	<li><a href='<?php echo base_url().'/eyenews'; ?>' style='display: unset'>EyeNews</a></li>
     </ul>
 </div>
 <div class="desktop redhover">
@@ -103,8 +103,8 @@
 					<p class="sub-en"><?= $similar->title; ?></p>
 					<span class="time-view">
 					<?php
-					    $date 		=  new DateTime($similar->createon);
-					    $tanggal 	= date_format($date,"Y-m-d H:i:s");
+					    $date = new DateTime($similar->createon);
+					    $tanggal = date_format($date,"Y-m-d H:i:s");
 					    
 					    echo relative_time($tanggal) . ' lalu - '.$similar->news_view.' views';
 					?>								

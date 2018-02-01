@@ -28,8 +28,8 @@
 </style>
 <div class="crumb redhover">
     <ul>
-	<li>Home</li>
-	<li>EyeNews</li>
+	<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
+	<li><a href='<?php echo base_url().'/eyenews'; ?>' style='display: unset'>EyeNews</a></li>
 	<!-- <li>Pemain</li> -->
     </ul>
 </div>

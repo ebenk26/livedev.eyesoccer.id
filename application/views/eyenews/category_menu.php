@@ -15,10 +15,25 @@
                         $catid = 0;
                         foreach ($news_type as $cat_name)
                         {
-                            if(isset($select_cat) AND $select_cat == $cat_name->news_type) $catid = $cat_name->news_type_id;
+                            if($catid == 0)
+                            {
+                                $catid = (isset($select_cat) AND $select_cat == $cat_name->news_type) ? $cat_name->news_type_id : 0;
+                            }
+                            
+                            $catname = $cat_name->news_type;
+                            switch($catname)
+                            {
+                                case 'Berita':
+                                    $catname = 'Peristiwa';
+                                break;
+                                
+                                case 'Usia Muda':
+                                    $catname = 'Pembinaan';
+                                break;
+                            }
                             ?>
                                 <li>
-                                    <a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
+                                    <a href="<?php echo base_url()?>eyenews/kategori/<?php echo $cat_name->news_type?>"><?php echo $catname;?></a>
                                 </li>
                             <?php
                         }
@@ -35,28 +50,32 @@
     <?php
         if($catid > 0)
         {
-            ?>
-                <div class="trending" style='margin-bottom: 10px;'>
-                    <span class="x-c">
-                    <?php
-                        $sub_news_type = $this->Master_model->getAll('tbl_sub_category_news',
-                                                                 $where = array('news_type_id' => $catid),
-                                                                 $select = array('sub_category_name'),
-                                                                 $order = array(),
-                                                                 $limit = '', $offset = '',
-                                                                 $like = array());;
-                        foreach ($sub_news_type as $cat_name)
-                        {
-                            ?>
-                                <a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $select_cat.'/'.$cat_name->sub_category_name; ?>" title="<?php echo $cat_name->sub_category_name;?>">
-                                    <?php echo $cat_name->sub_category_name;?>
-                                </a>
-                            <?php
-                        }
-                    ?>
-                    </span>
-                </div>
-            <?php
+            $sub_news_type = $this->Master_model->getAll('tbl_sub_category_news',
+                                                     $where = array('news_type_id' => $catid),
+                                                     $select = array('sub_category_name'),
+                                                     $order = array(),
+                                                     $limit = '', $offset = '',
+                                                     $like = array());;
+            if($sub_news_type)
+            {
+                ?>
+                    <div class="trending" style='margin-bottom: 10px;'>
+                        <span class="x-c">
+                        <?php
+                            foreach ($sub_news_type as $cat_name)
+                            {
+                                ?>
+                                    <a href="<?php echo base_url()?>eyenews/kategori/<?php echo $select_cat.'/'.$cat_name->sub_category_name; ?>" title="<?php echo $cat_name->sub_category_name;?>">
+                                        <?php echo $cat_name->sub_category_name;?>
+                                    </a>
+                                <?php
+                            }
+                        ?>
+                        </span>
+                    </div>
+                <?php
+            }           
+            
         }
     ?>
 </div>
