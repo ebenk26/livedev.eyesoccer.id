@@ -21,6 +21,7 @@
             </script>
             <div class="news-pic" style="background-color: #f2f2f2;">
                 <h2></h2>
+
             </div>
             <div class="container mt-10">
                 <div class="fl-l n-c">
@@ -28,7 +29,7 @@
                         <tr>
                             <td>
                                 <a href="">
-                                    <img src="<?= base_url(); ?>assets/img/EYEME/user-discover.png" alt="profil foto">
+                                    <img src="<?php echo DPIC?>" alt="profil foto">
                                 </a>
                             </td>
                             <td>
