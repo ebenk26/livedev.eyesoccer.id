@@ -348,9 +348,9 @@ class Eyeme extends CI_Controller {
 		$name      = $_FILES['upl_img']['name'];
 		$ext       = pathinfo($name,PATHINFO_EXTENSION);
 		$newName   = 'ori_'.date('dmyGis').'.'.$ext;
-		$maxSize   = 2024;
-		$maxWidth  = 2000;
-		$maxHeight = 2000; 
+		$maxSize   = 3036;
+		$maxWidth  = 3000;
+		$maxHeight = 3000; 
 		$inputName = 'upl_img';
 		$do        = $this->mod->uploadImg($uploadPath, $newName, $maxSize,$maxWidth, $maxHeight,$inputName);
 		
