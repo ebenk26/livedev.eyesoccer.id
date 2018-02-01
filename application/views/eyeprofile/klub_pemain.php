@@ -6,9 +6,9 @@
 		color: #1d3d8e;
 	}
 	.m-l-158{
-		padding-left: 158px;
 		font-size: .9em;
 		text-align: left !important;
+		padding-top: 40px;
 	}
 </style>
 <?php
@@ -121,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="desktop">	
-		<div class="container m-l-158">
+		<div class="center-desktop m-l-158">
 			<h3 class="sjrh">Sejarah</h3>
 			<p>
 				<?=$row["description"]?>
