@@ -1,3 +1,14 @@
+<style>
+	.sjrh{
+		font-size: 1.2em;
+		font-weight: 500;
+		text-transform: uppercase;
+		color: #1d3d8e;
+	}
+	.m-l-158{
+		margin-left: 158px;
+	}
+</style>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
@@ -111,7 +122,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="desktop">	
-			<div class="center-desktop m-0 pd-t-100 maintab" id="tabs-pemain">
+			<div class="center-desktop m-0 maintab" id="tabs-pemain">
+			<div class="container m-l-158">
+            <h3 class="sjrh">Sejarah</h3>
+                <p>
+				<!-- <?=$club["description"]?> -->
+				ini sejarahnya
+                </p>
+			</div>
 			<?php
 			$no = 1;
 			foreach($get_player_list as $row){		
