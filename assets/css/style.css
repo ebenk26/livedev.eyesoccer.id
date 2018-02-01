@@ -1948,6 +1948,21 @@ ul, li {
     color: white;
     background-color: #62A555;
 }
+.btn-green-white{
+    color: white;
+    width: 150px;
+    border: 1px solid #62A555;
+    border-radius: 5px;
+    background-color: #62A555;
+    padding: 8px 20px;
+    font-size: .8em;
+    bottom: 20px;
+    margin: 20px 0px;
+}
+.btn-green-white:hover{
+    background-color: white;
+    color: #62A555;
+}
 .ep2box{
     width: 102%;
 }
@@ -4664,7 +4679,7 @@ height: 100%;
     color: rgb(77, 179, 77);
 }
 .ev-ar{
-    color: rgb(61, 139, 61);
+    color: rgb(165, 195, 165);
     border-radius: 50%;
     position: relative;
     top: 7px;
