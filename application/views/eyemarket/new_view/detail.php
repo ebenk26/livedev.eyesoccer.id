@@ -27,7 +27,7 @@
                             <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="img-responsive">
                         </div>
                             <div class="row" id="thumbs" style="margin-top: 10px !important;">
-                                <div class="col-xs-3">
+                                <div class="col-xs-2">
                                     <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="thumb">
                                         <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
@@ -36,7 +36,7 @@
                             if (isset($data['image2']))
                             {
                         ?>
-                                <div class="col-xs-4">
+                                <div class="col-xs-2">
                                     <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image2']; ?>" class="thumb">
                                         <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image2']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
@@ -48,7 +48,7 @@
                             if (isset($data['image3']))
                             {
                         ?>
-                                <div class="col-xs-4">
+                                <div class="col-xs-2">
                                     <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image3']; ?>" class="thumb">
                                         <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image3']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
@@ -60,7 +60,7 @@
                             if (isset($data['image4']))
                             {
                         ?>
-                                <div class="col-xs-4">
+                                <div class="col-xs-2">
                                     <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image4']; ?>" class="thumb">
                                         <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image4']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
@@ -72,7 +72,7 @@
                             if (isset($data['image5']))
                             {
                         ?>
-                                <div class="col-xs-4">
+                                <div class="col-xs-2">
                                     <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image5']; ?>" class="thumb">
                                         <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image5']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>

@@ -1,3 +1,12 @@
+<style>
+    .ev-img{
+        width: 113px;
+    height: 113px;
+    overflow: hidden;
+    display: inline-block;
+    float: left;
+    }
+</style>
 <div class="container tube-r">
     <div class="up-r-vent">
         <h4>EVENT LAINNYA</h4>
@@ -9,7 +18,9 @@
                 ?>
                         <div class="container h100">
                             <a href="<?= $value->share_url; ?>">
-                                <img src="<?= $value->url_pic; ?>" alt="" style="width: 113px;height: 113px;">
+                                <div class="ev-img">
+                                    <img src="<?= $value->url_pic; ?>" alt="" style="height: 100%;">
+                                </div>
                             </a>
                             <div class="container rn">
                                 <a href="<?= $value->share_url; ?>">
