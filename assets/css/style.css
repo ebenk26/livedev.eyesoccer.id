@@ -4703,17 +4703,6 @@ height: 100%;
 }
 .evr-1:hover{
     color: rgb(61, 139, 61)
-<<<<<<< HEAD
-    /* width: 130% !important;
-    margin-left: -15%; */
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-=======
->>>>>>> e18d379493df655f19da3bc41eaf37d906dc56cf
 }
 .bluehover a:hover{
     color: #039BE5 !important;
@@ -4742,8 +4731,6 @@ height: 100%;
 }
 .add60{
     margin-top: 60px;
-<<<<<<< HEAD
-=======
 }
 .comingsoon{
     position: relative;
@@ -4756,5 +4743,4 @@ height: 100%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
->>>>>>> e18d379493df655f19da3bc41eaf37d906dc56cf
 }
