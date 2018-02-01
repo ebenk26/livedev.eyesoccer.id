@@ -4310,14 +4310,14 @@ ey{
     color: white !important;
 }
 .comingsoon{
-    font-family: sans-serif;
+    /* font-family: sans-serif;
     width: 300px;
     max-width: 80%;
     margin-left: 10%;
     margin-top: 10%;
-    /* display: inline-block; */
+    display: inline-block;
     color: #424242;
-    padding-bottom: 20px;
+    padding-bottom: 20px; */
 }
 .comingsoon h1{
     font-weight: 100;
@@ -4689,4 +4689,16 @@ height: 100%;
 }
 .add60{
     margin-top: 60px;
+}
+.comingsoon{
+    position: relative;
+    height: 300px;
+}
+.comingsoon img{
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
