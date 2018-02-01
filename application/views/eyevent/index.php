@@ -95,15 +95,16 @@
 
 <div class="center-desktop m-0">
     <!-- <div class="w1020 m-0"> -->
+            <div style="text-align:right;position:relative;top:-5px;">
+                    <button class="btn-green-white" type="button" id="btn-date-jadwal" style="width:307px; padding: 0 20px 10px 30px;">
+                       <span style="font-weight:600;">LIHAT EVENT LAINNYA</span>
+                       <i class="material-icons ev-ar" href="" role="button">keyboard_arrow_right</i>
+                    </button>        
+                </div>
     <div class="container menu-5 m-0 bbg" style="border-bottom:unset; margin-top:-65px;">
         <div class="fl-l" style="width: max-content;">
             <div class="tab tab-event">
-                    <div style="text-align:right;position:relative;top:55px;">
-                            <button class="btn-white-g" type="button" id="btn-date-jadwal" style="width:307px; padding: 0 20px 10px 30px;">
-                               <span style="font-weight:600;">LIHAT EVENT LAINNYA</span>
-                               <i class="material-icons ev-ar" href="" role="button">keyboard_arrow_right</i>
-                            </button>        
-                        </div>
+                    
                 <ul class="nav nav-tabs" id="tab-nav" style="width: 100%;">
                     <li class="active">
                         <a href="#jadwal-pertandingan" data-toggle="tab">JADWAL & HASIL PERTANDINGAN</a>
