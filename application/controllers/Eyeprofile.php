@@ -302,10 +302,10 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}	
 
-	public function official_detail($id=null,$action=null){
-		if($id=="")
+	public function official_detail($url=null,$action=null){
+		if($url=="")
 		{
-			redirect("eyeprofile/official_detail");
+			redirect("eyeprofile/official");
 			
 		}			
 		$data["meta"]["title"]="";
@@ -313,9 +313,7 @@ class Eyeprofile extends CI_Controller {
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
 
 		$data["page"]="eyeprofile";
-		$data["id"]=$id;
-		$data["action"]=$action;
-		
+		$data['get_official_detail'] = $this->Eyeprofile_model->get_official_detail($url);
 		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/official_detail', $data, true);

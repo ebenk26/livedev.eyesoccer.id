@@ -1,6 +1,10 @@
-
+<style>
+    .tube-l{
+        width: 730px;
+    }
+</style>
 <div class="center-desktop m-0">
-    <div class="w1020 m-0">
+    <div class="m-0">
         <div class="container tube-l event-detail">
             <script type="text/javascript">
                 jQuery(document).ready(function() {
@@ -21,6 +25,7 @@
             </script>
             <div class="news-pic" style="background-color: #f2f2f2;">
                 <h2></h2>
+
             </div>
             <div class="container mt-10">
                 <div class="fl-l n-c">
@@ -28,7 +33,7 @@
                         <tr>
                             <td>
                                 <a href="">
-                                    <img src="<?= base_url(); ?>assets/img/EYEME/user-discover.png" alt="profil foto">
+                                    <img src="<?php echo DPIC?>" alt="profil foto">
                                 </a>
                             </td>
                             <td>
@@ -108,7 +113,7 @@
 
         </script>
 
-        <div class="container tube-r kanan-video">
+        <div class="container tube-r kanan-video fl-r">
             <div class="up-r-vent">
                 <h4>EVENT LAINNYA</h4>
                 <div class="pd">

@@ -60,7 +60,7 @@ $(window).scroll(function(){
 var srcbox = document.getElementById('srcbox');
 var src = document.getElementById("src");
 var srcS = document.getElementById("srcSub");
-var close = document.getElementsByClassName("close")[0];
+var close = document.getElementsByClassName("xclose")[0];
 var clickSearch = 0;
 src.onclick = function() {
 	if(clickSearch == 0){
@@ -118,22 +118,11 @@ $(document).ready(function(){
     $(".right3").click(function(){
         $("#videokamu").carousel("next");
     });
+    $("#eventsli").carousel();
+        $(".left4").click(function(){
+            $("#events").carousel("prev");
+        });
+        $(".right4").click(function(){
+            $("#events").carousel("next");
+        });
 });
-
-$(document).ready(function() {
-    var stickyWidgetTop = $('#sidebar').offset().top;
-    var stickyWidget = function(){
-    var scrollTop = $(window).scrollTop();    
-    if (scrollTop > stickyWidgetTop) {
-        $('#sidebar').addClass('sticky');
-        $('#sidebar').removeClass('add60');
-    } else {
-        $('#sidebar').removeClass('sticky');
-        $('#sidebar').addClass('add60');
-    }
-    };
-    stickyWidget();
-    $(window).scroll(function() {
-        stickyWidget();
-    });
-    });
