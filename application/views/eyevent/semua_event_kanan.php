@@ -1,3 +1,26 @@
+<style>
+body{
+    margin-top: -10px;
+}
+.rx {
+    width: 280px;
+    top: -120px !important;
+    left: 125px !important;
+    font-weight: 600;
+}
+.rv {
+    width: 245px !important;
+    top: -15px;
+    left: 15px;
+}
+.bcd{
+    margin-right: 10px;
+}
+.down-r-vent .he>a{
+    overflow: unset;
+}
+</style>
+
 <div class="container eyv-r mt-10">
     <!-- <div class="down-r-vent">
         <div class="kalender mt-20">

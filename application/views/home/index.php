@@ -1062,7 +1062,7 @@
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
-													if(!empty($type->nodeValue)){
+													if($type->nodeValue != ""){
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){

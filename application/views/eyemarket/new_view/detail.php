@@ -116,23 +116,29 @@
                                 if ($id_member == NULL) 
                                 {
                             ?>
-                                    <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>">
-                                        <i class="fa fa-shopping-cart"></i> Add to cart 
-                                    </a>
-                                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
+                                    <!-- <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>"> -->
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to cart 
+                                        </span>
+                                        
+                                    <!-- </a> -->
+                                    <!-- <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
                                         <i class="fa fa-heart-o"></i>
-                                    </a>
+                                    </a> -->
                             <?php        
                                 }
                                 else
                                 {
                             ?>
-                                    <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
-                                        <i class="fa fa-shopping-cart"></i> Add to chart 
-                                    </a>
-                                    <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
+                                    <!-- <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main"> -->
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to chart
+                                        </span>
+                                         
+                                    <!-- </a> -->
+                                    <!-- <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
                                         <i class="fa fa-heart-o"></i>
-                                    </a>
+                                    </a> -->
                             <?php
                                 }
                             ?>

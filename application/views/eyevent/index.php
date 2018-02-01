@@ -84,13 +84,6 @@
 
 
     </div>
-    <!-- <div class="ev-ar-p">
-        <a href="" class="container">
-            <span>LIHAT EVENT LAINNYA</span>
-            <i class="material-icons ev-ar" href="" role="button">keyboard_arrow_right</i>
-        </a>
-    </div> -->
-    
 </div>
 
 <div class="center-desktop m-0">
