@@ -6,7 +6,7 @@ $official=$this->db->query("SELECT * FROM tbl_official_team WHERE club_now='".$c
 $total_official=($official->num_rows());
 ?></div>
 <div class="w-blue">
-    <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
+    <img src="<?php echo base_url()?>assets/img/segitiga-putih-01.png" alt="">
 </div><div class="desktop">
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
