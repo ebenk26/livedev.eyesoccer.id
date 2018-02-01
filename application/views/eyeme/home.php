@@ -29,7 +29,7 @@
             </div>
 
             <div class="post-photo m-t-10">
-                <img src="<?php echo MEIMG.$v['img_name']?>" alt="<?php echo $v['img_alt']?>">
+                <img src="<?php echo imgCache($v['img_name'])?>" alt="<?php echo $v['img_alt']?>">
 
             </div>
             <span class="waktu-post"><?php echo $v['timeString']?></span>
