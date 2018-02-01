@@ -118,7 +118,7 @@ define('EYEMARKET',base_url().'eyemarket');
 define('EYETRANSFER',base_url().'eyetransfer');
 define('EYETIKET',base_url().'eyetiket');
 define('EYEWALLET',base_url().'wallet');
-define('sIMGSTORE',base_url().'systems/eyenews_storage/');
+define('sIMGSTORE','http://eyesoccer.id/systems/eyenews_storage/');
 
 define('DEFAULTIMG',base_url().'assets/home/img/eyeme-photo%20thumbnail.png');
 define('NEWSDETAIL',base_url().'eyenews/detail/');
