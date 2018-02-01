@@ -1,6 +1,10 @@
-
+<style>
+    .tube-l{
+        width: 730px;
+    }
+</style>
 <div class="center-desktop m-0">
-    <div class="w1020 m-0">
+    <div class="m-0">
         <div class="container tube-l event-detail">
             <script type="text/javascript">
                 jQuery(document).ready(function() {
@@ -108,7 +112,7 @@
 
         </script>
 
-        <div class="container tube-r kanan-video">
+        <div class="container tube-r kanan-video fl-r">
             <div class="up-r-vent">
                 <h4>EVENT LAINNYA</h4>
                 <div class="pd">

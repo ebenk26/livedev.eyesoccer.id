@@ -118,6 +118,13 @@ $(document).ready(function(){
     $(".right3").click(function(){
         $("#videokamu").carousel("next");
     });
+    $("#eventsli").carousel();
+        $(".left4").click(function(){
+            $("#events").carousel("prev");
+        });
+        $(".right4").click(function(){
+            $("#events").carousel("next");
+        });
 });
 
 $(document).ready(function() {
