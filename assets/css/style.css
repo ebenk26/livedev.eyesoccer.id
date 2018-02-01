@@ -4732,8 +4732,6 @@ height: 100%;
 }
 .add60{
     margin-top: 60px;
-<<<<<<< HEAD
-=======
 }
 .comingsoon{
     position: relative;
@@ -4746,5 +4744,4 @@ height: 100%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
->>>>>>> e18d379493df655f19da3bc41eaf37d906dc56cf
 }
