@@ -5,10 +5,17 @@
         <div class="row m-0-30">
 
             <div class="col-md-12">
-                <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px; font-size: 14px;    margin-top: 50px;">
+            <div class="crumb">
+                <ul>
+                    <li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
+                    <li><a href="<?= base_url(); ?>eyemarket">EyeMarket</a></li>
+                    <li><a href=""><?= $data['nama']; ?></a></li>
+                </ul>
+            </div>
+                <!-- <ol class="breadcrumb" style="text-align: left;margin-bottom: 0px; font-size: 14px;    margin-top: 50px;">
                     <li><a href="<?= base_url(); ?>">Home</a></li>
                     <li><a href="<?= base_url(); ?>eyemarket">EyeMarket</a></li>
-                </ol>
+                </ol> -->
 
                     <!-- <img src="<?php echo base_url(); ?>assets/new_assets/ic_eyemarket.png">
                     <span style="font-family: Montserratbold; color:#F9C241;font-size: 20px;">eyeMarket</span>
@@ -207,7 +214,7 @@
                     <h4>Bagikan Ke Teman Anda</h4>
                     <p>
                         <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" ><img src="<?= base_url(); ?>assets/img/wa-logo.png" alt="" width="26px"></a>
                         <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                     </p>
@@ -220,12 +227,12 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-sm-6">
+                    <div class="container">
                 <?php
                     foreach ($ex_product as $value)
                     {
                 ?>
-                        <div class="product">
+                        <div class="product col-md-3 col-sm-6 col-xm-12">
                             <div class="image">
                                 <a href="#">
                                     <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">

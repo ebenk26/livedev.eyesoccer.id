@@ -12,21 +12,6 @@
 		margin-right: 20px;
 		margin-bottom: 20px;
 	}
-
-	#nav_tab {
-		background: #2f4050;
-		padding: 8px 10px 8px 10px;
-		margin-left: 2px;
-		color: #fff;
-		font-size: 12px;
-		text-decoration: none;
-		border: 1px solid #2f4050;
-		cursor: pointer;
-	}
-
-	#nav_tab .actnet {
-		background: #c09d3d;
-	}
 </style>
         <div class="center-desktop m-0">
             <div class="menu-2 w-100 m-0-0 pd-t-20">
@@ -92,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="center-desktop m-0">
+        <div class="center-desktop m-0 orange-default">
 			<div class='testlist'>
 			<?php 
 				if($page == 1)
