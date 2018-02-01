@@ -1,4 +1,4 @@
-</div>
+
 <div class="w-blue">
     <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
 </div><div class="desktop">
