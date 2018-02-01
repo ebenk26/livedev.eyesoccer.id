@@ -91,7 +91,7 @@
 					$(document).ready(function(){
 						setTimeout(function(){
 							<?php
-								$showpage = round(getTotalClub($liga)/12, 0);
+								$showpage = ceil(getTotalClub($liga)/12);
 								if($page > 1)
 								{
 									if($showpage == $page OR $page == $showpage - 1)
