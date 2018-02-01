@@ -532,7 +532,7 @@ class Eyetube extends CI_Controller {
 		$obj                            = $this->excurl->remoteCall($url,$cred,$event_data);
 
 		$response                       = json_decode($obj);
-		p($response);
+		
 		$data['news']                   = $response->data;
 	
 		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
