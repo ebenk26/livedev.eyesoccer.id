@@ -151,7 +151,7 @@ class Eyevent extends CI_Controller {
 		$url_eyevent 	= $this->config->item('api_url')."event";
 		$event_data		= array(
 								'page' => '1',
-								'limit' => '4',
+								'limit' => '8',
 								'sortby' => 'newest',
 								'category' => '',
 		);
