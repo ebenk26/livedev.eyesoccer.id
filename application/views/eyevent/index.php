@@ -1,18 +1,25 @@
-<style type="text/css">
+<style>
     .nav > li > a {
         position: relative;
         display: block;
         padding: 10px 7px;
         font-size: .8em;
+    }
 </style>
 
 <div class="center-desktop m-0">
-    <div class="container">
-        <div class="half2">
+    <div class="container" style="margin-top:-35px;">
+    <i id="eventleft" class="material-icons left4 panah2 panahkiri2" href="#eventsli" role="button">keyboard_arrow_left</i>
+    <i id="eventright" class="material-icons right4 panah2 panahkanan2" href="#eventsli" role="button">keyboard_arrow_right</i>
+
+<div id="eventsli" class="carousel slide">
+    <div role="listbox" class="carousel-inner">
+        <div class="box item active">
             <?php
                 foreach($eyevent_main as $vent)
                 {
-            ?>              
+            ?>
+                <div class="half2">          
                     <div class="gambar2">
                         <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['id_event'];?>">                 
                             <img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $vent['thumb1']; ?>">
@@ -23,18 +30,11 @@
                             </a>
                         </div>
                     </div>
-            <?php 
-                } 
-            ?>
-        </div>
-        <div class="half2 p-d-l-20">
-            <?php
-                foreach($eyevent_main_2 as $vent2)
-                {
-            ?>              
+                </div>
+                <div class="half2">          
                     <div class="gambar2">
-                        <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent2['id_event'];?>">                    
-                            <img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $vent2['thumb1']; ?>">
+                        <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['id_event'];?>">                    
+                            <img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $vent['thumb1']; ?>">
                         </a>
                         <div class="fl-r ae">
                             <a href="">
@@ -42,19 +42,68 @@
                             </a>
                         </div>
                     </div>
+                </div>
             <?php 
                 } 
             ?>
         </div>
-        <!-- </div> -->
+        <div class="box item">
+                <?php
+                    foreach($eyevent_main as $vent)
+                    {
+                ?>
+                    <div class="half2">          
+                        <div class="gambar2">
+                            <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['id_event'];?>">                 
+                                <img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $vent['thumb1']; ?>">
+                            </a>
+                            <div class="fl-l ae">
+                                <a href="">
+                                    <!-- <i class="material-icons">keyboard_arrow_left</i> -->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="half2">          
+                        <div class="gambar2">
+                            <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['id_event'];?>">                    
+                                <img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $vent['thumb1']; ?>">
+                            </a>
+                            <div class="fl-r ae">
+                                <a href="">
+                                    <!-- <i class="material-icons">keyboard_arrow_right</i> -->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php 
+                    } 
+                ?>
+            </div>
+        </div></div>
+
+
     </div>
+    <!-- <div class="ev-ar-p">
+        <a href="" class="container">
+            <span>LIHAT EVENT LAINNYA</span>
+            <i class="material-icons ev-ar" href="" role="button">keyboard_arrow_right</i>
+        </a>
+    </div> -->
+    
 </div>
 
 <div class="center-desktop m-0">
     <!-- <div class="w1020 m-0"> -->
-    <div class="container menu-5 m-0 bbg" style="border-bottom: unset;">
+    <div class="container menu-5 m-0 bbg" style="border-bottom:unset; margin-top:-65px;">
         <div class="fl-l" style="width: max-content;">
             <div class="tab tab-event">
+                    <div style="text-align:right;position:relative;top:55px;">
+                            <button class="btn-white-g" type="button" id="btn-date-jadwal" style="width:307px; padding: 0 20px 10px 30px;">
+                               <span style="font-weight:600;">LIHAT EVENT LAINNYA</span>
+                               <i class="material-icons ev-ar" href="" role="button">keyboard_arrow_right</i>
+                            </button>        
+                        </div>
                 <ul class="nav nav-tabs" id="tab-nav" style="width: 100%;">
                     <li class="active">
                         <a href="#jadwal-pertandingan" data-toggle="tab">JADWAL & HASIL PERTANDINGAN</a>

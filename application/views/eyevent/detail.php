@@ -1,7 +1,21 @@
-
+<style>
+    .news-capt span {
+        width: 98%;
+    }
+    .news-pic h2 {
+    font-weight: 600;
+    margin: 15px 0px;
+}
+.rn span {
+    font-weight: 600;
+    width: 90%;
+}
+</style>
             <div class="news-pic">
                 <h2><?= $model->data->title; ?></h2>
-                <img src="<?= $model->data->url_pic; ?>" alt="">
+                <div style="width:100%; height:auto;">
+                    <img src="<?= $model->data->url_pic; ?>" alt="" style="width:100%; height:auto;">
+                </div>
             </div>
             <div class="container mt-10">
                 <div class="fl-l n-c">
@@ -19,7 +33,7 @@
                                             <span class="unname" style="text-transform: capitalize;"><?= $model->data->fullname; ?></span>
                                         </a>
                                     </li>
-                                    <li class="c-g">
+                                    <li class="c-g" style="display:block;">
                                         <span>
                                             <?php 
                                                 $date       =  new DateTime($model->data->publish_on);

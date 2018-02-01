@@ -543,7 +543,7 @@ class Eyeprofile_model extends CI_Model
 		$query = $this->db->query("select a.official_id,b.club_id,a.name as nama_manager,
 									a.position,a.contract,a.nationality,
 									a.birth_date as tgl_lahir,
-									a.official_photo,a.license,
+									a.official_photo,a.license,a.url,
 									b.name as nama_club,b.logo as logo_club 
 									from tbl_official_team a
 									join tbl_club b on a.club_now=b.club_id
@@ -556,7 +556,7 @@ class Eyeprofile_model extends CI_Model
 		$result_with_limit=$this->db->query("select a.official_id,b.club_id,a.name as nama_manager,
 									a.position,a.contract,a.nationality,
 									a.birth_date as tgl_lahir,
-									a.official_photo,a.license,
+									a.official_photo,a.license,a.url,
 									b.name as nama_club,b.logo as logo_club 
 									from tbl_official_team a
 									join tbl_club b on a.club_now=b.club_id
@@ -573,7 +573,7 @@ class Eyeprofile_model extends CI_Model
 		{
 			$nestedData=array(); 
 			$nestedData[] = $i;
-			$nestedData[] = "<a target='_blank' href='#'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;position:relative;'>
+			$nestedData[] = "<a target='_blank' href='".base_url()."eyeprofile/official_detail/$data->url'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;position:relative;'>
 						<img src='".imgUrl()."systems/player_storage/".$data->official_photo."' alt='".$data->nama_manager."'>
 					</div><div style='float:right;width: 75%;cursor:pointer;'>".$data->nama_manager."</div></a>";
 			$nestedData[] = $data->nama_club;
@@ -663,6 +663,11 @@ class Eyeprofile_model extends CI_Model
 	public function get_all_kompetisi()
 	{
 		$query = $this->db->query("select competition from tbl_competitions where competition not in ('SSB / Akademi Sepakbola')")->result_array();
+		return $query;
+	}
+	
+	public function get_official_detail($url){
+		$query = $this->db->query("select a.*,b.name as club_name,b.url as club_url from tbl_official_team a left join tbl_club b on a.club_now=b.club_id where a.url='".$url."'")->result_array();
 		return $query;
 	}
 }

@@ -1,13 +1,12 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-$ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".$id."'")->row_array();
-?></div>
+</div>
 <div class="w-blue">
-    <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
+    <img src="<?php echo base_url()?>assets/img/segitiga-putih-01.png" alt="">
 </div><div class="desktop">
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
+		<?php
+		foreach($get_official_detail as $row){
+		?>
             <div class="left">
                 <!-- <svg style="height: 189px;">
                     <g id="Layer_2" data-name="Layer 2">
@@ -18,7 +17,7 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
                     </g>
                 </svg> -->
                 <div class="box-img-radius">
-                    <img src="<?=imgUrl()?>systems/player_storage/<?=$ofisial["official_photo"]?>" alt="">                        
+                    <img src="<?php echo imgUrl()?>systems/player_storage/<?php echo $row['official_photo']; ?>" alt="">
                 </div>
             </div>
             <div class="right">
@@ -26,16 +25,16 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
                     <table>
                         <tbody>
                             <tr>
-                                <td>Tanggal lahir</td>
-                                <td>: <?=$ofisial["birth_date"]?></td>
+                                <td>Tempat Lahir </td>
+                                <td>:  <?php echo (!empty($row['birth_place']) ? $row['birth_place'] : '-');?></td>
                             </tr>
                             <tr>
-                                <td>Tempat lahir</td>
-                                <td>: <?=$ofisial["birth_place"]?></td>
+                                <td>Tanggal lahir</td>
+                                <td>: <?php echo (!empty($row['birth_date']) ? $row['birth_date'] : '-')?></td>
                             </tr>
                             <tr>
                                 <td>Kewarganegaraan</td>
-                                <td>: <?=$ofisial["nationality"]?></td>
+                                <td>: <?php echo (!empty($row['nationality']) ? $row['nationality'] : '-') ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -44,16 +43,16 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
                     <table>
                         <tbody>
                             <tr>
-                                <td>Klub Sebelumnya</td>
-                                <td>: </td>
+                                <td>klub Sekarang </td>
+                                <td>: <a href="<?php echo base_url()."eyeprofile/klub_detail/".$row['club_url']?>"><?php echo (!empty($row['club_name']) ? $row['club_name'] : '-')?></a></td>
                             </tr>
                             <tr>
                                 <td>Posisi</td>
-                                <td>: <?=$ofisial["position"]?></td>
+                                <td>: <?php echo(!empty($row['position']) ? $row['position'] : '-')?></td>
                             </tr>
                             <tr>
-                                <td>Bergabung</td>
-                                <td>: </td>
+                                <td> Kontrak</td>
+                                <td>: <?php echo(!empty($row['contract']) ? $row['contract'] : '-')?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -62,37 +61,37 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
                     <table>
                         <tbody>
                             <tr>
-                                <td>Formasi</td>
-                                <td>: </td>
+                                <td>Lisensi</td>
+                                <td>: <?php echo (!empty($row['license']) ? $row['license'] : '')?></td>
                             </tr>
                             <tr>
-                                <td>Durasi</td>
-                                <td>: </td>
-                            </tr>
-                            <tr>
-                                <td>Rasio Kemenangan</td>
-                                <td>: </td>
+                                <td>Nomor Identitas</td>
+                                <td>: <?php echo (!empty($row['no_identity']) ? $row['no_identity'] : '') ?></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <h3><?=$ofisial["name"]?></h3>
+           
+            <h3><?php echo $row['name'];?></h3>
+
         </div>
     </div>
-
+	<?php
+		}
+		?>
     <div class="desktop pd-t-280">
-    <div class="center-desktop m-0">
+    <div class="center-desktop m-0" style="padding-top: 30px;">
         <div class="w-60 m-r-1 pd-t-20 formasi">
             <div class="container ofisial-detail">
                 <h3>Latar Belakang</h3>
                 <p>
-				
+                    -
                 </p>
             </div>
         </div>
         <div class="w-40 pd-t-20">
-        <h3 class="">Formasi (4-3-2-1)</h3>
+        <h3 class="">Formasi (4-4-2)</h3>
         <div class="container box-formasi det-pos">
             <img src="http://3.bp.blogspot.com/-ibBCQCt1CL0/VHMXdT8LhhI/AAAAAAAAA68/6pLm6hX64yM/s1600/Formasi%2Bsepak%2BBola.png" alt="">
         </div>
@@ -102,27 +101,38 @@ $ofisial=$this->db->query("SELECT * FROM tbl_official_team WHERE official_id='".
             <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
-                        <th class="t-b-b">No</th>
-                        <th class="t-b-b">Timnas</th>
+                        <th class="t-b-b">#</th>
                         <th class="t-b-b">Tahun</th>
-                        <th class="t-b-b">Main</th>
-                        <th class="t-b-b">Gol</th>
-                        <th class="t-b-b">Pelatih</th>
+                        <th class="t-b-b">Klub</th>
+                        <th class="t-b-b">Prestasi</th>
                     </tr>
                 </thead>
                 <tbody>
-				<?php 
-				$no=1;?>
                     <tr>
-                        <td><?=$no++?></td>
-                        <td>
-                            <img src="" alt="" width="15px"> </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
-					
+                </tbody>
+            </table>
+            <h3 class="h3-oranye pd-t-20">Karir Klub</h3>
+            <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th class="t-b-b">#</th>
+                        <th class="t-b-b">Tahun</th>
+                        <th class="t-b-b">Negara</th>
+                        <th class="t-b-b">Prestasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

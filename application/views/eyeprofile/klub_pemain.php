@@ -109,9 +109,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </table>
                 </div>
             </div>
-		<?php
-		}
-		?>
         </div>
         <div class="menu-2">
             <ul>
@@ -122,14 +119,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="desktop">	
+		<div class="container m-l-158">
+			<h3 class="sjrh">Sejarah</h3>
+			<p>
+				<?=$row["description"]?>
+			</p>
+		</div>
+		<?php
+		}
+		?>
 			<div class="center-desktop m-0 maintab" id="tabs-pemain">
-			<div class="container m-l-158">
-            <h3 class="sjrh">Sejarah</h3>
-                <p>
-				<!-- <?=$club["description"]?> -->
-				ini sejarahnya
-                </p>
-			</div>
+			
 			<?php
 			$no = 1;
 			foreach($get_player_list as $row){		
