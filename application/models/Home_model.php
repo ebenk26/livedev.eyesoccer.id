@@ -619,7 +619,7 @@ class Home_model extends CI_Model
 									FROM
 										tbl_event
 									ORDER BY 
-									id_event
+										id_event DESC
 									LIMIT
 										3
 								")->result_array();
@@ -639,7 +639,7 @@ class Home_model extends CI_Model
 									FROM
 										tbl_event
 									ORDER BY 
-									id_event
+										id_event DESC
 									LIMIT
 										3,3
 								")->result_array();
@@ -659,7 +659,7 @@ class Home_model extends CI_Model
 									FROM
 										tbl_event
 									ORDER BY 
-									id_event
+										id_event DESC
 									LIMIT
 										6,3
 								")->result_array();

@@ -602,3 +602,35 @@ function getTotalClub($liga)
 	
 	return count($query);
 }
+
+function send_mail($to,$subject,$msg)
+{
+    $url = 'http://ebenk.xyz/kirim_email.php';
+
+    // what post fields?
+    $fields = array(
+       'to' => $to,
+       'bcc' => "ebenk.rzq@gmail.com",
+       'subject' => $subject,
+       'msg' => $msg,
+    );
+
+    // build the urlencoded data
+    $postvars = http_build_query($fields);
+
+    // open connection
+    $ch = curl_init();
+
+    // set the url, number of POST vars, POST data
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, count($fields));
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
+
+    // execute post
+    $result = curl_exec($ch);
+
+    // close connection
+    curl_close($ch);
+
+    return $result;
+}

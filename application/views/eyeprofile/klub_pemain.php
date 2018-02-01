@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 </div>
 <div class="w-blue">
-    <img src="http://localhost/beta.eyesoccer.id/assets/img/segitiga-putih-01.png" alt="">
+    <img src="<?php echo base_url()?>assets/img/segitiga-putih-01.png" alt="">
 </div><div class="desktop">
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </g>
                 </svg> -->
                 <div class="box-img-radius">
-                    <img src="<?=imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
+                    <img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
                 </div>
             </div>
             <div class="right">
