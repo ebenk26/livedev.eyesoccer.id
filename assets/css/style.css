@@ -1296,6 +1296,12 @@ ul, li {
 .box-pemain:nth-of-type(3n+2){
     margin: 10px 20px;
 }
+#tabs-pemain .box-pemain:nth-of-type(3n+3){
+    margin: 10px 20px;
+}
+#tabs-pemain .box-pemain:nth-of-type(3n+2){
+    margin: 10px 0px;
+}
 .w-60{
     width: 59%;
 }

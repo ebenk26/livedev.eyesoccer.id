@@ -6,7 +6,9 @@
 		color: #1d3d8e;
 	}
 	.m-l-158{
-		margin-left: 158px;
+		padding-left: 158px;
+		font-size: .9em;
+		text-align: left !important;
 	}
 </style>
 <?php
