@@ -4615,8 +4615,9 @@ height: 100%;
     z-index: -1;
 }
 .w-blue img{
-    height: 189px;
-    bottom: 0px;
+    height: 190px;
+    bottom: -1px;
+    left: 0px;
     position: absolute;
 }
 .cell-border .odd img, .cell-border .even img{
