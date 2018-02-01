@@ -99,7 +99,7 @@
 				    <a href="<?php echo NEWSDETAIL.$similar->url;?>">
 
 					<div style="width:100%; height:160px; overflow:hidden;">
-					    <img src="<?php echo IMGSTORE.$similar->thumb1; ?>" style="min-width:100%; height:100%;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
+					    <img src="<?php echo sIMGSTORE.$similar->thumb1; ?>" style="min-width:100%; height:100%;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
 					</div>
 					<p class="sub-en"><?= $similar->title; ?></p>
 					<span class="time-view">

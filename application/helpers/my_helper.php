@@ -118,16 +118,20 @@ define('EYEMARKET',base_url().'eyemarket');
 define('EYETRANSFER',base_url().'eyetransfer');
 define('EYETIKET',base_url().'eyetiket');
 define('EYEWALLET',base_url().'wallet');
-define('IMAGE','http://static.eyesoccer.id/v1/');
+define('sIMGSTORE',base_url().'systems/eyenews_storage/');
+
 define('DEFAULTIMG',base_url().'assets/home/img/eyeme-photo%20thumbnail.png');
 define('NEWSDETAIL',base_url().'eyenews/detail/');
+
 function p($arr){
     echo '<pre>';
      print_r($arr);
     echo '</pre>';
 
 }
-
+function imgCache($url,$size="medium"){
+    return 'http://static.eyesoccer.id/v1/cache/images/'.$url.'/'.$size;
+}
 function cryptPass($str){
     return md5($str);
 }
