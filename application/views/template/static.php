@@ -136,7 +136,7 @@
                 </div>
                 <div id="srcboxMobile" class="searchbox-mobile">
                     <input type="text" placeholder="cari apa hari ini?"><button id="srcSub" type="submit">Cari</button>
-                    <div class="close">
+                    <div class="xclose">
                     </div>
                 </div>
                 <script>

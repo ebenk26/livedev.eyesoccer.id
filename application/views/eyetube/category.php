@@ -212,15 +212,15 @@
                 <div class="m-0">			
                     <div class="container m-t-5 bbg">
 						<?php
-							#$news = $res->data
+							
 							if(count($news) > 0 ){
 								foreach($news as $k => $v){
 								echo '<div class="4">';
 
 									echo '<a href="'.$v->url.'">';
-										echo "<div class=\"vid-box-vl\">";
+										echo '<div class="vid-box-vl">';
 
-											echo "<div class=\"vid-box-vl-img\">";
+											echo '<div class="vid-box-vl-img">';
 												echo "<img src=\"{$v->url_pic}/medium\" alt=\"{$v->title}\">";
 											echo '</div>';
 
