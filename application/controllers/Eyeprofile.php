@@ -191,7 +191,7 @@ class Eyeprofile extends CI_Controller {
 		
 		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
 		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();
-		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
+		// $data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
 
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
 		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia');

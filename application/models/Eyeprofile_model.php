@@ -428,7 +428,9 @@ class Eyeprofile_model extends CI_Model
 		else{
 			$sql="";
 		}
-		
+		if($liga == 'non liga'){
+			$liga = 'SSB / Akademi Sepakbola';
+		}
 		$query = $this->db->query("SELECT
 										a.player_id,
 										a.club_id,
@@ -535,7 +537,9 @@ class Eyeprofile_model extends CI_Model
 		else{
 			$sql="";
 		}
-		
+		if($liga == 'non liga'){
+			$liga = 'SSB / Akademi Sepakbola';
+		}
 		$query = $this->db->query("select a.official_id,b.club_id,a.name as nama_manager,
 									a.position,a.contract,a.nationality,
 									a.birth_date as tgl_lahir,
