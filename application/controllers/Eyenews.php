@@ -27,15 +27,13 @@ class Eyenews extends CI_Controller {
 		$news_type 						= $data['eyenews_main']->news_type;
 		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
 		$data['headline'] 				= $this->Eyenews_model->get_headline();		
-		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();		
-		$data['eyenews_populer2']		= $this->Eyenews_model->get_eyenews_populer2();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();	
 		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
 		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
-		$data['news_type'] 				= $this->Master_model->getAll('tbl_news_types', $where = array(), $select = array('news_type'), $order = array(), $limit = '', $offset = '', $whereNotin = array('news_type',array('tulisan kamu')), $like = array());
-		
+
 		$where    = array();
 		$selectID = 'eyenews_id';
 		$tbl      = 'tbl_eyenews';
@@ -295,36 +293,40 @@ class Eyenews extends CI_Controller {
 		}
 	}
 	
-	public function kategori($cat)
+	public function kategori($cat, $subcat = '')
 	{
 		$data["meta"]["title"] 			="";
 		$data["meta"]["image"] 			=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"] 	="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"] 					="eyenews";		
+		$data["meta"]["description"] 		="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
+		$data["page"] 				="eyenews";		
 		
-		$data['all_news'] 				= $this->Eyenews_model->get_all_news();
+		$data['select_cat']			= $cat;
+		$data['all_news'] 			= $this->Eyenews_model->get_all_news();
 		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
 		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
-		$data['eyenews_rekomendasi']	= $this->Eyenews_model->get_eyenews_rekomendasi();
-		$news_type 						= $data['eyenews_main']->news_type;
+		$data['eyenews_rekomendasi']		= $this->Eyenews_model->get_eyenews_rekomendasi();
+		$news_type 				= $data['eyenews_main']->news_type;
 		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
-		$data['headline'] 				= $this->Eyenews_model->get_headline();		
-		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();		
-		$data['eyenews_populer2']		= $this->Eyenews_model->get_eyenews_populer2();		
+		$data['headline'] 			= $this->Eyenews_model->get_headline();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();	
 		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
 		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
-		$data['news_type'] 				= $this->Master_model->getAll('tbl_news_types', $where = array(), $select = array('news_type'), $order = array(), $limit = '', $offset = '', $whereNotin = array('news_type',array('tulisan kamu')), $like = array());
 		
-		$where    = array('news_type'=> $cat);
+		$where = array('news_type'=> urldecode($cat));
+		if(!is_numeric($subcat)) $where = array_merge($where, array('sub_category_name' => urldecode($subcat)));
+		
 		$selectID = 'eyenews_id';
 		$tbl      = 'tbl_eyenews';
 		$limit    = 12;
-		$offset   = $this->uri->segment(3);
-		$uri_segment = 3;
-		$url      = 'eyenews/kategori_page/'.$cat;
+		$offset   = $this->uri->segment((!is_numeric($subcat)) ? 5 : 4);
+		$uri_segment = (!is_numeric($subcat)) ? 5 : 4;
+		
+		$url = 'eyenews/kategori_page/'.$cat;
+		if(!is_numeric($subcat)) $url.= '/'.$subcat;
+		
 		$like = array();
 		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
 		
@@ -334,36 +336,40 @@ class Eyenews extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}
 	
-	public function kategori_page($cat)
+	public function kategori_page($cat, $subcat = '')
 	{
 		$data["meta"]["title"] 			="";
 		$data["meta"]["image"] 			=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"] 	="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"] 					="eyenews";		
+		$data["meta"]["description"] 		="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
+		$data["page"] 				="eyenews";		
 		
-		$data['all_news'] 				= $this->Eyenews_model->get_all_news();
+		$data['select_cat']			= $cat;
+		$data['all_news'] 			= $this->Eyenews_model->get_all_news();
 		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
 		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
-		$data['eyenews_rekomendasi']	= $this->Eyenews_model->get_eyenews_rekomendasi();
-		$news_type 						= $data['eyenews_main']->news_type;
+		$data['eyenews_rekomendasi']		= $this->Eyenews_model->get_eyenews_rekomendasi();
+		$news_type 				= $data['eyenews_main']->news_type;
 		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
-		$data['headline'] 				= $this->Eyenews_model->get_headline();		
-		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();		
-		$data['eyenews_populer2']		= $this->Eyenews_model->get_eyenews_populer2();		
+		$data['headline'] 			= $this->Eyenews_model->get_headline();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();	
 		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
 		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
 		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
 		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
 		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
-		$data['news_type'] 				= $this->Master_model->getAll('tbl_news_types', $where = array(), $select = array('news_type'), $order = array(), $limit = '', $offset = '', $whereNotin = array('news_type',array('tulisan kamu')), $like = array());
 		
-		$where    = array('news_type'=> urldecode ( $cat ));
+		$where = array('news_type'=> urldecode($cat));
+		if(!is_numeric($subcat)) $where = array_merge($where, array('sub_category_name' => urldecode($subcat)));
+		
 		$selectID = 'eyenews_id';
 		$tbl      = 'tbl_eyenews';
 		$limit    = 12;
-		$offset   = $this->uri->segment(4);
-		$uri_segment = 4;
-		$url      = 'eyenews/kategori_page/'.$cat;
+		$offset   = $this->uri->segment((!is_numeric($subcat)) ? 5 : 4);
+		$uri_segment = (!is_numeric($subcat)) ? 5 : 4;
+		
+		$url = 'eyenews/kategori_page/'.$cat;
+		if(!is_numeric($subcat)) $url.= '/'.$subcat;
+		
 		$like = array();
 		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
 		

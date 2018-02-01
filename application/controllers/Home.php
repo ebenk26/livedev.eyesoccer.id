@@ -340,41 +340,47 @@ class Home extends CI_Controller {
 					}
 					else{
 						$randurl = substr(md5(microtime()),rand(0,26),5);
-						$this->db->query("INSERT INTO tbl_member (name,username,email,join_date,member_type,unique_code,password,verification) values ('".$this->input->post("name")."','".strtolower($this->input->post("username"))."','".$this->input->post("email")."','".date("Y-m-d H:i:s")."','Regular','".$randurl."','".md5($this->input->post("password"))."','0')");
+						$this->db->query("INSERT INTO tbl_member (name,username,email,join_date,member_type,unique_code,password,verification) values ('".$this->input->post("name")."','".strtolower($this->input->post("username"))."','".$this->input->post("email")."','".date("Y-m-d H:i:s")."','Regular','".$randurl."','".md5($this->input->post("password"))."','1')");
 						$insert_id = $this->db->insert_id();
 						$id=$insert_id;
 						
 						// try {
-							//Server settings
-							$objMail->SMTPOptions = array(
-								'ssl' => array(
-								'verify_peer' => false,
-								'verify_peer_name' => false,
-								'allow_self_signed' => true
-								)
-							);
-							// $objMail->SMTPDebug = 2;                                 // Enable verbose debug output
-							$objMail->isSMTP();                                      // Set objMailer to use SMTP
-							$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-							$objMail->SMTPAuth = true;                               // Enable SMTP authentication
-							$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
-							$objMail->Password = 'BolaSepak777#';                           // SMTP password
-							$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-							$objMail->Port = 465;                                    // TCP port to connect to
-
-							//Recipients
-							$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
-							$objMail->addAddress("".$this->input->post("email")."");               // Name is optional
-							$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
-							$objMail->addBCC('ebenk.rzq@gmail.com');
-
-							//Content
-							$objMail->isHTML(true);                                  // Set eobjMail format to HTML
-							$objMail->Subject = 'Registrasi Member Eyesoccer';
-							$objMail->Body    = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.' untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
-							<br><br>
-							Salam Eyesoccer';
-
+							////Server settings
+							//$objMail->SMTPOptions = array(
+							//	'ssl' => array(
+							//	'verify_peer' => false,
+							//	'verify_peer_name' => false,
+							//	'allow_self_signed' => true
+							//	)
+							//);
+							//// $objMail->SMTPDebug = 2;                                 // Enable verbose debug output
+							//$objMail->isSMTP();                                      // Set objMailer to use SMTP
+							//$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+							//$objMail->SMTPAuth = true;                               // Enable SMTP authentication
+							//$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
+							//$objMail->Password = 'BolaSepak777#';                           // SMTP password
+							//$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+							//$objMail->Port = 465;                                    // TCP port to connect to
+							//
+							////Recipients
+							//$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
+							//$objMail->addAddress("".$this->input->post("email")."");               // Name is optional
+							//$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
+							//$objMail->addBCC('ebenk.rzq@gmail.com');
+							//
+							////Content
+							//$objMail->isHTML(true);                                  // Set eobjMail format to HTML
+							//$objMail->Subject = 'Registrasi Member Eyesoccer';
+							//$objMail->Body    = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.' untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id
+							//<br><br>
+							//Salam Eyesoccer';
+							
+							//$message = 'Kepada '.$this->input->post("name").',<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.'
+							//	    untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id <br><br> Salam Eyesoccer';
+							//
+							//$send = array('to' => $this->input->post("email"), 'subject' => 'Registrasi Member Eyesoccer', 'message' => $message);
+							//send_email($send);
+							
 							/* $objMail->send();
 							// echo 'Message has been sent';
 							echo "true";  */
@@ -384,22 +390,32 @@ class Home extends CI_Controller {
 							$this->db->query("delete from tbl_member where id_member=".$id."");
 							echo "false";
 						} */
-						if ($objMail->send())
-						{
+						/* if ($objMail->send())
+						{ */
 							echo "true"; 
-						}
+						/* }
 						else
 						{
 							$this->db->query("delete from tbl_member where id_member=".$id."");
 							// echo "false";
 							echo "Mailer Error: " . $objMail->ErrorInfo;
-						}
+						} */
 					}
 				}
 			}
 		}else{
 			echo "false";
 		}
+	}
+	
+	function test_email()
+	{
+		$randurl = substr(md5(microtime()),rand(0,26),5);
+		$message = 'Kepada kharizuno@yahoo.com,<br>Registrasi anda telah berhasil.<br>Silahkan klik link berikut '.base_url().'/verifikasi?ver='.$randurl.'
+			untuk verifikasi. Untuk informasi lebih lanjut silahkan hubungi kami di email info@eyesoccer.id <br><br> Salam Eyesoccer';
+	    
+		$send = array('to' => 'kharizuno@yahoo.com', 'subject' => 'Registrasi Member Eyesoccer', 'message' => $message);
+		send_email($send);
 	}
 	
 	public function forgot_password()
@@ -739,5 +755,51 @@ class Home extends CI_Controller {
 		$data['kanal'] 				= "home";
 		$data["body"]=$this->load->view('home/kontak_kami', $data, TRUE);
 		$this->load->view('template/static',$data);
+	}
+	
+	public function kirim_email_beta()
+	{
+		$objMail 	= $this->phpmailer_library->load();
+
+		//Server settings
+		$objMail->SMTPDebug = 2;                                 // Enable verbose debug output
+		$objMail->isSMTP();                                      // Set objMailer to use SMTP
+		$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+		$objMail->SMTPAuth = true;                               // Enable SMTP authentication
+		$objMail->Username = 'eyesoccerindonesia2@gmail.com';                 // SMTP username
+		$objMail->Password = 'zbpqbixejvrbazwy';                           // SMTP password
+		$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+		$objMail->Port = 465;                                    // TCP port to connect to
+
+		// $objMail->Port 			= 465;                                    // TCP port to connect to
+		$objMail->isHTML(true);                                  // Set eobjMail format to HTML
+
+		$objMail->SMTPOptions = array(
+			'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+			)
+		);
+		//Recipients
+		$objMail->setFrom('info@eyesoccer.id', 'Info Eyesoccer');
+		$objMail->addAddress('ebenk.rzq@gmail.com');               // Name is optional
+		$objMail->addReplyTo('info@eyesoccer.id', 'Info Eyesoccer');
+
+		//Content
+		$objMail->Subject 		= 'Menunggu Pembayaran untuk Pemesanan ';
+		$objMail->Body    		= 'Test';
+
+		if ($objMail->send())
+		{
+			echo "bisa";
+			// $this->session->set_flashdata('sukses','<strong>Order anda berhasil</strong>, silahkan cek email anda untuk langkah selanjutnya');
+
+			// redirect('/eyemarket/pesanan/'.$id_member);
+		}
+		else
+		{
+			echo "Mailer Error: " . $objMail->ErrorInfo;
+		}
 	}
 }

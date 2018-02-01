@@ -684,7 +684,7 @@
         <!-- BANNER -->
         <div class="center-desktop">
             <div class="banner-150" style="margin-top: 20px;">
-                <img src="" alt="">
+                <img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
             </div>
         </div>
         <!-- EYEVENT -->

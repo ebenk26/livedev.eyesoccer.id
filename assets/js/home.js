@@ -91,31 +91,49 @@ $(document).ready(function(){
         $("#topPemain").carousel("next");
     });
     $("#profilssb").carousel();
-    $(".left").click(function(){
+    $(".left4").click(function(){
         $("#profilssb").carousel("prev");
     });
-    $(".right").click(function(){
+    $(".right4").click(function(){
         $("#profilssb").carousel("next");
     });
     $("#rekom").carousel();
-    $(".left").click(function(){
+    $(".left1").click(function(){
         $("#rekom").carousel("prev");
     });
-    $(".right").click(function(){
+    $(".right1").click(function(){
         $("#rekom").carousel("next");
     });
     $("#soccersains").carousel();
-    $(".left").click(function(){
+    $(".left2").click(function(){
         $("#soccersains").carousel("prev");
     });
-    $(".right").click(function(){
+    $(".right2").click(function(){
         $("#soccersains").carousel("next");
     });
     $("#videokamu").carousel();
-    $(".left").click(function(){
+    $(".left3").click(function(){
         $("#videokamu").carousel("prev");
     });
-    $(".right").click(function(){
+    $(".right3").click(function(){
         $("#videokamu").carousel("next");
     });
 });
+
+$(document).ready(function() {
+    var stickyWidgetTop = $('#sidebar').offset().top;
+    var stickyWidget = function(){
+    var scrollTop = $(window).scrollTop();    
+    if (scrollTop > stickyWidgetTop) {
+        $('#sidebar').addClass('sticky');
+        $('#sidebar').removeClass('add60');
+    } else {
+        $('#sidebar').removeClass('sticky');
+        $('#sidebar').addClass('add60');
+    }
+    };
+    stickyWidget();
+    $(window).scroll(function() {
+        stickyWidget();
+    });
+    });

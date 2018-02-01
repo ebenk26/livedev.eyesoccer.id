@@ -185,12 +185,11 @@
 ?>
 <span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/login">Masuk</a></span>
 	<?php
-}
-else{
+}else{
 	
 	?>
 	
-	<span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/member_area"><img src="<?=base_url()?>assets/img_storage/<?=load_top_avatar() ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name()?></a></span>
+	<span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/member_area"><img src="<?php if(load_top_avatar()!=''){echo base_url()?>assets/img_storage/<?=load_top_avatar();} ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name();?></a></span>
 	<?php
 }
 ?>
@@ -218,7 +217,7 @@ else{
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
                             <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
                             <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
-                            <li><a href="<?=base_url()?>eyevent">EyEvent</a></li>
+                            <li><a href="<?=base_url()?>eyevent">EyeEvent</a></li>
                             <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>							
                             <li><a href="<?=base_url()?>eyetransfer">EyeTransfer</a></li>
                             <li><a href="<?=base_url()?>eyetiket">EyeTiket</a></li>

@@ -707,25 +707,6 @@ function discard_img(id,more = 1){
     
     
 }
-
-/*$('.box-pic').on({
-    dragover:function(event){
-        event.preventDefault();
-        event.stopPropagation();
-    },
-    dragenter:function(event){
-        event.preventDefault();
-        event.stopPropagation();
-        $(this).css('background-color','lightBlue');
-    },
-   
-    drop:function(e){
-        event.preventDefault();
-        event.stopPropagation();
-        console.log('test');
-        alert('test');
-    }
-})*/
 $(function(){
     $('.box-pic').on('dragenter',function(e){
 

@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <table>
                         <tbody>
                             <tr>
-                                <td style="width:100px; ! important; display:block;">Jumlah Pemain</td>
+                                <td style="width: 120px;">Jumlah Pemain</td>
                                 <td>: <?=count($get_player_list)?> Pemain</td>
                             </tr>
                             <tr>
