@@ -120,6 +120,7 @@ define('EYETIKET',base_url().'eyetiket');
 define('EYEWALLET',base_url().'wallet');
 define('IMAGE','http://static.eyesoccer.id/v1/');
 define('DEFAULTIMG',base_url().'assets/home/img/eyeme-photo%20thumbnail.png');
+define('NEWSDETAIL',base_url().'eyenews/detail/');
 function p($arr){
     echo '<pre>';
      print_r($arr);

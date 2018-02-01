@@ -197,7 +197,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		
 		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-supporter">
-			<div style="color: grey;padding-top: 100px;padding-bottom: 100px;">Segera Hadir...</div>
+			<!-- <div style="color: grey;padding-top: 100px;padding-bottom: 100px;">Segera Hadir...</div> -->
+			<div class="container comingsoon">
+				<img src="<?=base_url()?>assets/img/ComingSoon.png" alt="">
+			</div>
 		</div>
 	
     <div class="center-desktop m-0">
