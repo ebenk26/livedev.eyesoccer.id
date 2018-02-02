@@ -94,11 +94,9 @@
 			    </div>
 			</a>
             <div class="btn-login">
-                <?php	if(!isset($_SESSION["id_member"])){ ?>
-                    <span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/login">Masuk</a></span>
-                <?php }  else{	?>
-                    <span class="btn-reg">Pendaftaran Liga</span><span class="btn-btn-login"><a style="text-decoration: none;" href="<?=base_url()?>home/member_area"><img src="<?=base_url()?>assets/img_storage/<?=load_top_avatar() ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name()?></a></span>
-                <?php }?>
+            <?php   
+                echo btnLogin($this->session->id_member);
+            ?> 
             </div>                
         </div>                
     </div>
@@ -108,25 +106,28 @@
             <div class="desktop">
                 <div class="center-desktop m-0">
                     <span class="x-m">
-                        <ul>
-                            <li><a href="" onclick="return false">EyeProfile</a>
-                                <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/klub/Liga%20Indonesia%201">Klub</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/pemain/Liga%20Indonesia%201">Pemain</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/official/Liga%20Indonesia%201">Ofisial</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/referee/Liga%20Indonesia%201">Perangkat Pertandingan</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/supporter/Liga%20Indonesia%201">Supporter</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
-                            <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
-                            <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
-                            <li><a href="<?=base_url()?>eyevent">EyEvent</a></li>
-                            <li><a href="<?=base_url()?>eyemarket">EyeMarket</a></li>							
-                            <li><a href="<?=base_url()?>eyetransfer">EyeTransfer</a></li>
-                            <li><a href="<?=base_url()?>eyetiket">EyeTiket</a></li>
-                            <li><a href="<?=base_url()?>eyewallet">EyeWallet</a></li>
-                        </ul>
+                <?php 
+                    $attr = array();
+                    $list = array(
+                                anchor('','EyeProfile') 
+                                    => array(
+                                        anchor(pCLUB,'Klub'),
+                                        anchor(pPLAYER,'Pemain'),
+                                        anchor(pOFFICIAL,'Official'),
+                                        anchor(pREFEREE,'Perangkat Pertandingan'),
+                                        anchor(pSUPPORT,'Supporter')),
+                                anchor(EYETUBE,'EyeTube'),
+                                anchor(EYENEWS,'EyeNews'),
+                                anchor(EYEME,'EyeMe'),
+                                anchor(EYEEVENT,'EyeEvent'),
+                                anchor(EYEMARKET,'EyeMarket'),
+                                anchor(EYETRANSFER,'EyeTransfer'),
+                                anchor(EYETIKET,'EyeTiket'),
+                                anchor(EYEWALLET,'EyeWallet'));
+                    echo ul($list);
+                    
+                ?>
+
                         <i id="src" class="material-icons">search</i>
                     </span>
                 </div>
