@@ -195,30 +195,25 @@ function config_email($host, $port, $user, $pass)
 
 function send_email($opt = array(), $set = '')
 {
-    if($set)
+    $CI =& get_instance();
+    
+    config_email('ssl://smtp.gmail.com', '587', 'eyesoccerindonesia@gmail.com', 'BolaSepak777#');
+    
+    $CI->email->from('info@eyesoccer.id', 'Info Eyesoccer');
+    if(isset($opt['reply_to']))
     {
-	$CI =& get_instance();
-	
-	config_email('ssl://smtp.gmail.com', '587', 'eyesoccerindonesia@gmail.com', 'BolaSepak777#');
-	
-	$CI->email->from('info@eyesoccer.id', 'Info Eyesoccer');
-	if(isset($opt['reply_to']))
-	{
-	    $CI->email->reply_to($opt['from'], $opt['name']);
-	}
-	$CI->email->to($opt['to']);
-	$CI->email->bcc('ebenk.rzq@gmail.com');
-	$CI->email->subject('Eyesoccer | '.$opt['subject']);
-	$CI->email->message($opt['message']);
-	
-	if(!$CI->email->send())
-	{
-	    $CI->email->print_debugger(array('headers'));
-	} else {
-	    echo 'Email berhasil terkirim';
-	}
-	
-	exit;
+	$CI->email->reply_to($opt['from'], $opt['name']);
+    }
+    $CI->email->to($opt['to']);
+    $CI->email->bcc('ebenk.rzq@gmail.com');
+    $CI->email->subject('Eyesoccer | '.$opt['subject']);
+    $CI->email->message($opt['message']);
+    
+    if(!$CI->email->send())
+    {
+	$CI->email->print_debugger(array('headers'));
+    } else {
+	echo 'Email berhasil terkirim';
     }
 }
 
