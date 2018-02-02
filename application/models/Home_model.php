@@ -859,7 +859,7 @@ class Home_model extends CI_Model
 
 	public function aduhai($value='')
 	{
-		echo 'hahahahha';
+		echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';
 	}
 
 }
