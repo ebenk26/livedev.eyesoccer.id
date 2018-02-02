@@ -2025,11 +2025,13 @@ ul, li {
     height: 140px;
     overflow: hidden;
     border-radius: 50%;
+    
 }
 .me-profil-foto img{
     min-height: 100%;
     width: unset;
     border-radius: unset;
+    max-width: 100%;
 }
 .uname{
     font-size: 18pt;

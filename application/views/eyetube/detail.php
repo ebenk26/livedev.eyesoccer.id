@@ -170,7 +170,7 @@
                     <div class="col-2 col-emoji">
                         <a class="emoticon" type_emot="inspired">
                             <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
+                                <img src="<?=base_url()?>assets/eyenews/img/emoji/terinspirasi.png" alt="">
                             </div>
                             <span class="replace_inspired"><?= $eyetube_headline->tube_inspired; ?></span>
                             <span class="load-inspired" style="display:none;">
@@ -206,7 +206,7 @@
                     <div class="col-2 col-emoji">
                         <a class="emoticon" type_emot="angry">
                             <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
+                                <img src="<?=base_url()?>assets/eyenews/img/emoji/marah.png" alt="">
                             </div>
                             <span class="replace_angry"><?= $eyetube_headline->tube_angry; ?></span>
                             <span class="load-angry" style="display:none;">
