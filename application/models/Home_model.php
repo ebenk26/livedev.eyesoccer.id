@@ -854,7 +854,7 @@ class Home_model extends CI_Model
     }
 
 	public function test($arr){
-		echo 'test';
+		echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';
 	}
 
 	public function aduhai($value='')
