@@ -81,7 +81,7 @@ class Eyevent_model extends CI_Model
 									ORDER BY 
 										id_event DESC
 									LIMIT
-										1
+										2
 								")->result_array();
 		return $query;
 	}
@@ -102,7 +102,7 @@ class Eyevent_model extends CI_Model
 									ORDER BY 
 									id_event DESC
 									LIMIT
-										1,1
+										2,2
 								")->result_array();
 		return $query;
 	}
