@@ -47,281 +47,300 @@
             $page   = $kategori[0]->news_type;
             echo set_breadcrumb($kanal,$page);
         ?>
+        <div class="center-desktop m-0">
+            <div class="menu-3 m-0">
+                <div class="over-x m-0">
+                    <div class="w-max">
+                        <ul>
+                            <?php
+                                foreach ($news_type as $cat_name)
+                                {
+                            ?>
+                                <li>
+                                    <a href="<?php echo base_url()?>eyenews/kategori_page/<?php echo $cat_name->news_type?>"><?php echo $cat_name->news_type;?></a>
+                                </li>
+                            <?php
+                                }
+                            ?>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="container p-r ar-menu-3">
+			        <i class="material-icons fl-l">keyboard_arrow_left</i>
+			        <i class="material-icons fl-r">keyboard_arrow_right</i>
+		        </div>
+            </div>
+        </div>
+        <div class="center-desktop m-0">
+            <div class="m-0">
+                <div class="container tube-l">
+                    <div class="news-pic">
+                        <h2><?= $value['title']; ?></h2>
+                        <div style="width:100%;height:445px;overflow:hidden;">
+                            <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $value['pic']; ?>" alt="" style="width:100%;min-height:100%;">
+                        </div>
+                    </div>
+                    <div class="container mt-10">
+                        <div class="fl-l n-c">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <a href="">
+                                            <img src="<?=base_url()?>assets/eyenews/img/EYEME/user-discover.png" alt="profil foto">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="">
+                                                    <span class="unname"><?= $value['fullname']; ?></span>
+                                                </a>
+                                            </li>
+                                            <li class="c-g">
+                                                <span><?= date_format($date,"d M Y H:i:s"); ?></span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="container" style="margin: 10px 0px 30px;">
+                            <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
+                        </div>
+                    </div>
 
-	    <?php $this->load->view('eyenews/category_menu'); ?>
-	    <div class="center-desktop m-0">
-		<div class="m-0">
-		    <div class="container tube-l">
-			<div class="news-pic">
-			    <h2><?= $value['title']; ?></h2>
-			    <div style="width:100%;height:445px;overflow:hidden;">
-				<img src="<?=imgUrl()?>systems/eyenews_storage/<?= $value['pic']; ?>" alt="" style="width:100%;min-height:100%;">
-			    </div>
-			</div>
-			<div class="container mt-10">
-			    <div class="fl-l n-c">
-				<table>
-				    <tr>
-					<td>
-					    <a href="">
-						<img src="<?=base_url()?>assets/eyenews/img/EYEME/user-discover.png" alt="profil foto">
-					    </a>
-					</td>
-					<td>
-					    <ul>
-						<li>
-						    <a href="">
-							<span class="unname"><?= $value['fullname']; ?></span>
-						    </a>
-						</li>
-						<li class="c-g">
-						    <span><?= date_format($date,"d M Y H:i:s"); ?></span>
-						</li>
-					    </ul>
-					</td>
-				    </tr>
-				</table>
-			    </div>
-			    <div class="container" style="margin: 10px 0px 30px;">
-				<div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
-			    </div>
-			</div>
-			
-			<div class="garis-x3 mt-45"></div>
-			<div class="news-capt m-t-10">
-			    <span><?= $value['description']; ?></span>
-			</div>
-			
-			<!-- EMOTICON -->
-			<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
-			<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
-			<div class="container mt-45 mb-30">
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="proud">
-				    <div class="img-box">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
-				    </div>
-				    <span class="replace_proud"><?=$value['news_smile']?></span>
-				    <span class="load-proud" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>bangga</span>
-				</a>
-			    </div>
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="inspired">
-				    <div class="img-box">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
-				    </div>
-				    <span class="replace_inspired"><?=$value['news_inspired']?></span>
-				    <span class="load-inspired" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>terinspirasi</span>
-				</a>
-			    </div>
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="happy"> <!-- tadinya smile -->
-				    <div class="img-box box-img-90">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/gembira.png" alt="">
-				    </div>
-				    <span class="replace_happy"><?=$value['news_happy']?></span>
-				    <span class="load-happy" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>gembira</span>
-				</a>
-			    </div>
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="sad">
-				    <div class="img-box">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/sedih.png" alt="">
-				    </div>
-				    <span class="replace_sad"><?=$value['news_sad']?></span>
-				    <span class="load-sad" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>sedih</span>
-				</a>
-			    </div>
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="angry">
-				    <div class="img-box">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
-				    </div>
-				    <span class="replace_angry"><?=$value['news_angry']?></span>
-				    <span class="load-angry" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>marah</span>
-				</a>
-			    </div>
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="fear">
-				    <div class="img-box">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/takut.png" alt="">
-				    </div>
-				    <span class="replace_fear"><?=$value['news_fear']?></span>
-				    <span class="load-fear" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>takut</span>
-				</a>
-			    </div>
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="fun">
-				    <div class="img-box">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/terhibur.png" alt="">
-				    </div>
-				    <span class="replace_fun"><?=$value['news_fun']?></span>
-				    <span class="load-fun" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>terhibur</span>
-				</a>
-			    </div>
-			    <div class="col-2 col-emoji">
-				<a class="emoticon" type_emot="shock">
-				    <div class="img-box">
-					<img src="<?=base_url()?>assets/eyenews/img/emoji/terkejut.png" alt="">
-				    </div>
-				    <span class="replace_shock"><?=$value['news_shock']?></span>
-				    <span class="load-shock" style="display:none;">
-					<img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-				     </span>
-				    <span>terkejut</span>
-				</a>
-			    </div>
-			</div>					
-			<div style="margin-top: 20px;" id="coba">
-			    <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
-			</div>
-			<div class="fb-comments fb-comments-enews-detail" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
-		    </div>
-    
-		    <div class="container tube-r fl-r">
-			<div class="up-r-news">
-			    <h4>TRENDING</h4>
-			    <?php
-				$this->load->helper('my');
-				foreach ($trending_eyenews as $trendnya_news)
-				{
-				    ?>						
-					<div class="pd">
-					    <div>
-						<div class="container h100">
-						    <a href="">
-							<img src="<?=imgUrl()?>systems/eyenews_storage/<?= $trendnya_news["thumb1"]; ?>" alt="">
-						    </a>
-						    <div class="container rn">
-							<a href="<?php echo base_url(); ?>eyenews/detail/<?= $trendnya_news['url']; ?>">
-							    <span><?= $trendnya_news["title"]; ?></span>
-							</a>
-							<div class="rr">
-							    <span>
-							    <?php
-								$date = new DateTime($trendnya_news['createon']);
-								$tanggal = date_format($date,"Y-m-d H:i:s");
-								echo relative_time($tanggal) . ' lalu - '.$trendnya_news['news_view'].' views';
-							    ?>
-							    </span>
-							</div>
-						    </div>
-						</div>
-					    </div>
-					</div>
-				    <?php
-				}
-			    ?>						
-			</div>
-    
-			<div class="down-r-news">
-			    <div class="fl-l">
-				<h4>POPULER</h4>
-			    </div>
-			    <div class="fl-r abc">
-				<a href="">
-				    <span>Berita Lainnya</span>
-				    <i class="material-icons">keyboard_arrow_right</i>
-				</a>
-			    </div>
-			    <?php
-				foreach ($terpopuler as $terpopulernya)
-				{
-				    ?>						
-					<div class="pd">
-					    <div>
-						<div class="container hh">
-						    <a href="">
-							<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terpopulernya['thumb1']; ?>" alt="">
-						    </a>
-						    <div class="container rn">
-							<a href="<?php echo base_url(); ?>eyenews/detail/<?= $terpopulernya['url']; ?>">
-							    <span><?= $terpopulernya["title"]; ?></span>
-							</a>
-							<div class="rr">
-							    <span>
-							    <?php
-								$date = new DateTime($terpopulernya['createon']);
-								$tanggal = date_format($date,"Y-m-d H:i:s");
-								echo relative_time($tanggal) . ' lalu'
-							    ?> - <?= $terpopulernya['news_view']; ?> View											
-							    </span>
-							</div>
-						    </div>
-						</div>
-					    </div>
-					</div>
-				    <?php
-				}
-			    ?>						
-			</div>
-			
-			<br><br>
-			<div class="d-r-n">
-			    <div class="fl-l">
-				<h4>VIDEO</h4>
-			    </div>
-			    <div class="fl-r abc">
-				<a href="">
-				    <span>Berita Lainnya</span>
-				    <i class="material-icons">keyboard_arrow_right</i>
-				</a>
-			    </div>
-			    <?php   
-				foreach ($new_eyetube as $populer)
-				{
-				    ?>						
-					<div class="pd">
-					    <div>
-						<div class="container h105">
-						    <a href="">
-							<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb']; ?>" alt="">
-						    </a>
-						    <div class="container rd">
-							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer['url']; ?>">
-							    <span style="margin-top:12px;"><?= $populer['title']; ?></span>
-							</a>
-							<div class="rr">
-							    <span>
-							    <?php
-								$date = new DateTime($populer['createon']);
-								$tanggal = date_format($date,"Y-m-d H:i:s");
-								echo relative_time($tanggal) . ' ago - '.$populer['tube_view'].' views';
-							    ?>										
-							    </span>
-							</div>
-						    </div>
-						</div>
-					    </div>						
-					</div>
-				    <?php
-				}
-			    ?>							
-			</div>
-		    </div>
-		</div>
-	    </div>
+                    <div class="garis-x3 mt-45"></div>
+                    <div class="news-capt m-t-10">
+                        <span><?= $value['description']; ?></span>
+                    </div>
+                    <!-- EMOTICON -->
+					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
+					<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
+                    <div class="container mt-45 mb-30">
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="proud">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
+                                </div>
+                                <span class="replace_proud"><?=$value['news_smile']?></span>
+                                <span class="load-proud" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>bangga</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="inspired">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
+                                </div>
+                                <span class="replace_inspired"><?=$value['news_inspired']?></span>
+                                <span class="load-inspired" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>terinspirasi</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="happy"> <!-- tadinya smile -->
+                                <div class="img-box box-img-90">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/gembira.png" alt="">
+                                </div>
+                                <span class="replace_happy"><?=$value['news_happy']?></span>
+                                <span class="load-happy" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>gembira</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="sad">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/sedih.png" alt="">
+                                </div>
+                                <span class="replace_sad"><?=$value['news_sad']?></span>
+                                <span class="load-sad" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>sedih</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="angry">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
+                                </div>
+                                <span class="replace_angry"><?=$value['news_angry']?></span>
+                                <span class="load-angry" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>marah</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="fear">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/takut.png" alt="">
+                                </div>
+                                <span class="replace_fear"><?=$value['news_fear']?></span>
+                                <span class="load-fear" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>takut</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="fun">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/terhibur.png" alt="">
+                                </div>
+                                <span class="replace_fun"><?=$value['news_fun']?></span>
+                                <span class="load-fun" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>terhibur</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="shock">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/terkejut.png" alt="">
+                                </div>
+                                <span class="replace_shock"><?=$value['news_shock']?></span>
+                                <span class="load-shock" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>terkejut</span>
+                            </a>
+                        </div>
+                    </div>					
+                    <div style="margin-top: 20px;" id="coba">
+                        <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
+                    </div>
+					<div class="fb-comments fb-comments-enews-detail" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
+                </div>
+
+                <div class="container tube-r fl-r">
+                    <div class="up-r-news">
+                        <h4>TRENDING</h4>
+						<?php
+						$this->load->helper('my');
+						foreach ($trending_eyenews as $trendnya_news)
+						{
+						?>						
+                        <div class="pd">
+                            <div>
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $trendnya_news['url']; ?>" class="container">
+                                <div class="container h100">
+                                    <div class="p-r" style="display: block; width: 110px; height: 110px; float: left; overflow: hidden;">
+                                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $trendnya_news["thumb1"]; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+                                    </div>
+                                    <div class="container rn">
+                                        <span style="font-weight: 600;"><?= $trendnya_news["title"]; ?></span>  
+                                        </div>  
+                                        <div class="rr" style="padding-left: 120px;">
+                                            <span>
+											<?php
+											$date 		=  new DateTime($trendnya_news['createon']);
+											$tanggal 	= date_format($date,"Y-m-d H:i:s");
+											echo relative_time($tanggal) . ' lalu - '.$trendnya_news['news_view'].' views';
+											?>
+											</span>
+                                        </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+						<?php } ?>						
+                    </div>
+
+                    <div class="down-r-news">
+                        <div class="fl-l">
+                            <h4>POPULER</h4>
+                        </div>
+                        <div class="fl-r abc">
+                            <a href="">
+                                <span>Berita Lainnya</span>
+                                <i class="material-icons">keyboard_arrow_right</i>
+                            </a>
+                        </div>
+						<?php 
+						
+							foreach ($terpopuler as $terpopulernya)
+							{
+						?>						
+                        <div class="pd">
+                            <div>
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terpopulernya['url']; ?>">
+                                <div class="container hh">
+                                        <div class="p-r" style="display: block; width: 110px; height: 110px; float: left; overflow: hidden;">
+                                            <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terpopulernya['thumb1']; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+                                        </div>
+                                        <div class="container rn">
+                                            <span style="font-weight:600"><?= $terpopulernya["title"]; ?></span>
+                                        <div class="rr">
+                                            <span>
+											<?php
+											$date 		=  new DateTime($terpopulernya['createon']);
+											$tanggal 	= date_format($date,"Y-m-d H:i:s");
+											echo relative_time($tanggal) . ' lalu'
+											?> - <?= $terpopulernya['news_view']; ?> View											
+											</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+						<?php } ?>						
+                    </div>
+					<br><br>
+                    <div class="d-r-n">
+                        <div class="fl-l">
+                            <h4>VIDEO</h4>
+                        </div>
+                        <div class="fl-r abc">
+                            <a href="">
+                                <span>Berita Lainnya</span>
+                                <i class="material-icons">keyboard_arrow_right</i>
+                            </a>
+                        </div>
+						<?php
+									
+						foreach ($new_eyetube as $populer)
+						{
+						?>						
+                        <div class="pd">
+                            <div>
+                                <div class="container h105">
+                                    <a href="">
+                                        <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb']; ?>" alt="">
+                                    </a>
+
+                                    <div class="container rd">
+                                        <a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer['url']; ?>">
+                                            <span style="margin-top:12px;"><?= $populer['title']; ?></span>
+                                        </a>
+                                        <div class="rr">
+                                            <span>
+												<?php
+													$date 		=  new DateTime($populer['createon']);
+													$tanggal 	= date_format($date,"Y-m-d H:i:s");
+
+													echo relative_time($tanggal) . ' ago - '.$populer['tube_view'].' views';
+												?>										
+											</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>						
+                        </div>
+							<?php } ?>							
+                    </div>
+                </div>
+            </div>
+        </div>
 	<?php
     }
 ?>

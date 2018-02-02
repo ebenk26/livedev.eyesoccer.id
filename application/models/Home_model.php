@@ -853,8 +853,6 @@ class Home_model extends CI_Model
             return $query; 
     }
 
-	
-
 }
 
 /* End of file Home_model.php */
