@@ -67,7 +67,7 @@ class Eyemarket_model extends CI_Model
                                     INNER JOIN
                                         eyemarket_parent_cat F on A.id_parent_cat = F.id
                                     WHERE
-                                        status_publish != 2
+                                        A.status_publish != 2
                                     ORDER BY 
                                         A.id_product DESC
                                         ")->result_array();
@@ -272,7 +272,7 @@ class Eyemarket_model extends CI_Model
                                     WHERE
                                         A.id_product != '$id_product'
                                         AND
-                                        A.status != 0
+                                        A.status_publish != 0
                                     LIMIT
                                         4
                                         ")->result_array();
