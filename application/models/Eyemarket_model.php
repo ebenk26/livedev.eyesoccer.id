@@ -271,6 +271,8 @@ class Eyemarket_model extends CI_Model
                                         eyemarket_toko C on C.id = A.id_toko
                                     WHERE
                                         A.id_product != '$id_product'
+                                        AND
+                                        A.status != 0
                                     LIMIT
                                         4
                                         ")->result_array();

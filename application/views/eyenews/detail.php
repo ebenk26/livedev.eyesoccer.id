@@ -1,38 +1,31 @@
 </div>
 <style>
-			.pagination > .active > a {
-				z-index:1;
-			}
-            .col-emoji{
-                cursor: pointer;
-            }
-            .news-pic h2 {
-                font-weight: 600;
-            }
-            .menu-3 a:hover{
-                border-bottom: 3px solid rgb(200, 0, 0);
-                color: rgb(200, 0, 0);
-            }
-            .tube-l, .h-news-l {
-                width: 730px;
-            }
-		</style>
-		<div class="crumb">
-			<ul>
-				<li>Home</li>
-				<li>EyeNews</li>
-				<li><?php echo $kategori[0]->news_type;?></li>
-			</ul>
-		</div>
-		<div class="desktop">
+    .pagination > .active > a {
+	z-index:1;
+    }
+    .col-emoji{
+	cursor: pointer;
+    }
+    .news-pic h2 {
+	font-weight: 600;
+    }
+    .menu-3 a:hover{
+	border-bottom: 3px solid rgb(200, 0, 0);
+	color: rgb(200, 0, 0);
+    }
+    .tube-l, .h-news-l {
+	width: 730px;
+    }
+</style>
 
+<div class="desktop">
 <?php
     foreach ($model as $value)
     {
         $date           = new DateTime($value['publish_on']);
         $description    = explode("<p>",$value['description']);
         $paragraf       = count($description);
-
+	
         $tengah         = "";
         if ($paragraf%2 == 0)
         {
@@ -42,14 +35,18 @@
         {
             $tengah     = ($paragraf - 1) / 2;
         }
-
+	
         $tipe           = $value['news_type'];
         $id             = $value['eyenews_id'];
         $bacajuga       = $this->Eyenews_model->get_baca_juga($tipe,$id,2);
         $video          = $this->Eyenews_model->get_eyetube_title();
-
-        
-?>
+	
+	?>
+        <?php 
+            $kanal  = "eyenews";
+            $page   = $kategori[0]->news_type;
+            echo set_breadcrumb($kanal,$page);
+        ?>
         <div class="center-desktop m-0">
             <div class="menu-3 m-0">
                 <div class="over-x m-0">
@@ -234,15 +231,15 @@
 						?>						
                         <div class="pd">
                             <div>
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $trendnya_news['url']; ?>" class="container">
                                 <div class="container h100">
-                                    <a href="">
-                                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $trendnya_news["thumb1"]; ?>" alt="">
-                                    </a>
+                                    <div class="p-r" style="display: block; width: 110px; height: 110px; float: left; overflow: hidden;">
+                                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $trendnya_news["thumb1"]; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+                                    </div>
                                     <div class="container rn">
-                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $trendnya_news['url']; ?>">
-                                            <span><?= $trendnya_news["title"]; ?></span>
-                                        </a>
-                                        <div class="rr">
+                                        <span style="font-weight: 600;"><?= $trendnya_news["title"]; ?></span>  
+                                        </div>  
+                                        <div class="rr" style="padding-left: 120px;">
                                             <span>
 											<?php
 											$date 		=  new DateTime($trendnya_news['createon']);
@@ -251,8 +248,8 @@
 											?>
 											</span>
                                         </div>
-                                    </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
 						<?php } ?>						
@@ -275,14 +272,13 @@
 						?>						
                         <div class="pd">
                             <div>
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terpopulernya['url']; ?>">
                                 <div class="container hh">
-                                    <a href="">
-                                        <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terpopulernya['thumb1']; ?>" alt="">
-                                    </a>
-                                    <div class="container rn">
-                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terpopulernya['url']; ?>">
-                                            <span><?= $terpopulernya["title"]; ?></span>
-                                        </a>
+                                        <div class="p-r" style="display: block; width: 110px; height: 110px; float: left; overflow: hidden;">
+                                            <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terpopulernya['thumb1']; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+                                        </div>
+                                        <div class="container rn">
+                                            <span style="font-weight:600"><?= $terpopulernya["title"]; ?></span>
                                         <div class="rr">
                                             <span>
 											<?php
@@ -295,6 +291,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 						<?php } ?>						
                     </div>
@@ -345,121 +342,118 @@
             </div>
         </div>
 	<?php
-	}
-	?>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <script type='text/javascript' src='<?=base_url()?>bs/js/sharethis.js#property=596cf64cb69de60011989f08&product=inline-share-buttons' async='async'></script>
-    <script>
-        $(document).ready(function () 
-        {
-            $(".emoticon").click(function()
-            {
-                id = $("#eyenews_id22").val();
-                type = $(this).attr("type_emot");
-                link = "eyenews";
-                tbl         = "tbl_eyenews";
-                kanal       = "eyenews";
-                sub_field   = "news_";
+    }
+?>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script type='text/javascript' src='<?=base_url()?>bs/js/sharethis.js#property=596cf64cb69de60011989f08&product=inline-share-buttons' async='async'></script>
+<script>
+    $(document).ready(function () 
+    {
+	$(".emoticon").click(function()
+	{
+	    id = $("#eyenews_id22").val();
+	    type = $(this).attr("type_emot");
+	    link = "eyenews";
+	    tbl         = "tbl_eyenews";
+	    kanal       = "eyenews";
+	    sub_field   = "news_";
 
-                $.ajax({
+	    $.ajax({
 
-                    type: "POST",
-                    data: { 'type': type, 'id': id, 'link': link, 'tbl': tbl, 'kanal': kanal, 'sub_field': sub_field },
-                    url: "<?=base_url()?>home/set_emot/" + id,
-                    dataType: "json",
+		type: "POST",
+		data: { 'type': type, 'id': id, 'link': link, 'tbl': tbl, 'kanal': kanal, 'sub_field': sub_field },
+		url: "<?=base_url()?>home/set_emot/" + id,
+		dataType: "json",
 
-                    success: function (data) {
-                        $(".load-"+type).attr('style', 'display:block');
+		success: function (data) {
+		    $(".load-"+type).attr('style', 'display:block');
 
-                        setTimeout(function () {
-                            $(".load-"+type).attr('style', 'display:none');
-                            $(".replace_"+type).empty().html(data.html);
-                        }, 2000); 
-                    }
+		    setTimeout(function () {
+			$(".load-"+type).attr('style', 'display:none');
+			$(".replace_"+type).empty().html(data.html);
+		    }, 2000); 
+		}
 
-                });
-            })
+	    });
+	})
+		    
+	    /* //Start infinite scroll
+	    var offset = 1;
+    // create a long list of items
+    var container = $("#containerss");
+    var lastItemIndex = 0;
+    var title = "";
+    var loading = "<img style='width: 40%;margin-left: 30%;' class='load-gif' src='../../assets/img/loadingsoccer.gif' alt='Loading'>";
+    var appendToList = function() {
+		    //getjson
+		    $.ajax({
+			    url: "../getRecentEyenews/" + offset,
+			    type: "GET",
+			    dataType: "JSON",
+			    success: function(data)
+			    {
+				    if(data[0]['title'] == 0){
+					    
+				    }else{
+					    // alert(JSON.stringify(data[0]['title']));
+					    $.each( data, function( key, data ) {
+						    $('.load-gif').hide();
+						    // console.log(data.title);
+						    var contentScroll = "<a style='font-size:14px;' href='/eyenews/detail/"+data.url+"'><div><img src='/systems/eyenews_storage/"+data.thumb1+"' style='height: 101px;float: left;'><div class='data-title'>"+data.title+"</div></div></a>"
+			var el = $("<div>").attr("class", "itemss").html(contentScroll);
 			
-		/* //Start infinite scroll
-		var offset = 1;
-        // create a long list of items
-        var container = $("#containerss");
-        var lastItemIndex = 0;
-        var title = "";
-        var loading = "<img style='width: 40%;margin-left: 30%;' class='load-gif' src='../../assets/img/loadingsoccer.gif' alt='Loading'>";
-        var appendToList = function() {
-			//getjson
-			$.ajax({
-				url: "../getRecentEyenews/" + offset,
-				type: "GET",
-				dataType: "JSON",
-				success: function(data)
-				{
-					if(data[0]['title'] == 0){
-						
-					}else{
-						// alert(JSON.stringify(data[0]['title']));
-						$.each( data, function( key, data ) {
-							$('.load-gif').hide();
-							// console.log(data.title);
-							var contentScroll = "<a style='font-size:14px;' href='/eyenews/detail/"+data.url+"'><div><img src='/systems/eyenews_storage/"+data.thumb1+"' style='height: 101px;float: left;'><div class='data-title'>"+data.title+"</div></div></a>"
-                            var el = $("<div>").attr("class", "itemss").html(contentScroll);
-                            
-							lastItemIndex = lastItemIndex + 1;
-							container.append(el);
-							
-						});
-					}
-				},
-				error: function (jqXHR, textStatus, errorThrown)
-				{
-					alert('Error get data from ajax');
-				}
-			});
-			offset = offset+5;
-			//end getjson
-			*/
-        }); 
+						    lastItemIndex = lastItemIndex + 1;
+						    container.append(el);
+						    
+					    });
+				    }
+			    },
+			    error: function (jqXHR, textStatus, errorThrown)
+			    {
+				    alert('Error get data from ajax');
+			    }
+		    });
+		    offset = offset+5;
+		    //end getjson
+		    */
+    }); 
 
-        /* container.bind("infinite-scroll", function(args) {
-          console.log("Received", args);
-		  $('.load-gif').show();
-          setTimeout(function(){ appendToList(); }, 1500);
-        });
-
-        var infiniteScroll = new $.InfiniteScroll('#containerss', true).setup();
-        setTimeout(function(){ appendToList(); }, 1500);
-        })  */
-    </script>	
-
-    <script>
-    $(document).ready(function(){
-      // Add smooth scrolling to all links
-      $("#scroll-komen").on('click', function(event) {
-
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-          // Prevent default anchor click behavior
-          event.preventDefault();
-
-          // Store hash
-          var hash = this.hash;
-
-          // Using jQuery's animate() method to add smooth page scroll
-          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 800, function(){
-       
-            // Add hash (#) to URL when done scrolling (default click behavior)
-            window.location.hash = hash;
-          });
-        } // End if
-      });
+    /* container.bind("infinite-scroll", function(args) {
+      console.log("Received", args);
+	      $('.load-gif').show();
+      setTimeout(function(){ appendToList(); }, 1500);
     });
-    </script>
-</body>
 
-</html>
+    var infiniteScroll = new $.InfiniteScroll('#containerss', true).setup();
+    setTimeout(function(){ appendToList(); }, 1500);
+    })  */
+</script>	
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("#scroll-komen").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+	scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+	// Add hash (#) to URL when done scrolling (default click behavior)
+	window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>

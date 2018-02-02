@@ -638,3 +638,16 @@ function send_mail($to,$subject,$msg)
 
     return $result;
 }
+
+function set_breadcrumb($kanal,$page)
+{
+    $html   = " <div class='crumb redhover'>
+                    <ul>
+                    <li><a href='".base_url()."' style='display: unset'>Home</a></li>
+                    <li><a href='".base_url()."".$kanal."' style='display: unset'>".$kanal."</a></li>
+                    <li style='cursor:default;'>".$page."</li>
+                    </ul>
+                </div>";
+    
+    return $html;
+}

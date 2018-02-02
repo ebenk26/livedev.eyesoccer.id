@@ -609,6 +609,7 @@ $('.me-post').click(function(event) {
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('.usern').text(v.username);
+            $('.usern').attr('href',MEPROFILE + v.username);
             $('.cap').text(v.img_caption);
             $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
             $('#time-string').text(v.timeString);
@@ -780,4 +781,8 @@ function inputS(text) {
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e24bc8a886146865bc3607d8e007ba7f4b6ef471
   </script>
