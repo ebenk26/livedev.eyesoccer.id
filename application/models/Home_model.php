@@ -852,9 +852,16 @@ class Home_model extends CI_Model
                                         ")->result_array();
             return $query; 
     }
+
 	public function test($arr){
 		echo 'test';
 	}
+
+	public function aduhai($value='')
+	{
+		echo 'hahahahha';
+	}
+
 }
 
 /* End of file Home_model.php */
