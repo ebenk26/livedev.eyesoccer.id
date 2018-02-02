@@ -853,14 +853,7 @@ class Home_model extends CI_Model
             return $query; 
     }
 
-	public function test($arr){
-		echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';echo 'test';
-	}
-
-	public function aduhai($value='')
-	{
-		echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';echo 'hahahahha';
-	}
+	
 
 }
 
