@@ -234,15 +234,15 @@
 						?>						
                         <div class="pd">
                             <div>
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $trendnya_news['url']; ?>" class="container">
                                 <div class="container h100">
-                                    <a href="">
-                                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $trendnya_news["thumb1"]; ?>" alt="">
-                                    </a>
+                                    <div class="p-r" style="display: block; width: 110px; height: 110px; float: left; overflow: hidden;">
+                                        <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $trendnya_news["thumb1"]; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+                                    </div>
                                     <div class="container rn">
-                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $trendnya_news['url']; ?>">
-                                            <span><?= $trendnya_news["title"]; ?></span>
-                                        </a>
-                                        <div class="rr">
+                                        <span style="font-weight: 600;"><?= $trendnya_news["title"]; ?></span>  
+                                        </div>  
+                                        <div class="rr" style="padding-left: 120px;">
                                             <span>
 											<?php
 											$date 		=  new DateTime($trendnya_news['createon']);
@@ -251,8 +251,8 @@
 											?>
 											</span>
                                         </div>
-                                    </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
 						<?php } ?>						
@@ -275,14 +275,13 @@
 						?>						
                         <div class="pd">
                             <div>
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terpopulernya['url']; ?>">
                                 <div class="container hh">
-                                    <a href="">
-                                        <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terpopulernya['thumb1']; ?>" alt="">
-                                    </a>
-                                    <div class="container rn">
-                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terpopulernya['url']; ?>">
-                                            <span><?= $terpopulernya["title"]; ?></span>
-                                        </a>
+                                        <div class="p-r" style="display: block; width: 110px; height: 110px; float: left; overflow: hidden;">
+                                            <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terpopulernya['thumb1']; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+                                        </div>
+                                        <div class="container rn">
+                                            <span style="font-weight:600"><?= $terpopulernya["title"]; ?></span>
                                         <div class="rr">
                                             <span>
 											<?php
@@ -295,6 +294,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 						<?php } ?>						
                     </div>

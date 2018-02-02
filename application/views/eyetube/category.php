@@ -173,10 +173,10 @@
 							?>							
 							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer2['url'];?>">
                             <div class="container news-rcm-d">							
-                                    <div class="nn">
-									<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $populer2['thumb']; ?>" alt="">
+                                <div style="display:block; width:100px; height:100px; float:left; overflow:hidden; position:relative;">
+									<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $populer2['thumb']; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
 									<div class="container btn-play2" style="left:30px; top:-75px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
-									</div>
+								</div>
                                 
                                 <div class="container rm">
                                     

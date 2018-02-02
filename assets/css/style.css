@@ -3772,7 +3772,7 @@ ul, li {
     z-index: 1;
     margin: 0px 10px;
 }
-.ae i:hover{
+.ae i:hover, .ev-jdl{
     color: rgb(61, 139, 61);
 }
 .lc{
