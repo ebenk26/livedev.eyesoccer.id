@@ -2045,7 +2045,7 @@ ul, li {
     float: left;
     overflow: hidden;
     margin-left: 21px;
-
+    position: relative;
 }
 .me-gambar-post{
     min-height: 100%;
@@ -2054,6 +2054,12 @@ ul, li {
     opacity: 1;
     transition: .5s ease;
     backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 .tengah{
     transition: .5s ease;
