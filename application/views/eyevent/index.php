@@ -67,7 +67,7 @@
     <!-- <div class="w1020 m-0"> -->
     <div style="text-align:right;position:relative;top:-5px;">
         <a href="<?= base_url(); ?>eyevent/semua_event">
-            <button class="btn-green-white" type="button" id="btn-date-jadwal" style="width:307px; padding: 0 20px 10px 30px;">
+            <button class="btn-green-white" type="button" style="width:307px; padding: 0 20px 10px 30px;">
                <span style="font-weight:600;">LIHAT EVENT LAINNYA</span>
                <i class="material-icons ev-ar" href="" role="button">keyboard_arrow_right</i>
             </button>
@@ -135,7 +135,6 @@
     });
 
     $('#btn-date-jadwal').click(function(event) {
-
         var tanggal = tgl.getDate();
 
         var monthNames = ["January", "February", "March", "April", "May", "June",
@@ -169,7 +168,6 @@
             $('#body-ajax-jadwal').html(result.txt);
             
         });
-        
     });
 
     $('#d').change(function () {

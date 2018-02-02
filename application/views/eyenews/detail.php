@@ -17,13 +17,7 @@
 	width: 730px;
     }
 </style>
-<div class="crumb">
-    <ul>
-	<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
-	<li><a href='<?php echo base_url().'/eyenews'; ?>' style='display: unset'>EyeNews</a></li>
-	<li><?php echo $kategori[0]->news_type;?></li>
-    </ul>
-</div>
+
 <div class="desktop">
 <?php
     foreach ($model as $value)
@@ -48,6 +42,12 @@
         $video          = $this->Eyenews_model->get_eyetube_title();
 	
 	?>
+        <?php 
+            $kanal  = "eyenews";
+            $page   = $kategori[0]->news_type;
+            echo set_breadcrumb($kanal,$page);
+        ?>
+
 	    <?php $this->load->view('eyenews/category_menu'); ?>
 	    <div class="center-desktop m-0">
 		<div class="m-0">

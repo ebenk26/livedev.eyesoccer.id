@@ -100,8 +100,17 @@
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/dataTables.responsive.min.js"></script>	
-			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/jquery.dataTables.js">	</script>
+
+        <?php 
+            if ($kanal != 'eyevent')
+            {
+        ?>
+                <script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/dataTables.responsive.min.js"></script>    
+                <script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/jquery.dataTables.js"> </script>
+        <?php        
+            }
+        ?>
+			
     </head>
 
     <?php
@@ -268,7 +277,7 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 	   </script>	
-       	
+
         <!-- FOOTER -->
         <footer>
             <div class="f-w">
