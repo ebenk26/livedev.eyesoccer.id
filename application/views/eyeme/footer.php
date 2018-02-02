@@ -310,9 +310,7 @@ class fol{
     }
     do_fol(){
          var $this  = this.in;
-         if($this.data('requestRunning')){
-            return;
-         }
+         
              $this.data('requestRunning',true);
              $.ajax({
                     url: '<?php echo EYEMEPATH?>' + 'follow',
@@ -322,22 +320,21 @@ class fol{
                 })
                 .done(function(r) {
                     if(r.msg == 'success'){
-                    $('.following').text(r.following);
-                    $('.follower').text(r.follower);
-                    $this.removeClass('fol');
-                    $this.addClass('unfol');
-                    $this.text('Mengikuti');
-           
-                }
+                        $('.following').text(r.following);
+                        $('.follower').text(r.follower);
+                        $this.removeClass('fol');
+                        $this.addClass('unfol');
+                        $this.text('Mengikuti');
                
+                    }
                 })
                 .fail(function() {
                     console.log("error");
                 })
-                .complete(function(data) {
-                    console.log($this.data());
-                    $this.data('requestRunning',false);
-                });
+                .always(function(){
+                    console.log('complete');
+                })
+               
     }
     do_unfol(){
         var $this  = this.in;
@@ -361,9 +358,7 @@ class fol{
             .fail(function() {
                 console.log("error");
             })
-            .complete(function() {
-                $this.data('requestRunning',false);
-            });
+          
     }
 
 }
@@ -772,7 +767,6 @@ function showfile(file) {
         $('#dropzone div').html($('<img />').attr('src', e.target.result).fadeIn());
     }
 }
-
 function inputS(text) {
   var map = {
     '&': '&amp;',
@@ -785,4 +779,5 @@ function inputS(text) {
 
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
+
   </script>
