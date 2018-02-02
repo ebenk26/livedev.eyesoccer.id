@@ -175,6 +175,8 @@ function inputSecure($str){
 
 function config_email($host, $port, $user, $pass)
 {
+    $CI =& get_instance();
+    
     $config['mailpath'] 	= '/usr/bin/sendmail';
     $config['protocol'] 	= 'smtp';
     $config['smtp_host'] 	= $host; //Yahoo | ssl://smtp.mail.yahoo.com, Gmail | ssl://smtp.gmail.com
@@ -188,28 +190,30 @@ function config_email($host, $port, $user, $pass)
     $config['newline']  	= "\r\n";
     $config['crlf'] 	= "\r\n";
     $config['wordwrap'] 	= TRUE;
-    $this->email->initialize($config);
+    $CI->email->initialize($config);
 }
 
 function send_email($opt = array(), $set = '')
 {
     if($set)
     {
-	$this->config_email('ssl://smtp.gmail.com', '587', 'eyesoccerindonesia@gmail.com', 'BolaSepak777#');
+	$CI =& get_instance();
 	
-	$this->email->from('info@eyesoccer.id', 'Info Eyesoccer');
+	config_email('ssl://smtp.gmail.com', '587', 'eyesoccerindonesia@gmail.com', 'BolaSepak777#');
+	
+	$CI->email->from('info@eyesoccer.id', 'Info Eyesoccer');
 	if(isset($opt['reply_to']))
 	{
-	    $this->email->reply_to($opt['from'], $opt['name']);
+	    $CI->email->reply_to($opt['from'], $opt['name']);
 	}
-	$this->email->to($opt['to']);
-	$this->email->bcc('ebenk.rzq@gmail.com');
-	$this->email->subject('Eyesoccer | '.$opt['subject']);
-	$this->email->message($opt['message']);
+	$CI->email->to($opt['to']);
+	$CI->email->bcc('ebenk.rzq@gmail.com');
+	$CI->email->subject('Eyesoccer | '.$opt['subject']);
+	$CI->email->message($opt['message']);
 	
-	if(!$this->email->send())
+	if(!$CI->email->send())
 	{
-	    $this->email->print_debugger(array('headers'));
+	    $CI->email->print_debugger(array('headers'));
 	} else {
 	    echo 'Email berhasil terkirim';
 	}
