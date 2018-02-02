@@ -781,5 +781,8 @@ function inputS(text) {
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> e24bc8a886146865bc3607d8e007ba7f4b6ef471
   </script>

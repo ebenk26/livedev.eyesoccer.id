@@ -2025,7 +2025,11 @@ ul, li {
     height: 140px;
     overflow: hidden;
     border-radius: 50%;
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> e24bc8a886146865bc3607d8e007ba7f4b6ef471
 }
 .me-profil-foto img{
     min-height: 100%;
