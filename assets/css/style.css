@@ -1776,7 +1776,7 @@ ul, li {
 }
 .panahkiri:hover, .panahkanan:hover{
     color: white;
-    background-color: rgb(61, 139, 61);
+    background-color: #039BE5;
 }
 .panah2{
     padding: 7px;
