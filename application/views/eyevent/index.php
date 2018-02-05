@@ -5,6 +5,12 @@
         padding: 10px 7px;
         font-size: .8em;
     }
+    .mb-200{
+    margin-bottom: 200px;
+}
+footer {
+    margin-top: 200px;
+}
 </style>
 
 <div class="center-desktop m-0">
@@ -91,7 +97,7 @@
     <!-- </div> -->
 </div>
 
-<div class="center-desktop m-0">
+<div class="center-desktop m-0 mb-200">
     <div class="container mt-20">
         <div class="tab-content" style="margin-top: 1em;">
             <div id="jadwal-pertandingan" class="tab-pane fade in active">

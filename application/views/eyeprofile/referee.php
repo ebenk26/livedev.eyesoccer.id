@@ -16,7 +16,7 @@
                     <li class="active"><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
-            <select id="competition_change" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <select id="competition_change" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
 				<?php
 					foreach($kompetisi_pro as $row){
