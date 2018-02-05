@@ -1150,7 +1150,7 @@ ul, li {
     font-size: .75em;
     text-transform: uppercase;
     font-weight: 600;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid gainsboro;
 }
 .menu-2 li{
     margin-right: 40px;
