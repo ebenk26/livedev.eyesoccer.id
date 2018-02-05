@@ -148,7 +148,7 @@ class Eyetube extends CI_Controller {
 		$data["array"] 			= $array;
 		$data["eyetube_id"] 	= $eyetube_id;
 		$data["page"] 			= "home";
-		$data["popup"] 			= $array[14][3];
+		$data["popup"] 			= $array[13][3];
 		$data["extrascript"] 	= $this->load->view('eyetube/script_index', '', true);
 
 		
