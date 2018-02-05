@@ -105,7 +105,7 @@ class Eyeprofile_model extends CI_Model
 		}
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
 									join tbl_club b on a.club_id=b.club_id
-									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."')")->result_array();
+									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."','wni','WNI','')")->result_array();
 		return $query;
 	}
 	
