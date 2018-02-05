@@ -45,7 +45,7 @@ class Eyetube extends CI_Controller {
 			$data["pg"] =  $pg;
 		}
 		
-		$data["popup"] 	=  $array[14][3];		
+		// $data["popup"] 	=  $array[14][3];		
 		
 		$data['video_eyetube'] 			=  $this->Eyetube_model->get_eyetube_satu();
 		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(4,0);
