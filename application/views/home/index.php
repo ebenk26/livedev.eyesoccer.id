@@ -853,7 +853,7 @@
 					}
 				?>
                 </select>
-                    <div class="border-box">
+                    <div class="border-box" style="margin-top: 10px;">
                         <table id="liga_indonesia" class="table table-striped" style="display:none;">
 							<thead>
 								<tr>
