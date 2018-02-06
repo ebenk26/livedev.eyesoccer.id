@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -128,7 +129,7 @@ class Home extends CI_Controller {
 			$data["array"]=$array;
 			$data["page"]="home";
 
-			$data["popup"]=$array[14][3];
+			$data["popup"]=$array[13][3];
 			$check		=	$this->Home_model->get_check_member();
 			$profile	=	$this->Home_model->get_profile_member();
 			if($check->num_rows()>0)
