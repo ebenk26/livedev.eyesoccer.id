@@ -1,3 +1,16 @@
+<style>
+.down-r-vent img {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.rx span {
+    font-weight: 600;
+}
+</style>
 <div class="container eyv-r mt-10">
     <div class="down-r-vent">
     <h4>Lihat Berdasarkan Tanggal</h4>
@@ -22,14 +35,13 @@
             foreach($eyenews_main as $terbaru){
             ?>
             <div>
-                <div class="container he">
-                    <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terbaru['url'];?>">
-                        <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terbaru['thumb1']; ?>" alt="">
-                    </a>
+            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terbaru['url'];?>" class="container">    
+            <div class="container he">
+                <div style="width:100px; height:100px; overflow:hidden; position:relative;" class="container">
+                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $terbaru['thumb1']; ?>" alt="">
+                </div>
                     <div class="container rx">
-                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $terbaru['url'];?>">
                             <span><?=$terbaru['title'];?></span>
-                        </a>
                         <div class="rr">
                             <span>
                                 <?php
@@ -41,7 +53,8 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                    </div>
+                    </a>
             </div>
             <?php } ?>
         </div>
@@ -52,7 +65,7 @@
         </div>
         <div class="fl-r bcd" style="top: 9px;">
             <a href="">
-                <span>Berita Lainnya</span>
+                <span>Video Lainnya</span>
                 <i class="material-icons">keyboard_arrow_right</i>
             </a>
         </div>

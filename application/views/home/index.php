@@ -550,9 +550,10 @@
                     			echo '</div>';
                     		}
                     	?>
-                       		
-                       
-                    </div>
+					</div>
+					<div class="container tx-c">
+						<a href="<?php echo EYEEXPLORE ?>" class="em-btn">Lihat Foto Lainnya</a>
+					</div>
                 </div>
             </div>
         </div>

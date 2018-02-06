@@ -671,8 +671,12 @@ nav .center-desktop, .x-m{
     top: -40px;
 }
 .c-em-content2 a >img{
-    padding: 8px;
     height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 .m-b-100{
     margin-bottom: -100px;
@@ -1150,7 +1154,7 @@ ul, li {
     font-size: .75em;
     text-transform: uppercase;
     font-weight: 600;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid gainsboro;
 }
 .menu-2 li{
     margin-right: 40px;
@@ -1776,7 +1780,7 @@ ul, li {
 }
 .panahkiri:hover, .panahkanan:hover{
     color: white;
-    background-color: rgb(61, 139, 61);
+    background-color: #039BE5;
 }
 .panah2{
     padding: 7px;
@@ -4583,12 +4587,13 @@ height: 100%;
     font-weight: 600;
 }
 .eyeme-list{
-    height: 130px;
-    width: 130px;
-    float:left; 
-    padding:5px;
-     overflow: hidden;
+    height: 135px;
+    width: 140px;
+    float: left;
+    margin: 5px;
+    overflow: hidden;
     backface-visibility: hidden;
+    position: relative;
 }
 .c-em-content2-img{
     min-height: 90%;
