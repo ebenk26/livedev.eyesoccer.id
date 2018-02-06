@@ -557,7 +557,7 @@ nav .center-desktop, .x-m{
     width: 1065px;
     border: none;
 }
-.tab>span{
+.tab>span, .tab-none{
     text-transform: uppercase;
     color: rgb(192, 192, 192);
     margin-right: 30px;
@@ -565,7 +565,15 @@ nav .center-desktop, .x-m{
     font-weight: 600;
     text-decoration: none;
 }
-.tab>span:active, .tab>span:hover{
+.tab-aktif{
+    text-transform: uppercase;
+    color: #3f7bcc;
+    margin-right: 30px;
+    font-size: .9em;
+    font-weight: 600;
+    text-decoration: none;
+}
+.tab>span:active, .tab>span:hover .tab-aktif:active, .tab-aktif:hover, .tab>span.active{
     color: #3f7bcc;
     padding-bottom: 7px;
     border-bottom: 3px solid #3f7bcc;
@@ -711,7 +719,7 @@ nav .center-desktop, .x-m{
     padding-bottom: 7px;
     margin-right: 30px;
 }
-.tab2>span:hover{
+.tab2>span:hover, .tab2>span.active{
     border-bottom: 3px solid #dd351c;
     color: #dd351c;
 }

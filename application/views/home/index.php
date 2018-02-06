@@ -400,13 +400,13 @@
             </div>
 
             <div class="container tab" style="padding-top: 30px;">
-                <span href="" data-target="#esTab" data-slide-to="0" class="active">eyesoccer star</span>
-                <span href="" data-target="#esTab" data-slide-to="1" class="">video popular</span>
-                <span href="" data-target="#esTab" data-slide-to="2" class="">video kamu</span>
+                <span href="" id="star" data-target="#esTab" data-slide-to="0" class="active" active="true">eyesoccer star</span>
+                <span href="" id="vpopuler" data-target="#esTab" data-slide-to="1" class="">video popular</span>
+                <span href="" id="vkamu" data-target="#esTab" data-slide-to="2" class="">video kamu</span>
                 <hr>
                 <div id="esTab" class="carousel slide">
 					<div role="listbox" class="carousel-inner">                    
-                        <div class="box item active">
+                        <div id="star" class="box item active">
                             <div class="box-vl pd-b-10">
                                 <a href="<?=base_url()?>eyetube" class="vl">Video Lainnya</a>
                                 <i class="material-icons r-vl">keyboard_arrow_right</i>                                
@@ -433,7 +433,7 @@
 							}
 							?>							
                         </div>
-                        <div class="box item">
+                        <div id="vpopuler" class="box item">
                             <div class="box-vl">
                                 <a href="" class="vl">Video Lainnya</a>
                                 <i class="material-icons r-vl">keyboard_arrow_right</i>                                
@@ -461,7 +461,7 @@
 							}
 							?>							
                         </div>
-                        <div class="box item">
+                        <div id="vkamu" class="box item">
                             <div class="box-vl">
                                 <a href="" class="vl">Video Lainnya</a>
                                 <i class="material-icons r-vl">keyboard_arrow_right</i>                                
@@ -561,13 +561,13 @@
             <div class="et-content">
                 <div class="et-content1">
                     <div class="container tab2">
-                        <span href="" data-target="#tab2" data-slide-to="0" class="">terpopuler</span>
-                        <span href="" data-target="#tab2" data-slide-to="1" class="">rekomendasi</span>
-                        <span href="" data-target="#tab2" data-slide-to="2" class="">usia muda</span>
+                        <span href="" id="tab_populer" class="active" active="true">terpopuler</span>
+                        <span href="" id="tab_rekom" class="">rekomendasi</span>
+                        <span href="" id="tab_usia" class="">usia muda</span>
                         <hr>
                         <div id="tab2" class="carousel slide">
                             <div role="listbox" class="carousel-inner">                    
-                                <div class="box item active">
+                                <div id="tab_populer" class="box item active">
 									<x>
                                         <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
@@ -595,7 +595,7 @@
 								}
 								?>
                                 </div>
-                                <div class="box item">
+                                <div id="tab_rekom" class="box item">
 									<x>
                                         <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
@@ -623,7 +623,7 @@
 									}
 									?>
                                 </div>
-                                <div class="box item">
+                                <div id="tab_usia" class="box item">
 									<x>
                                         <a href="<?php echo base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
@@ -1098,6 +1098,43 @@
         </div>
 		<script>
 			$(document).ready(function(){
+				$(document).on('click', '.tab2 span', function() {
+					var id = $(this).attr('id');
+					$('.tab2 span').each(function(){
+						var idx = $(this).attr('id');
+						if($(this).attr('active') == 'true')
+						{
+							$(this).removeClass('active');
+							$(this).removeAttr('active');
+							$('#tab2 div#'+idx).fadeOut('fast');
+						}
+						
+					})
+					$('.tab2 span#'+id).addClass('active');
+					$('.tab2 span#'+id).attr('active', 'true');
+					$('#tab2 div#'+id).fadeIn('fast');
+				});
+
+				$(document).on('click', '.tab span', function() {
+					var id = $(this).attr('id');
+
+					$('.tab span').each(function(){
+						var idx = $(this).attr('id');
+						if($(this).attr('active') == 'true')
+						{
+							$(this).removeClass('active');
+							$(this).removeAttr('active');
+							$('#tab div#'+idx).fadeOut('fast');
+						}
+						
+					})
+
+					$('.tab span#'+id).addClass('active');
+					$('.tab span#'+id).attr('active', 'true');
+					$('#tab div#'+id).fadeIn('fast');
+				})
+				
+
 				$('#tbl_jadwal_tomorrow,#tbl_jadwal_tomorrow2').hide();
 					
 				$('#jadwal_today').click(function(){
