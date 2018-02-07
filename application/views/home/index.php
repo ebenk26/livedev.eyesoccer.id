@@ -400,9 +400,9 @@
             </div>
 
             <div class="container tab" style="padding-top: 30px;">
-                <span href="" id="star" data-target="#esTab" data-slide-to="0" class="active" active="true">eyesoccer star</span>
-                <span href="" id="vpopuler" data-target="#esTab" data-slide-to="1" class="">video popular</span>
-                <span href="" id="vkamu" data-target="#esTab" data-slide-to="2" class="">video kamu</span>
+                <span href="" id="star" data-target="#esTab" data-slide-to="0" class="active nonactive" active="true">eyesoccer star</span>
+                <span href="" id="vpopuler" data-target="#esTab" data-slide-to="1" class="nonactive">video popular</span>
+                <span href="" id="vkamu" data-target="#esTab" data-slide-to="2" class="nonactive">video kamu</span>
                 <hr>
                 <div id="esTab" class="carousel slide">
 					<div role="listbox" class="carousel-inner">                    
@@ -561,9 +561,9 @@
             <div class="et-content">
                 <div class="et-content1">
                     <div class="container tab2">
-                        <span href="" id="tab_populer" class="active" active="true">terpopuler</span>
-                        <span href="" id="tab_rekom" class="">rekomendasi</span>
-                        <span href="" id="tab_usia" class="">usia muda</span>
+                        <span href="" id="tab_populer" class="active nonactive" active="true">terpopuler</span>
+                        <span href="" id="tab_rekom" class="nonactive">rekomendasi</span>
+                        <span href="" id="tab_usia" class="nonactive">usia muda</span>
                         <hr>
                         <div id="tab2" class="carousel slide">
                             <div role="listbox" class="carousel-inner">                    
@@ -1105,12 +1105,14 @@
 						if($(this).attr('active') == 'true')
 						{
 							$(this).removeClass('active');
+							$(this).addClass('nonactive');
 							$(this).removeAttr('active');
 							$('#tab2 div#'+idx).fadeOut('fast');
 						}
 						
 					})
 					$('.tab2 span#'+id).addClass('active');
+					$('.tab2 span#'+id).removeClass('nonactive');
 					$('.tab2 span#'+id).attr('active', 'true');
 					$('#tab2 div#'+id).fadeIn('fast');
 				});
@@ -1123,6 +1125,7 @@
 						if($(this).attr('active') == 'true')
 						{
 							$(this).removeClass('active');
+							$(this).addClass('nonactive');
 							$(this).removeAttr('active');
 							$('#tab div#'+idx).fadeOut('fast');
 						}
@@ -1130,6 +1133,7 @@
 					})
 
 					$('.tab span#'+id).addClass('active');
+					$('.tab span#'+id).removeClass('nonactive');
 					$('.tab span#'+id).attr('active', 'true');
 					$('#tab div#'+id).fadeIn('fast');
 				})

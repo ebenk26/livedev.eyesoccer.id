@@ -16,13 +16,13 @@
                     foreach ($eyevent->data as $value)
                     {
                 ?>
-                        <div class="container h100">
+                        <div class="container iven">
                             <a href="<?= $value->share_url; ?>">
-                                <div class="ev-img">
-                                    <img src="<?= $value->url_pic; ?>" alt="" style="height: 100%;">
+                                <div class="iven-im">
+                                    <img src="<?= $value->url_pic; ?>" alt="">
                                 </div>
                             </a>
-                            <div class="container rn">
+                            <div class="container rn tx-c" id="iven">
                                 <a href="<?= $value->share_url; ?>">
                                     <span><?= $value->title; ?></span>
                                 </a>
@@ -134,7 +134,6 @@
                 <?php        
                     }
                 ?>
-
             </div>
         </div>
     </div> -->
