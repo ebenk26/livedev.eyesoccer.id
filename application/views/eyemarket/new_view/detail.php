@@ -104,22 +104,45 @@
                                 <div class="sizes" style="text-align: left;">
                                     <h3><?= $data['nama']; ?></h3>
                                 </div>
-
-                                <p style="margin-top: 5%;">
-                                    <del>Rp. <?= number_format($data['harga_sebelum'],0,',','.'); ?> </del>
-                                </p>
-                                <p class="price" style="text-align: left;">
-                                    Rp. <?= number_format($data['harga'],0,',','.'); ?> 
-                                </p>
+                                <?php 
+                                    if ($data["harga"] != 0)
+                                    {
+                                ?>
+                                        <p style="margin-top: 5%;">
+                                            <del>Rp. <?= number_format($data['harga_sebelum'],0,',','.'); ?> </del>
+                                        </p>
+                                        <p class="price" style="text-align: left;">
+                                            Rp. <?= number_format($data['harga'],0,',','.'); ?> 
+                                        </p>
+                                <?php        
+                                    }
+                                ?>
+                                
                                 <p>
                             <?php
                                 if ($id_member == NULL) 
                                 {
                             ?>
                                     <!-- <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>"> -->
-                                        <span class="btn btn-template-main">
-                                            <i class="fa fa-shopping-cart"></i> Add to cart 
-                                        </span>
+                                        <?php 
+                                            if ($data["harga"] != 0)
+                                            {
+                                        ?>
+                                                <span class="btn btn-template-main">
+                                                    <i class="fa fa-shopping-cart"></i> Add to cart 
+                                                </span>
+                                        <?php        
+                                            }
+                                            else
+                                            {
+                                        ?>
+                                                <span class="btn btn-template-main">
+                                                    <i class="fa fa-shopping-cart"></i> Available Soon
+                                                </span>
+                                        <?php        
+                                            }
+                                        ?>
+                                        
                                         
                                     <!-- </a> -->
                                     <!-- <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
@@ -131,10 +154,24 @@
                                 {
                             ?>
                                     <!-- <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main"> -->
-                                        <span class="btn btn-template-main">
-                                            <i class="fa fa-shopping-cart"></i> Add to chart
-                                        </span>
-                                         
+                                        <?php 
+                                            if ($data["harga"] != 0)
+                                            {
+                                        ?>
+                                                <span class="btn btn-template-main">
+                                                    <i class="fa fa-shopping-cart"></i> Add to chart
+                                                </span>
+                                        <?php        
+                                            }
+                                            else
+                                            {
+                                        ?>
+                                                <span class="btn btn-template-main">
+                                                    <i class="fa fa-shopping-cart"></i> Available Soon
+                                                </span>
+                                        <?php        
+                                            }
+                                        ?>
                                     <!-- </a> -->
                                     <!-- <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
                                         <i class="fa fa-heart-o"></i>
@@ -238,18 +275,25 @@
                     foreach ($ex_product as $value)
                     {
                 ?>
-                        <div class="product col-md-3 col-sm-6 col-xm-12">
-                            <div class="image">
-                                <a href="#">
+                        <a href="<?= base_url(); ?>eyemarket/detail/<?= $value['toko']; ?>/<?= $value['title_slug']; ?>">
+                            <div class="product col-md-3 col-sm-6 col-xm-12">
+                                <div class="image">
                                     <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">
-                                </a>
-                            </div>
-                            <div class="text">
-                                <h3><?= $value['nama']; ?></h3>
-                                <p class="price">Rp. <?= number_format($value['harga'],0,',','.'); ?> </p>
+                                </div>
+                                <div class="text">
+                                    <h3><?= $value['nama']; ?></h3>
+                                    <?php
+                                        if ($value['harga'] != 0)
+                                        {
+                                    ?>
+                                            <p class="price">Rp. <?= number_format($value['harga'],0,',','.'); ?> </p>
+                                    <?php        
+                                        }
+                                    ?>
 
+                                </div>
                             </div>
-                        </div>
+                        </a>
                         <!-- /.product -->
                 <?php        
                     }

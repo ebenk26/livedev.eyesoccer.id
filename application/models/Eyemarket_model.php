@@ -272,7 +272,7 @@ class Eyemarket_model extends CI_Model
                                     WHERE
                                         A.id_product != '$id_product'
                                         AND
-                                        A.status_publish != 0
+                                        A.status_publish = 1
                                     LIMIT
                                         4
                                         ")->result_array();
