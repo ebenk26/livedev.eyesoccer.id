@@ -25,20 +25,20 @@
                             <?= $produk['nama']; ?>
                         </a>
                     </h3>
-                    <p class="price">
-                        <del>Rp. <?= number_format($produk['harga_sebelum'],0,',','.'); ?> </del> 
+                    <!-- <p class="price">
+                        <del style="visibility: hidden;">Rp. <?= number_format($produk['harga_sebelum'],0,',','.'); ?> </del> 
                     </p>
-                    <p class="price">
+                    <p class="price" style="visibility: hidden;">
                         Rp. <?= number_format($produk['harga'],0,',','.'); ?> 
-                    </p>
-                    <p class="buttons">
+                    </p> -->
+                    <!-- <p class="buttons">
                         <a href="#" class="btn btn-default"> 
                             View detail 
                         </a>
                         <a href="#" class="btn btn-template-main">
                             <i class="fa fa-shopping-cart"></i>Add to cart 
                         </a>
-                    </p>
+                    </p> -->
                 </div>
                 <!-- /.text -->
                 <div class="ribbon new">
