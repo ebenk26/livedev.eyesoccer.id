@@ -82,17 +82,17 @@
                         } else {
                             ?>
                                 <div class="n-rcm-up">
+                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>" class="container">
                                     <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
                                     <div class="n-rcm-up-teks">
                                         <div class="rr">
                                             <span><?=$row['createon'];?></span>
                                         </div>
-                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
                                             <span>
                                                 <?=$row['title'];?>									
                                             </span>
-                                        </a>
                                     </div>
+                                    </a>
                                 </div>
                             <?php
                         }

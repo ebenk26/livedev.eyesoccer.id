@@ -169,21 +169,26 @@
         <div class="container box-pertandingan det-pos">
             <table>
                 <tbody>
-                    <tr>
+                    <!--<tr>
                         <td class="t-b-b" colspan="2">
-                            <!--<img src="file:///Users/payaldasani/Desktop/michael-essien.jpg" style="width: 100% !important;" alt="">-->
+                            <img src="file:///Users/payaldasani/Desktop/michael-essien.jpg" style="width: 100% !important;" alt="">
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td width="50%">
                             <h4>Posisi utama</h4>
-                            <span>gelandang bertahan</span>
+                            <span><?php echo $res->position_a?></span>
                         </td>
-                        <td width="50%">
-                            <h4>posisi lainnya</h4>
-                            <span>gelandang tengah</span>
-                            <span>bek tengah</span>
-                        </td>
+                        <?php
+
+                        if(!empty($res->position_b)){
+                            echo ' <td width="50%">
+                                        <h4>posisi lainnya</h4>
+                                        <span>'.$res->position_b.'</span>
+                                        
+                                    </td>';
+                        } ?>
+                       
                     </tr>
                 </tbody>
             </table>

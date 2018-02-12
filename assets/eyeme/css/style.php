@@ -1811,13 +1811,13 @@ ul, li {
     width: 5px;
 }
 .kotak-popup-notif::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px transparent; 
+    box-shadow: inset 0 0 5px gainsboro; 
     border-radius: 10px;
 }
 .kotak-popup-notif::-webkit-scrollbar-thumb {
     background: gainsboro; 
     border-radius: 10px;
-    box-shadow: 0 -1px 1px 0px grey;
+    box-shadow: inset 0 -1px 1px 0px grey;
 }
 .kotak-popup-notif::-webkit-scrollbar-thumb:hover {
     background: rgb(185, 185, 185); 

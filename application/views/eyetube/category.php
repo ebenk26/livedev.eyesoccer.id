@@ -30,7 +30,7 @@
 		<div class="crumb">
 			<ul>
 				<li>Home</li>
-				<li>EyeNews</li>
+				<li>EyeTube</li>
 				<!-- <li>Pemain</li> -->
 			</ul>
 		</div>

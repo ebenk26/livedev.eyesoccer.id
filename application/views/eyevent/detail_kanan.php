@@ -9,7 +9,7 @@
 </style>
 <div class="container tube-r">
     <div class="up-r-vent">
-        <h4>EVENT LAINNYA</h4>
+        <a href="<?= base_url(); ?>eyevent/semua_event"><h4>EVENT LAINNYA</h4></a>
         <div class="pd">
             <div>
                 <?php
