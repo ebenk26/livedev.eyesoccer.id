@@ -135,18 +135,6 @@
         $(document).ready(function()
         {
             $("#<?= $active; ?>").addClass("active");
-
-            // $("#kota").chained("#provinsi");
-
-            // $("#kecamatan").chained("#kota");
-
-            // $("#kota").chained("#provinsi");
-            // $("#kecamatan").chained("#kota");
-
-            $("#series").remoteChained({
-                parents : "#provinsi",
-                url : "/EyeMarket/getProvinsi"
-            });
         });
     </script>
 
