@@ -4755,7 +4755,7 @@ height: 100%;
 .redhover a:hover, .redhover li:hover{
     color: rgb(200, 0, 0) !important;
 }
-.greenhover a: hover, .greenhover li a:hover{
+.greenhover a:hover, .greenhover li a:hover{
     color: rgb(61, 139, 61) !important;
 }
 .orange-default #nav_tab {
