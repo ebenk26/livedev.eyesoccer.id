@@ -37,7 +37,7 @@ nav{
     -webkit-font-smoothing: antialiased;
     outline: none;
 }
-a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option{
+a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select option{
     cursor: pointer;
 }
 a{
@@ -449,7 +449,7 @@ nav .center-desktop, .x-m{
     border-radius: 50%;
 }
 .bx-nav i:hover{
-    background-color: gainsboro;
+    box-shadow: inset 0 0 5px 1px #cecece;
 }
 .ep-dot>.active{
     background-color: #fb9b00;
@@ -1111,7 +1111,7 @@ ul, li {
 /* a:link, a:visited,  */
 .crumb li a:hover,
 .crumb li a:focus {
-   color:#dd2c0d;
+   color:#353535;
 }
 .garis-banner{
     /* height: 284px; */
@@ -1792,7 +1792,7 @@ ul, li {
 }
 .w4:hover .sub-en, .vid-box-vl:hover .h41 .vid-ttl{
     /* font-weight: 600; */
-    color: darkslategray;
+    color: #353535;
 }
 .time-view{
     font-size: .6em;
@@ -2006,6 +2006,7 @@ ul, li {
 .btn-green-white:hover{
     background-color: white;
     color: #62A555;
+    box-shadow: inset 0 0 5px 0 #62A555;
 }
 .ep2box{
     width: 102%;
@@ -2152,7 +2153,7 @@ ul, li {
 }
 .h-berita-terkait>ul>li>a {
     font-size: .85em;
-    color: darkslategray;
+    color: #353535;
     font-weight: 500;
 }
 .h-berita-terkait>ul>li>a>img {
@@ -3457,6 +3458,7 @@ ul, li {
 }
 .rn span, .rm span, .rx span{
     font-size: .8em;
+    font-weight: 500;
     color: rgb(61, 61, 61);
     max-height: 38px;
     overflow: hidden;
@@ -3729,7 +3731,7 @@ ul, li {
     width: 450px;
     margin-left: 15px;   
 }
-.n-rcm-up{
+.n-rcm-up a{
     border: 1px solid gainsboro;
 }
 .n-rcm-up img{
@@ -4751,6 +4753,9 @@ height: 100%;
 .redhover a:hover, .redhover li:hover{
     color: rgb(200, 0, 0) !important;
 }
+.greenhover a: hover, .greenhover li a:hover{
+    color: rgb(61, 139, 61) !important;
+}
 .orange-default #nav_tab {
     background: #fca900;
     padding: 8px 10px;
@@ -4793,6 +4798,7 @@ height: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
     overflow: hidden;
+    cursor: pointer;
 }
 .iven-im{
     width: 100%;
@@ -4810,21 +4816,41 @@ height: 100%;
     height:143px;
     top: -143px !important;
     left: 0px !important;
-    background: linear-gradient(#00000099,#000000cf,#000000cf,#000000cf,#00000099);
+    background: linear-gradient(#0000004a,#000000b0,#000000b0,#000000b0,#0000003d);
     padding: 40px 20px;
     text-shadow: 1px 3px 10px rgba(0,0,0,.4);
     position: relative;
 }
 .iven .rn span {
     font-weight: 600;
-    width: 90%;
+    width: 100%;
     color: white;
     font-size: .8em;
+    text-shadow: 2px 2px #00000087;
     max-height: 38px;
     overflow: hidden;
     padding-top: 5px;
     display: block;
+    -webkit-animation: fadein 0.25s linear 1 forwards;
+    animation: fadein 0.25s linear 1 forwards;
+    cursor: pointer;
 }
 .iven:hover .rn{
-    display:none;
+    -webkit-animation: fadeout 0.25s linear 1 forwards;
+    animation: fadeout 0.25s linear 1 forwards;
+    cursor: pointer;
+}
+@-webkit-keyframes fadein {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+@keyframes fadeout {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+.iven .rn .rr span {
+    color: white !important;
+    font-size: .5em !important;
 }
