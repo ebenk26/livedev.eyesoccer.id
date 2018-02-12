@@ -1,5 +1,5 @@
     <style>
-    nav{
+    body{
         margin-top: -10px; 
     }
     </style>
