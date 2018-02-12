@@ -307,11 +307,13 @@ nav .center-desktop, .x-m{
     top: -13px;
     right: 15px;    
 }
-.kl{
+.kl, .vl{
     text-decoration: none;
     color: #fc9c00;
     top: -27px;
     right: -30px;
+    font-size: .85em;
+    font-weight: 500;
 }
 .kl:hover, .vl:hover{
     font-weight: 500;
@@ -614,7 +616,7 @@ nav .center-desktop, .x-m{
 }
 .vl, .r-vl{
     text-decoration: none;
-    color: #4378d3;
+    color: #4378d3 !important;
 }
 .r-vl{
     top: 7px;
@@ -4810,15 +4812,15 @@ height: 100%;
 .iven-im img{
     width: 100%;
     min-height: 100%;
+    filter: blur(2px);
 }
 .iven .rn {
     width: 300px;
     height:143px;
     top: -143px !important;
     left: 0px !important;
-    background: linear-gradient(#0000004a,#000000b0,#000000b0,#000000b0,#0000003d);
+    background: #ffffff5c;
     padding: 40px 20px;
-    text-shadow: 1px 3px 10px rgba(0,0,0,.4);
     position: relative;
 }
 .iven .rn span {
@@ -4826,7 +4828,7 @@ height: 100%;
     width: 100%;
     color: white;
     font-size: .8em;
-    text-shadow: 2px 2px #00000087;
+    text-shadow: 0px 0px 10px black, 0px 0px 10px rgb(61, 139, 61);
     max-height: 38px;
     overflow: hidden;
     padding-top: 5px;
@@ -4839,6 +4841,9 @@ height: 100%;
     -webkit-animation: fadeout 0.25s linear 1 forwards;
     animation: fadeout 0.25s linear 1 forwards;
     cursor: pointer;
+}
+.iven:hover .iven-im img{
+    filter: unset;
 }
 @-webkit-keyframes fadein {
     0% { opacity: 0; }
