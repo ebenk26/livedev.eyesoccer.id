@@ -109,58 +109,68 @@ class Home extends CI_Controller {
 		//$this->load->view('template-front-end',$data);
 		$this->load->view('template-baru',$data);
 	} */
-	public function member_area(){
-		if(isset($_SESSION["id_member"])){
+	public function member_area()
+	{
+		if(isset($_SESSION["id_member"]))
+		{
 			$data["meta"]["title"]="";
 			$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 			$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
 			
-			$cmd_ads=$this->db->query("select * from tbl_ads")->result_array();
-			$i=0;
-			foreach($cmd_ads as $ads){
-			$e=0;
-			foreach($ads as $key => $val)
+			$cmd_ads = $this->db->query("select * from tbl_ads")->result_array();
+			$i = 0;
+			foreach($cmd_ads as $ads)
 			{
-			$array[$i][$e] =  $val;
-			$e++;
-			}		
-			$i++;
+				$e = 0;
+				foreach($ads as $key => $val)
+				{
+					$array[$i][$e] =  $val;
+					$e++;
+				}		
+				$i++;
 			}
-			$data["array"]=$array;
-			$data["page"]="home";
 
-			$data["popup"]=$array[13][3];
-			$check		=	$this->Home_model->get_check_member();
-			$profile	=	$this->Home_model->get_profile_member();
+			$data["array"] = $array;
+			$data["page"] = "home";
+
+			$data["popup"] = $array[13][3];
+			$check = $this->Home_model->get_check_member();
+			$profile = $this->Home_model->get_profile_member();
+
 			if($check->num_rows()>0)
 			{
-				$pm=$check->row_array();
-				$get_player=$this->Home_model->get_player_member($pm["id_player"]);
-			}else{
-				$pm['active']=0;
-				$get_player='';
+				$pm = $check->row_array();
+				$get_player = $this->Home_model->get_player_member($pm["id_player"]);
+			} 
+			else 
+			{
+				$pm['active'] = 0;
+				$get_player = '';
 			}
 			// var_dump($profile);exit();
-			$profile_pic	=	$this->Home_model->get_pic_member();
-			$gallery	=	$this->Home_model->get_galleri_member();
-			if(isset($profile_pic["profile_pics"]) && $profile_pic["profile_pics"]!="")
+			$profile_pic = $this->Home_model->get_pic_member();
+			$gallery = $this->Home_model->get_galleri_member();
+
+			if(isset($profile_pic["profile_pics"]) && $profile_pic["profile_pics"] != "")
 			{
-				$data["pic"]=$profile_pic["profile_pics"];
+				$data["pic"] = $profile_pic["profile_pics"];
 			}
 			else{
-				$data["pic"]="no-person.jpg";
+				$data["pic"] = "no-person.jpg";
 			}
-			$data["check"]=$check;
-			$data["pm"]=$pm;
-			$data["get_player"]=$get_player;
-			$data["profile"]=$profile;
-			$data["gallery"]=$gallery;
-			$data["kanal"]="home";
+			$data["check"]= $check;
+			$data["pm"] = $pm;
+			$data["get_player"] = $get_player;
+			$data["profile"] = $profile;
+			$data["gallery"] = $gallery;
+			$data["kanal"] = "home";
 			// $data["extrascript"]=$this->load->view('home/script_member_area', $data, true);
-			$data["body"]=$this->load->view('home/member-area', $data, true);
+			$data["body"] = $this->load->view('home/member-area', $data, true);
 			//$this->load->view('template-front-end',$data);
 			$this->load->view('template/static',$data);
-		}else{
+		}
+		else
+		{
 			redirect("home/index");
 		}
 	}
