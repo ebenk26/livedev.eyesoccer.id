@@ -116,7 +116,10 @@ class Eyenews_model extends CI_Model
                                         A.title,
                                         A.eyenews_id,
                                         A.thumb1,
-                                        A.publish_on
+                                        A.publish_on,
+										A.url,
+										A.news_view,
+										A.createon
                                     FROM
                                         tbl_eyenews A
                                     ORDER BY 
