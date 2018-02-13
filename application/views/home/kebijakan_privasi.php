@@ -1,6 +1,6 @@
 
     <div class="container dll-head">
-        <img src="assets/img/footer/img-header-ketentuan privasi.png" alt="">
+        <img src="assets/img/Footer/img-header-ketentuan privasi.png" alt="">
         <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Ketentuan dan Kebijakan Privasi</h2>
