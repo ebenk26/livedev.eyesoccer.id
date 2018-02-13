@@ -32,7 +32,7 @@
     echo set_breadcrumb('eyevent','Semua Event');
 ?>
 
-<div class="desktop redhover">
+<div class="desktop">
     
     <!-- <div class="m-0 w1020">
     <div class="garis-x m-t-30"></div>

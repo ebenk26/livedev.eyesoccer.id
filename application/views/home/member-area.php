@@ -2,16 +2,12 @@
 	*{
         font-family: sans-serif;
     }
-	body{
-		overflow-y: hidden;
-	}
     .head-content{
         text-align: center;
     }
     .full-width{
         width: 100%;
         text-align: center;
-        margin-top: 30px;
     }
     .img-radius{
         border: none;
@@ -119,7 +115,6 @@
         width: 110px;
         padding: 8px 0px;
     }
-	
 	.modal {
 		display: none; /* Hidden by default */
 		position: fixed; /* Stay in place */
@@ -133,7 +128,6 @@
 		background-color: rgb(0,0,0); /* Fallback color */
 		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	}
-
 	/* Modal Content */
 	.modal-content {
 		background-color: #fefefe;
@@ -142,7 +136,6 @@
 		border: 1px solid #888;
 		width: 40%;
 	}
-
 	/* The Close Button */
 	.close {
 		color: #aaaaaa;
@@ -150,9 +143,7 @@
 		font-size: 28px;
 		font-weight: bold;
 	}
-
-	.close:hover,
-	.close:focus {
+	.close:hover, .close:focus {
 		color: #000;
 		text-decoration: none;
 		cursor: pointer;
@@ -160,7 +151,8 @@
 	.ui-autocomplete {
 		 z-index: 9999 !important;
 	}
-    </style>
+	</style>
+	
 	<div class="head-content full-width">
 		<form method="POST" action="profile_upload" enctype="multipart/form-data">
 			<div class="img-radius">
