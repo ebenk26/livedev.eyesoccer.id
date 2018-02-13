@@ -22,16 +22,33 @@
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
-                <select id="" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: -12px 0 2px 0;">
+                <select id="chained_kompetisi" name="" selected="true" class="slc-musim fl-r" onchange="if(this.options[this.selectedIndex].value != 'Liga Usia Muda'){window.location = this.options[this.selectedIndex].value};" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
 				<?php
 					foreach($get_all_kompetisi as $row){
+						if($row['competition']=='Liga Usia Muda'){
 				?>
-					<option value="<?php echo base_url()."eyeprofile/klub/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+						<option value="Liga Usia Muda"><?php echo $row['competition'];?></option>';
 				<?php
+						}else{
+				?>
+						<option value="<?php echo base_url()."eyeprofile/klub/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+				<?php
+						}
 					}
 				?>
 					<option value="<?php echo base_url()."eyeprofile/klub/non liga"?>">Non Liga</option>
+                </select>
+				
+				<select id="chained_liga" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: 0px 0px 2px;display:none;">
+					<option value="">--Pilih Kategori Liga--</option>
+				<?php
+					foreach($get_all_liga as $row){
+				?>
+						<option value="<?php echo base_url()."eyeprofile/klub/".$row['nama_liga']?>"><?php echo $row['nama_liga'];?></option>';  
+				<?php
+					}
+				?>
                 </select>
             </div>
         </div>
@@ -379,4 +396,12 @@
         </div>
         </div>
         </div>
-		
+		<script>
+			$('#chained_kompetisi').on('change', function()
+			{
+				var value    = $(this).val();
+				if(value=='Liga Usia Muda'){
+					$("#chained_liga").show();
+				}
+			})
+		</script>
