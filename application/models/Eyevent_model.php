@@ -42,7 +42,9 @@ class Eyevent_model extends CI_Model
 							c.name as club_a,
 							d.name as club_b,
 							c.url as url_a,
-							d.url as url_b');
+							d.url as url_b,
+							b.title as kompetisi
+							');
 
 		$this->db->from('tbl_jadwal_event AS a');
 
