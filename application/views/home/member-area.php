@@ -206,7 +206,7 @@
 				}
 			?>
 			
-			<a target="_blank" href="<?php echo base_url()?>eyemarket/pesanan/<?php echo $_SESSION["id_member"]?>">
+			<a target="_blank" href="<?php echo base_url()?>eyemarket/pesanan/<?php echo md5($_SESSION["id_member"])?>">
 				<div class="col-1">
 					<img style="width:50px;" src="<?=base_url()?>assets/img/ic_eyemarket@2x.png" alt="" srcset="">
 					Eyemarket
