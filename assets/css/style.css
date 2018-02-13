@@ -316,7 +316,8 @@ nav .center-desktop, .x-m{
     font-weight: 500;
 }
 .kl:hover, .vl:hover{
-    font-weight: 500;
+    font-weight: 600;
+    /* text-shadow: 1px 1px 1px gainsboro; */
 }
 .el{
     text-decoration: none;

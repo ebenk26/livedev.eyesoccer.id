@@ -2,9 +2,6 @@
 	*{
         font-family: sans-serif;
     }
-	body{
-		overflow-y: hidden;
-	}
     .head-content{
         text-align: center;
     }
