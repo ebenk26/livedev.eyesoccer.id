@@ -221,7 +221,7 @@
                 <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
-                            <li><a href="" onclick="return false">EyeProfile</a>
+                            <li><a href="<?=base_url()?>eyeprofile/klub">EyeProfile</a>
                                 <ul>
                                     <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
