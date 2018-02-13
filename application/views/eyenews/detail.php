@@ -169,7 +169,7 @@
                         <div class="col-2 col-emoji">
                             <a class="emoticon" type_emot="angry">
                                 <div class="img-box">
-                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/marah.png" alt="">
                                 </div>
                                 <span class="replace_angry"><?=$value['news_angry']?></span>
                                 <span class="load-angry" style="display:none;">
@@ -223,10 +223,10 @@
 
                 <div class="container tube-r fl-r">
                     <div class="up-r-news">
-                        <h4>TRENDING</h4>
+                        <h4>BERITA TERKINI</h4>
 						<?php
 						$this->load->helper('my');
-						foreach ($trending_eyenews as $trendnya_news)
+						foreach ($terkini as $trendnya_news)
 						{
 						?>						
                         <div class="pd">
