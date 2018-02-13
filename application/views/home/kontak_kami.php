@@ -1,6 +1,6 @@
 
     <div class="container dll-head">
-        <img src="assets/img/footer/img-header-kontak.png" alt="">
+        <img src="assets/img/Footer/img-header-kontak.png" alt="">
         <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Kontak Kami</h2>
