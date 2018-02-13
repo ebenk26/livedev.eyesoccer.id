@@ -15,13 +15,13 @@
                     <table class="mng mb-20">
                         <tr>
                             <td>
-                                <img src="assets/img/eyeme/user-discover.png" alt="">
+                                <img src="assets/img/EYEME/user-discover.png" alt="">
                             </td>
                             <td>
-                                <img src="assets/img/eyeme/user-discover.png" alt="">
+                                <img src="assets/img/EYEME/user-discover.png" alt="">
                             </td>
                             <td>
-                                <img src="assets/img/eyeme/user-discover.png" alt="">
+                                <img src="assets/img/EYEME/user-discover.png" alt="">
                             </td>
                         </tr>
                         <tr>
