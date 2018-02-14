@@ -1688,7 +1688,7 @@ ul, li {
     font-weight: 600;
 }
 .menu-3 li{
-    margin-right: 41.5px;
+    margin-right: 22px;
     padding-bottom: 7px;
 }
 .menu-3 a{
@@ -1705,7 +1705,7 @@ ul, li {
     border-bottom: 4px solid #FFC107;
     padding-bottom: 3px;
 }
-.menu-3 li:nth-last-of-type(){
+.menu-3 li:nth-last-of-type(1){
     margin-right: 0px;
 }
 .bottom-left{
@@ -4560,8 +4560,8 @@ ey{
     font-weight: 600;
 }
 .img-highlight-enews{
-    width:690px;
-    height:381px;
+    width:100%;
+    height:100%;
     overflow:hidden;
     margin-bottom:10px;
 }
