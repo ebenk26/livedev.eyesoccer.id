@@ -60,11 +60,16 @@
     .action-menu a{
         text-decoration: none;
         color: #616161;
-        font-weight: 100;
-    }
+        font-weight: 500;
+    	font-size: .8em;
+    	margin-right: 20px;
+	}
+	.action-menu a:nth-last-of-type(1){
+		margin-right: 0px;
+	}
     .container{
         width: 30%;
-        min-width: 300px;
+        /* min-width: 300px; */
         padding: 10px;
         float: left;
     }
@@ -73,8 +78,22 @@
         float: left;
         overflow-y: scroll;
         overflow-x: hidden;
-        max-height: 376px;
-    }
+		max-height: 376px;
+		background-color: #fcfdff;
+	}
+	.galeri::-webkit-scrollbar {
+    	width: 7px;
+	}
+	.galeri::-webkit-scrollbar-thumb {
+		background: gainsboro;
+		border-radius: 10px;
+		box-shadow: inset 0 1px 1px grey;
+		cursor: pointer;
+	}
+	.galeri::-webkit-scrollbar-track {
+		background-color: #f9f9f9;
+		border-radius: 10px;
+	}
     .galeri img{
         width: 30%;
         margin-right: 1%;
@@ -82,8 +101,9 @@
         margin-bottom: 5px;
     }
     h2{
-        font-size: 2em;
-        font-weight: 100;
+		font-size: 1.5em;
+		font-weight: 500;
+		color: dimgray;
         text-transform: capitalize;
     }
     .bottom-content{
@@ -96,25 +116,33 @@
         display: inline-block;
         float: unset;
     }
-    .informasi{
-        width: 90%;
-    }
+    /* .informasi{
+        width: 50%;
+    } */
     .informasi span{
         display: block;
-        font-weight: 100;
+		font-weight: 500;
+    	font-size: .9em;
+    	color: dimgray;
+		cursor: default;
     }
     .informasi input, .informasi textarea{
         display: block;
-        min-width: 200px;
-        width: 100%;
-        /* max-width: 250px; */
+        /* min-width: 200px;
+        width: 100%; */
+		/* max-width: 250px; */
+		width:93%;
         border: 1px solid gainsboro;
         padding: 8px;
         margin: 5px 0px;
         border-radius: 5px;
-        background-color: #FAFAFA;
-        color: #616161;
-        outline: none;
+		background-color: #fcfdff;
+		outline: none;
+		font-size: .9em;
+		cursor: initial;
+		font-family: 'Montserrat';
+		font-weight: 500;
+		color: dimgray;
     }
     .full-width .informasi button, .full-width .btn-blue{
         display: inline-block;
@@ -158,9 +186,34 @@
 	.ui-autocomplete {
 		 z-index: 9999 !important;
 	}
+	.info-akun td{
+		padding: 0px;
+	}
+	.info-akun td:nth-of-type(1){
+		text-align: right;
+		padding: 0px 10px 0 0;
+	}
+	.gal-img{
+		width: 89px;
+		height: 89px;
+		overflow: hidden;
+		position: relative;
+		margin: 2px;
+		display: inline-block;
+		background-color: gainsboro;
+	}
+	.gal-img img{
+		width: unset;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	}
 	</style>
 	
-	<div class="head-content full-width">
+	<div class="head-content center-desktop">
 		<form method="POST" action="profile_upload" enctype="multipart/form-data">
 			<div class="img-radius">
 				<img src="<?=base_url()?>assets/img_storage/<?=$pic?>" alt="" class="blah">
@@ -176,8 +229,10 @@
 			<input class="lat" name="lat" type="hidden"/>
 			<input class="lon" name="lon" type="hidden"/>
 		</form>
-    </div>
-    <div class="head-content container">
+	</div>
+	
+	<div class="center-desktop">
+	<div class="head-content container">
         <div class="action-menu">
             <h2>Menu</h2>
 			<?php
@@ -186,7 +241,7 @@
 					<a class="myBtn" onclick="return false;">
 						<div class="col-1">
 							<img style="width:50px;" src="<?=imgUrl()?>systems/player_storage/<?=$get_player["pic"]?>" alt="" srcset="">
-							<span style="color: darkgrey;"><?=$get_player["name"]?></span><br>
+							<span><?=$get_player["name"]?></span><br>
 							Pemain
 						</div>
 					</a>
@@ -216,20 +271,32 @@
 				</div>
 			</a>
         </div>
-    </div>
-    <div class="container">
+	</div>
+	<div class="container m-0" style="width:40%;">
         <h2>informasi akun</h2>
         <div class="informasi">
             <form method="POST" action="profile_upload_data">
-                <span>Nama Depan</span>
-                <input type="text" name="name" id="" value="<?=$profile["name"]?>" required>
-                <span>Nama Belakang</span>
-                <input type="text" name="fullname" id="" value="<?=$profile["fullname"]?>" required>
-                <span>Alamat</span>
-                <textarea name="address" id="" cols="30" rows="5" required><?=$profile["address"]?></textarea>
-                <span>Tentang Saya</span>
-                <textarea name="about" id="" cols="30" rows="5"><?=$profile["about"]?></textarea>
-				<button class="btn-blue" type="submit" style="border: none;cursor: pointer;">Ubah Profile</button>
+				<table class="info-akun">
+					<tr>
+						<td><span>Nama Depan</span></td>
+						<td><input type="text" name="name" id="" value="<?=$profile["name"]?>" required></td>
+					</tr>
+					<tr>
+						<td><span>Nama Belakang</span></td>
+						<td><input type="text" name="fullname" id="" value="<?=$profile["fullname"]?>" required></td>
+					</tr>
+					<tr>
+						<td><span>Alamat</span></td>
+						<td><textarea name="address" id="" cols="30" rows="5" required><?=$profile["address"]?></textarea></td>
+					</tr>
+					<tr>
+						<td> <span>Tentang Saya</span></td>
+						<td><textarea name="about" id="" cols="30" rows="5"><?=$profile["about"]?></textarea></td>
+					</tr>
+				</table>
+				<div class="tx-c">
+				<button class="btn-blue" type="submit" style="max-width:unset; width:100%; border: none;cursor: pointer;">Ubah Profile</button>
+				</div>
             </form>
         </div>
     </div>
@@ -243,7 +310,9 @@
 					$expvideo = explode('-',$gr["video"]);
 					if($expfoto[0] == 'foto' || $expfoto[0] == 'profile'){
 			?>
+						<div class="gal-img">
 						<img src="<?=base_url()?>assets/img_storage/<?=$gr["thumb1"]?>" alt="" srcset="">
+						</div>
 			<?php	
 					}else if($expvideo[0] == 'video'){
 			?>
@@ -260,19 +329,19 @@
 			?>
         </div>
         <div class="bottom-content">
-			<form method="POST" action="foto_upload" enctype="multipart/form-data" style="float: left;margin-left: 25px;">
+			<form method="POST" action="foto_upload" enctype="multipart/form-data">
 				<input class="lat" name="lat" type="hidden"/>
 				<input class="lon" name="lon" type="hidden"/>
-				<label class="btn-blue" style="cursor: pointer;">
+				<label class="btn-blue" style="cursor: pointer;max-width:  unset;width: 95%;">
 					Tambah Foto
 					<input id="file_foto" name="add_foto" type="file" style="display: none;" accept="image/*">
 				</label>
 				<button class="btn-blue" id="add_foto" type="submit" style="display:none">Simpan</button>
 			</form>
-			<form method="POST" action="video_upload" enctype="multipart/form-data" style="float: right;margin-right: 25px;">
+			<form method="POST" action="video_upload" enctype="multipart/form-data" style="float: right;display:none;">
 				<input class="lat" name="lat" type="hidden"/>
 				<input class="lon" name="lon" type="hidden"/>
-				<label class="btn-blue" style="cursor: pointer;">
+				<label class="btn-blue" style="cursor: pointer;max-width:  unset;width: 95%;">
 					Tambah video
 					<input id="file_video" name="add_video" type="file" style="display: none;" accept="video/mp4">
 				</label>
@@ -280,6 +349,8 @@
 			</form>
         </div>
     </div>
+	</div>
+
 	<?php
 		if($check->num_rows()>0 && $pm["active"]=="1"){
 	?>
