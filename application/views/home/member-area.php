@@ -1,7 +1,7 @@
 	<style>
-	*{
+	/* *{
         font-family: sans-serif;
-    }
+    } */
     .head-content{
         text-align: center;
     }
@@ -16,10 +16,17 @@
         display: block;
         width: 150px;
         height: 150px;
-        margin: 0 auto;
+		margin: 0 auto;
+		position: relative;
     }
     .img-radius img{
         height: 100%;
+	    min-width: 100%;
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	margin-right: -50%;
+    	transform: translate(-50%, -50%);
     }
     .informasi button, .btn-blue{
         background-color: #4FC3F7;
@@ -164,9 +171,7 @@
 					<input id="file_pic" name="pic" type="file" style="display: none;">
 				</label>
 				<button class="btn-blue" type="submit" class="btn-info btn" id="submit_pic" style="display:none;border: none;cursor: pointer;" >Simpan Foto</button>
-				<a class="btn-blue" href="<?php echo base_url()?>home/logout" style="text-decoration: unset;color: white;background-color: #EC407A;border: none;cursor: pointer;">
-					Logout
-				</a>
+				<a class="btn-blue" href="<?php echo base_url()?>home/logout" style="text-decoration: unset;color: white;background-color: #EC407A;border: none;cursor: pointer;">Logout</a>
 			</div>
 			<input class="lat" name="lat" type="hidden"/>
 			<input class="lon" name="lon" type="hidden"/>

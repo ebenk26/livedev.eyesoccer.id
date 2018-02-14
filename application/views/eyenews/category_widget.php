@@ -10,6 +10,14 @@
 .rm span{
     font-weight: 600;
 }
+.n-rcm-up img {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
 </style>
 <div class="m-0">
     <div class="container m-t-5">
@@ -83,8 +91,10 @@
                             ?>
                                 <div class="n-rcm-up">
                                 <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>" class="container">
-                                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
-                                    <div class="n-rcm-up-teks">
+                                <div style="width: 100%; height: 224.5px; position:  relative; overflow:  hidden;">
+                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                </div>
+                                <div class="n-rcm-up-teks">
                                         <div class="rr">
                                             <span><?=$row['createon'];?></span>
                                         </div>
