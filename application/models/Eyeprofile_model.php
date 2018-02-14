@@ -57,7 +57,7 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_club_liga($liga,$limit=null)
+	public function get_club_liga($liga,$limit=null,$cat_liga=null)
 	{
 		$compt = "and a.competition='".$liga."'";
 		if($limit != null){
@@ -66,27 +66,39 @@ class Eyeprofile_model extends CI_Model
 			$limit ="";
 		}
 		
+		if($cat_liga != null){
+			$compt .= " and d.nama_liga='".$cat_liga."'";
+		}
+		
 		if($liga == 'non liga'){
 			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
 		}
 		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url
 									FROM tbl_club a
 									LEFT JOIN tbl_player c on a.club_id = c.club_id
-									WHERE a.name not in ('ebenktestlagijgndidelete') ".$compt."
+									LEFT JOIN tbl_liga d on a.id_liga = d.id_liga
+									WHERE a.name not in ('ebenktestlagijgndidelete') and a.active = 1 ".$compt."
 									GROUP BY a.club_id ASC ".$limit."")->result_array();
+									
 		return $query;
 	}
 	
-	public function get_player_liga($liga,$nationality)
+	public function get_player_liga($liga,$nationality,$cat_liga=null)
 	{
+		$table_liga = "";
 		if($liga == 'non liga'){
 			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
 		}else{
 			$compt = "b.competition = '".$liga."'";
 		}
+		
+		if($cat_liga != null){
+			$compt .= " and c.nama_liga='".$cat_liga."'";
+			$table_liga = "left join tbl_liga c on b.id_liga = c.id_liga ";
+		}
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
-									join tbl_club b on a.club_id=b.club_id
-									where ".$compt."")->result_array();
+									join tbl_club b on a.club_id=b.club_id ".$table_liga."
+									where ".$compt." and b.active = 1")->result_array();
 		return $query;
 	}
 	
@@ -96,16 +108,23 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_player_liga_strange($liga,$nationality='indonesia')
+	public function get_player_liga_strange($liga,$nationality='indonesia',$cat_liga=null)
 	{
+		$table_liga = "";
 		if($liga == 'non liga'){
 			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
 		}else{
 			$compt = "b.competition = '".$liga."'";
 		}
+		
+		if($cat_liga != null){
+			$compt .= " and c.nama_liga='".$cat_liga."'";
+			$table_liga = "left join tbl_liga c on b.id_liga = c.id_liga ";
+		}
+		
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
-									join tbl_club b on a.club_id=b.club_id
-									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."','wni','WNI','')")->result_array();
+									join tbl_club b on a.club_id=b.club_id ".$table_liga." 
+									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."','wni','WNI','') and b.active = 1")->result_array();
 		return $query;
 	}
 	
@@ -663,6 +682,12 @@ class Eyeprofile_model extends CI_Model
 	public function get_all_kompetisi()
 	{
 		$query = $this->db->query("select competition from tbl_competitions where competition not in ('SSB / Akademi Sepakbola')")->result_array();
+		return $query;
+	}
+	
+	public function get_all_liga()
+	{
+		$query = $this->db->query("select nama_liga from tbl_liga")->result_array();
 		return $query;
 	}
 	
