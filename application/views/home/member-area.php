@@ -150,6 +150,8 @@
 	}
 	.ui-autocomplete {
 		 z-index: 9999 !important;
+		 border: 1px solid darkgrey;
+		background-color: ghostwhite;
 	}
 	</style>
 	
