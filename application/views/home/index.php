@@ -385,7 +385,7 @@
 					?></span>
                             <p class="et-st-det"><?= $videonya['title']; ?></p>
                         </div> -->
-						<img class="v-et-2 v-et-100" width="100%" data-original="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="" style="margin-bottom: 10px;">
+						<img class="v-et-2 v-et-100 lazy" width="100%" data-original="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="" style="margin-bottom: 10px;">
 							<!-- <div class="container btn-play2"><img class="lazy" data-original="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	 -->
 						</a>
 					<?php
