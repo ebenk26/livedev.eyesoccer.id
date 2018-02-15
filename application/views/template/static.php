@@ -100,6 +100,7 @@
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+            <script src="<?php echo base_url();?>assets/js/lazyload.js"></script>
 
         <?php 
             if ($kanal != 'eyevent')
@@ -329,6 +330,13 @@
         ?>
     
 
-    
+    <script>
+		$(function() {
+			$('.lazy').lazyload({
+				effect: "fadeIn",
+				effectTime: 5000
+			});
+		});
+    </script>
     </body>
 </html>
