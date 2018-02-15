@@ -512,7 +512,7 @@
 							<p class="et-st-det"><?php echo $eyenews_main->title; ?></p>
 						</div>					
                     <!--<img class="v-et-2 w-100" data-original="assets/img/video-small.png" alt="">-->
-					<div style="width:100%;height:374px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100" data-original="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
+					<div style="width:100%;height:374px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100 lazy" data-original="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
 					</a>
                     <div class="h-berita-terkait" style="margin:40px 0;height:135px;overflow:hidden;">
                         <h3 class="mb-10">Berita Terkait</h3>
