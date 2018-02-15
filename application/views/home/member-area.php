@@ -78,20 +78,20 @@
         float: left;
         overflow-y: scroll;
         overflow-x: hidden;
-		max-height: 376px;
+		max-height: 427px;
 		background-color: #fcfdff;
 	}
-	.galeri::-webkit-scrollbar {
+	.galeri::-webkit-scrollbar, .pil-pemain::-webkit-scrollbar {
     	width: 7px;
 	}
-	.galeri::-webkit-scrollbar-thumb {
+	.galeri::-webkit-scrollbar-thumb, .pil-pemain::-webkit-scrollbar-thumb {
 		background: gainsboro;
 		border-radius: 10px;
 		box-shadow: inset 0 1px 1px grey;
 		cursor: pointer;
 	}
-	.galeri::-webkit-scrollbar-track {
-		background-color: #f9f9f9;
+	.galeri::-webkit-scrollbar-track, .pil-pemain::-webkit-scrollbar-track {
+		background-color: #f1f1f1;
 		border-radius: 10px;
 	}
     .galeri img{
@@ -121,27 +121,24 @@
     } */
     .informasi span{
         display: block;
-		font-weight: 500;
+		font-weight: 400;
     	font-size: .9em;
     	color: dimgray;
 		cursor: default;
     }
     .informasi input, .informasi textarea{
         display: block;
-        /* min-width: 200px;
-        width: 100%; */
-		/* max-width: 250px; */
-		width:93%;
-        border: 1px solid gainsboro;
+		width:95%;
         padding: 8px;
-        margin: 5px 0px;
+        margin: 5px 0px 10px 0;
+		border: 1px solid gainsboro;
         border-radius: 5px;
 		background-color: #fcfdff;
 		outline: none;
-		font-size: .9em;
+		font-size: .8em;
+		font-weight: 100;
 		cursor: initial;
 		font-family: 'Montserrat';
-		font-weight: 500;
 		color: dimgray;
     }
     .full-width .informasi button, .full-width .btn-blue{
@@ -167,7 +164,8 @@
 	.modal-content {
 		background-color: #fefefe;
 		margin: auto;
-		padding: 20px;
+		border-radius: 5px;
+		padding-left: 20px;
 		border: 1px solid #888;
 		width: 40%;
 	}
@@ -213,10 +211,14 @@
     margin-right: -50%;
     transform: translate(-50%, -50%);
 	}
+	.pil-pemain{
+		height: 400px;
+		overflow-y: scroll;
+	}
 	</style>
 	
 	<div class="head-content center-desktop">
-		<form method="POST" action="profile_upload" enctype="multipart/form-data">
+		<form method="POST" action="profile_upload" enctype="multipart/form-data" class="container" style="width:unset;float:unset;">
 			<div class="img-radius">
 				<img src="<?=base_url()?>assets/img_storage/<?=$pic?>" alt="" class="blah">
 			</div>
@@ -278,24 +280,14 @@
         <h2>informasi akun</h2>
         <div class="informasi">
             <form method="POST" action="profile_upload_data">
-				<table class="info-akun">
-					<tr>
-						<td><span>Nama Depan</span></td>
-						<td><input type="text" name="name" id="" value="<?=$profile["name"]?>" required></td>
-					</tr>
-					<tr>
-						<td><span>Nama Belakang</span></td>
-						<td><input type="text" name="fullname" id="" value="<?=$profile["fullname"]?>" required></td>
-					</tr>
-					<tr>
-						<td><span>Alamat</span></td>
-						<td><textarea name="address" id="" cols="30" rows="5" required><?=$profile["address"]?></textarea></td>
-					</tr>
-					<tr>
-						<td> <span>Tentang Saya</span></td>
-						<td><textarea name="about" id="" cols="30" rows="5"><?=$profile["about"]?></textarea></td>
-					</tr>
-				</table>
+				<span>Nama Depan</span>
+				<input type="text" name="name" id="" value="<?=$profile["name"]?>" required>
+				<span>Nama Belakang</span>
+				<input type="text" name="fullname" id="" value="<?=$profile["fullname"]?>" required>
+				<span>Alamat</span>
+				<textarea name="address" id="" cols="30" rows="5" required><?=$profile["address"]?></textarea>
+				<span>Tentang Saya</span>
+				<textarea name="about" id="" cols="30" rows="5"><?=$profile["about"]?></textarea>
 				<div class="tx-c">
 				<button class="btn-blue" type="submit" style="max-width:unset; width:100%; border: none;cursor: pointer;">Ubah Profile</button>
 				</div>
@@ -404,12 +396,12 @@
 			<div id="myModal" class="modal">
 				<!-- Modal content -->
 				<div class="modal-content">
-					<span class="close">&times;</span>
-					<div style="height: 400px;overflow-y: scroll;">
+					<!-- <span class="close">&times;</span> -->
+					<div class="pil-pemain">
 						<h2>Pilih Pemain</h2>
 						<div class="informasi">
 							<form method="post" action="<?=base_url("home/request_player")?>" id="reg_form_player" enctype="multipart/form-data">
-								<input style="width: 98%;" type='text' placeholder="Masukkan nama pemain yang telah terdaftar" name='player_id' value='' class='auto ui-autocomplete-input' autocomplete='off' required style="width:500px;">
+								<input style="width: 95%;" type='text' placeholder="Masukkan nama pemain yang telah terdaftar" name='player_id' value='' class='auto ui-autocomplete-input' autocomplete='off' required style="width:500px;">
 								<div id="menu-container" style="position:absolute; width: 500px;"></div>
 								<span>KTP/Kartu Pelajar/Kartu Mahasiswa/SIM:</span>
 								<input type="file" name="file_ktp" id="file_ktp" accept="image/*" required>
@@ -428,6 +420,7 @@
 								<span>Nama Ibu Kandung:</span>
 								<input type="text" name="file_ibukandung" id="file_ibukandung" required>
 								<button class="btn-blue" type="submit" style="border: none;cursor: pointer;">Submit</button>
+								<br><br>
 							</form>
 						</div>
 					</div>
