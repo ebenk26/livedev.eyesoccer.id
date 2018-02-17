@@ -55,7 +55,7 @@
         <div class="m-0">
             <div class="container tube-l">
                 <div>
-                    <video width="735px" height="415px" style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
+                    <video width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
                         <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4" preload="none">
                     </video>
                     <div class="top-r ">
