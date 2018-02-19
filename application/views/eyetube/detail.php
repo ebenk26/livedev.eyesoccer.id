@@ -16,13 +16,11 @@
     width: 100% !important;
 }
 </style>
-
-<div class="crumb bluehover">
-    <ul>
-        <li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
-        <li><a href="<?= base_url(); ?>eyetube" style="display: unset;">Eyetube</a></li>
-    </ul>
-</div>
+<?php 
+	$kanal  = "eyetube";
+	$page   = $category_name;
+	echo set_breadcrumb($kanal,$page);
+?>
 <div class="desktop bluehover">
     <div class="center-desktop m-0">
         <div class="menu-3 m-0 tx-c bbg">
@@ -48,7 +46,7 @@
             <div class="container tube-l">
                 <div>
                     <video width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
-                        <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4">
+                        <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4" preload="none">
                     </video>
                     <div class="top-r ">
                         <ul>

@@ -24,11 +24,15 @@
 		</style>
 
 
-
-		<div class="crumb">
+		<?php
+			$link = $_SERVER['PHP_SELF'];
+			$link_array = explode('/',$link);
+		?>
+		<div class="crumb redhover">
 			<ul>
-				<li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
-				<li><a href="<?= base_url(); ?>eyetube" style="display: unset;">Eyetube</a></li>
+			<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
+			<li><a href='<?php echo base_url().'eyetube'; ?>' style='display: unset'>EyeTube</a></li>
+			<li><a href='#' style='display: unset'><?php echo str_replace('-',' ',urldecode(end($link_array)));?></a></li>
 			</ul>
 		</div>
 		<div class="desktop">

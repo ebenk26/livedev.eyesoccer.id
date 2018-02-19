@@ -100,6 +100,7 @@
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+            <script src="<?php echo base_url();?>assets/js/lazyload.js"></script>
 
         <?php 
             if ($kanal != 'eyevent')
@@ -329,6 +330,29 @@
         ?>
     
 
-    
+    <script>
+		jQuery.fn.extend({
+			renameAttr: function(name, newName, removeData) {
+				var val;
+				return this.each(function() {
+					val = jQuery.attr(this, name);
+					jQuery.attr(this, newName, val);
+					jQuery.removeAttr(this, name);
+					// move original data
+					if (removeData !== false) {
+						jQuery.removeData(this, name.replace('data-', ''));
+					}
+				});
+			}
+		});
+		$('img').renameAttr('src', 'data-original' );
+		$(function() {
+			$('img').addClass('lazy');
+			$('.lazy').lazyload({
+				effect: "fadeIn",
+				effectTime: 5000
+			});
+		});
+    </script>
     </body>
 </html>

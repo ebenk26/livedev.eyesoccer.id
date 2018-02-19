@@ -29,13 +29,11 @@
 		margin-top: -10px;
 	}
 </style>
-<div class="crumb redhover">
-    <ul>
-	<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
-	<li><a href='<?php echo base_url().'/eyenews'; ?>' style='display: unset'>EyeNews</a></li>
-	<!-- <li>Pemain</li> -->
-    </ul>
-</div>
+<?php 
+	$kanal  = "eyenews";
+	$page   = $select_cat;
+	echo set_breadcrumb($kanal,$page);
+?>
 <div class="desktop redhover">
     <?php $this->load->view('eyenews/category_menu'); ?>
     
