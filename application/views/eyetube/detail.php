@@ -17,13 +17,11 @@
     width: 100% !important;
 }
 </style>
-
-<div class="crumb bluehover">
-    <ul>
-        <li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
-        <li><a href="<?= base_url(); ?>eyetube" style="display: unset;">Eyetube</a></li>
-    </ul>
-</div>
+<?php 
+	$kanal  = "eyetube";
+	$page   = $category_name;
+	echo set_breadcrumb($kanal,$page);
+?>
 <div class="desktop bluehover">
     <div class="center-desktop m-0">
         <div class="menu-3 m-0">
