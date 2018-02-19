@@ -4,10 +4,9 @@
         cursor: pointer;
     }
     .up-r-tube-cont{
-        height: 357px;
+        height: 358px;
     }
 .up-r-tube{
-    margin-top: 1px;
     height: 57px;
 }
 .fb-comments span{
@@ -26,9 +25,7 @@
 </div>
 <div class="desktop bluehover">
     <div class="center-desktop m-0">
-        <div class="menu-3 m-0">
-        <div class="container over-x">
-            <div class="w-max">
+        <div class="menu-3 m-0 tx-c bbg">
             <ul>
                 <?php 
                     foreach ($tube_type as $value)
@@ -41,18 +38,13 @@
                 <?php  
                     }
                 ?>
-            </ul></div></div>
-        <div class="container p-r ar-menu-3">
-			<i class="material-icons fl-l">keyboard_arrow_left</i>
-			<i class="material-icons fl-r">keyboard_arrow_right</i>
-		</div>
+            </ul>
+        
         </div>
     </div>
-    <!-- <div class="center-desktop m-0">
-        <div class="garis-x m-t-30"></div>
-    </div> -->
+    
     <div class="center-desktop m-0">
-        <div class="m-0">
+        <div class="m-0 mt-20">
             <div class="container tube-l">
                 <div>
                     <video width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">

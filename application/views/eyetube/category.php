@@ -3,9 +3,7 @@
 			.pagination > .active > a {
 				z-index:1;
 			}
-.time-view{
-	top: -25px;
-}
+
 .news-rcm {
     width: 690px;
 }
@@ -29,16 +27,13 @@
 
 		<div class="crumb">
 			<ul>
-				<li>Home</li>
-				<li>EyeTube</li>
-				<!-- <li>Pemain</li> -->
+				<li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
+				<li><a href="<?= base_url(); ?>eyetube" style="display: unset;">Eyetube</a></li>
 			</ul>
 		</div>
 		<div class="desktop">
         <div class="center-desktop m-0">
-		<div class="menu-3 m-0">
-        <div class="container over-x">
-            <div class="w-max">
+		<div class="menu-3 m-0 tx-c bbg">
             <ul>
                 <?php 
                     foreach ($tube_type as $value)
@@ -52,18 +47,12 @@
                     }
                 ?>
             </ul>
-            </div>
-        </div>
-		<div class="container p-r ar-menu-3">
-			<i class="material-icons fl-l">keyboard_arrow_left</i>
-			<i class="material-icons fl-r">keyboard_arrow_right</i>
-		</div>
 
-        </div>
+        </div> 
         </div>
         <div class="center-desktop  m-0">
             <div class="m-0">
-                <div class="container ">
+                <div class="container mt-20">
 				
 					<?php
 		
