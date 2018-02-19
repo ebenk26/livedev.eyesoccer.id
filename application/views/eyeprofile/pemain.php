@@ -102,7 +102,7 @@
 		// var fn = url.split('/').reverse()[0];
 		var fn = $(".hidden_title").val();
 		$('#example').DataTable( {
-  			"order":[[5,"desc"]],
+  			"order":[[1,"asc"]],
             "processing": true,
             "serverSide": true,
             "ajax":{
