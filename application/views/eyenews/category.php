@@ -42,7 +42,7 @@
     </div> -->
     <div class="center-desktop m-0">
 	<div class="m-0">
-	    <div class="container ">
+	    <div class="container mt-20">
 		<?php
 		    $this->load->helper('my');
 		    foreach ($pagging['row'] as $similar)

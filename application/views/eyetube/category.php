@@ -28,7 +28,7 @@
 			$link = $_SERVER['PHP_SELF'];
 			$link_array = explode('/',$link);
 		?>
-		<div class="crumb redhover">
+		<div class="crumb bluehover">
 			<ul>
 			<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
 			<li><a href='<?php echo base_url().'eyetube'; ?>' style='display: unset'>EyeTube</a></li>
