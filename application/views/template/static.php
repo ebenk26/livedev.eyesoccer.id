@@ -100,7 +100,7 @@
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-            <script src="<?php echo base_url();?>assets/js/lazyload.js"></script>
+            <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
 
         <?php 
             if ($kanal != 'eyevent')
@@ -345,12 +345,30 @@
 				});
 			}
 		});
-		$('img').renameAttr('src', 'data-original' );
+		$('img').renameAttr('src', 'data-src' );
 		$(function() {
 			$('img').addClass('lazy');
-			$('.lazy').lazyload({
+			/* $('.lazy').lazyload({
 				effect: "fadeIn",
 				effectTime: 5000
+			}); */
+			var lazyLoadInstances = [];
+			// The "lazyLazy" instance of lazyload is used (kinda improperly) 
+			// to check when the .horzContainer divs enter the viewport
+			var lazyLazy = new LazyLoad({
+				elements_selector: ".lazy",
+				effect: "fadeIn",
+				effectTime: 5000,
+				// When the .horzContainer div enters the viewport...
+				callback_set: function(el) {
+					// ...instantiate a new LazyLoad on it
+					var oneLL = new LazyLoad({
+						container: el
+					});
+					// Optionally push it in the lazyLoadInstances 
+					// array to keep track of the instances
+					lazyLoadInstances.push(oneLL);
+				}
 			});
 		});
     </script>

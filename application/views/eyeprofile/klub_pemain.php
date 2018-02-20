@@ -70,12 +70,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td>: <?=$row["competition"]?></td>
                             </tr>
                             <tr>
-                                <td>Klasemen</td>
-                                <td>: </td>
+                                <td>No. Telp</td>
+                                <td>: <?=$row["phone"]?></td>
                             </tr>
-                            <tr>
-                                <td>Lama Di Liga Sejak</td>
-                                <td>: </td>
+							<tr>
+                                <td>Fax</td>
+                                <td>: <?=$row["fax"]?></td>
                             </tr>
                             <tr>
                                 <td>Manajer</td>
@@ -96,16 +96,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td>: <?=count($get_player_list)?> Pemain</td>
                             </tr>
                             <tr>
-                                <td>Rata-rata Usia</td>
-                                <td>: </td>
-                            </tr>
-                            <tr>
-                                <td>Pemain Asing</td>
-                                <td>: </td>
+                                <td>Email</td>
+                                <td>: <?=$row["email"]?></td>
                             </tr>
                             <tr>
                                 <td>Stadium</td>
                                 <td>: <?=$row["stadium"]?></td>
+                            </tr>
+                            <tr>
+                                <td>Panggilan Klub</td>
+                                <td>: <?=$row["nickname"]?></td>
                             </tr>
                         </tbody>
                     </table>

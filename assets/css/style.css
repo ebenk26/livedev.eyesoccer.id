@@ -4899,3 +4899,6 @@ height: 100%;
     color: white !important;
     font-size: .5em !important;
 }
+img.loading {
+    background-color: #f2f2f2;
+}
