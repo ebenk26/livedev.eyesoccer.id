@@ -1,4 +1,9 @@
-
+<style>
+    footer{
+        width: 100vw;
+        margin-left: -4%;
+    }
+</style>
     <div class="container dll-head">
         <img src="assets/img/Footer/img-header-pedoman.png" alt="">
         <div class="center-desktop m-0 dll-title">

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
         <meta charset="UTF-8">
         <?php 
             if ($kanal != 'eyemarket')
@@ -347,6 +346,13 @@
 		});
 		$('img').renameAttr('src', 'data-src' );
 		$(function() {
+			var attr = $('img').attr('alt');
+
+			// For some browsers, `attr` is undefined; for others,
+			// `attr` is false.  Check for both.
+			if (typeof attr !== typeof undefined && attr !== false) {
+				$('img').attr('alt');
+			}
 			$('img').addClass('lazy');
 			/* $('.lazy').lazyload({
 				effect: "fadeIn",
