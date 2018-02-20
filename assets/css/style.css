@@ -1688,7 +1688,7 @@ ul, li {
     font-weight: 600;
 }
 .menu-3 li{
-    margin-right: 22px;
+    margin: 0 9.9px 5px;
     padding-bottom: 7px;
 }
 .menu-3 a{
@@ -1696,7 +1696,7 @@ ul, li {
     color: #3d3d3d;
     padding-bottom: 4px;
 }
-.menu-3 a:hover{
+.menu-3 a:hover, .menu-3 a:active, .menu-3 a.active{
     border-bottom: 3px solid #039BE5;
     color: #039BE5;
 }
@@ -1705,9 +1705,7 @@ ul, li {
     border-bottom: 4px solid #FFC107;
     padding-bottom: 3px;
 }
-.menu-3 li:nth-last-of-type(1){
-    margin-right: 0px;
-}
+
 .bottom-left{
     position: relative;
     margin-top: -20px;
@@ -4859,4 +4857,7 @@ height: 100%;
 .iven .rn .rr span {
     color: white !important;
     font-size: .5em !important;
+}
+img.loading {
+    background-color: #f2f2f2;
 }

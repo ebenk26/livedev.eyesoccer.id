@@ -22,7 +22,7 @@
 		padding: 5px 15px;
 	}
 	.trending .x-c a:hover{
-		background-color: #EF5350;
+		box-shadow: inset 0 0 10px #820000;
 		color: #FFEBEE !important;
 	}
 	.menu {

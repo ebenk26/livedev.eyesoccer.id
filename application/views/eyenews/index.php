@@ -24,9 +24,6 @@
     width: 450px;
     height: 340px;
 }
-.menu-3 li:nth-first-of-type(1){
-    float:left;
-}
 </style>
 <div class="crumb redhover">
     <ul>

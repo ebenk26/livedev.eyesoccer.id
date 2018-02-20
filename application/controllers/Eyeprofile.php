@@ -80,6 +80,7 @@ class Eyeprofile extends CI_Controller {
 			$nama_liga = "Liga Usia Muda";
 		}
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub,$cat_liga);
+		$data['avg_year'] = $this->Eyeprofile_model->get_club_liga_avggyear($nama_liga,$jml_klub,$cat_liga);
 		$data['get_jadwal_tomorrow_1'] = $this->Eyeprofile_model->get_jadwal_tomorrow_1($above_datetime,$nama_liga_event);
 		$data['get_jadwal_tomorrow_2'] = $this->Eyeprofile_model->get_jadwal_tomorrow_2($above_datetime,$nama_liga_event);
 		$data['get_jadwal_tomorrow_3'] = $this->Eyeprofile_model->get_jadwal_tomorrow_3($above_datetime,$nama_liga_event);

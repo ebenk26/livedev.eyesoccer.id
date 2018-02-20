@@ -62,7 +62,7 @@ $total_official=($official->num_rows());
                             <td>: <?=$club["nickname"]?></td>
                         </tr>
                         <tr>
-                            <td>Tanggal Berdiri</td>
+                            <td>Berdiri Sejak</td>
                             <td>: <?=$club["establish_date"]?></td>
                         </tr>
                         <tr>

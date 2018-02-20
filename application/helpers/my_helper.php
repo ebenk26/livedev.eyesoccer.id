@@ -580,7 +580,7 @@ function get_date($rentang = "")
 function getManager($club_id = "")
 {
     $CI =& get_instance();
-	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."'");
+	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."' and position in ('manager','manajer','menejer','Manager')");
 	if($manager->num_rows()>0){
 		$manager = $manager->row()->name;
 	}else{
