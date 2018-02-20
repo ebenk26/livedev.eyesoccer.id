@@ -27,7 +27,7 @@
                             <li>
                                 <table style="width:unset;">
                                     <tr>
-                                        <td>Photo</td>
+                                        <td>Foto</td>
                                         <td>Pengikut</td>
                                         <td>Diikuti</td>
                                     </tr>
