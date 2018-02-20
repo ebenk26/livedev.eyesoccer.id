@@ -83,6 +83,37 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
+	public function get_club_liga_avggyear($liga,$limit=null,$cat_liga=null)
+	{
+		$compt = "and a.competition='".$liga."'";
+		if($limit != null){
+			$limit = "LIMIT ".$limit."";
+		}else{
+			$limit ="";
+		}
+		
+		if($cat_liga != null){
+			$compt .= " and d.nama_liga='".$cat_liga."'";
+		}
+		
+		if($liga == 'non liga'){
+			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
+		}
+		
+		if($liga != 'Liga Usia Muda'){
+			$query = $this->db->query("SELECT (YEAR(CURDATE())   - RIGHT(c.birth_date,4)) as usia,a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url
+									FROM tbl_club a
+									LEFT JOIN tbl_player c on a.club_id = c.club_id
+									LEFT JOIN tbl_liga d on a.id_liga = d.id_liga
+									WHERE a.name not in ('ebenktestlagijgndidelete') and a.active = 1 ".$compt."
+									")->result_array();
+		}else{
+			$query = '';
+		}
+									
+		return $query;
+	}
+	
 	public function get_player_liga($liga,$nationality,$cat_liga=null)
 	{
 		$table_liga = "";
@@ -670,7 +701,7 @@ class Eyeprofile_model extends CI_Model
 	}
 	
 	public function get_pelatih($club_id){
-		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position like '%pelatih%' limit 1");
+		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position in ('Pelatih Kepala','pelatih','PELATIH','Pelatih','pelatih utama','pelatih(coach)','PELATIH/KEPALA','Pelatih / Manager','MANAJER/ PELATIH','Head Coach','COACH','KEPALA PELATIH') limit 1;");
 		if($query->num_rows()>0){
 			$query = $query->row()->name;
 		}else{
