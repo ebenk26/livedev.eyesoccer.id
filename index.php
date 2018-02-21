@@ -142,10 +142,8 @@ switch (ENVIRONMENT)
  */
 	$application_folder = 'application';
 	define('MEFOLDER','../../eyesoccer.id/public_html/upload/eyeme');
-<<<<<<< HEAD
-=======
 	define('MARKETFOLDER','../../eyesoccer.id/public_html/upload/eyemarket');
->>>>>>> 2144053f3ef2c2dc315ccb9554040f03073139de
+
 
 /*
  *---------------------------------------------------------------
