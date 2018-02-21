@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php
 		foreach($get_klub_detail as $row){
 		?>		
+			<input type="hidden" class="hidden_title" value="<?php echo $row['club_id']; ?>"/>
 			<div class="left">
                 <!-- <svg style="height: 189px;">
                     <g id="Layer_2" data-name="Layer 2">
@@ -208,108 +209,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
     <div class="center-desktop m-0">
         <div class="w-60 m-r-1 pd-t-20 formasi">
-            <h3 class="">Formasi terakhir</h3>
-            <table class="radius" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr>
-                        <td class="gray t-b-b">Formasi
-                            <span>-</span>
-                        </td>
-                        <td class="gray t-b-b t-b-r">Manager
-                            <span><?php echo $get_manager; ?></span>
-                        </td>
-                        <td class="t-b-b">Bangku cadangan</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="t-b-r tx-c" colspan="2">
-                            -
-                        </td>
-                        <td>
-                            <div class="bc">
-                                <span class="round">22</span>
-                                -
-                            </div>
-                            <div class="bc">
-                                <span class="round">22</span>
-                               -
-                            </div>
-                            <div class="bc">
-                                <span class="round">22</span>
-                                -
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="container">
-                <h3 class="pd-t-20">Klasemen Liga Indonesia 1</h3>
-                <table id="liga_indonesia" class="radius table table-striped">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Klub</th>
-									<th>MN</th>
-									<th>M</th>
-									<th>S</th>
-									<th>K</th>
-									<th>P</th>
-								</tr>
-							</thead>
-							<tbody>
-							<?php
-								$html = file_get_contents(LinkScrapingLigaIndonesia()); //get the html returned from the following url
+            <h3 class="">Karir Klub</h3>
+            <table class="stripe cell-border" cellspacing="0" width="100%" id="tbl_karir_klub">
+				<thead id="back900">
+					<th>No</th>
+					<th>Bulan</th>
+					<th>Tahun</th>
+					<th>Turnamen</th>
+					<th>Peringkat</th>
+					<th>Pelatih</th>
+				</thead>
+				<tbody >
 
-								$premiere_doc = new DOMDocument();
-
-								libxml_use_internal_errors(TRUE); //disable libxml errors
-
-								if(!empty($html)){ //if any html is actually returned
-
-									$premiere_doc->loadHTML($html);
-									libxml_clear_errors(); //remove errors for yucky html
-									
-									$pokemon_xpath = new DOMXPath($premiere_doc);
-
-									//get all the h2's with an id
-									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
-									$pokemon_list = array();
-									$i = 0;
-									if($pokemon_row->length > 0){
-										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 18){
-												$types = $pokemon_xpath->query('td', $row);
-												$n = 0;
-												foreach($types as $type){
-													if(!empty($type->nodeValue)){
-														if($n != 7){
-															if($n != 8){
-																if($n != 9){
-																	if($n != 11){
-																		$nodeValue = "<td>".$type->nodeValue.'</td>';
-																		echo $nodeValue;
-																	}
-																}
-															}
-														}
-													}
-													$n++;
-												}
-												$i ++;
-											}
-											echo "</tr>";
-										}
-									}
-								} 
-							?>
-							</tbody>
-						</table>
-                <span class="next-right">Lihat Klasemen Lengkap
-                    <i class="material-icons t-8">keyboard_arrow_right</i>
-                </span>
-            </div>
+				</tbody>
+			</table>
         </div>
         <div class="w-40 pd-t-20">
             <h3 class="">Pertandingan Selanjutnya</h3>
@@ -372,7 +285,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </table>
             </div>
             
-            <div class="container">
+            <div class="container" style="display:none;">
                 <h3 class="pd-t-20">Pencetak Gol Terbanyak</h3>
 				<table id="liga_indonesia" class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
 					<thead>
@@ -483,4 +396,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					document.getElementById(tabbing).style.display = "block";
 					evt.currentTarget.className += " active";
 				}
+			var fn = $(".hidden_title").val();
+			$('#tbl_karir_klub').DataTable( {
+				"order":[[1,"asc"]],
+				"processing": true,
+				"serverSide": true,
+				"ajax":{
+					url :"<?php echo base_url()?>eyeprofile/get_list_karir_klub/"+fn, // json datasource
+					type: "post",  // method  , by default get
+				},
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+				}
+			} );
 		</script>

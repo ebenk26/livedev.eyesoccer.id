@@ -450,4 +450,10 @@ class Eyeprofile extends CI_Controller {
 				}
             echo "</div>";
 	}
+	
+	public function get_list_karir_klub($klub_id){
+		$requestData= $_REQUEST;
+		$res = $this->Eyeprofile_model->get_list_karir_klub($requestData,urldecode($klub_id));
+		return $res;
+	}
 }

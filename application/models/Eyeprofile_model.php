@@ -726,6 +726,65 @@ class Eyeprofile_model extends CI_Model
 		$query = $this->db->query("select a.*,b.name as club_name,b.url as club_url from tbl_official_team a left join tbl_club b on a.club_now=b.club_id where a.url='".$url."'")->result_array();
 		return $query;
 	}
+	
+	public function get_list_karir_klub($requestData,$club_id)
+	{
+		$columns = array( 
+		// datatable column index  => database column name
+			0 =>'karir_klub_id', 
+			1 => 'bulan',
+			2=> 'tahun',
+			3=> 'turnamen',
+			4=> 'peringkat',
+			5=> 'pelatih'
+		);
+		
+		if( !empty($requestData['search']['value']) ) {  
+		$sql=" AND ( bulan LIKE '%".$requestData['search']['value']."%' ";    
+			$sql.=" OR turnamen LIKE '%".$requestData['search']['value']."%' ";
+
+			$sql.=" OR peringkat LIKE '%".$requestData['search']['value']."%' ";
+			$sql.=" OR pelatih LIKE '%".$requestData['search']['value']."%' )";
+		}
+		else{
+			$sql="";
+		}
+		$query = $this->db->query("select * from tbl_karir_klub where klub_id = ".$club_id." ".$sql."");
+		$totalData = count($query->result_array());
+		$totalFiltered = $totalData;
+		
+		$result_with_limit=$this->db->query("select * from tbl_karir_klub where klub_id = ".$club_id." ".$sql." order by ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."");
+		$totalFiltered=$query->num_rows();
+		if($requestData['start']==0){
+			$i=1;
+		}else{
+			$i=$requestData['start']+1;
+		}
+		$data2 = array();
+		foreach ($result_with_limit->result() as $data)
+		{
+			$nestedData=array(); 
+			$nestedData[] = $i;
+			$nestedData[] = $data->bulan;
+			$nestedData[] = $data->tahun;
+			$nestedData[] = $data->turnamen;
+			$nestedData[] = $data->peringkat;
+			$nestedData[] = $data->pelatih;
+			
+			$data2[] = $nestedData;
+			$i++;
+		}
+
+
+		$json_data = array(
+					"draw"            => intval( $requestData['draw'] ), 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ),
+					"data"            => $data2   // total data array
+					);
+
+		echo json_encode($json_data); 
+	}
 }
 
 /* End of file Berita_model.php */
