@@ -287,7 +287,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image1"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -314,7 +314,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image2"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -341,7 +341,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image3"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -368,7 +368,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image4"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -395,7 +395,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image5"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
