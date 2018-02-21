@@ -78,7 +78,7 @@ class Eyeprofile_model extends CI_Model
 									LEFT JOIN tbl_player c on a.club_id = c.club_id
 									LEFT JOIN tbl_liga d on a.id_liga = d.id_liga
 									WHERE a.name not in ('ebenktestlagijgndidelete') and a.active = 1 ".$compt."
-									GROUP BY a.club_id ASC ".$limit."")->result_array();
+									GROUP BY a.name ASC ".$limit."")->result_array();
 									
 		return $query;
 	}

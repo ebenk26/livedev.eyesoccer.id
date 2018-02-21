@@ -221,15 +221,7 @@
                 <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
-                            <li><a href="<?=base_url()?>eyeprofile/klub">EyeProfile</a>
-                                <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="<?=base_url()?>eyeprofile/klub">EyeProfile</a></li>
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
                             <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
                             <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>

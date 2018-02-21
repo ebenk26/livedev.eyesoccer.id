@@ -17,13 +17,13 @@
                     {
                 ?>
                         <div class="container iven">
-                            <a href="<?= $value->share_url; ?>">
+                            <a href="<?= base_url().'eyevent/detail'.$value->slug; ?>">
                                 <div class="iven-im">
                                     <img src="<?= $value->url_pic; ?>" alt="">
                                 </div>
                             </a>
                             <div class="container rn tx-c" id="iven">
-                                <a href="<?= $value->share_url; ?>">
+                                <a href="<?= base_url().'eyevent/detail'.$value->slug; ?>">
                                     <span><?= $value->title; ?></span>
                                 </a>
                                 <div class="rr">

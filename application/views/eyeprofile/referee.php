@@ -7,6 +7,13 @@
 		font-size: .95em !important;
 	}
 </style>
+	<div class="crumb bluehover">
+		<ul>
+		<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
+		<li><a href='<?php echo base_url().'eyeprofile/klub'; ?>' style='display: unset'>Eyeprofile</a></li>
+		<li><a href='#' style='display: unset'>Perangkat pertandingan</a></li>
+		</ul>
+	</div>
 	<div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
             <ul>

@@ -1,5 +1,4 @@
-</div>
-		<style>
+<style>
 			.pagination > .active > a {
 				z-index:1;
 			}
@@ -21,13 +20,7 @@
 .news-rcm-r2 td {
 	padding: 4.5px 0px;
 }
-		</style>
-
-
-		<?php
-			$link = $_SERVER['PHP_SELF'];
-			$link_array = explode('/',$link);
-		?>
+</style>
 		<div class="crumb bluehover">
 			<ul>
 			<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
@@ -35,7 +28,6 @@
 			<li><a href='#' style='display: unset'><?php echo str_replace('-',' ',urldecode(end($link_array)));?></a></li>
 			</ul>
 		</div>
-		<div class="desktop">
         <div class="center-desktop m-0">
 		<div class="menu-3 m-0 tx-c bbg">
             <ul>
