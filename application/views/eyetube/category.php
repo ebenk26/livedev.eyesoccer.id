@@ -21,6 +21,10 @@
 	padding: 4.5px 0px;
 }
 </style>
+		<?php
+			$link = $_SERVER['PHP_SELF'];
+			$link_array = explode('/',$link);
+		?>
 		<div class="crumb bluehover">
 			<ul>
 			<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
