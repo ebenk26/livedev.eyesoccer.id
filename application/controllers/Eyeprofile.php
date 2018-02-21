@@ -168,6 +168,7 @@ class Eyeprofile extends CI_Controller {
 		$data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['name']);	
 		$data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);	
 		$data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);	
+		$data['get_gallery'] = $this->Eyeprofile_model->get_gallery_club($data['get_klub_detail_row_array']['club_id']);	
 		$data['products']	= $this->Home_model->get_all_product();	
 		$data['kanal'] 				= "home";
 		$this->load->view('config-session',$data);

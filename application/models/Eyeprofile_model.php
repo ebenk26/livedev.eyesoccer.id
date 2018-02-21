@@ -785,6 +785,11 @@ class Eyeprofile_model extends CI_Model
 
 		echo json_encode($json_data); 
 	}
+	
+	public function get_gallery_club($club_id){
+		$query = $this->db->query("select * from tbl_gallery where klub_id='".$club_id."'")->result_array();
+		return $query;
+	}
 }
 
 /* End of file Berita_model.php */
