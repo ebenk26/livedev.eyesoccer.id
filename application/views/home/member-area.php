@@ -225,7 +225,7 @@
 			<div class="full-width">
 				<label class="btn-blue" style="cursor: pointer;">
 					Ganti Foto
-					<input id="file_pic" name="pic" type="file" style="display: none;">
+					<input id="file_pic" name="pic" type="file" style="display: none;" accept="image/*">
 				</label>
 				<button class="btn-blue" type="submit" class="btn-info btn" id="submit_pic" style="display:none;border: none;cursor: pointer;" >Simpan Foto</button>
 				<a class="btn-blue" href="<?php echo base_url()?>home/logout" style="text-decoration: unset;color: white;background-color: #EC407A;border: none;cursor: pointer;">Logout</a>
