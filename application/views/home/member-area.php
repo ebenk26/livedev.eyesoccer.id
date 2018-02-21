@@ -220,7 +220,7 @@
 	<div class="head-content center-desktop">
 		<form method="POST" action="profile_upload" enctype="multipart/form-data" class="container" style="width:unset;float:unset;">
 			<div class="img-radius">
-				<img src="<?=base_url()?>assets/img_storage/<?=$pic?>" alt="" class="blah">
+				<img src="<?= MEIMG.$pic?>" alt="" class="blah">
 			</div>
 			<div class="full-width">
 				<label class="btn-blue" style="cursor: pointer;">
@@ -305,7 +305,7 @@
 					if($expfoto[0] == 'foto' || $expfoto[0] == 'profile'){
 			?>
 						<div class="gal-img">
-						<img src="<?=base_url()?>assets/img_storage/<?=$gr["thumb1"]?>" alt="" srcset="">
+						<img src="<?=MEIMG.$gr["thumb1"]?>" alt="" srcset="">
 						</div>
 			<?php	
 					}else if($expvideo[0] == 'video'){

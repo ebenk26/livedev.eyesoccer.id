@@ -564,10 +564,11 @@ class Home extends CI_Controller {
 			$lat = $_POST['lat'];
 			$lon = $_POST['lon'];
 			$date =date("Y-m-d H:i:s");
-			$pic="foto-".rand("1000","9999")."-".$_FILES['add_foto']['name'];
+			$pic="foto-".rand("1000","9999")."-".date('dmYhis');
 			$pic = preg_replace('/\s+/', '', $pic);
-			move_uploaded_file($_FILES['add_foto']['tmp_name'], pathUrl()."assets/img_storage/".$pic);
-				$last_id = $_SESSION["member_id"];
+			$path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl()."assets/img_storage/" : IMGSTORAGE.'/';
+			move_uploaded_file($_FILES['add_foto']['tmp_name'], $path.'ori_'.$pic);
+			$last_id = $_SESSION["member_id"];
 			$post_data = array(
 				'title'			=> $caption,
 				'tags'   		=>  '',
