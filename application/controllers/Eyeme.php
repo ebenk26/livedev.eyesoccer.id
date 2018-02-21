@@ -377,10 +377,6 @@ class Eyeme extends CI_Controller {
 
 	}
 
-	public function upload_profile(){
-
-
-	}
 	/**
 	*fungsi img::
 	*@param @id_img select id_img

@@ -174,8 +174,6 @@ var valCom = $(this).val();
             .fail(function() {
                 console.log("error");
             });
-
-        //$(this).val('');
         
     }
 
@@ -185,7 +183,6 @@ var valCom = $(this).val();
 $('#upload,.upl').click(function(e) {
     /* Act on the event */
     e.preventDefault();
-    //alert('test');
      $('#upload_pop').css('display','block');
 
 
@@ -780,4 +777,51 @@ function inputS(text) {
 
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
+jQuery.fn.extend({
+            renameAttr: function(name, newName, removeData) {
+                var val;
+                return this.each(function() {
+                    val = jQuery.attr(this, name);
+                    jQuery.attr(this, newName, val);
+                    jQuery.removeAttr(this, name);
+                    // move original data
+                    if (removeData !== false) {
+                        jQuery.removeData(this, name.replace('data-', ''));
+                    }
+                });
+            }
+        });
+        $('img').renameAttr('src', 'data-src' );
+        $(function() {
+            var attr = $('img').attr('alt');
+
+            // For some browsers, `attr` is undefined; for others,
+            // `attr` is false.  Check for both.
+            if (typeof attr !== typeof undefined && attr !== false) {
+                $('img').attr('alt');
+            }
+            $('img').addClass('lazy');
+            /* $('.lazy').lazyload({
+                effect: "fadeIn",
+                effectTime: 5000
+            }); */
+            var lazyLoadInstances = [];
+            // The "lazyLazy" instance of lazyload is used (kinda improperly) 
+            // to check when the .horzContainer divs enter the viewport
+            var lazyLazy = new LazyLoad({
+                elements_selector: ".lazy",
+                effect: "fadeIn",
+                effectTime: 5000,
+                // When the .horzContainer div enters the viewport...
+                callback_set: function(el) {
+                    // ...instantiate a new LazyLoad on it
+                    var oneLL = new LazyLoad({
+                        container: el
+                    });
+                    // Optionally push it in the lazyLoadInstances 
+                    // array to keep track of the instances
+                    lazyLoadInstances.push(oneLL);
+                }
+            });
+        });
   </script>

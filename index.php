@@ -144,6 +144,7 @@ switch (ENVIRONMENT)
 	define('MEFOLDER','../../eyesoccer.id/public_html/upload/eyeme');
 	define('MARKETFOLDER','../../eyesoccer.id/public_html/upload/eyemarket');
 
+
 /*
  *---------------------------------------------------------------
  * VIEW DIRECTORY NAME
