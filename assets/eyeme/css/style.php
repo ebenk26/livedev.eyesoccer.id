@@ -3065,3 +3065,6 @@ a{
 .uplda{
     margin-top:30% ; 
 }
+img.loading {
+    background-color: #f2f2f2;
+}

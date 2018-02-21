@@ -95,7 +95,7 @@ define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
 define('MEURL',base_url().'eyeme/');
-define('MEIMG',base_url().'upload/eyeme/');
+define('MEIMG','http://static.eyesoccer.id/v1/cache/images/');
 define('IMGPATH','./upload/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
@@ -656,4 +656,28 @@ function set_breadcrumb($kanal,$page)
                 </div>";
     
     return $html;
+}
+
+function seo_title($text)
+{
+    // replace non letter or digits by -
+    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+
+    // trim
+    $text = trim($text, '-');
+
+    // transliterate
+    //$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+    // lowercase
+    $text = strtolower($text);
+
+    // remove unwanted characters
+    $text = preg_replace('[^-\w]', '', $text);
+
+    if (empty($text)) {
+        return 'n-a';
+    }
+
+    return $text;
 }

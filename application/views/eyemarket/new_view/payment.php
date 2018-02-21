@@ -11,17 +11,17 @@
     <div class="col-md-9 clearfix" id="checkout">
 
         <div class="box">
+            <ul class="nav nav-pills nav-justified">
+                <li class="disabled"><a href="#"><i class="fa fa-map-marker"></i><br>Alamat</a>
+                </li>
+                <li class="disabled"><a href="#"><i class="fa fa-truck"></i><br>Metode Pengiriman</a>
+                </li>
+                <li class="active"><a href="#"><i class="fa fa-money"></i><br>Metode Pembayaran</a>
+                </li>
+                <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Ulasan Pesanan</a>
+                </li>
+            </ul>
             <form method="post" action="<?= base_url(); ?>eyemarket/start_order/<?= $id_member; ?>">
-                <ul class="nav nav-pills nav-justified">
-                    <li class="disabled"><a href="#"><i class="fa fa-map-marker"></i><br>Alamat</a>
-                    </li>
-                    <li class="disabled"><a href="#"><i class="fa fa-truck"></i><br>Metode Pengiriman</a>
-                    </li>
-                    <li class="active"><a href="#"><i class="fa fa-money"></i><br>Metode Pembayaran</a>
-                    </li>
-                    <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Ulasan Pesanan</a>
-                    </li>
-                </ul>
 
                 <div class="content">
                     <div class="row">

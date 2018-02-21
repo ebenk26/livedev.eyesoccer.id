@@ -1,4 +1,5 @@
 <?php
+    $id_member = md5($id_member);
     foreach ($product as $data)
     {
 ?>
@@ -24,12 +25,12 @@
                 <div class="row" id="productMain">
                     <div class="col-sm-6" style="padding: 0px !important;">
                         <div id="mainImage" style="margin-top: 10%;">
-                            <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="img-responsive">
+                            <img src="<?= MEIMG; ?><?= $data['image1']; ?>" class="img-responsive">
                         </div>
                             <div class="row" id="thumbs" style="margin-top: 10px !important;">
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image1']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image1']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php 
@@ -37,8 +38,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image2']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image2']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image2']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image2']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -49,8 +50,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image3']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image3']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image3']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image3']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -61,8 +62,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image4']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image4']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image4']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image4']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -73,8 +74,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image5']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image5']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image5']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image5']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -119,12 +120,21 @@
                                 ?>
                                 
                                 <p>
+                                    <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to chart
+                                        </span>
+                                    </a>
                             <?php
                                 if ($id_member == NULL) 
                                 {
                             ?>
-                                    <!-- <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>"> -->
-                                        <?php 
+                                    <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>">
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to cart 
+                                        </span>
+                                    </a>
+                                        <?php /*
                                             if ($data["harga"] != 0)
                                             {
                                         ?>
@@ -140,7 +150,7 @@
                                                     <i class="fa fa-shopping-cart"></i> Available Soon
                                                 </span>
                                         <?php        
-                                            }
+                                            }*/
                                         ?>
                                         
                                         
@@ -153,8 +163,12 @@
                                 else
                                 {
                             ?>
-                                    <!-- <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main"> -->
-                                        <?php 
+                                    <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to chart
+                                        </span>
+                                    </a>
+                                        <?php /*
                                             if ($data["harga"] != 0)
                                             {
                                         ?>
@@ -170,7 +184,7 @@
                                                     <i class="fa fa-shopping-cart"></i> Available Soon
                                                 </span>
                                         <?php        
-                                            }
+                                            }*/
                                         ?>
                                     <!-- </a> -->
                                     <!-- <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
@@ -253,7 +267,7 @@
 
                 </div>
 
-                <div class="box social" id="product-social">
+                <!-- <div class="box social" id="product-social">
                     <h4>Bagikan Ke Teman Anda</h4>
                     <p>
                         <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
@@ -261,7 +275,7 @@
                         <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                     </p>
-                </div>
+                </div> -->
 
                 <div class="row">
                     <div class="container">
@@ -278,7 +292,7 @@
                         <a href="<?= base_url(); ?>eyemarket/detail/<?= $value['toko']; ?>/<?= $value['title_slug']; ?>">
                             <div class="product col-md-3 col-sm-6 col-xm-12">
                                 <div class="image">
-                                    <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">
+                                    <img src="<?= MEIMG; ?><?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">
                                 </div>
                                 <div class="text">
                                     <h3><?= $value['nama']; ?></h3>

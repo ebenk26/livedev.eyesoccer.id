@@ -665,7 +665,7 @@
 							?>
 							<div class="rek-ber-c">
 								<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;">
-									<img class="lazy" src="<?= base_url(); ?>img/eyemarket/produk/<?= $produk['image1'] ?>" alt="" style="width:100%; min-height:100%;">
+									<img class="lazy" src="<?= MEIMG; ?><?= $produk['image1'] ?>" alt="" style="width:100%; min-height:100%;">
 								</div>
                                 <div class="container" style="width: 75%;display:  inline-block;float:  right;">
 									<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 34px;overflow: hidden;"><?= $produk['nama']; ?></h1>
