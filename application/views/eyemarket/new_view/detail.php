@@ -1,4 +1,5 @@
 <?php
+    $id_member = md5($id_member);
     foreach ($product as $data)
     {
 ?>
@@ -119,12 +120,21 @@
                                 ?>
                                 
                                 <p>
+                                    <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to chart
+                                        </span>
+                                    </a>
                             <?php
                                 if ($id_member == NULL) 
                                 {
                             ?>
-                                    <!-- <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>"> -->
-                                        <?php 
+                                    <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>">
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to cart 
+                                        </span>
+                                    </a>
+                                        <?php /*
                                             if ($data["harga"] != 0)
                                             {
                                         ?>
@@ -140,7 +150,7 @@
                                                     <i class="fa fa-shopping-cart"></i> Available Soon
                                                 </span>
                                         <?php        
-                                            }
+                                            }*/
                                         ?>
                                         
                                         
@@ -153,8 +163,12 @@
                                 else
                                 {
                             ?>
-                                    <!-- <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main"> -->
-                                        <?php 
+                                    <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
+                                        <span class="btn btn-template-main">
+                                            <i class="fa fa-shopping-cart"></i> Add to chart
+                                        </span>
+                                    </a>
+                                        <?php /*
                                             if ($data["harga"] != 0)
                                             {
                                         ?>
@@ -170,7 +184,7 @@
                                                     <i class="fa fa-shopping-cart"></i> Available Soon
                                                 </span>
                                         <?php        
-                                            }
+                                            }*/
                                         ?>
                                     <!-- </a> -->
                                     <!-- <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist">
@@ -253,7 +267,7 @@
 
                 </div>
 
-                <div class="box social" id="product-social">
+                <!-- <div class="box social" id="product-social">
                     <h4>Bagikan Ke Teman Anda</h4>
                     <p>
                         <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
@@ -261,7 +275,7 @@
                         <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                     </p>
-                </div>
+                </div> -->
 
                 <div class="row">
                     <div class="container">
