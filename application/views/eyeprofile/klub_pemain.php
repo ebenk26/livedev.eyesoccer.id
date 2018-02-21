@@ -447,7 +447,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h4><?=$produk["nama"]?></h4>
                             <div class="container">
                                 <div class="w-40 m-r-1">
-                                    <img class="img-prod" src="<?= base_url(); ?>img/eyemarket/produk/<?= $produk['image1'] ?>" alt="">
+                                    <img class="img-prod" src="<?= MEIMG; ?><?= $produk['image1'] ?>" alt="">
                                 </div>
                                 <div class="w-60">
                                     <span>Harga</span>

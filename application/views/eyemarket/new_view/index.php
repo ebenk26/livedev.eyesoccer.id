@@ -15,7 +15,7 @@
             <div class="product">
                 <div class="image">
                     <a href="<?= base_url(); ?>eyemarket/detail/<?= $produk['toko']; ?>/<?= $produk['title_slug']; ?>">
-                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $produk['image1'] ?>" class="img-res-product">
+                        <img src="<?= MEIMG; ?><?= $produk['image1'] ?>" class="img-res-product">
                     </a>
                 </div>
                 <!-- /.image -->
