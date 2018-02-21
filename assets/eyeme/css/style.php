@@ -1811,13 +1811,13 @@ ul, li {
     width: 5px;
 }
 .kotak-popup-notif::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px transparent; 
+    box-shadow: inset 0 0 5px gainsboro; 
     border-radius: 10px;
 }
 .kotak-popup-notif::-webkit-scrollbar-thumb {
     background: gainsboro; 
     border-radius: 10px;
-    box-shadow: 0 -1px 1px 0px grey;
+    box-shadow: inset 0 -1px 1px 0px grey;
 }
 .kotak-popup-notif::-webkit-scrollbar-thumb:hover {
     background: rgb(185, 185, 185); 
@@ -2087,9 +2087,11 @@ ul, li {
     margin-left: 0px;
 }
 .desc-me-profile{
+    max-height: 59px;
+    overflow: hidden;
     font-size: 0.85em;
-    font-weight: 600;
-    color: rgb(83, 83, 83);
+    font-weight: 500;
+    color: rgb(150, 150, 150);
     width: 750px;
     display: block;
 }
@@ -2105,6 +2107,7 @@ ul, li {
     padding: 2px 50px 0px 2px;
     font-weight: 600;
     color: rgb(83, 83, 83);
+    text-align: center;
 }
 .lihatlainnya>a{
     text-decoration: none;

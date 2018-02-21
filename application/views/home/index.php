@@ -64,7 +64,7 @@
         </div>
 		<!-- EYEPROFILE -->
 		<div class="carous center-desktop" style="margin-top: -30px;">
-            <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
+            <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
             <h2 class="title ep">EyeProfile</h2>
             <hr class="x-ep">
             <span>
@@ -81,9 +81,9 @@
 							
 								<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
 									<div class="box-content">
-										<!--<img src="assets/img/ss-img.png" alt="">-->
+										<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
 										<!--<img height="100px;" src="assets/img/ss-img.png">-->
-										<img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+										<img width="130" height="130" class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
 										<div class="detail">
 											<h2><?= $club['nama_club']; ?></h2>
 											<h3><?= $club['competition']; ?></h3>
@@ -111,9 +111,9 @@
 					?>			
 							<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
 								<div class="box-content">
-									<!--<img src="assets/img/ss-img.png" alt="">-->
+									<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
 									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+									<img width="130" height="130" class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
 									<div class="detail">
 										<h2><?= $club['nama_club']; ?></h2>
 										<h3><?= $club['competition']; ?></h3>
@@ -141,9 +141,9 @@
 					?>			
 							<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
 								<div class="box-content">
-									<!--<img src="assets/img/ss-img.png" alt="">-->
+									<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
 									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
+									<img width="130" height="130" class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
 									<div class="detail">
 										<h2><?= $club['nama_club']; ?></h2>
 										<h3><?= $club['competition']; ?></h3>
@@ -201,9 +201,9 @@
 					?>		
 						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
+								<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
 							  <div class="des-img">
-								<img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+								<img class="lazy" src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
 								<div class="container des">
 									<?php
 										$str_name = strlen($player['nama']);
@@ -244,8 +244,8 @@
 					?>		
 						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<div class="des-img"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+								<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
+								<div class="des-img"><img class="lazy" src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
 								<div class="container des">
 									<?php
 										$str_name = strlen($player['nama']);
@@ -286,8 +286,8 @@
 					?>			
 						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
 							<div class="ctn-pemain">
-								<!--<img src="assets/img/ss-img.png" alt="">-->
-								<div class="des-img"><img src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
+								<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
+								<div class="des-img"><img class="lazy" src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
 								<div class="container des">
 									<?php
 										$str_name = strlen($player['nama']);
@@ -327,7 +327,7 @@
 		</div>
         <!-- EYETUBE -->
         <div class="center-desktop">        
-            <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyetube.png" alt="">
+            <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyetube.png" alt="">
             <h2 class="title et">EyeTube</h2>
             <hr class="x-et">
             <div class="et-content m-b-100">
@@ -338,10 +338,10 @@
 				?>
 					<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>">
 						<div class="et-v-content">
-							<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
-							<!--<img src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">-->
+							<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
+							<!--<img class="lazy" src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">-->
 							<div class="btn-play">
-								<img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="">
+								<img class="lazy" src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="">
 							</div>
 						</div>
 					</a>
@@ -385,8 +385,8 @@
 					?></span>
                             <p class="et-st-det"><?= $videonya['title']; ?></p>
                         </div> -->
-						<img class="v-et-2 v-et-100" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="" style="margin-bottom: 10px;">
-							<!-- <div class="container btn-play2"><img src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	 -->
+						<img class="v-et-2 v-et-100 lazy" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="" style="margin-bottom: 10px;">
+							<!-- <div class="container btn-play2"><img class="lazy" src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	 -->
 						</a>
 					<?php
 					}
@@ -418,7 +418,7 @@
 							<a href="<?=base_url().'eyetube/detail/'.$stars['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
-										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">										
+										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">										
 									</div>
 									<div class="container h41"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -444,9 +444,9 @@
 							?>			
 							<a href="<?=base_url().'eyetube/detail/'.$populer['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
-									<!--<img src="assets/img/video-small.png" alt="">-->
+									<!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
 									<div class="vid-box-vl-img">
-										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">										
+										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">										
 									</div>
 									<div class="container h41"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -473,7 +473,7 @@
 							<a href="<?=base_url().'eyetube/detail/'.$kamu['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
-										<img src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
+										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
 									</div>
 									<div class="container h41" ><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -496,7 +496,7 @@
         <div class="center-desktop">
             <div class="et-content m-b-150">
                 <div class="et-content1">
-                    <img class="img-title" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
+                    <img class="img-title lazy" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
                     <h2 class="title en">EyeNews</h2>
                     <hr class="x-en">
 					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
@@ -512,7 +512,7 @@
 							<p class="et-st-det"><?php echo $eyenews_main->title; ?></p>
 						</div>					
                     <!--<img class="v-et-2 w-100" src="assets/img/video-small.png" alt="">-->
-					<div style="width:100%;height:374px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
+					<div style="width:100%;height:374px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100 lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
 					</a>
                     <div class="h-berita-terkait" style="margin:40px 0;height:135px;overflow:hidden;">
                         <h3 class="mb-10">Berita Terkait</h3>
@@ -526,7 +526,7 @@
                         <ul>
                             <li>
                                 <a href="<?php echo base_url(); ?>eyenews/detail/<?= $similar['url'];?>">
-								<img src="<?php echo base_url(); ?>assets/img/chevron-right-red.png"> <?= $similar['title']; ?></a>
+								<img class="lazy" src="<?php echo base_url(); ?>assets/img/chevron-right-red.png"> <?= $similar['title']; ?></a>
                             </li>
                         </ul>
 						<?php			
@@ -537,7 +537,7 @@
                     </div>
                 </div>
                 <div class="et-content2">
-                    <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
+                    <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em">EyeMe</h2>
                     <hr class="x-em">				
                     <div class="c-em-content2 container" style="top: -14px;">
@@ -545,7 +545,7 @@
                     		for($i=0;$i < 9 ; $i++){
                     			echo '<div class="eyeme-list">';
 	                    			echo '<a href="'.(isset($imgEyeme[$i]) ? MEPROFILE.$imgEyeme[$i]->username : '#').'">';
-	                    			echo '<img src="'.(isset($imgEyeme[$i]) ? MEIMG.$imgEyeme[$i]->img_name :  DEFAULTIMG ).'" class="c-em-content2-img">';
+	                    			echo '<img class="lazy" src="'.(isset($imgEyeme[$i]) ? MEIMG.$imgEyeme[$i]->img_name :  DEFAULTIMG ).'" class="c-em-content2-img">';
 	                    			echo '</a>';
                     			echo '</div>';
                     		}
@@ -577,8 +577,8 @@
 								?>
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
-											<!--<img src="assets/img/video-small.png" style="width:150px" alt="">-->
-											<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
+											<!--<img class="lazy" src="assets/img/video-small.png" style="width:150px" alt="">-->
+											<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img class="lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
 											<div class="container" style="width: 70%;float:  right;">
 												<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$populer['createon'];?></span>
 											<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
@@ -605,7 +605,7 @@
 								?>
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
-										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>"style="width:100%; min-height:100%;" alt=""></div>
+										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img class="lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>"style="width:100%; min-height:100%;" alt=""></div>
 										<div class="container" style="width: 70%;float:  right;">	
 										<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$rekomendasi['createon'];?></span>
 										<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
@@ -633,7 +633,7 @@
 								?>
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
-										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
+										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img class="lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
 											<div class="container" style="width: 70%;float:  right;">	
 										<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$muda['createon'];?></span>
 											<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
@@ -656,7 +656,7 @@
                     </div>
                 </div>
                 <div class="et-content2">
-                    <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
+                    <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
                     <h2 class="title emar">EyeMarket</h2>
                     <hr class="x-emar">
                         <div class="rek-ber" style="margin-top: -14px;">			
@@ -665,7 +665,7 @@
 							?>
 							<div class="rek-ber-c">
 								<div style="width: 100px;height:  100px;overflow:  hidden;display:  inline-block;">
-									<img src="<?= base_url(); ?>img/eyemarket/produk/<?= $produk['image1'] ?>" alt="" style="width:100%; min-height:100%;">
+									<img class="lazy" src="<?= base_url(); ?>img/eyemarket/produk/<?= $produk['image1'] ?>" alt="" style="width:100%; min-height:100%;">
 								</div>
                                 <div class="container" style="width: 75%;display:  inline-block;float:  right;">
 									<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 34px;overflow: hidden;"><?= $produk['nama']; ?></h1>
@@ -685,12 +685,12 @@
         <!-- BANNER -->
         <div class="center-desktop">
             <div class="banner-150" style="margin-top: 20px;">
-                <img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
+                <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
             </div>
         </div>
         <!-- EYEVENT -->
         <div class="center-desktop">
-            <img class="img-title" src="<?php echo base_url()?>assets/home/img/ic_eyevent.png" alt="">
+            <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyevent.png" alt="">
             <h2 class="title ee">EyeVent</h2>
             <hr class="x-ee">
             <span>
@@ -705,8 +705,8 @@
 						foreach($eyevent_main as $row){
 						?>
                             <div class="ev-box-content">
-                                <!--<img src="assets/img/video-small.png" alt="">-->
-								<img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                                <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
+								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
                             </div>
 						<?php }?>
                         </div>
@@ -715,8 +715,8 @@
 						foreach($eyevent_main_2 as $row){
 						?>
                             <div class="ev-box-content">
-                                <!--<img src="assets/img/video-small.png" alt="">-->
-								<img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                                <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
+								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
                             </div>
 						<?php }?>
                         </div>
@@ -725,8 +725,8 @@
 						foreach($eyevent_main_3 as $row){
 						?>
                             <div class="ev-box-content">
-                                <!--<img src="assets/img/video-small.png" alt="">-->
-								<img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                                <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
+								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
                             </div>
 						<?php }?>
                         </div>
@@ -786,11 +786,11 @@
 								<tbody>
 									<tr>
 										<td class="tx-r"><?=$row["club_a"]?></td>
-										<td><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
 										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
-										<td><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
+										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
 										<td class="tx-l"><?=$row["club_b"]?></td>
 									</tr>
 								</tbody>
@@ -806,11 +806,11 @@
                             <tbody>
                                 <tr>
 									<td class="tx-r"><?=$row["club_a"]?></td>
-									<td><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+									<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
                                     <td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 									<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 									</td>
-									<td><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
+									<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
                                     <td class="tx-l"><?=$row["club_b"]?></td>
                                 </tr>
                             </tbody>
@@ -826,11 +826,11 @@
 								<tbody>
 									<tr>
 										<td class="tx-r"><?=$row["club_a"]?></td>
-										<td><span class="i-l"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
 										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
-										<td><span class="i-r"><img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
+										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
 										<td class="tx-l"><?=$row["club_b"]?></td>
 									</tr>
 								</tbody>

@@ -31,10 +31,10 @@
     </div>
     <div class="center-desktop m-0">
         <div class="container box-border-radius fl-l mt-30">            				
-                <div class="fl-l img-80">				
+                <div class="fl-l img-80" style="display:none;">				
                     <img src="<?=imgUrl()?>assets/img/content_11.jpg" alt="" height="100%">
                 </div>
-                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l">
+                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l" style="width:500px;">
                     <table>
                         <tr>
                             <td>Level Liga</td>
@@ -101,7 +101,7 @@
 		// var fn = url.split('/').reverse()[0];
 		var fn = $(".hidden_title").val();
 		$('#example').DataTable( {
-  			"order":[[5,"desc"]],
+  			"order":[[1,"asc"]],
             "processing": true,
             "serverSide": true,
             "ajax":{

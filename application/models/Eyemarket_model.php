@@ -318,7 +318,7 @@ class Eyemarket_model extends CI_Model
                                     LEFT JOIN
                                         eyemarket_address F      on A.id_alamat =  F.id
                                     WHERE 
-                                        A.id_member = '$id_member'
+                                        md5(A.id_member) = '$id_member'
                                         AND
                                         A.status = 0
                                     ORDER BY
@@ -334,7 +334,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_keranjang
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                         AND
                                         status = 0
                                         ")->row();
@@ -348,7 +348,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_keranjang
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                         AND
                                         status = 0
                                         ")->row();
@@ -362,7 +362,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_keranjang
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                         AND
                                         status = 0
                                         ")->row();
@@ -397,7 +397,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         tbl_member A
                                     WHERE 
-                                        A.id_member = '$id_member'
+                                        md5(A.id_member) = '$id_member'
                                         ")->result_array();
         return $query;
     }
@@ -409,7 +409,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_address
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                     ")->result_array();
         return $query;
     }
@@ -423,42 +423,42 @@ class Eyemarket_model extends CI_Model
 
     public function update_cart_address($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_keranjang', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_order_address($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_order', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_cart_delivery($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_keranjang', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_order_delivery($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_order', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_cart_payment($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_keranjang', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_order_payment($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_order', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
@@ -794,6 +794,18 @@ class Eyemarket_model extends CI_Model
     {
         $query = $this->db->update('eyemarket_order', $objek, array('id' => $id));
         
+        return $query;
+    }
+
+    function get_id_md($id_md)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.id_member
+                                    FROM
+                                        tbl_member A
+                                    WHERE
+                                        md5(A.id_member) = '$id_md'
+                                        ")->row();
         return $query;
     }
 

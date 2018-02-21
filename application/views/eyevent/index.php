@@ -11,10 +11,18 @@
 footer {
     margin-top: 200px;
 }
+body{
+    margin-top: -10px;
+}
 </style>
-
+<div class="crumb greenhover">
+    <ul>
+        <li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
+        <li>EyeVent</li>
+    </ul>
+</div>
 <div class="center-desktop m-0">
-    <div class="container" style="margin-top:-35px;">
+    <div class="container" style="margin-top:-55px;">
         <i id="eventleft" class="material-icons left4 panah2 panahkiri2" href="#eventsli" role="button">keyboard_arrow_left</i>
         <i id="eventright" class="material-icons right4 panah2 panahkanan2" href="#eventsli" role="button">keyboard_arrow_right</i>
 
@@ -87,9 +95,9 @@ footer {
                     <li class="active">
                         <a href="#jadwal-pertandingan" data-toggle="tab">JADWAL & HASIL PERTANDINGAN</a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="#klasemen" data-toggle="tab">KLASEMEN</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </div>
