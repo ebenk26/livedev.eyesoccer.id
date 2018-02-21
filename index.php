@@ -142,6 +142,7 @@ switch (ENVIRONMENT)
  */
 	$application_folder = 'application';
 	define('MEFOLDER','../../eyesoccer.id/public_html/upload/eyeme');
+	define('MARKETFOLDER','../../eyesoccer.id/public_html/upload/eyemarket');
 
 /*
  *---------------------------------------------------------------

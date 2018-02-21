@@ -239,7 +239,7 @@ class Eyemarket extends CI_Controller {
 
 	public function tambah_gambar($id)
 	{ 	
-    	$config['upload_path'] = './img/eyemarket/produk/';  
+    	$config['upload_path'] = ($_SERVER['SERVER_NAME'] = 'localhost') ? './img/eyemarket/produk/' : MARKETFOLDER.'/produk';  
         $config['allowed_types'] = '*';
 
         $this->load->library('upload');
