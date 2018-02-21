@@ -239,7 +239,7 @@ class Eyemarket extends CI_Controller {
 
 	public function tambah_gambar($id)
 	{ 	
-    	$config['upload_path'] = ($_SERVER['SERVER_NAME'] = 'localhost') ? './img/eyemarket/produk/' : MARKETFOLDER.'/produk';  
+    	$config['upload_path'] = ($_SERVER['SERVER_NAME'] == 'localhost') ? './img/eyemarket/produk/' : MARKETFOLDER.'/produk';  
 
     	if (isset($_FILES['image1']['name'])) {
     		$name = $_FILES['image1']['name'];
@@ -287,7 +287,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -314,7 +314,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -341,7 +341,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -368,7 +368,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -395,7 +395,7 @@ class Eyemarket extends CI_Controller {
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
