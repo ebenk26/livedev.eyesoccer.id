@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
         <meta charset="UTF-8">
         <?php 
             if ($kanal != 'eyemarket')
@@ -100,6 +99,7 @@
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+            <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
 
         <?php 
             if ($kanal != 'eyevent')
@@ -221,7 +221,7 @@
                 <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
-                            <li><a href="" onclick="return false">EyeProfile</a>
+                            <li><a href="<?=base_url()?>eyeprofile/klub">EyeProfile</a>
                                 <ul>
                                     <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
                                     <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
@@ -329,6 +329,54 @@
         ?>
     
 
-    
+    <script>
+		jQuery.fn.extend({
+			renameAttr: function(name, newName, removeData) {
+				var val;
+				return this.each(function() {
+					val = jQuery.attr(this, name);
+					jQuery.attr(this, newName, val);
+					jQuery.removeAttr(this, name);
+					// move original data
+					if (removeData !== false) {
+						jQuery.removeData(this, name.replace('data-', ''));
+					}
+				});
+			}
+		});
+		$('img').renameAttr('src', 'data-src' );
+		$(function() {
+			var attr = $('img').attr('alt');
+
+			// For some browsers, `attr` is undefined; for others,
+			// `attr` is false.  Check for both.
+			if (typeof attr !== typeof undefined && attr !== false) {
+				$('img').attr('alt');
+			}
+			$('img').addClass('lazy');
+			/* $('.lazy').lazyload({
+				effect: "fadeIn",
+				effectTime: 5000
+			}); */
+			var lazyLoadInstances = [];
+			// The "lazyLazy" instance of lazyload is used (kinda improperly) 
+			// to check when the .horzContainer divs enter the viewport
+			var lazyLazy = new LazyLoad({
+				elements_selector: ".lazy",
+				effect: "fadeIn",
+				effectTime: 5000,
+				// When the .horzContainer div enters the viewport...
+				callback_set: function(el) {
+					// ...instantiate a new LazyLoad on it
+					var oneLL = new LazyLoad({
+						container: el
+					});
+					// Optionally push it in the lazyLoadInstances 
+					// array to keep track of the instances
+					lazyLoadInstances.push(oneLL);
+				}
+			});
+		});
+    </script>
     </body>
 </html>

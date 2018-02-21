@@ -343,7 +343,7 @@ class Eyeme extends CI_Controller {
 	public function upload_foto()
 	{ 
 		$imgCaption  = $this->input->post('caption');
-		$uploadPath = './upload/eyeme';
+		$uploadPath = ($_SERVER['SERVER_NAME'] == 'localhost') ? './upload/eyeme' : './../../../../eyesoccer.id/public_html/upload/eyeme';
 		#$imageName  = $_;
 		$name      = $_FILES['upl_img']['name'];
 		$ext       = pathinfo($name,PATHINFO_EXTENSION);

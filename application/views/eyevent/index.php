@@ -95,9 +95,9 @@ body{
                     <li class="active">
                         <a href="#jadwal-pertandingan" data-toggle="tab">JADWAL & HASIL PERTANDINGAN</a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="#klasemen" data-toggle="tab">KLASEMEN</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </div>

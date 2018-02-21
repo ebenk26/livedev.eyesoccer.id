@@ -71,9 +71,7 @@
         </div>
 		<div class="desktop bluehover">
         <div class="center-desktop m-0">
-            <div class="menu-3 m-0">
-            <div class="container over-x">
-                <div class="w-max">
+            <div class="menu-3 m-0 tx-c bbg">
                 <ul>
                     <?php 
                         foreach ($tube_type as $value)
@@ -86,16 +84,12 @@
                     <?php  
                         }
                     ?>
-                </ul></div></div>
-        <div class="container p-r ar-menu-3">
-			<i class="material-icons fl-l">keyboard_arrow_left</i>
-			<i class="material-icons fl-r">keyboard_arrow_right</i>
-		</div>
+                </ul>
             </div>
         </div>
         <div class="center-desktop m-0">
             <div class="container">
-                <div class="m-0 m-t-14">
+                <div class="m-0">
                     <div class="half">
                         <?php
                         foreach($video_eyetube as $videonya){
@@ -506,4 +500,5 @@
                 $('#btn-show').attr('style', 'display:block');
             });;
         }
+       
     </script>

@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <title></title>
-    <meta name="viewport" content="width=1000">
-    <link href="<?php echo base_url()?>assets/registration/css/style.css" rel="stylesheet">
-    <link href="<?php echo base_url()?>assets/registration/css/bs.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/font-awesome/css/font-awesome.min.css">
-    <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
-	<script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
-	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-</head>
-
-<body>
     <div class="container dll-head">
-        <img src="assets/img/footer/img-header-tim.png" alt="">
+        <img src="assets/img/Footer/img-header-tim.png" alt="">
         <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Tim EyeSoccer</h2>
@@ -30,13 +15,13 @@
                     <table class="mng mb-20">
                         <tr>
                             <td>
-                                <img src="assets/img/eyeme/user-discover.png" alt="">
+                                <img src="assets/img/EYEME/user-discover.png" alt="">
                             </td>
                             <td>
-                                <img src="assets/img/eyeme/user-discover.png" alt="">
+                                <img src="assets/img/EYEME/user-discover.png" alt="">
                             </td>
                             <td>
-                                <img src="assets/img/eyeme/user-discover.png" alt="">
+                                <img src="assets/img/EYEME/user-discover.png" alt="">
                             </td>
                         </tr>
                         <tr>
@@ -227,6 +212,3 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>

@@ -95,7 +95,7 @@ define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
 define('MEURL',base_url().'eyeme/');
-define('MEIMG',base_url().'upload/eyeme/');
+define('MEIMG','http://static.eyesoccer.id/v1/cache/images/');
 define('IMGPATH','./upload/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
@@ -580,7 +580,7 @@ function get_date($rentang = "")
 function getManager($club_id = "")
 {
     $CI =& get_instance();
-	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."'");
+	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."' and position in ('manager','manajer','menejer','Manager')");
 	if($manager->num_rows()>0){
 		$manager = $manager->row()->name;
 	}else{
@@ -592,17 +592,23 @@ function getManager($club_id = "")
 
 function getTotalClub($liga)
 {
-	$compt = "and competition='".urldecode($liga)."'";
 	$limit = '';
-	if(urldecode($liga) == 'Liga Indonesia 2'){
-		$limit = 'limit 24';
-	}else if(urldecode($liga) == 'Liga Indonesia 1'){
-		$limit = 'limit 18';
-	}else if(urldecode($liga) == 'non liga'){
-		$compt = "and competition in('SSB / Akademi Sepakbola')";
+	$liga = urldecode($liga);
+	if($liga != 'Liga Pelajar U-16 Piala Menpora' && $liga != 'Liga Santri Nusantara' && $liga != 'Liga Indonesia U-19'){
+		$compt = "and a.competition='".$liga."' and a.active = 1";
+		
+		if($liga == 'Liga Indonesia 2'){
+			$limit = 'limit 24';
+		}else if($liga == 'Liga Indonesia 1'){
+			$limit = 'limit 18';
+		}else if($liga == 'non liga'){
+			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
+		}
+	}else{
+		$compt = "and b.nama_liga='".$liga."'";
 	}
     $CI =& get_instance();
-	$query=$CI->db->query("SELECT name FROM tbl_club WHERE club_id is not null $compt $limit")->result_array();
+	$query=$CI->db->query("SELECT a.name FROM tbl_club a left join tbl_liga b on a.id_liga = b.id_liga WHERE a.club_id is not null $compt $limit")->result_array();
 	
 	return count($query);
 }

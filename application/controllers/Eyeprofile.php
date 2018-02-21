@@ -43,7 +43,6 @@ class Eyeprofile extends CI_Controller {
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
 		}
-		//$this->load->view('eyeprofile/klub');
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
@@ -54,34 +53,43 @@ class Eyeprofile extends CI_Controller {
 		$data["title_liga"] = $nama_liga;
 		$nama_liga_event = 'Go-Jek Traveloka Liga 1 - 2017';
 		$above_datetime = '2017-12-29 00:00:00';
+		$cat_liga = null;
 		if($nama_liga == 'Liga Indonesia 1'){
 			$jml_klub = 18;	
 		}else if($nama_liga == 'Liga Indonesia 2'){
-			$nama_liga = 'Liga Indonesia 2';
 			$jml_klub = 24;
 			$data["title_liga"] = $nama_liga;
 			$nama_liga_event = 'Liga 2 Go-Jek Traveloka - Play Off';
 		}else if($nama_liga == 'Liga Indonesia 3'){
-			$nama_liga = 'Liga Indonesia 3';
 			$data["title_liga"] = $nama_liga;
 			$nama_liga_event = 'Liga Indonesia 3 Wilayah Jawa Barat';
+		}else if($nama_liga == 'Liga Pelajar U-16 Piala Menpora'){
+			$data["title_liga"] = $nama_liga;
+			$nama_liga_event = 'Liga Pelajar U-16 Piala Menpora';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda";
+		}else if($nama_liga == 'Liga Santri Nusantara'){
+			$data["title_liga"] = $nama_liga;
+			$nama_liga_event = 'Liga Santri Nusantara';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda";
+		}else if($nama_liga == 'Liga Indonesia U-19'){
+			$data["title_liga"] = $nama_liga;
+			$nama_liga_event = 'Liga Indonesia U-19';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda";
 		}
-		// $data['club_header'] = $this->Eyeprofile_model->get_club_header();
-		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
-		// $data['profile_club'] = $this->Eyeprofile_model->get_profile_club();
+		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub,$cat_liga);
+		$data['avg_year'] = $this->Eyeprofile_model->get_club_liga_avggyear($nama_liga,$jml_klub,$cat_liga);
 		$data['get_jadwal_tomorrow_1'] = $this->Eyeprofile_model->get_jadwal_tomorrow_1($above_datetime,$nama_liga_event);
 		$data['get_jadwal_tomorrow_2'] = $this->Eyeprofile_model->get_jadwal_tomorrow_2($above_datetime,$nama_liga_event);
 		$data['get_jadwal_tomorrow_3'] = $this->Eyeprofile_model->get_jadwal_tomorrow_3($above_datetime,$nama_liga_event);
-		// $data['jumlah_klub'] = $this->Eyeprofile_model->get_jumlah_klub();
-		// $data['jumlah_pemain'] = $this->Eyeprofile_model->get_jumlah_pemain();
-		// $data['pemain_asing'] = $this->Eyeprofile_model->get_pemain_asing();
-		// $data['klasemen'] = $this->Eyeprofile_model->get_klasemen();
 		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain($nama_liga);
-		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol($nama_liga);
-		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();		
+		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol($nama_liga);	
 		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();		
-		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia');		
-		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga);		
+		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();		
+		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia',$cat_liga);		
+		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga,'indonesia',$cat_liga);		
 		
 		$data['kanal'] 				= "home";
 		$data["body"]=$this->load->view('eyeprofile/klub', $data, true);
@@ -393,19 +401,26 @@ class Eyeprofile extends CI_Controller {
 		return $res;
 	}
 	
-	public function getClub($liga,$limit=null){
+	public function getClub($url,$limit=null){
 		$val = $_POST["val"];
 		$val = $val-1;
 		$limitnum = 12*$val;
-		$compt = "and a.competition='".urldecode($liga)."'";
+		$liga = urldecode($url);
+		if($liga != 'Liga Pelajar U-16 Piala Menpora' && $liga != 'Liga Santri Nusantara' && $liga != 'Liga Indonesia U-19'){
+			$compt = "and a.competition='".$liga."'";
 		
-		if(urldecode($liga) == 'non liga'){
-			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
+			if($liga == 'non liga'){
+				$compt = "and a.competition in('SSB / Akademi Sepakbola')";
+			}
+		}else{
+			$compt = "and d.nama_liga ='".$liga."'";
 		}
+		
 		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url
 									FROM tbl_club a
 									LEFT JOIN tbl_player c on a.club_id = c.club_id
-									WHERE a.name not in ('ebenktestlagijgndidelete') ".$compt."
+									LEFT JOIN tbl_liga d on a.id_liga = d.id_liga
+									WHERE a.name not in ('ebenktestlagijgndidelete') and a.active = 1 ".$compt."
 									GROUP BY a.club_id ASC limit ".$limitnum.",12")->result_array();
 		// print_r ($query);
 		
