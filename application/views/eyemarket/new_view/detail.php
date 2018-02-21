@@ -25,12 +25,12 @@
                 <div class="row" id="productMain">
                     <div class="col-sm-6" style="padding: 0px !important;">
                         <div id="mainImage" style="margin-top: 10%;">
-                            <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="img-responsive">
+                            <img src="<?= MEIMG; ?><?= $data['image1']; ?>" class="img-responsive">
                         </div>
                             <div class="row" id="thumbs" style="margin-top: 10px !important;">
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image1']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image1']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image1']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php 
@@ -38,8 +38,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image2']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image2']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image2']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image2']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -50,8 +50,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image3']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image3']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image3']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image3']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -62,8 +62,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image4']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image4']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image4']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image4']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -74,8 +74,8 @@
                             {
                         ?>
                                 <div class="col-xs-2">
-                                    <a href="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image5']; ?>" class="thumb">
-                                        <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $data['image5']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
+                                    <a href="<?= MEIMG; ?><?= $data['image5']; ?>" class="thumb">
+                                        <img src="<?= MEIMG; ?><?= $data['image5']; ?>" alt="<?= $data['nama']; ?>" class="img-responsive">
                                     </a>
                                 </div>
                         <?php        
@@ -292,7 +292,7 @@
                         <a href="<?= base_url(); ?>eyemarket/detail/<?= $value['toko']; ?>/<?= $value['title_slug']; ?>">
                             <div class="product col-md-3 col-sm-6 col-xm-12">
                                 <div class="image">
-                                    <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">
+                                    <img src="<?= MEIMG; ?><?= $value['image1']; ?>" alt="<?= $value['nama']; ?>" class="img-responsive">
                                 </div>
                                 <div class="text">
                                     <h3><?= $value['nama']; ?></h3>

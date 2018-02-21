@@ -33,7 +33,7 @@
                         <tr>
                             <td>
                                 <a href="#">
-                                    <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $cart['image1']; ?>" alt="<?= $cart['nama']; ?>">
+                                    <img src="<?= MEIMG; ?><?= $cart['image1']; ?>" alt="<?= $cart['nama']; ?>">
                                 </a>
                             </td>
                             <td>
