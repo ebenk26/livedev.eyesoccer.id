@@ -483,6 +483,8 @@ class Eyemarket extends CI_Controller {
 
 	public function keranjang($id_member,$id_product)
 	{
+		$id_membernya 	= $this->Eyemarket_model->get_id_md($id_member);
+		
 		$jumlah = $this->input->post('jumlah');
 
 		$this->db->select('harga,berat');
@@ -493,7 +495,7 @@ class Eyemarket extends CI_Controller {
 
 		$data 		= array(
 			'id_product' 	=> $id_product,
-			'id_member' 	=> $id_member,
+			'id_member' 	=> $id_membernya,
 			'jumlah' 		=> $jumlah,
 			'total' 		=> $total,
 			'berat' 		=> $berat,
