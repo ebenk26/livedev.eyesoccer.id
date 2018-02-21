@@ -240,7 +240,30 @@ class Eyemarket extends CI_Controller {
 	public function tambah_gambar($id)
 	{ 	
     	$config['upload_path'] = ($_SERVER['SERVER_NAME'] = 'localhost') ? './img/eyemarket/produk/' : MARKETFOLDER.'/produk';  
+
+    	if (isset($_FILES['image1']['name'])) {
+    		$name = $_FILES['image1']['name'];
+    	}
+    	if (isset($_FILES['image2']['name'])) {
+    		$name = $_FILES['image2']['name'];
+    	}
+    	if (isset($_FILES['image3']['name'])) {
+    		$name = $_FILES['image3']['name'];
+    	}
+    	if (isset($_FILES['image4']['name'])) {
+    		$name = $_FILES['image4']['name'];
+    	}
+    	if (isset($_FILES['image5']['name'])) {
+    		$name = $_FILES['image5']['name'];
+    	}
+    	$ext = pathinfo($name,PATHINFO_EXTENSION);
+
         $config['allowed_types'] = '*';
+        $config['file_name'] = 'ori_'.date('dmyGis');
+
+
+
+        $ext = pathinfo($name,PATHINFO_EXTENSION);
 
         $this->load->library('upload');
 
@@ -257,7 +280,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image1' 		=> $data["file_name"],
+        			'image1' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -284,7 +307,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image2' 		=> $data["file_name"],
+        			'image2' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -311,7 +334,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image3' 		=> $data["file_name"],
+        			'image3' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -338,7 +361,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image4' 		=> $data["file_name"],
+        			'image4' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -365,7 +388,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image5' 		=> $data["file_name"],
+        			'image5' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
