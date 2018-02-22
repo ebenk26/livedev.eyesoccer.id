@@ -113,9 +113,6 @@
 			<th>Posisi</th>
 			<th>Klub</th>
 			<th>Kewarganegaraan</th>
-			<th>Main</th>
-			<th>Gol</th>
-			<th>Assist</th>	
 		</thead>
 		<tbody >
 

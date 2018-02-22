@@ -463,10 +463,7 @@ class Eyeprofile_model extends CI_Model
 			2=> 'tanggal',
 			3=> 'posisi',
 			4=> 'klub',
-			5=> 'timnas',
-			6=> '',
-			7=> '',
-			8=> ''
+			5=> 'timnas'
 		);
 		
 		if( !empty($requestData['search']['value']) ) {  
@@ -552,9 +549,6 @@ class Eyeprofile_model extends CI_Model
 			$nestedData[] = $data->posisi;
 			$nestedData[] = $data->klub;
 			$nestedData[] = $data->timnas;
-			$nestedData[] = '';
-			$nestedData[] = '';
-			$nestedData[] = '';
 			
 			$data2[] = $nestedData;
 			$i++;

@@ -101,6 +101,10 @@
                                 <td>Kemampuan Kaki</td>
                                 <td>: <?php echo (!empty($res->foot) ? $res->foot : '')?></td>
                             </tr>
+							<tr>
+                                <td>Jenis Kelamin</td>
+                                <td>: <?php echo (!empty($res->gender) ? $res->gender : '')?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
