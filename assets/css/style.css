@@ -327,17 +327,19 @@ nav .center-desktop, .x-m{
     top: -27px;
     right: -30px;
     font-size: .85em;
-    font-weight: 500;
+    font-weight: 600 !important;
 }
-.kl:hover, .vl:hover{
-    font-weight: 600;
-    /* text-shadow: 1px 1px 1px gainsboro; */
+.kl:hover{
+    color: #ffb132 !important;
 }
 .el{
     text-decoration: none;
     color: #66a647;
     top: -18px;
     right: 20px;
+}
+.el:hover{
+    color: #79ac5f;
 }
 .r-kl{
     top: -20px;
@@ -394,7 +396,7 @@ nav .center-desktop, .x-m{
     border: 1px solid white;
     border-radius: 9px;
     margin: 0px 10px;
-    background-color: #b3ff00;
+    background-color: gainsboro;
 }
 .ev-box-content>img{
 	width: 100%;
@@ -425,12 +427,13 @@ nav .center-desktop, .x-m{
     background-color: gainsboro;
 }
 .o{
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: .9em;
 }
 .ctn-pemain{
-    border: 1px solid #9e9e9e38;
+    /* border: 1px solid #9e9e9e38; */
+    box-shadow: inset 0 0 3px gainsboro;
     margin-right: 3px; 
     width: 346px;
     height: 100px;
@@ -450,7 +453,7 @@ nav .center-desktop, .x-m{
     left: 10px;
 }
 .des h3{
-    font-size: 1em;
+    font-size: .9em;
     font-weight: 600;
     line-height: .5em;
 }
@@ -632,6 +635,9 @@ nav .center-desktop, .x-m{
 .vl, .r-vl{
     text-decoration: none;
     color: #4378d3 !important;
+}
+.box-vl:hover .vl, .box-vl:hover .r-vl{
+    color: #7799d3 !important;
 }
 .r-vl{
     top: 7px;
@@ -3442,7 +3448,7 @@ ul, li {
     max-width: 30px;
     font-size: 8px;
     text-align: center;
-    background-color: #0000007d;
+    background-color: transparent;
     color: white;
     padding: 2px 0px;
     border-radius: 3px;
@@ -4815,6 +4821,8 @@ height: 100%;
     position: fixed;
     top: 60px;
     z-index: 1;
+    max-height: 350px;
+    overflow: hidden;
 }
 .add60{
     margin-top: 60px;
