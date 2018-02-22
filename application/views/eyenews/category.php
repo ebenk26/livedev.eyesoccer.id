@@ -31,7 +31,7 @@
 </style>
 <?php 
 	$kanal  = "eyenews";
-	$page   = $select_cat;
+	$page = array($select_cat, $select_subcat);
 	echo set_breadcrumb($kanal,$page);
 ?>
 <div class="desktop redhover">
