@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
         <meta charset="UTF-8">
         <?php 
             if ($kanal != 'eyemarket')
@@ -24,10 +23,10 @@
 		?>
 
         		<!-- Begin of SEO Meta Tags -->
-        		<title>EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia</title>
+        		<title>Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer</title>
 
-        		<meta name="title" content="EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia" />
-        		<meta name="description" content="Berita sepak bola terbaru, jadwal dan hasil pertandingan, live score, transfer, klasemen liga Indonesia dan dunia & profil pemain & klub dari seluruh Indonesia." />
+        		<meta name="title" content="Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer" />
+        		<meta name="description" content="Portal Berita sepak bola indonesia terbaru, jadwal bola, database pemain bola, transfer pemain bola, klub bola, pelatih, manager, ofisial bola, supporter bola dan event sepak bola terlengkap di Indonesia" />
         		<meta name="news_keywords" content="jadwal bola, berita bola, sepak bola, jadwal siaran bola, jadwal sepak bola, berita bola terkini, berita bola terbaru, berita sepak bola, info bola, berita bola hari ini, bola hari ini">
         		<meta name="googlebot-news" content="index,follow" />
         		<meta name="googlebot" content="index,follow" />
@@ -47,8 +46,8 @@
         		<meta property="og:site_name" content="EyeSoccer" />
         		<meta property="og:url" content="https://www.eyesoccer.id" />
         		<meta property="og:type" content="Website" />
-        		<meta property="og:title" content="EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia" />
-        		<meta property="og:description" content="Berita sepak bola terbaru, jadwal dan hasil pertandingan, live score, transfer, klasemen liga Indonesia dan dunia & profil pemain & klub dari seluruh Indonesia." />
+        		<meta property="og:title" content="Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer" />
+        		<meta property="og:description" content="Portal Berita sepak bola indonesia terbaru, jadwal bola, database pemain bola, transfer pemain bola, klub bola, pelatih, manager, ofisial bola, supporter bola dan event sepak bola terlengkap di Indonesia" />
         		<meta property="og:locale" content="id_ID" />
         		<meta property="og:image" content="<?=base_url()?>img/tab_icon.png" />
         		<!--End of Facebook open graph data-->
@@ -58,8 +57,8 @@
         		<meta name="twitter:site" content="@eyesoccer_id" />
         		<meta name="twitter:creator" content="@eyesoccer_id" />
         		<meta name="twitter:domain" content="EyeSoccer"/>
-        		<meta name="twitter:title" content="EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia" />
-        		<meta name="twitter:description" content="Berita sepak bola terbaru, jadwal dan hasil pertandingan, live score, transfer, klasemen liga Indonesia dan dunia & profil pemain & klub dari seluruh Indonesia." />
+        		<meta name="twitter:title" content="Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer" />
+        		<meta name="twitter:description" content="Portal Berita sepak bola indonesia terbaru, jadwal bola, database pemain bola, transfer pemain bola, klub bola, pelatih, manager, ofisial bola, supporter bola dan event sepak bola terlengkap di Indonesia" />
         		<meta name="twitter:image" content="<?=base_url()?>img/tab_icon.png" />
         		<!--end of twitter card data-->
 
@@ -100,8 +99,18 @@
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/dataTables.responsive.min.js"></script>	
-			<script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/jquery.dataTables.js">	</script>
+            <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
+
+        <?php 
+            if ($kanal != 'eyevent')
+            {
+        ?>
+                <script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/dataTables.responsive.min.js"></script>    
+                <script type="text/javascript" language="javascript" src="<?=base_url()?>/bs/datatables/media/js/jquery.dataTables.js"> </script>
+        <?php        
+            }
+        ?>
+			
     </head>
 
     <?php
@@ -195,7 +204,7 @@
                                     </span> 
                                     <span class="btn-btn-login"> 
                                         <a style="text-decoration: none;" href="<?=base_url()?>home/member_area"> 
-                                            <img src="<?php if(load_top_avatar()!=''){echo base_url()?>assets/img_storage/<?=load_top_avatar();} ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name();?> 
+                                            <img src="<?php if(load_top_avatar()!=''){echo MEIMG.load_top_avatar();} ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name();?> 
                                         </a> 
                                     </span>
 	                    <?php
@@ -212,15 +221,7 @@
                 <div class="center-desktop m-0">
                     <span class="x-m">
                         <ul>
-                            <li><a href="" onclick="return false">EyeProfile</a>
-                                <ul>
-                                    <li><a href="<?=base_url()?>eyeprofile/klub">Klub</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
-                                    <li><a href="<?=base_url()?>eyeprofile/supporter">Supporter</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="<?=base_url()?>eyeprofile/klub">EyeProfile</a></li>
                             <li><a href="<?=base_url()?>eyetube">EyeTube</a></li>
                             <li><a href="<?=base_url()?>eyenews">EyeNews</a></li>
                             <li><a href="<?=base_url()?>eyeme">EyeMe</a></li>
@@ -268,7 +269,7 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 	   </script>	
-       	
+
         <!-- FOOTER -->
         <footer>
             <div class="f-w">
@@ -320,6 +321,54 @@
         ?>
     
 
-    
+    <script>
+		jQuery.fn.extend({
+			renameAttr: function(name, newName, removeData) {
+				var val;
+				return this.each(function() {
+					val = jQuery.attr(this, name);
+					jQuery.attr(this, newName, val);
+					jQuery.removeAttr(this, name);
+					// move original data
+					if (removeData !== false) {
+						jQuery.removeData(this, name.replace('data-', ''));
+					}
+				});
+			}
+		});
+		$('img').renameAttr('src', 'data-src' );
+		$(function() {
+			var attr = $('img').attr('alt');
+
+			// For some browsers, `attr` is undefined; for others,
+			// `attr` is false.  Check for both.
+			if (typeof attr !== typeof undefined && attr !== false) {
+				$('img').attr('alt');
+			}
+			$('img').addClass('lazy');
+			/* $('.lazy').lazyload({
+				effect: "fadeIn",
+				effectTime: 5000
+			}); */
+			var lazyLoadInstances = [];
+			// The "lazyLazy" instance of lazyload is used (kinda improperly) 
+			// to check when the .horzContainer divs enter the viewport
+			var lazyLazy = new LazyLoad({
+				elements_selector: ".lazy",
+				effect: "fadeIn",
+				effectTime: 5000,
+				// When the .horzContainer div enters the viewport...
+				callback_set: function(el) {
+					// ...instantiate a new LazyLoad on it
+					var oneLL = new LazyLoad({
+						container: el
+					});
+					// Optionally push it in the lazyLoadInstances 
+					// array to keep track of the instances
+					lazyLoadInstances.push(oneLL);
+				}
+			});
+		});
+    </script>
     </body>
 </html>

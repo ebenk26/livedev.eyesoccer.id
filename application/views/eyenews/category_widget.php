@@ -1,3 +1,24 @@
+<style>
+.nn img{
+        height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.rm span{
+    font-weight: 600;
+}
+.n-rcm-up img {
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+</style>
 <div class="m-0">
     <div class="container m-t-5">
         <div class="m-0">
@@ -9,7 +30,7 @@
                     foreach($eyenews_rekomendasi as $rekomendasi)
                     {
                         ?>	
-                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $rekomendasi['url'];?>">
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $rekomendasi['url'];?>" class="container">
                                 <div class="container garis-x4">
                                     <div class="container" style="width:240px; height:145.5px; overflow:hidden;">
                                         <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>" alt="<?=$rekomendasi['title'];?>" title="<?=$rekomendasi['title'];?>" style="width:100%;min-height:100%;">
@@ -44,15 +65,14 @@
                         if($ep > 0)
                         {
                             ?>	
+                            <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>" class="container">
                                 <div class="container news-rcm-d">
-                                    <a href="" class="nn">
-                                        <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
-                                    </a>
+                                        <div class="nn p-r">
+                                            <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                        </div>
                                     <div class="container rm">
-                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
-                                            <span><?=$row['title'];?></span>
-                                        </a>
-                                        <div class="rr">
+                                        <span><?=$row['title'];?></span>
+                                    <div class="rr">
                                             <span>
                                                 <?php
                                                     $date =  new DateTime($row['createon']);
@@ -64,21 +84,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                    </a>
+                                
                             <?php
                         } else {
                             ?>
                                 <div class="n-rcm-up">
-                                    <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
-                                    <div class="n-rcm-up-teks">
+                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>" class="container">
+                                <div style="width: 100%; height: 224.5px; position:  relative; overflow:  hidden;">
+                                <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
+                                </div>
+                                <div class="n-rcm-up-teks">
                                         <div class="rr">
                                             <span><?=$row['createon'];?></span>
                                         </div>
-                                        <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
                                             <span>
                                                 <?=$row['title'];?>									
                                             </span>
-                                        </a>
                                     </div>
+                                    </a>
                                 </div>
                             <?php
                         }

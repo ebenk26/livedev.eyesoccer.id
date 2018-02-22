@@ -22,17 +22,18 @@
 		padding: 5px 15px;
 	}
 	.trending .x-c a:hover{
-		background-color: #EF5350;
+		box-shadow: inset 0 0 10px #820000;
 		color: #FFEBEE !important;
 	}
+	.menu {
+		margin-top: -10px;
+	}
 </style>
-<div class="crumb redhover">
-    <ul>
-	<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
-	<li><a href='<?php echo base_url().'/eyenews'; ?>' style='display: unset'>EyeNews</a></li>
-	<!-- <li>Pemain</li> -->
-    </ul>
-</div>
+<?php 
+	$kanal  = "eyenews";
+	$page = array($select_cat, $select_subcat);
+	echo set_breadcrumb($kanal,$page);
+?>
 <div class="desktop redhover">
     <?php $this->load->view('eyenews/category_menu'); ?>
     
@@ -41,7 +42,7 @@
     </div> -->
     <div class="center-desktop m-0">
 	<div class="m-0">
-	    <div class="container ">
+	    <div class="container mt-20">
 		<?php
 		    $this->load->helper('my');
 		    foreach ($pagging['row'] as $similar)

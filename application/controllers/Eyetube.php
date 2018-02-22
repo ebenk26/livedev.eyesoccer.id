@@ -45,7 +45,7 @@ class Eyetube extends CI_Controller {
 			$data["pg"] =  $pg;
 		}
 		
-		$data["popup"] 	=  $array[14][3];		
+		// $data["popup"] 	=  $array[14][3];		
 		
 		$data['video_eyetube'] 			=  $this->Eyetube_model->get_eyetube_satu();
 		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(4,0);
@@ -124,6 +124,7 @@ class Eyetube extends CI_Controller {
 		$data['eyetube_right_detail'] 	=  $this->Eyetube_model->get_eyetube_right_detail();
 		$data['eyetube_rekomendasi'] 	=  $this->Eyetube_model->get_eyetube_rekomendasi2();
 		$data['eyetube_populer'] 		=  $this->Eyetube_model->get_eyetube_populer(9,0);
+		$data['category_name'] 		=  $category_name;
 
 		$data['tube_type'] 				= $this->Master_model->getAll('tbl_category_eyetube', $where = array(), $select = array('category_name'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array());
 		
@@ -148,7 +149,7 @@ class Eyetube extends CI_Controller {
 		$data["array"] 			= $array;
 		$data["eyetube_id"] 	= $eyetube_id;
 		$data["page"] 			= "home";
-		$data["popup"] 			= $array[14][3];
+		$data["popup"] 			= $array[13][3];
 		$data["extrascript"] 	= $this->load->view('eyetube/script_index', '', true);
 
 		

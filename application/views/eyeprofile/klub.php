@@ -14,6 +14,13 @@
 	}
 </style>
         <div class="center-desktop m-0">
+			<div class="crumb bluehover">
+				<ul>
+				<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
+				<li><a href='<?php echo base_url().'eyeprofile/klub'; ?>' style='display: unset'>Eyeprofile</a></li>
+				<li><a href='#' style='display: unset'>Klub</a></li>
+				</ul>
+			</div>
             <div class="menu-2 w-100 m-0-0 pd-t-20">
                 <ul>
                     <li class="active"><a href="<?=base_url()?>eyeprofile/klub" >Klub</a></li>
@@ -22,26 +29,43 @@
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
-                <select id="" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                <select id="chained_kompetisi" name="" selected="true" class="slc-musim fl-r" onchange="if(this.options[this.selectedIndex].value != 'Liga Usia Muda'){window.location = this.options[this.selectedIndex].value};" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
 				<?php
 					foreach($get_all_kompetisi as $row){
+						if($row['competition']=='Liga Usia Muda'){
 				?>
-					<option value="<?php echo base_url()."eyeprofile/klub/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+						<option value="Liga Usia Muda"><?php echo $row['competition'];?></option>';
 				<?php
+						}else{
+				?>
+						<option value="<?php echo base_url()."eyeprofile/klub/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+				<?php
+						}
 					}
 				?>
 					<option value="<?php echo base_url()."eyeprofile/klub/non liga"?>">Non Liga</option>
+                </select>
+				
+				<select id="chained_liga" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: 0px 0px 2px;display:none;">
+					<option value="">--Pilih Kategori Liga--</option>
+				<?php
+					foreach($get_all_liga as $row){
+				?>
+						<option value="<?php echo base_url()."eyeprofile/klub/".$row['nama_liga']?>"><?php echo $row['nama_liga'];?></option>';  
+				<?php
+					}
+				?>
                 </select>
             </div>
         </div>
         <div class="center-desktop m-0">		
             <div class="container box-border-radius fl-l mt-30">
 				
-                <div class="fl-l img-80">				
+                <div class="fl-l img-80" style="display:none;">				
                     <img src="<?=imgUrl()?>assets/img/content_11.jpg" alt="" height="100%">
                 </div>
-                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l">
+                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l" style="width:500px;">
                     <table>
                         <tr>
                             <td>Level Liga</td>
@@ -56,22 +80,18 @@
                             <td>:
 							<?php echo count($get_player_liga);?> Pemain</td>
                         </tr>
-                        <tr>
-                            <td>Pemain Asing</td>
-                            <td>:
-							<?php echo count($get_player_liga_strange);?> Pemain</td>
-                        </tr>
                     </table>
                 </div>
                 <div class="tabel-liga-370 table-pd-3 fl-l">
                     <table>
                         <tr>
-                            <td>Rekor Juara</td>
-                            <td>: -</td>
+                            <td>Pemain Asing</td>
+                            <td>:
+							<?php echo count($get_player_liga_strange);?> Pemain</td>
                         </tr>
                         <tr>
-                            <td>Juara Bertahan</td>
-                            <td>: -</td>
+                            <td>Rata - Rata Usia Pemain</td>
+                            <td>: <?php if(!empty($avg_year)) echo $avg_year[0]['usia'].' Tahun'; else echo '-';?></td>
                         </tr>
                     </table>
                 </div>
@@ -379,4 +399,12 @@
         </div>
         </div>
         </div>
-		
+		<script>
+			$('#chained_kompetisi').on('change', function()
+			{
+				var value    = $(this).val();
+				if(value=='Liga Usia Muda'){
+					$("#chained_liga").show();
+				}
+			})
+		</script>

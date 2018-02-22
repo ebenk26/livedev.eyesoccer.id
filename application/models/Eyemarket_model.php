@@ -2,18 +2,18 @@
 
 class Eyemarket_model extends CI_Model
 {
-//membaca tabel database
-        public function listing(){
-            $this->db->select('tbl_category_product.*,category_product_name');
-            $this->db->from('tbl_category_product');
-            //relasi
-            $this->db->join('tbl_category_product','tbl_category_product.id_category_product = tbl_product.id_product','left');
-            $this->db->join('admin','admin.admin_id = tbl_product.id_product','left');
-            //end relasi
-            $this->db->order_by('id_product','DESC limit 4');
-            $query=$this->db->get();
-            return $query->result ();
-        }
+    //membaca tabel database
+    public function listing(){
+        $this->db->select('tbl_category_product.*,category_product_name');
+        $this->db->from('tbl_category_product');
+        //relasi
+        $this->db->join('tbl_category_product','tbl_category_product.id_category_product = tbl_product.id_product','left');
+        $this->db->join('admin','admin.admin_id = tbl_product.id_product','left');
+        //end relasi
+        $this->db->order_by('id_product','DESC limit 4');
+        $query=$this->db->get();
+        return $query->result ();
+    }
 
     public function get_admin($id)
     {
@@ -67,7 +67,7 @@ class Eyemarket_model extends CI_Model
                                     INNER JOIN
                                         eyemarket_parent_cat F on A.id_parent_cat = F.id
                                     WHERE
-                                        status_publish != 2
+                                        A.status_publish != 2
                                     ORDER BY 
                                         A.id_product DESC
                                         ")->result_array();
@@ -271,6 +271,8 @@ class Eyemarket_model extends CI_Model
                                         eyemarket_toko C on C.id = A.id_toko
                                     WHERE
                                         A.id_product != '$id_product'
+                                        AND
+                                        A.status_publish = 1
                                     LIMIT
                                         4
                                         ")->result_array();
@@ -316,7 +318,7 @@ class Eyemarket_model extends CI_Model
                                     LEFT JOIN
                                         eyemarket_address F      on A.id_alamat =  F.id
                                     WHERE 
-                                        A.id_member = '$id_member'
+                                        md5(A.id_member) = '$id_member'
                                         AND
                                         A.status = 0
                                     ORDER BY
@@ -332,7 +334,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_keranjang
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                         AND
                                         status = 0
                                         ")->row();
@@ -346,7 +348,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_keranjang
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                         AND
                                         status = 0
                                         ")->row();
@@ -360,7 +362,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_keranjang
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                         AND
                                         status = 0
                                         ")->row();
@@ -368,7 +370,7 @@ class Eyemarket_model extends CI_Model
     }
 
     public function edit_keranjang($data,$id_keranjang)
-    {;
+    {
         $query = $this->db->update('eyemarket_keranjang', $data, array('id' => $id_keranjang, 'status' => '0'));
         
         return $query;
@@ -395,7 +397,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         tbl_member A
                                     WHERE 
-                                        A.id_member = '$id_member'
+                                        md5(A.id_member) = '$id_member'
                                         ")->result_array();
         return $query;
     }
@@ -407,7 +409,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_address
                                     WHERE
-                                        id_member = '$id_member'
+                                        md5(id_member) = '$id_member'
                                     ")->result_array();
         return $query;
     }
@@ -421,42 +423,42 @@ class Eyemarket_model extends CI_Model
 
     public function update_cart_address($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_keranjang', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_order_address($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_order', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_cart_delivery($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_keranjang', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_order_delivery($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_order', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_cart_payment($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_keranjang', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_keranjang', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
 
     public function update_order_payment($id_member,$data)
     {
-        $query = $this->db->update('eyemarket_order', $data, array('id_member' => $id_member, 'status' => '0'));
+        $query = $this->db->update('eyemarket_order', $data, array('md5(id_member)' => $id_member, 'status' => '0'));
         
         return $query;
     }
@@ -792,6 +794,18 @@ class Eyemarket_model extends CI_Model
     {
         $query = $this->db->update('eyemarket_order', $objek, array('id' => $id));
         
+        return $query;
+    }
+
+    function get_id_md($id_md)
+    {
+        $query = $this->db->query(" SELECT
+                                        A.id_member
+                                    FROM
+                                        tbl_member A
+                                    WHERE
+                                        md5(A.id_member) = '$id_md'
+                                        ")->row();
         return $query;
     }
 

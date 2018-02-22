@@ -239,8 +239,31 @@ class Eyemarket extends CI_Controller {
 
 	public function tambah_gambar($id)
 	{ 	
-    	$config['upload_path'] = './img/eyemarket/produk/';  
+    	$config['upload_path'] = ($_SERVER['SERVER_NAME'] == 'localhost') ? './img/eyemarket/produk/' : MARKETFOLDER.'/produk';  
+
+    	if (isset($_FILES['image1']['name'])) {
+    		$name = $_FILES['image1']['name'];
+    	}
+    	if (isset($_FILES['image2']['name'])) {
+    		$name = $_FILES['image2']['name'];
+    	}
+    	if (isset($_FILES['image3']['name'])) {
+    		$name = $_FILES['image3']['name'];
+    	}
+    	if (isset($_FILES['image4']['name'])) {
+    		$name = $_FILES['image4']['name'];
+    	}
+    	if (isset($_FILES['image5']['name'])) {
+    		$name = $_FILES['image5']['name'];
+    	}
+    	$ext = pathinfo($name,PATHINFO_EXTENSION);
+
         $config['allowed_types'] = '*';
+        $config['file_name'] = 'ori_'.date('dmyGis');
+
+
+
+        $ext = pathinfo($name,PATHINFO_EXTENSION);
 
         $this->load->library('upload');
 
@@ -257,14 +280,14 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image1' 		=> $data["file_name"],
+        			'image1' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image1"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -284,14 +307,14 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image2' 		=> $data["file_name"],
+        			'image2' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image2"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -311,14 +334,14 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image3' 		=> $data["file_name"],
+        			'image3' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image3"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -338,14 +361,14 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image4' 		=> $data["file_name"],
+        			'image4' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image4"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -365,14 +388,14 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image5' 		=> $data["file_name"],
+        			'image5' 		=> str_replace('ori_', '', $data["file_name"]),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
 
         	    if ($insert)
         	    {
-        	    	echo '<img src="'.base_url().'img/eyemarket/produk/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+        	    	echo '<img src="'.MEIMG.$object["image5"].'" width="300" height="225" class="img-thumbnail" />';  
         	    }
         	    else
         	    {
@@ -483,6 +506,8 @@ class Eyemarket extends CI_Controller {
 
 	public function keranjang($id_member,$id_product)
 	{
+		$id_membernya 	= $this->Eyemarket_model->get_id_md($id_member);
+		
 		$jumlah = $this->input->post('jumlah');
 
 		$this->db->select('harga,berat');
@@ -493,7 +518,7 @@ class Eyemarket extends CI_Controller {
 
 		$data 		= array(
 			'id_product' 	=> $id_product,
-			'id_member' 	=> $id_member,
+			'id_member' 	=> $id_membernya,
 			'jumlah' 		=> $jumlah,
 			'total' 		=> $total,
 			'berat' 		=> $berat,
@@ -511,9 +536,9 @@ class Eyemarket extends CI_Controller {
 
 	public function view_keranjang($id_member)
 	{
-		if ($id_member != $this->session->userdata('id_member'))
+		if ($id_member != md5($this->session->userdata('id_member')))
 		{
-			redirect('eyemarket/view_keranjang/'.$this->session->userdata('id_member'));
+			redirect('eyemarket/view_keranjang/'.md5($this->session->userdata('id_member')));
 		}
 		else
 		{
@@ -527,7 +552,7 @@ class Eyemarket extends CI_Controller {
 			$data['jumlah']		= $this->Eyemarket_model->get_count_keranjang($id_member);
 
 			$data['username'] 	= $this->session->userdata('username');
-			$data['member_id'] 	= $this->session->userdata('id_member');
+			$data['member_id'] 	= md5($this->session->userdata('id_member'));
 
 			$data["kanal"] 		= 'eyemarket';
 			
@@ -539,10 +564,9 @@ class Eyemarket extends CI_Controller {
 
 	public function daftar_keranjang($id_member)
 	{
-		
-		if ($id_member != $this->session->userdata('id_member'))
+		if ($id_member != md5($this->session->userdata('id_member')))
 		{
-			redirect('eyemarket/user/'.$this->session->userdata('id_member'));
+			redirect('eyemarket/daftar_keranjang/'.md5($this->session->userdata('id_member')));
 		}
 		else
 		{
@@ -664,21 +688,28 @@ class Eyemarket extends CI_Controller {
 
 	public function order_address($id_member)
 	{
-		$url 	= uri_string();
-		
-		$this->mod->checkLogin($url);
-		
-		$data['id_member'] 	= $id_member;
-		$data['member'] 	= $this->Eyemarket_model->get_member($id_member);
-		$data['address'] 	= $this->Eyemarket_model->get_address($id_member);
-		$data['provinsi'] 	= $this->Eyemarket_model->get_all_provinsi();
-		$data['jumlah'] 	= count($data['address']);
+		if ($id_member != md5($this->session->userdata('id_member')))
+		{
+			redirect('eyemarket/order_address/'.md5($this->session->userdata('id_member')));
+		}
+		else
+		{
+			$url 	= uri_string();
+			
+			$this->mod->checkLogin($url);
+			
+			$data['id_member'] 	= $id_member;
+			$data['member'] 	= $this->Eyemarket_model->get_member($id_member);
+			$data['address'] 	= $this->Eyemarket_model->get_address($id_member);
+			$data['provinsi'] 	= $this->Eyemarket_model->get_all_provinsi();
+			$data['jumlah'] 	= count($data['address']);
 
-		$data["kanal"] 		= 'eyemarket';
-		
-		$data["body"] 		=  $this->load->view('eyemarket/new_view/address', $data, true);
+			$data["kanal"] 		= 'eyemarket';
+			
+			$data["body"] 		=  $this->load->view('eyemarket/new_view/address', $data, true);
 
-		$this->load->view('/template/static', $data);
+			$this->load->view('/template/static', $data);
+		}
 	}
 
 	public function input_address($id_member)
@@ -688,9 +719,10 @@ class Eyemarket extends CI_Controller {
 		$kecamatan 	= $this->input->post('kecamatan');
 
 		$kode_jne 	= $this->Eyemarket_model->get_kode_jne($kota,$kecamatan);
+		$id_membernya 	= $this->Eyemarket_model->get_id_md($id_member);
 
 		$input = array(
-			'id_member' 	=> $id_member,
+			'id_member' 	=> $id_membernya->id_member,
 			'nama' 			=> $this->input->post('nama_alamat'),
 			'penerima' 		=> $this->input->post('penerima'),
 			'hp' 			=> $this->input->post('hp'),
@@ -717,14 +749,21 @@ class Eyemarket extends CI_Controller {
 
 	public function update_cart_address($id_member)
 	{
-		$input = array(
-			'id_alamat' 	=> $this->input->post('pilih_alamat'),
-		);
+		if ($id_member != md5($this->session->userdata('id_member')))
+		{
+			redirect('eyemarket/update_cart_address/'.md5($this->session->userdata('id_member')));
+		}
+		else
+		{
+			$input = array(
+				'id_alamat' 	=> $this->input->post('pilih_alamat'),
+			);
 
-		$update_cart 	= $this->Eyemarket_model->update_cart_address($id_member,$input);
-		$update_order 	= $this->Eyemarket_model->update_order_address($id_member,$input);
-		
-		redirect('/eyemarket/order_delivery/'.$id_member);
+			$update_cart 	= $this->Eyemarket_model->update_cart_address($id_member,$input);
+			$update_order 	= $this->Eyemarket_model->update_order_address($id_member,$input);
+			
+			redirect('/eyemarket/order_delivery/'.$id_member);
+		}
 	}
 
 	public function order_delivery($id_member)

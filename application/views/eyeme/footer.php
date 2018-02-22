@@ -174,8 +174,6 @@ var valCom = $(this).val();
             .fail(function() {
                 console.log("error");
             });
-
-        //$(this).val('');
         
     }
 
@@ -185,7 +183,6 @@ var valCom = $(this).val();
 $('#upload,.upl').click(function(e) {
     /* Act on the event */
     e.preventDefault();
-    //alert('test');
      $('#upload_pop').css('display','block');
 
 
@@ -310,9 +307,7 @@ class fol{
     }
     do_fol(){
          var $this  = this.in;
-         if($this.data('requestRunning')){
-            return;
-         }
+         
              $this.data('requestRunning',true);
              $.ajax({
                     url: '<?php echo EYEMEPATH?>' + 'follow',
@@ -322,22 +317,21 @@ class fol{
                 })
                 .done(function(r) {
                     if(r.msg == 'success'){
-                    $('.following').text(r.following);
-                    $('.follower').text(r.follower);
-                    $this.removeClass('fol');
-                    $this.addClass('unfol');
-                    $this.text('Mengikuti');
-           
-                }
+                        $('.following').text(r.following);
+                        $('.follower').text(r.follower);
+                        $this.removeClass('fol');
+                        $this.addClass('unfol');
+                        $this.text('Mengikuti');
                
+                    }
                 })
                 .fail(function() {
                     console.log("error");
                 })
-                .complete(function(data) {
-                    console.log($this.data());
-                    $this.data('requestRunning',false);
-                });
+                .always(function(){
+                    console.log('complete');
+                })
+               
     }
     do_unfol(){
         var $this  = this.in;
@@ -361,9 +355,7 @@ class fol{
             .fail(function() {
                 console.log("error");
             })
-            .complete(function() {
-                $this.data('requestRunning',false);
-            });
+          
     }
 
 }
@@ -614,6 +606,7 @@ $('.me-post').click(function(event) {
         $.each(r,function(k, v) {
             $('#img-det').attr('src','<?php echo MEIMG?>' + v.img_name);
             $('.usern').text(v.username);
+            $('.usern').attr('href',MEPROFILE + v.username);
             $('.cap').text(v.img_caption);
             $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
             $('#time-string').text(v.timeString);
@@ -772,7 +765,6 @@ function showfile(file) {
         $('#dropzone div').html($('<img />').attr('src', e.target.result).fadeIn());
     }
 }
-
 function inputS(text) {
   var map = {
     '&': '&amp;',
@@ -785,4 +777,51 @@ function inputS(text) {
 
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
+jQuery.fn.extend({
+            renameAttr: function(name, newName, removeData) {
+                var val;
+                return this.each(function() {
+                    val = jQuery.attr(this, name);
+                    jQuery.attr(this, newName, val);
+                    jQuery.removeAttr(this, name);
+                    // move original data
+                    if (removeData !== false) {
+                        jQuery.removeData(this, name.replace('data-', ''));
+                    }
+                });
+            }
+        });
+        $('img').renameAttr('src', 'data-src' );
+        $(function() {
+            var attr = $('img').attr('alt');
+
+            // For some browsers, `attr` is undefined; for others,
+            // `attr` is false.  Check for both.
+            if (typeof attr !== typeof undefined && attr !== false) {
+                $('img').attr('alt');
+            }
+            $('img').addClass('lazy');
+            /* $('.lazy').lazyload({
+                effect: "fadeIn",
+                effectTime: 5000
+            }); */
+            var lazyLoadInstances = [];
+            // The "lazyLazy" instance of lazyload is used (kinda improperly) 
+            // to check when the .horzContainer divs enter the viewport
+            var lazyLazy = new LazyLoad({
+                elements_selector: ".lazy",
+                effect: "fadeIn",
+                effectTime: 5000,
+                // When the .horzContainer div enters the viewport...
+                callback_set: function(el) {
+                    // ...instantiate a new LazyLoad on it
+                    var oneLL = new LazyLoad({
+                        container: el
+                    });
+                    // Optionally push it in the lazyLoadInstances 
+                    // array to keep track of the instances
+                    lazyLoadInstances.push(oneLL);
+                }
+            });
+        });
   </script>

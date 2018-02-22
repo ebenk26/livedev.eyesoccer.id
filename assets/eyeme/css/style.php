@@ -1811,13 +1811,13 @@ ul, li {
     width: 5px;
 }
 .kotak-popup-notif::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px transparent; 
+    box-shadow: inset 0 0 5px gainsboro; 
     border-radius: 10px;
 }
 .kotak-popup-notif::-webkit-scrollbar-thumb {
     background: gainsboro; 
     border-radius: 10px;
-    box-shadow: 0 -1px 1px 0px grey;
+    box-shadow: inset 0 -1px 1px 0px grey;
 }
 .kotak-popup-notif::-webkit-scrollbar-thumb:hover {
     background: rgb(185, 185, 185); 
@@ -2030,6 +2030,7 @@ ul, li {
     min-height: 100%;
     width: unset;
     border-radius: unset;
+    max-width: 100%;
 }
 .uname{
     font-size: 18pt;
@@ -2043,7 +2044,7 @@ ul, li {
     float: left;
     overflow: hidden;
     margin-left: 21px;
-
+    position: relative;
 }
 .me-gambar-post{
     min-height: 100%;
@@ -2052,12 +2053,17 @@ ul, li {
     opacity: 1;
     transition: .5s ease;
     backface-visibility: hidden;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 .tengah{
     transition: .5s ease;
     opacity: 0;
     position: relative;
-    top: -291px;
     width: 100%;
     height: 100%;
     padding-top: 132px;
@@ -2081,9 +2087,11 @@ ul, li {
     margin-left: 0px;
 }
 .desc-me-profile{
+    max-height: 59px;
+    overflow: hidden;
     font-size: 0.85em;
-    font-weight: 600;
-    color: rgb(83, 83, 83);
+    font-weight: 500;
+    color: rgb(150, 150, 150);
     width: 750px;
     display: block;
 }
@@ -2099,6 +2107,7 @@ ul, li {
     padding: 2px 50px 0px 2px;
     font-weight: 600;
     color: rgb(83, 83, 83);
+    text-align: center;
 }
 .lihatlainnya>a{
     text-decoration: none;
@@ -3055,4 +3064,7 @@ a{
 }
 .uplda{
     margin-top:30% ; 
+}
+img.loading {
+    background-color: #f2f2f2;
 }

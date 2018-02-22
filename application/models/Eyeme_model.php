@@ -136,7 +136,7 @@ class Eyeme_model extends Master_model
 	  *function get Explore
 	*/
 	public function getExplore(){
-		$getImg = $this->mod->getAll('me_img','','',array('last_update'=> 'DESC'));
+		$getImg = $this->mod->getAll('me_img','','',array('last_update'=> 'DESC'),20);
 
 		for($i= 0 ; $i < count($getImg); $i++){
 			$qry     = "SELECT 

@@ -9,21 +9,21 @@
 </style>
 <div class="container tube-r">
     <div class="up-r-vent">
-        <h4>EVENT LAINNYA</h4>
+        <a href="<?= base_url(); ?>eyevent/semua_event"><h4>EVENT LAINNYA</h4></a>
         <div class="pd">
             <div>
                 <?php
                     foreach ($eyevent->data as $value)
                     {
                 ?>
-                        <div class="container h100">
-                            <a href="<?= $value->share_url; ?>">
-                                <div class="ev-img">
-                                    <img src="<?= $value->url_pic; ?>" alt="" style="height: 100%;">
+                        <div class="container iven">
+                            <a href="<?= base_url().'eyevent/detail'.$value->slug; ?>">
+                                <div class="iven-im">
+                                    <img src="<?= $value->url_pic; ?>" alt="">
                                 </div>
                             </a>
-                            <div class="container rn">
-                                <a href="<?= $value->share_url; ?>">
+                            <div class="container rn tx-c" id="iven">
+                                <a href="<?= base_url().'eyevent/detail'.$value->slug; ?>">
                                     <span><?= $value->title; ?></span>
                                 </a>
                                 <div class="rr">
@@ -134,7 +134,6 @@
                 <?php        
                     }
                 ?>
-
             </div>
         </div>
     </div> -->

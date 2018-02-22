@@ -15,11 +15,20 @@
 	body{
 		margin-top: -10px;
 	}
+	.h-news-l {
+    width: 600px;
+    height: 340px;
+    overflow: hidden;
+	}
+	.h-news-r {
+    width: 450px;
+    height: 340px;
+}
 </style>
 <div class="crumb redhover">
     <ul>
 	<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
-	<li><a href='<?php echo base_url().'/eyenews'; ?>' style='display: unset'>EyeNews</a></li>
+	<li><a href='<?php echo base_url().'eyenews'; ?>' style='display: unset'>EyeNews</a></li>
     </ul>
 </div>
 <div class="desktop redhover">

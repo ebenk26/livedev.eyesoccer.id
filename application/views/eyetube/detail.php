@@ -4,10 +4,9 @@
         cursor: pointer;
     }
     .up-r-tube-cont{
-        height: 357px;
+        height: 358px;
     }
 .up-r-tube{
-    margin-top: 1px;
     height: 57px;
 }
 .fb-comments span{
@@ -17,18 +16,14 @@
     width: 100% !important;
 }
 </style>
-
-<div class="crumb bluehover">
-    <ul>
-        <li><a href="<?= base_url(); ?>" style="display: unset;">Home</a></li>
-        <li><a href="<?= base_url(); ?>eyetube" style="display: unset;">Eyetube</a></li>
-    </ul>
-</div>
+<?php 
+	$kanal  = "eyetube";
+	$page   = $category_name;
+	echo set_breadcrumb($kanal,$page);
+?>
 <div class="desktop bluehover">
     <div class="center-desktop m-0">
-        <div class="menu-3 m-0">
-        <div class="container over-x">
-            <div class="w-max">
+        <div class="menu-3 m-0 tx-c bbg">
             <ul>
                 <?php 
                     foreach ($tube_type as $value)
@@ -41,22 +36,17 @@
                 <?php  
                     }
                 ?>
-            </ul></div></div>
-        <div class="container p-r ar-menu-3">
-			<i class="material-icons fl-l">keyboard_arrow_left</i>
-			<i class="material-icons fl-r">keyboard_arrow_right</i>
-		</div>
+            </ul>
+        
         </div>
     </div>
-    <!-- <div class="center-desktop m-0">
-        <div class="garis-x m-t-30"></div>
-    </div> -->
+    
     <div class="center-desktop m-0">
-        <div class="m-0">
+        <div class="m-0 mt-20">
             <div class="container tube-l">
                 <div>
                     <video width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
-                        <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4">
+                        <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4" preload="none">
                     </video>
                     <div class="top-r ">
                         <ul>
@@ -170,7 +160,7 @@
                     <div class="col-2 col-emoji">
                         <a class="emoticon" type_emot="inspired">
                             <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
+                                <img src="<?=base_url()?>assets/eyenews/img/emoji/terinspirasi.png" alt="">
                             </div>
                             <span class="replace_inspired"><?= $eyetube_headline->tube_inspired; ?></span>
                             <span class="load-inspired" style="display:none;">
@@ -206,7 +196,7 @@
                     <div class="col-2 col-emoji">
                         <a class="emoticon" type_emot="angry">
                             <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/suka.png" alt="">
+                                <img src="<?=base_url()?>assets/eyenews/img/emoji/marah.png" alt="">
                             </div>
                             <span class="replace_angry"><?= $eyetube_headline->tube_angry; ?></span>
                             <span class="load-angry" style="display:none;">

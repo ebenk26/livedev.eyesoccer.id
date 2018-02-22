@@ -57,7 +57,7 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_club_liga($liga,$limit=null)
+	public function get_club_liga($liga,$limit=null,$cat_liga=null)
 	{
 		$compt = "and a.competition='".$liga."'";
 		if($limit != null){
@@ -66,27 +66,70 @@ class Eyeprofile_model extends CI_Model
 			$limit ="";
 		}
 		
+		if($cat_liga != null){
+			$compt .= " and d.nama_liga='".$cat_liga."'";
+		}
+		
 		if($liga == 'non liga'){
 			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
 		}
 		$query = $this->db->query("SELECT a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url
 									FROM tbl_club a
 									LEFT JOIN tbl_player c on a.club_id = c.club_id
-									WHERE a.name not in ('ebenktestlagijgndidelete') ".$compt."
-									GROUP BY a.club_id ASC ".$limit."")->result_array();
+									LEFT JOIN tbl_liga d on a.id_liga = d.id_liga
+									WHERE a.name not in ('ebenktestlagijgndidelete') and a.active = 1 ".$compt."
+									GROUP BY a.name ASC ".$limit."")->result_array();
+									
 		return $query;
 	}
 	
-	public function get_player_liga($liga,$nationality)
+	public function get_club_liga_avggyear($liga,$limit=null,$cat_liga=null)
 	{
+		$compt = "and a.competition='".$liga."'";
+		if($limit != null){
+			$limit = "LIMIT ".$limit."";
+		}else{
+			$limit ="";
+		}
+		
+		if($cat_liga != null){
+			$compt .= " and d.nama_liga='".$cat_liga."'";
+		}
+		
+		if($liga == 'non liga'){
+			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
+		}
+		
+		if($liga != 'Liga Usia Muda'){
+			$query = $this->db->query("SELECT (YEAR(CURDATE())   - RIGHT(c.birth_date,4)) as usia,a.club_id,a.name as nama_club,a.logo as logo_club,competition,count(c.player_id) as squad,a.url
+									FROM tbl_club a
+									LEFT JOIN tbl_player c on a.club_id = c.club_id
+									LEFT JOIN tbl_liga d on a.id_liga = d.id_liga
+									WHERE a.name not in ('ebenktestlagijgndidelete') and a.active = 1 ".$compt."
+									")->result_array();
+		}else{
+			$query = '';
+		}
+									
+		return $query;
+	}
+	
+	public function get_player_liga($liga,$nationality,$cat_liga=null)
+	{
+		$table_liga = "";
 		if($liga == 'non liga'){
 			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
 		}else{
 			$compt = "b.competition = '".$liga."'";
 		}
+		
+		if($cat_liga != null){
+			$compt .= " and c.nama_liga='".$cat_liga."'";
+			$table_liga = "left join tbl_liga c on b.id_liga = c.id_liga ";
+		}
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
-									join tbl_club b on a.club_id=b.club_id
-									where ".$compt."")->result_array();
+									join tbl_club b on a.club_id=b.club_id ".$table_liga."
+									where ".$compt." and b.active = 1")->result_array();
 		return $query;
 	}
 	
@@ -96,16 +139,23 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_player_liga_strange($liga,$nationality='indonesia')
+	public function get_player_liga_strange($liga,$nationality='indonesia',$cat_liga=null)
 	{
+		$table_liga = "";
 		if($liga == 'non liga'){
 			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
 		}else{
 			$compt = "b.competition = '".$liga."'";
 		}
+		
+		if($cat_liga != null){
+			$compt .= " and c.nama_liga='".$cat_liga."'";
+			$table_liga = "left join tbl_liga c on b.id_liga = c.id_liga ";
+		}
+		
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
-									join tbl_club b on a.club_id=b.club_id
-									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."')")->result_array();
+									join tbl_club b on a.club_id=b.club_id ".$table_liga." 
+									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."','wni','WNI','') and b.active = 1")->result_array();
 		return $query;
 	}
 	
@@ -651,7 +701,7 @@ class Eyeprofile_model extends CI_Model
 	}
 	
 	public function get_pelatih($club_id){
-		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position like '%pelatih%' limit 1");
+		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position in ('Pelatih Kepala','pelatih','PELATIH','Pelatih','pelatih utama','pelatih(coach)','PELATIH/KEPALA','Pelatih / Manager','MANAJER/ PELATIH','Head Coach','COACH','KEPALA PELATIH') limit 1;");
 		if($query->num_rows()>0){
 			$query = $query->row()->name;
 		}else{
@@ -666,8 +716,78 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
+	public function get_all_liga()
+	{
+		$query = $this->db->query("select nama_liga from tbl_liga")->result_array();
+		return $query;
+	}
+	
 	public function get_official_detail($url){
 		$query = $this->db->query("select a.*,b.name as club_name,b.url as club_url from tbl_official_team a left join tbl_club b on a.club_now=b.club_id where a.url='".$url."'")->result_array();
+		return $query;
+	}
+	
+	public function get_list_karir_klub($requestData,$club_id)
+	{
+		$columns = array( 
+		// datatable column index  => database column name
+			0 =>'karir_klub_id', 
+			1 => 'bulan',
+			2=> 'tahun',
+			3=> 'turnamen',
+			4=> 'peringkat',
+			5=> 'pelatih'
+		);
+		
+		if( !empty($requestData['search']['value']) ) {  
+		$sql=" AND ( bulan LIKE '%".$requestData['search']['value']."%' ";    
+			$sql.=" OR turnamen LIKE '%".$requestData['search']['value']."%' ";
+
+			$sql.=" OR peringkat LIKE '%".$requestData['search']['value']."%' ";
+			$sql.=" OR pelatih LIKE '%".$requestData['search']['value']."%' )";
+		}
+		else{
+			$sql="";
+		}
+		$query = $this->db->query("select * from tbl_karir_klub where klub_id = ".$club_id." ".$sql."");
+		$totalData = count($query->result_array());
+		$totalFiltered = $totalData;
+		
+		$result_with_limit=$this->db->query("select * from tbl_karir_klub where klub_id = ".$club_id." ".$sql." order by ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."");
+		$totalFiltered=$query->num_rows();
+		if($requestData['start']==0){
+			$i=1;
+		}else{
+			$i=$requestData['start']+1;
+		}
+		$data2 = array();
+		foreach ($result_with_limit->result() as $data)
+		{
+			$nestedData=array(); 
+			$nestedData[] = $i;
+			$nestedData[] = $data->bulan;
+			$nestedData[] = $data->tahun;
+			$nestedData[] = $data->turnamen;
+			$nestedData[] = $data->peringkat;
+			$nestedData[] = $data->pelatih;
+			
+			$data2[] = $nestedData;
+			$i++;
+		}
+
+
+		$json_data = array(
+					"draw"            => intval( $requestData['draw'] ), 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ),
+					"data"            => $data2   // total data array
+					);
+
+		echo json_encode($json_data); 
+	}
+	
+	public function get_gallery_club($club_id){
+		$query = $this->db->query("select * from tbl_gallery where klub_id='".$club_id."'")->result_array();
 		return $query;
 	}
 }

@@ -1,7 +1,7 @@
 <div class="center-desktop m-0">
-    <div class="menu-3 m-0">
-        <div class="over-x m-0">
-            <div class="w-max">
+    <div class="menu-3 m-0 bbg tx-c">
+        <!-- <div class="over-x m-0">
+            <div class="w-max"> -->
                 <ul>
                     <?php
                         $news_type = $this->Master_model->getAll('tbl_news_types',
@@ -39,12 +39,12 @@
                         }
                     ?>
                 </ul>
-            </div>
+            <!-- </div>
         </div>
         <div class="container p-r ar-menu-3">
             <i class="material-icons fl-l">keyboard_arrow_left</i>
             <i class="material-icons fl-r">keyboard_arrow_right</i>
-        </div>
+        </div> -->
     </div>
     
     <?php

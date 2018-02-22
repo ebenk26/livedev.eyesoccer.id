@@ -95,7 +95,7 @@ define('CSSPATH',base_url().'assets/eyeme/css/');
 define('JSPATH',base_url().'assets/eyeme/js/');
 define('sIMGPATH',base_url().'assets/eyeme/img/');
 define('MEURL',base_url().'eyeme/');
-define('MEIMG',base_url().'upload/eyeme/');
+define('MEIMG','http://static.eyesoccer.id/v1/cache/images/');
 define('IMGPATH','./upload/eyeme/');
 define('EYEMEPATH',base_url().'eyeme/');
 define('MEPROFILE',base_url().'eyeme/profile/');
@@ -119,7 +119,7 @@ define('EYETRANSFER',base_url().'eyetransfer');
 define('EYETIKET',base_url().'eyetiket');
 define('EYEWALLET',base_url().'wallet');
 define('sIMGSTORE','http://eyesoccer.id/systems/eyenews_storage/');
-
+define('EYEEXPLORE',MEURL.'explore');
 define('DEFAULTIMG',base_url().'assets/home/img/eyeme-photo%20thumbnail.png');
 define('NEWSDETAIL',base_url().'eyenews/detail/');
 
@@ -580,7 +580,7 @@ function get_date($rentang = "")
 function getManager($club_id = "")
 {
     $CI =& get_instance();
-	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."'");
+	$manager=$CI->db->query("SELECT name FROM tbl_official_team WHERE club_now='".$club_id."' and position in ('manager','manajer','menejer','Manager')");
 	if($manager->num_rows()>0){
 		$manager = $manager->row()->name;
 	}else{
@@ -592,17 +592,23 @@ function getManager($club_id = "")
 
 function getTotalClub($liga)
 {
-	$compt = "and competition='".urldecode($liga)."'";
 	$limit = '';
-	if(urldecode($liga) == 'Liga Indonesia 2'){
-		$limit = 'limit 24';
-	}else if(urldecode($liga) == 'Liga Indonesia 1'){
-		$limit = 'limit 18';
-	}else if(urldecode($liga) == 'non liga'){
-		$compt = "and competition in('SSB / Akademi Sepakbola')";
+	$liga = urldecode($liga);
+	if($liga != 'Liga Pelajar U-16 Piala Menpora' && $liga != 'Liga Santri Nusantara' && $liga != 'Liga Indonesia U-19'){
+		$compt = "and a.competition='".$liga."' and a.active = 1";
+		
+		if($liga == 'Liga Indonesia 2'){
+			$limit = 'limit 24';
+		}else if($liga == 'Liga Indonesia 1'){
+			$limit = 'limit 18';
+		}else if($liga == 'non liga'){
+			$compt = "and a.competition in('SSB / Akademi Sepakbola')";
+		}
+	}else{
+		$compt = "and b.nama_liga='".$liga."'";
 	}
     $CI =& get_instance();
-	$query=$CI->db->query("SELECT name FROM tbl_club WHERE club_id is not null $compt $limit")->result_array();
+	$query=$CI->db->query("SELECT a.name FROM tbl_club a left join tbl_liga b on a.id_liga = b.id_liga WHERE a.club_id is not null $compt $limit")->result_array();
 	
 	return count($query);
 }
@@ -637,4 +643,58 @@ function send_mail($to,$subject,$msg)
     curl_close($ch);
 
     return $result;
+}
+
+function set_breadcrumb($kanal,$page)
+{
+	if(is_array($page)){
+		$html   = " <div class='crumb redhover'>
+					<ul>
+					<li><a href='".base_url()."' style='display: unset'>Home</a></li>
+					<li><a href='".base_url()."".$kanal."' style='display: unset'>".$kanal."</a></li>";
+		$numItems = count($page);
+		$i = 0;
+		foreach($page as $value) {
+			if(++$i === $numItems) {
+				$html .= "<li style='cursor:default;'>".$value."</li>";
+			}else{
+				$html .= "<li><a href='".base_url()."".$kanal."/kategori/".$value."' style='display: unset'>".$value."</a></li>";
+			}
+		}
+		$html .="</ul></div>";
+	}else{
+		$html   = " <div class='crumb redhover'>
+						<ul>
+						<li><a href='".base_url()."' style='display: unset'>Home</a></li>
+						<li><a href='".base_url()."".$kanal."' style='display: unset'>".$kanal."</a></li>
+						<li style='cursor:default;'>".$page."</li>
+						</ul>
+					</div>";
+	}
+    
+    return $html;
+}
+
+function seo_title($text)
+{
+    // replace non letter or digits by -
+    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+
+    // trim
+    $text = trim($text, '-');
+
+    // transliterate
+    //$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+    // lowercase
+    $text = strtolower($text);
+
+    // remove unwanted characters
+    $text = preg_replace('[^-\w]', '', $text);
+
+    if (empty($text)) {
+        return 'n-a';
+    }
+
+    return $text;
 }

@@ -1,17 +1,13 @@
 	<style>
-	*{
+	/* *{
         font-family: sans-serif;
-    }
-	body{
-		overflow-y: hidden;
-	}
+    } */
     .head-content{
         text-align: center;
     }
     .full-width{
         width: 100%;
         text-align: center;
-        margin-top: 30px;
     }
     .img-radius{
         border: none;
@@ -20,10 +16,17 @@
         display: block;
         width: 150px;
         height: 150px;
-        margin: 0 auto;
+		margin: 0 auto;
+		position: relative;
     }
     .img-radius img{
         height: 100%;
+	    min-width: 100%;
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	margin-right: -50%;
+    	transform: translate(-50%, -50%);
     }
     .informasi button, .btn-blue{
         background-color: #4FC3F7;
@@ -57,11 +60,16 @@
     .action-menu a{
         text-decoration: none;
         color: #616161;
-        font-weight: 100;
-    }
+        font-weight: 500;
+    	font-size: .8em;
+    	margin-right: 20px;
+	}
+	.action-menu a:nth-last-of-type(1){
+		margin-right: 0px;
+	}
     .container{
         width: 30%;
-        min-width: 300px;
+        /* min-width: 300px; */
         padding: 10px;
         float: left;
     }
@@ -70,8 +78,22 @@
         float: left;
         overflow-y: scroll;
         overflow-x: hidden;
-        max-height: 376px;
-    }
+		max-height: 427px;
+		background-color: #fcfdff;
+	}
+	.galeri::-webkit-scrollbar, .pil-pemain::-webkit-scrollbar {
+    	width: 7px;
+	}
+	.galeri::-webkit-scrollbar-thumb, .pil-pemain::-webkit-scrollbar-thumb {
+		background: gainsboro;
+		border-radius: 10px;
+		box-shadow: inset 0 1px 1px grey;
+		cursor: pointer;
+	}
+	.galeri::-webkit-scrollbar-track, .pil-pemain::-webkit-scrollbar-track {
+		background-color: #f1f1f1;
+		border-radius: 10px;
+	}
     .galeri img{
         width: 30%;
         margin-right: 1%;
@@ -79,8 +101,9 @@
         margin-bottom: 5px;
     }
     h2{
-        font-size: 2em;
-        font-weight: 100;
+		font-size: 1.5em;
+		font-weight: 500;
+		color: dimgray;
         text-transform: capitalize;
     }
     .bottom-content{
@@ -93,25 +116,30 @@
         display: inline-block;
         float: unset;
     }
-    .informasi{
-        width: 90%;
-    }
+    /* .informasi{
+        width: 50%;
+    } */
     .informasi span{
         display: block;
-        font-weight: 100;
+		font-weight: 400;
+    	font-size: .9em;
+    	color: dimgray;
+		cursor: default;
     }
     .informasi input, .informasi textarea{
         display: block;
-        min-width: 200px;
-        width: 100%;
-        /* max-width: 250px; */
-        border: 1px solid gainsboro;
+		width:95%;
         padding: 8px;
-        margin: 5px 0px;
+        margin: 5px 0px 10px 0;
+		border: 1px solid gainsboro;
         border-radius: 5px;
-        background-color: #FAFAFA;
-        color: #616161;
-        outline: none;
+		background-color: #fcfdff;
+		outline: none;
+		font-size: .8em;
+		font-weight: 100;
+		cursor: initial;
+		font-family: 'Montserrat';
+		color: dimgray;
     }
     .full-width .informasi button, .full-width .btn-blue{
         display: inline-block;
@@ -119,7 +147,6 @@
         width: 110px;
         padding: 8px 0px;
     }
-	
 	.modal {
 		display: none; /* Hidden by default */
 		position: fixed; /* Stay in place */
@@ -133,16 +160,15 @@
 		background-color: rgb(0,0,0); /* Fallback color */
 		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	}
-
 	/* Modal Content */
 	.modal-content {
 		background-color: #fefefe;
 		margin: auto;
-		padding: 20px;
+		border-radius: 5px;
+		padding-left: 20px;
 		border: 1px solid #888;
 		width: 40%;
 	}
-
 	/* The Close Button */
 	.close {
 		color: #aaaaaa;
@@ -150,37 +176,67 @@
 		font-size: 28px;
 		font-weight: bold;
 	}
-
-	.close:hover,
-	.close:focus {
+	.close:hover, .close:focus {
 		color: #000;
 		text-decoration: none;
 		cursor: pointer;
 	}
 	.ui-autocomplete {
-		 z-index: 9999 !important;
+		z-index: 9999 !important;
+		border: 1px solid darkgrey;
+		background-color: ghostwhite;
 	}
-    </style>
-	<div class="head-content full-width">
-		<form method="POST" action="profile_upload" enctype="multipart/form-data">
+	.info-akun td{
+		padding: 0px;
+	}
+	.info-akun td:nth-of-type(1){
+		text-align: right;
+		padding: 0px 10px 0 0;
+	}
+	.gal-img{
+		width: 89px;
+		height: 89px;
+		overflow: hidden;
+		position: relative;
+		margin: 2px;
+		display: inline-block;
+		background-color: gainsboro;
+	}
+	.gal-img img{
+		width: unset;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+	}
+	.pil-pemain{
+		height: 400px;
+		overflow-y: scroll;
+	}
+	</style>
+	
+	<div class="head-content center-desktop">
+		<form method="POST" action="profile_upload" enctype="multipart/form-data" class="container" style="width:unset;float:unset;">
 			<div class="img-radius">
-				<img src="<?=base_url()?>assets/img_storage/<?=$pic?>" alt="" class="blah">
+				<img src="<?= MEIMG.$pic?>" alt="" class="blah">
 			</div>
 			<div class="full-width">
 				<label class="btn-blue" style="cursor: pointer;">
 					Ganti Foto
-					<input id="file_pic" name="pic" type="file" style="display: none;">
+					<input id="file_pic" name="pic" type="file" style="display: none;" accept="image/*">
 				</label>
 				<button class="btn-blue" type="submit" class="btn-info btn" id="submit_pic" style="display:none;border: none;cursor: pointer;" >Simpan Foto</button>
-				<a class="btn-blue" href="<?php echo base_url()?>home/logout" style="text-decoration: unset;color: white;background-color: #EC407A;border: none;cursor: pointer;">
-					Logout
-				</a>
+				<a class="btn-blue" href="<?php echo base_url()?>home/logout" style="text-decoration: unset;color: white;background-color: #EC407A;border: none;cursor: pointer;">Logout</a>
 			</div>
 			<input class="lat" name="lat" type="hidden"/>
 			<input class="lon" name="lon" type="hidden"/>
 		</form>
-    </div>
-    <div class="head-content container">
+	</div>
+	
+	<div class="center-desktop">
+	<div class="head-content container">
         <div class="action-menu">
             <h2>Menu</h2>
 			<?php
@@ -189,7 +245,7 @@
 					<a class="myBtn" onclick="return false;">
 						<div class="col-1">
 							<img style="width:50px;" src="<?=imgUrl()?>systems/player_storage/<?=$get_player["pic"]?>" alt="" srcset="">
-							<span style="color: darkgrey;"><?=$get_player["name"]?></span><br>
+							<span><?=$get_player["name"]?></span><br>
 							Pemain
 						</div>
 					</a>
@@ -206,7 +262,7 @@
 				}
 			?>
 			
-			<a target="_blank" href="<?php echo base_url()?>eyemarket/pesanan/<?php echo $_SESSION["id_member"]?>">
+			<a target="_blank" href="<?php echo base_url()?>eyemarket/pesanan/<?php echo md5($_SESSION["id_member"])?>">
 				<div class="col-1">
 					<img style="width:50px;" src="<?=base_url()?>assets/img/ic_eyemarket@2x.png" alt="" srcset="">
 					Eyemarket
@@ -219,20 +275,22 @@
 				</div>
 			</a>
         </div>
-    </div>
-    <div class="container">
+	</div>
+	<div class="container m-0" style="width:40%;">
         <h2>informasi akun</h2>
         <div class="informasi">
             <form method="POST" action="profile_upload_data">
-                <span>Nama Depan</span>
-                <input type="text" name="name" id="" value="<?=$profile["name"]?>" required>
-                <span>Nama Belakang</span>
-                <input type="text" name="fullname" id="" value="<?=$profile["fullname"]?>" required>
-                <span>Alamat</span>
-                <textarea name="address" id="" cols="30" rows="5" required><?=$profile["address"]?></textarea>
-                <span>Tentang Saya</span>
-                <textarea name="about" id="" cols="30" rows="5"><?=$profile["about"]?></textarea>
-				<button class="btn-blue" type="submit" style="border: none;cursor: pointer;">Ubah Profile</button>
+				<span>Nama Depan</span>
+				<input type="text" name="name" id="" value="<?=$profile["name"]?>" required>
+				<span>Nama Belakang</span>
+				<input type="text" name="fullname" id="" value="<?=$profile["fullname"]?>" required>
+				<span>Alamat</span>
+				<textarea name="address" id="" cols="30" rows="5" required><?=$profile["address"]?></textarea>
+				<span>Tentang Saya</span>
+				<textarea name="about" id="" cols="30" rows="5"><?=$profile["about"]?></textarea>
+				<div class="tx-c">
+				<button class="btn-blue" type="submit" style="max-width:unset; width:100%; border: none;cursor: pointer;">Ubah Profile</button>
+				</div>
             </form>
         </div>
     </div>
@@ -246,7 +304,9 @@
 					$expvideo = explode('-',$gr["video"]);
 					if($expfoto[0] == 'foto' || $expfoto[0] == 'profile'){
 			?>
-						<img src="<?=base_url()?>assets/img_storage/<?=$gr["thumb1"]?>" alt="" srcset="">
+						<div class="gal-img">
+						<img src="<?=MEIMG.$gr["thumb1"]?>" alt="" srcset="">
+						</div>
 			<?php	
 					}else if($expvideo[0] == 'video'){
 			?>
@@ -263,19 +323,19 @@
 			?>
         </div>
         <div class="bottom-content">
-			<form method="POST" action="foto_upload" enctype="multipart/form-data" style="float: left;margin-left: 25px;">
+			<form method="POST" action="foto_upload" enctype="multipart/form-data">
 				<input class="lat" name="lat" type="hidden"/>
 				<input class="lon" name="lon" type="hidden"/>
-				<label class="btn-blue" style="cursor: pointer;">
+				<label class="btn-blue" style="cursor: pointer;max-width:  unset;width: 95%;">
 					Tambah Foto
 					<input id="file_foto" name="add_foto" type="file" style="display: none;" accept="image/*">
 				</label>
 				<button class="btn-blue" id="add_foto" type="submit" style="display:none">Simpan</button>
 			</form>
-			<form method="POST" action="video_upload" enctype="multipart/form-data" style="float: right;margin-right: 25px;">
+			<form method="POST" action="video_upload" enctype="multipart/form-data" style="float: right;display:none;">
 				<input class="lat" name="lat" type="hidden"/>
 				<input class="lon" name="lon" type="hidden"/>
-				<label class="btn-blue" style="cursor: pointer;">
+				<label class="btn-blue" style="cursor: pointer;max-width:  unset;width: 95%;">
 					Tambah video
 					<input id="file_video" name="add_video" type="file" style="display: none;" accept="video/mp4">
 				</label>
@@ -283,6 +343,8 @@
 			</form>
         </div>
     </div>
+	</div>
+
 	<?php
 		if($check->num_rows()>0 && $pm["active"]=="1"){
 	?>
@@ -334,12 +396,12 @@
 			<div id="myModal" class="modal">
 				<!-- Modal content -->
 				<div class="modal-content">
-					<span class="close">&times;</span>
-					<div style="height: 400px;overflow-y: scroll;">
+					<!-- <span class="close">&times;</span> -->
+					<div class="pil-pemain">
 						<h2>Pilih Pemain</h2>
 						<div class="informasi">
 							<form method="post" action="<?=base_url("home/request_player")?>" id="reg_form_player" enctype="multipart/form-data">
-								<input style="width: 98%;" type='text' placeholder="Masukkan nama pemain yang telah terdaftar" name='player_id' value='' class='auto ui-autocomplete-input' autocomplete='off' required style="width:500px;">
+								<input style="width: 95%;" type='text' placeholder="Masukkan nama pemain yang telah terdaftar" name='player_id' value='' class='auto ui-autocomplete-input' autocomplete='off' required style="width:500px;">
 								<div id="menu-container" style="position:absolute; width: 500px;"></div>
 								<span>KTP/Kartu Pelajar/Kartu Mahasiswa/SIM:</span>
 								<input type="file" name="file_ktp" id="file_ktp" accept="image/*" required>
@@ -358,6 +420,7 @@
 								<span>Nama Ibu Kandung:</span>
 								<input type="text" name="file_ibukandung" id="file_ibukandung" required>
 								<button class="btn-blue" type="submit" style="border: none;cursor: pointer;">Submit</button>
+								<br><br>
 							</form>
 						</div>
 					</div>

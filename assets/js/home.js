@@ -120,9 +120,9 @@ $(document).ready(function(){
     });
     $("#eventsli").carousel();
         $(".left4").click(function(){
-            $("#events").carousel("prev");
+            $("#eventsli").carousel("prev");
         });
         $(".right4").click(function(){
-            $("#events").carousel("next");
+            $("#eventsli").carousel("next");
         });
 });

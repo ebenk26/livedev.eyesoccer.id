@@ -1,5 +1,4 @@
 
-
 <div class="row">
 
     <br>
@@ -115,6 +114,7 @@
                         </div>
                     </div>
                 </form>
+            </div>
     <?php        
         }
     ?>

@@ -75,6 +75,7 @@
                                 </a>
                             </td>
                             <td>
+                                <span><?= $jdwl_nxt_ystd["kompetisi"]; ?></span>
                                 <?= $jdwl_nxt_ystd["score_a"]; ?> - <?= $jdwl_nxt_ystd["score_b"]; ?>
                                 <span><?= $jdwl_nxt_ystd["lokasi_pertandingan"]; ?></span>
                             </td>
@@ -127,6 +128,7 @@
                                 </a>
                             </td>
                             <td>
+                                <span><?= $jdwl_ystd["kompetisi"]; ?></span>
                                 <?= $jdwl_ystd["score_a"]; ?> - <?= $jdwl_ystd["score_b"]; ?>
                                 <span><?= $jdwl_ystd["lokasi_pertandingan"]; ?></span>
                             </td>
@@ -174,6 +176,7 @@
                                 </a>
                             </td>
                             <td>
+                                <span><?= $jdwl_today["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_today["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_today["lokasi_pertandingan"]; ?></span>
                             </td>
@@ -225,7 +228,9 @@
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_a']; ?>" alt="">
                                 </a>
                             </td>
-                            <td><?=date("H:i",strtotime($jdwl_tmrw["jadwal_pertandingan"]))?>
+                            <td> 
+                                <span><?= $jdwl_tmrw["kompetisi"]; ?></span>
+                                <?=date("H:i",strtotime($jdwl_tmrw["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_tmrw["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
@@ -276,7 +281,9 @@
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_a']; ?>" alt="">
                                 </a>
                             </td>
-                            <td><?=date("H:i",strtotime($jdwl_nxt_tmrw["jadwal_pertandingan"]))?>
+                            <td> 
+                                <span><?= $jdwl_nxt_tmrw["kompetisi"]; ?></span>
+                                <?=date("H:i",strtotime($jdwl_nxt_tmrw["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_nxt_tmrw["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
@@ -327,7 +334,9 @@
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_a']; ?>" alt="">
                                 </a>
                             </td>
-                            <td><?=date("H:i",strtotime($jdwl_three["jadwal_pertandingan"]))?>
+                            <td> 
+                                <span><?= $jdwl_three["kompetisi"]; ?></span>
+                                <?=date("H:i",strtotime($jdwl_three["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_three["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>

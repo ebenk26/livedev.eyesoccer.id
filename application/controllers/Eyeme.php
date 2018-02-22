@@ -343,7 +343,7 @@ class Eyeme extends CI_Controller {
 	public function upload_foto()
 	{ 
 		$imgCaption  = $this->input->post('caption');
-		$uploadPath = './upload/eyeme';
+		$uploadPath = ($_SERVER['SERVER_NAME'] == 'localhost') ? './upload/eyeme' : MEFOLDER;
 		#$imageName  = $_;
 		$name      = $_FILES['upl_img']['name'];
 		$ext       = pathinfo($name,PATHINFO_EXTENSION);
@@ -362,7 +362,7 @@ class Eyeme extends CI_Controller {
 			$arr['msg'] = 'Berhasil Upload Foto';
 			$dataImg   = array('id_member' => $this->id_member,
 						'img_caption' => $imgCaption,
-						'img_name'    => $newName,
+						'img_name'    => str_replace('ori_', '',$newName),
 						'date_create' => NOW,
 						'last_update' => NOW,
 						'active'      => '1');
@@ -377,10 +377,6 @@ class Eyeme extends CI_Controller {
 
 	}
 
-	public function upload_profile(){
-
-
-	}
 	/**
 	*fungsi img::
 	*@param @id_img select id_img

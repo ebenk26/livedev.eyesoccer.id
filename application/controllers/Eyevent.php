@@ -209,7 +209,9 @@ class Eyevent extends CI_Controller {
 			                        <td>".$value['club_a']."
 			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
 			                        </td> \
-			                        <td>".$value['score_a']." - ".$value['score_b']."
+			                        <td>
+			                        	<span>".$value["kompetisi"]."</span>
+			                        	".$value['score_a']." - ".$value['score_b']."
 			                            <span>".$value["lokasi_pertandingan"]."</span>
 			                        </td>
 			                        <td>
@@ -224,7 +226,9 @@ class Eyevent extends CI_Controller {
 			                        <td>".$value['club_a']."
 			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
 			                        </td> \
-			                        <td>".date("H:i",strtotime($value["jadwal_pertandingan"]))."
+			                        <td>
+			                        	<span>".$value["kompetisi"]."</span>
+			                         	".date("H:i",strtotime($value["jadwal_pertandingan"]))."
 			                            <span>".$value["lokasi_pertandingan"]."</span>
 			                        </td>
 			                        <td>
@@ -271,7 +275,7 @@ class Eyevent extends CI_Controller {
 		$url_eyevent 	= $this->config->item('api_url')."event";
 		$event_data		= array(
 								'page' => '1',
-								'limit' => '12',
+								'limit' => '40',
 								'sortby' => 'newest',
 								'category' => '',
 		);

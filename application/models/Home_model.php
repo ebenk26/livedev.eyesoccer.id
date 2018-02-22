@@ -698,7 +698,7 @@ class Home_model extends CI_Model
 	
 	public function get_profile_member()
 	{
-		$query = $this->db->query("SELECT a.*,b.name,b.fullname,b.address,b.about FROM tbl_member_player a left join tbl_member b on b.id_member = a.id_member WHERE a.id_member='".$_SESSION["id_member"]."' LIMIT 1")->row_array();
+		$query = $this->db->query("SELECT name,fullname,address,about FROM tbl_member where id_member='".$_SESSION["id_member"]."' LIMIT 1")->row_array();
 		return $query;
 	}
 	
@@ -852,6 +852,7 @@ class Home_model extends CI_Model
                                         ")->result_array();
             return $query; 
     }
+
 }
 
 /* End of file Home_model.php */

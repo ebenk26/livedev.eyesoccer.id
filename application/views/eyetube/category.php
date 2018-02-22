@@ -1,11 +1,8 @@
-</div>
-		<style>
+<style>
 			.pagination > .active > a {
 				z-index:1;
 			}
-.time-view{
-	top: -25px;
-}
+
 .news-rcm {
     width: 690px;
 }
@@ -23,22 +20,20 @@
 .news-rcm-r2 td {
 	padding: 4.5px 0px;
 }
-		</style>
-
-
-
-		<div class="crumb">
+</style>
+		<?php
+			$link = $_SERVER['PHP_SELF'];
+			$link_array = explode('/',$link);
+		?>
+		<div class="crumb bluehover">
 			<ul>
-				<li>Home</li>
-				<li>EyeNews</li>
-				<!-- <li>Pemain</li> -->
+			<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
+			<li><a href='<?php echo base_url().'eyetube'; ?>' style='display: unset'>EyeTube</a></li>
+			<li><a href='#' style='display: unset'><?php echo str_replace('-',' ',urldecode(end($link_array)));?></a></li>
 			</ul>
 		</div>
-		<div class="desktop">
         <div class="center-desktop m-0">
-		<div class="menu-3 m-0">
-        <div class="container over-x">
-            <div class="w-max">
+		<div class="menu-3 m-0 tx-c bbg">
             <ul>
                 <?php 
                     foreach ($tube_type as $value)
@@ -52,18 +47,12 @@
                     }
                 ?>
             </ul>
-            </div>
-        </div>
-		<div class="container p-r ar-menu-3">
-			<i class="material-icons fl-l">keyboard_arrow_left</i>
-			<i class="material-icons fl-r">keyboard_arrow_right</i>
-		</div>
 
-        </div>
+        </div> 
         </div>
         <div class="center-desktop  m-0">
             <div class="m-0">
-                <div class="container ">
+                <div class="container mt-20">
 				
 					<?php
 		
@@ -173,10 +162,10 @@
 							?>							
 							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer2['url'];?>">
                             <div class="container news-rcm-d">							
-                                    <div class="nn">
-									<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $populer2['thumb']; ?>" alt="">
+                                <div style="display:block; width:100px; height:100px; float:left; overflow:hidden; position:relative;">
+									<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $populer2['thumb']; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
 									<div class="container btn-play2" style="left:30px; top:-75px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
-									</div>
+								</div>
                                 
                                 <div class="container rm">
                                     

@@ -21,7 +21,7 @@
                     <tr>
                         <td>
                             <a href="#">
-                                <img src="<?= base_url(); ?>img/eyemarket/produk/<?= $cart['image1']; ?>" alt="<?= $cart['nama']; ?>" style="width: 100px;height: 100px;">
+                                <img src="<?= MEIMG; ?><?= $cart['image1']; ?>" alt="<?= $cart['nama']; ?>" style="width: 100px;height: 100px;">
                             </a>
                         </td>
                         <td>

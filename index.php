@@ -141,6 +141,10 @@ switch (ENVIRONMENT)
  * NO TRAILING SLASH!
  */
 	$application_folder = 'application';
+	define('MEFOLDER','../../eyesoccer.id/public_html/upload/eyeme');
+	define('MARKETFOLDER','../../eyesoccer.id/public_html/upload/eyemarket');
+	define('IMGSTORAGE','../../eyesoccer.id/public_html/upload/img_storage');
+
 
 /*
  *---------------------------------------------------------------
