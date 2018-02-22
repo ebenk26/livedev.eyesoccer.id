@@ -184,53 +184,47 @@ class Home extends CI_Controller
         $file_ijazah = null;
         $file_bukurek = null;
         $file_srtrekssb = null;
+        $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "assets/img_storage/" : IMGSTORAGE . '/';
         if (isset($_FILES['file_ktp']['name']) && !empty($_FILES['file_ktp']['name'])) {
-            $file_ktp = "player_member-" . rand("1000", "9999") . "-" . $_FILES['file_ktp']['name'];
+            $file_ktp = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
             $file_ktp = preg_replace('/\s+/', '', $file_ktp);
-            move_uploaded_file($_FILES['file_ktp']['tmp_name'], pathUrl() . "systems/img_storage/" . $file_ktp);
-            $file_ktp = "systems/img_storage/" . $file_ktp;
+            move_uploaded_file($_FILES['file_ktp']['tmp_name'], $path . 'ori_' . $file_ktp);
         }
 
         if (isset($_FILES['file_akte']['name']) && !empty($_FILES['file_akte']['name'])) {
-            $file_akte = "player_member-" . rand("1000", "9999") . "-" . $_FILES['file_akte']['name'];
+            $file_akte = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
             $file_akte = preg_replace('/\s+/', '', $file_akte);
-            move_uploaded_file($_FILES['file_akte']['tmp_name'], pathUrl() . "systems/img_storage/" . $file_akte);
-            $file_akte = "systems/img_storage/" . $file_akte;
+            move_uploaded_file($_FILES['file_akte']['tmp_name'], $path . 'ori_' . $file_akte);
         }
 
         if (isset($_FILES['file_kk']['name']) && !empty($_FILES['file_kk']['name'])) {
-            $file_kk = "player_member-" . rand("1000", "9999") . "-" . $_FILES['file_kk']['name'];
+            $file_kk = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
             $file_kk = preg_replace('/\s+/', '', $file_kk);
-            move_uploaded_file($_FILES['file_kk']['tmp_name'], pathUrl() . "systems/img_storage/" . $file_kk);
-            $file_kk = "systems/img_storage/" . $file_kk;
+            move_uploaded_file($_FILES['file_kk']['tmp_name'], $path . 'ori_' . $file_kk);
         }
 
         if (isset($_FILES['file_passport']['name']) && !empty($_FILES['file_passport']['name'])) {
-            $file_passport = "player_member-" . rand("1000", "9999") . "-" . $_FILES['file_passport']['name'];
+            $file_passport = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
             $file_passport = preg_replace('/\s+/', '', $file_passport);
-            move_uploaded_file($_FILES['file_passport']['tmp_name'], pathUrl() . "systems/img_storage/" . $file_passport);
-            $file_passport = "systems/img_storage/" . $file_passport;
+            move_uploaded_file($_FILES['file_passport']['tmp_name'], $path. 'ori_' . $file_passport);
         }
 
         if (isset($_FILES['file_ijazah']['name']) && !empty($_FILES['file_ijazah']['name'])) {
-            $file_ijazah = "player_member-" . rand("1000", "9999") . "-" . $_FILES['file_ijazah']['name'];
+            $file_ijazah = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
             $file_ijazah = preg_replace('/\s+/', '', $file_ijazah);
-            move_uploaded_file($_FILES['file_ijazah']['tmp_name'], pathUrl() . "systems/img_storage/" . $file_ijazah);
-            $file_ijazah = "systems/img_storage/" . $file_ijazah;
+            move_uploaded_file($_FILES['file_ijazah']['tmp_name'], $path . 'ori_' . $file_ijazah);
         }
 
         if (isset($_FILES['file_bukurek']['name']) && !empty($_FILES['file_bukurek']['name'])) {
-            $file_bukurek = "player_member-" . rand("1000", "9999") . "-" . $_FILES['file_bukurek']['name'];
+            $file_bukurek = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
             $file_bukurek = preg_replace('/\s+/', '', $file_bukurek);
-            move_uploaded_file($_FILES['file_bukurek']['tmp_name'], pathUrl() . "systems/img_storage/" . $file_bukurek);
-            $file_bukurek = "systems/img_storage/" . $file_bukurek;
+            move_uploaded_file($_FILES['file_bukurek']['tmp_name'], $path . 'ori_' . $file_bukurek);
         }
 
         if (isset($_FILES['file_srtrekssb']['name']) && !empty($_FILES['file_srtrekssb']['name'])) {
-            $file_srtrekssb = "player_member-" . rand("1000", "9999") . "-" . $_FILES['file_srtrekssb']['name'];
+            $file_srtrekssb = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
             $file_srtrekssb = preg_replace('/\s+/', '', $file_srtrekssb);
-            move_uploaded_file($_FILES['file_srtrekssb']['tmp_name'], pathUrl() . "systems/img_storage/" . $file_srtrekssb);
-            $file_srtrekssb = "systems/img_storage/" . $file_srtrekssb;
+            move_uploaded_file($_FILES['file_srtrekssb']['tmp_name'], $path . 'ori_' . $file_srtrekssb);
         }
 
         $player_id = (explode(" - ", $_POST["player_id"]));
