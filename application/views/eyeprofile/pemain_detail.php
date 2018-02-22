@@ -33,6 +33,20 @@
                                 <td>Kewarganegaraan</td>
                                 <td>: <?php echo (!empty($res->nationality) ? $res->nationality: '-') ?></td>
                             </tr>
+							<?php 
+								if($res->status != "Profesional"){
+							?>
+							<tr>
+                                <td>Nama Ayah</td>
+                                <td>: <?php echo(!empty($res->father) ? $res->father : '-'); ?></td>
+                            </tr>
+							<tr>
+                                <td>Nama Ibu</td>
+                                <td>: <?php echo(!empty($res->mother) ? $res->mother : '-'); ?></td>
+                            </tr>
+							<?php
+								}
+							?>
                         </tbody>
                     </table>
                 </div>
@@ -51,6 +65,24 @@
                                 <td> Kontrak</td>
                                 <td>: <?php echo (empty($res->contract_range1) || empty($res->contract_range1) ? ' - ' : $res->contract_range1.'-'.$res->contract_range2)?></td>
                             </tr>
+							<?php 
+								if($res->status != "Profesional"){
+							?>
+							<tr>
+                                <td>Klub Favorit</td>
+                                <td>: <?php echo(!empty($res->fav_club) ? $res->fav_club : '-')?></td>
+                            </tr>
+							<tr>
+                                <td>Pemain Favorit</td>
+                                <td>: <?php echo(!empty($res->fav_player) ? $res->fav_player : '-')?></td>
+                            </tr>
+							<tr>
+                                <td>Pelatih Favorit</td>
+                                <td>: <?php echo(!empty($res->fav_coach) ? $res->fav_coach : '-')?></td>
+                            </tr>
+							<?php
+								}
+							?>
                         </tbody>
                     </table>
                 </div>
@@ -59,11 +91,11 @@
                         <tbody>
                             <tr>
                                 <td>Tinggi badan</td>
-                                <td>: <?php echo (!empty($res->height) ? $res->height : '')?></td>
+                                <td>: <?php echo (!empty($res->height) ? $res->height : '')?> cm</td>
                             </tr>
                             <tr>
                                 <td>Berat Badan</td>
-                                <td>: <?php echo (!empty($res->weight) ? $res->weight : '') ?></td>
+                                <td>: <?php echo (!empty($res->weight) ? $res->weight : '') ?> kg</td>
                             </tr>
                             <tr>
                                 <td>Kemampuan Kaki</td>
@@ -181,54 +213,63 @@
                         </td>
                         <?php
 
-                        if(!empty($res->position_b)){
+                        // if(!empty($res->position_b)){
                             echo ' <td width="50%">
                                         <h4>posisi lainnya</h4>
                                         <span>'.$res->position_b.'</span>
                                         
                                     </td>';
-                        } ?>
+                        // } ?>
                        
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="container">
-            <h3 class="pd-t-20">statistik</h3>
+            <h3 class="pd-t-20">Prestasi</h3>
             <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr>
-                        <th colspan="2" class="t-b-b">
-                            <div class="fl-l pd-0-10">
-                                <a href="">Kerja Sama</a>
-                            </div>
-                          
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="cap">
-                    <tr>
-                        <td>Assist</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>Operan</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>akurasi operan</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>akurasi umpan silang</td>
-                        <td>-</td>
-                    </tr>
-                    <tr>
-                        <td>Peluang</td>
-                        <td>-</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <thead>
+                        <tr>
+                            <th class="t-b-b">NO</th>
+                            <th class="t-b-b">Tahun</th>
+                            <th class="t-b-b">Turnamen/Kompetisi</th>
+                            <th class="t-b-b">Negara</th>
+                            <th class="t-b-b">Peringkat</th>
+                            <th class="t-b-b">Penghargaan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+						$no_ach = 0;
+                        if(count($res->achievement) > 0){
+
+                            foreach($res->achievement as $k => $v){
+								$no_ach++;
+                                echo '<tr>';
+                                    echo "<td>{$no}</td>";
+                                    echo "<td>{$v->year}</td>";
+                                    echo "<td>{$v->tournament}</td>";
+                                    echo "<td>{$v->country}</td>";
+                                    echo "<td>{$v->rank}</td>";
+                                    echo "<td>{$v->appreciation}</td>";
+                                echo '</tr>';
+
+                            }
+
+                        }
+                        else{
+
+                            echo '<tr>';
+
+                                echo '<td colspan="5" style="text-align:center"> Tidak ditemukan </td>';
+
+                            echo '</tr>';
+
+
+                        }
+                        ?>
+                    </tbody>
+                </table>
         </div>
         </div>
         <div class="container pd-t-20">

@@ -13,6 +13,7 @@
 		<li><a href='<?php echo base_url().'eyeprofile/klub'; ?>' style='display: unset'>Eyeprofile</a></li>
 		<li><a href='#' style='display: unset'>Pemain</a></li>
 		</ul>
+		<input type="hidden" class="hidden_subliga" value="<?php echo $this->uri->segment(4); ?>"/>
 	</div>
 	<div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
@@ -23,17 +24,34 @@
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
             </ul>
-            <select id="competition_change" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: -12px 0 2px 0;">
+            <select id="chained_kompetisi" name="" selected="true" class="slc-musim fl-r" onchange="if(this.options[this.selectedIndex].value != 'Liga Usia Muda'){window.location = this.options[this.selectedIndex].value};" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
 				<?php
 					foreach($get_all_kompetisi as $row){
+						if($row['competition']=='Liga Usia Muda'){
 				?>
-					<option value="<?php echo base_url()."eyeprofile/pemain/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+						<option value="Liga Usia Muda"><?php echo $row['competition'];?></option>';
 				<?php
+						}else{
+				?>
+						<option value="<?php echo base_url()."eyeprofile/pemain/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+				<?php
+						}
 					}
 				?>
 					<option value="<?php echo base_url()."eyeprofile/pemain/non liga"?>">Non Liga</option>
-                </select>
+			</select>
+				
+			<select id="chained_liga" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: 0px 0px 2px;display:none;">
+				<option value="">--Pilih Kategori Liga--</option>
+			<?php
+				foreach($get_all_liga as $row){
+			?>
+					<option value="<?php echo base_url()."eyeprofile/pemain/Liga Usia Muda/".$row['nama_liga']?>"><?php echo $row['nama_liga'];?></option>';  
+			<?php
+				}
+			?>
+			</select>
         </div>
     </div>
     <div class="center-desktop m-0">
@@ -45,7 +63,7 @@
                     <table>
                         <tr>
                             <td>Level Liga</td>
-                            <td>: <?php echo $title_liga; ?></td>
+                            <td>: <?php echo (!empty($nama_subliga) ? $nama_subliga : $title_liga); ?></td>
                             <input type="hidden" class="hidden_title" value="<?php echo $title_liga; ?>"/>
                         </tr>
                         <tr>
@@ -105,15 +123,22 @@
 	</table>
     </div>
 	<script>
+		$('#chained_kompetisi').on('change', function(){
+			var value    = $(this).val();
+			if(value=='Liga Usia Muda'){
+				$("#chained_liga").show();
+			}
+		})
 		var url = $(location).attr('href');
 		// var fn = url.split('/').reverse()[0];
 		var fn = $(".hidden_title").val();
+		var subliga = $(".hidden_subliga").val();
 		$('#example').DataTable( {
   			"order":[[1,"asc"]],
             "processing": true,
             "serverSide": true,
             "ajax":{
-                url :"<?php echo base_url()?>eyeprofile/get_list_pemain/"+fn, // json datasource
+                url :"<?php echo base_url()?>eyeprofile/get_list_pemain/"+fn+'/'+subliga, // json datasource
                 type: "post",  // method  , by default get
             },
 			"language": {

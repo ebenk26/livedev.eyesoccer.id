@@ -454,6 +454,7 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_list_pemain($requestData,$liga)
 	{
+		$subliga = "";
 		// print_r($requestData['search']['regex']);exit();
 		$columns = array( 
 		// datatable column index  => database column name
@@ -481,6 +482,9 @@ class Eyeprofile_model extends CI_Model
 		if($liga == 'non liga'){
 			$liga = 'SSB / Akademi Sepakbola';
 		}
+		if($this->uri->segment(4)){
+			$subliga = " and c.nama_liga = '".urldecode($this->uri->segment(4))."'";
+		}
 		$query = $this->db->query("SELECT
 										a.player_id,
 										a.club_id,
@@ -498,8 +502,10 @@ class Eyeprofile_model extends CI_Model
 										tbl_player a
 									LEFT JOIN
 										tbl_club b on a.club_id = b.club_id
+									LEFT JOIN
+										tbl_liga c on b.id_liga = c.id_liga
 									WHERE
-										b.competition = '".$liga."'
+										b.competition = '".$liga."' and b.active = 1 ".$subliga."
 										".$sql."
 										");
 		$totalData = count($query->result_array());
@@ -522,9 +528,12 @@ class Eyeprofile_model extends CI_Model
 										tbl_player a
 									LEFT JOIN
 										tbl_club b on a.club_id = b.club_id
+									LEFT JOIN
+										tbl_liga c on b.id_liga = c.id_liga
 									WHERE
-										b.competition = '".$liga."'
+										b.competition = '".$liga."' and b.active = 1 ".$subliga."
 									".$sql." order by ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."");
+		
 		$totalFiltered=$query->num_rows();
 		if($requestData['start']==0){
 			$i=1;
@@ -597,7 +606,7 @@ class Eyeprofile_model extends CI_Model
 									b.name as nama_club,b.logo as logo_club 
 									from tbl_official_team a
 									join tbl_club b on a.club_now=b.club_id
-									where b.competition ='".$liga."'
+									where b.competition ='".$liga."' and b.active = 1
 										".$sql."
 										");
 		$totalData = count($query->result_array());
