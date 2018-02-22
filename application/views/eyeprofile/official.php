@@ -5,9 +5,12 @@
     }
 	input{
 		font-size: .95em !important;
-	}
+    }
+    body{
+        margin-top: -10px;
+    }
 </style>
-	<div class="crumb bluehover">
+	<div class="crumb">
 		<ul>
 		<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
 		<li><a href='<?php echo base_url().'eyeprofile/klub'; ?>' style='display: unset'>Eyeprofile</a></li>
