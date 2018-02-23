@@ -37,6 +37,9 @@ body{
 .pd-b-100{
     padding-bottom: 100px;
 }
+input:hover, input:focus{
+    box-shadow: 0 0 5px gainsboro;
+}
 .carous .more>a, .carous .title, .carous .more, .carous i, .o, .bx-nav i:hover, .des h3{
     color: #FF9100;    
 }
@@ -2025,12 +2028,15 @@ ul, li {
     height: 140px;
     overflow: hidden;
     border-radius: 50%;
+    position: relative;
 }
 .me-profil-foto img{
-    min-height: 100%;
-    width: unset;
-    border-radius: unset;
-    max-width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 .uname{
     font-size: 18pt;
@@ -2120,6 +2126,9 @@ ul, li {
     float: left;
     font-size: 17px;
     font-weight: 600;   
+}
+.me-sub span, .uname, .desc-me-profile, .me-profile>ul>li>table td{
+    cursor: default;
 }
 .me-explr-find{
     width: 284px;
@@ -2798,7 +2807,7 @@ loading animation
     
     cursor:pointer !important;
 }
-.click-like{
+.click-like, .me-post, .tengah{
     cursor: pointer;
 }
 .notif-link{
