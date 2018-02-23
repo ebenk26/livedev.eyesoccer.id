@@ -68,8 +68,8 @@
             <h2 class="title ep">EyeProfile</h2>
             <hr class="x-ep">
             <span>
-                <a href="<?php echo base_url()?>eyeprofile/klub" class="kl">Klub Lainnya</a>
-                <i class="material-icons r-kl">keyboard_arrow_right</i>                                
+                <a href="<?php echo base_url()?>eyeprofile/klub"><span class="kl">Klub Lainnya</span>
+                <i class="material-icons r-kl">keyboard_arrow_right</i>                       </a>         
             </span>            
             <div id="epSlide" class="carousel slide">
                 <div role="listbox" class="carousel-inner" style="height: 165px;overflow:  hidden;">                    
@@ -408,8 +408,9 @@
 					<div role="listbox" class="carousel-inner">                    
                         <div id="star" class="box item active">
                             <div class="box-vl pd-b-10">
-                                <a href="<?=base_url()?>eyetube" class="vl">Video Lainnya</a>
-                                <i class="material-icons r-vl">keyboard_arrow_right</i>                                
+                                <a href="<?=base_url()?>eyetube"><span class="vl">Video Lainnya</span>
+								<i class="material-icons r-vl">keyboard_arrow_right</i>        
+								</a>                        
                             </div>
 							<?php
 							foreach ($eyetube_stars as $stars)
@@ -512,7 +513,7 @@
 							<p class="et-st-det"><?php echo $eyenews_main->title; ?></p>
 						</div>					
                     <!--<img class="v-et-2 w-100" src="assets/img/video-small.png" alt="">-->
-					<div style="width:100%;height:374px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100 lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
+					<div class="container" style="width:100%;height:345px;"><img style="margin-bottom:-40px !important;" class="v-et-2 w-100 lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $eyenews_main->thumb1; ?>" alt="<?php echo $eyenews_main->title; ?>" ></div>
 					</a>
                     <div class="h-berita-terkait" style="margin:40px 0;height:135px;overflow:hidden;">
                         <h3 class="mb-10">Berita Terkait</h3>
@@ -569,27 +570,34 @@
                             <div role="listbox" class="carousel-inner">                    
                                 <div id="tab_populer" class="box item active">
 									<x>
-                                        <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
-                                        <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
-                                    </x>
+									<a href="<?=base_url()?>eyenews">
+                                        <span>Berita Lainnya</span>
+										<i class="material-icons r-tab2">keyboard_arrow_right</i>
+										</a>                                
+									</x>
 								<?php
 								foreach($eyenews_populer as $populer){
 								?>
                                     <div class="rek-ber">
+										<a href="<?=base_url().'eyenews/detail/'.$populer['url']; ?>">
 										<div class="rek-ber-c">
 											<!--<img class="lazy" src="assets/img/video-small.png" style="width:150px" alt="">-->
 											<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img class="lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $populer['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
-											<div class="container" style="width: 70%;float:  right;">
+											<div class="container" style="width: 70%;float:  right;"><a href="<?=base_url().'eyenews/detail/'.$populer['url']; ?>">
 												<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$populer['createon'];?></span>
-											<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
-												<a href="<?=base_url().'eyenews/detail/'.$populer['url']; ?>" style="text-decoration: unset;color:black;"><?=$populer['title'];?>
-												</a>
-											</h1>
-											<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
-												$keterangan = strip_tags($populer['description']);
-												echo word_limiter($keterangan,25);
-											?></p></div>
-										</div>                                      
+												<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
+													<a href="<?=base_url().'eyenews/detail/'.$populer['url']; ?>" style="text-decoration: unset;color:black;"><?=$populer['title'];?>
+													</a>
+												</h1>
+												<a href="<?=base_url().'eyenews/detail/'.$populer['url']; ?>">
+												<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
+													$keterangan = strip_tags($populer['description']);
+													echo word_limiter($keterangan,25);
+												?></p>
+												</a></a>
+											</div>
+										</div>    
+									</a>                                  
                                     </div>
 								<?php
 								}
@@ -605,18 +613,24 @@
 								?>
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
+										<a href="<?=base_url().'eyenews/detail/'.$rekomendasi['url']; ?>">
 										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img class="lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $rekomendasi['thumb1']; ?>"style="width:100%; min-height:100%;" alt=""></div>
 										<div class="container" style="width: 70%;float:  right;">	
-										<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$rekomendasi['createon'];?></span>
-										<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
+										<a href="<?=base_url().'eyenews/detail/'.$rekomendasi['url']; ?>">
+											<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$rekomendasi['createon'];?></span>
+											<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
 												<a href="<?=base_url().'eyenews/detail/'.$rekomendasi['url']; ?>" style="text-decoration: unset;color:black;">
 												<?=$rekomendasi['title'];?>
 												</a>
 											</h1>
+											<a href="<?=base_url().'eyenews/detail/'.$rekomendasi['url']; ?>">
 											<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
 												$keterangan = strip_tags($rekomendasi['description']);
 												echo word_limiter($keterangan,15);
-											?></p></div>
+											?></p></a>
+										</a>
+										</div>
+										</a>
 										</div>
                                     </div>
 									<?php
@@ -633,18 +647,25 @@
 								?>
                                     <div class="rek-ber">
 										<div class="rek-ber-c">
+										<a href="<?=base_url().'eyenews/detail/'.$muda['url']; ?>">
 										<div style="width: 160px;height: 100px;overflow:  hidden;display:  inline-block;"><img class="lazy" src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $muda['thumb1']; ?>" style="width:100%; min-height:100%;" alt=""></div>
 											<div class="container" style="width: 70%;float:  right;">	
-										<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$muda['createon'];?></span>
-											<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
-												<a href="<?=base_url().'eyenews/detail/'.$muda['url']; ?>" style="text-decoration: unset;color:black;">
-												<?=$muda['title'];?>
+												<a href="<?=base_url().'eyenews/detail/'.$muda['url']; ?>">
+												<span style="font-size: .65em;color: gray;font-weight: 500;"><?=$muda['createon'];?></span>
+												<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 40px;overflow: hidden;">
+													<a href="<?=base_url().'eyenews/detail/'.$muda['url']; ?>" style="text-decoration: unset;color:black;">
+													<?=$muda['title'];?>
+													</a>
+												</h1>
+												<a href="<?=base_url().'eyenews/detail/'.$muda['url']; ?>">
+												<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
+													$keterangan = strip_tags($muda['description']);
+													echo word_limiter($keterangan,15);
+												?></p>
 												</a>
-											</h1>
-											<p style="font-size: .7em;color: #aba6a6;height: 32px;overflow: hidden;"><?php
-												$keterangan = strip_tags($muda['description']);
-												echo word_limiter($keterangan,15);
-											?></p></div>
+												</a>
+											</div>
+										</a>
 										</div>
                                     </div>
 									<?php
@@ -671,7 +692,9 @@
 									<h1 style="line-height: 1em;font-size: 1em;font-weight: 500;margin-top: 1px;height: 34px;overflow: hidden;"><?= $produk['nama']; ?></h1>
 									<span class="price" style="font-size: .7em;color: gray;font-weight: 400;text-transform: uppercase;top: 20px;">HARGA</span>
 									<p class="prices" style="font-size: 1em;color: black;font-weight: 500;margin:  0;">Rp.<?= number_format($produk['harga'],0,',','.'); ?></p>
-									<a href="<?= base_url(); ?>eyemarket/detail/<?= $produk['toko']; ?>/<?= $produk['title_slug']; ?>" style="text-decoration:  none;color: #ff9900;font-weight:  500;"><button type="text" class="beli" style="float:  right;position:  relative;top: -25px;">Beli</a></button>
+									<a href="<?= base_url(); ?>eyemarket/detail/<?= $produk['toko']; ?>/<?= $produk['title_slug']; ?>" style="text-decoration:  none;color: #ff9900;font-weight:  500;">
+										<button type="text" class="beli" style="float:  right;position:  relative;top: -25px;">Beli</button>
+									</a>
 								</div>
 								
 							</div>
@@ -694,8 +717,10 @@
             <h2 class="title ee">EyeVent</h2>
             <hr class="x-ee">
             <span>
-                <a href="<?=base_url()?>eyevent" class="el">Event Lainnya</a>
-                <i class="material-icons r-el">keyboard_arrow_right</i>                                
+				<a href="<?=base_url()?>eyevent">
+				<span class="el">Event Lainnya</span>
+				<i class="material-icons r-el">keyboard_arrow_right</i>                                
+				</a>
             </span>
             <div class="container">
                 <div id="evSlide" class="carousel slide t-30" style="width: 100% !important;overflow:hidden;height: 250px;">

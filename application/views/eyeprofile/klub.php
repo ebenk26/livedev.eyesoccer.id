@@ -14,7 +14,7 @@
 	}
 </style>
         <div class="center-desktop m-0">
-			<div class="crumb bluehover">
+			<div class="crumb">
 				<ul>
 				<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
 				<li><a href='<?php echo base_url().'eyeprofile/klub'; ?>' style='display: unset'>Eyeprofile</a></li>
@@ -28,7 +28,7 @@
                     <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
                     <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
-            </ul>
+				</ul>
                 <select id="chained_kompetisi" name="" selected="true" class="slc-musim fl-r" onchange="if(this.options[this.selectedIndex].value != 'Liga Usia Muda'){window.location = this.options[this.selectedIndex].value};" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
 				<?php
