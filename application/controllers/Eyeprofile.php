@@ -106,6 +106,29 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}
 	
+	public function klub_detail($url = '')
+    {
+        if ($url == "") {
+            redirect("eyeprofile/klub/Liga Indonesia 1");
+        }
+        $data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+        $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
+        $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
+        $data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);
+        $data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);
+        $data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['name']);
+        $data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);
+        $data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);
+        $data['get_gallery'] = $this->Eyeprofile_model->get_gallery_club($data['get_klub_detail_row_array']['club_id']);
+        $data['products'] = $this->Home_model->get_all_product();
+        $data['kanal'] = "home";
+        $this->load->view('config-session', $data);
+        $data["body"] = $this->load->view('eyeprofile/klub_pemain', $data, true);
+        $this->load->view('template/static', $data);
+    }
+	
 	public function pemain($liga=null)
 	{
 		if($liga==null){
