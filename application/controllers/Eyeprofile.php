@@ -87,7 +87,7 @@ class Eyeprofile extends CI_Controller {
 			$data["title_liga"] = $nama_liga;
 			$nama_liga_event = 'Indonesia Junior League U-11';
 			$cat_liga = $nama_liga;
-			$nama_liga = "Liga Usia Muda";
+			$nama_liga = "Liga Usia Muda"; 
 		}
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub,$cat_liga);
 		$data['avg_year'] = $this->Eyeprofile_model->get_club_liga_avggyear($nama_liga,$jml_klub,$cat_liga);

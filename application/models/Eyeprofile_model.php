@@ -56,7 +56,7 @@ class Eyeprofile_model extends CI_Model
 									GROUP BY a.club_id ASC LIMIT 18")->result_array();
 		return $query;
 	}
-	
+	 
 	public function get_club_liga($liga,$limit=null,$cat_liga=null)
 	{
 		if($this->uri->segment(4) && !is_numeric($this->uri->segment(4))){

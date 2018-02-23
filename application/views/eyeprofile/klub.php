@@ -72,7 +72,7 @@
                             <td>: <?php echo $title_liga; ?></td>
                         </tr>
                         <tr>
-                            <td>Jumlah Klub</td>
+                            <td>Jumlah Klub</td> 
                             <td>: <?php echo count($club_main)?> Klub</td>
                         </tr>
                         <tr>
