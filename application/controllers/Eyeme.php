@@ -343,11 +343,9 @@ class Eyeme extends CI_Controller {
 	public function upload_foto()
 	{ 
 		$imgCaption  = $this->input->post('caption');
-		$uploadPath = ($_SERVER['SERVER_NAME'] == 'localhost') ? './upload/eyeme' : MEFOLDER;
-		#$imageName  = $_;
-		$name      = $_FILES['upl_img']['name'];
-		$ext       = pathinfo($name,PATHINFO_EXTENSION);
-		$newName   = 'ori_'.date('dmyGis').'.'.$ext;
+		$uploadPath = ($_SERVER['SERVER_NAME'] == 'localhost') ? './img/img_storage' : MEFOLDER;
+		$name      = file_name('upl_img');
+		$newName   = 'ori_'.$name;
 		$maxSize   = 3036;
 		$maxWidth  = 3000;
 		$maxHeight = 3000; 
