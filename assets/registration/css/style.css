@@ -22,6 +22,9 @@ body{
 .t-8, .r-ttl, .ttl, .t-40, .rek-ber-c>.price, .tab2>x>a, .r-tab2, .c-em-content2, .h-berita-terkait, .r-kl, .el, .r-el, .kl, .r-vl, .t-et-content2, .t-en-content2, .v-et-2, .t-55, .bx-nav, .des, .ctn-pemain h3, .img-title, .x-et, .x-ep, .x-en, .x-ee, .x-em, .x-emar, .x-c i, .carous x, .carous i, .carous p, .box-content, .ev-box-content, .navigate i, .detail table, .carous .c{
     position: relative;
 }
+input:hover, input:focus, textarea:hover, textarea:focus{
+    box-shadow: 0 0 5px gainsboro;
+}
 .i-l-pertandingan, .i-r-pertandingan{
     position: absolute;
 }

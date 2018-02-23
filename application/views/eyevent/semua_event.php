@@ -4,7 +4,7 @@
     }
     </style>
     <div class="fl-l">
-        <h4 style="color: rgb(61, 139, 61)">Event Lainnya</h4>
+        <h4 style="color: rgb(61, 139, 61); cursor: default !important;">Event Lainnya</h4>
     </div>
 
     <div class="container ">
