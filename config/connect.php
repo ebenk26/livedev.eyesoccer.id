@@ -1,59 +1,62 @@
 <?php ob_start();
 session_start();
-$host="localhost";
-$user="root";
-$pass="usDKyVxiXLjZsVrq";
-$db="admin_eyesoccer";
+$host = "localhost";
+$user = "root";
+$pass = "usDKyVxiXLjZsVrq";
+$db = "admin_eyesoccer";
 
-if($_SERVER['SERVER_PORT'] !== 443 &&
-   (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off')) {
-  header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-  exit;
-}
+/*if ($_SERVER['SERVER_PORT'] !== 443 && (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off')) {
+    header('Location:' . $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+    exit;
+}*/
+
 function getUserIP()
 {
-    $client  = @$_SERVER['HTTP_CLIENT_IP'];
+    $client = @$_SERVER['HTTP_CLIENT_IP'];
     $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
-    $remote  = $_SERVER['REMOTE_ADDR'];
+    $remote = $_SERVER['REMOTE_ADDR'];
 
-    if(filter_var($client, FILTER_VALIDATE_IP))
-    {
+    if (filter_var($client, FILTER_VALIDATE_IP)) {
         $ip = $client;
-    }
-    elseif(filter_var($forward, FILTER_VALIDATE_IP))
-    {
+    } elseif (filter_var($forward, FILTER_VALIDATE_IP)) {
         $ip = $forward;
-    }
-    else
-    {
+    } else {
         $ip = $remote;
     }
 
     return $ip;
 }
 
-
 $ip = getUserIP();
-
-$con=mysqli_connect($host,$user,$pass,$db);
-$base_url="https://".$_SERVER['HTTP_HOST']."/beta.eyesoccer.id" ;
+$con = mysqli_connect($host, $user, $pass, $db);
 date_default_timezone_set("Asia/Jakarta");
 
 $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-$actual_link = "http://".$_SERVER["HTTP_HOST"].$uri_parts[0];
-$device_detail=$_SERVER["HTTP_USER_AGENT"];
+$actual_link = "http://" . $_SERVER["HTTP_HOST"] . $uri_parts[0];
+$device_detail = $_SERVER["HTTP_USER_AGENT"];
 
-$device_agent="Dekstop";
-function isMobile() {
+$device_agent = "Dekstop";
+function isMobile()
+{
     return preg_match("/(iPhone|iPod|iPad|Android|BlackBerry|android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
+
 // If the user is on a mobile device, redirect them
-if(isMobile()){
-$device_agent="Mobile";
+if (isMobile()) {
+    $device_agent = "Mobile";
 }
-$cek=mysqli_num_rows(mysqli_query($con,"SELECT * FROM tbl_analytic WHERE session_ip='".$ip."' AND url='".$actual_link."' AND date='".date("Y-m-d")."'"));
-if($cek<1)
-{
-	mysqli_query($con,"INSERT INTO tbl_analytic SET session_ip='".$ip."',url='".$actual_link."',date='".date("Y-m-d")."',device='".$device_agent."',device_detail='".$device_detail."'");
+
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    $base_url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] . "/project/aplikasi/eyesoccer/liveeye/beta.eyesoccer.id";
+    define('MEIMG', $base_url . '/img/img_storage/ori_');
+} else {
+    $base_url = $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'];
+    define('MEIMG', 'http://static.eyesoccer.id/v1/cache/images/');
 }
+
+/*$cek = mysqli_num_rows(mysqli_query($con, "SELECT * FROM tbl_analytic WHERE session_ip='" . $ip . "' AND url='" . $actual_link . "' AND date='" . date("Y-m-d") . "'"));
+if ($cek < 1) {
+    mysqli_query($con, "INSERT INTO tbl_analytic SET session_ip='" . $ip . "',url='" . $actual_link . "',date='" . date("Y-m-d") . "',device='" . $device_agent . "',device_detail='" . $device_detail . "'");
+}*/
+
 ?>

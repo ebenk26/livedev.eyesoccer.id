@@ -184,46 +184,46 @@ class Home extends CI_Controller
         $file_ijazah = null;
         $file_bukurek = null;
         $file_srtrekssb = null;
-        $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "assets/img_storage/" : IMGSTORAGE . '/';
+        $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "img/img_storage/" : IMGSTORAGE . '/';
         if (isset($_FILES['file_ktp']['name']) && !empty($_FILES['file_ktp']['name'])) {
-            $file_ktp = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
-            $file_ktp = preg_replace('/\s+/', '', $file_ktp);
+            $file_name = file_name('file_ktp');
+            $file_ktp = "player_member-" . $file_name;
             move_uploaded_file($_FILES['file_ktp']['tmp_name'], $path . 'ori_' . $file_ktp);
         }
 
         if (isset($_FILES['file_akte']['name']) && !empty($_FILES['file_akte']['name'])) {
-            $file_akte = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
-            $file_akte = preg_replace('/\s+/', '', $file_akte);
+            $file_name = file_name('file_akte');
+            $file_akte = "player_member-" . $file_name;
             move_uploaded_file($_FILES['file_akte']['tmp_name'], $path . 'ori_' . $file_akte);
         }
 
         if (isset($_FILES['file_kk']['name']) && !empty($_FILES['file_kk']['name'])) {
-            $file_kk = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
-            $file_kk = preg_replace('/\s+/', '', $file_kk);
+            $file_name = file_name('file_kk');
+            $file_kk = "player_member-" . $file_name;
             move_uploaded_file($_FILES['file_kk']['tmp_name'], $path . 'ori_' . $file_kk);
         }
 
         if (isset($_FILES['file_passport']['name']) && !empty($_FILES['file_passport']['name'])) {
-            $file_passport = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
-            $file_passport = preg_replace('/\s+/', '', $file_passport);
-            move_uploaded_file($_FILES['file_passport']['tmp_name'], $path. 'ori_' . $file_passport);
+            $file_name = file_name('file_passport');
+            $file_passport = "player_member-" . $file_name;
+            move_uploaded_file($_FILES['file_passport']['tmp_name'], $path . 'ori_' . $file_passport);
         }
 
         if (isset($_FILES['file_ijazah']['name']) && !empty($_FILES['file_ijazah']['name'])) {
-            $file_ijazah = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
-            $file_ijazah = preg_replace('/\s+/', '', $file_ijazah);
+            $file_name = file_name('file_ijazah');
+            $file_ijazah = "player_member-" . $file_name;
             move_uploaded_file($_FILES['file_ijazah']['tmp_name'], $path . 'ori_' . $file_ijazah);
         }
 
         if (isset($_FILES['file_bukurek']['name']) && !empty($_FILES['file_bukurek']['name'])) {
-            $file_bukurek = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
-            $file_bukurek = preg_replace('/\s+/', '', $file_bukurek);
+            $file_name = file_name('file_bukurek');
+            $file_bukurek = "player_member-" . $file_name;
             move_uploaded_file($_FILES['file_bukurek']['tmp_name'], $path . 'ori_' . $file_bukurek);
         }
 
         if (isset($_FILES['file_srtrekssb']['name']) && !empty($_FILES['file_srtrekssb']['name'])) {
-            $file_srtrekssb = "player_member-" . rand("1000", "9999") . "-" . md5(rand("1000", "9999"));
-            $file_srtrekssb = preg_replace('/\s+/', '', $file_srtrekssb);
+            $file_name = file_name('file_srtrekssb');
+            $file_srtrekssb = "player_member-" . $file_name;
             move_uploaded_file($_FILES['file_srtrekssb']['tmp_name'], $path . 'ori_' . $file_srtrekssb);
         }
 
@@ -500,8 +500,7 @@ class Home extends CI_Controller
             $return = 'File too large. Maximum file size is 1MB.';
         } else {
             $allowed = array('gif', 'png', 'jpg', 'jpeg');
-            $filename = $_FILES['pic']['name'];
-            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            $filename = file_name('pic');
             if (!in_array($ext, $allowed)) {
                 echo 'error';
                 exit();
@@ -511,8 +510,8 @@ class Home extends CI_Controller
                 $lat = $_POST['lat'];
                 $lon = $_POST['lon'];
                 $date = date("Y-m-d H:i:s");
-                $pic = "foto-" . rand("1000", "9999") . "-" . date('dmYhis') . '.' . $ext;
-                $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "assets/img_storage/" : IMGSTORAGE . '/';
+                $pic = "foto-" . $filename;
+                $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "img/img_storage/" : IMGSTORAGE . '/';
                 move_uploaded_file($_FILES['pic']['tmp_name'], $path . 'ori_' . $pic);
                 // var_dump(pathUrl());exit();
                 $last_id = $_SESSION["member_id"];
@@ -549,8 +548,7 @@ class Home extends CI_Controller
             $return = 'File too large. Maximum file size is 1MB.';
         } else {
             $allowed = array('gif', 'png', 'jpg', 'jpeg');
-            $filename = $_FILES['add_foto']['name'];
-            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            $filename = file_name('add_foto');
             if (!in_array($ext, $allowed)) {
                 echo 'error';
                 exit();
@@ -560,9 +558,8 @@ class Home extends CI_Controller
                 $lat = $_POST['lat'];
                 $lon = $_POST['lon'];
                 $date = date("Y-m-d H:i:s");
-                $pic = "foto-" . rand("1000", "9999") . "-" . date('dmYhis') . '.' . $ext;
-                // $pic = preg_replace('/\s+/', '', $pic);
-                $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "assets/img_storage/" : IMGSTORAGE . '/';
+                $pic = "foto-" . $filename;
+                $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "img/img_storage/" : IMGSTORAGE . '/';
                 move_uploaded_file($_FILES['add_foto']['tmp_name'], $path . 'ori_' . $pic);
                 $last_id = $_SESSION["member_id"];
                 $post_data = array(

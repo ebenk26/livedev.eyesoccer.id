@@ -167,38 +167,31 @@ class Eyeprofile extends CI_Controller {
 	}
 	
 	public function pemain_detail($id=''){
-		if($id=="")
-		{
-			redirect("eyeprofile/pemain");			
-		}
-
-		
-		$data["meta"]["title"]  ="";
-		$data["meta"]["image"]  =base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-		
-		#$data["page"]="eyeprofile";
-		$data["pid"]   = $id;
-
-		$url  = $this->config->item('api_url')."profile/{$id}";
-		$cred = $this->config->item('credential');
-
-		$event_data	= array(
-							'startdate' => '',
-							'enddate' => '',
-							'related' => true,
-		);
-		$obj      = $this->excurl->remoteCall($url,$cred,$event_data);
-
-		$response = json_decode($obj);
-
-		
-
-		$data["kanal"] = 'eyeprofile';
-		$data['res']   = $response->data;
-		$data['body']  = $this->load->view('eyeprofile/pemain_detail',$data,true);
-		
-		$this->load->view('template/static',$data);	
+		if ($id == "") {
+            redirect("eyeprofile/pemain");
+        }
+        $data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+        #$data["page"] = "eyeprofile";
+        $data["pid"] = $id;
+        $url = $this->config->item('api_url') . "profile/{$id}";
+        $cred = $this->config->item('credential');
+        $event_data = array(
+            'startdate' => '',
+            'enddate' => '',
+            'related' => true,
+        );
+        $obj = $this->excurl->remoteCall($url, $cred, $event_data);
+        $response = json_decode($obj);
+        if ($response AND $response->data) {
+            $data["kanal"] = 'eyeprofile';
+            $data['res'] = $response->data;
+            $data['body'] = $this->load->view('eyeprofile/pemain_detail', $data, true);
+            $this->load->view('template/static', $data);
+        } else {
+            redirect('home');
+        }
 
 
 		/*$data['club_header'] = $this->Eyeprofile_model->get_club_header();

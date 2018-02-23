@@ -59,7 +59,7 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_club_liga($liga,$limit=null,$cat_liga=null)
 	{
-		if(!is_numeric($this->uri->segment(4))){
+		if($this->uri->segment(4) && !is_numeric($this->uri->segment(4))){
 			$compt = "and d.nama_liga='".urldecode($this->uri->segment(4))."'";
 		}else{
 			$compt = "and a.competition='".$liga."'";

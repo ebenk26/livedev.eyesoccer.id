@@ -37,8 +37,11 @@ nav{
     -webkit-font-smoothing: antialiased;
     outline: none;
 }
-a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option{
+a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .ev-box-content img, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option{
     cursor: pointer !important;
+}
+.r, .s, .t, .title, h3.o, .h-berita-terkait>h3, .jp, .t-live, .x-c span {
+    cursor: default !important;
 }
 a{
     text-decoration: none;
@@ -55,6 +58,9 @@ label>input{
     padding: 5px 8px;
     font-weight: 500;
     color: #333;
+}
+select:hover{
+    box-shadow: 0 0 5px gainsboro;
 }
 button, input{
     background-color: transparent;
@@ -397,6 +403,7 @@ nav .center-desktop, .x-m{
     border-radius: 9px;
     margin: 0px 10px;
     background-color: gainsboro;
+    border: 1px solid #f3f3f3;
 }
 .ev-box-content>img{
 	width: 100%;
@@ -584,7 +591,7 @@ nav .center-desktop, .x-m{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );    
 }
 .v-et-2{
-    bottom: 91px;
+    bottom: 91px;background-color: gainsboro;
 }
 .v-et-100{
     bottom: 100px;
@@ -780,6 +787,9 @@ nav .center-desktop, .x-m{
     right: -15px;
     font-size: .8em;
     font-weight: 500;
+}
+.box>x>a:hover{
+    color: rgb(200, 0, 0);
 }
 .r-tab2{
     top: 8px;
@@ -2173,7 +2183,7 @@ ul, li {
     filter: grayscale(.6);
     cursor: pointer;
 }
-.vid-box-vl-img img:hover{
+.vid-box-vl:hover .vid-box-vl-img img{
     filter: unset;
 }
 .vid-box-vl .h41{
@@ -2209,7 +2219,7 @@ ul, li {
     border: 1px solid #FFB300;
     color: #FFB300;
 }
-.beli:hover, .beli a:hover{
+.beli:hover {
     background-color: #ffd400;
     border-color: #ffd400;
     color: white !important;
@@ -4795,6 +4805,9 @@ height: 100%;
     color: #039BE5 !important;
     border-bottom: 4px solid #039BE5 !important;
     padding: 3px !important;
+}
+.orangehover a:hover, .orangehover li:hover{
+    color: orange;
 }
 .redhover a:hover, .redhover li:hover{
     color: rgb(200, 0, 0) !important;

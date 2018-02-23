@@ -20,6 +20,9 @@
 .news-rcm-r2 td {
 	padding: 4.5px 0px;
 }
+body{
+        margin-top: -10px;
+    }
 </style>
 		<?php
 			$link = $_SERVER['PHP_SELF'];
