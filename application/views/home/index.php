@@ -174,8 +174,8 @@
             </div>
         <div class="pemain">
             <div class="bx-nav">
-                <i class="material-icons left i-bx-nav" href="#topPemain" role="button">keyboard_arrow_left</i>
-                <i class="material-icons right i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
+                <i class="material-icons leftp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_left</i>
+                <i class="material-icons rightp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
             <h3 class="o">Pemain Paling Banyak Dilihat</h3>
             <div class="carousel slide" id="topPemain" >

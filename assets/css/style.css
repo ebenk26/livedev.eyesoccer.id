@@ -4362,23 +4362,23 @@ ey{
     border-bottom: 1px solid gainsboro;
     /* padding-bottom: 10px; */
     margin-top: 20px;
-    max-height: 80px;
-    overflow: hidden; 
+    /* max-height: 80px;
+    overflow: hidden;  */
     -webkit-transition: max-height 10s; 
     -moz-transition: max-height 10s; 
     -ms-transition: max-height 10s; 
     -o-transition: max-height 10s; 
     transition: max-height 10s ease-in-out; 
 }
-.siber:hover, .siber:active, .siber:nth-of-type(1){
+/* .siber:hover, .siber:active, .siber:nth-of-type(1){
     max-height: max-content;
-}
+} */
 .arrw-s:hover{
     transform: rotate(0deg);
 }
 .siber-content{
     position: relative;
-    top: 2px;
+    top: 5px;
     margin: 20px;
     width: 1030px;
 }

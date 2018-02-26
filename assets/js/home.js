@@ -36,10 +36,10 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
     $("#topPemain").carousel();
-    $(".left").click(function(){
+    $(".leftp").click(function(){
         $("#topPemain").carousel("prev");
     });
-    $(".right").click(function(){
+    $(".rightp").click(function(){
         $("#topPemain").carousel("next");
     });
 });
@@ -84,10 +84,10 @@ window.onclick = function(event) {
 }
 $(document).ready(function(){
     $("#topPemain").carousel();
-    $(".left").click(function(){
+    $(".leftp").click(function(){
         $("#topPemain").carousel("prev");
     });
-    $(".right").click(function(){
+    $(".rightp").click(function(){
         $("#topPemain").carousel("next");
     });
     $("#profilssb").carousel();
