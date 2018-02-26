@@ -37,10 +37,10 @@ nav{
     -webkit-font-smoothing: antialiased;
     outline: none;
 }
-a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .ev-box-content img, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option{
+a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .ev-box-content img, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option, a.emoticon span{
     cursor: pointer !important;
 }
-.r, .s, .t, .title, h3.o, .h-berita-terkait>h3, .jp, .t-live, .x-c span {
+.r, .s, .t, .title, h3.o, .h-berita-terkait>h3, .jp, .t-live, .x-c span, .w-60 h3, .w-40 h3, .h3-oranye, .subjudul, .subjudul h4, .up-r-tube span, #t1, .t-title span, .t-etc li, .t-etc span, .h-news-r h4, .h-news-r span, .subjudul2 h4, .up-r-news h4, .down-r-news h4, .d-r-n h4, .ui-datepicker-month, .ui-datepicker-year, .down-r-vent h4, .ui-datepicker-calendar th span, .d-r-v h4, .news-pic h2, .n-c span, .unname, .n-c img, .news-capt span {
     cursor: default !important;
 }
 a{
@@ -59,7 +59,7 @@ label>input{
     font-weight: 500;
     color: #333;
 }
-select:hover{
+select:hover, select:focus, input:hover, input:focus, textarea:hover, textarea:focus{
     box-shadow: 0 0 5px gainsboro;
 }
 button, input{
@@ -79,9 +79,9 @@ hr{
     width: 0px;
     background: transparent;
 }
-.news-capt span {
+/* .news-capt span {
     cursor: text !important;
-}
+} */
 .m-b-100{
     margin-bottom: 100px;
 }
@@ -335,7 +335,7 @@ nav .center-desktop, .x-m{
     font-size: .85em;
     font-weight: 600 !important;
 }
-.kl:hover{
+.kl:hover, .next-right:hover, .next-right:hover i{
     color: #ffb132 !important;
 }
 .el{
@@ -1479,6 +1479,7 @@ ul, li {
 .next-right{
     float: right;
     font-size: .8em;
+    font-weight: 600;
     color: orange;
 }
 .t-8{
@@ -1781,7 +1782,7 @@ ul, li {
     margin-top: 20px;
 }
 .half2:nth-of-type(2){
-    margin-left: 20px;
+    margin-left: 15px;
 }
 .garis-x{
     border-bottom: 1px solid #00000021;
@@ -2013,7 +2014,7 @@ ul, li {
     /* border-color: #039BE5; */
     /* margin-left: 40%; */
 }
-.btn-white:hover{
+.btn-white:hover, .btn-white:focus{
     color: white;
     background-color: #039BE5;
 }
@@ -2044,8 +2045,8 @@ ul, li {
     margin: 20px 0px;
 }
 .btn-green-white:hover{
-    background-color: white;
-    color: #62A555;
+    background-color: #86ab7f;
+    color: white;
     box-shadow: inset 0 0 5px 0 #62A555;
 }
 .ep2box{
@@ -2842,9 +2843,12 @@ ul, li {
     overflow: hidden;
 }
 .gambar2 img{
-    width: 522.5px;
+    width: 523px;
     max-height: 320px;
     overflow: hidden;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
 }
 .btn-blue, .btn-me-submit, .btn-abu, .btn-merah{
     background-color: #039BE5;
@@ -3647,6 +3651,9 @@ ul, li {
     position: relative;
     top: 39px;
 }
+.abc:hover a span, .abc:hover a i{
+    color: rgb(200, 0, 0) !important;
+}
 .btn-white-r{
     background-color: white;
     width: 220px;
@@ -3780,9 +3787,9 @@ ul, li {
     width: 450px;
     margin-left: 15px;   
 }
-.n-rcm-up a{
+/* .n-rcm-up a{
     border: 1px solid gainsboro;
-}
+} */
 .n-rcm-up img{
     width: 100%;
     height: 224.5px;
@@ -3993,6 +4000,10 @@ ul, li {
     text-align: center;
     padding: 15px;
 }
+.ui-datepicker-calendar td:hover{
+    background-color: rgb(211, 255, 211);
+    cursor: pointer;
+}
 .kalender a:nth-of-type(1) span{
     content: url("../../assets/img/arrowleft.png");
     float: left;
@@ -4001,6 +4012,10 @@ ul, li {
     content: url("../../assets/img/arrowleft.png");
     transform: rotate(180deg);
     float: right;
+}
+.kalender a:nth-of-type(1) span:hover, .kalender a:nth-of-type(2) span:hover{
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px lightgreen;
 }
 .ui-datepicker-calendar{
     text-align: center;
@@ -4347,23 +4362,23 @@ ey{
     border-bottom: 1px solid gainsboro;
     /* padding-bottom: 10px; */
     margin-top: 20px;
-    max-height: 80px;
-    overflow: hidden; 
+    /* max-height: 80px;
+    overflow: hidden;  */
     -webkit-transition: max-height 10s; 
     -moz-transition: max-height 10s; 
     -ms-transition: max-height 10s; 
     -o-transition: max-height 10s; 
     transition: max-height 10s ease-in-out; 
 }
-.siber:hover, .siber:active, .siber:nth-of-type(1){
+/* .siber:hover, .siber:active, .siber:nth-of-type(1){
     max-height: max-content;
-}
+} */
 .arrw-s:hover{
     transform: rotate(0deg);
 }
 .siber-content{
     position: relative;
-    top: 2px;
+    top: 5px;
     margin: 20px;
     width: 1030px;
 }

@@ -131,7 +131,7 @@
 		})
 		var url = $(location).attr('href');
 		// var fn = url.split('/').reverse()[0];
-		var fn = $(".hidden_title").val();
+		var fn = $(".hidden_title").val(); 
 		var subliga = $(".hidden_subliga").val();
 		$('#example').DataTable( {
   			"order":[[1,"asc"]],

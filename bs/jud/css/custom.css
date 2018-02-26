@@ -146,7 +146,7 @@ navmobile>img {
 }
 @media screen and (max-width: 670px) {
     #productMain .box{
-        padding-left: 0px;
+        padding-left: 0px !important;
     }
 }
 @media screen and (max-width: 769px) {
