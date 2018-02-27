@@ -266,7 +266,7 @@ function getTime($timeStamp)
 
 /**
  *fungsi btnFol::
- *untuk memamnggil button follow
+ *untuk memanggil button follow
  * @param $id_member = id member yang sedang aktif
  * @param $has_follow = default (bool) TRUE check sudah di follow
  * @param $attr = default (array) tambahan attribut bila diperlukan
