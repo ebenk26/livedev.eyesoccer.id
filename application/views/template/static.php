@@ -23,10 +23,10 @@
 		?>
 
         		<!-- Begin of SEO Meta Tags -->
-        		<title>EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia</title>
+        		<title>Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer</title>
 
-        		<meta name="title" content="EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia" />
-        		<meta name="description" content="Berita sepak bola terbaru, jadwal dan hasil pertandingan, live score, transfer, klasemen liga Indonesia dan dunia & profil pemain & klub dari seluruh Indonesia." />
+        		<meta name="title" content="Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer" />
+        		<meta name="description" content="Portal Berita sepak bola indonesia terbaru, jadwal bola, database pemain bola, transfer pemain bola, klub bola, pelatih, manager, ofisial bola, supporter bola dan event sepak bola terlengkap di Indonesia" />
         		<meta name="news_keywords" content="jadwal bola, berita bola, sepak bola, jadwal siaran bola, jadwal sepak bola, berita bola terkini, berita bola terbaru, berita sepak bola, info bola, berita bola hari ini, bola hari ini">
         		<meta name="googlebot-news" content="index,follow" />
         		<meta name="googlebot" content="index,follow" />
@@ -46,8 +46,8 @@
         		<meta property="og:site_name" content="EyeSoccer" />
         		<meta property="og:url" content="https://www.eyesoccer.id" />
         		<meta property="og:type" content="Website" />
-        		<meta property="og:title" content="EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia" />
-        		<meta property="og:description" content="Berita sepak bola terbaru, jadwal dan hasil pertandingan, live score, transfer, klasemen liga Indonesia dan dunia & profil pemain & klub dari seluruh Indonesia." />
+        		<meta property="og:title" content="Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer" />
+        		<meta property="og:description" content="Portal Berita sepak bola indonesia terbaru, jadwal bola, database pemain bola, transfer pemain bola, klub bola, pelatih, manager, ofisial bola, supporter bola dan event sepak bola terlengkap di Indonesia" />
         		<meta property="og:locale" content="id_ID" />
         		<meta property="og:image" content="<?=base_url()?>img/tab_icon.png" />
         		<!--End of Facebook open graph data-->
@@ -57,8 +57,8 @@
         		<meta name="twitter:site" content="@eyesoccer_id" />
         		<meta name="twitter:creator" content="@eyesoccer_id" />
         		<meta name="twitter:domain" content="EyeSoccer"/>
-        		<meta name="twitter:title" content="EyeSoccer: Portal Database & Berita Sepak Bola Terlengkap di Indonesia" />
-        		<meta name="twitter:description" content="Berita sepak bola terbaru, jadwal dan hasil pertandingan, live score, transfer, klasemen liga Indonesia dan dunia & profil pemain & klub dari seluruh Indonesia." />
+        		<meta name="twitter:title" content="Berita Sepak Bola Indonesia Terbaru | Jadwal Bola | Database Pemain Bola | Eyesoccer" />
+        		<meta name="twitter:description" content="Portal Berita sepak bola indonesia terbaru, jadwal bola, database pemain bola, transfer pemain bola, klub bola, pelatih, manager, ofisial bola, supporter bola dan event sepak bola terlengkap di Indonesia" />
         		<meta name="twitter:image" content="<?=base_url()?>img/tab_icon.png" />
         		<!--end of twitter card data-->
 
@@ -219,7 +219,7 @@
                                     </span> 
                                     <span class="btn-btn-login"> 
                                         <a style="text-decoration: none;" href="<?=base_url()?>home/member_area"> 
-                                            <img src="<?php if(load_top_avatar()!=''){echo base_url()?>assets/img_storage/<?=load_top_avatar();} ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name();?> 
+                                            <img src="<?php if(load_top_avatar()!=''){echo MEIMG.load_top_avatar();} ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name();?> 
                                         </a> 
                                     </span>
 	                    <?php

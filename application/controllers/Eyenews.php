@@ -298,6 +298,7 @@ class Eyenews extends CI_Controller {
 		$data["page"] 				="eyenews";		
 		
 		$data['select_cat']			= urldecode($cat);
+		$data['select_subcat']			= urldecode($subcat);
 		$data['all_news'] 			= $this->Eyenews_model->get_all_news();
 		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
 		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();

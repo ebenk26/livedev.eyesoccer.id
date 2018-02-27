@@ -56,10 +56,14 @@ class Eyeprofile_model extends CI_Model
 									GROUP BY a.club_id ASC LIMIT 18")->result_array();
 		return $query;
 	}
-	
+	 
 	public function get_club_liga($liga,$limit=null,$cat_liga=null)
 	{
-		$compt = "and a.competition='".$liga."'";
+		if($this->uri->segment(4) && !is_numeric($this->uri->segment(4))){
+			$compt = "and d.nama_liga='".urldecode($this->uri->segment(4))."'";
+		}else{
+			$compt = "and a.competition='".$liga."'";
+		}
 		if($limit != null){
 			$limit = "LIMIT ".$limit."";
 		}else{
@@ -117,10 +121,15 @@ class Eyeprofile_model extends CI_Model
 	public function get_player_liga($liga,$nationality,$cat_liga=null)
 	{
 		$table_liga = "";
-		if($liga == 'non liga'){
-			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
+		if($this->uri->segment(4)){
+			$compt = " c.nama_liga='".urldecode($this->uri->segment(4))."'";
+			$table_liga = "left join tbl_liga c on b.id_liga = c.id_liga ";
 		}else{
-			$compt = "b.competition = '".$liga."'";
+			if($liga == 'non liga'){
+				$compt = "b.competition in ('SSB / Akademi Sepakbola')";
+			}else{
+				$compt = "b.competition = '".$liga."'";
+			}
 		}
 		
 		if($cat_liga != null){
@@ -128,7 +137,8 @@ class Eyeprofile_model extends CI_Model
 			$table_liga = "left join tbl_liga c on b.id_liga = c.id_liga ";
 		}
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
-									join tbl_club b on a.club_id=b.club_id ".$table_liga."
+									join tbl_club b on a.club_id=b.club_id 
+									".$table_liga."
 									where ".$compt." and b.active = 1")->result_array();
 		return $query;
 	}
@@ -142,10 +152,15 @@ class Eyeprofile_model extends CI_Model
 	public function get_player_liga_strange($liga,$nationality='indonesia',$cat_liga=null)
 	{
 		$table_liga = "";
-		if($liga == 'non liga'){
-			$compt = "b.competition in ('SSB / Akademi Sepakbola')";
+		if($this->uri->segment(4)){
+			$compt = " c.nama_liga='".urldecode($this->uri->segment(4))."'";
+			$table_liga = "left join tbl_liga c on b.id_liga = c.id_liga ";
 		}else{
-			$compt = "b.competition = '".$liga."'";
+			if($liga == 'non liga'){
+				$compt = "b.competition in ('SSB / Akademi Sepakbola')";
+			}else{
+				$compt = "b.competition = '".$liga."'";
+			}
 		}
 		
 		if($cat_liga != null){
@@ -154,7 +169,8 @@ class Eyeprofile_model extends CI_Model
 		}
 		
 		$query = $this->db->query("select a.name,b.name as clubname from tbl_player a
-									join tbl_club b on a.club_id=b.club_id ".$table_liga." 
+									join tbl_club b on a.club_id=b.club_id 
+									".$table_liga." 
 									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."','wni','WNI','') and b.active = 1")->result_array();
 		return $query;
 	}
@@ -454,6 +470,7 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_list_pemain($requestData,$liga)
 	{
+		$subliga = "";
 		// print_r($requestData['search']['regex']);exit();
 		$columns = array( 
 		// datatable column index  => database column name
@@ -462,10 +479,7 @@ class Eyeprofile_model extends CI_Model
 			2=> 'tanggal',
 			3=> 'posisi',
 			4=> 'klub',
-			5=> 'timnas',
-			6=> '',
-			7=> '',
-			8=> ''
+			5=> 'timnas'
 		);
 		
 		if( !empty($requestData['search']['value']) ) {  
@@ -480,6 +494,9 @@ class Eyeprofile_model extends CI_Model
 		}
 		if($liga == 'non liga'){
 			$liga = 'SSB / Akademi Sepakbola';
+		}
+		if($this->uri->segment(4)){
+			$subliga = " and c.nama_liga = '".urldecode($this->uri->segment(4))."'";
 		}
 		$query = $this->db->query("SELECT
 										a.player_id,
@@ -498,8 +515,10 @@ class Eyeprofile_model extends CI_Model
 										tbl_player a
 									LEFT JOIN
 										tbl_club b on a.club_id = b.club_id
+									LEFT JOIN
+										tbl_liga c on b.id_liga = c.id_liga
 									WHERE
-										b.competition = '".$liga."'
+										b.competition = '".$liga."' and b.active = 1 ".$subliga."
 										".$sql."
 										");
 		$totalData = count($query->result_array());
@@ -522,9 +541,12 @@ class Eyeprofile_model extends CI_Model
 										tbl_player a
 									LEFT JOIN
 										tbl_club b on a.club_id = b.club_id
+									LEFT JOIN
+										tbl_liga c on b.id_liga = c.id_liga
 									WHERE
-										b.competition = '".$liga."'
+										b.competition = '".$liga."' and b.active = 1 ".$subliga."
 									".$sql." order by ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."");
+		
 		$totalFiltered=$query->num_rows();
 		if($requestData['start']==0){
 			$i=1;
@@ -543,9 +565,6 @@ class Eyeprofile_model extends CI_Model
 			$nestedData[] = $data->posisi;
 			$nestedData[] = $data->klub;
 			$nestedData[] = $data->timnas;
-			$nestedData[] = '';
-			$nestedData[] = '';
-			$nestedData[] = '';
 			
 			$data2[] = $nestedData;
 			$i++;
@@ -597,7 +616,7 @@ class Eyeprofile_model extends CI_Model
 									b.name as nama_club,b.logo as logo_club 
 									from tbl_official_team a
 									join tbl_club b on a.club_now=b.club_id
-									where b.competition ='".$liga."'
+									where b.competition ='".$liga."' and b.active = 1
 										".$sql."
 										");
 		$totalData = count($query->result_array());
@@ -724,6 +743,70 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_official_detail($url){
 		$query = $this->db->query("select a.*,b.name as club_name,b.url as club_url from tbl_official_team a left join tbl_club b on a.club_now=b.club_id where a.url='".$url."'")->result_array();
+		return $query;
+	}
+	
+	public function get_list_karir_klub($requestData,$club_id)
+	{
+		$columns = array( 
+		// datatable column index  => database column name
+			0 =>'karir_klub_id', 
+			1 => 'bulan',
+			2=> 'tahun',
+			3=> 'turnamen',
+			4=> 'peringkat',
+			5=> 'pelatih'
+		);
+		
+		if( !empty($requestData['search']['value']) ) {  
+		$sql=" AND ( bulan LIKE '%".$requestData['search']['value']."%' ";    
+			$sql.=" OR turnamen LIKE '%".$requestData['search']['value']."%' ";
+
+			$sql.=" OR peringkat LIKE '%".$requestData['search']['value']."%' ";
+			$sql.=" OR pelatih LIKE '%".$requestData['search']['value']."%' )";
+		}
+		else{
+			$sql="";
+		}
+		$query = $this->db->query("select * from tbl_karir_klub where klub_id = ".$club_id." ".$sql."");
+		$totalData = count($query->result_array());
+		$totalFiltered = $totalData;
+		
+		$result_with_limit=$this->db->query("select * from tbl_karir_klub where klub_id = ".$club_id." ".$sql." order by ". $columns[$requestData['order'][0]['column']]."   ".$requestData['order'][0]['dir']."  LIMIT ".$requestData['start']." ,".$requestData['length']."");
+		$totalFiltered=$query->num_rows();
+		if($requestData['start']==0){
+			$i=1;
+		}else{
+			$i=$requestData['start']+1;
+		}
+		$data2 = array();
+		foreach ($result_with_limit->result() as $data)
+		{
+			$nestedData=array(); 
+			$nestedData[] = $i;
+			$nestedData[] = $data->bulan;
+			$nestedData[] = $data->tahun;
+			$nestedData[] = $data->turnamen;
+			$nestedData[] = $data->peringkat;
+			$nestedData[] = $data->pelatih;
+			
+			$data2[] = $nestedData;
+			$i++;
+		}
+
+
+		$json_data = array(
+					"draw"            => intval( $requestData['draw'] ), 
+					"recordsTotal"    => intval( $totalData ),  // total number of records
+					"recordsFiltered" => intval( $totalFiltered ),
+					"data"            => $data2   // total data array
+					);
+
+		echo json_encode($json_data); 
+	}
+	
+	public function get_gallery_club($club_id){
+		$query = $this->db->query("select * from tbl_gallery where klub_id='".$club_id."'")->result_array();
 		return $query;
 	}
 }

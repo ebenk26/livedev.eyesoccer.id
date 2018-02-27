@@ -37,8 +37,11 @@ nav{
     -webkit-font-smoothing: antialiased;
     outline: none;
 }
-a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option{
+a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .ev-box-content img, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option, a.emoticon span{
     cursor: pointer !important;
+}
+.r, .s, .t, .title, h3.o, .h-berita-terkait>h3, .jp, .t-live, .x-c span, .w-60 h3, .w-40 h3, .h3-oranye, .subjudul, .subjudul h4, .up-r-tube span, #t1, .t-title span, .t-etc li, .t-etc span, .h-news-r h4, .h-news-r span, .subjudul2 h4, .up-r-news h4, .down-r-news h4, .d-r-n h4, .ui-datepicker-month, .ui-datepicker-year, .down-r-vent h4, .ui-datepicker-calendar th span, .d-r-v h4, .news-pic h2, .n-c span, .unname, .n-c img, .news-capt span {
+    cursor: default !important;
 }
 a{
     text-decoration: none;
@@ -55,6 +58,9 @@ label>input{
     padding: 5px 8px;
     font-weight: 500;
     color: #333;
+}
+select:hover, select:focus, input:hover, input:focus, textarea:hover, textarea:focus{
+    box-shadow: 0 0 5px gainsboro;
 }
 button, input{
     background-color: transparent;
@@ -73,9 +79,9 @@ hr{
     width: 0px;
     background: transparent;
 }
-.news-capt span {
+/* .news-capt span {
     cursor: text !important;
-}
+} */
 .m-b-100{
     margin-bottom: 100px;
 }
@@ -327,17 +333,19 @@ nav .center-desktop, .x-m{
     top: -27px;
     right: -30px;
     font-size: .85em;
-    font-weight: 500;
+    font-weight: 600 !important;
 }
-.kl:hover, .vl:hover{
-    font-weight: 600;
-    /* text-shadow: 1px 1px 1px gainsboro; */
+.kl:hover, .next-right:hover, .next-right:hover i{
+    color: #ffb132 !important;
 }
 .el{
     text-decoration: none;
     color: #66a647;
     top: -18px;
     right: 20px;
+}
+.el:hover{
+    color: #79ac5f;
 }
 .r-kl{
     top: -20px;
@@ -394,7 +402,8 @@ nav .center-desktop, .x-m{
     border: 1px solid white;
     border-radius: 9px;
     margin: 0px 10px;
-    background-color: #b3ff00;
+    background-color: gainsboro;
+    border: 1px solid #f3f3f3;
 }
 .ev-box-content>img{
 	width: 100%;
@@ -425,12 +434,13 @@ nav .center-desktop, .x-m{
     background-color: gainsboro;
 }
 .o{
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     font-size: .9em;
 }
 .ctn-pemain{
-    border: 1px solid #9e9e9e38;
+    /* border: 1px solid #9e9e9e38; */
+    box-shadow: inset 0 0 3px gainsboro;
     margin-right: 3px; 
     width: 346px;
     height: 100px;
@@ -450,7 +460,7 @@ nav .center-desktop, .x-m{
     left: 10px;
 }
 .des h3{
-    font-size: 1em;
+    font-size: .9em;
     font-weight: 600;
     line-height: .5em;
 }
@@ -581,7 +591,7 @@ nav .center-desktop, .x-m{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );    
 }
 .v-et-2{
-    bottom: 91px;
+    bottom: 91px;background-color: gainsboro;
 }
 .v-et-100{
     bottom: 100px;
@@ -632,6 +642,9 @@ nav .center-desktop, .x-m{
 .vl, .r-vl{
     text-decoration: none;
     color: #4378d3 !important;
+}
+.box-vl:hover .vl, .box-vl:hover .r-vl{
+    color: #7799d3 !important;
 }
 .r-vl{
     top: 7px;
@@ -774,6 +787,9 @@ nav .center-desktop, .x-m{
     right: -15px;
     font-size: .8em;
     font-weight: 500;
+}
+.box>x>a:hover{
+    color: rgb(200, 0, 0);
 }
 .r-tab2{
     top: 8px;
@@ -1463,6 +1479,7 @@ ul, li {
 .next-right{
     float: right;
     font-size: .8em;
+    font-weight: 600;
     color: orange;
 }
 .t-8{
@@ -1765,7 +1782,7 @@ ul, li {
     margin-top: 20px;
 }
 .half2:nth-of-type(2){
-    margin-left: 20px;
+    margin-left: 15px;
 }
 .garis-x{
     border-bottom: 1px solid #00000021;
@@ -1997,7 +2014,7 @@ ul, li {
     /* border-color: #039BE5; */
     /* margin-left: 40%; */
 }
-.btn-white:hover{
+.btn-white:hover, .btn-white:focus{
     color: white;
     background-color: #039BE5;
 }
@@ -2028,8 +2045,8 @@ ul, li {
     margin: 20px 0px;
 }
 .btn-green-white:hover{
-    background-color: white;
-    color: #62A555;
+    background-color: #86ab7f;
+    color: white;
     box-shadow: inset 0 0 5px 0 #62A555;
 }
 .ep2box{
@@ -2167,7 +2184,7 @@ ul, li {
     filter: grayscale(.6);
     cursor: pointer;
 }
-.vid-box-vl-img img:hover{
+.vid-box-vl:hover .vid-box-vl-img img{
     filter: unset;
 }
 .vid-box-vl .h41{
@@ -2203,7 +2220,7 @@ ul, li {
     border: 1px solid #FFB300;
     color: #FFB300;
 }
-.beli:hover, .beli a:hover{
+.beli:hover {
     background-color: #ffd400;
     border-color: #ffd400;
     color: white !important;
@@ -2826,9 +2843,12 @@ ul, li {
     overflow: hidden;
 }
 .gambar2 img{
-    width: 522.5px;
+    width: 523px;
     max-height: 320px;
     overflow: hidden;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
 }
 .btn-blue, .btn-me-submit, .btn-abu, .btn-merah{
     background-color: #039BE5;
@@ -3442,7 +3462,7 @@ ul, li {
     max-width: 30px;
     font-size: 8px;
     text-align: center;
-    background-color: #0000007d;
+    background-color: transparent;
     color: white;
     padding: 2px 0px;
     border-radius: 3px;
@@ -3631,6 +3651,9 @@ ul, li {
     position: relative;
     top: 39px;
 }
+.abc:hover a span, .abc:hover a i{
+    color: rgb(200, 0, 0) !important;
+}
 .btn-white-r{
     background-color: white;
     width: 220px;
@@ -3764,9 +3787,9 @@ ul, li {
     width: 450px;
     margin-left: 15px;   
 }
-.n-rcm-up a{
+/* .n-rcm-up a{
     border: 1px solid gainsboro;
-}
+} */
 .n-rcm-up img{
     width: 100%;
     height: 224.5px;
@@ -3977,6 +4000,10 @@ ul, li {
     text-align: center;
     padding: 15px;
 }
+.ui-datepicker-calendar td:hover{
+    background-color: rgb(211, 255, 211);
+    cursor: pointer;
+}
 .kalender a:nth-of-type(1) span{
     content: url("../../assets/img/arrowleft.png");
     float: left;
@@ -3985,6 +4012,10 @@ ul, li {
     content: url("../../assets/img/arrowleft.png");
     transform: rotate(180deg);
     float: right;
+}
+.kalender a:nth-of-type(1) span:hover, .kalender a:nth-of-type(2) span:hover{
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px lightgreen;
 }
 .ui-datepicker-calendar{
     text-align: center;
@@ -4331,23 +4362,23 @@ ey{
     border-bottom: 1px solid gainsboro;
     /* padding-bottom: 10px; */
     margin-top: 20px;
-    max-height: 80px;
-    overflow: hidden; 
+    /* max-height: 80px;
+    overflow: hidden;  */
     -webkit-transition: max-height 10s; 
     -moz-transition: max-height 10s; 
     -ms-transition: max-height 10s; 
     -o-transition: max-height 10s; 
     transition: max-height 10s ease-in-out; 
 }
-.siber:hover, .siber:active, .siber:nth-of-type(1){
+/* .siber:hover, .siber:active, .siber:nth-of-type(1){
     max-height: max-content;
-}
+} */
 .arrw-s:hover{
     transform: rotate(0deg);
 }
 .siber-content{
     position: relative;
-    top: 2px;
+    top: 5px;
     margin: 20px;
     width: 1030px;
 }
@@ -4790,6 +4821,9 @@ height: 100%;
     border-bottom: 4px solid #039BE5 !important;
     padding: 3px !important;
 }
+.orangehover a:hover, .orangehover li:hover{
+    color: orange;
+}
 .redhover a:hover, .redhover li:hover{
     color: rgb(200, 0, 0) !important;
 }
@@ -4815,6 +4849,8 @@ height: 100%;
     position: fixed;
     top: 60px;
     z-index: 1;
+    max-height: 350px;
+    overflow: hidden;
 }
 .add60{
     margin-top: 60px;

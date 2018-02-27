@@ -78,6 +78,16 @@ class Eyeprofile extends CI_Controller {
 			$nama_liga_event = 'Liga Indonesia U-19';
 			$cat_liga = $nama_liga;
 			$nama_liga = "Liga Usia Muda";
+		}else if($nama_liga == 'Indonesia Junior League U-9'){
+			$data["title_liga"] = $nama_liga;
+			$nama_liga_event = 'Indonesia Junior League U-9';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda";
+		}else if($nama_liga == 'Indonesia Junior League U-11'){
+			$data["title_liga"] = $nama_liga;
+			$nama_liga_event = 'Indonesia Junior League U-11';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda"; 
 		}
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub,$cat_liga);
 		$data['avg_year'] = $this->Eyeprofile_model->get_club_liga_avggyear($nama_liga,$jml_klub,$cat_liga);
@@ -95,85 +105,29 @@ class Eyeprofile extends CI_Controller {
 		$data["body"]=$this->load->view('eyeprofile/klub', $data, true);
 		$this->load->view('template/static',$data);		
 	}
-
-	public function klub_pemain()
-	{
-		//$this->load->view('eyeprofile/klub_pemain');
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"]="eyeprofile";		
-		
-		$data['club_header'] = $this->Eyeprofile_model->get_club_header();
-		$data['club_main'] = $this->Eyeprofile_model->get_club_main();
-		$data['profile_club'] = $this->Eyeprofile_model->get_profile_club();
-		$data['jumlah_klub'] = $this->Eyeprofile_model->get_jumlah_klub();
-		$data['jumlah_pemain'] = $this->Eyeprofile_model->get_jumlah_pemain();
-		$data['pemain_asing'] = $this->Eyeprofile_model->get_pemain_asing();
-		$data['klasemen'] = $this->Eyeprofile_model->get_klasemen();
-		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain();
-		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
-		$data['kompetisi'] = $this->Eyeprofile_model->get_kompetisi();
-		
-		$data['klub_pemain'] = $this->Eyeprofile_model->get_klub_pemain();
-		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
-		$data['jadwal_pertandingan'] = $this->Eyeprofile_model->get_jadwal_pertandingan();
-		// $data['eyemarket_main'] = $this->Eyeprofile_model->get_eyemarket_main();
-		$data['products']	= $this->Home_model->get_all_product();
-		
-		$data['kanal'] 				= "home";
-		$data["body"]=$this->load->view('eyeprofile/klub_pemain', $data, true);
-		$this->load->view('template/static',$data);		
-	}	
 	
-	public function klub_offisial()
-	{
-		//$this->load->view('eyeprofile/klub_offisial');
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"]="eyeprofile";		
-
-		$data['club_header'] = $this->Eyeprofile_model->get_club_header();
-		$data['club_main'] = $this->Eyeprofile_model->get_club_main();
-		$data['profile_club'] = $this->Eyeprofile_model->get_profile_club();
-		$data['jumlah_klub'] = $this->Eyeprofile_model->get_jumlah_klub();
-		$data['jumlah_pemain'] = $this->Eyeprofile_model->get_jumlah_pemain();
-		$data['pemain_asing'] = $this->Eyeprofile_model->get_pemain_asing();
-		$data['klasemen'] = $this->Eyeprofile_model->get_klasemen();
-		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain();
-		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol();
-		$data['kompetisi'] = $this->Eyeprofile_model->get_kompetisi();
-		$data['klub_official'] = $this->Eyeprofile_model->get_klub_official();
-		$data['official_klub'] = $this->Eyeprofile_model->get_official_klub();
-		
-		$data['kanal'] 				= "home";
-		$data["body"]=$this->load->view('eyeprofile/klub_offisial', $data, true);
-		$this->load->view('template/static',$data);		
-	}	
-	
-	public function klub_detail($url=''){
-		if($url=="")
-		{
-			redirect("eyeprofile/klub/Liga Indonesia 1");			
-		}
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-		
-		$data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
-		$data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
-		$data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);	
-		$data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);	
-		$data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['name']);	
-		$data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);	
-		$data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);	
-		$data['products']	= $this->Home_model->get_all_product();	
-		$data['kanal'] 				= "home";
-		$this->load->view('config-session',$data);
-		$data["body"]=$this->load->view('eyeprofile/klub_pemain', $data, true);
-		$this->load->view('template/static',$data);
-	}	
+	public function klub_detail($url = '')
+    {
+        if ($url == "") {
+            redirect("eyeprofile/klub/Liga Indonesia 1");
+        }
+        $data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+        $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
+        $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
+        $data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);
+        $data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);
+        $data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['name']);
+        $data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);
+        $data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);
+        $data['get_gallery'] = $this->Eyeprofile_model->get_gallery_club($data['get_klub_detail_row_array']['club_id']);
+        $data['products'] = $this->Home_model->get_all_product();
+        $data['kanal'] = "home";
+        $this->load->view('config-session', $data);
+        $data["body"] = $this->load->view('eyeprofile/klub_pemain', $data, true);
+        $this->load->view('template/static', $data);
+    }
 	
 	public function pemain($liga=null)
 	{
@@ -185,64 +139,82 @@ class Eyeprofile extends CI_Controller {
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
 		$data["page"]="eyeprofile";		
-		
+		$nama_subliga = "";
 		$jml_klub = null;
 		$nama_liga = urldecode($liga);
-		$data["title_liga"] = $nama_liga;
+		$cat_liga = null;
+		if($this->uri->segment(4)){
+			$nama_liga = urldecode($this->uri->segment(4));
+			$nama_subliga = urldecode($this->uri->segment(4));
+		}
+		$data["title_liga"] = urldecode($liga);
 		if($nama_liga == 'Liga Indonesia 1'){
 			$jml_klub = 18;	
 		}else if($nama_liga == 'Liga Indonesia 2'){
-			$nama_liga = 'Liga Indonesia 2';
 			$jml_klub = 24;
-			$data["title_liga"] = $nama_liga;
+			$data["title_liga"] = urldecode($liga);
+			$nama_liga_event = 'Liga 2 Go-Jek Traveloka - Play Off';
+		}else if($nama_liga == 'Liga Indonesia 3'){
+			$data["title_liga"] = urldecode($liga);
+			$nama_liga_event = 'Liga Indonesia 3 Wilayah Jawa Barat';
+		}else if($nama_liga == 'Liga Pelajar U-16 Piala Menpora'){
+			$data["title_liga"] = urldecode($liga);
+			$nama_liga_event = 'Liga Pelajar U-16 Piala Menpora';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda";
+		}else if($nama_liga == 'Liga Santri Nusantara'){
+			$data["title_liga"] = urldecode($liga);
+			$nama_liga_event = 'Liga Santri Nusantara';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda";
+		}else if($nama_liga == 'Liga Indonesia U-19'){
+			$data["title_liga"] = urldecode($liga);
+			$nama_liga_event = 'Liga Indonesia U-19';
+			$cat_liga = $nama_liga;
+			$nama_liga = "Liga Usia Muda";
 		}
 		
 		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
 		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();
+		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
 		// $data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
 
-		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
-		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia');
-		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga);		
+		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub,$cat_liga);
+		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia',$cat_liga);
+		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga,'indonesia',$cat_liga);		
 		$data['kanal'] = "home";
+		$data['nama_subliga'] = $nama_subliga;
 		
 		$data["body"]=$this->load->view('eyeprofile/pemain', $data, true);
 		$this->load->view('template/static',$data);		
 	}
 	
 	public function pemain_detail($id=''){
-		if($id=="")
-		{
-			redirect("eyeprofile/pemain");			
-		}
-
-		
-		$data["meta"]["title"]  ="";
-		$data["meta"]["image"]  =base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-		
-		#$data["page"]="eyeprofile";
-		$data["pid"]   = $id;
-
-		$url  = $this->config->item('api_url')."profile/{$id}";
-		$cred = $this->config->item('credential');
-
-		$event_data	= array(
-							'startdate' => '',
-							'enddate' => '',
-							'related' => true,
-		);
-		$obj      = $this->excurl->remoteCall($url,$cred,$event_data);
-
-		$response = json_decode($obj);
-
-		
-
-		$data["kanal"] = 'eyeprofile';
-		$data['res']   = $response->data;
-		$data['body']  = $this->load->view('eyeprofile/pemain_detail',$data,true);
-		
-		$this->load->view('template/static',$data);	
+		if ($id == "") {
+            redirect("eyeprofile/pemain");
+        }
+        $data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+        #$data["page"] = "eyeprofile";
+        $data["pid"] = $id;
+        $url = $this->config->item('api_url') . "profile/{$id}";
+        $cred = $this->config->item('credential');
+        $event_data = array(
+            'startdate' => '',
+            'enddate' => '',
+            'related' => true,
+        );
+        $obj = $this->excurl->remoteCall($url, $cred, $event_data);
+        $response = json_decode($obj);
+        if ($response AND $response->data) {
+            $data["kanal"] = 'eyeprofile';
+            $data['res'] = $response->data;
+            $data['body'] = $this->load->view('eyeprofile/pemain_detail', $data, true);
+            $this->load->view('template/static', $data);
+        } else {
+            redirect('home');
+        }
 
 
 		/*$data['club_header'] = $this->Eyeprofile_model->get_club_header();
@@ -406,7 +378,7 @@ class Eyeprofile extends CI_Controller {
 		$val = $val-1;
 		$limitnum = 12*$val;
 		$liga = urldecode($url);
-		if($liga != 'Liga Pelajar U-16 Piala Menpora' && $liga != 'Liga Santri Nusantara' && $liga != 'Liga Indonesia U-19'){
+		if($liga != 'Liga Pelajar U-16 Piala Menpora' && $liga != 'Liga Santri Nusantara' && $liga != 'Liga Indonesia U-19'&& $liga != 'Indonesia Junior League U-9'&& $liga != 'Indonesia Junior League U-11'){
 			$compt = "and a.competition='".$liga."'";
 		
 			if($liga == 'non liga'){
@@ -449,5 +421,11 @@ class Eyeprofile extends CI_Controller {
 				</a>";
 				}
             echo "</div>";
+	}
+	
+	public function get_list_karir_klub($klub_id){
+		$requestData= $_REQUEST;
+		$res = $this->Eyeprofile_model->get_list_karir_klub($requestData,urldecode($klub_id));
+		return $res;
 	}
 }

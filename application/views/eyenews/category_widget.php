@@ -90,7 +90,7 @@
                         } else {
                             ?>
                                 <div class="n-rcm-up">
-                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>" class="container">
+                                <a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>" class="container" style="border: 1px solid gainsboro;">
                                 <div style="width: 100%; height: 224.5px; position:  relative; overflow:  hidden;">
                                 <img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row['thumb1']; ?>" alt="">
                                 </div>

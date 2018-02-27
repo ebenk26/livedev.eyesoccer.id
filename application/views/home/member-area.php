@@ -220,12 +220,12 @@
 	<div class="head-content center-desktop">
 		<form method="POST" action="profile_upload" enctype="multipart/form-data" class="container" style="width:unset;float:unset;">
 			<div class="img-radius">
-				<img src="<?=base_url()?>assets/img_storage/<?=$pic?>" alt="" class="blah">
+				<img src="<?= MEIMG.$pic?>" alt="" class="blah">
 			</div>
 			<div class="full-width">
 				<label class="btn-blue" style="cursor: pointer;">
 					Ganti Foto
-					<input id="file_pic" name="pic" type="file" style="display: none;">
+					<input id="file_pic" name="pic" type="file" style="display: none;" accept="image/*">
 				</label>
 				<button class="btn-blue" type="submit" class="btn-info btn" id="submit_pic" style="display:none;border: none;cursor: pointer;" >Simpan Foto</button>
 				<a class="btn-blue" href="<?php echo base_url()?>home/logout" style="text-decoration: unset;color: white;background-color: #EC407A;border: none;cursor: pointer;">Logout</a>
@@ -305,7 +305,7 @@
 					if($expfoto[0] == 'foto' || $expfoto[0] == 'profile'){
 			?>
 						<div class="gal-img">
-						<img src="<?=base_url()?>assets/img_storage/<?=$gr["thumb1"]?>" alt="" srcset="">
+						<img src="<?=MEIMG.$gr["thumb1"]?>" alt="" srcset="">
 						</div>
 			<?php	
 					}else if($expvideo[0] == 'video'){
