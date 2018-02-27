@@ -298,6 +298,7 @@ class Eyemarket_model extends CI_Model
                                         B.berat,
                                         B.keterangan,
                                         C.nama as toko,
+                                        D.nama as kurir,
                                         E.id as id_image,
                                         E.image1,
                                         E.image2,
@@ -305,7 +306,9 @@ class Eyemarket_model extends CI_Model
                                         E.image4,
                                         E.image5,
                                         F.nama as nama_rumah,
+                                        F.penerima as nama_penerima,
                                         F.kode,
+                                        F.hp,
                                         F.alamat
                                     FROM
                                         eyemarket_keranjang A
@@ -317,6 +320,8 @@ class Eyemarket_model extends CI_Model
                                         eyemarket_images E      on A.id_product =  E.id_product
                                     LEFT JOIN
                                         eyemarket_address F      on A.id_alamat =  F.id
+                                    LEFT JOIN
+                                        eyemarket_kurir D       ON D.id     = A.id_kurir
                                     WHERE 
                                         md5(A.id_member) = '$id_member'
                                         AND
@@ -377,7 +382,7 @@ class Eyemarket_model extends CI_Model
     }
 
     public function edit_catatan($data,$id_keranjang)
-    {;
+    {
         $query = $this->db->update('eyemarket_keranjang', $data, array('id' => $id_keranjang, 'status' => '0'));
         
         return $query;
@@ -506,7 +511,7 @@ class Eyemarket_model extends CI_Model
                                     WHERE
                                         A.status = 0
                                         AND
-                                        A.id_member = '$id_member'
+                                        md5(A.id_member) = '$id_member'
                                         ")->result_array();
         return $query;
         
