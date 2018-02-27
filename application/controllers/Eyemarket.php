@@ -1327,7 +1327,7 @@ class Eyemarket extends CI_Controller {
 				$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 				$objMail->SMTPAuth = true;                               // Enable SMTP authentication
 				$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
-				$objMail->Password = 'BolaSepak777#';                           // SMTP password
+				$objMail->Password = 'tahubulatsptbolagoreng2018$$$';                           // SMTP password
 				$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 				$objMail->Port = 465;           
 				$objMail->isHTML(true);                                  // Set eobjMail format to HTML
