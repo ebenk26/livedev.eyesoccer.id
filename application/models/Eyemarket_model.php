@@ -633,7 +633,11 @@ class Eyemarket_model extends CI_Model
                                         H.alamat,
                                         H.provinsi as provinsinya,
                                         H.kota,
-                                        H.kecamatan
+                                        H.kecamatan,
+                                        I.rekening,
+                                        I.bank,
+                                        I.nama_pemilik,
+                                        I.logo
                                     FROM
                                         eyemarket_order A
                                     LEFT JOIN
@@ -648,6 +652,8 @@ class Eyemarket_model extends CI_Model
                                         tbl_member G            on A.id_member =  G.id_member
                                     LEFT JOIN
                                         eyemarket_address H     on A.id_alamat =  H.id
+                                    LEFT JOIN
+                                        eyemarket_payment I     on A.id_tipe_bayar = I.id
                                     WHERE
                                         A.no_order = '$no_order'
                                     LIMIT
@@ -699,7 +705,7 @@ class Eyemarket_model extends CI_Model
                                     FROM
                                         eyemarket_order A
                                     WHERE
-                                        A.id_member = '$id_member'
+                                        md5(A.id_member) = '$id_member'
                                         ")->result_array();
         return $query;
     }

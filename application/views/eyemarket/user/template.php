@@ -36,7 +36,7 @@
                     .x-m{
                         font-size: .9em;
                         width: 1065px;
-                        margin: 0 auto;
+                        margin-left: -18px;
                         float: unset;
                         display: block;
                         height: 61px;
@@ -110,7 +110,10 @@
                 </form>
                 <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
                     <li class="nav-item">
-                        <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="<?=base_url()?>assets/eyemarket/user/images/face.jpg" alt=""></a>
+                        <a class="nav-link profile-pic" href="#"> 
+                            <!-- <img class="rounded-circle" src="<?=base_url()?>assets/eyemarket/user/images/face.jpg" alt="">  -->
+                            <img src="<?=base_url()?>/assets/eyenews/img/EYEME/user-discover.png" alt=""> 
+                        </a>
                     </li>
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right hidden-lg-up align-self-center" type="button" data-toggle="offcanvas">
@@ -123,7 +126,8 @@
             <div class="row row-offcanvas row-offcanvas-right">
                 <nav class="bg-white sidebar sidebar-fixed sidebar-offcanvas" id="sidebar">
                 <div class="user-info">
-                    <img src="<?=base_url()?>assets/eyemarket/user/images/face.jpg" alt="">
+                    <!-- <img src="<?=base_url()?>assets/eyemarket/user/images/face.jpg" alt=""> -->
+                    <img src="<?=base_url()?>/assets/eyenews/img/EYEME/user-discover.png" alt="">
                     <p class="name"><?= $nama_lengkap; ?></p>
                 </div>
                     <ul class="nav">

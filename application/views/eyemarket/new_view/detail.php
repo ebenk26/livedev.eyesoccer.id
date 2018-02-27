@@ -120,11 +120,7 @@
                                 ?>
                                 
                                 <p>
-                                    <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
-                                        <span class="btn btn-template-main">
-                                            <i class="fa fa-shopping-cart"></i> Add to chart
-                                        </span>
-                                    </a>
+                                    
                             <?php
                                 if ($id_member == NULL) 
                                 {

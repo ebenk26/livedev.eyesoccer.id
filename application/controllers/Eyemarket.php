@@ -239,31 +239,26 @@ class Eyemarket extends CI_Controller {
 
 	public function tambah_gambar($id)
 	{ 	
-    	$config['upload_path'] = ($_SERVER['SERVER_NAME'] == 'localhost') ? './img/eyemarket/produk/' : MARKETFOLDER.'/produk';  
+    	$config['upload_path'] = ($_SERVER['SERVER_NAME'] == 'localhost') ? './img/img_storage/' : MARKETFOLDER.'/produk';  
 
     	if (isset($_FILES['image1']['name'])) {
-    		$name = $_FILES['image1']['name'];
+    		$name = file_name('image1');
     	}
     	if (isset($_FILES['image2']['name'])) {
-    		$name = $_FILES['image2']['name'];
+    		$name = file_name('image2');
     	}
     	if (isset($_FILES['image3']['name'])) {
-    		$name = $_FILES['image3']['name'];
+    		$name = file_name('image3');
     	}
     	if (isset($_FILES['image4']['name'])) {
-    		$name = $_FILES['image4']['name'];
+    		$name = file_name('image4');
     	}
     	if (isset($_FILES['image5']['name'])) {
-    		$name = $_FILES['image5']['name'];
+    		$name = file_name('image5');
     	}
-    	$ext = pathinfo($name,PATHINFO_EXTENSION);
 
         $config['allowed_types'] = '*';
-        $config['file_name'] = 'ori_'.date('dmyGis');
-
-
-
-        $ext = pathinfo($name,PATHINFO_EXTENSION);
+        $config['file_name'] = 'ori_'.$name;
 
         $this->load->library('upload');
 
@@ -280,7 +275,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image1' 		=> str_replace('ori_', '', $data["file_name"]),
+        			'image1' 		=> str_replace('ori_', '', $name),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -307,7 +302,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image2' 		=> str_replace('ori_', '', $data["file_name"]),
+        			'image2' 		=> str_replace('ori_', '', $name),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -334,7 +329,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image3' 		=> str_replace('ori_', '', $data["file_name"]),
+        			'image3' 		=> str_replace('ori_', '', $name),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -361,7 +356,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image4' 		=> str_replace('ori_', '', $data["file_name"]),
+        			'image4' 		=> str_replace('ori_', '', $name),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -388,7 +383,7 @@ class Eyemarket extends CI_Controller {
         	    $data 		= $this->upload->data();
 
         	    $object = array(
-        			'image5' 		=> str_replace('ori_', '', $data["file_name"]),
+        			'image5' 		=> str_replace('ori_', '', $name),
         	    	);
 
         	    $insert = $this->Eyemarket_model->tambah_gambar($id,$object);
@@ -953,7 +948,7 @@ class Eyemarket extends CI_Controller {
 			// $data['total_finish']	= $val['harga_all'];
 		}
 		$data['total_finish']	= $data['total_all']->total_all + $data['ongkir'];
-// var_dump($data);exit();
+
 		$data["kanal"] 		= 'eyemarket';
 		
 		$data["body"] 		=  $this->load->view('/eyemarket/new_view/review', $data, true);
@@ -1020,11 +1015,19 @@ class Eyemarket extends CI_Controller {
 		$data['expired'] 	= date('Y-m-d H:i:s',strtotime("+4 hours"));
 
 		//=====set status = 1 di keranjang
-		$cart 		= array(
-			'status' 		=> 1,
+		// $cart 		= array(
+		// 	'status' 		=> 1,
+		// );
+
+		// $update_cart 	=  $this->Eyemarket_model->set_keranjang_status($id_order,$cart);
+
+		//===== update keranjang
+		$cart = array(
+		    'id_order' => $id_order,
+		    'status' => 1,
 		);
 
-		$update_cart 	=  $this->Eyemarket_model->set_keranjang_status($id_order,$cart);
+		$update_cart = $this->db->update('eyemarket_keranjang', $cart, array('id_member' => $id_membernya->id_member, 'status' => 0));
 
 		//=====update final order
 		$object 	= array(
@@ -1048,7 +1051,7 @@ class Eyemarket extends CI_Controller {
 				$data['email'] 			= $value['email'];
 			}
 
-
+			$data['modelnya'] = $this->Eyemarket_model->get_invoice($no_order);
 			$message = $this->load->view('eyemarket/new_view/mail_order',$data,TRUE);
 
 			// $objMail 	= $this->phpmailer_library->load();
@@ -1220,10 +1223,10 @@ class Eyemarket extends CI_Controller {
 
 		$id_order 			= $data['model']->id;
 		$id_member 			= $data['model']->id_member;
-		$data["id_member"] 	= $id_member;
+		$data["id_member"] 	= md5($id_member);
 
 		$data['cart'] 		= $this->Eyemarket_model->get_keranjang_invoice($id_order);
-		$data["profile"] 	= $this->Eyemarket_model->get_member($id_member);
+		$data["profile"] 	= $this->Eyemarket_model->get_member(md5($id_member));
 
 		foreach ($data["profile"] as $value)
 		{
@@ -1319,7 +1322,7 @@ class Eyemarket extends CI_Controller {
 				$objMail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 				$objMail->SMTPAuth = true;                               // Enable SMTP authentication
 				$objMail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
-				$objMail->Password = 'BolaSepak777#';                           // SMTP password
+				$objMail->Password = 'tahubulatsptbolagoreng2018$$$';                           // SMTP password
 				$objMail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 				$objMail->Port = 465;           
 				$objMail->isHTML(true);                                  // Set eobjMail format to HTML
