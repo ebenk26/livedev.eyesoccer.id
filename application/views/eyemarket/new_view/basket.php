@@ -143,9 +143,10 @@
 </div>
 
 <script type="text/javascript">
+
     function editJumlah(id_keranjang)
     {
-        var id_member           = <?php echo $member_id; ?>;
+        var id_member           = "<?php echo $member_id; ?>";
         var jumlah_sekarang     = $('#jumlah-'+id_keranjang).val();
         var urlnya              = "<?= base_url(); ?>Eyemarket/edit_keranjang";
 
@@ -175,7 +176,7 @@
 
     function editCatatan(id_keranjang)
     {
-        var id_member       = <?php echo $member_id; ?>;
+        var id_member       = "<?php echo $member_id; ?>";
 
         var new_catatan     = $('#catatan-'+id_keranjang).val();
         var urlnya          = "<?= base_url(); ?>Eyemarket/edit_catatan";

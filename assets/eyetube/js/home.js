@@ -75,9 +75,10 @@ src.onclick = function() {
 srcS.onclick = function() {
     srcbox.style.display = "none";
 }
+/*
 close.onclick = function() {
     srcbox.style.display = "none";
-}
+}*/
 window.onclick = function(event) {
     if (event.target == srcbox) {
         srcbox.style.display = "none";

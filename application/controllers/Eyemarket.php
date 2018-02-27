@@ -518,7 +518,7 @@ class Eyemarket extends CI_Controller {
 
 		$data 		= array(
 			'id_product' 	=> $id_product,
-			'id_member' 	=> $id_membernya,
+			'id_member' 	=> $id_membernya->id_member,
 			'jumlah' 		=> $jumlah,
 			'total' 		=> $total,
 			'berat' 		=> $berat,
@@ -900,7 +900,7 @@ class Eyemarket extends CI_Controller {
 			'harga_all' 	=> $total_all,
 		);
 
-		$order 		= $this->Eyemarket_model->set_order($data);
+		// $order 		= $this->Eyemarket_model->set_order($data);
 
 		// ===== update keranjang (id_order)
 		$objek 	= array(
@@ -926,7 +926,7 @@ class Eyemarket extends CI_Controller {
 		$this->mod->checkLogin($url);
 
 		$data['id_member'] 	= $id_member;
-		$data['model'] 		= $this->Eyemarket_model->get_review_order($id_member);
+		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
 		$data['address'] 	= $this->Eyemarket_model->get_address($id_member);
 		$data['jumlah'] 	= count($data['address']);
 		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
@@ -944,14 +944,16 @@ class Eyemarket extends CI_Controller {
 		{
 			$data['kurir']			= $val['kurir'];
 			$data['ongkir']			= $val['ongkir'];
-			$data['total_finish']	= $val['harga_all'];
 			$data['penerima']		= $val['nama_penerima'];
 			$data['alamat']			= $val['alamat'];
 			$data['hp']				= $val['hp'];
 			$data['berat']			= $val['berat'];
-			$data['berat_all']		= $val['berat_all'];
+			$data['ongkir']			= $val['ongkir'];
+			// $data['berat_all']		= $val['berat_all'];
+			// $data['total_finish']	= $val['harga_all'];
 		}
-
+		$data['total_finish']	= $data['total_all']->total_all + $data['ongkir'];
+// var_dump($data);exit();
 		$data["kanal"] 		= 'eyemarket';
 		
 		$data["body"] 		=  $this->load->view('/eyemarket/new_view/review', $data, true);
@@ -961,25 +963,57 @@ class Eyemarket extends CI_Controller {
 
 	public function order_fix($id_member)
 	{
+		$id_membernya 	= $this->Eyemarket_model->get_id_md($id_member);
+		
 		$tahun 		= date("Y");
 		$bulan 		= date("m");
 
-		$data['model'] 	= $this->Eyemarket_model->get_order(NULL,$id_member);
+		// $data['model'] 	= $this->Eyemarket_model->get_order(NULL,$id_member);
 
-		$id_order 		= $data['model']->id;
+		$data['model'] 		= $this->Eyemarket_model->get_keranjang($id_member);
+
+		foreach ($data['model'] as $model)
+		{
+			$id_alamat 		= $model['id_alamat'];
+			$id_kurir 		= $model['id_kurir'];
+			$id_tipe_bayar 	= $model['id_tipe_bayar'];
+			$ongkir 		= $model['ongkir'];
+		}
+
+		$data['total_all']	= $this->Eyemarket_model->get_total_harga($id_member);
+		$data['berat_all']	= $this->Eyemarket_model->get_total_berat($id_member);
+
+		$harga  	= $data['total_all']->total_all;
+		$total_all 	= $ongkir + $harga;
+
+		// ====== input ke table order 
+		$data 	= array(
+			'id_member' 	=> $id_membernya->id_member,
+			'id_alamat' 	=> $id_alamat,
+			'id_kurir' 		=> $id_kurir,
+			'id_tipe_bayar' => $id_tipe_bayar,
+			'harga' 		=> $harga,
+			'ongkir' 		=> $ongkir,
+			'berat_all' 	=> $data['berat_all']->berat_all,
+			'harga_all' 	=> $total_all,
+		);
+
+		$order 		= $this->Eyemarket_model->set_order($data);
+
+		$id_order 		= $order;
 
 		//=====set nomor urut
-		$no_urut_last 	= $this->Eyemarket_model->get_max_nourut($id_member);
+		$no_urut_last 	= $this->Eyemarket_model->get_max_nourut($id_membernya->id_member);
 		$no_urut_now	= (int)$no_urut_last->max_urut;
 		$no_urut_now++;
 		$new_no_urut 	= sprintf("%03s", $no_urut_now);
 
 		//=====set nomor order
-		$no_order 			= "$tahun$bulan$id_member$new_no_urut";
+		$no_order 			= "$tahun$bulan$id_membernya->id_member$new_no_urut";
 		$data['no_order'] 	= $no_order;
 
 		//=====set nomor invoice
-		$no_invoice 			= "INV-MBCI/EMK/".$tahun."/".$bulan."/".$id_member."/".$new_no_urut;
+		$no_invoice 			= "INV-MBCI/EMK/".$tahun."/".$bulan."/".$id_membernya->id_member."/".$new_no_urut;
 		$data['no_invoice'] 	= $no_invoice;
 
 		//=====set expired time (4 jam)
