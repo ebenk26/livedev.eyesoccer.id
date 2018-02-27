@@ -394,7 +394,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="box item active">
 							<?php 
 								foreach ($get_gallery as $gl){
-									if(!empty($gl['pic'])){
+									$explode = explode('-',$gl['pic']);
+									if(!empty($explode[1])){
 							?>
 										<div class="em-box">
 											<img src="<?php echo imgUrl();?>systems/club_storage/<?php echo $gl['pic'];?>" alt="klub galeri" width="220">
