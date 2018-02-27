@@ -43,7 +43,7 @@
 	                    			            :
 	                    			        </td>
 	                    			        <td>
-	                    			            <span style="color: red; font-weight: bold; font-size: 20px;"> Rp. <?= number_format($model->harga_all,0,',','.'); ?> 
+	                    			            <span style="color: red; font-weight: bold; font-size: 20px;"> Rp. <?= number_format($modelnya->harga_all,0,',','.'); ?> 
 	                    			            </span> 
 	                    			        </td>
 	                    			    </tr>
@@ -134,17 +134,17 @@
 	                    			    </tr>
 	                    			    <tr>
 	                    			        <td align="center">
-	                    			            <img style="height: 115px;" src="<?= base_url() ?>assets/eyemarket/<?= $model->logo; ?>" alt="logo_<?= $model->logo;?>">
+	                    			            <img style="height: 115px;" src="http://beta.eyesoccer.id/assets/eyemarket/<?= $modelnya->logo; ?>" alt="logo_<?= $modelnya->logo;?>">
 	                    			        </td>
 	                    			    </tr>
 	                    			    <tr>
 	                    			        <td align="center">
-	                    			            a/n <?= $model->nama_pemilik ?>
+	                    			            a/n <?= $modelnya->nama_pemilik ?>
 	                    			        </td>
 	                    			    </tr>
 	                    			    <tr>
 	                    			        <td align="center">
-	                    			            <h1><mark><?= $model->rekening; ?></mark></h1> 
+	                    			            <h1><mark><?= $modelnya->rekening; ?></mark></h1> 
 	                    			        </td>
 	                    			    </tr>
 	                    			</table>
