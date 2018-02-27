@@ -501,44 +501,39 @@ class Home extends CI_Controller
         } else {
             $allowed = array('gif', 'png', 'jpg', 'jpeg');
             $filename = file_name('pic');
-            if (!in_array($ext, $allowed)) {
-                echo 'error';
-                exit();
-            } else {
-                $return = 'Success.';
-                $caption = "Profile Picture";
-                $lat = $_POST['lat'];
-                $lon = $_POST['lon'];
-                $date = date("Y-m-d H:i:s");
-                $pic = "foto-" . $filename;
-                $path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "img/img_storage/" : IMGSTORAGE . '/';
-                move_uploaded_file($_FILES['pic']['tmp_name'], $path . 'ori_' . $pic);
-                // var_dump(pathUrl());exit();
-                $last_id = $_SESSION["member_id"];
-                $post_data = array(
-                    'title' => $caption,
-                    'tags' => 'profil',
-                    'pic' => $pic,
-                    'thumb1' => $pic,
-                    'lat' => $lat,
-                    'lon' => $lon,
-                    'upload_date' => date("Y-m-d H:i:s"),
-                    'publish_by' => 'member',
-                    'publish_type' => 'public',
-                    'upload_user' => $last_id
-                );
-                $cmd = $this->db->insert("tbl_gallery", $post_data);
-                $this->db->trans_complete();
-                $pic_id = $this->db->insert_id();
+			$return = 'Success.';
+			$caption = "Profile Picture";
+			$lat = $_POST['lat'];
+			$lon = $_POST['lon'];
+			$date = date("Y-m-d H:i:s");
+			$pic = "foto-" . $filename;
+			$path = ($_SERVER['SERVER_NAME'] == 'localhost') ? pathUrl() . "img/img_storage/" : IMGSTORAGE . '/';
+			move_uploaded_file($_FILES['pic']['tmp_name'], $path . 'ori_' . $pic);
+			// var_dump(pathUrl());exit();
+			$last_id = $_SESSION["member_id"];
+			$post_data = array(
+				'title' => $caption,
+				'tags' => 'profil',
+				'pic' => $pic,
+				'thumb1' => $pic,
+				'lat' => $lat,
+				'lon' => $lon,
+				'upload_date' => date("Y-m-d H:i:s"),
+				'publish_by' => 'member',
+				'publish_type' => 'public',
+				'upload_user' => $last_id
+			);
+			$cmd = $this->db->insert("tbl_gallery", $post_data);
+			$this->db->trans_complete();
+			$pic_id = $this->db->insert_id();
 
-                $this->db->query("UPDATE tbl_member SET profile_pic='" . $pic_id . "' WHERE id_member='" . $_SESSION["member_id"] . "'");
-                if ($this->db->affected_rows() > 0) {
-                    redirect("home/member_area");
-                } else {
-                    // redirect("home/member_area");
-                    echo "<script>alert('Data gagal di update');</script>";
-                }
-            }
+			$this->db->query("UPDATE tbl_member SET profile_pic='" . $pic_id . "' WHERE id_member='" . $_SESSION["member_id"] . "'");
+			if ($this->db->affected_rows() > 0) {
+				redirect("home/member_area");
+			} else {
+				// redirect("home/member_area");
+				echo "<script>alert('Data gagal di update');</script>";
+			}
         }
     }
 

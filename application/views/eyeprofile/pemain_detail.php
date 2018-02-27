@@ -170,12 +170,14 @@
                     </thead>
                     <tbody>
                         <?php
-
+                        $no =0;
                         if(count($res->career_national) > 0){
 
                             foreach($res->career_national as $k => $v){
+                                $no++;
 
                                 echo '<tr>';
+                                    echo "<td>{$no}</td>";
                                     echo "<td>{$v->country}</td>";
                                     echo "<td>{$v->year}</td>";
                                     echo "<td>{$v->number_of_play}</td>";
