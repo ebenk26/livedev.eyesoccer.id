@@ -209,7 +209,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 		<div class="center-desktop m-0">
 			<div class="w-60 m-r-1 pd-t-20 formasi">
-				<h3 class="">Karir Klub</h3>
+				<h3 class="">Prestasi Klub</h3>
 				<table class="stripe cell-border" cellspacing="0" width="100%" id="tbl_karir_klub">
 					<thead id="back900">
 						<th>No</th>
@@ -394,11 +394,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="box item active">
 							<?php 
 								foreach ($get_gallery as $gl){
+									$explode = explode('-',$gl['pic']);
+									if(!empty($explode[1])){
 							?>
-									<div class="em-box">
-										<img src="<?php echo imgUrl();?>systems/club_storage/<?php echo $gl['pic'];?>" alt="klub galeri" width="220">
-									</div>
+										<div class="em-box">
+											<img src="<?php echo imgUrl();?>systems/club_storage/<?php echo $gl['pic'];?>" alt="klub galeri" width="220">
+										</div>
 							<?php
+									}
 								}
 							?>
 						</div>
