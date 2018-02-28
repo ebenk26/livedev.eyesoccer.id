@@ -5,13 +5,13 @@
     }
 </style>
     <div class="container dll-head">
-        <img src="assets/img/Footer/img-header-pedoman.png" alt="">
-        <div class="center-desktop m-0 dll-title">
+        <img src="assets/img/Footer/img-header-pedoman.jpg" alt="">
+        <!-- <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Pedoman Media Siber</h2>
-        </div>
+        </div> -->
     </div>
-    <div class="container m-t-53">
+    <div class="container">
         <div class="center-desktop m-0">
             <div class="dll-isi">
                 <span>Kemerdekaan berpendapat, kemerdekaan berekspresi, dan kemerdekaan pers adalah hak asasi yang dilindungi Pancasila,

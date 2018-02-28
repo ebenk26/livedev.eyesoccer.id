@@ -1,12 +1,12 @@
 
     <div class="container dll-head">
-        <img src="assets/img/Footer/img-header-komunitas.png" alt="">
-        <div class="center-desktop m-0 dll-title">
+        <img src="assets/img/Footer/img-header-komunitas.jpg" alt="">
+        <!-- <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Panduan Komunitas</h2>
-        </div>
+        </div> -->
     </div>
-    <div class="container m-t-70">
+    <div class="container">
         <div class="center-desktop m-0">
             <div class="dll-isi">
                 <h3>A. Mendaftar</h3>

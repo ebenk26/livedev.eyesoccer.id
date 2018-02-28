@@ -4045,9 +4045,9 @@ ul, li {
 }
 .dll-head img{
     width: 100vw;
-    max-height: 304px;
+    /* max-height: 304px;
     overflow: hidden;
-    margin-left: -4%;
+    margin-left: -4%; */
 }
 .dll-title{
     position: relative;
