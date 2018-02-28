@@ -5,7 +5,7 @@ class Eyevent extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
-			direct_m();
+			// direct_m();
 		    $this->load->model('Eyevent_model');
 			date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper('my');			
