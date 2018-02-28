@@ -706,3 +706,15 @@ function file_name($file = '')
         return $filename;
     }
 }
+
+function direct_m(){
+?>
+	<script>
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
+		{
+		   location.replace("http://m.eyesoccer.id<?php echo $_SERVER['REQUEST_URI'];?>")
+			
+		}
+	</script>
+<?php
+}
