@@ -337,11 +337,6 @@
     
 
     <script>
-		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
-		{
-		   location.replace("http://m.eyesoccer.id/")
-
-		}
 		jQuery.fn.extend({
 			renameAttr: function(name, newName, removeData) {
 				var val;
