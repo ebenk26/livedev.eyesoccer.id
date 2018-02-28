@@ -6,6 +6,7 @@ class Eyetube extends CI_Controller {
 	public function __construct()
 	{
         parent::__construct();
+			direct_m();
 		    //$this->load->model('Eyemarket_model');
 		    $this->load->model('Eyetube_model');
 		    $this->load->model('Eyetube_model','tmod');

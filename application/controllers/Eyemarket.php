@@ -5,6 +5,7 @@ class Eyemarket extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
+			direct_m();
 		    $this->load->model('Eyemarket_model');
 		    date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','text','date','my_helper'));
