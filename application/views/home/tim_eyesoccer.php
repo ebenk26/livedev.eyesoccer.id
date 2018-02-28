@@ -1,12 +1,12 @@
 
     <div class="container dll-head">
-        <img src="assets/img/Footer/img-header-tim.png" alt="">
-        <div class="center-desktop m-0 dll-title">
+        <img src="assets/img/Footer/img-header-tim.jpg" alt="" width="100%">
+        <!-- <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Tim EyeSoccer</h2>
-        </div>
+        </div> -->
     </div>
-    <div class="container m-t-70">
+    <div class="container">
         <div class="center-desktop m-0">
             <div class="container m-0 bbg">
                 <div class="dll-isi">
@@ -38,7 +38,7 @@
                         <tr>
                             <td>CEO / Founder</td>
                             <td>CTO / Founder</td>
-                            <td>CFO / Founder</td>
+                            <td>CO Founder</td>
                         </tr>
                     </table>
                     <br>
