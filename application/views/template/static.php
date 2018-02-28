@@ -96,6 +96,13 @@
             <link href="<?php echo base_url(); ?>bs/fa/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     		
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<script>
+				if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
+				{
+				   location.replace("http://m.eyesoccer.id<?php echo $_SERVER['REQUEST_URI'];?>")
+					
+				}
+			</script>
             <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
