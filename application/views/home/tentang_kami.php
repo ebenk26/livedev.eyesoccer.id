@@ -1,12 +1,12 @@
 
     <div class="container dll-head">
-        <img src="assets/img/Footer/img-header-tentang-kami.jpg" alt="" width="100%">
-        <!-- <div class="center-desktop m-0 dll-title">
+        <img src="assets/img/Footer/img-header-tentang kami.png" alt="">
+        <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Tentang Kami</h2>
-        </div> -->
+        </div>
     </div>
-    <div class="container">
+    <div class="container m-t-53">
         <div class="center-desktop m-0">
             <div class="dll-isi">
                 <span>

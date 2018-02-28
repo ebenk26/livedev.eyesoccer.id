@@ -7,6 +7,7 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+		direct_m();
         // $this->load->model('Eyemarket_model');
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Home_model');
@@ -544,8 +545,10 @@ class Home extends CI_Controller
         } else {
             $allowed = array('gif', 'png', 'jpg', 'jpeg');
             $filename = file_name('add_foto');
+			$ext = substr($filename, strrpos($filename, '.') + 1);
             if (!in_array($ext, $allowed)) {
-                echo 'error';
+                echo '<script>alert("Upload Gagal")</script>';
+				redirect("home/member_area");
                 exit();
             } else {
                 $return = 'Success.';
@@ -576,7 +579,7 @@ class Home extends CI_Controller
                     // redirect("home/member_area");
                     echo "<script>alert('Data gagal di update');</script>";
                 }
-            }
+			}
         }
     }
 

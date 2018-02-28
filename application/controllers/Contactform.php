@@ -6,6 +6,7 @@ class Contactform extends CI_Controller {
 	public function __construct(){
         parent::__construct();
 		    //$this->load->model('Eyeticket_model');
+			direct_m();
     }
 	public function index()
 	{	

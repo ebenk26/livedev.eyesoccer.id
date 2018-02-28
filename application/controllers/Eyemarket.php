@@ -5,6 +5,7 @@ class Eyemarket extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
+			direct_m();
 		    $this->load->model('Eyemarket_model');
 		    date_default_timezone_set('Asia/Jakarta');
 			$this->load->helper(array('form','url','text','date','my_helper'));
@@ -1272,7 +1273,7 @@ class Eyemarket extends CI_Controller {
         	//===== get data order
         	$data['model'] 		= $this->Eyemarket_model->get_invoice($no_order);
 
-        	//===== insert ke table eyemarket_destinasi
+        	//===== insert ke table eyemarket_konfirmasi
 			$objek 	= 	array(
 			        		'id_order' 		=> $no_order,
 			        		'nominal' 		=> $nominal,
