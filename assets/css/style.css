@@ -37,7 +37,7 @@ nav{
     -webkit-font-smoothing: antialiased;
     outline: none;
 }
-a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .ev-box-content img, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option, a.emoticon span{
+a *, .news-rcm-z p, .img-src-200, .w30 p, li, .ev-box-content, .ev-box-content img, .logo img, .ctn-pemain, .box-content, .pointer, button, h1, h2, h3, h4, h5, span, i, a, input, button, .ctn-pemain, .box-content, select, select>option, a.emoticon span, .product{
     cursor: pointer !important;
 }
 .r, .s, .t, .title, h3.o, .h-berita-terkait>h3, .jp, .t-live, .x-c span, .w-60 h3, .w-40 h3, .h3-oranye, .subjudul, .subjudul h4, .up-r-tube span, #t1, .t-title span, .t-etc li, .t-etc span, .h-news-r h4, .h-news-r span, .subjudul2 h4, .up-r-news h4, .down-r-news h4, .d-r-n h4, .ui-datepicker-month, .ui-datepicker-year, .down-r-vent h4, .ui-datepicker-calendar th span, .d-r-v h4, .news-pic h2, .n-c span, .unname, .n-c img, .news-capt span, .dll-isi span, .dll-title h2, .dll-isi h3, .dll-isi h2 {
@@ -4045,9 +4045,9 @@ ul, li {
 }
 .dll-head img{
     width: 100vw;
-    /* max-height: 304px;
+    max-height: 304px;
     overflow: hidden;
-    margin-left: -4%; */
+    margin-left: -4%;
 }
 .dll-title{
     position: relative;
@@ -4118,6 +4118,9 @@ ey{
     height: 120px;
     border-radius: 50%;
     border: 2px solid gainsboro;
+}
+.w213{
+    width: 213px;
 }
 .w265{
     width: 265px;
@@ -4947,6 +4950,24 @@ img.loading {
 @media (min-width: 992px) {
     margin-right: 0;
 }
-.product .image{
-    height: 320px;
+.product:hover{
+    background-color: #fbfbfb8c;
+}
+.product .image {
+    overflow: hidden;
+    position: relative;
+    height: 350px;
+}
+.product .image img {
+    position: absolute;
+    /* height: 100% */
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.product:hover .image img{
+    -ms-transform: scale(1.5) !important;
+    -webkit-transform: scale(1.5) !important;
+    transform: scale(1.1, 1.1) translate(-45%,-45%) !important;
 }

@@ -300,7 +300,7 @@ function btnLogin($login)
             <span class="btn-btn-login">
 
             <a style="text-decoration: none;" href="' . (!$login ? LOGIN : MEMBERAREA) . '">
-            ' . (!$login ? 'masuk' : '<img src="' . MEIMG . load_top_avatar() . '" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;" alt="Photo profile">' . load_top_name()) . '
+            ' . (!$login ? 'masuk' : '<img src="' . MEIMG . load_top_avatar() . '" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;" alt="Photo profile" onerror="this.src=\''.DPIC.'\'">' . load_top_name()) . '
             </a>
             </span>';
 }
@@ -705,4 +705,16 @@ function file_name($file = '')
 
         return $filename;
     }
+}
+
+function direct_m(){
+?>
+	<script>
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
+		{
+		   location.replace("http://m.eyesoccer.id<?php echo $_SERVER['REQUEST_URI'];?>")
+			
+		}
+	</script>
+<?php
 }

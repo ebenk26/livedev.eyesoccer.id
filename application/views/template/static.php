@@ -219,7 +219,7 @@
                                     </span> 
                                     <span class="btn-btn-login"> 
                                         <a style="text-decoration: none;" href="<?=base_url()?>home/member_area"> 
-                                            <img src="<?php if(load_top_avatar()!=''){echo MEIMG.load_top_avatar();} ?>" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;"><?=load_top_name();?> 
+                                            <img src="<?php if(load_top_avatar()!=''){echo MEIMG.load_top_avatar();} ?>" onerror="this.src='<?php echo DPIC?>'" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;" ><?=load_top_name();?> 
                                         </a> 
                                     </span>
 	                    <?php

@@ -5,6 +5,7 @@ class Eyeme extends CI_Controller {
 
 	public function __construct(){
         parent::__construct();
+			direct_m();
         	#sw::begin 
 		    $this->load->model('Eyemarket_model');
 		    $this->load->model('Eyeme_model','emod');
