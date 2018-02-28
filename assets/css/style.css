@@ -4045,9 +4045,9 @@ ul, li {
 }
 .dll-head img{
     width: 100vw;
-    /* max-height: 304px;
+    max-height: 304px;
     overflow: hidden;
-    margin-left: -4%; */
+    margin-left: -4%;
 }
 .dll-title{
     position: relative;
@@ -4118,6 +4118,9 @@ ey{
     height: 120px;
     border-radius: 50%;
     border: 2px solid gainsboro;
+}
+.w213{
+    width: 213px;
 }
 .w265{
     width: 265px;
