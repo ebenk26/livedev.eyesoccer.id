@@ -338,7 +338,7 @@
                                 </span>
                             </td>
                             <td>
-                                <span>Sesuai dengan Undang-Undang Pers, media siber yang tidak melayani hak jawab dapat dijatuhi sanksi hukum pidana denda paling banyak Rp500.000.000 (Lima ratus juta rupiah).</span>
+                                <span>Sesuai dengan Undang-Undang Pers, media siber yang tidak melayani hak jawab dapat dijatuhi sanksi hukum pidana denda paling banyak Rp. 500.000.000 (Lima ratus juta rupiah).</span>
                             </td>
                         </tr>
                     </table>

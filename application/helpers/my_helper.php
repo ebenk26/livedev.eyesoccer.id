@@ -300,7 +300,7 @@ function btnLogin($login)
             <span class="btn-btn-login">
 
             <a style="text-decoration: none;" href="' . (!$login ? LOGIN : MEMBERAREA) . '">
-            ' . (!$login ? 'masuk' : '<img src="' . MEIMG . load_top_avatar() . '" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;" alt="Photo profile">' . load_top_name()) . '
+            ' . (!$login ? 'masuk' : '<img src="' . MEIMG . load_top_avatar() . '" class="img img-circle" width="30px" height="30px" style="border-radius: 20px;float: right;margin-left: 15px;" alt="Photo profile" onerror="this.src=\''.DPIC.'\'">' . load_top_name()) . '
             </a>
             </span>';
 }

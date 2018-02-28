@@ -140,7 +140,7 @@
     <div class="m-0">
         <div class="container">
             <div class="pd-t-20 p-r" style="float:left">
-            <a href="<?php echo MEURL?>" title="test" style="text-decoration: none;""><i class="material-icons ikon">home</i></a>
+            <a href="<?php echo MEURL?>" title="beranda" style="text-decoration: none;""><i class="material-icons ikon">home</i></a>
             </div>
             <div class="fl-r pd-t-20 p-r">
             <?php 
@@ -149,7 +149,7 @@
                 $icon = array(
                             array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),
                             array('icon'=> 'notifications_none','link'=> '#','title'=> 'Pemberitahuan','id'=>'notif'),
-                            array('icon'=> 'camera_alt','link'=> '#','title'=> 'Upload Gambar','id'=>'upload'),
+                            array('icon'=> 'camera_alt','link'=> '#','title'=> 'Unggah Gambar','id'=>'upload'),
                             array('icon'=> 'person_outline','link'=> MEURL.'profile/'.$myusername,'title'=> 'Profil','id'=> 'prof'));
                 //icon menu 
                 foreach($icon as $k => $v){
