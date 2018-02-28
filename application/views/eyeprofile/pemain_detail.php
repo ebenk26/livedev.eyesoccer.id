@@ -120,29 +120,32 @@
         <div class="w-60 m-r-1 formasi">
             <div class="container">
                 <h3>Karir Klub</h3>
-                <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
+                <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0" style="overflow-x: auto;">
                     <thead>
                         <tr>
-                            <th class="t-b-b">NO </th>
-                            <th class="t-b-b">Klub</th>
+                            <th class="t-b-b">Bulan </th>
                             <th class="t-b-b">Tahun</th>
+                            <th class="t-b-b">Klub</th>
+                            <th class="t-b-b">Kompetisi</th>
                             <th class="t-b-b">Main</th>
+                            <th class="t-b-b">No Punggung</th>
                             <th class="t-b-b">Pelatih</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            $no = 0 ;
+                         
 
                             if(count($res->career_club) > 0 ){
 
                                 foreach($res->career_club as $k => $v){
-                                    $no++;
                                     echo '<tr>';
-                                        echo "<td>{$no}</td>";
-                                        echo "<td>{$v->club}</td>";
+                                        echo "<td>".($v->month == '' ? '-' : $v->month)."</td>";
                                         echo "<td>{$v->year}</td>";
+                                        echo "<td>{$v->club}</td>";
+                                        echo "<td>{$v->tournament}</td>";
                                         echo "<td>{$v->number_of_play}</td>";
+                                        echo "<td>{$v->back_number}</td>";
                                         echo "<td>{$v->coach}</td>";
                                     echo '</tr>';
                                 }
@@ -160,11 +163,13 @@
                 <h3 class="pd-t-20">Karir Timnas</h3>
                 <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
                     <thead>
-                        <tr>
-                            <th class="t-b-b">NO</th>
-                            <th class="t-b-b">Timnas</th>
+                       <tr>
+                            <th class="t-b-b">Bulan </th>
                             <th class="t-b-b">Tahun</th>
+                            <th class="t-b-b">Klub</th>
+                            <th class="t-b-b">Kompetisi</th>
                             <th class="t-b-b">Main</th>
+                            <th class="t-b-b">No Punggung</th>
                             <th class="t-b-b">Pelatih</th>
                         </tr>
                     </thead>
@@ -177,10 +182,12 @@
                                 $no++;
 
                                 echo '<tr>';
-                                    echo "<td>{$no}</td>";
-                                    echo "<td>{$v->country}</td>";
+                                    echo "<td>".($v->month == '' ? '-' : $v->month)."</td>";
                                     echo "<td>{$v->year}</td>";
+                                    echo "<td>{$v->club}</td>";
+                                    echo "<td>{$v->tournament}</td>";
                                     echo "<td>{$v->number_of_play}</td>";
+                                    echo "<td>{$v->back_number}</td>";
                                     echo "<td>{$v->coach}</td>";
                                 echo '</tr>';
 
@@ -191,7 +198,7 @@
 
                             echo '<tr>';
 
-                                echo '<td colspan="5" style="text-align:center"> Tidak ditemukan </td>';
+                                echo '<td colspan="7" style="text-align:center"> Tidak ditemukan </td>';
 
                             echo '</tr>';
 
@@ -231,10 +238,10 @@
                 </tbody>
             </table>
         </div>
-        <div class="container">
+        <div class="container" style="overflow-x: auto">
             <h3 class="pd-t-20">Prestasi</h3>
-            <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0">
-                    <thead>
+            <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0"  ">
+                    <thead >
                         <tr>
                             <th class="t-b-b">NO</th>
                             <th class="t-b-b">Tahun</th>
@@ -244,7 +251,7 @@
                             <th class="t-b-b">Penghargaan</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody ">
                         <?php
 						$no_ach = 0;
                         if(count($res->achievement) > 0){
@@ -267,7 +274,7 @@
 
                             echo '<tr>';
 
-                                echo '<td colspan="5" style="text-align:center"> Tidak ditemukan </td>';
+                                echo '<td colspan="7" style="text-align:center"> Tidak ditemukan </td>';
 
                             echo '</tr>';
 
@@ -286,7 +293,7 @@
                        <?php foreach($res->gallery as $k => $v){
 
                             echo '<div class="em-box">';
-                                echo '<img src="'.$v->url_pic.'/medium">';
+                                echo '<img src="'.$v->url_pic.'/medium" onerror="this.style.display=\'none\'">';
 
                             echo '</div>';
 

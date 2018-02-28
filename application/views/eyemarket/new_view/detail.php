@@ -125,8 +125,8 @@
                                 if ($id_member == NULL) 
                                 {
                             ?>
-                                    <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>">
-                                        <span class="btn btn-template-main">
+                                    <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>" class="btn btn-template-main">
+                                        <span>
                                             <i class="fa fa-shopping-cart"></i> Add to cart 
                                         </span>
                                     </a>
@@ -160,7 +160,7 @@
                                 {
                             ?>
                                     <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
-                                        <span class="btn btn-template-main">
+                                        <span>
                                             <i class="fa fa-shopping-cart"></i> Add to chart
                                         </span>
                                     </a>
