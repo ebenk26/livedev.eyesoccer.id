@@ -337,16 +337,10 @@
     
 
     <script>
-		function detectmob() {
-		   if(window.innerWidth <= 800 || window.innerHeight <= 600) {
-			 return true;
-		   } else {
-			 return false;
-		   }
-		}
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
+		{
+		   location.replace("http://m.eyesoccer.id/")
 
-		if (detectmob()){
-			top.location.href="http://m.eyesoccer.id";
 		}
 		jQuery.fn.extend({
 			renameAttr: function(name, newName, removeData) {
