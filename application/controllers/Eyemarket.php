@@ -1272,7 +1272,7 @@ class Eyemarket extends CI_Controller {
         	//===== get data order
         	$data['model'] 		= $this->Eyemarket_model->get_invoice($no_order);
 
-        	//===== insert ke table eyemarket_destinasi
+        	//===== insert ke table eyemarket_konfirmasi
 			$objek 	= 	array(
 			        		'id_order' 		=> $no_order,
 			        		'nominal' 		=> $nominal,
