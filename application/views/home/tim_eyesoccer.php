@@ -38,7 +38,7 @@
                         <tr>
                             <td>CEO / Founder</td>
                             <td>CTO / Founder</td>
-                            <td>CFO / Founder</td>
+                            <td>CFO / Co-Founder</td>
                         </tr>
                     </table>
                     <br>
