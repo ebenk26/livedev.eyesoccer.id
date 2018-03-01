@@ -65,8 +65,10 @@ body{
 							<div class="w4">
 								<a href="<?php echo base_url(); ?>eyetube/detail/<?= $similar->url;?>" class="container">
 									<div class="w4-f">
-										<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $similar->thumb1; ?>" style="width:100%;margin-right:20px;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
-										<div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
+										<img src="<?php echo MEVID.$similar->thumb; ?>/small" style="width:100%;margin-right:20px;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
+										<div class="container btn-play2">
+											 <img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"> 
+										</div>
 									</div>
 										<p class="sub-en">									
 										<?= $similar->title; ?></p>
@@ -103,7 +105,7 @@ body{
 									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi['url'];?>">
 										<div class="container garis-x4">
 											<div class="container" style="width:240px;height:145px;overflow:hidden;">
-												<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $rekomendasi['thumb1']; ?>" alt="<?=$rekomendasi['title'];?>" title="<?=$rekomendasi['title'];?>">
+												<img src="<?php echo MEVID.$rekomendasi['thumb']; ?>/small" alt="<?=$rekomendasi['title'];?>" title="<?=$rekomendasi['title'];?>">
 												<div class="container btn-play2" style="left: 100px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
 											</div>
 											<div class="container news-rcm-z">
@@ -139,7 +141,7 @@ body{
 									<a href="<?php echo base_url(); ?>eyetube/detail/<?= $row['url'];?>">
 										<div class="container" style="border:1px solid gainsboro;">
 										<div style="width:100%; height:200px; overflow:hidden;">
-											<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $row['thumb1']; ?>" alt="" style="width:100%;">
+											<img src="<?php echo MEVID.$row['thumb']; ?>/small" alt="" style="width:100%;">
 											<div class="container btn-play2" style="width:60px; height:60px; top:-130px; left:150px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
 										</div>
 		                                <div class="n-rcm-up-teks">
@@ -166,7 +168,7 @@ body{
 							<a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer2['url'];?>">
                             <div class="container news-rcm-d">							
                                 <div style="display:block; width:100px; height:100px; float:left; overflow:hidden; position:relative;">
-									<img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $populer2['thumb']; ?>" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
+									<img src="<?php echo MEVID.$populer2['thumb']; ?>/small" alt="" style="height: 100%; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%);">
 									<div class="container btn-play2" style="left:30px; top:-75px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
 								</div>
                                 
@@ -250,7 +252,7 @@ body{
 						<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row12['url'];?>">
 							<div class="container garis-x4">
 								<div class="container" style="width:240px;height:150px;overflow:hidden;">
-									<img src="<?php echo imgUrl(); ?>systems/eyenews_storage/<?= $row12['thumb1']; ?>" alt="<?=$row12['title']?>" title="<?=$row12['title']?>">
+									<img src="<?php echo MEVID.$row12['thumb1']; ?>" alt="<?=$row12['title']?>" title="<?=$row12['title']?>">
 									<div class="container btn-play2" style="left: 100px;"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
 								</div>
 								<div class="container news-rcm-z">
@@ -296,14 +298,14 @@ body{
                                         <span><?=$row["club_a"]?></span>
                                     </td>
                                     <td>
-                                        <img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt="">
+                                        <img src="<?= MEVID.$row['logo_a']; ?>/small" alt="">
                                     </td>
                                     <td>
                                         
                                         <p><?=$row['live_pertandingan']?></p>
                                     </td>
                                     <td>
-                                        <img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt="">
+                                        <img src="<?= MEVID.$row['logo_b']; ?>/small" alt="">
                                     </td>
                                     <td>
                                         <span><?=$row["club_b"]?></span>
