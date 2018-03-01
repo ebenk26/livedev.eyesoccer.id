@@ -113,6 +113,8 @@ define('sIMGSTORE', 'http://eyesoccer.id/systems/eyenews_storage/');
 define('EYEEXPLORE', MEURL . 'explore');
 define('DEFAULTIMG', base_url() . 'assets/home/img/eyeme-photo%20thumbnail.png');
 define('NEWSDETAIL', base_url() . 'eyenews/detail/');
+define('MEVID', 'http://static.eyesoccer.id/v1/cache/video/');
+
 
 function p($arr)
 {
