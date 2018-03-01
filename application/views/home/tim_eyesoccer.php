@@ -144,7 +144,6 @@
                         <span>
                             <ey>Graphic Design</ey>
                         </span>
-                        <span>Nur Leili Irma Bayinah</span>
                         <span>Emil Siregar</span>
                         <br>
                         <br>
@@ -163,12 +162,12 @@
                             <ey>Sales and Marketing</ey>
                         </span>
                         <span>Philips Gregory</span>
+                        <span>Owien Rodwin</span>
                         <br>
                         <span>
                             <ey>Social Media Specialist</ey>
                         </span>
                         <span>Nugraha Putra</span>
-                        <span>Revita Putri Elistine</span>
                         <br>
                     </div>
                     <div class="container w355 tim">
@@ -204,7 +203,7 @@
                         </span>
                         <span>Muhammad Robi</span>
                         <span>Kharizuno Hizbullah</span>
-                        <span>Sopyan Waldy</span>
+                        <span>Sofyan Waldy</span>
                         <br>
                         <br>
                     </div>

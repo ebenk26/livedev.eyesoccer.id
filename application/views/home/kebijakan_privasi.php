@@ -2,11 +2,11 @@
     <div class="container dll-head">
         <img src="assets/img/Footer/img-header-ketentuan privasi.png" alt="">
         <div class="center-desktop m-0 dll-title">
-            <div class="dline"></div>
-            <h2>Ketentuan dan Kebijakan Privasi</h2>
+            <!-- <div class="dline"></div>
+            <h2>Ketentuan dan Kebijakan Privasi</h2> -->
         </div>
     </div>
-    <div class="container m-t-70">
+    <div class="container">
         <div class="center-desktop m-0">
             <div class="dll-isi">
                 <h3>A. Ketentuan Penggunaan Layanan</h3>
