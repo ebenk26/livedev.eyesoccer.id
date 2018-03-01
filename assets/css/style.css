@@ -4055,6 +4055,7 @@ ul, li {
 }
 .dll-title h2{
     font-weight: 600;
+    text-shadow: 0 0 5px dimgrey;
 }
 .dline{
     width: 70px;
