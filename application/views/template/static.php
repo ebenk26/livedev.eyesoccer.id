@@ -309,7 +309,8 @@
                     <div class="center50">
                         <a target="_blank" href="https://www.facebook.com/eyesoccerindonesia/?ref=content_filter" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
                         <a target="_blank" href="https://twitter.com/eyesoccer_id" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
-                        <a target="_blank" href="https://instagram.com/eyesoccer" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
+                        <a target="_blank" href="https://instagram.com/eyesoccer" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a><br>
+                        <a style="float: right;position: relative;top: 50px;padding: 0px 10px;" href="//www.dmca.com/Protection/Status.aspx?ID=8b682fda-a66a-44db-9ff9-04dae8a124fc" title="DMCA.com Protection Status" class="dmca-badge"> <img src="//images.dmca.com/Badges/dmca-badge-w100-5x1-08.png?ID=8b682fda-a66a-44db-9ff9-04dae8a124fc" alt="DMCA.com Protection Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
                     </div>
                 </div>
             </div>
