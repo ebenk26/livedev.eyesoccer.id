@@ -164,6 +164,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</table>
 					<a target="_blank" href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Pemain</button></a>
 				</div><?php }?>                                      
+				<div class="container banner-150 img-banner">
+					<img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
+				</div>
 		</div>
 		
 		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-ofisial">

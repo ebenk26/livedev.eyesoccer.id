@@ -42,6 +42,9 @@
                     }
                 ?>
             </div>
+            <div class="container banner-eyevent1 img-banner">
+                <img src="../../assets/img/iklanbanner/banner 315x320px-01.jpg" alt="Square ads">
+            </div>
         </div>
     </div>
 

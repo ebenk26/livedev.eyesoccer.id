@@ -4980,15 +4980,16 @@ img.loading {
 }
 .img-banner img {
     height: 100%;
-    background-color: gainsboro;
+    width: 100%;
+    /* background-color: gainsboro; */
 }
 .banner-home1{
     width: 1065px;
     height: 300px;
 }
 .banner-eyenews1{
-    width: 425px;
-    height: 100px;
+    width: 315px;
+    height: 320px;
 }
 .banner-eyenews3{
     width: 1065px;
@@ -4996,5 +4997,17 @@ img.loading {
 }
 .banner-eyenews4{
     width: 360px;
+    height: 320px;
+}
+.banner-eyetube1{
+    width: 300px;
+    height: 320px;
+}
+.banner-eyetube2{
+    width: 690px;
+    height: 100px;
+}
+.banner-eyevent1{
+    width: 315px;
     height: 320px;
 }

@@ -233,7 +233,7 @@
 						<?php } ?>						
                     </div>
                     <div class="container banner-eyenews1 img-banner mt-20">
-                        <img src="assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="">
+                        <img src="../../assets/img/iklanbanner/banner 315x320px-01.jpg" alt="ads">
                     </div>
 
                     <div class="down-r-news">

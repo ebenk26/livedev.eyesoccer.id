@@ -191,8 +191,8 @@
             ?>
         </div>
         <div class="container news-rcm-r2 fl-r">
-            <div class="container banner-eyenews4 img-banner mt-30">
-                <img src="assets/img/iklanbanner/banner 360x320px-01.jpg" alt="">
+            <div class="container banner-eyetube1 img-banner mt-30">
+                <img class="lazy" src="../../assets/img/iklanbanner/banner 360x320px-01.jpg" alt="">
             </div>
             <div class="container subjudul2">
                 <h4>JADWAL LIVE</h4>
