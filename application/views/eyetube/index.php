@@ -97,7 +97,7 @@
                         <div class="gambar3">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">
                                 <div style="width:100%; height:100%; overflow:hidden;">
-                                    <img src="<?= MEVID.$videonya['thumb']; ?>/small" >
+                                    <img src="<?= MEVID.$videonya['thumb']; ?>/medium" >
                                     <div class="btn-play"> 
                                         <img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" kasperskylab_antibanner="on"> 
                                     </div>
@@ -118,7 +118,7 @@
                         <div class="gambar3" style="padding-left:1.8%;">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url']; ?>">                     
                             <div style="width:100%; height:100%; overflow:hidden;">
-                                <img src="<?= MEVID.$videonya['thumb']; ?>/small" >
+                                <img src="<?= MEVID.$videonya['thumb']; ?>/medium" >
                                 <div class="btn-play"> 
                                     <img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" kasperskylab_antibanner="on"> 
                                 </div>
@@ -152,7 +152,7 @@
                         <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $populer['url']; ?>" >
                             <div style="width:100%; height:160px; overflow:hidden;">
-                                <img src="<?= MEVID.$populer['thumb']; ?>/small" style="min-width:100%; height:100%;">                                
+                                <img src="<?= MEVID.$populer['thumb']; ?>/medium" style="min-width:100%; height:100%;">                                
                             </div>
                             
                                 <p class="sub-en">
@@ -185,7 +185,7 @@
                         <div class="w4">
                         <a href="<?php echo base_url(); ?>eyetube/detail/<?= $all_populer['url']; ?>" >    
                             <div style="width:100%; height:160px; overflow:hidden;">
-                                <img src="<?= MEVID.$all_populer['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                <img src="<?= MEVID.$all_populer['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                             </div>
                         
                                 <p class="sub-en"><?= $all_populer['title']; ?></p>
@@ -237,7 +237,7 @@
                             <div class="w4">
                                 <a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi['url']; ?>" >
                                     <div style="width:100%; height:160px; overflow:hidden;">
-                                        <img src="<?= MEVID.$rekomendasi['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                        <img src="<?= MEVID.$rekomendasi['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                                     </div>
                                     
                                     <p class="sub-en"><?=$rekomendasi['title']?></p>
@@ -263,7 +263,7 @@
                             <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $rekomendasi_2['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
-                                    <img src="<?= MEVID.$rekomendasi_2['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                    <img src="<?= MEVID.$rekomendasi_2['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                                 </div>
                                 
                                     <p class="sub-en">
@@ -309,7 +309,7 @@
                             <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $science['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
-                                    <img src="<?= MEVID.$science['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                    <img src="<?= MEVID.$science['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                                 </div>
                                 
                                     <p class="sub-en">
@@ -334,7 +334,7 @@
                             <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $science2['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
-                                    <img src="<?= MEVID.$science2['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                    <img src="<?= MEVID.$science2['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                                 </div>
                                 
                                     <p class="sub-en">
@@ -380,7 +380,7 @@
                             <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $kamu['url']; ?>" >
                             <div style="width:100%; height:160px; overflow:hidden;">
-                                <img src="<?= MEVID.$kamu['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                <img src="<?= MEVID.$kamu['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                             </div>    
                                     <p class="sub-en">
                                     
@@ -401,7 +401,7 @@
                             <div class="w4">
                             <a href="">
                             <div style="width:100%; height:160px; overflow:hidden;">
-                                <img src="<?= MEVID.$kamu['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                <img src="<?= MEVID.$kamu['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                             </div>
                                     <p class="sub-en"><?=$kamu['title']?></p>
                                     <span class="time-view">
@@ -445,7 +445,7 @@
                             <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
-                                    <img src="<?= MEVID.$ssb['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                    <img src="<?= MEVID.$ssb['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                                 </div>
                                     <p class="sub-en">
                                     
@@ -469,7 +469,7 @@
                             <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $ssb_2['url']; ?>" >
                                 <div style="width:100%; height:160px; overflow:hidden;">
-                                    <img src="<?= MEVID.$ssb_2['thumb']; ?>/small" style="min-width:100%;height:100%;">
+                                    <img src="<?= MEVID.$ssb_2['thumb']; ?>/medium" style="min-width:100%;height:100%;">
                                 </div>
                                     <p class="sub-en">
                                     

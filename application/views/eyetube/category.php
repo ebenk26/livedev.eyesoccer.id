@@ -65,7 +65,7 @@ body{
 							<div class="w4">
 								<a href="<?php echo base_url(); ?>eyetube/detail/<?= $similar->url;?>" class="container">
 									<div class="w4-f">
-										<img src="<?php echo MEVID.$similar->thumb; ?>/small" style="width:100%;margin-right:20px;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
+										<img src="<?php echo MEVID.$similar->thumb; ?>/medium" style="width:100%;margin-right:20px;" alt="<?= $similar->title; ?>" title="<?= $similar->title; ?>">
 										<div class="container btn-play2">
 											 <img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"> 
 										</div>
