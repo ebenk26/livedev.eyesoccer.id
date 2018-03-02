@@ -45,8 +45,8 @@
         <div class="m-0 mt-20">
             <div class="container tube-l">
                 <div>
-                    <video width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->thumb; ?>">
-                        <source src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $eyetube_headline->video; ?>" type="video/mp4" preload="none">
+                    <video controlsList="nodownload" width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= MEVID.$eyetube_headline->thumb; ?>/medium">
+                        <source src="<?= MEVID.$eyetube_headline->video; ?>" type="video/mp4" preload="none">
                     </video>
                     <div class="top-r ">
                         <ul>
@@ -127,7 +127,7 @@
                     </div>
                     <div class="garis-x3"></div>
                     <div class="btn-share" style="display: none;">
-                        <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
+                        <div class="sharethis-inline-share-buttons" data-image="<?= MEVID?>"></div>
                     </div>
                     <div class="zz2">
                         <p><?= $eyetube_headline->description; ?></p>
@@ -409,7 +409,7 @@
                                         <a href="<?= base_url() ?>eyetube/detail/<?= $tube_lain['url']; ?>">
                                             <div class="container h105">
                                                 <div>
-                                                    <img src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $tube_lain['thumb']; ?>" alt="">
+                                                    <img src="<?= MEVID.$tube_lain['thumb']; ?>/small" alt="">
                                                     <div class="upr" style="background-color: unset;">
                                                         <span style="visibility: hidden;">2:30</span>
                                                     </div>
@@ -449,7 +449,7 @@
                                 ?>
                                         <a href="<?= base_url() ?>eyetube/detail/<?= $populer['url']; ?>">
                                             <div class="container h105">
-                                                <img src="<?= imgUrl(); ?>systems/eyetube_storage/<?= $populer['thumb']; ?>" alt="">
+                                                <img src="<?= MEVID.$populer['thumb']; ?>/small" alt="">
                                                 <div class="upr" style="background-color: unset;">
                                                     <span style="visibility: hidden;">2:30</span>
                                                 </div>

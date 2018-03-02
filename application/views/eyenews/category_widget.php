@@ -130,7 +130,7 @@
                         <div class="w4">
                             <a href="<?php echo base_url(); ?>eyetube/detail/<?= $videonya['url'];?>">
                                 <div style="width:100%; height:160px; overflow:hidden;">
-                                    <img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" style="min-width:100%; height:100%;" alt="<?= $videonya['title']; ?>" title="<?= $videonya['title']; ?>">
+                                    <img src="<?php echo MEVID.$videonya['thumb']; ?>/small" style="min-width:100%; height:100%;" alt="<?= $videonya['title']; ?>" title="<?= $videonya['title']; ?>">
                                     <div class="container btn-play2"><img src="http://beta.eyesoccer.id/assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;" kasperskylab_antibanner="on"></div>
                                 </div>
                                 <p class="sub-en"><?= $videonya['title']; ?></p>

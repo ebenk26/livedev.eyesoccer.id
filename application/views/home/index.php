@@ -341,7 +341,7 @@
 				?>
 					<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>">
 						<div class="et-v-content">
-							<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">
+							<img class="lazy" src="<?= MEVID.$videonya['thumb']; ?>/medium" alt="">
 							<!--<img class="lazy" src="<?=base_url()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="">-->
 							<div class="btn-play">
 								<img class="lazy" src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="">
@@ -388,7 +388,7 @@
 					?></span>
                             <p class="et-st-det"><?= $videonya['title']; ?></p>
                         </div> -->
-						<img class="v-et-2 v-et-100 lazy" width="100%" src="<?=imgUrl()?>systems/eyetube_storage/<?= $videonya['thumb']; ?>" alt="" style="margin-bottom: 10px;">
+						<img class="v-et-2 v-et-100 lazy" width="100%" src="<?= MEVID.$videonya['thumb']; ?>/medium" alt="" style="margin-bottom: 10px;">
 							<!-- <div class="container btn-play2"><img class="lazy" src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	 -->
 						</a>
 					<?php
@@ -422,7 +422,7 @@
 							<a href="<?=base_url().'eyetube/detail/'.$stars['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
-										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $stars['thumb'];?>" alt="">										
+										<img class="lazy" src="<?= MEVID.$stars['thumb'];?>/medium" alt="">										
 									</div>
 									<div class="container h41"><span class="vid-ttl"><?= $stars['title']; ?></span><br></div>
 									<p class="vid-time"><?php
