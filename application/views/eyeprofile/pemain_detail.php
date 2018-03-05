@@ -34,7 +34,7 @@
                                 <td>: <?php echo (!empty($res->nationality) ? $res->nationality: '-') ?></td>
                             </tr>
 							<?php 
-								if($res->status != "Profesional" || $res->status != ""){
+								if($res->status != "Profesional" && $res->status != ""){
 							?>
 							<tr>
                                 <td>Nama Ayah</td>
