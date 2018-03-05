@@ -447,7 +447,7 @@
 								<div class="vid-box-vl">
 									<!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
 									<div class="vid-box-vl-img">
-										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">										
+										<img class="lazy" src="<?= MEVID.$populer['thumb'];?>" alt="">										
 									</div>
 									<div class="container h41"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -474,7 +474,7 @@
 							<a href="<?=base_url().'eyetube/detail/'.$kamu['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
-										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
+										<img class="lazy" src="<?= MEVID.$kamu['thumb'];?>" alt="">
 									</div>
 									<div class="container h41" ><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
 									<p class="vid-time"><?php

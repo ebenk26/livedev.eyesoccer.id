@@ -76,7 +76,7 @@
             <div>
                 <div class="container h105">
                     <a href="">
-                        <img src="<?php echo imgUrl(); ?>systems/eyetube_storage/<?= $newtube['thumb']; ?>" alt="">
+                        <img src="<?php echo MEVID.$newtube['thumb']; ?>" alt="">
                     </a>
                     <div class="drn">
                         <span></span>
