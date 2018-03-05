@@ -168,6 +168,7 @@
                             <ey>Social Media Specialist</ey>
                         </span>
                         <span>Nugraha Putra</span>
+                        <span>DB Krishna</span>
                         <br>
                     </div>
                     <div class="container w355 tim">

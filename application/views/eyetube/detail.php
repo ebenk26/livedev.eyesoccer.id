@@ -141,6 +141,9 @@
                     </div>
                     <div class="garis-x3"></div>
                 </div>
+                <div class="container banner-eyetube2 img-banner">
+                    <img src="../../assets/img/iklanbanner/banner 690x100px-01.jpg" alt="">
+                </div>
                 <!-- EMOTICON -->
                 <input type="hidden" id="eyetube-id" value="<?= $eyetube_headline->eyetube_id; ?>" />
                 <h3 id="t1">Bagaimana reaksi Anda tentang video ini?</h3>                   
@@ -439,7 +442,10 @@
                     </div>
                     <div class="down-r-tube">
                         <div class="pd">
-                            <div class="subjudul m-t-10">
+                            <div class="container mt-20 banner-eyetube1 img-banner">
+                                <img src="../../assets/img/iklanbanner/banner 300x320px-01.jpg" alt="">
+                            </div>
+                            <div class="container subjudul m-t-10">
                                 <h4>REKOMENDASI</h4>
                             </div>
                             <div>

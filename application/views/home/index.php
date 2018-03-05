@@ -322,8 +322,11 @@
 					?>
                     </div>
                 </div>
-            </div>
-        </div>
+			</div>
+			<div class="container mt-20 banner-home1 img-banner">
+				<img src="assets/img/iklanbanner/banner 1065x300 px-01.jpg" alt="Home Page Banner Ads">
+			</div>
+		</div>
 		</div>
         <!-- EYETUBE -->
         <div class="center-desktop">        

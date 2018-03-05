@@ -69,7 +69,10 @@
 		    }
 		?>
 		<div><?php echo $pagging['pagging'];?></div>
-	    </div>
+		</div>
+		<div class="container banner-150">
+			<img src="../../assets/img/banner-home.jpeg" alt="Banner Ads">
+		</div>
 	</div>
 	
 	<?php $this->load->view('eyenews/category_widget'); ?>
