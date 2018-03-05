@@ -66,7 +66,7 @@
                                 <td>: <?php echo (empty($res->contract_range1) || empty($res->contract_range1) ? ' - ' : $res->contract_range1.'-'.$res->contract_range2)?></td>
                             </tr>
 							<?php 
-								if($res->status != "Profesional"){
+								if($res->status != "Profesional" && $res->status != ""){
 							?>
 							<tr>
                                 <td>Klub Favorit</td>
