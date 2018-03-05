@@ -111,11 +111,11 @@ class Eyetube extends CI_Controller {
 		<meta name= "twitter:site" content= "@eyesoccer_id" />
 		<meta name= "twitter:title" content= "'.$data['eyetube_headline']->title.'" />
 		<meta name= "twitter:description" content= "'.substr(strip_tags($data['eyetube_headline']->description),0,100).'" />
-		<meta name= "twitter:image" content= "'.imgUrl().'/systems/eyetube_storage/'.$data['eyetube_headline']->url_thumb.'" />
+		<meta name= "twitter:image" content= "'.imgUrl().'/systems/eyetube_storage/'.$data['eyetube_headline']->thumb1.'" />
 		<meta property= "og:title" content= "'.$data['eyetube_headline']->title.'" />
 		<meta property= "og:url" content= "'.base_url().'/eyetube/detail/'.$url.'" />
 		<meta property= "og:type" content= "article" />
-		<meta property= "og:image" content= "'.imgUrl().'/systems/eyetube_storage/'.$data['eyetube_headline']->url_thumb.'" />
+		<meta property= "og:image" content= "'.imgUrl().'/systems/eyetube_storage/'.$data['eyetube_headline']->thumb1.'" />
 		<meta property= "og:description" content= "'.substr(strip_tags($data['eyetube_headline']->description),0,100).'" />
 		<meta property= "fb:app_id" content= "966242223397117" />
 		';
