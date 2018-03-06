@@ -104,7 +104,7 @@ class Eyevent extends CI_Controller {
 		$data["kanan_kalender"]	= $this->load->view('eyevent/date_picker', $data, true);
 		$data["kanan_topskor"]	= $this->load->view('eyevent/top_skor', $data, true);
 		$data["jadwal"]			= $this->load->view('eyevent/jadwal', $data, true);
-		$data["klasemen"]		= $this->load->view('eyevent/klasemen', $data, true);
+		// $data["klasemen"]		= $this->load->view('eyevent/klasemen', $data, true);
 		$data["body"] 			= $this->load->view('eyevent/index', $data, true);
 
 		$this->load->view('template/static',$data);
@@ -425,7 +425,7 @@ class Eyevent extends CI_Controller {
 		$data["kanan_kalender"]	= $this->load->view('eyevent/date_picker', $data, true);
 		$data["kanan_topskor"]	= $this->load->view('eyevent/top_skor', $data, true);
 		$data["jadwal"]			= $this->load->view('eyevent/jadwal', $data, true);
-		$data["klasemen"]		= $this->load->view('eyevent/klasemen', $data, true);
+		// $data["klasemen"]		= $this->load->view('eyevent/klasemen', $data, true);
 		$data["body"] 			= $this->load->view('eyevent/index', $data, true);
 
 		$this->load->view('template/static',$data);

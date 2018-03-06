@@ -291,10 +291,7 @@ class Home extends CI_Controller
                     header("refresh:0");
                 } else {
                     //get eyeme username
-                    $where = array('id_member' => $user_id);
-
-                    $profile = $this->mod->getAll('me_profile', $where);
-                    $this->session->me_profile = (count($profile) > 0 ? '1' : '0');
+                   
                     $this->session->username = $row['username'];
 
                     //end

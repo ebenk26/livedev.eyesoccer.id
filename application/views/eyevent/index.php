@@ -6,7 +6,8 @@
         font-size: .8em;
     }
     .mb-200{
-    margin-bottom: 200px;
+    /* margin-bottom: 200px; */
+	margin-bottom: -95px;
 }
 footer {
     margin-top: 200px;
@@ -123,10 +124,10 @@ body{
                 <?php echo $jadwal; ?>
                 <?php echo $kanan_kalender; ?>
             </div>
-            <div id="klasemen" class="tab-pane fade">
-                <?php echo $klasemen; ?>
+            <!--<div id="klasemen" class="tab-pane fade">
+                <?php // echo $klasemen; ?>
                 
-            </div>
+            </div>-->
             
         </div>
     </div>
