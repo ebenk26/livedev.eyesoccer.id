@@ -499,7 +499,7 @@ class Home_model extends CI_Model
 									FROM
 										tbl_eyenews a
 									WHERE
-										a.news_type like '%usia muda%'
+										a.news_type like '%Pembinaan%'
 									ORDER BY
 										a.eyenews_id DESC
 									LIMIT
