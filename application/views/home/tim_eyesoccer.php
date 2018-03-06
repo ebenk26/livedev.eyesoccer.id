@@ -184,6 +184,11 @@
                             <ey>Eyesoccer Representative for Europe</ey>
                         </span>
                         <span>Jurgen Claessens</span>
+                        <br>
+                        <span>
+                            <ey>Eyesoccer for Prof Lampung</ey>
+                        </span>
+                        <span>Faisal Yusuf</span>
                     </div>
                 </div>
             </div>

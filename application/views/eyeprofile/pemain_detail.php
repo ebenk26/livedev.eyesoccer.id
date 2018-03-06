@@ -238,6 +238,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="container banner-eyeprofile4 img-banner mt-10 m-b-10">
+            <img src="../../assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="Banner ads">
+        </div>
         <div class="container" style="overflow-x: auto">
             <h3 class="pd-t-20">Prestasi</h3>
             <table class="radius table table-striped pd-18" cellspacing="0" cellpadding="0"  ">
@@ -284,6 +287,9 @@
                     </tbody>
                 </table>
         </div>
+        </div>
+        <div class="container banner-150 img-banner mt-20">
+            <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
         </div>
         <div class="container pd-t-20">
             <h3 class="h3-oranye">Foto Galeri</h3>

@@ -141,13 +141,13 @@
                     </div>
                     <div class="garis-x3"></div>
                 </div>
-                <div class="container banner-eyetube2 img-banner">
+                <div class="container banner-eyetube2 img-banner" style="margin-bottom: 20px;">
                     <img src="../../assets/img/iklanbanner/banner 690x100px-01.jpg" alt="">
                 </div>
                 <!-- EMOTICON -->
                 <input type="hidden" id="eyetube-id" value="<?= $eyetube_headline->eyetube_id; ?>" />
                 <h3 id="t1">Bagaimana reaksi Anda tentang video ini?</h3>                   
-                <div class="container mt-45 mb-30">
+                <div class="container mb-30">
                     <div class="col-2 col-emoji">
                         <a class="emoticon" type_emot="proud"> <!-- tadinya happy -->
                             <div class="img-box">
