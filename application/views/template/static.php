@@ -37,7 +37,7 @@
         		<meta http-equiv="content-language" content="In-Id" />
         		<meta name="geo.placename"content="Indonesia" />
         		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
-        		<link rel="canonical" href="https://www.eyesoccer.id" />
+        		<link rel="canonical" href="https://www.eyesoccer.id<?php echo $_SERVER['REQUEST_URI'];?>" />
         		<meta name="google-site-verification" content="Ypg1XCrvdn4IyWbgoGHkEWqmK5c8tz6wnBQvOObVRJE" />
         		<!-- End of SEO Meta Tags-->
 

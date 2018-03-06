@@ -565,13 +565,13 @@
             <div class="et-content">
                 <div class="et-content1">
                     <div class="container tab2">
-                        <span href="" id="tab_populer" class="active nonactive" active="true">terpopuler</span>
-                        <span href="" id="tab_rekom" class="nonactive">rekomendasi</span>
+                        <span href="" id="tab_rekom" class="active nonactive" active="true">rekomendasi</span>
                         <span href="" id="tab_usia" class="nonactive">usia muda</span>
+                        <span href="" id="tab_populer" class="nonactive">terpopuler</span>
                         <hr>
                         <div id="tab2" class="carousel slide">
                             <div role="listbox" class="carousel-inner">                    
-                                <div id="tab_populer" class="box item active">
+                                <div id="tab_populer" class="box item">
 									<x>
 									<a href="<?=base_url()?>eyenews">
                                         <span>Berita Lainnya</span>
@@ -606,7 +606,7 @@
 								}
 								?>
                                 </div>
-                                <div id="tab_rekom" class="box item">
+                                <div id="tab_rekom" class="box item active">
 									<x>
                                         <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                

@@ -141,8 +141,7 @@ class Eyeme_model extends Master_model
 		for($i= 0 ; $i < count($getImg); $i++){
 			$qry     = "SELECT 
 							* 
-						FROM tbl_member AS A
-						INNER JOIN me_profile AS B
+						FROM tbl_member AS A			
 						WHERE A.id_member = {$getImg[$i]->id_member}";
 
 			$dp      = $this->db->query($qry)->result();
@@ -155,7 +154,6 @@ class Eyeme_model extends Master_model
 								array('id_img' => $getImg[$i]->id_img));
 			
 			$getImg[$i]->username     = $dp[0]->username;
-			$getImg[$i]->display_pic  = $dp[0]->display_picture;
 			$getImg[$i]->countLike    = count($like);
 			$getImg[$i]->countComment = count($comment);
 
@@ -706,9 +704,9 @@ class Eyeme_model extends Master_model
 		return $user;
 	}
 	public function getImgUser(){
-		$where  = array('active'=> '1');
+		$where  = '';
 		$select = '';
-		$order = array('last_update','ASC');
+		$order = array('last_update','DESC');
 		$limit = '10';
 
 		$get   = $this->mod->getAll('me_img',$where,$select,$order,$limit);
