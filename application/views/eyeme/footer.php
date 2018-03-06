@@ -494,7 +494,7 @@ $('.a-fol').click(function(event) {
                         tbl_fol += '<img src="' + 
                             (v.profile_pic == '' ? 
                             '<?php echo DPIC?>': 
-                            '<?php echo IMGSTORE?>' + v.profile_pic) + '" alt="' + v.profile_pic +'" class="w-100">';
+                            '<?php echo MEIMG?>' + v.profile_pic) + '" alt="' + v.profile_pic +'" class="w-100">';
                      tbl_fol += '</div>';
                 tbl_fol += '</td>';
                 tbl_fol += '<td>';
