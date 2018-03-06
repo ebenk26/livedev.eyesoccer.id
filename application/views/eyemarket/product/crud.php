@@ -25,6 +25,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Updated Time</th>
                         <th>Toko</th>
                         <th>Region</th>
                         <th>Kategori</th>
@@ -54,6 +55,9 @@
                     <tr id="hasil<?= $value['id_product']; ?>">
                         <td>
                             <?= $value['id_product']; ?> 
+                        </td>
+                        <td>
+                            <?= date("d M Y H:i:s",strtotime($value['updated_date'])); ?> 
                         </td>
                         <td>
                             <?= $value['toko']; ?> 

@@ -45,6 +45,7 @@ class Eyemarket_model extends CI_Model
                                         A.ongkir,
                                         A.status_publish,
                                         A.created_date,
+                                        A.updated_date,
                                         B. nama as toko,
                                         C. nama as kategori,
                                         E.id as id_image,
