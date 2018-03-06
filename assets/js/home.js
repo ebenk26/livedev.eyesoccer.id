@@ -62,18 +62,23 @@ var src = document.getElementById("src");
 var srcS = document.getElementById("srcSub");
 var close = document.getElementsByClassName("xclose")[0];
 var clickSearch = 0;
-src.onclick = function() {
-	if(clickSearch == 0){
-		srcbox.style.display = "block";
-		clickSearch = 1;
-	}else{
-		srcbox.style.display = "none";
-		clickSearch = 0;
-	}    
+if(src !== undefined || srcS !== undefined){
+
+    src.onclick = function() {
+        if(clickSearch == 0){
+            srcbox.style.display = "block";
+            clickSearch = 1;
+        }else{
+            srcbox.style.display = "none";
+            clickSearch = 0;
+        }    
+    }
+    srcS.onclick = function() {
+        srcbox.style.display = "none";
+    }
+
 }
-srcS.onclick = function() {
-    srcbox.style.display = "none";
-}
+
 /* close.onclick = function() {
     srcbox.style.display = "none";
 } */
