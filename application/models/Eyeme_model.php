@@ -706,9 +706,9 @@ class Eyeme_model extends Master_model
 		return $user;
 	}
 	public function getImgUser(){
-		$where  = array('active'=> '1');
+		$where  = '';
 		$select = '';
-		$order = array('last_update','ASC');
+		$order = array('last_update','DESC');
 		$limit = '10';
 
 		$get   = $this->mod->getAll('me_img',$where,$select,$order,$limit);
