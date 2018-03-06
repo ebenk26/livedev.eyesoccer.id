@@ -85,6 +85,9 @@ hr{
 .m-b-100{
     margin-bottom: 100px;
 }
+.m-b-10{
+    margin-bottom: -10px;
+}
 .pd-b-100{
     padding-bottom: 100px;
 }
@@ -1664,11 +1667,12 @@ ul, li {
 .pemain-foto img:hover, .zoom:hover{
     width: 130%;
     margin-left: -15%;
-    margin-top: -15%;
+    /* margin-top: -15%; */
 }
 .pemain-foto .em-box{
     max-width: 250px;
-    max-height: 165px;
+    max-height: 125px;
+    margin-bottom: 20px;
     overflow: hidden;
     border: none;
     border-radius: 0px;
@@ -5008,6 +5012,14 @@ img.loading {
     height: 100px;
 }
 .banner-eyevent1{
-    width: 315px;
-    height: 320px;
+    width: 300px;
+    height: 305px;
+}
+.banner-eyeprofile4{
+    width: 425px;
+    height: 100px;
+}
+.banner-eyeprofile5{
+    width: 425px;
+    height: 200px;
 }

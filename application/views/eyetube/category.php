@@ -281,7 +281,7 @@ body{
                     </div>
                     <div class="container news-rcm-r2">
 					<div class="container banner-eyenews4 img-banner mt-30">
-                		<img src="assets/img/iklanbanner/banner 360x320px-01.jpg" alt="">
+                		<img src="../../assets/img/iklanbanner/banner 360x320px-01.jpg" alt="">
             		</div>
                         <div class="container subjudul">
                             <h4>JADWAL LIVE</h4>
