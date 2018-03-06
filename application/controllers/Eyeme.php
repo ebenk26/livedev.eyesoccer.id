@@ -103,10 +103,10 @@ class Eyeme extends CI_Controller {
 			//get following 
 			$whereFollowing = array('id_member'=> $usr->id_member,'block'=> '0');
 			$getFollowing   = $this->mod->getAll('me_follow',$whereFollowing);
+
 			//get follower
 			$whereFollower  = array('id_following'=>$usr->id_member,'block'=> '0');
 			$getFollower    = $this->mod->getAll('me_follow',$whereFollower);
-		
 			$check          = $this->checkFollowed($this->id_member,$usr->id_member);
 			//mengambil jumlah comment dan jumlah like setiap gambar 
 
@@ -201,12 +201,12 @@ class Eyeme extends CI_Controller {
 	*/
 	public function get_follow($id = ''){
 		$get = $this->input->get('data');
-		$id  = ($id == '' ? $this->input->get('id'): $this->id_member);
+		$id  = $this->id_member;
 		$res = $this->emod->getFollow($id,$get);
 		for($i = 0; $i <count($res);$i++){
 			#echo '<script>alert(\''.$res[$i]->id_member_fol.'\')</script>';
 			
-			$checkFol  = $res[$i]->checkFollowed;
+			$checkFol[$i]  = $res[$i]->checkFollowed;
 			$attr[$i]  = 
 				array('onclick'=> 'folclick(this.id,\''.($checkFol == TRUE ? 'followed':'notfollowed').'\')',
 					'id'=>'c12i'.$res[$i]->id_member_fol);
