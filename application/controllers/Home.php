@@ -291,6 +291,9 @@ class Home extends CI_Controller
                     header("refresh:0");
                 } else {
                     //get eyeme username
+                   
+                    $this->session->username = $row['username'];
+
                     //end
                     $_SESSION['member_id'] = $user_id;
                     $_SESSION['id_member'] = $user_id;
