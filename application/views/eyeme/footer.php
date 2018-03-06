@@ -608,7 +608,7 @@ $('.me-post').click(function(event) {
             $('.usern').text(v.username);
             $('.usern').attr('href',MEPROFILE + v.username);
             $('.cap').text(v.img_caption);
-            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
+            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo MEIMG?>' + v.display_picture));
             $('#time-string').text(v.timeString);
             $('#c-like').addClass('ref-'+ v.id_img);
             $('#c-like').text(v.countLike);
