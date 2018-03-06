@@ -477,6 +477,8 @@ class Home_model extends CI_Model
 										tbl_eyenews a
 									WHERE
 										a.publish_on<='".date("Y-m-d H:i:s")."'
+									AND
+										a.category_news = 2
 									ORDER BY
 										a.eyenews_id DESC
 									LIMIT
