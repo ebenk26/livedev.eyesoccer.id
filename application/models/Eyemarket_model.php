@@ -782,6 +782,7 @@ class Eyemarket_model extends CI_Model
         $query = $this->db->query(" SELECT
                                         A.*,
                                         B.fullname,
+                                        B.name,
                                         C.nama,
                                         D.bukti,
                                         D.created_date
@@ -792,7 +793,7 @@ class Eyemarket_model extends CI_Model
                                     LEFT JOIN
                                          eyemarket_kurir C  ON C.id = A.id_kurir
                                     LEFT JOIN
-                                         eyemarket_konfirmasi D     ON D.id_order = A.no_order
+                                         eyemarket_konfirmasi D     ON D.id_order = A.id
                                     WHERE
                                         A.status != 0
                                     ORDER BY
