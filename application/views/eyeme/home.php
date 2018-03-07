@@ -65,7 +65,7 @@
 
             <div class="p-r comment m-l-20">
                
-                    <a href="<?php echo MEURL.$v['username']?>"><?php echo $v['username']?></a>
+                    <a href="<?php echo MEPROFILE.$v['username']?>"><?php echo $v['username']?></a>
                     <span><?php echo $v['img_caption']?> </span>
 
                     <!--<a href="test" class="c-g">selengkapnya</a>-->
