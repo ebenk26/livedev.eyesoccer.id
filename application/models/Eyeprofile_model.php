@@ -557,7 +557,7 @@ class Eyeprofile_model extends CI_Model
 		foreach ($result_with_limit->result() as $data)
 		{
 			$expl = explode('.',$data->foto);
-			if(end($expl) == 'jpg' || end($expl) == 'png' || end($expl) == 'jpeg'){
+			if(end($expl) == 'jpg' || end($expl) == 'png' || end($expl) == 'jpeg'|| end($expl) == 'PNG' || end($expl) == 'JPG' || end($expl) == 'JPEG'){
 				$img = imgUrl()."systems/player_storage/".$data->foto;
 			}else{
 				$img = "https://www.eyesoccer.id/systems/player_storage/LOGO PERISAI132.png";
