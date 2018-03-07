@@ -200,7 +200,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</tbody>
 					</table>
 					<a target="_blank" href="<?=base_url()?>eyeprofile/official_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Ofisial</button></a>
-				</div><?php }?>                                      
+				</div><?php }?> 
+				<div class="container banner-150 img-banner">
+					<img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
+				</div>                                     
 		</div>
 		
 		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-supporter">
@@ -358,6 +361,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php
 				}
 			?>
+			<div class="container banner-eyeprofile5 img-banner fl-r mt-10">
+				<img src="../../assets/img/iklanbanner/banner 425x200 px-01.jpg" alt="Right ads">
+			</div>
+
 			<div class="container pd-b-50" style="padding-bottom: 100px;display:none;">
 				<div id="em2Slide" class="carousel slide">
 					<div role="listbox" class="carousel-inner">

@@ -53,7 +53,7 @@
         					<?= $value['id']; ?>
     					</td>
     					<td>
-        					<?= $value['fullname']; ?>
+        					<?= $value['name']; ?>
     					</td>
     					<td>
         					<?= $value['no_order']; ?>
@@ -103,7 +103,7 @@
                                                 <div class="modal-body" style="background-color: #f2f2f2;">
                                                 	<div class="row">
                                                 		<div class="col-md-6">
-                                                			<img src="<?= base_url(); ?>/img/eyemarket/bukti/<?= $value['bukti']; ?>" alt="bukti konfirmasi" style="width:125%;">
+                                                			<img src="<?= base_url(); ?>img/eyemarket/bukti/<?= $value['bukti']; ?>" alt="bukti konfirmasi" style="width:125%;">
                                                 		</div>
                                                 		<div class="col-md-6">
                                                 			<div class="text-center">

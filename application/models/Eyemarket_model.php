@@ -45,6 +45,7 @@ class Eyemarket_model extends CI_Model
                                         A.ongkir,
                                         A.status_publish,
                                         A.created_date,
+                                        A.updated_date,
                                         B. nama as toko,
                                         C. nama as kategori,
                                         E.id as id_image,
@@ -87,8 +88,8 @@ class Eyemarket_model extends CI_Model
                                         A.diskon,
                                         A.status_publish,
                                         A.created_date,
-                                        B. nama as toko,
-                                        C. nama as kategori,
+                                        B.nama as toko,
+                                        C.nama as kategori,
                                         E.id as id_image,
                                         E.image1,
                                         F.nama as nama_region
@@ -96,14 +97,14 @@ class Eyemarket_model extends CI_Model
                                         eyemarket_product A
                                     LEFT JOIN 
                                         eyemarket_toko B on A.id_toko = B.id
-                                    INNER JOIN
+                                    LEFT JOIN
                                         eyemarket_category C on A.id_kategori = C.id
                                     LEFT JOIN
                                         eyemarket_images E on A.id_product =  E.id_product
-                                    INNER JOIN
+                                    LEFT JOIN
                                         eyemarket_parent_cat F on A.id_kategori = F.id
                                     WHERE
-                                        status_publish = 1
+                                        A.status_publish = 1
                                     ORDER BY 
                                         A.id_product DESC
                                         ")->result_array();
@@ -782,6 +783,7 @@ class Eyemarket_model extends CI_Model
         $query = $this->db->query(" SELECT
                                         A.*,
                                         B.fullname,
+                                        B.name,
                                         C.nama,
                                         D.bukti,
                                         D.created_date
@@ -792,7 +794,7 @@ class Eyemarket_model extends CI_Model
                                     LEFT JOIN
                                          eyemarket_kurir C  ON C.id = A.id_kurir
                                     LEFT JOIN
-                                         eyemarket_konfirmasi D     ON D.id_order = A.no_order
+                                         eyemarket_konfirmasi D     ON D.id_order = A.id
                                     WHERE
                                         A.status != 0
                                     ORDER BY

@@ -103,10 +103,10 @@ class Eyeme extends CI_Controller {
 			//get following 
 			$whereFollowing = array('id_member'=> $usr->id_member,'block'=> '0');
 			$getFollowing   = $this->mod->getAll('me_follow',$whereFollowing);
+
 			//get follower
 			$whereFollower  = array('id_following'=>$usr->id_member,'block'=> '0');
 			$getFollower    = $this->mod->getAll('me_follow',$whereFollower);
-		
 			$check          = $this->checkFollowed($this->id_member,$usr->id_member);
 			//mengambil jumlah comment dan jumlah like setiap gambar 
 
@@ -201,12 +201,12 @@ class Eyeme extends CI_Controller {
 	*/
 	public function get_follow($id = ''){
 		$get = $this->input->get('data');
-		$id  = ($id == '' ? $this->input->get('id'): $this->id_member);
+		$id  = $this->id_member;
 		$res = $this->emod->getFollow($id,$get);
 		for($i = 0; $i <count($res);$i++){
 			#echo '<script>alert(\''.$res[$i]->id_member_fol.'\')</script>';
 			
-			$checkFol  = $res[$i]->checkFollowed;
+			$checkFol[$i]  = $res[$i]->checkFollowed;
 			$attr[$i]  = 
 				array('onclick'=> 'folclick(this.id,\''.($checkFol == TRUE ? 'followed':'notfollowed').'\')',
 					'id'=>'c12i'.$res[$i]->id_member_fol);
@@ -443,7 +443,17 @@ class Eyeme extends CI_Controller {
 			$imgName = $img[0]->img_name;
 			$imgThumb = $img[0]->img_thumb;
 			$id_img   = $img[0]->id_img;
-			unlink(MEFOLDER.'/'.$imgName) OR die ('gagal delete image');
+			unlink(MEFOLDER.'/ori_'.$imgName);
+			
+			if(is_file(MEFOLDER.'/small_'.$imgName)){
+				unlink(MEFOLDER.'/small_'.$imgName);
+			}
+			if(is_file(MEFOLDER.'/medium_'.$imgName)){
+				unlink(MEFOLDER.'/medium_'.$imgName);
+			}
+			if(is_file(MEFOLDER.'/thumb_'.$imgName)){
+				unlink(MEFOLDER.'/thumb_'.$imgName);
+			}
 			
 			$this->emod->rm('me_img',array('id_img'=> $id_img));
 			$arr = array('msg'=> 'Berhasil Hapus Photo');

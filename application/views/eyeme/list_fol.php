@@ -10,8 +10,6 @@
                     <table id="tbl-fol">
 
                     	
-
-                   
                     </table>
                 </div>
             </div>
