@@ -443,7 +443,17 @@ class Eyeme extends CI_Controller {
 			$imgName = $img[0]->img_name;
 			$imgThumb = $img[0]->img_thumb;
 			$id_img   = $img[0]->id_img;
-			unlink(MEFOLDER.'/'.$imgName) OR die ('gagal delete image');
+			unlink(MEFOLDER.'/ori_'.$imgName);
+			
+			if(is_file(MEFOLDER.'/small_'.$imgName)){
+				unlink(MEFOLDER.'/small_'.$imgName);
+			}
+			if(is_file(MEFOLDER.'/medium_'.$imgName)){
+				unlink(MEFOLDER.'/medium_'.$imgName);
+			}
+			if(is_file(MEFOLDER.'/thumb_'.$imgName)){
+				unlink(MEFOLDER.'/thumb_'.$imgName);
+			}
 			
 			$this->emod->rm('me_img',array('id_img'=> $id_img));
 			$arr = array('msg'=> 'Berhasil Hapus Photo');
