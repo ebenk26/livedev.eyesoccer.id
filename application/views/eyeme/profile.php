@@ -34,7 +34,8 @@
                                     <tr style="font-size:18px !important;">
                                         <td><?php echo count($getImg)?></td>
 
-                                        <td><?php echo anchor('eyeme/follower/'.$id_member,count($follower),'class="a-fol follower " ref="follower-'.$id_member.'"')?></td>
+                                        <td>
+                                            <?php echo anchor('eyeme/follower/'.$id_member,count($follower),'class="a-fol follower " ref="follower-'.$id_member.'"')?></td>
                                         
                                         <td><?php echo anchor('eyeme/following/'.$id_member,count($following),'class="a-fol following" ref="following-'.$id_member.'"')?></td>
                                     </tr>
