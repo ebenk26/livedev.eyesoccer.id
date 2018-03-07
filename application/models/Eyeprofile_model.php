@@ -556,15 +556,10 @@ class Eyeprofile_model extends CI_Model
 		$data2 = array();
 		foreach ($result_with_limit->result() as $data)
 		{
-			if (file_exists("https://www.eyesoccer.id/systems/player_storage/".$data->foto)) {
-				$img = imgUrl()."systems/player_storage/".$data->foto;
-			}else{
-				$img = 'https://www.eyesoccer.id/systems/player_storage/LOGO PERISAI123.png';
-			}
 			$nestedData=array(); 
 			$nestedData[] = $i;
 			$nestedData[] = "<a target='_blank' href='".base_url()."eyeprofile/pemain_detail/".$data->url."'><div style='width: 40px;height:40px; overflow:hidden; border-radius:50%;float:left;cursor:pointer;position:relative;'>
-						<img src='".$img."' alt='".$data->nama."'>
+						<img src='".imgUrl()."systems/player_storage/".$data->foto."' alt='".$data->nama."'>
 					</div><div style='float:right;width: 75%;cursor:pointer;'>".$data->nama."</div></a>";
 			$nestedData[] = $data->tanggal."-".$data->bulan."-".$data->tahun;
 			$nestedData[] = $data->posisi;
