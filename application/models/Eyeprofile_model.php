@@ -556,7 +556,7 @@ class Eyeprofile_model extends CI_Model
 		$data2 = array();
 		foreach ($result_with_limit->result() as $data)
 		{
-			if (file_exists(imgUrl()."systems/player_storage/".$data->foto)) {
+			if (file_exists("https://www.eyesoccer.id/systems/player_storage/".$data->foto)) {
 				$img = imgUrl()."systems/player_storage/".$data->foto;
 			}else{
 				$img = 'https://www.eyesoccer.id/systems/player_storage/LOGO PERISAI123.png';
