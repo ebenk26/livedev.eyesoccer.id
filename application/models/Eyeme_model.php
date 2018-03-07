@@ -543,7 +543,8 @@ class Eyeme_model extends Master_model
 		$where = array('id_member' => $id_member,
 						'id_following' => $id_friend);
 		$find = $this->getAll('me_follow',$where);
-		if(count($find) > 1){
+
+		if(count($find) == 0){
 			$data      = array('id_member'=> $id_member,
 							'id_following' => $id_friend,
 							'last_update'  => NOW);
@@ -563,11 +564,12 @@ class Eyeme_model extends Master_model
 		$getFollowing   = $this->getAll('me_follow',array('id_member'=>$id_friend,'block' => '0'));
 		$return         = array('follower' => count($getFollower),
 								'following' => count($getFollowing));
+		//mengambil jumlah follower dari member yang kita ikuti
+		return $return;
 
 		}
 		
-		                //mengambil jumlah follower dari member yang kita ikuti
-		return $return;
+		                
 
 	}
 	public function unFollow($id_member,$id_friend){
@@ -595,8 +597,7 @@ class Eyeme_model extends Master_model
 	*/
 	public function getFollow($id_member,$find = 'following'){
 		#echo $id_member;
-
-		
+		$sess_id = $this->session->id_member;
 		$qry     = "SELECT
 					A.id_member,
 					A.id_following,
@@ -628,7 +629,7 @@ class Eyeme_model extends Master_model
 			//ganti profile_pic ,menjadi nama gambar 
 			$exe[$i]->profile_pic   = (count($getProfilePic) > 0 ? $getProfilePic[0]->pic : '' );
 		
-			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member_fol);
+			$exe[$i]->checkFollowed = $this->checkFollowed($sess_id,$exe[$i]->id_member_fol);
 
 		}
 		
