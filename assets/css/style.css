@@ -743,7 +743,7 @@ nav .center-desktop, .x-m{
     top: -40px;
 }
 .c-em-content2 a >img{
-    height: 140%;
+    height: 100%;
     width:100%;
     position: absolute;
     top: 50%;
@@ -4709,8 +4709,8 @@ height: 100%;
     font-weight: 600;
 }
 .eyeme-list{
-    height: 135px;
-    width: 140px;
+    min-height: 145px;
+    min-width: 140px;
     float: left;
     margin: 5px;
     overflow: hidden;
