@@ -214,7 +214,7 @@
         </div>
 
         <div class="center-desktop container banner-150">
-			<img src="assets/img/banner-home.jpeg" alt="Banner Ads">
+			<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads">
 		</div>
 
         <div class="m-0 center-desktop">

@@ -238,8 +238,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="container banner-eyeprofile4 img-banner mt-10 m-b-10">
-            <img src="../../assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="Banner ads">
+        <div class="container banner-eyeprofile1 img-banner mt-10 m-b-10">
+            <img src="../../assets/img/iklanbanner/banner 400x320 px-01.jpg" alt="Banner ads">
         </div>
         <div class="container" style="overflow-x: auto">
             <h3 class="pd-t-20">Prestasi</h3>

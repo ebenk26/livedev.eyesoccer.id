@@ -91,10 +91,13 @@
             </div>
         </div>
         <div class="w-40 pd-t-20">
-        <h3 class="">Formasi (4-4-2)</h3>
-        <div class="container box-formasi det-pos">
-            <img src="http://3.bp.blogspot.com/-ibBCQCt1CL0/VHMXdT8LhhI/AAAAAAAAA68/6pLm6hX64yM/s1600/Formasi%2Bsepak%2BBola.png" alt="">
+            <h3 class="">Formasi (4-4-2)</h3>
+            <div class="container box-formasi det-pos">
+                <img src="http://3.bp.blogspot.com/-ibBCQCt1CL0/VHMXdT8LhhI/AAAAAAAAA68/6pLm6hX64yM/s1600/Formasi%2Bsepak%2BBola.png" alt="">
+            </div>
         </div>
+        <div class="container">
+
         </div>
         <div class="container pd-t-20 pd-b-100">
             <h3 class="h3-oranye">Karir Klub</h3>
