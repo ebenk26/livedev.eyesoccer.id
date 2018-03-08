@@ -831,12 +831,21 @@ class Master_model extends CI_Model
 
 	public function set_news_emot($tbl,$kanal,$id,$field)
 	{
+	    // $object = array(
+	    // 			$field => $field + 1,
+	    // );
 
-	    $object = array(
-	    			$field => $field + 1,
-	    );
+	    // $query = $this->db->update($tbl, $object, array($kanal.'_id' => $id));
 
-	    $query = $this->db->update($tbl, $object, array($kanal.'_id' => $id));
+	    $id_kanal = $kanal.'_id';
+
+	    $query = $this->db->query(" UPDATE
+	                                    $tbl
+	                                SET
+	                                    $field = $field + 1
+	                                WHERE
+	                                $id_kanal = $id
+	                                    ");
 
 	    return $query;
 	}
