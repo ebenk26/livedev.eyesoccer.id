@@ -72,11 +72,15 @@
                                         <ul>
                                             <li>
                                                 <a href="">
-                                                    <span class="unname"><?= $value['fullname']; ?></span>
+                                                    <span class="unname"><?= $value['fullname']; ?> - </span>
+                                                    
                                                 </a>
                                             </li>
-                                            <li class="c-g">
-                                                <span><?= date_format($date,"d M Y H:i:s"); ?></span>
+                                            <li>
+                                                <span><?= date_format($date,"d M Y H:i:s"); ?> - </span>
+                                            </li>
+                                            <li>
+                                                <span><?= $value['news_view']; ?> views</span>
                                             </li>
                                         </ul>
                                     </td>
