@@ -1,4 +1,4 @@
-
+</div>
     <div class="container dll-head">
         <img src="assets/img/Footer/img-header-tentang kami.png" alt="">
         <div class="center-desktop m-0 dll-title">
@@ -6,6 +6,7 @@
             <h2>Tentang Kami</h2> -->
         </div>
     </div>
+    <div class="desktop">
     <div class="container mt-10">
         <div class="center-desktop m-0">
             <div class="dll-isi">

@@ -4052,10 +4052,7 @@ ul, li {
     border-bottom: 4px solid white;
 }
 .dll-head img{
-    width: 100vw;
-    max-height: 304px;
-    overflow: hidden;
-    margin-left: -4%;
+    width: 100%;
 }
 .dll-title{
     position: relative;
@@ -4340,6 +4337,10 @@ ey{
 .kntk td{
     padding: 10px 10px 10px 0px;
     font-weight: 500;
+}
+.kntk td h3{
+    margin-bottom: 0;
+    font-size: 1.4em;
 }
 .kntk img{
     max-width: 100%;

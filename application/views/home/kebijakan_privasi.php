@@ -1,4 +1,4 @@
-
+</div>
     <div class="container dll-head">
         <img src="assets/img/Footer/img-header-ketentuan privasi.png" alt="">
         <div class="center-desktop m-0 dll-title">
@@ -6,6 +6,7 @@
             <h2>Ketentuan dan Kebijakan Privasi</h2> -->
         </div>
     </div>
+    <div class="desktop">
     <div class="container">
         <div class="center-desktop m-0">
             <div class="dll-isi">

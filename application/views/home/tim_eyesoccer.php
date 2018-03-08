@@ -1,4 +1,4 @@
-
+</div>
     <div class="container dll-head">
         <img src="<?php echo base_url()?>assets/img/Footer/img-header-tim.png" alt="">
         <div class="center-desktop m-0 dll-title">
@@ -6,6 +6,7 @@
             <h2>Tim EyeSoccer</h2>
         </div>
     </div>
+    <div class="desktop">
     <div class="container m-t-70">
         <div class="center-desktop m-0">
             <div class="container m-0 bbg">
@@ -163,6 +164,7 @@
                         </span>
                         <span>Philips Gregory</span>
                         <span>Owien Rodwin</span>
+                        <span>Fria Puspitasari</span>
                         <br>
                         <span>
                             <ey>Social Media Specialist</ey>
@@ -210,6 +212,7 @@
                         <span>Muhammad Robi</span>
                         <span>Kharizuno Hizbullah</span>
                         <span>Sofyan Waldy</span>
+                        <span>Muhammad Arif</span>
                         <br>
                         <br>
                     </div>
@@ -218,7 +221,7 @@
                             <ey>Front End Developer</ey>
                         </span>
                         <span>Fajar Ulin Nuha</span>
-                        <span>Faradilah Nurzahra Danopa</span>
+                        <span>Faradila Nurzahra Danopa</span>
                         <br>
                         <br>
                     </div>
