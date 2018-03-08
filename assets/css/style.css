@@ -3831,7 +3831,7 @@ ul, li {
     height: 100%;
 }
 .news-rcm-r2 img{
-    /* width: 25px; */
+    width: 25px;
 }
 .line-b p, .news-rcm-r2 span, .news-rcm-r2 p{
     font-size: .85em;
