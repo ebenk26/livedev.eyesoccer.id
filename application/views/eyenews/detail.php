@@ -97,12 +97,12 @@
 					<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
                     <div class="container mt-45 mb-30">
                         <div class="col-2 col-emoji">
-                            <a class="emoticon" type_emot="proud">
+                            <a class="emoticon" type_emot="smile">
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
                                 </div>
                                 <span class="replace_proud"><?=$value['news_smile']?></span>
-                                <span class="load-proud" style="display:none;">
+                                <span class="load-smile" style="display:none;">
                                     <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
                                  </span>
                                 <span>bangga</span>

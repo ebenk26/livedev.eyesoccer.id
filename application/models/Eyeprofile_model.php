@@ -556,10 +556,11 @@ class Eyeprofile_model extends CI_Model
 		$data2 = array();
 		foreach ($result_with_limit->result() as $data)
 		{
-			if (file_exists(imgUrl()."systems/player_storage/".$data->foto)) {
+			$expl = explode('.',$data->foto);
+			if(end($expl) == 'jpg' || end($expl) == 'png' || end($expl) == 'jpeg'|| end($expl) == 'PNG' || end($expl) == 'JPG' || end($expl) == 'JPEG'){
 				$img = imgUrl()."systems/player_storage/".$data->foto;
 			}else{
-				$img = 'https://www.eyesoccer.id/systems/player_storage/LOGO PERISAI123.png';
+				$img = "https://www.eyesoccer.id/systems/player_storage/LOGO PERISAI132.png";
 			}
 			$nestedData=array(); 
 			$nestedData[] = $i;
