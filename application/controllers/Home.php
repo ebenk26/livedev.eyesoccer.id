@@ -679,10 +679,11 @@ class Home extends CI_Controller
     {
         $date = date("Y-m-d H:i:s");
         $ip = $this->input->ip_address();
+
         $tipe = $_POST["type"];
         $tbl = $_POST["tbl"];
         $kanal = $_POST["kanal"];
-        $sub_field = $_POST["sub_field"];
+        $sub_field = $_POST["sub_field"]; 
         $field = "$sub_field$tipe";
 
         $cek_emot = $this->mod->cek_ip_view($kanal, $id, $ip, $tipe);

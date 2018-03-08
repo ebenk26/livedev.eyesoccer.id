@@ -540,28 +540,36 @@ class Eyeme_model extends Master_model
 	*id_friend = id member yang diikuti
 	*/
 	public function follow($id_member,$id_friend){
-		$data      = array('id_member'=> $id_member,
+		$where = array('id_member' => $id_member,
+						'id_following' => $id_friend);
+		$find = $this->getAll('me_follow',$where);
+
+		if(count($find) == 0){
+			$data      = array('id_member'=> $id_member,
 							'id_following' => $id_friend,
 							'last_update'  => NOW);
 
-		$exe       = $this->db->insert('me_follow',$data);
-		$dataNotif     = array(
-				'id_member'     => $id_friend, # yang menerima notif comment
-				'id_member_act' => $id_member, #yang memberi notif comment
-				'id_img'		=> NULL,
-				'notif_type'    => 'FOL',
-				'notif_content' => 'FOLLOW',
-				'img_alt'	    => NULL,
-				'date_create'   => NOW,
-				'last_update'   => NOW);
-
+			$exe       = $this->db->insert('me_follow',$data);
+			$dataNotif     = array(
+					'id_member'     => $id_friend, # yang menerima notif comment
+					'id_member_act' => $id_member, #yang memberi notif comment
+					'id_img'		=> NULL,
+					'notif_type'    => 'FOL',
+					'notif_content' => 'FOLLOW',
+					'img_alt'	    => NULL,
+					'date_create'   => NOW,
+					'last_update'   => NOW);
 		$insertNotif    = $this->db->insert('me_notif',$dataNotif); #insert data ke dalam table me_notif
 		$getFollower    = $this->getAll('me_follow',array('id_following'=>$id_friend,'block' => '0'));
 		$getFollowing   = $this->getAll('me_follow',array('id_member'=>$id_friend,'block' => '0'));
 		$return         = array('follower' => count($getFollower),
 								'following' => count($getFollowing));
-		                //mengambil jumlah follower dari member yang kita ikuti
+		//mengambil jumlah follower dari member yang kita ikuti
 		return $return;
+
+		}
+		
+		                
 
 	}
 	public function unFollow($id_member,$id_friend){
@@ -589,8 +597,7 @@ class Eyeme_model extends Master_model
 	*/
 	public function getFollow($id_member,$find = 'following'){
 		#echo $id_member;
-
-		
+		$sess_id = $this->session->id_member;
 		$qry     = "SELECT
 					A.id_member,
 					A.id_following,
@@ -610,8 +617,7 @@ class Eyeme_model extends Master_model
 					 : "A.id_following = B.id_member WHERE A.id_member   = {$id_member}")."
 
 					";
-		#echo $qry;
-				
+
 		$exe     = $this->db->query($qry);
 		$exe     = $exe->result();
 		//ganti profile pic
@@ -623,7 +629,7 @@ class Eyeme_model extends Master_model
 			//ganti profile_pic ,menjadi nama gambar 
 			$exe[$i]->profile_pic   = (count($getProfilePic) > 0 ? $getProfilePic[0]->pic : '' );
 		
-			$exe[$i]->checkFollowed = $this->checkFollowed($id_member,$exe[$i]->id_member_fol);
+			$exe[$i]->checkFollowed = $this->checkFollowed($sess_id,$exe[$i]->id_member_fol);
 
 		}
 		
