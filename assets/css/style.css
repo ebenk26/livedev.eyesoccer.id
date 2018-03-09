@@ -1279,6 +1279,8 @@ ul, li {
     outline: none;
     font-size: .75em;
     border-radius: 3px;
+    -webkit-appearance: none;
+    appearance: none;
 }
 .btn-orange{
     padding: 6px 15px;
