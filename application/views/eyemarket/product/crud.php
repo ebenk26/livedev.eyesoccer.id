@@ -27,7 +27,6 @@
                         <th>ID</th>
                         <th>Updated Time</th>
                         <th>Toko</th>
-                        <th>Region</th>
                         <th>Kategori</th>
                         <th>Nama</th>
                         <th>Harga</th>
@@ -61,9 +60,6 @@
                         </td>
                         <td>
                             <?= $value['toko']; ?> 
-                        </td>
-                        <td>
-                            <?= $value['nama_region']; ?> 
                         </td>
                         <td>
                             <?= $value['kategori']; ?> 
@@ -122,7 +118,7 @@
                                     </button>
                                 </div>
                                 <form action="edit_produk/<?= $value['id_product'];?>" method="post">
-                                    <div class="modal-body">
+                                    <div class="modal-body" style="max-height: calc(100vh - 212px);overflow-y: auto;">
                                         <div class="form-group">
                                             <select name="id_parent_cat" class="form-control">
                                                 <option value="<?= $value['id_parent_cat']; ?>"><?= $value['id_parent_cat']; ?></option>
