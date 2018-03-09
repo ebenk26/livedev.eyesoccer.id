@@ -4992,9 +4992,8 @@ img.loading {
 .banner-a1{
     width: 320px;
     height: 60px;
-    position: absolute;
-    top: 5px;
-    right: 390px;
+    float: right;
+    margin: 5px;
 }
 .banner-home1{
     width: 1065px;

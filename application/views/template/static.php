@@ -203,9 +203,6 @@
         <nav>
             <div class="desktop">
                 <div class="x-m">
-                    <div class="container banner-a1 img-banner">
-                        <img src="<?php echo base_url()?>assets/img/iklanbanner/banner  320x60 px-01.jpg" alt="Static ads">
-                    </div>
 					<a href="<?php echo base_url()?>">
 						<div class="logo">
 							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
@@ -235,7 +232,10 @@
 	                    <?php
                             }
                         ?>
-                    </div>                
+                    </div> 
+                    <div class="container banner-a1 img-banner">
+                        <img src="<?php echo base_url()?>assets/img/iklanbanner/banner  320x60 px-01.jpg" alt="Static ads">
+                    </div>       
                 </div>                
             </div>
         </nav>
