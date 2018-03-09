@@ -114,6 +114,7 @@ define('EYEEXPLORE', MEURL . 'explore');
 define('DEFAULTIMG', base_url() . 'assets/home/img/eyeme-photo%20thumbnail.png');
 define('NEWSDETAIL', base_url() . 'eyenews/detail/');
 define('MEVID', 'http://static.eyesoccer.id/v1/cache/video/');
+define('TUBE',base_url().'upload/eyetube_storage/ori_');
 
 
 function p($arr)

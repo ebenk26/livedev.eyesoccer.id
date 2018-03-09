@@ -99,7 +99,7 @@
                     <!-- EMOTICON -->
 					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
 					<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
-                    <div class="container mt-45 mb-30">
+                    <div class="container mb-30">
                         <div class="col-2 col-emoji">
                             <a class="emoticon" type_emot="smile">
                                 <div class="img-box">
@@ -237,7 +237,7 @@
 						<?php } ?>						
                     </div>
                     <div class="container banner-eyenews1 img-banner mt-20">
-                        <img src="../../assets/img/iklanbanner/banner 315x320px-01.jpg" alt="ads">
+                        <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 315x320px-01.jpg" alt="ads">
                     </div>
 
                     <div class="down-r-news">

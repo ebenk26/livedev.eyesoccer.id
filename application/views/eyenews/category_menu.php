@@ -9,7 +9,8 @@
                                                                  $select = array('news_type_id','news_type'),
                                                                  $order = array(),
                                                                  $limit = '', $offset = '',
-                                                                 $whereNotin = array('news_type',array('tulisan kamu')),
+                                                                 // $whereNotin = array('news_type',array('tulisan kamu')),
+                                                                 $whereNotin = array(),
                                                                  $like = array());;
                         
                         $catid = 0;

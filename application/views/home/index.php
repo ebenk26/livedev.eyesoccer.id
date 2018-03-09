@@ -773,7 +773,7 @@
             <div class="container">
                 <div class="et-content1">
                     <span class="jp green">JADWAL PERTANDINGAN</span>
-                    <div class="border-box" style="margin-top: 23px;">
+                    <div class="border-box" style="margin-top: 22px;">
                         <div class="container bg-g">						
                             <div class="t-tab">
 								<div class="day-choose t-active" id="jadwal_today">
@@ -808,10 +808,10 @@
 						<div id="tbl_jadwal_today">
 							
 							<table class="table border-b">
-							<?php
-							foreach($jadwal_today as $row){
-							?>
 								<tbody>
+								<?php
+									foreach($jadwal_today as $row){
+								?>
 									<tr>
 										<td class="tx-r"><?=$row["club_a"]?></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
@@ -821,8 +821,8 @@
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
 										<td class="tx-l"><?=$row["club_b"]?></td>
 									</tr>
+								<?php }?>
 								</tbody>
-							<?php }?>
 							</table>
 						</div>
 						<div id="tbl_jadwal_tomorrow" style="display:none">
