@@ -96,8 +96,10 @@ class Eyenews extends CI_Controller {
 		$data['news_type'] 				= $this->Master_model->getAll('tbl_news_types', $where = array(), $select = array('news_type'), $order = array(), $limit = '', $offset = '', $whereNotin = array('news_type',array('tulisan kamu')), $like = array());
 		$data['kategori']	= $this->Master_model->getAll('tbl_eyenews', $where = array('url'=>$eyenews_id), $select = array('news_type'), $order = array(), $limit = '', $offset = '', $whereNotin = array(), $like = array());
 		if($query->num_rows()>0){
+
 			$eyenews_id=$row["eyenews_id"];
 			$linksite=$row["url"];
+			
 			// echo "disini";exit();
 		}else{
 			$row=$this->db->query("SELECT * FROM tbl_eyenews WHERE eyenews_id = '$eyenews_id2' LIMIT 1");

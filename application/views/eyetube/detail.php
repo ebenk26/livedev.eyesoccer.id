@@ -46,7 +46,7 @@
             <div class="container tube-l">
                 <div>
                     <video controlsList="nodownload" width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= MEVID.$eyetube_headline->thumb; ?>/medium">
-                        <source src="<?= MEVID.$eyetube_headline->video; ?>" type="video/mp4" preload="none">
+                        <source src="<?= TUBE.$eyetube_headline->video; ?>" type="video/mp4" preload="none">
                     </video>
                     <div class="top-r ">
                         <ul>
