@@ -710,8 +710,18 @@
         </div>
         <!-- BANNER -->
         <div class="center-desktop">
-            <div class="banner-150" style="margin-top: 20px;">
-                <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
+            <div class="banner-150" style="margin-top: 20px;background: unset;">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Eyesoccer 24#dekstopHomeBannerBawah -->
+					<ins class="adsbygoogle"
+						 style="display:block"
+						 data-ad-client="ca-pub-7635854626605122"
+						 data-ad-slot="1567244418"
+						 data-ad-format="auto"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+                <!-- <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt=""> -->
             </div>
         </div>
         <!-- EYEVENT -->
