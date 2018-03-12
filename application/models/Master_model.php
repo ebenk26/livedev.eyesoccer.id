@@ -705,7 +705,7 @@ class Master_model extends CI_Model
 	public function checkLogin($page =''){ // page == halamaan yang di tuju 
 		$userid = $this->session->userdata('id_member');
 		if($userid == ''){
-			$this->backwardPage('session anda telah habis, Silahkan Login',base_url().($page == '' ? 'home/login' : 'home/login?page='.$page));
+			$this->backwardPage('Anda belum login , Silahkan login',base_url().($page == '' ? 'home/login' : 'home/login?page='.$page));
 			return false;
 			
 		} 
