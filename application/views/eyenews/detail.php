@@ -111,7 +111,7 @@
 										foreach ($bacajuga as $judul)
 										{
 							?>
-											<a href="<?= base_url(); ?>eyenews/detail/<?= $judul["eyenews_id"] ?>" id="a4" class="">
+											<a href="<?= base_url(); ?>eyenews/detail/<?= $judul["url"] ?>" id="a4" class="">
 												<p class='h6 text-bold' style='color:#45a7c4;margin: unset;padding: unset;'>
 													<strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <?= $judul["title"]; ?></strong>
 												</p>      
@@ -119,7 +119,7 @@
 							<?php
 										}
 							?>
-											<a href="<?= base_url(); ?>eyetube/detail/<?= $video->eyetube_id; ?>" id="a4" class="">
+											<a href="<?= base_url(); ?>eyetube/detail/<?= $video->url; ?>" id="a4" class="">
 												<p class='h6 text-bold' style='color:#45a7c4;margin: unset;padding: unset;'>
 													<strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Eyetube | <?= $video->title; ?></strong>
 												</p>

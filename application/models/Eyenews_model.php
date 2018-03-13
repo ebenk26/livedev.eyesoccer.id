@@ -82,7 +82,8 @@ class Eyenews_model extends CI_Model
 										A.eyenews_id,
                                         A.title,
                                         A.thumb1,
-                                        A.publish_on
+                                        A.publish_on,
+										A.url
                                     FROM
                                         tbl_eyenews A
                                     WHERE
@@ -100,7 +101,8 @@ class Eyenews_model extends CI_Model
     {
 		$query = $this->db->query(" SELECT
                                         A.title,
-                                        A.eyetube_id
+                                        A.eyetube_id,
+										A.url
                                     FROM
                                         tbl_eyetube A
                                     ORDER BY 
