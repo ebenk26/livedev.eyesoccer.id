@@ -4997,6 +4997,7 @@ img.loading {
     height: 60px !important;
     float: right;
     margin: 5px !important;
+    overflow: hidden;
 }
 .banner-home1{
     width: 1065px;
