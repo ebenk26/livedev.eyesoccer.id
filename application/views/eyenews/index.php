@@ -128,6 +128,9 @@
 		</div>
 	    </div>
 	</div>
+	<div class="container banner-150">
+		<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads">
+	</div>
 	
 	<?php $this->load->view('eyenews/category_widget'); ?>
     </div>

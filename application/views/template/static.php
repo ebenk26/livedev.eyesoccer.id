@@ -37,7 +37,7 @@
         		<meta http-equiv="content-language" content="In-Id" />
         		<meta name="geo.placename"content="Indonesia" />
         		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
-        		<link rel="canonical" href="https://www.eyesoccer.id" />
+        		<link rel="canonical" href="https://www.eyesoccer.id<?php echo $_SERVER['REQUEST_URI'];?>" />
         		<meta name="google-site-verification" content="Ypg1XCrvdn4IyWbgoGHkEWqmK5c8tz6wnBQvOObVRJE" />
         		<!-- End of SEO Meta Tags-->
 
@@ -242,7 +242,20 @@
 	                    <?php
                             }
                         ?>
-                    </div>                
+                    </div> 
+                    <div class="container banner-a1 img-banner" style="background: unset;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Eyesoccer 1#dekstopHomeTopBanner -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="4301959288"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                        <!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner  320x60 px-01.jpg" alt="Static ads"> -->
+                    </div>       
                 </div>                
             </div>
         </nav>
@@ -319,7 +332,7 @@
                     <div class="center50">
                         <a target="_blank" href="https://www.facebook.com/eyesoccerindonesia/?ref=content_filter" id="i-fb"><img class="first" src="<?php echo base_url()?>assets/img/ic_facebook.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_facebook_selected.png" alt=""></a>
                         <a target="_blank" href="https://twitter.com/eyesoccer_id" id="i-tw"><img class="first" src="<?php echo base_url()?>assets/img/ic_twitter.png" alt=""><img class="scond scond-t" src="<?php echo base_url()?>assets/img/ic_twitter-selected.png" alt=""></a>
-                        <a target="_blank" href="https://instagram.com/eyesoccer" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a><br>
+                        <a target="_blank" href="https://instagram.com/eyesoccer" id="i-in"><img class="first" src="<?php echo base_url()?>assets/img/ic_instagram.png" alt=""><img class="scond" src="<?php echo base_url()?>assets/img/ic_instagram-selected.png" alt=""></a>
                         <a style="float: right;position: relative;top: 50px;padding: 0px 10px;" href="//www.dmca.com/Protection/Status.aspx?ID=8b682fda-a66a-44db-9ff9-04dae8a124fc" title="DMCA.com Protection Status" class="dmca-badge"> <img src="//images.dmca.com/Badges/dmca-badge-w100-5x1-08.png?ID=8b682fda-a66a-44db-9ff9-04dae8a124fc" alt="DMCA.com Protection Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
                     </div>
                 </div>

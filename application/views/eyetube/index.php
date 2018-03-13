@@ -212,6 +212,11 @@
                 <button class="btn-white" type="button" style="margin-left: unset; margin-bottom: 20px; cursor: pointer;" onclick="ShowAllVideo()">Tutup Video Lainnya</button>
             </div>
         </div>
+
+        <div class="center-desktop container banner-150">
+			<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads">
+		</div>
+
         <div class="m-0 center-desktop">
             <div class="garis-x"></div>
         </div>

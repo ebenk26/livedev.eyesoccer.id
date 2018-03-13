@@ -72,11 +72,15 @@
                                         <ul>
                                             <li>
                                                 <a href="">
-                                                    <span class="unname"><?= $value['fullname']; ?></span>
+                                                    <span class="unname"><?= $value['fullname']; ?> - </span>
+                                                    
                                                 </a>
                                             </li>
-                                            <li class="c-g">
-                                                <span><?= date_format($date,"d M Y H:i:s"); ?></span>
+                                            <li>
+                                                <span><?= date_format($date,"d M Y H:i:s"); ?> - </span>
+                                            </li>
+                                            <li>
+                                                <span><?= $value['news_view']; ?> views</span>
                                             </li>
                                         </ul>
                                     </td>
@@ -95,14 +99,14 @@
                     <!-- EMOTICON -->
 					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
 					<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
-                    <div class="container mt-45 mb-30">
+                    <div class="container mb-30">
                         <div class="col-2 col-emoji">
-                            <a class="emoticon" type_emot="proud">
+                            <a class="emoticon" type_emot="smile">
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
                                 </div>
                                 <span class="replace_proud"><?=$value['news_smile']?></span>
-                                <span class="load-proud" style="display:none;">
+                                <span class="load-smile" style="display:none;">
                                     <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
                                  </span>
                                 <span>bangga</span>
@@ -232,6 +236,9 @@
                         </div>
 						<?php } ?>						
                     </div>
+                    <div class="container banner-eyenews1 img-banner mt-20">
+                        <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 315x320px-01.jpg" alt="ads">
+                    </div>
 
                     <div class="down-r-news">
                         <div class="fl-l">
@@ -293,7 +300,7 @@
                             <div>
                                 <div class="container h105">
                                     <a href="">
-                                        <img src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb']; ?>" alt="">
+                                        <img src="<?php echo imgCache($populer['thumb'],'small'); ?>">
                                     </a>
 
                                     <div class="container rd">

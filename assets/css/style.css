@@ -85,6 +85,9 @@ hr{
 .m-b-100{
     margin-bottom: 100px;
 }
+.m-b-10{
+    margin-bottom: -10px;
+}
 .pd-b-100{
     padding-bottom: 100px;
 }
@@ -441,10 +444,13 @@ nav .center-desktop, .x-m{
 .ctn-pemain{
     /* border: 1px solid #9e9e9e38; */
     box-shadow: inset 0 0 3px gainsboro;
-    margin-right: 3px; 
+    margin-right: 5px; 
     width: 346px;
     height: 100px;
     overflow: hidden;
+}
+.ctn-pemain:nth-of-type(3){
+    margin-right: 0px;
 }
 .ctn-pemain:hover{
     box-shadow: inset 0 0 5px 1px gainsboro;
@@ -738,6 +744,7 @@ nav .center-desktop, .x-m{
 }
 .c-em-content2 a >img{
     height: 100%;
+    width:100%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -850,7 +857,7 @@ nav .center-desktop, .x-m{
 }
 .banner-150{
     height: 130px;
-    background-color: greenyellow;
+    background-color: gainsboro;
 }
 .t-30{
     top: -30px;
@@ -1272,6 +1279,8 @@ ul, li {
     outline: none;
     font-size: .75em;
     border-radius: 3px;
+    -webkit-appearance: none;
+    appearance: none;
 }
 .btn-orange{
     padding: 6px 15px;
@@ -1661,11 +1670,12 @@ ul, li {
 .pemain-foto img:hover, .zoom:hover{
     width: 130%;
     margin-left: -15%;
-    margin-top: -15%;
+    /* margin-top: -15%; */
 }
 .pemain-foto .em-box{
     max-width: 250px;
-    max-height: 165px;
+    max-height: 125px;
+    margin-bottom: 20px;
     overflow: hidden;
     border: none;
     border-radius: 0px;
@@ -4044,10 +4054,7 @@ ul, li {
     border-bottom: 4px solid white;
 }
 .dll-head img{
-    width: 100vw;
-    max-height: 304px;
-    overflow: hidden;
-    margin-left: -4%;
+    width: 100%;
 }
 .dll-title{
     position: relative;
@@ -4332,6 +4339,10 @@ ey{
 .kntk td{
     padding: 10px 10px 10px 0px;
     font-weight: 500;
+}
+.kntk td h3{
+    margin-bottom: 0;
+    font-size: 1.4em;
 }
 .kntk img{
     max-width: 100%;
@@ -4701,8 +4712,8 @@ height: 100%;
     font-weight: 600;
 }
 .eyeme-list{
-    height: 135px;
-    width: 140px;
+    min-height: 145px;
+    min-width: 140px;
     float: left;
     margin: 5px;
     overflow: hidden;
@@ -4966,9 +4977,63 @@ img.loading {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-}
+}   
 .product:hover .image img{
     -ms-transform: scale(1.5) !important;
     -webkit-transform: scale(1.5) !important;
     transform: scale(1.1, 1.1) translate(-45%,-45%) !important;
+}
+.img-banner{
+    background-color: gainsboro;
+}
+.img-banner img {
+    height: 100%;
+    width: 100%;
+    /* background-color: gainsboro; */
+}
+.banner-a1{
+    width: 320px;
+    height: 60px;
+    float: right;
+    margin: 5px;
+}
+.banner-home1{
+    width: 1065px;
+    height: 300px;
+}
+.banner-eyenews1{
+    width: 315px;
+    height: 320px;
+}
+.banner-eyenews3{
+    width: 1065px;
+    height: 100px;
+}
+.banner-eyenews4{
+    width: 360px;
+    height: 320px;
+}
+.banner-eyetube1{
+    width: 300px;
+    height: 320px;
+}
+.banner-eyetube2{
+    width: 690px;
+    height: 100px;
+}
+.banner-eyevent1{
+    width: 300px;
+    height: 305px;
+}
+.banner-eyeprofile1{
+    width: 430px;
+    height: 300px;
+}
+.banner-eyeprofile4{
+    width: 425px;
+    height: 100px;
+}
+.banner-eyeprofile5{
+    width: 425px;
+    height: 200px;
 }

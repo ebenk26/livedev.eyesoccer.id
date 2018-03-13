@@ -275,7 +275,10 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> 
+            <div class="container banner-eyeprofile4 img-banner">
+                <img class="lazy" src="<?php echo base_url()?>assets/img/banner 425x200 px-01.jpg" alt="">
+            </div>     
         </div>
         </div>
         </div>

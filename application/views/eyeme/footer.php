@@ -74,7 +74,7 @@ $('#notif').click(function(event){ //event notif click
                tbl += '<tr class="notif-link" rel="' + v.id_img + '">';
                     tbl += '<td>';
                         tbl += '<img class="notif-profil-foto" src="' +
-                        (v.display_picture == '' ? DPIC : IMGSTORE + v.display_picture ) +' " alt="user photo" />';
+                        (v.display_picture == '' ? DPIC : MEIMG + v.display_picture ) +' " alt="user photo" />';
                     tbl += '</td>';
 
                     if(v.notif_type.substr(0,3) == 'COM'){
@@ -111,7 +111,7 @@ $('#notif').click(function(event){ //event notif click
                     }
                       
                     tbl += '<td class="fl-r mr-7">';
-                        tbl += (v.img_name == null ? '' : '<img src="'+ MEIMG + v.img_name + '" alt="post photo" class="notif-photo">');
+                        tbl += (v.img_name == null ? '' : '<img src="'+ MEIMG + v.img_name + '" alt="post photo" class="notif-photo" onerror="this.src=\'' + DPIC +'\'">');
                     tbl += '</td>';
                 tbl += '</tr>';
                 tbl += '<tr>';
@@ -480,7 +480,7 @@ $('.a-fol').click(function(event) {
      
     $.ajax({
         url: '<?php echo MEURL?>get_follow',
-        type: 'GET',
+        type: 'POST',
         dataType: 'JSON',
         data: {data:ref,id:id},
     })
@@ -494,7 +494,7 @@ $('.a-fol').click(function(event) {
                         tbl_fol += '<img src="' + 
                             (v.profile_pic == '' ? 
                             '<?php echo DPIC?>': 
-                            '<?php echo IMGSTORE?>' + v.profile_pic) + '" alt="' + v.profile_pic +'" class="w-100">';
+                            '<?php echo MEIMG?>' + v.profile_pic) + '" alt="' + v.profile_pic +'" class="w-100" onerror="this.src=\'<?php echo DPIC?>\'">';
                      tbl_fol += '</div>';
                 tbl_fol += '</td>';
                 tbl_fol += '<td>';
@@ -512,10 +512,10 @@ $('.a-fol').click(function(event) {
         //tbl_fol  += 
     })  
 });
-function folclick($ref,ref){
-    var $split = $ref.split('i');
+function folclick($id,ref){
+    var $split = $id.split('i');
     var $thisId = $split[1];
-    var $this  = $('#'+$ref);
+    var $this  = $('#'+$id);
     if(ref == 'followed'){
         $.ajax({
             url: '<?php echo MEURL?>unfollow',
@@ -531,12 +531,6 @@ function folclick($ref,ref){
                 $this.attr('onclick','folclick(this.id,\'notfollowed\')');
             }
         })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
     }
     else{
         $.ajax({
@@ -554,12 +548,7 @@ function folclick($ref,ref){
                 $this.attr('onclick','folclick(this.id,\'followed\')');
             }
         })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function() {
-            console.log("complete");
-        });
+     
     }
         
    
@@ -608,7 +597,7 @@ $('.me-post').click(function(event) {
             $('.usern').text(v.username);
             $('.usern').attr('href',MEPROFILE + v.username);
             $('.cap').text(v.img_caption);
-            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo IMGSTORE?>' + v.display_picture));
+            $('#img-user').attr('src',(v.display_picture === '' ? '<?php echo DPIC?>' : '<?php echo MEIMG?>' + v.display_picture));
             $('#time-string').text(v.timeString);
             $('#c-like').addClass('ref-'+ v.id_img);
             $('#c-like').text(v.countLike);

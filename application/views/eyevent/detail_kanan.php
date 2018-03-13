@@ -17,13 +17,13 @@
                     {
                 ?>
                         <div class="container iven">
-                            <a href="<?= base_url().'eyevent/detail'.$value->slug; ?>">
+                            <a href="<?= base_url().'eyevent/detail/'.$value->slug; ?>">
                                 <div class="iven-im">
                                     <img src="<?= $value->url_pic; ?>" alt="">
                                 </div>
                             </a>
                             <div class="container rn tx-c" id="iven">
-                                <a href="<?= base_url().'eyevent/detail'.$value->slug; ?>">
+                                <a href="<?= base_url().'eyevent/detail/'.$value->slug; ?>">
                                     <span><?= $value->title; ?></span>
                                 </a>
                                 <div class="rr">
@@ -41,6 +41,9 @@
                 <?php        
                     }
                 ?>
+            </div>
+            <div class="container banner-eyevent1 img-banner">
+                <img src="../../assets/img/iklanbanner/banner 315x320px-01.jpg" alt="Square ads">
             </div>
         </div>
     </div>

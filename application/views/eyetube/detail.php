@@ -46,7 +46,7 @@
             <div class="container tube-l">
                 <div>
                     <video controlsList="nodownload" width="735px" height="415px" controls style="border-bottom: 1px solid gainsboro;" poster="<?= MEVID.$eyetube_headline->thumb; ?>/medium">
-                        <source src="<?= MEVID.$eyetube_headline->video; ?>" type="video/mp4" preload="none">
+                        <source src="<?= TUBE.$eyetube_headline->video; ?>" type="video/mp4" preload="none">
                     </video>
                     <div class="top-r ">
                         <ul>
@@ -141,10 +141,13 @@
                     </div>
                     <div class="garis-x3"></div>
                 </div>
+                <div class="container banner-eyetube2 img-banner" style="margin-bottom: 20px;">
+                    <img src="../../assets/img/iklanbanner/banner 690x100px-01.jpg" alt="">
+                </div>
                 <!-- EMOTICON -->
                 <input type="hidden" id="eyetube-id" value="<?= $eyetube_headline->eyetube_id; ?>" />
                 <h3 id="t1">Bagaimana reaksi Anda tentang video ini?</h3>                   
-                <div class="container mt-45 mb-30">
+                <div class="container mb-30">
                     <div class="col-2 col-emoji">
                         <a class="emoticon" type_emot="proud"> <!-- tadinya happy -->
                             <div class="img-box">
@@ -439,7 +442,10 @@
                     </div>
                     <div class="down-r-tube">
                         <div class="pd">
-                            <div class="subjudul m-t-10">
+                            <div class="container mt-20 banner-eyetube1 img-banner">
+                                <img src="../../assets/img/iklanbanner/banner 300x320px-01.jpg" alt="">
+                            </div>
+                            <div class="container subjudul m-t-10">
                                 <h4>REKOMENDASI</h4>
                             </div>
                             <div>

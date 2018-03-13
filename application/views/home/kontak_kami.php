@@ -1,4 +1,6 @@
 
+    </div>
+
     <div class="container dll-head">
         <img src="assets/img/Footer/img-header-contact-us.jpg" alt="">
         <!-- <div class="center-desktop m-0 dll-title">
@@ -6,14 +8,19 @@
             <h2>Kontak Kami</h2>
         </div> -->
     </div>
+    <div class="desktop">
     <div class="container m-t-90">
         <div class="center-desktop m-0">
             <div class="container mt-30">
                 <div class="container w532">
                     <div class="dll-isi">
-                        <h3 style="text-align:left !important;">Informasi Kontak</h3>
                         <div class="kntk">
                             <table>
+                                <tr>
+                                    <td colspan="2">
+                                        <h3 style="text-align:left !important;">Informasi Kontak</h3>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <div class="w20">
@@ -53,6 +60,51 @@
                                     </td>
                                     <td>
                                         info@eyesoccer.id
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h3 style="text-align:left !important;">Informasi Marketing</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="w20">
+                                            <img src="assets/img/footer/mail.png" alt="">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        marketing@eyesoccer.id
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h3 style="text-align:left !important;">Informasi Redaksi</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="w20">
+                                            <img src="assets/img/footer/mail.png" alt="">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        redaksi@eyesoccer.id
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h3 style="text-align:left !important;">Informasi Database Pemain, Klub, dan SSB</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="w20">
+                                            <img src="assets/img/footer/mail.png" alt="">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        admin@eyesoccer.id
                                     </td>
                                 </tr>
                             </table>

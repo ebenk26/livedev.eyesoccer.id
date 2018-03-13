@@ -1,11 +1,12 @@
-
+</div>
     <div class="container dll-head">
-        <img src="assets/img/Footer/img-header-tim.png" alt="">
+        <img src="<?php echo base_url()?>assets/img/Footer/img-header-tim.png" alt="">
         <div class="center-desktop m-0 dll-title">
             <div class="dline"></div>
             <h2>Tim EyeSoccer</h2>
         </div>
     </div>
+    <div class="desktop">
     <div class="container m-t-70">
         <div class="center-desktop m-0">
             <div class="container m-0 bbg">
@@ -163,11 +164,13 @@
                         </span>
                         <span>Philips Gregory</span>
                         <span>Owien Rodwin</span>
+                        <span>Fria Puspitasari</span>
                         <br>
                         <span>
                             <ey>Social Media Specialist</ey>
                         </span>
                         <span>Nugraha Putra</span>
+                        <span>DB Krishna</span>
                         <br>
                     </div>
                     <div class="container w355 tim">
@@ -183,6 +186,11 @@
                             <ey>Eyesoccer Representative for Europe</ey>
                         </span>
                         <span>Jurgen Claessens</span>
+                        <br>
+                        <span>
+                            <ey>Eyesoccer for Prof Lampung</ey>
+                        </span>
+                        <span>Faisal Yusuf</span>
                     </div>
                 </div>
             </div>
@@ -204,6 +212,7 @@
                         <span>Muhammad Robi</span>
                         <span>Kharizuno Hizbullah</span>
                         <span>Sofyan Waldy</span>
+                        <span>Muhammad Arif</span>
                         <br>
                         <br>
                     </div>
@@ -212,7 +221,7 @@
                             <ey>Front End Developer</ey>
                         </span>
                         <span>Fajar Ulin Nuha</span>
-                        <span>Faradilah Nurzahra Danopa</span>
+                        <span>Faradila Nurzahra Danopa</span>
                         <br>
                         <br>
                     </div>

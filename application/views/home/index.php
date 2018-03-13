@@ -322,8 +322,11 @@
 					?>
                     </div>
                 </div>
-            </div>
-        </div>
+			</div>
+			<div class="container mt-20 banner-home1 img-banner">
+				<img src="<?php echo base_url()?>assets/img/iklanbanner/banner 1065x300 px-01.jpg" alt="Home Page Banner Ads">
+			</div>
+		</div>
 		</div>
         <!-- EYETUBE -->
         <div class="center-desktop">        
@@ -447,7 +450,7 @@
 								<div class="vid-box-vl">
 									<!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
 									<div class="vid-box-vl-img">
-										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $populer['thumb'];?>" alt="">										
+										<img class="lazy" src="<?= MEVID.$populer['thumb'];?>" alt="">										
 									</div>
 									<div class="container h41"><span class="vid-ttl"><?= $populer['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -474,7 +477,7 @@
 							<a href="<?=base_url().'eyetube/detail/'.$kamu['url']; ?>" style="text-decoration: unset;">
 								<div class="vid-box-vl">
 									<div class="vid-box-vl-img">
-										<img class="lazy" src="<?=imgUrl()?>systems/eyetube_storage/<?= $kamu['thumb'];?>" alt="">
+										<img class="lazy" src="<?= MEVID.$kamu['thumb'];?>" alt="">
 									</div>
 									<div class="container h41" ><span class="vid-ttl"><?= $kamu['title']; ?></span><br></div>
 									<p class="vid-time"><?php
@@ -562,13 +565,13 @@
             <div class="et-content">
                 <div class="et-content1">
                     <div class="container tab2">
-                        <span href="" id="tab_populer" class="active nonactive" active="true">terpopuler</span>
-                        <span href="" id="tab_rekom" class="nonactive">rekomendasi</span>
+                        <span href="" id="tab_rekom" class="active nonactive" active="true">rekomendasi</span>
                         <span href="" id="tab_usia" class="nonactive">usia muda</span>
+                        <span href="" id="tab_populer" class="nonactive">terpopuler</span>
                         <hr>
                         <div id="tab2" class="carousel slide">
                             <div role="listbox" class="carousel-inner">                    
-                                <div id="tab_populer" class="box item active">
+                                <div id="tab_populer" class="box item">
 									<x>
 									<a href="<?=base_url()?>eyenews">
                                         <span>Berita Lainnya</span>
@@ -603,7 +606,7 @@
 								}
 								?>
                                 </div>
-                                <div id="tab_rekom" class="box item">
+                                <div id="tab_rekom" class="box item active">
 									<x>
                                         <a href="<?=base_url()?>eyenews">Berita Lainnya</a>
                                         <i class="material-icons r-tab2">keyboard_arrow_right</i>                                
@@ -707,8 +710,18 @@
         </div>
         <!-- BANNER -->
         <div class="center-desktop">
-            <div class="banner-150" style="margin-top: 20px;">
-                <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
+            <div class="banner-150" style="margin-top: 20px;background: unset;">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Eyesoccer 24#dekstopHomeBannerBawah -->
+					<ins class="adsbygoogle"
+						 style="display:block"
+						 data-ad-client="ca-pub-7635854626605122"
+						 data-ad-slot="1567244418"
+						 data-ad-format="auto"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+                <!-- <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt=""> -->
             </div>
         </div>
         <!-- EYEVENT -->
@@ -770,7 +783,7 @@
             <div class="container">
                 <div class="et-content1">
                     <span class="jp green">JADWAL PERTANDINGAN</span>
-                    <div class="border-box" style="margin-top: 23px;">
+                    <div class="border-box" style="margin-top: 22px;">
                         <div class="container bg-g">						
                             <div class="t-tab">
 								<div class="day-choose t-active" id="jadwal_today">
@@ -805,10 +818,10 @@
 						<div id="tbl_jadwal_today">
 							
 							<table class="table border-b">
-							<?php
-							foreach($jadwal_today as $row){
-							?>
 								<tbody>
+								<?php
+									foreach($jadwal_today as $row){
+								?>
 									<tr>
 										<td class="tx-r"><?=$row["club_a"]?></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
@@ -818,8 +831,8 @@
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
 										<td class="tx-l"><?=$row["club_b"]?></td>
 									</tr>
+								<?php }?>
 								</tbody>
-							<?php }?>
 							</table>
 						</div>
 						<div id="tbl_jadwal_tomorrow" style="display:none">

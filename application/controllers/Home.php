@@ -291,10 +291,7 @@ class Home extends CI_Controller
                     header("refresh:0");
                 } else {
                     //get eyeme username
-                    $where = array('id_member' => $user_id);
-
-                    $profile = $this->mod->getAll('me_profile', $where);
-                    $this->session->me_profile = (count($profile) > 0 ? '1' : '0');
+                   
                     $this->session->username = $row['username'];
 
                     //end
@@ -682,10 +679,11 @@ class Home extends CI_Controller
     {
         $date = date("Y-m-d H:i:s");
         $ip = $this->input->ip_address();
+
         $tipe = $_POST["type"];
         $tbl = $_POST["tbl"];
         $kanal = $_POST["kanal"];
-        $sub_field = $_POST["sub_field"];
+        $sub_field = $_POST["sub_field"]; 
         $field = "$sub_field$tipe";
 
         $cek_emot = $this->mod->cek_ip_view($kanal, $id, $ip, $tipe);

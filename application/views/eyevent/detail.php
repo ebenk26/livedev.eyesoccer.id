@@ -76,6 +76,61 @@
             <div class="news-capt m-t-10">
                 <span><?= $model->data->description; ?></span>
             </div>
+
+            <table class="tb-hasil">
+                <?php
+                    if (empty($model->data->match_event))
+                    {
+                ?>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="text-align: center;">
+                                    Tidak Ada Jadwal Pada Tanggal Ini
+                                </td>
+                            </tr>                            
+                        </tbody>  
+                <?php        
+                    }
+                    else
+                    {
+                        foreach($model->data->match_event as $jdwl)
+                        {
+                ?>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="<?= $jdwl->url_team_a; ?>">
+                                            <?=$jdwl->team_a; ?>
+                                            <img src="<?= $jdwl->url_logo_a; ?>" alt="">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            <?php
+                                                $tgl = new DateTime($jdwl->match_schedule);
+                                                echo $tgl->format('d F Y H:i:s');
+                                            ?>
+                                        </span>
+                                        <?= $jdwl->score_a; ?> - <?= $jdwl->score_b; ?>
+                                        <span><?= $jdwl->match_location; ?></span>
+                                    </td>
+                                    <td>
+                                        <a href="<?= $jdwl->url_team_b; ?>">
+                                            <img src="<?= $jdwl->url_logo_b; ?>" alt="">
+                                            <?=$jdwl->team_b ;?>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                <?php            
+                        }
+                    }
+                ?>
+            </table>
+
+            <br>
+            <br>
+
             <div class="container">
                 <div class="sharethis-inline-share-buttons" data-image="<?=base_url()?>systems/eyetube_storage/"></div>
             </div>

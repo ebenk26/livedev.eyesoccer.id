@@ -208,6 +208,9 @@
                 </div>
             </div>
         </div>
+		<div class="container banner-150 img-banner mt-20">
+			<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="banner ads full width">
+		</div>
         <div class="container t-b-b pd-t-20"></div>
         <div class="center-desktop m-0">
             <div class="w-60 m-r-1 pd-t-20 formasi">
@@ -351,6 +354,9 @@
                     </ul>
                 </div>
             </div>
+			<div class="container banner-eyeprofile4 img-banner mt-20">
+				<img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width">
+			</div>
             <div class="container" style="margin-top:7px;">
                 <h3>Pencetak Gol Terbanyak</h3>
                 <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
