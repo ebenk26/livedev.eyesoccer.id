@@ -51,7 +51,7 @@
 			</td>
 			<td>
 			    <div class="rr">
-				<span><?= $headline->createon; ?></span>
+				<span><?= $headline->publish_on; ?></span>
 			    </div>
 			</td>
 		    </tr>
@@ -113,7 +113,7 @@
 					<p class="sub-en"><?= $similar->title; ?></p>
 					<span class="time-view">
 					<?php
-					    $date    = new DateTime($similar->createon);
+					    $date    = new DateTime($similar->publish_on);
 					    $tanggal = date_format($date,"Y-m-d H:i:s");
 					    
 					    echo relative_time($tanggal) . ' lalu - '.$similar->news_view.' views';

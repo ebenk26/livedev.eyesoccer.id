@@ -11,7 +11,7 @@ class Eyenews_model extends CI_Model
                                     FROM
                                         tbl_eyenews A
                                     ORDER BY 
-                                        A.eyenews_id DESC
+                                        A.publish_on DESC
                                     Limit 5
                                         ")->row();
             return $query; 
@@ -24,7 +24,7 @@ class Eyenews_model extends CI_Model
                                     FROM
                                         tbl_eyenews A
                                     ORDER BY 
-                                        A.eyenews_id DESC
+                                        A.publish_on DESC
                                     Limit 3
                                         ")->result_array();
             return $query; 
@@ -39,7 +39,7 @@ class Eyenews_model extends CI_Model
                                     FROM
                                         tbl_eyenews A
                                     ORDER BY 
-                                        A.eyenews_id DESC
+                                        A.publish_on DESC
                                     Limit 12
                                         ");
  
@@ -90,7 +90,7 @@ class Eyenews_model extends CI_Model
                                     	AND 
                                     	A.eyenews_id != '$id'
                                     ORDER BY 
-                                    	A.eyenews_id DESC
+                                    	A.publish_on DESC
                                     LIMIT $limit
                                         ")->result_array();
         return $query; 
@@ -104,7 +104,7 @@ class Eyenews_model extends CI_Model
                                     FROM
                                         tbl_eyetube A
                                     ORDER BY 
-                                    	A.eyetube_id DESC
+                                    	A.publish_on DESC
                                     LIMIT 1
                                         ")->row();
         return $query; 
@@ -123,7 +123,7 @@ class Eyenews_model extends CI_Model
                                     FROM
                                         tbl_eyenews A
                                     ORDER BY 
-                                    	A.eyenews_id DESC
+                                    	A.publish_on DESC
                                     LIMIT 5
                                         ")->result_array();
         return $query;
@@ -245,7 +245,7 @@ class Eyenews_model extends CI_Model
 									FROM
 										tbl_eyenews a
 									ORDER BY
-										a.eyenews_id DESC
+										a.publish_on DESC
 									LIMIT
 										1
 								")->row();
@@ -266,7 +266,7 @@ class Eyenews_model extends CI_Model
 									WHERE
 										a.news_type = '$news_type'
 									ORDER BY
-										a.eyenews_id DESC
+										a.publish_on DESC
 									LIMIT
 										4
 								")->result_array();
@@ -291,7 +291,7 @@ class Eyenews_model extends CI_Model
 										a.publish_on<='".date("Y-m-d H:i:s")."'
 										and category_news='2'
 									ORDER BY
-										a.eyenews_id DESC
+										a.publish_on DESC
 									LIMIT
 										3
 								")->result_array();
@@ -513,7 +513,7 @@ public function get_trending_eyenews()
 									WHERE
 										A.news_type = 'Soccer Seri'
                                     ORDER BY 
-                                        A.eyenews_id DESC
+                                        A.publish_on DESC
                                     Limit 3
                                         ")->result_array();
             return $query; 

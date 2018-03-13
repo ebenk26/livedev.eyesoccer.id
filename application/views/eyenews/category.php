@@ -56,7 +56,7 @@
 				    <p class="sub-en"><?= $similar->title; ?></p>
 				    <span class="time-view">
 					<?php
-					    $date 		=  new DateTime($similar->createon);
+					    $date 		=  new DateTime($similar->publish_on);
 					    $tanggal 	= date_format($date,"Y-m-d H:i:s");
 					    $real_time = relative_time($tanggal);
 					    
