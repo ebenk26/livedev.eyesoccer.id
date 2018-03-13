@@ -4992,10 +4992,11 @@ img.loading {
     /* background-color: gainsboro; */
 }
 .banner-a1{
-    width: 320px;
-    height: 60px;
+    all: unset;
+    width: 320px !important;
+    height: 60px !important;
     float: right;
-    margin: 5px;
+    margin: 5px !important;
 }
 .banner-home1{
     width: 1065px;
