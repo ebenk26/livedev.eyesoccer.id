@@ -71,7 +71,7 @@
 		<div><?php echo $pagging['pagging'];?></div>
 		</div>
 		<div class="container banner-150">
-			<img src="../../assets/img/banner-home.jpeg" alt="Banner Ads">
+			<img src="<?php echo base_url();?>assets/img/banner-home.jpeg" alt="Banner Ads">
 		</div>
 	</div>
 	

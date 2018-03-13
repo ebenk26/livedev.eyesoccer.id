@@ -337,6 +337,7 @@
                     </div>
                 </div>
             </div>
+			<span style="display:none">IBX5AA78343726A9</span>
         </footer>
         <!-- SEARCHBOX -->
 			<form id="global_search" action="<?php echo base_url(); ?>home/search" method="get">
