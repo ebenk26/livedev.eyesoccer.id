@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="container news-rcm-z">
                                         <div class="rr">
-                                            <span><?=$rekomendasi['createon'];?></span>
+                                            <span><?=$rekomendasi['publish_on'];?></span>
                                         </div>
                                         <p>										
                                         <?=$rekomendasi['title'];?></p>
@@ -75,7 +75,7 @@
                                     <div class="rr">
                                             <span>
                                                 <?php
-                                                    $date =  new DateTime($row['createon']);
+                                                    $date =  new DateTime($row['publish_on']);
                                                     $tanggal = date_format($date,"Y-m-d H:i:s");
                                                     
                                                     echo relative_time($tanggal) . ' lalu - '.$row['news_view'].' views';
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="n-rcm-up-teks">
                                         <div class="rr">
-                                            <span><?=$row['createon'];?></span>
+                                            <span><?=$row['publish_on'];?></span>
                                         </div>
                                             <span>
                                                 <?=$row['title'];?>									
@@ -169,7 +169,7 @@
                                     <div class="rr">
                                         <span>
                                             <?php
-                                                $date 		=  new DateTime($row12['createon']);
+                                                $date 		=  new DateTime($row12['publish_on']);
                                                 $tanggal 	= date_format($date,"Y-m-d H:i:s");
     
                                                 echo relative_time($tanggal) . ' lalu - '.$row12['news_view'].' views';

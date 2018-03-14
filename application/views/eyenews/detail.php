@@ -58,6 +58,9 @@
                         <div style="width:100%;height:445px;overflow:hidden;">
                             <img src="<?=imgUrl()?>systems/eyenews_storage/<?= $value['pic']; ?>" alt="" style="width:100%;min-height:100%;">
                         </div>
+						<div style="font-size:14px;float:right;">
+							Credit : <?php echo $value['credit']; ?>
+						</div>
                     </div>
                     <div class="container mt-10">
                         <div class="fl-l n-c">
@@ -94,7 +97,41 @@
 
                     <div class="garis-x3 mt-45"></div>
                     <div class="news-capt m-t-10">
-                        <span><?= $value['description']; ?></span>
+                        <span><?php //echo $value['description']; ?>
+							<?php 
+								for ($i = 0; $i < $paragraf; $i++)
+								{
+									if($i == $tengah)
+									{
+							?>
+										<div class='col-lg-12 col-xs-12 bg-default thumbnail' style='line-height:200%;padding-left:10px;padding-right:10px;'>
+											<span style="color:#45a7c4;margin: unset;padding: unset;">Baca Juga :</span>
+											
+							<?php
+										foreach ($bacajuga as $judul)
+										{
+							?>
+											<a href="<?= base_url(); ?>eyenews/detail/<?= $judul["url"] ?>" id="a4" class="">
+												<p class='h6 text-bold' style='color:#45a7c4;margin: unset;padding: unset;'>
+													<strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <?= $judul["title"]; ?></strong>
+												</p>      
+											</a>
+							<?php
+										}
+							?>
+											<a href="<?= base_url(); ?>eyetube/detail/<?= $video->url; ?>" id="a4" class="">
+												<p class='h6 text-bold' style='color:#45a7c4;margin: unset;padding: unset;'>
+													<strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Eyetube | <?= $video->title; ?></strong>
+												</p>
+											</a>
+											
+										</div>
+							<?php
+									}
+									echo "<p class='text-left'>".$description[$i];
+								}
+							?>
+						</span>
                     </div>
                     <!-- EMOTICON -->
 					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
@@ -200,7 +237,7 @@
                     <div style="margin-top: 20px;" id="coba">
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                     </div>
-					<div class="fb-comments fb-comments-enews-detail" data-href="<?=base_url();?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
+					<div class="fb-comments fb-comments-enews-detail" data-href="<?="https://www.eyesoccer.id/";?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
                 </div>
 
                 <div class="container tube-r fl-r">
