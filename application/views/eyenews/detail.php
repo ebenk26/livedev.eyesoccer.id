@@ -136,14 +136,14 @@
                     <!-- EMOTICON -->
 					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
 					<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
-                    <div class="container mb-30">
+                    <div class="container mb-30 bluehover">
                         <div class="col-2 col-emoji">
-                            <a class="emoticon" type_emot="smile">
+                            <a class="emoticon" type_emot="proud">
                                 <div class="img-box">
                                     <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
                                 </div>
                                 <span class="replace_proud"><?=$value['news_smile']?></span>
-                                <span class="load-smile" style="display:none;">
+                                <span class="load-proud" style="display:none;">
                                     <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
                                  </span>
                                 <span>bangga</span>
