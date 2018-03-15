@@ -55,7 +55,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="fl-r soc">
+                <div class="fl-r soc" style="display:none;">
                     <table>
                         <tr>
                             <td>
