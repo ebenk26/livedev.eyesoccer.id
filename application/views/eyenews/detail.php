@@ -16,6 +16,52 @@
     .tube-l, .h-news-l {
 	width: 730px;
     }
+	.itemss {
+		height: 100px;
+		width: 100%;
+		text-align: center;
+		background-color: white;
+		margin-top: 10px;
+		border-bottom: 1px solid #c3c3c3;
+	}
+	.itemss img{
+		margin-right: -10px;
+		border-right: 10px solid white;
+	}
+	#containerss{
+		width: 75%;
+		float: left;
+		margin-left: 8%;
+		margin-left: 10%;
+		margin: 0px !important;
+		padding-right: 15px;
+		padding-left: 15px;
+		width: 100%;
+	}
+	.data-title{
+		float: left;
+		width: auto;
+		text-align: left;
+		padding: 5px 10px;
+		color: black;
+		font-size: 1.5em;
+		font-weight: 300;
+		line-height: unset;
+		max-height: 70px;
+		overflow: hidden;
+	}
+	.data-title-date{
+		float: left;
+		width: auto;
+		text-align: left;
+		padding: 5px 10px;
+		font-size: 1.2em;
+		color: #45a7c4;
+		font-weight: 300;
+		line-height: unset;
+		max-height: 70px;
+		overflow: hidden;
+	}
 </style>
 
 <div class="desktop">
@@ -237,7 +283,10 @@
                     <div style="margin-top: 20px;" id="coba">
                         <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
                     </div>
-					<div class="fb-comments fb-comments-enews-detail" data-href="<?="https://www.eyesoccer.id/";?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>					
+					<div class="fb-comments fb-comments-enews-detail" data-href="<?="https://www.eyesoccer.id/";?><?=$_SERVER['REQUEST_URI']?>" data-numposts="5"></div>	
+					<div id="containerss">
+					</div>
+					<img style='width: 40%;margin-left: 30%;display:none' class='load-gif' src='../../assets/img/loadingsoccer.gif' alt='Loading'>
                 </div>
 
                 <div class="container tube-r fl-r">
@@ -477,5 +526,54 @@ $(document).ready(function(){
       });
     } // End if
   });
+  
+		//Start infinite scroll
+		var offset = 1;
+        // create a long list of items
+        var container = $("#containerss");
+        var lastItemIndex = 0;
+        var title = "";
+        var loading = "<img style='width: 40%;margin-left: 30%;' class='load-gif' src='../../assets/img/loadingsoccer.gif' alt='Loading'>";
+        var appendToList = function() {
+			//getjson
+			$.ajax({
+				url: "../getRecentEyenews/" + offset,
+				type: "GET",
+				dataType: "JSON",
+				success: function(data)
+				{
+					if(data[0]['title'] == 0){
+						
+					}else{
+						// alert(JSON.stringify(data[0]['title']));
+						$.each( data, function( key, data ) {
+							$('.load-gif').hide();
+							// console.log(data.title);
+							var contentScroll = "<a style='font-size:14px;text-decoration:none' href='/eyenews/detail/"+data.url+"'><div><img src='https://www.eyesoccer.id/systems/eyenews_storage/"+data.thumb1+"' style='height: 101px;float: left;'><div class='data-title' style='float: unset;'>"+data.title+"</div><div class='data-title-date'><i class='fa fa-eye'></i>&nbsp;"+data.news_view+"&nbsp;|&nbsp;<i class='fa fa-clock-o'></i>&nbsp;"+data.publish_on+"</div></div></a>"
+                            var el = $("<div>").attr("class", "itemss").html(contentScroll);
+                            
+							lastItemIndex = lastItemIndex + 1;
+							container.append(el);
+							
+						});
+					}
+				},
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					alert('Error get data from ajax');
+				}
+			});
+			offset = offset+5;
+			//end getjson
+        }
+
+        container.bind("infinite-scroll", function(args) {
+          console.log("Received", args);
+		  $('.load-gif').show();
+          setTimeout(function(){ appendToList(); }, 1500);
+        });
+
+        var infiniteScroll = new $.InfiniteScroll('#containerss', true).setup();
+        setTimeout(function(){ appendToList(); }, 1500);
 });
 </script>

@@ -401,4 +401,19 @@ class Eyenews extends CI_Controller {
 
 		$this->load->view('template/static',$data);		
 	}
+	
+	public function getRecentEyenews($offset)
+	{
+		$dataPerPage=5;
+		$query = $this->db->query("SELECT eyenews_id,title,url,thumb1,publish_on,news_view FROM tbl_eyenews where url <>'' and publish_on<='".date("Y-m-d H:i:s")."' order by publish_on desc LIMIT ".$offset.",".$dataPerPage);
+		
+		$count = $query->num_rows();
+		if($count>0){
+			$data = $query->result_array();
+		}else
+			$data = Array ( [0] => Array ( ['eyenews_id'] => [(string)0] ) );
+		
+		// print_r ($data);
+        echo json_encode($data);
+	}
 }

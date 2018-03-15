@@ -107,6 +107,7 @@
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
             <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
+			<script src='<?=base_url()?>bs/js/infiniteScroll.js'></script>
 
             <link rel="manifest" href="/manifest.json" />
 			<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
