@@ -36,7 +36,7 @@ body{
                     ?>
                             <div class="half2">          
                                 <div class="gambar2">
-                                    <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['id_event'];?>">                 
+                                    <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['url'];?>">                 
                                         <img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $vent['thumb1']; ?>">
                                     </a>
                                     <div class="fl-l ae">
@@ -57,7 +57,7 @@ body{
                     ?>
                             <div class="half2">          
                                 <div class="gambar2">
-                                    <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['id_event'];?>">                    
+                                    <a href="<?php echo base_url(); ?>eyevent/detail/<?= $vent['url'];?>">                    
                                         <img src="<?=imgUrl()?>systems/eyevent_storage/<?php print $vent['thumb1']; ?>">
                                     </a>
                                     <div class="fl-r ae">

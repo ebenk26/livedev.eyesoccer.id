@@ -11,6 +11,12 @@
     width: 90%;
 }
 </style>
+			<div class="crumb greenhover">
+				<ul>
+					<li><a href="<?= base_url(); ?>" style="color:unset;">Home</a></li>
+					<li><a href="<?= base_url(); ?>eyevent" style="display: unset;">EyeVent</a></li>
+				</ul>
+			</div>
             <div class="news-pic">
                 <h2><?= $model->data->title; ?></h2>
                 <div style="width:100%; height:auto;">
