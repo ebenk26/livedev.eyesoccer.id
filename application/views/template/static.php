@@ -109,15 +109,15 @@
             <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
 
             <link rel="manifest" href="/manifest.json" />
-            <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-            <script>
-                var OneSignal = window.OneSignal || [];
-                OneSignal.push(function() {
-                    OneSignal.init({
-                        appId: "5a1c4630-6c28-4386-a5ef-751fc40e6b8c",
-                    });
-                });
-            </script>
+			<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+			<script>
+			  var OneSignal = window.OneSignal || [];
+			  OneSignal.push(function() {
+				OneSignal.init({
+				  appId: "a3f7bfd9-2d0e-4132-ad90-854459ed5062",
+				});
+			  });
+			</script>
         <?php 
             if ($kanal != 'eyevent')
             {
