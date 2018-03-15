@@ -242,7 +242,7 @@
 
                 <div class="container tube-r fl-r">
                     <div class="up-r-news">
-                        <h4>BERITA TERKINI</h4>
+                        <h4><a href="<?php echo base_url();?>eyenews/terkini">BERITA TERKINI</a></h4>
 						<?php
 						$this->load->helper('my');
 						foreach ($terkini as $trendnya_news)
@@ -282,7 +282,7 @@
                             <h4>POPULER</h4>
                         </div>
                         <div class="fl-r abc">
-                            <a href="">
+                            <a href="<?php echo base_url();?>eyenews/populer">
                                 <span>Berita Lainnya</span>
                                 <i class="material-icons">keyboard_arrow_right</i>
                             </a>
@@ -323,8 +323,8 @@
                             <h4>VIDEO</h4>
                         </div>
                         <div class="fl-r abc">
-                            <a href="">
-                                <span>Berita Lainnya</span>
+                            <a href="<?php echo base_url();?>eyetube">
+                                <span>Video Lainnya</span>
                                 <i class="material-icons">keyboard_arrow_right</i>
                             </a>
                         </div>
