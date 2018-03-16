@@ -256,7 +256,19 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                         <!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner  320x60 px-01.jpg" alt="Static ads"> -->
-                    </div>       
+                    </div>  
+                    <div class="container banner-a1 img-banner" style="background: unset;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Eyesoccer 1b#dekstopHomeTopBanner -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="7928099633"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    </div>  
                 </div>                
             </div>
         </nav>
