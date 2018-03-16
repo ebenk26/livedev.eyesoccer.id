@@ -182,7 +182,8 @@ var valCom = $(this).val();
 //upload click event
 $(document).on('click','#upload,.upl',function(e){
     e.preventDefault();
-    $('#upload_pop').css('display','block');
+
+    $('#upload_pop').show();
 
 })
 // $('#upload,.upl').click(function(e) {
