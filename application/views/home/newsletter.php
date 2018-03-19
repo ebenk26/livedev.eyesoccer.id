@@ -40,7 +40,7 @@
 							<tr>
 								<td colspan="2" align="left" valign="bottom" style="padding: 0; font-family: Open Sans, Helvetica, Arial, sans-serif;">
 									<p style="color: #ffffff;font-size: 22px;line-height: 28px;margin: 30px 0px 0px;"> 
-										 
+										<?= ucfirst($kanal); ?>
 									</p>
 								</td>
 							</tr>
