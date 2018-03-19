@@ -180,13 +180,19 @@ var valCom = $(this).val();
 });
 
 //upload click event
-$('#upload,.upl').click(function(e) {
-    /* Act on the event */
+$(document).on('click','#upload,.upl',function(e){
     e.preventDefault();
-     $('#upload_pop').css('display','block');
+
+    $('#upload_pop').show();
+
+})
+// $('#upload,.upl').click(function(e) {
+//     /* Act on the event */
+//     e.preventDefault();
+//      $('#upload_pop').css('display','block');
 
 
-});
+// });
 
 //esc press event
 $(document).keyup(function(e) {  
