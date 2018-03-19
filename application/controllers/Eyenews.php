@@ -337,4 +337,116 @@ class Eyenews extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}
 	
+	public function terkini()
+	{
+		$where    = array();
+		$selectID = 'publish_on';
+		$tbl      = 'tbl_eyenews';
+		$limit    = 12;
+		$offset   = $this->uri->segment(3);
+		$uri_segment = 3;
+		$url      = 'eyenews/terkini';
+		$like = array();
+		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		
+		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
+		$data['eyenews_rekomendasi']		= $this->Eyenews_model->get_eyenews_rekomendasi();
+		$news_type 				= $data['eyenews_main']->news_type;
+		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
+		$data['headline'] 			= $this->Eyenews_model->get_headline();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();	
+		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
+		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
+		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
+		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
+		
+		$data["page"] 				="eyenews";
+		$data['kanal'] 					= "eyenews";
+		$data["body"]=$this->load->view('eyenews/terkini', $data,true);
+
+		$this->load->view('template/static',$data);		
+	}
+	
+	public function populer()
+	{
+		$where    = array();
+		// $where = array('news_type'=> urldecode($cat));
+		$selectID = 'news_view';
+		$tbl      = 'tbl_eyenews';
+		$limit    = 12;
+		$offset   = $this->uri->segment(3);
+		$uri_segment = 3;
+		$url      = 'eyenews/populer';
+		$like = array();
+		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		
+		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
+		$data['eyenews_rekomendasi']		= $this->Eyenews_model->get_eyenews_rekomendasi();
+		$news_type 				= $data['eyenews_main']->news_type;
+		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
+		$data['headline'] 			= $this->Eyenews_model->get_headline();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();	
+		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
+		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
+		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
+		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
+		
+		$data["page"] 				="eyenews";
+		$data['kanal'] 					= "eyenews";
+		$data["body"]=$this->load->view('eyenews/populer', $data,true);
+
+		$this->load->view('template/static',$data);		
+	}
+	
+	/* Infinite Scroll */
+	public function getRecentEyenews($offset)
+	{
+		$dataPerPage=5;
+		$query = $this->db->query("SELECT eyenews_id,title,url,thumb1,publish_on,news_view FROM tbl_eyenews where url <>'' and publish_on<='".date("Y-m-d H:i:s")."' order by publish_on desc LIMIT ".$offset.",".$dataPerPage);
+		
+		$count = $query->num_rows();
+		if($count>0){
+			$data = $query->result_array();
+		}else
+			$data = Array ( [0] => Array ( ['eyenews_id'] => [(string)0] ) );
+		
+		// print_r ($data);
+        echo json_encode($data);
+	}
+	
+	public function rekomendasi()
+	{
+		$where    = array('category_news'=>'2');
+		$selectID = 'publish_on';
+		$tbl      = 'tbl_eyenews';
+		$limit    = 12;
+		$offset   = $this->uri->segment(3);
+		$uri_segment = 3;
+		$url      = 'eyenews/rekomendasi';
+		$like = array();
+		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		
+		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
+		$data['eyenews_rekomendasi']		= $this->Eyenews_model->get_eyenews_rekomendasi();
+		$news_type 				= $data['eyenews_main']->news_type;
+		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
+		$data['headline'] 			= $this->Eyenews_model->get_headline();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();	
+		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
+		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
+		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
+		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
+		
+		$data["page"] 				="eyenews";
+		$data['kanal'] 					= "eyenews";
+		$data["body"]=$this->load->view('eyenews/rekomendasi', $data,true);
+
+		$this->load->view('template/static',$data);		
+	}
 }

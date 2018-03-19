@@ -94,7 +94,7 @@
 	<div class="container">
 	    <div class="m-0">
 		<div class="subjudul2">
-		    <h4>BERITA TERKINI</h4>
+		    <h4><a href="<?php echo base_url();?>eyenews/terkini">BERITA TERKINI</a></h4>
 		</div>
 	    </div>
 	    <div class="container m-t-15">

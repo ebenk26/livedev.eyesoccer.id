@@ -516,7 +516,7 @@ public function get_trending_eyenews()
 										A.news_type = 'Soccer Seri'
                                     ORDER BY 
                                         A.publish_on DESC
-                                    Limit 3
+                                    Limit 4
                                         ")->result_array();
             return $query; 
 	}
