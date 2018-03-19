@@ -54,7 +54,7 @@ class Home extends CI_Controller
         $data['eyetube_stars'] = $this->Home_model->get_eyetube_stars();
         $data['eyetube_kamu'] = $this->Home_model->get_eyetube_kamu();
         $data['eyetube_populer'] = $this->Home_model->get_eyetube_populer();
-        $data['eyenews_main'] = $this->Home_model->get_eyenews_main();
+        $data['eyenews_main'] = $this->Home_model->get_eyenews_main('1','home');
 
         $news_type = $data['eyenews_main']->news_type;
         $data['eyenews_similar'] = $this->Home_model->get_eyenews_similar($news_type);
@@ -821,8 +821,15 @@ class Home extends CI_Controller
         if ($kanal == 'eyetube')
         {
             $data['main'] = $this->Home_model->get_eyetube_satu('1');
-            $data['data'] = $this->Home_model->get_eyetube_satu('2,3');
+            $data['data'] = $this->Home_model->get_eyetube_satu('1,3');
         }
+        else
+        {
+            $data['main'] = $this->Home_model->get_eyenews_main('1','newsletter');
+            $data['data'] = $this->Home_model->get_eyenews_main('1,3','newsletter');
+        }
+
+        $data['kanal'] = $kanal;
 
         $this->load->view('home/newsletter', $data);
     }

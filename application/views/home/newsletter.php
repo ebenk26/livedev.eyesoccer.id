@@ -6,7 +6,7 @@
 
 	<body style="margin: 0 !important; padding: 0 !important; background-color: #ffffff;" bgcolor="#ffffff">
 		<!-- HIDDEN PREHEADER TEXT -->
-
+<?php /*var_dump($kanal);exit();*/ ?>
 		<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Open Sans, Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"></div>
 
 		<table border="0" cellpadding="0" cellspacing="0" width="600px" background="http://m.eyesoccer.id/assets/img/email/background.png" bgcolor="#FFC107" style="margin:  0 auto;background: #FFC107 url(http://m.eyesoccer.id/assets/img/email/background.png);background-size: cover;">
@@ -34,13 +34,13 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="left" valign="top" style="padding: 0; font-family: Open Sans, Helvetica, Arial, sans-serif;">
-									<p style="color: #ffffff;font-size: 17px;line-height: 28px;margin: 0;">Halo, ::full_name:: <br>Eyesoccer Fakta Minggu Ini:</p>
+									<p style="color: #ffffff;font-size: 17px;line-height: 28px;margin: 0;">Halo, ::full_name:: <br>Kabar Terhangat Dari Eyesoccer Hari Ini:</p>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="2" align="left" valign="bottom" style="padding: 0; font-family: Open Sans, Helvetica, Arial, sans-serif;">
 									<p style="color: #ffffff;font-size: 22px;line-height: 28px;margin: 30px 0px 0px;"> 
-										Eyetube Fact: 
+										 
 									</p>
 								</td>
 							</tr>
@@ -101,7 +101,7 @@
 
 																			<td align="center">
 
-																				<a href="https://www.eyesoccer.id/eyetube/detail/<?php echo $main[0]['url']; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-red.png" style="margin:  5px;"></a>
+																				<a href="https://www.eyesoccer.id/<?= $kanal; ?>/detail/<?php echo $main[0]['url']; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-red.png" style="margin:  5px;"></a>
 
 																			</td>
 
@@ -181,7 +181,7 @@
 
 																					<td align="center">
 
-																						<a href="https://www.eyesoccer.id/eyetube/detail/tragedi-munich-1958-mengenang-the-busby-babes" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-blue.png" alt="" srcset=""></a>
+																						<a href="https://www.eyesoccer.id/<?= $kanal ?>/detail/<?= $dt['url']; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-blue.png" alt="" srcset=""></a>
 
 																					</td>
 
