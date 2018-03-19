@@ -80,6 +80,7 @@
                 <link href="<?=base_url()?>bs/jud/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/custom.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/ads.css" rel="stylesheet">
 		<?php
             }
             else
@@ -89,6 +90,7 @@
                 <!-- <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/ads.css" rel="stylesheet">
         <?php
             }
         ?>
