@@ -402,6 +402,7 @@ class Eyenews extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}
 	
+	/* Infinite Scroll */
 	public function getRecentEyenews($offset)
 	{
 		$dataPerPage=5;
@@ -415,5 +416,37 @@ class Eyenews extends CI_Controller {
 		
 		// print_r ($data);
         echo json_encode($data);
+	}
+	
+	public function rekomendasi()
+	{
+		$where    = array('category_news'=>'2');
+		$selectID = 'publish_on';
+		$tbl      = 'tbl_eyenews';
+		$limit    = 12;
+		$offset   = $this->uri->segment(3);
+		$uri_segment = 3;
+		$url      = 'eyenews/rekomendasi';
+		$like = array();
+		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		
+		$data['eyenews_main'] 			= $this->Eyenews_model->get_eyenews_main();
+		$data['eyenews_rekomendasi']		= $this->Eyenews_model->get_eyenews_rekomendasi();
+		$news_type 				= $data['eyenews_main']->news_type;
+		$data['eyenews_similar'] 		= $this->Eyenews_model->get_eyenews_similar($news_type);		
+		$data['headline'] 			= $this->Eyenews_model->get_headline();		
+		$data['eyenews_populer']		= $this->Eyenews_model->get_eyenews_populer();	
+		$data['video_eyetube'] 			= $this->Eyenews_model->get_eyetube_satu();
+		$data['soccer_seri'] 			= $this->Eyenews_model->get_soccer_seri();
+		$data['jadwal_today'] 			= $this->Eyenews_model->get_jadwal_today();
+		$data['jadwal_yesterday'] 		= $this->Eyenews_model->get_jadwal_yesterday();
+		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
+		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
+		
+		$data["page"] 				="eyenews";
+		$data['kanal'] 					= "eyenews";
+		$data["body"]=$this->load->view('eyenews/rekomendasi', $data,true);
+
+		$this->load->view('template/static',$data);		
 	}
 }

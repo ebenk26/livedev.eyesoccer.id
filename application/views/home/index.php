@@ -65,7 +65,7 @@
 		<!-- EYEPROFILE -->
 		<div class="carous center-desktop" style="margin-top: -30px;">
             <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
-            <h2 class="title ep">EyeProfile</h2>
+            <h2 class="title ep"><a href="<?php echo base_url();?>eyeprofile/klub">EyeProfile</a></h2>
             <hr class="x-ep">
             <span>
                 <a href="<?php echo base_url()?>eyeprofile/klub"><span class="kl">Klub Lainnya</span>
@@ -331,7 +331,7 @@
         <!-- EYETUBE -->
         <div class="center-desktop">        
             <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyetube.png" alt="">
-            <h2 class="title et">EyeTube</h2>
+            <h2 class="title et"><a href="<?php echo base_url();?>eyetube">EyeTube</a></h2>
             <hr class="x-et">
             <div class="et-content m-b-100">
                 <div class="et-content1 m-t-22">
@@ -501,7 +501,7 @@
             <div class="et-content m-b-150">
                 <div class="et-content1">
                     <img class="img-title lazy" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
-                    <h2 class="title en">EyeNews</h2>
+                    <h2 class="title en"><a href="<?php echo base_url();?>eyenews">EyeNews</a></h2>
                     <hr class="x-en">
 					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
 						<div class="t-en-content2" style="margin-top:-20px; z-index:1; top:283px; padding:10px; width:580px; background-color:#00000050;"> 
@@ -542,7 +542,7 @@
                 </div>
                 <div class="et-content2">
                     <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
-                    <h2 class="title em">EyeMe</h2>
+                    <h2 class="title em"><a href="<?php echo base_url();?>eyeme">EyeMe</a></h2>
                     <hr class="x-em">				
                     <div class="c-em-content2 container" style="top: -14px;">
                     	<?php 
@@ -681,7 +681,7 @@
                 </div>
                 <div class="et-content2">
                     <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
-                    <h2 class="title emar">EyeMarket</h2>
+                    <h2 class="title emar"><a href="<?php echo base_url();?>eyemarket">EyeMarket</a></h2>
                     <hr class="x-emar">
                         <div class="rek-ber" style="margin-top: -14px;">			
 							<?php foreach ($products as $produk)
@@ -727,7 +727,7 @@
         <!-- EYEVENT -->
         <div class="center-desktop">
             <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyevent.png" alt="">
-            <h2 class="title ee">EyeVent</h2>
+            <h2 class="title ee"><a href="<?php echo base_url();?>eyevent">EyeVent</a></h2>
             <hr class="x-ee">
             <span>
 				<a href="<?=base_url()?>eyevent">
