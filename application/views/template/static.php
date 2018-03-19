@@ -38,6 +38,7 @@
         		<meta name="geo.placename"content="Indonesia" />
         		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
         		<link rel="canonical" href="https://www.eyesoccer.id<?php echo $_SERVER['REQUEST_URI'];?>" />
+        		<link rel="shortcut icon" type="<?=base_url()?>image/png" href="<?=base_url()?>img/tab_icon.png" />
         		<meta name="google-site-verification" content="Ypg1XCrvdn4IyWbgoGHkEWqmK5c8tz6wnBQvOObVRJE" />
         		<!-- End of SEO Meta Tags-->
 
