@@ -56,7 +56,7 @@
 				    <p class="sub-en"><?= $similar->title; ?></p>
 				    <span class="time-view">
 					<?php
-					    $date 		=  new DateTime($similar->createon);
+					    $date 		=  new DateTime($similar->publish_on);
 					    $tanggal 	= date_format($date,"Y-m-d H:i:s");
 					    $real_time = relative_time($tanggal);
 					    
@@ -71,7 +71,7 @@
 		<div><?php echo $pagging['pagging'];?></div>
 		</div>
 		<div class="container banner-150">
-			<img src="../../assets/img/banner-home.jpeg" alt="Banner Ads">
+			<img src="<?php echo base_url();?>assets/img/banner-home.jpeg" alt="Banner Ads">
 		</div>
 	</div>
 	

@@ -65,7 +65,7 @@
 		<!-- EYEPROFILE -->
 		<div class="carous center-desktop" style="margin-top: -30px;">
             <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyeprofile.png" alt="">
-            <h2 class="title ep">EyeProfile</h2>
+            <h2 class="title ep"><a href="<?php echo base_url();?>eyeprofile/klub">EyeProfile</a></h2>
             <hr class="x-ep">
             <span>
                 <a href="<?php echo base_url()?>eyeprofile/klub"><span class="kl">Klub Lainnya</span>
@@ -324,14 +324,14 @@
                 </div>
 			</div>
 			<div class="container mt-20 banner-home1 img-banner">
-				<img src="assets/img/iklanbanner/banner 1065x300 px-01.jpg" alt="Home Page Banner Ads">
+				<img src="<?php echo base_url()?>assets/img/iklanbanner/banner 1065x300 px-01.jpg" alt="Home Page Banner Ads">
 			</div>
 		</div>
 		</div>
         <!-- EYETUBE -->
         <div class="center-desktop">        
             <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyetube.png" alt="">
-            <h2 class="title et">EyeTube</h2>
+            <h2 class="title et"><a href="<?php echo base_url();?>eyetube">EyeTube</a></h2>
             <hr class="x-et">
             <div class="et-content m-b-100">
                 <div class="et-content1 m-t-22">
@@ -501,7 +501,7 @@
             <div class="et-content m-b-150">
                 <div class="et-content1">
                     <img class="img-title lazy" src="<?php echo base_url(); ?>assets/img/ic_eyenews.png" alt="">
-                    <h2 class="title en">EyeNews</h2>
+                    <h2 class="title en"><a href="<?php echo base_url();?>eyenews">EyeNews</a></h2>
                     <hr class="x-en">
 					<a href="<?php echo base_url(); ?>eyenews/detail/<?php echo $eyenews_main->url?>">
 						<div class="t-en-content2" style="margin-top:-20px; z-index:1; top:283px; padding:10px; width:580px; background-color:#00000050;"> 
@@ -542,9 +542,9 @@
                 </div>
                 <div class="et-content2">
                     <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
-                    <h2 class="title em">EyeMe</h2>
+                    <h2 class="title em"><a href="<?php echo base_url();?>eyeme">EyeMe</a></h2>
                     <hr class="x-em">				
-                    <div class="c-em-content2 container" style="top: -14px;">
+                    <div class="c-em-content2 container" style="top: -31px;">
                     	<?php 
                     		for($i=0;$i < 9 ; $i++){
                     			echo '<div class="eyeme-list">';
@@ -555,7 +555,7 @@
                     		}
                     	?>
 					</div>
-					<div class="container tx-c">
+					<div class="container tx-c m-t-20">
 						<a href="<?php echo EYEEXPLORE ?>" class="em-btn">Lihat Foto Lainnya</a>
 					</div>
                 </div>
@@ -681,7 +681,7 @@
                 </div>
                 <div class="et-content2">
                     <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyemarket.png" alt="">
-                    <h2 class="title emar">EyeMarket</h2>
+                    <h2 class="title emar"><a href="<?php echo base_url();?>eyemarket">EyeMarket</a></h2>
                     <hr class="x-emar">
                         <div class="rek-ber" style="margin-top: -14px;">			
 							<?php foreach ($products as $produk)
@@ -710,14 +710,24 @@
         </div>
         <!-- BANNER -->
         <div class="center-desktop">
-            <div class="banner-150" style="margin-top: 20px;">
-                <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
+            <div class="banner-150" style="margin-top: 20px;background: unset;">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- Eyesoccer 24#dekstopHomeBannerBawah -->
+					<ins class="adsbygoogle"
+						 style="display:block"
+						 data-ad-client="ca-pub-7635854626605122"
+						 data-ad-slot="1567244418"
+						 data-ad-format="auto"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+                <!-- <img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt=""> -->
             </div>
         </div>
         <!-- EYEVENT -->
         <div class="center-desktop">
             <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic_eyevent.png" alt="">
-            <h2 class="title ee">EyeVent</h2>
+            <h2 class="title ee"><a href="<?php echo base_url();?>eyevent">EyeVent</a></h2>
             <hr class="x-ee">
             <span>
 				<a href="<?=base_url()?>eyevent">

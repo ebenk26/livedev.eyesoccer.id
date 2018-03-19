@@ -125,7 +125,7 @@ class Eyevent extends CI_Controller {
 		$model 			=  $this->excurl->remoteCall($url,$cred,$event_data);
 
 		$data["model"] = json_decode($model);
-
+		
 		// return json_decode($model);
 		
 		$html = $this->load->view('eyevent/detail',$data, true);
@@ -187,6 +187,57 @@ class Eyevent extends CI_Controller {
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+		$url 	= $this->config->item('api_url')."event/$eyevent_id";
+		$cred 	= $this->config->item('credential');
+
+		$event_data	= array(
+								'startdate' => '',
+								'enddate' => '',
+								'related' => true,
+		);
+
+
+		$model 			=  $this->excurl->remoteCall($url,$cred,$event_data);
+
+		$mod = json_decode($model);
+		$data["meta"]["share"]='
+		<!-- Begin of SEO Meta Tags -->
+		<title>'.$mod->data->title.' - EyeVent | EyeSoccer</title>
+		<meta name="title" content="'.$mod->data->title.' - EyeVent | EyeSoccer" />
+		<meta name="description" content="'.preg_replace('/\s+?(\S+)?$/', '', substr(strip_tags($mod->data->description), 0, 100)).'" />
+		<meta name="googlebot-news" content="index,follow" />
+		<meta name="googlebot" content="index,follow" />
+		<meta name="robots" content="index,follow" />
+		<meta name="author" content="EyeSoccer.id" />
+		<meta name="language" content="id" />
+		<meta name="geo.country" content="id" name="geo.country" />
+		<meta http-equiv="content-language" content="In-Id" />
+		<meta name="geo.placename"content="Indonesia" />
+		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
+		<link rel="canonical" href="https://www.eyesoccer.id/eyevent/detail/'.$mod->data->slug.'" />
+		<!-- End of SEO Meta Tags-->
+
+		<!-- Begin of Facebook Open graph data-->
+		<meta property="fb:app_id" content="140611863350583" />
+		<meta property="og:site_name" content="EyeSoccer" />
+		<meta property="og:url" content="https://www.eyesoccer.id/eyevent/detail/'.$mod->data->slug.'" />
+		<meta property="og:type" content="Website" />
+		<meta property="og:title" content="'.$mod->data->title.' - EyeVent | EyeSoccer" />
+		<meta property="og:description" content="'.preg_replace('/\s+?(\S+)?$/', '', substr(strip_tags($mod->data->description), 0, 100)).'" />
+		<meta property="og:locale" content="id_ID" />
+		<meta property="og:image" content="'.$mod->data->url_pic.'" />
+		<!--End of Facebook open graph data-->
+		   
+		<!--begin of twitter card data-->
+		<meta name="twitter:card" content="summary" />    
+		<meta name="twitter:site" content="@eyesoccer_id" />
+		<meta name="twitter:creator" content="@eyesoccer_id" />
+		<meta name="twitter:domain" content="EyeSoccer"/>
+		<meta name="twitter:title" content="'.$mod->data->title.' - EyeVent | EyeSoccer" />
+		<meta name="twitter:description" content="'.preg_replace('/\s+?(\S+)?$/', '', substr(strip_tags($mod->data->description), 0, 100)).'" />
+		<meta name="twitter:image" content="'.$mod->data->url_pic.'" />
+		<!--end of twitter card data-->
+		';
 
 		$data["event_id"] 	= $eyevent_id;
 

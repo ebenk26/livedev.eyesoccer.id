@@ -80,6 +80,7 @@
                 <link href="<?=base_url()?>bs/jud/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/custom.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/ads.css" rel="stylesheet">
 		<?php
             }
             else
@@ -89,6 +90,7 @@
                 <!-- <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/ads.css" rel="stylesheet">
         <?php
             }
         ?>
@@ -107,7 +109,18 @@
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
             <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
+			<script src='<?=base_url()?>bs/js/infiniteScroll.js'></script>
 
+            <link rel="manifest" href="/manifest.json" />
+			<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+			<script>
+			  var OneSignal = window.OneSignal || [];
+			  OneSignal.push(function() {
+				OneSignal.init({
+				  appId: "a3f7bfd9-2d0e-4132-ad90-854459ed5062",
+				});
+			  });
+			</script>
         <?php 
             if ($kanal != 'eyevent')
             {
@@ -233,9 +246,31 @@
                             }
                         ?>
                     </div> 
-                    <div class="container banner-a1 img-banner">
-                        <img src="<?php echo base_url()?>assets/img/iklanbanner/banner  320x60 px-01.jpg" alt="Static ads">
-                    </div>       
+                    <div class="container banner-a1 img-banner" style="background: unset;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Eyesoccer 1#dekstopHomeTopBanner -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="4301959288"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                        <!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner  320x60 px-01.jpg" alt="Static ads"> -->
+                    </div>  
+                    <div class="container banner-a1 img-banner" style="background: unset;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Eyesoccer 1b#dekstopHomeTopBanner -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="7928099633"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    </div>  
                 </div>                
             </div>
         </nav>
@@ -317,6 +352,7 @@
                     </div>
                 </div>
             </div>
+			<span style="display:none">IBX5AA78343726A9</span>
         </footer>
         <!-- SEARCHBOX -->
 			<form id="global_search" action="<?php echo base_url(); ?>home/search" method="get">

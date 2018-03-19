@@ -74,7 +74,7 @@ $('#notif').click(function(event){ //event notif click
                tbl += '<tr class="notif-link" rel="' + v.id_img + '">';
                     tbl += '<td>';
                         tbl += '<img class="notif-profil-foto" src="' +
-                        (v.display_picture == '' ? DPIC : IMGSTORE + v.display_picture ) +' " alt="user photo" />';
+                        (v.display_picture == '' ? DPIC : MEIMG + v.display_picture ) +' " alt="user photo" />';
                     tbl += '</td>';
 
                     if(v.notif_type.substr(0,3) == 'COM'){
@@ -111,7 +111,7 @@ $('#notif').click(function(event){ //event notif click
                     }
                       
                     tbl += '<td class="fl-r mr-7">';
-                        tbl += (v.img_name == null ? '' : '<img src="'+ MEIMG + v.img_name + '" alt="post photo" class="notif-photo">');
+                        tbl += (v.img_name == null ? '' : '<img src="'+ MEIMG + v.img_name + '" alt="post photo" class="notif-photo" onerror="this.src=\'' + DPIC +'\'">');
                     tbl += '</td>';
                 tbl += '</tr>';
                 tbl += '<tr>';
@@ -180,13 +180,19 @@ var valCom = $(this).val();
 });
 
 //upload click event
-$('#upload,.upl').click(function(e) {
-    /* Act on the event */
+$(document).on('click','#upload,.upl',function(e){
     e.preventDefault();
-     $('#upload_pop').css('display','block');
+
+    $('#upload_pop').show();
+
+})
+// $('#upload,.upl').click(function(e) {
+//     /* Act on the event */
+//     e.preventDefault();
+//      $('#upload_pop').css('display','block');
 
 
-});
+// });
 
 //esc press event
 $(document).keyup(function(e) {  

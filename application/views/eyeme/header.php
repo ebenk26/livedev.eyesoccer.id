@@ -140,7 +140,7 @@
     <div class="m-0">
         <div class="container">
             <div class="pd-t-20 p-r" style="float:left">
-            <a href="<?php echo MEURL?>" title="beranda" style="text-decoration: none;""><i class="material-icons ikon">home</i></a>
+            <a href="<?php echo MEURL?>" title="beranda" style="text-decoration: none;"><i class="material-icons ikon">home</i></a>
             </div>
             <div class="fl-r pd-t-20 p-r">
             <?php 

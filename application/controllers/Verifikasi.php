@@ -15,7 +15,7 @@ class Verifikasi extends CI_Controller {
 		{
 			$row=$cmd->row_array();
 			if($row['verification']==0){
-				$this->db->query("update tbl_member set verification=1 where unique_code='".$_GET['ver']."'");
+				$this->db->query("update tbl_member set active = 1, verification=1 where unique_code='".$_GET['ver']."'");
 				if($this->db->affected_rows()>0){
 					// echo"<script>alert('Verifikasi berhasil. Silahkan login menggunakan email dan password anda.')</script>";
 					$message = "Verifikasi berhasil. Silahkan login menggunakan email dan password anda.";
@@ -24,7 +24,7 @@ class Verifikasi extends CI_Controller {
 					// session_destroy();
 					// redirect("");
 				}
-			}else{
+			}else{	
 				// echo"<script>alert('Sudah diverifikasi.')</script>";
 				unset($_SESSION["member_id"],$_SESSION["user_id"]);
 				session_destroy();

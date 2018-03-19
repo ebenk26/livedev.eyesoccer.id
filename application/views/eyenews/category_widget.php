@@ -24,7 +24,7 @@
         <div class="m-0">
             <div class="container news-rcm">
                 <div class="subjudul2">
-                    <h4>REKOMENDASI</h4>
+                    <h4><a href="<?php echo base_url();?>eyenews/rekomendasi">REKOMENDASI</a></h4>
                 </div>
                 <?php
                     foreach($eyenews_rekomendasi as $rekomendasi)
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="container news-rcm-z">
                                         <div class="rr">
-                                            <span><?=$rekomendasi['createon'];?></span>
+                                            <span><?=$rekomendasi['publish_on'];?></span>
                                         </div>
                                         <p>										
                                         <?=$rekomendasi['title'];?></p>
@@ -56,7 +56,7 @@
             </div>
             <div class="container news-rcm-r fl-r">
                 <div class="subjudul2">
-                    <h4>TERPOPULER</h4>
+                    <h4><a href="<?php echo base_url();?>eyenews/populer">TERPOPULER</a></h4>
                 </div>
                 <?php
                     $ep = 0;
@@ -75,7 +75,7 @@
                                     <div class="rr">
                                             <span>
                                                 <?php
-                                                    $date =  new DateTime($row['createon']);
+                                                    $date =  new DateTime($row['publish_on']);
                                                     $tanggal = date_format($date,"Y-m-d H:i:s");
                                                     
                                                     echo relative_time($tanggal) . ' lalu - '.$row['news_view'].' views';
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="n-rcm-up-teks">
                                         <div class="rr">
-                                            <span><?=$row['createon'];?></span>
+                                            <span><?=$row['publish_on'];?></span>
                                         </div>
                                             <span>
                                                 <?=$row['title'];?>									
@@ -118,7 +118,7 @@
 <div class="container">
     <div class="m-0">
         <div class="subjudul2">
-            <h4>EyeTube</h4>
+            <h4><a href="<?php echo base_url();?>eyetube">EyeTube</a></h4>
         </div>
     </div>
     <div class="m-0">
@@ -153,7 +153,7 @@
     <div class="m-0 mt-10">
         <div class="container news-rcm">
             <div class="subjudul2">
-                <h4>SOCCER SERI</h4>
+                <h4><a href="<?php echo base_url();?>eyenews/kategori/Soccer Seri">SOCCER SERI</a></h4>
             </div>
             <?php
                 // foreach($all_news as $row12){
@@ -169,7 +169,7 @@
                                     <div class="rr">
                                         <span>
                                             <?php
-                                                $date 		=  new DateTime($row12['createon']);
+                                                $date 		=  new DateTime($row12['publish_on']);
                                                 $tanggal 	= date_format($date,"Y-m-d H:i:s");
     
                                                 echo relative_time($tanggal) . ' lalu - '.$row12['news_view'].' views';
@@ -240,7 +240,7 @@
                 <div class="line-b"></div>
                 <div class="fl-r">
                     <a href="">
-                        <p class="lp" style="margin:0px;">Lihat selengkapnya ></p>
+                        <p class="lp" style="margin:0px;"><a href="<?php echo base_url();?>eyevent">Lihat selengkapnya ></a></p>
                     </a>
                 </div>
             </div>
