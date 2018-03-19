@@ -274,7 +274,7 @@ class Home_model extends CI_Model
 		return $query;
 	}
 
-	public function get_eyetube_satu()
+	public function get_eyetube_satu($limit)
 	{
 		$query = $this->db->query("	SELECT
 										a.eyetube_id,
@@ -292,7 +292,7 @@ class Home_model extends CI_Model
 									ORDER BY
 										a.eyetube_id DESC
 									LIMIT
-										3
+										$limit
 								")->result_array();
 		return $query;
 	}
@@ -398,23 +398,45 @@ class Home_model extends CI_Model
 		return $query;
 	}
 
-	public function get_eyenews_main()
+	public function get_eyenews_main($limit,$page)
 	{
-		$query = $this->db->query("	SELECT
-										a.eyenews_id,
-										a.title,
-										a.thumb1,
-										a.news_type,
-										a.news_view,
-										a.createon,
-										a.url
-									FROM
-										tbl_eyenews a
-									ORDER BY
-										a.eyenews_id DESC
-									LIMIT
-										1
-								")->row();
+		if ($page == 'home')
+		{
+			$query = $this->db->query("	SELECT
+											a.eyenews_id,
+											a.title,
+											a.thumb1,
+											a.news_type,
+											a.news_view,
+											a.createon,
+											a.url
+										FROM
+											tbl_eyenews a
+										ORDER BY
+											a.eyenews_id DESC
+										LIMIT
+											$limit
+									")->row();
+		}
+		else
+		{
+			$query = $this->db->query("	SELECT
+											a.eyenews_id,
+											a.title,
+											a.thumb1 as thumb,
+											a.news_type,
+											a.news_view,
+											a.createon,
+											a.url
+										FROM
+											tbl_eyenews a
+										ORDER BY
+											a.eyenews_id DESC
+										LIMIT
+											$limit
+									")->result_array();
+		}
+		
 		return $query;
 	}
 

@@ -554,7 +554,7 @@
                     <img class="img-title lazy" src="<?php echo base_url()?>assets/home/img/ic-eyeme.png" alt="">
                     <h2 class="title em"><a href="<?php echo base_url();?>eyeme">EyeMe</a></h2>
                     <hr class="x-em">				
-                    <div class="c-em-content2 container" style="top: -14px;">
+                    <div class="c-em-content2 container" style="top: -31px;">
                     	<?php 
                     		for($i=0;$i < 9 ; $i++){
                     			echo '<div class="eyeme-list">';
@@ -565,7 +565,7 @@
                     		}
                     	?>
 					</div>
-					<div class="container tx-c">
+					<div class="container tx-c m-t-20">
 						<a href="<?php echo EYEEXPLORE ?>" class="em-btn">Lihat Foto Lainnya</a>
 					</div>
                 </div>
