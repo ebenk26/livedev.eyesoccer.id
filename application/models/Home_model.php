@@ -274,7 +274,7 @@ class Home_model extends CI_Model
 		return $query;
 	}
 
-	public function get_eyetube_satu()
+	public function get_eyetube_satu($limit)
 	{
 		$query = $this->db->query("	SELECT
 										a.eyetube_id,
@@ -292,7 +292,7 @@ class Home_model extends CI_Model
 									ORDER BY
 										a.eyetube_id DESC
 									LIMIT
-										3
+										$limit
 								")->result_array();
 		return $query;
 	}

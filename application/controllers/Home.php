@@ -49,7 +49,7 @@ class Home extends CI_Controller
         $data['profile_player'] = $this->Home_model->get_player_random();
         $data['profile_player_2'] = $this->Home_model->get_player_random_2();
         $data['profile_player_3'] = $this->Home_model->get_player_random_3();
-        $data['video_eyetube'] = $this->Home_model->get_eyetube_satu();
+        $data['video_eyetube'] = $this->Home_model->get_eyetube_satu('3');
         $data['eyetube_science'] = $this->Home_model->get_eyetube_science();
         $data['eyetube_stars'] = $this->Home_model->get_eyetube_stars();
         $data['eyetube_kamu'] = $this->Home_model->get_eyetube_kamu();
@@ -814,5 +814,16 @@ class Home extends CI_Controller
         } else {
             echo "Mailer Error: " . $objMail->ErrorInfo;
         }
+    }
+
+    function newsletter($kanal)
+    {
+        if ($kanal == 'eyetube')
+        {
+            $data['main'] = $this->Home_model->get_eyetube_satu('1');
+            $data['data'] = $this->Home_model->get_eyetube_satu('2,3');
+        }
+
+        $this->load->view('home/newsletter', $data);
     }
 }
