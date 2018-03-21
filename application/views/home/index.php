@@ -324,7 +324,17 @@
                 </div>
 			</div>
 			<div class="container mt-20 banner-home1 img-banner">
-				<img src="<?php echo base_url()?>assets/img/iklanbanner/banner 1065x300 px-01.jpg" alt="Home Page Banner Ads">
+				<!--<img src="<?php // echo base_url()?>assets/img/iklanbanner/banner 1065x300 px-01.jpg" alt="Home Page Banner Ads">-->
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- EyesoccerDekstop 2#HomeBannerAtas -->
+				<ins class="adsbygoogle"
+					 style="display:block"
+					 data-ad-client="ca-pub-7635854626605122"
+					 data-ad-slot="6050658173"
+					 data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
 		</div>
 		</div>
