@@ -1,5 +1,10 @@
 <?php
-    $id_member = md5($id_member);
+    if($id_member != NULL)
+    {
+        $id_member = md5($id_member);
+    }
+
+    
     foreach ($product as $data)
     {
 ?>
@@ -125,11 +130,14 @@
                                 if ($id_member == NULL) 
                                 {
                             ?>
-                                    <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>" class="btn btn-template-main">
+                                    <span class="btn btn-template-main">
+                                        <i class="fa fa-shopping-cart"></i> Available Soon
+                                    </span>
+                                    <!-- <a href="<?= base_url(); ?>home/login?page=<?= uri_string(); ?>" class="btn btn-template-main">
                                         <span>
                                             <i class="fa fa-shopping-cart"></i> Add to cart 
                                         </span>
-                                    </a>
+                                    </a> -->
                                         <?php /*
                                             if ($data["harga"] != 0)
                                             {
@@ -159,11 +167,14 @@
                                 else
                                 {
                             ?>
-                                    <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
+                                    <span class="btn btn-template-main">
+                                        <i class="fa fa-shopping-cart"></i> Available Soon
+                                    </span>
+                                    <!-- <a href="#" data-toggle="modal" data-target="#chart-modal" class="btn btn-template-main">
                                         <span>
                                             <i class="fa fa-shopping-cart"></i> Add to chart
                                         </span>
-                                    </a>
+                                    </a> -->
                                         <?php /*
                                             if ($data["harga"] != 0)
                                             {
