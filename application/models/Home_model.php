@@ -423,7 +423,8 @@ class Home_model extends CI_Model
 			$query = $this->db->query("	SELECT
 											a.eyenews_id,
 											a.title,
-											a.thumb1 as thumb,
+											a.thumb1,
+											a.pic as thumb,
 											a.news_type,
 											a.news_view,
 											a.createon,
