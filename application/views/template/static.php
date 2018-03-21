@@ -222,7 +222,7 @@
 							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
 						</div>
 					</a>
-                    <div class="btn-login">
+                    <div class="btn-login" style="padding: 25px 15px 25px 5px;">
 					
                         <?php
                             if(!isset($_SESSION["id_member"]))
