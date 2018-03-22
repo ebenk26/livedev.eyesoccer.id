@@ -5040,3 +5040,8 @@ img.loading {
     width: 425px;
     height: 200px;
 } */
+.news-capt img{
+    all: unset !important;
+    width: 100% !important;
+    height: auto !important;
+}
