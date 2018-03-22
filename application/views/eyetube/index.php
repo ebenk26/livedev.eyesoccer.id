@@ -213,7 +213,7 @@
             </div>
         </div>
 
-        <div class="center-desktop container banner-150">
+        <div class="center-desktop banner-150" style="width:  1065px;float:  unset;">
 			<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads">
 		</div>
 
