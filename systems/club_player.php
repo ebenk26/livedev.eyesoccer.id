@@ -94,7 +94,7 @@ if(isset($_POST['opt1'])){
 	}
 	
 	if(empty($logo) || !isset($_FILES['logo']['tmp_name']) || $_FILES['logo']['tmp_name']==""){
-		$cmd=mysqli_query($con,"update tbl_club set name='$name',id_liga='".$_POST["id_liga"]."',nickname='$nickname',establish_date='$establish_date',phone='$phone',fax='$fax',email='$email',stadium='$stadium',competition='$competition',address='$address',description='$description',IDProvinsi='".$_POST["IDProvinsi"]."',IDKabupaten='".$_POST["IDKabupaten"]."' where club_id='$club_id'");
+		$cmd=mysqli_query($con,"update tbl_club set name='$name',id_liga='".$_POST["id_liga"]."',nickname='$nickname',establish_date='$establish_date',phone='$phone',fax='$fax',email='$email',stadium='$stadium',competition='$competition',address='$address',description='$description',IDProvinsi='".$_POST["IDProvinsi"]."',IDKabupaten='".$_POST["IDKabupaten"]."',admin_id='".$admin_id."' where club_id='$club_id'");
 		header("refresh:0");
 	}
 	else{
@@ -102,7 +102,7 @@ if(isset($_POST['opt1'])){
 			print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">Oppss.. Nama Gambar/Photo/Logo sudah ada !. Silakan ganti nama gambar/photo/logo Anda!</div></div>';   
 		}
 		else{   
-			$cmd=mysqli_query($con,"update tbl_club set name='$name',nickname='$nickname', IDProvinsi='".$_POST["IDProvinsi"]."',IDKabupaten='".$_POST["IDKabupaten"]."',establish_date='$establish_date',phone='$phone',fax='$fax',email='$email',stadium='$stadium',competition='$competition',address='$address',description='$description',logo='$logo' where club_id='$club_id'");
+			$cmd=mysqli_query($con,"update tbl_club set name='$name',nickname='$nickname', IDProvinsi='".$_POST["IDProvinsi"]."',IDKabupaten='".$_POST["IDKabupaten"]."',establish_date='$establish_date',phone='$phone',fax='$fax',email='$email',stadium='$stadium',competition='$competition',address='$address',description='$description',logo='$logo',admin_id='".$admin_id."' where club_id='$club_id'");
 			move_uploaded_file($_FILES['logo']['tmp_name'],"club_logo/".$logo);
 			header("refresh:0");
 		}
@@ -202,7 +202,7 @@ print '<option value="'.$row1["id_liga"].'"'; if($row['id_liga']==$row1['id_liga
 </div>
 <div class="form-group text-left" id="t1">
 Prestasi Klub<br>
-<a href='<?=$base_url."/systems/karir_klub_add?admin_id=".$_SESSION['admin_id']."&club_id=".$club_id."&jenis=timnas#player";?>' class="btn btn-success">ADD</a>
+<a href='<?=$base_url."/systems/karir_klub_add?admin_id=".$admin_id."&club_id=".$club_id."&jenis=timnas#player";?>' class="btn btn-success">ADD</a>
 <table class="table table-hover datatables">
 <thead id="">
 <th>Bulan</th>
@@ -295,6 +295,7 @@ print'<tr>
 <th>Nama</th>
 <th>Posisi 1</th>
 <th>Posisi 2</th>
+<th>Admin</th>
 <th>Aksi</th>
 </thead>
 <tbody>
@@ -306,12 +307,13 @@ $noPage = $_GET['page'];
 } 
 else $noPage = 1;
 $offset = ($noPage - 1) * $dataPerPage;
-$result=mysqli_query($con,"SELECT * FROM tbl_player where club_id='$club_id' order by club_id desc");
+$result=mysqli_query($con,"SELECT a.*,b.fullname FROM tbl_player a left join tbl_admin b on b.admin_id = a.admin_id where a.club_id='$club_id' order by a.club_id desc");
 while($data = mysqli_fetch_array($result))
 {
 $player_id=$data['player_id'];  
 $name=$data['name'];
 $position=$data['position'];
+$admin=$data['fullname'];
 $position_2=$data['position_2'];
 $pic=$data['pic'];
 if(!strstr($pic, ".")) {
@@ -322,6 +324,7 @@ print'<tr>
 <td>'.$name.'</td>
 <td>'.$position.'</td>
 <td>'.$position_2.'</td>
+<td>'.$admin.'</td>
 <td><a href="player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="player_delete?admin_id='.$admin_id.'&player_id='.$player_id.'&club_id='.$club_id.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
 </tr>';
 }
@@ -615,6 +618,12 @@ echo $row["penonton_di_kandang"];
         $position=$_POST['position'];
         $position_2=$_POST['position_2'];
         $number=$_POST['number'];
+		$url = preg_replace('~[^\\pL0-9_]+~u', '-', $_POST["name"]);
+		$url = trim($url, "-");
+		$url = iconv("utf-8", "us-ascii//TRANSLIT", $url);
+		$url = strtolower($url);
+		$url = preg_replace('~[^-a-z0-9_]+~', '', $url);
+		$url=rand(1000,9999)."-".$url;
         if(isset($_FILES['pic']['tmp_name']) && $_FILES['pic']['tmp_name']!="")
         {
         $pic=rand(10000,99999)."-".$_FILES['pic']['name'];  
@@ -623,8 +632,7 @@ echo $row["penonton_di_kandang"];
         $pic="logo_player_2.png";  
         }
         $pic = preg_replace('/\s+/', '', $pic);
-      
-        $cmd=mysqli_query($con,"insert into tbl_player (father,mother,club_id,name,call_name,description,birth_place,birth_date,no_hp,email,height,weight,nationality,position,position_2,number,pic,foot,fav_club,fav_player,fav_coach,contract_range1,contract_range2,createon) values ('".$father."','".$mother."','".$club_id."','".$name."','".$call_name."','".$description."','".$birth_place."','".$birth_date."','".$no_hp."','".$email."','".$height."','".$weight."','".$nationality."','".$position."','".$position_2."','".$number."','".$pic."','".$foot."','".$fav_club."','".$fav_player."','".$fav_coach."','".$contract_range1."','".$contract_range2."','".date('Y-m-d H:i:s')."')");
+        $cmd=mysqli_query($con,"insert into tbl_player (father,mother,club_id,name,call_name,description,birth_place,birth_date,no_hp,email,height,weight,nationality,position,position_2,number,pic,foot,fav_club,fav_player,fav_coach,contract_range1,contract_range2,createon,url,admin_id) values ('".$father."','".$mother."','".$club_id."','".$name."','".$call_name."','".$description."','".$birth_place."','".$birth_date."','".$no_hp."','".$email."','".$height."','".$weight."','".$nationality."','".$position."','".$position_2."','".$number."','".$pic."','".$foot."','".$fav_club."','".$fav_player."','".$fav_coach."','".$contract_range1."','".$contract_range2."','".date('Y-m-d H:i:s')."','".$url."','".$admin_id."')");
         
 		$last_id = mysqli_insert_id($con);
 		$karir_klub = $_POST['field'];
@@ -680,16 +688,14 @@ echo $row["penonton_di_kandang"];
 
 			foreach($_FILES['gallery_player']['tmp_name'] as $key => $tmp_name)
 			{
-				if(isset($_FILES['gallery_player']['tmp_name']) && $_FILES['gallery_player']['tmp_name']!="")
+				if(isset($_FILES['gallery_player']['tmp_name']) && $_FILES['gallery_player']['tmp_name']!="" && !empty($_FILES['gallery_player']['name'][$key]) && isset($_FILES['gallery_player']['name'][$key]) && $_FILES['gallery_player']['name'][$key]!="")
 				{
 					$gallery_player=rand(10000,99999)."-".$_FILES['gallery_player']['name'][$key];  
+					$tags = "gallery pemain";
+					move_uploaded_file($_FILES['gallery_player']['tmp_name'][$key], "player_storage/".$gallery_player);
+					$cmd=mysqli_query($con,"insert into tbl_gallery(tags,pic,thumb1,player_id,upload_date) values ('".$tags."','".$gallery_player."','".$gallery_player."','".$last_id."','".date('Y-m-d H:i:s')."')");
 				}
-				else{
-					$gallery_player="logo_player_2.png";  
-				}
-				$tags = "gallery pemain";
-				move_uploaded_file($_FILES['gallery_player']['tmp_name'][$key], "player_storage/".$gallery_player);
-				$cmd=mysqli_query($con,"insert into tbl_gallery(tags,pic,thumb1,player_id,upload_date) values ('".$tags."','".$gallery_player."','".$gallery_player."','".$last_id."','".date('Y-m-d H:i:s')."')");
+				
 			}
 		}else{
 		
@@ -699,16 +705,13 @@ echo $row["penonton_di_kandang"];
 
 			foreach($_FILES['lampiran']['tmp_name'] as $key => $tmp_name)
 			{
-				if(isset($_FILES['lampiran']['tmp_name']) && $_FILES['lampiran']['tmp_name']!="")
+				if(isset($_FILES['lampiran']['tmp_name']) && $_FILES['lampiran']['tmp_name']!="" && !empty($_FILES['lampiran']['name'][$key]) && isset($_FILES['lampiran']['name'][$key]) && $_FILES['lampiran']['name'][$key]!="")
 				{
 					$lampiran=rand(10000,99999)."-".$_FILES['lampiran']['name'][$key];  
+					$tags = "lampiran pemain";
+					move_uploaded_file($_FILES['lampiran']['tmp_name'][$key], "player_storage/".$lampiran);
+					$cmd=mysqli_query($con,"insert into tbl_gallery(tags,pic,thumb1,player_id,upload_date) values ('".$tags."','".$lampiran."','".$lampiran."','".$last_id."','".date('Y-m-d H:i:s')."')");
 				}
-				else{
-					$lampiran="logo_player_2.png";  
-				}
-				$tags = "lampiran pemain";
-				move_uploaded_file($_FILES['lampiran']['tmp_name'][$key], "player_storage/".$lampiran);
-				$cmd=mysqli_query($con,"insert into tbl_gallery(tags,pic,thumb1,player_id,upload_date) values ('".$tags."','".$lampiran."','".$lampiran."','".$last_id."','".date('Y-m-d H:i:s')."')");
 			}
 		}else{
 		
@@ -752,10 +755,16 @@ echo $row["penonton_di_kandang"];
       	$pic=$_FILES['pic']['name'];  
 		  $pic=rand("1000","9999")."-".$pic;
       $pic = preg_replace('/\s+/', '', $pic);
+		$url = preg_replace('~[^\\pL0-9_]+~u', '-', $_POST["name"]);
+		$url = trim($url, "-");
+		$url = iconv("utf-8", "us-ascii//TRANSLIT", $url);
+		$url = strtolower($url);
+		$url = preg_replace('~[^-a-z0-9_]+~', '', $url);
+		$url=rand(1000,9999)."-".$url;
 		//echo "insert into tbl_official_team (club_now,name,birth_place,birth_date,nationality,position,contract,official_photo,no_identity,license) values ('$club_id','$name','$birth_place','$birth_date','$nationality','$position','$contract','$pic','$no_identity','$license')";
 		//exit;
       	
-      	$cmd=mysqli_query($con,"insert into tbl_official_team (club_now,name,birth_place,birth_date,nationality,position,contract,official_photo,no_identity,license) values ('$club_id','$name','$birth_place','$birth_date','$nationality','$position','$contract','$pic','$no_identity','$license')");
+      	$cmd=mysqli_query($con,"insert into tbl_official_team (club_now,name,birth_place,birth_date,nationality,position,contract,official_photo,no_identity,license,url) values ('$club_id','$name','$birth_place','$birth_date','$nationality','$position','$contract','$pic','$no_identity','$license','$url')");
 	
       	move_uploaded_file($_FILES['pic']['tmp_name'], "../systems/player_storage/".$pic);
       	header("refresh:0");

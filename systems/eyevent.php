@@ -21,7 +21,50 @@ $admin_id=$_SESSION["admin_id"];
 </style>
 </head>
 <body>
-
+<?php
+      if(isset($_POST['opt1'])){
+      $title=addslashes($_POST['title']);
+     // $news_type=$_POST['news_type'];
+      $description=addslashes($_POST['description']);
+      $pic=rand("1000","9999")."-".$_FILES['pic']['name'];
+      $pic = preg_replace('/\s+/', '', $pic);
+      $ex = pathinfo($pic,PATHINFO_EXTENSION);
+      date_default_timezone_set('Asia/Jakarta');
+      $now=date('Y-m-d H:i:s');
+      if($_FILES['pic']['size'] > 1048576000){
+      print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">File too large. Maximum file size is 1MB.</div></div>';		
+      }
+      else if(file_exists("eyevent_storage/".$pic)){
+      print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">Image name already exist. Please, change your image name !</div></div>';		
+      }
+      else if($ex != "jpg" && $ex != "JPG" && $ex != "jpeg" && $ex != "png" && $ex != "PNG" && $ex != "JPEG"){
+      print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">Your extension file not support !</div></div>';		
+      }
+      else{      	
+      move_uploaded_file($_FILES['pic']['tmp_name'], "eyevent_storage/".$pic);	
+      $orgfile="eyevent_storage/".$pic;
+	  list($width,$height)=getimagesize($orgfile);
+	  $newfile=imagecreatefromjpeg($orgfile);
+	  $newwidth=292;
+	  $newheight=182;	
+	  $thumb1="eyevent_storage/t1".$pic;
+	  $truecolor=imagecreatetruecolor($newwidth, $newheight);
+	  imagecopyresampled($truecolor, $newfile, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+	  imagejpeg($truecolor,$thumb1,100);
+	  $thumb1=substr($thumb1,16,100);
+	  $publish_on=date("Y-m-d H:i:s",strtotime($_POST["publish_on"])); 
+	  // update yudi start
+		$url = preg_replace('~[^\\pL0-9_]+~u', '-', $title);
+		$url = trim($url, "-");
+		$url = iconv("utf-8", "us-ascii//TRANSLIT", $url);
+		$url = strtolower($url);
+		$url = preg_replace('~[^-a-z0-9_]+~', '', $url).'-'.substr(uniqid(),6);
+	// update yudi end
+	  $cmd=mysqli_query($con,"insert into tbl_event (title, tampil , category ,admin_id ,description ,pic ,thumb1 ,upload_date ,publish_on, url) values ('$title','".$_POST["tampil"]."','".$_POST["category"]."','".$_SESSION["admin_id"]."','$description','$pic','$thumb1','$now','".$publish_on."','".$url."')");      
+           header("refresh:0");
+      }	
+      }
+      ?>
 <div class="container-fluid">
 <div class="row">
 <div class="col-lg-2 col-md-2">
@@ -55,46 +98,10 @@ $admin_id=$_SESSION["admin_id"];
     <div class="modal-header text-center"><h1 id="t3">Add Event</h1></div>
       <div class="modal-body">
       <form method="post" enctype="multipart/form-data">
-      <?php
-      if(isset($_POST['opt1'])){
-      $title=addslashes($_POST['title']);
-     // $news_type=$_POST['news_type'];
-      $description=addslashes($_POST['description']);
-      $pic=rand("1000","9999")."-".$_FILES['pic']['name'];
-      $pic = preg_replace('/\s+/', '', $pic);
-      $ex = pathinfo($pic,PATHINFO_EXTENSION);
-      date_default_timezone_set('Asia/Jakarta');
-      $now=date('Y-m-d H:i:s');
-      if($_FILES['pic']['size'] > 1048576000){
-      print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">File too large. Maximum file size is 1MB.</div></div>';		
-      }
-      else if(file_exists("eyevent_storage/".$pic)){
-      print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">Image name already exist. Please, change your image name !</div></div>';		
-      }
-      else if($ex != "jpg" && $ex != "JPG" && $ex != "jpeg" && $ex != "png" && $ex != "PNG" && $ex != "JPEG"){
-      print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">Your extension file not support !</div></div>';		
-      }
-      else{      	
-      move_uploaded_file($_FILES['pic']['tmp_name'], "eyevent_storage/".$pic);	
-      $orgfile="eyevent_storage/".$pic;
-	  list($width,$height)=getimagesize($orgfile);
-	  $newfile=imagecreatefromjpeg($orgfile);
-	  $newwidth=292;
-	  $newheight=182;	
-	  $thumb1="eyevent_storage/t1".$pic;
-	  $truecolor=imagecreatetruecolor($newwidth, $newheight);
-	  imagecopyresampled($truecolor, $newfile, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-	  imagejpeg($truecolor,$thumb1,100);
-	  $thumb1=substr($thumb1,16,100);
-	  $publish_on=date("Y-m-d H:i:s",strtotime($_POST["publish_on"])); 
-	  $cmd=mysqli_query($con,"insert into tbl_event (title, tampil , category ,admin_id ,description ,pic ,thumb1 ,upload_date ,publish_on) values ('$title','".$_POST["tampil"]."','".$_POST["category"]."','".$_SESSION["admin_id"]."','$description','$pic','$thumb1','$now','".$publish_on."')");      
-           header("refresh:0");
-      }	
-      }
-      ?>	
+      	
 	  <div class="form-group text-left" id="t1">Title<input type="text" name="title" class="form-control" id="ipt1" required></div>
 	 	
-	  <div class="form-group text-left" id="t1">Tampil Urutan<input type="text" name="tampil" class="form-control">
+	  <div class="form-group text-left" id="t1">Tampil Urutan<input type="number" name="tampil" class="form-control">
 	  </div>
 	 	
 	  <div class="form-group text-left" id="t1">Category<select name="category" class="form-control">
