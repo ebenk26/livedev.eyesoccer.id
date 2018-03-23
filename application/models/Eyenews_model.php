@@ -65,7 +65,8 @@ class Eyenews_model extends CI_Model
     {
 		$query = $this->db->query(" SELECT
                                         A.*,
-                                        B.fullname
+                                        B.fullname,
+										B.username
                                     FROM
                                         tbl_eyenews A
                                     INNER JOIN 

@@ -8,6 +8,7 @@ $eyetube_id=$_GET['eyetube_id'];
 $ins = insertLog('tbl_eyetube','eyetube_id',$eyetube_id,'delete',$admin_id,$con,$ip);
 if($ins=="sukses"){
 	// echo $ins;exit();
+	$cmd=mysqli_query($con,"delete from tbl_eyetube where eyetube_id='$eyetube_id'");
 }else{
 	// echo $ins;exit();
 }

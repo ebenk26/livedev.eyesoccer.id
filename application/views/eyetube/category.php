@@ -281,7 +281,16 @@ body{
                     </div>
                     <div class="container news-rcm-r2">
 					<div class="container banner-eyenews4 img-banner mt-30">
-                		<img src="../../assets/img/iklanbanner/banner 360x320px-01.jpg" alt="">
+					<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					EyesoccerDekstop 17b#EyenewsKategoriSquare336x280
+					<ins class="adsbygoogle"
+						style="display:inline-block;width:336px;height:280px"
+						data-ad-client="ca-pub-7635854626605122"
+						data-ad-slot="1738314979"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script> -->
+                		<!-- <img src="../../assets/img/iklanbanner/banner 360x320px-01.jpg" alt=""> -->
             		</div>
                         <div class="container subjudul">
                             <h4>JADWAL LIVE</h4>
