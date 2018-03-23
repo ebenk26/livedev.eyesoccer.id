@@ -2660,7 +2660,7 @@ ul, li {
     font-size: .9em;
 }
 .tentang li::before{
-    content: "• ";
+    content: "ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ ";
     color: red;
     font-size: 1.5em;
     line-height: 0px;
@@ -5039,4 +5039,40 @@ img.loading {
 .banner-eyeprofile5{
     width: 425px;
     height: 200px;
-} */
+} 
+
+
+/*author*/
+.author-style
+{
+    padding-top:50px;
+    padding-bottom:50px;
+    height:50px;
+    background-color:#720404fc;
+}
+.author-name
+{
+    font-size:50px;
+    padding-left:250px;
+    margin-top:5px;
+    top:5px;
+    height:50px;
+    background-color:#ffa726;
+}
+.h3-author{
+
+    font-size: .8em;
+    text-transform: uppercase;
+    color: #010101;
+    background-color:#ffa726;
+    font-weight: 600;
+    padding-top:5px;padding-bottom:5px;padding-left:100px;
+}
+.author-pic
+{
+    padding-left:100px;
+    margin-top:-120px;
+}
+.L_author{   width:300px;font-size:14px;background-color:#ffa72699;}
+.L_author:hover{   width:300px;background-color:#d9993b99;}
+*/
