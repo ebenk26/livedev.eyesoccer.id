@@ -242,6 +242,7 @@
                                                 </div>
                                                 <input type="hidden" name="img_hidden1" value="image1">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
+                                                <span class="btn btn-danger" onclick="delImg1(<?= $value['id_product']; ?>)">Hapus</span>
                                             </form>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
@@ -255,6 +256,7 @@
                                                 </div>
                                                 <input type="hidden" name="img_hidden2" value="image2">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
+                                                <span class="btn btn-danger" onclick="delImg2(<?= $value['id_product']; ?>)">Hapus</span>
                                             </form>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
@@ -268,6 +270,7 @@
                                                 </div>
                                                 <input type="hidden" name="img_hidden3" value="image3">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
+                                                <span class="btn btn-danger" onclick="delImg3(<?= $value['id_product']; ?>)">Hapus</span>
                                             </form>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
@@ -281,6 +284,7 @@
                                                 </div>
                                                 <input type="hidden" name="img_hidden4" value="image4">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
+                                                \<span class="btn btn-danger" onclick="delImg4(<?= $value['id_product']; ?>)">Hapus</span>
                                             </form>
                                         </div>
                                         <div class="col-lg-4 col-md-4">
@@ -294,6 +298,7 @@
                                                 </div>
                                                 <input type="hidden" name="img_hidden5" value="image5">
                                                 <input type="submit" value="Simpan" class="btn btn-info">
+                                                <span class="btn btn-danger" onclick="delImg5(<?= $value['id_product']; ?>)">Hapus</span>
                                             </form>
                                         </div>
                                     </div>

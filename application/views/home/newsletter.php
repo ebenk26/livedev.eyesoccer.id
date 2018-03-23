@@ -71,7 +71,7 @@
 
 											<td align="center" bgcolor="#ffffff" style="border-radius: 5px 5px 0 0;">
 
-												<img src="http://static.eyesoccer.id/v1/cache/video/<?= $main[0]['thumb']; ?>/medium" width="600" alt="insert alt text here" style="display: block;border-radius: 5px 5px 0 0;font-family: sans-serif;font-size: 16px;color: #999999;" class="img-max">
+												<img src="<?= $nasional->data[0]->url_pic; ?>/medium" width="600" alt="insert alt text here" style="display: block;border-radius: 5px 5px 0 0;font-family: sans-serif;font-size: 16px;color: #999999;" class="img-max">
 											</td>
 										</tr>
 										<tr>
@@ -83,7 +83,7 @@
 
 															<td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif;">
 																<h2 style="font-size: 18px;color: #444444;margin: 0;"> 
-																	<?php echo $main[0]['title']; ?> 
+																	<?php echo $nasional->data[0]->title; ?> 
 																</h2>
 															</td>
 
@@ -101,7 +101,7 @@
 
 																			<td align="center">
 
-																				<a href="https://www.eyesoccer.id/<?= $kanal; ?>/detail/<?php echo $main[0]['url']; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-red.png" style="margin:  5px;"></a>
+																				<a href="https://www.eyesoccer.id/<?= $kanal; ?>/detail/<?php echo $nasional->data[0]->slug; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-red.png" style="margin:  5px;"></a>
 
 																			</td>
 
@@ -138,14 +138,15 @@
 									<tbody>
 
 										<?php 
-											foreach ($data as $dt)
+											for ($i = 1; $i <= 2; $i++)
 											{
 										?>
 												<tr>
 
 													<td align="center" bgcolor="#ffffff" style="border-radius: 5px 0 0 5px;">
 
-														<img src="http://static.eyesoccer.id/v1/cache/video/<?= $dt['thumb'] ?>/medium" width="200" height="" alt="insert alt text here"
+														<img src="<?= $nasional->data[
+															$i]->url_pic ?>/medium" width="200" height="" alt="insert alt text here"
 
 														 style="display: block;margin:  20px;" class="img-max">
 
@@ -161,7 +162,7 @@
 
 																	<td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif;">
 
-																		<h2 style="font-size: 20px; color: #444444; margin: 0; padding-bottom: 10px;"><?= $dt['title']; ?></h2>
+																		<h2 style="font-size: 20px; color: #444444; margin: 0; padding-bottom: 10px;"><?= $nasional->data[$i]->title; ?></h2>
 
 												
 
@@ -181,7 +182,7 @@
 
 																					<td align="center">
 
-																						<a href="https://www.eyesoccer.id/<?= $kanal ?>/detail/<?= $dt['url']; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-blue.png" alt="" srcset=""></a>
+																						<a href="https://www.eyesoccer.id/<?= $kanal ?>/detail/<?= $nasional->data[$i]->slug; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-blue.png" alt="" srcset=""></a>
 
 																					</td>
 
@@ -205,6 +206,69 @@
 										<?php		
 											}
 										?>
+
+												<tr>
+
+													<td align="center" bgcolor="#ffffff" style="border-radius: 5px 0 0 5px;">
+
+														<img src="<?= $inter->data[
+															0]->url_pic ?>/medium" width="200" height="" alt="insert alt text here"
+
+														 style="display: block;margin:  20px;" class="img-max">
+
+													</td>
+
+													<td align="center" bgcolor="#ffffff" style="padding: 20px;border-radius: 0 5px 5px 0;">
+
+														<table cellspacing="0" cellpadding="0" border="0" width="100%">
+
+															<tbody>
+
+																<tr>
+
+																	<td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif;">
+
+																		<h2 style="font-size: 20px; color: #444444; margin: 0; padding-bottom: 10px;"><?= $inter->data[0]->title; ?></h2>
+
+												
+
+																	</td>
+
+																</tr>
+
+																<tr>
+
+																	<td align="center" style="padding: 10px 0 0 0;">
+
+																		<table border="0" cellspacing="0" cellpadding="0">
+
+																			<tbody>
+
+																				<tr>
+
+																					<td align="center">
+
+																						<a href="https://www.eyesoccer.id/<?= $kanal ?>/detail/<?= $inter->data[0]->slug; ?>" target="_blank" ><img src="http://m.eyesoccer.id/assets/img/email/button-blue.png" alt="" srcset=""></a>
+
+																					</td>
+
+																				</tr>
+
+																			</tbody>
+
+																		</table>
+
+																	</td>
+
+																</tr>
+
+															</tbody>
+
+														</table>
+
+													</td>
+
+												</tr>
 
 									</tbody>
 

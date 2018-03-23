@@ -136,6 +136,91 @@
         {
             $("#<?= $active; ?>").addClass("active");
         });
+
+        function delImg1(idnya)
+        {
+            var urlnya = "<?= base_url(); ?>Eyemarket/hapus_gambar";
+            var no = 1;
+
+            $.ajax({
+                url: urlnya,
+                type: 'POST',
+                dataType: 'json',
+                data: {idnya:idnya,no:no},
+            })
+            .done(function(result) {
+                $('#uploaded_image1'+idnya).html(''); 
+            });
+            
+        }
+
+        function delImg2(idnya)
+        {
+            var urlnya = "<?= base_url(); ?>Eyemarket/hapus_gambar";
+            var no = 2;
+
+            $.ajax({
+                url: urlnya,
+                type: 'POST',
+                dataType: 'json',
+                data: {idnya:idnya,no:no},
+            })
+            .done(function(result) {
+                $('#uploaded_image2'+idnya).html(''); 
+            });
+            
+        }
+
+        function delImg3(idnya)
+        {
+            var urlnya = "<?= base_url(); ?>Eyemarket/hapus_gambar";
+            var no = 3;
+
+            $.ajax({
+                url: urlnya,
+                type: 'POST',
+                dataType: 'json',
+                data: {idnya:idnya,no:no},
+            })
+            .done(function(result) {
+                $('#uploaded_image3'+idnya).html(''); 
+            });
+            
+        }
+
+        function delImg4(idnya)
+        {
+            var urlnya = "<?= base_url(); ?>Eyemarket/hapus_gambar";
+            var no = 4;
+
+            $.ajax({
+                url: urlnya,
+                type: 'POST',
+                dataType: 'json',
+                data: {idnya:idnya,no:no},
+            })
+            .done(function(result) {
+                $('#uploaded_image4'+idnya).html(''); 
+            });
+            
+        }
+
+        function delImg5(idnya)
+        {
+            var urlnya = "<?= base_url(); ?>Eyemarket/hapus_gambar";
+            var no = 5;
+
+            $.ajax({
+                url: urlnya,
+                type: 'POST',
+                dataType: 'json',
+                data: {idnya:idnya,no:no},
+            })
+            .done(function(result) {
+                $('#uploaded_image5'+idnya).html(''); 
+            });
+            
+        }
     </script>
 
   </body>

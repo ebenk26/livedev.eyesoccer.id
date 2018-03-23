@@ -818,6 +818,8 @@ class Home extends CI_Controller
 
     function newsletter($kanal)
     {
+        
+
         if ($kanal == 'eyetube')
         {
             $data['main'] = $this->Home_model->get_eyetube_satu('1');
@@ -825,8 +827,32 @@ class Home extends CI_Controller
         }
         else
         {
-            $data['main'] = $this->Home_model->get_eyenews_main('1','newsletter');
-            $data['data'] = $this->Home_model->get_eyenews_main('1,3','newsletter');
+            $url    = $this->config->item('api_url')."news";
+            $cred   = $this->config->item('credential');
+
+            $nasional = array(
+                                    'limit' => '3',
+                                    'sortby' => 'newest',
+                                    'recommended' => true,
+            );
+
+            $model          =  $this->excurl->remoteCall($url,$cred,$nasional);
+
+            $inter = array(
+                                    'limit' => '1',
+                                    'sortby' => 'newest',
+                                    'category' => 'liga',
+                                    'categorysub' => 'liga champions',
+                                    'recommended' => true,
+            );
+
+            $model2          =  $this->excurl->remoteCall($url,$cred,$inter);
+
+            $data["nasional"] = json_decode($model);
+            $data["inter"] = json_decode($model2);
+            // var_dump($data["nasional"]);exit();
+            // $data['main'] = $this->Home_model->get_eyenews_main('1','newsletter');
+            // $data['data'] = $this->Home_model->get_eyenews_main('1,3','newsletter');
         }
 
         $data['kanal'] = $kanal;
