@@ -15,7 +15,8 @@ class Author extends CI_Controller {
     }
 	public function index()
 	{	
-		$username=$_GET['profil'];
+		$username=$_GET['name'];
+		$username=urldecode($username);
 		$data["meta"]["title"] 				="";
 		$data["meta"]["image"]	 			=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"] 		="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
@@ -36,15 +37,15 @@ class Author extends CI_Controller {
 				}
 			}
 	
-		$where    = array();
-		$selectID = 'eyenews_id';
-		$tbl      = 'tbl_eyenews';
-		$limit    = 1;
-		$offset   = $this->uri->segment(3) + 5;
-		$uri_segment = 1;
-		$url      = 'eyenews/page';
-		$like = array('prod_name'=> '','merk'=> '');
-		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		// $where    = array('fullname'=> urldecode($cat));;
+		// $selectID = 'eyenews_id';
+		// $tbl      = 'tbl_eyenews';
+		// $limit    = 8;
+		// $offset   = $this->uri->segment(3);
+		// $uri_segment = $this->uri->segment(3);
+		// $url      = 'author';
+		// $like = array('prod_name'=> '','merk'=> '');
+		// $data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
 
 		
 		
