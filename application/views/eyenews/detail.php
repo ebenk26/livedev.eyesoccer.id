@@ -322,8 +322,17 @@
                         </div>
 						<?php } ?>						
                     </div>
-                    <div class="container banner-eyenews1 img-banner mt-20">
-                        <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 315x320px-01.jpg" alt="ads">
+                    <div class="container banner-eyenews1 img-banner mt-20" style="background-color: unset;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- EyesoccerDekstop 16#EyenewsDetailSquare336x280 -->
+                    <ins class="adsbygoogle"
+                        style="display:inline-block;width:336px;height:280px"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="3103367534"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                        <!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 315x320px-01.jpg" alt="ads"> -->
                     </div>
 
                     <div class="down-r-news">

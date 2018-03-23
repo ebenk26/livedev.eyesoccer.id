@@ -213,8 +213,17 @@
             </div>
         </div>
 
-        <div class="center-desktop banner-150" style="width:  1065px;float:  unset;">
-			<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads">
+        <div class="center-desktop banner-150 tx-c" style="width:  1065px;float:  unset;background-color: unset;">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- EyesoccerDekstop 22#EeyetubeHome970x250 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:250px"
+     data-ad-client="ca-pub-7635854626605122"
+     data-ad-slot="8101910321"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+			<!-- <img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads"> -->
 		</div>
 
         <div class="m-0 center-desktop">
