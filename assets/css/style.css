@@ -5039,6 +5039,7 @@ img.loading {
 .banner-eyeprofile5{
     width: 425px;
     height: 200px;
+<<<<<<< HEAD
 } 
 
 
@@ -5076,3 +5077,11 @@ img.loading {
 .L_author{   width:300px;font-size:14px;background-color:#ffa72699;}
 .L_author:hover{   width:300px;background-color:#d9993b99;}
 */
+=======
+} */
+.news-capt img{
+    all: unset !important;
+    width: 100% !important;
+    height: auto !important;
+}
+>>>>>>> 3aed1381b4a9bc2faebef5b59f3905fdfb866ca7

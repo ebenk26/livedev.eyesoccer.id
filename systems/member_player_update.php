@@ -82,8 +82,8 @@ if($newinsert==1){
 	$updatepage='<a target="_blank" href="../eyeprofile/update_pemain?admineye=1&id_member='.$id_member.'&player_id='.$id_player.'">Update Page</a>';
 }
 print'<tr>
-<td>'.$member_name.'</td>
-<td><a target="_blank" href="../eyeprofile/update_pemain/'.$id_player.'">'.$player_name.'</a></td>
+<td>'.$player_name.'</td>
+<td><a target="_blank" href="../eyeprofile/update_pemain/'.$id_player.'">'.$member_name.'</a></td>
 <td>'.$updatepage.'</td>
 <td>'.$inserton.'</td>
 <td><a onclick=\'if(confirm("Apa anda yakin untuk approve ?")) window.location = "member_player_updateprof?admin_id='.$admin_id.'&id_member_player='.$id_member_player.'&email_member='.$email_member.'&member_name='.$member_name.'&id_player='.$id_player.'&id_member='.$id_member.'"\' class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Approve</a>

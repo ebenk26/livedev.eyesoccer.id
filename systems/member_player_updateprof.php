@@ -92,19 +92,39 @@ $id_player=$_GET['id_player'];
 		}
 	}
 	$check1 = mysqli_query($con,"SELECT * FROM tbl_online_player where player_id=".$id_player."");
-	// echo "SELECT * FROM tbl_online_player where player_id=".$id_player."";
 	// exit();
 	$rowcountcheck1=mysqli_num_rows($check1);
 	if($rowcountcheck1>0){
-		// echo "update tbl_player set ".$set." where player_id='$id_player'";
-		// exit();
 		$cmd=mysqli_query($con,"update tbl_player set ".$set." where player_id='$id_player'");
 		$count=mysqli_affected_rows($con);
-		// echo $count;exit();
 		if($count>0){
 			mysqli_query($con,"update tbl_tmp_player set newinsert=0 where player_id=".$id_player."");
 		}
 	}
+	
+	$result = mysqli_query($con,"SELECT * FROM tbl_tmp_karir_player where player_id=".$id_player."");
+	$set = "";
+	$karir_id="";
+	
+	while ($rowkarir = mysqli_fetch_array($result)) {
+		if($rowkarir['newinsert']==99){
+			mysqli_query($con,"delete from tbl_tmp_karir_player where karir_id='".$rowkarir['karir_id']."'");
+			mysqli_query($con,"delete from tbl_karir_player where karir_id='".$rowkarir['karir_id']."'");
+		}
+		mysqli_query($con,"update tbl_karir_player set bulan='".$rowkarir['bulan']."',tahun='".$rowkarir['tahun']."',klub='".$rowkarir['klub']."',turnamen='".$rowkarir['turnamen']."',negara='".$rowkarir['negara']."',jumlah_main='".$rowkarir['jumlah_main']."',no_pg='".$rowkarir['no_pg']."',pelatih='".$rowkarir['pelatih']."',timnas='".$rowkarir['timnas']."',updateon='".date('Y-m-d H:i:s')."' where karir_id='".$rowkarir['karir_id']."'");
+		$count=mysqli_affected_rows($con);
+		if($count>0){
+			mysqli_query($con,"update tbl_tmp_karir_player set newinsert=0 where karir_id='".$rowkarir['karir_id']."'");
+		}
+		if($rowkarir['karir_id']==0){
+			$sql = "insert into tbl_karir_player (player_id,bulan,tahun,klub,turnamen,negara,jumlah_main,no_pg,pelatih,timnas,createon) values ('".$id_player."','".$rowkarir['bulan']."','".$rowkarir['tahun']."','".$rowkarir['klub']."','".$rowkarir['turnamen']."','".$rowkarir['negara']."','".$rowkarir['jumlah_main']."','".$rowkarir['no_pg']."','".$rowkarir['pelatih']."','".$rowkarir['timnas']."','".date('Y-m-d H:i:s')."')";
+			if (mysqli_query($con, $sql)) {
+				$last_id = mysqli_insert_id($con);
+				mysqli_query($con,"update tbl_tmp_karir_player set karir_id='".$last_id."',newinsert=0 where id='".$rowkarir['id']."'");
+			}
+		}
+	}
+	
 // exit();
 header("location:member_player_update?admin_id=$admin_id");
 

@@ -33,8 +33,11 @@ $description=addslashes($_POST['description']);
 $pic=$_FILES['pic']['name'];
 $ex = pathinfo($pic,PATHINFO_EXTENSION);
 date_default_timezone_set('Asia/Jakarta');
-$now=date('d F Y H:i:s');
+$now=date('Y-m-d H:i:s');
 if(empty($pic)){
+/* print_r($_POST);
+echo "update tbl_event set title='$title',tampil='".$_POST["tampil"]."',category='".$_POST["category"]."',description='$description',updateon='$now',publish_on='".$_POST["publish_on"]."' where id_event='$id_event'";
+exit(); */
 $cmd=mysqli_query($con,"update tbl_event set title='$title',tampil='".$_POST["tampil"]."',category='".$_POST["category"]."',description='$description',updateon='$now',publish_on='".$_POST["publish_on"]."' where id_event='$id_event'");
 header("location:eyevent?admin_id=$admin_id");
 }
@@ -60,7 +63,8 @@ $truecolor=imagecreatetruecolor($newwidth, $newheight);
 imagecopyresampled($truecolor, $newfile, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 imagejpeg($truecolor,$thumb1,100);
 $thumb1=substr($thumb1,16,100);	
-$cmd=mysqli_query($con,"update tbl_event set title='$title',tampil='".$_POST["tampil"]."',category='".$_POST["category"]."',description='$description',pic='$pic',thumb1='$thumb1',updateon='$now',publish_on='".$_POST["publish_on"]."' where id_event='$id_event'");	
+$cmd=mysqli_query($con,"update tbl_event set title='$title',tampil='".$_POST["tampil"]."',category='".$_POST["category"]."',description='$description',pic='$pic',thumb1='$thumb1',updateon='$now',publish_on='".$_POST["publish_on"]."' where id_event='$id_event'");
+
 header("location:eyevent?admin_id=$admin_id");
 }	
 }

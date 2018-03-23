@@ -127,7 +127,7 @@ print '<option>'.$row1['sub_category_name'].'</option>';
 ?>	
 </select>	
 </div>-->
-<div class="form-group text-left" id="t1">Description<textarea name="description" class="form-control textarea" maxlength="500" rows="5"><?php print $row['description']; ?></textarea></div>
+<div class="form-group text-left" id="t1">Description<textarea name="description" class="form-control textarea" style="width:100%;height:300px;" maxlength="500" rows="5"><?php print $row['description']; ?></textarea></div>
 <div class="form-group" id="t1">Credit<input type="text" name="credit" value="<?php print $row['credit']; ?>" class="form-control" id="set8"></div>
 	  <div class="form-group" id="t1">Category<select name="category_news" class="form-control"><option value="1" <?php if($row['category_news']=="1"){print " selected";}else{print "";} ?>>Bukan Rekomendasi</option><option value="2" <?php if($row['category_news']=="2"){print " selected";}else{print "";} ?>>Rekomendasi</option></select></div>		
 	  <div class="form-group" id="t1">Tag<input type="text" name="tag" value="<?php print $row['tag']; ?>" class="form-control"></div>
@@ -166,43 +166,47 @@ $(function(){
 	
 })
 </script>
-<script type="text/javascript" src="tiny_mce/jquery.tinymce.js"></script>
+
 <script type="text/javascript">
 	$(function() {
-	$(".sub_news_type1").chained(".news_type1");
-		$('.textarea').tinymce({
-			// Location of TinyMCE script
-			script_url : 'tiny_mce/tiny_mce.js',
-			// General options
-			theme : "advanced",
-			plugins : "autolink,lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,advlist",
-
-			// Theme options
-			theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-			theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-			theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-			theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
-			theme_advanced_toolbar_location : "top",
-			theme_advanced_toolbar_align : "left",
-			theme_advanced_statusbar_location : "bottom",
-			theme_advanced_resizing : true,
-
-			// Example content CSS (should be your site CSS)
-			content_css : "css/content.css",
-
-			// Drop lists for link/image/media/template dialogs
-			template_external_list_url : "lists/template_list.js",
-			external_link_list_url : "lists/link_list.js",
-			external_image_list_url : "lists/image_list.js",
-			media_external_list_url : "lists/media_list.js",
-
-			// Replace values for the template plugin
-			template_replace_values : {
-				username : "Some User",
-				staffid : "991234"
-			}
-		});
+		$(".sub_news_type1").chained(".news_type1");
 	});
+</script>
+
+<script src="tinymce_dev/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+	selector: "textarea",
+	theme: "modern",
+	plugins: [
+	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
+	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+	    "save table contextmenu directionality emoticons template textcolor paste fullpage textcolor, importcss"
+	],
+
+	toolbar1: "formatselect fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist table forecolor backcolor"
+	+ " outdent indent blockquote link unlink image media | searchreplace code preview print fullscreen | insertfile insertimage",
+	image_advtab: true,
+	menubar: false,
+	relative_urls: false,
+	remove_script_host: false,
+	convert_urls: true,
+	toolbar_items_size: 'small',
+	file_browser_callback: function (field, url, type, win) {
+	    tinyMCE.activeEditor.windowManager.open({
+		file: '../assets/kcfinder/?opener=tinymce4&field=' + field + '&type=' + type,
+		title: 'KCFinder',
+		width: 700,
+		height: 500,
+		inline: true,
+		close_previous: false
+	    }, {
+		window: win,
+		input: field
+	    });
+	    return false;
+	}
+    });
 </script>
 
 </body>

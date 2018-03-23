@@ -23,7 +23,7 @@ $id_member=$_GET['id_member'];
 	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
 	$mail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
-	$mail->Password = 'BolaSepak777#';                           // SMTP password
+	$mail->Password = 'tahubulatsptbolagoreng2018$$$';                           // SMTP password
 	$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 465;                                    // TCP port to connect to
 
@@ -58,19 +58,25 @@ $id_member=$_GET['id_member'];
 		// print_r($row);
 		foreach( $row as $field => $value) {
 			// echo $field.$value;
-			if (end($row) !== $value) {
-				//last item
+			if($field == 'member_id'){
 				$col .=$field.",";
 				$val .="'".$value."',";
 			}else{
-				$col .=$field;
-				$val .="'".$value."'";
+				if (end($row) !== $value) {
+					//last item
+					$col .=$field.",";
+					$val .="'".$value."',";
+				}else{
+					$col .=$field;
+					$val .="'".$value."'";
+				}
 			}
 		}
 	}
 	// echo "INSERT INTO tbl_online_player (".$col.") VALUES (".$val.")";
 	$check1 = mysqli_query($con,"SELECT * FROM tbl_online_player where player_id=".$id_player."");
 	$rowcountcheck1=mysqli_num_rows($check1);
+	// echo "INSERT INTO tbl_online_player (".$col.") VALUES (".$val.")"."###"."INSERT INTO tbl_tmp_player (".$col.") VALUES (".$val.")";exit();
 	if($rowcountcheck1<1){
 		$cmd=mysqli_query($con,"INSERT INTO tbl_online_player (".$col.") VALUES (".$val.")");
 		$cmd2=mysqli_query($con,"INSERT INTO tbl_tmp_player (".$col.") VALUES (".$val.")");
@@ -98,6 +104,22 @@ $id_member=$_GET['id_member'];
 	if($rowcountcheck3<1){
 		while ($rowkarir = mysqli_fetch_array($resultkarir)) {
 			mysqli_query($con,"INSERT INTO tbl_online_karir_player (karir_id,player_id,bulan,tahun,klub,turnamen,negara,jumlah_main,no_pg,pelatih,timnas,createon,updateon) VALUES ('".$rowkarir['karir_id']."','".$rowkarir['player_id']."','".$rowkarir['bulan']."','".$rowkarir['tahun']."','".$rowkarir['klub']."','".$rowkarir['turnamen']."','".$rowkarir['negara']."','".$rowkarir['jumlah_main']."','".$rowkarir['no_pg']."','".$rowkarir['pelatih']."','".$rowkarir['timnas']."','".$rowkarir['createon']."','".$rowkarir['updateon']."')");
+		}
+	}
+	
+	$check4 = mysqli_query($con,"SELECT * FROM tbl_tmp_prestasi_player where player_id=".$id_player."");
+	$rowcountcheck4=mysqli_num_rows($check4);
+	if($rowcountcheck4<1){
+		while ($rowprestasi = mysqli_fetch_array($resultprestasi)) {
+			mysqli_query($con,"INSERT INTO tbl_tmp_prestasi_player (prestasi_player_id,player_id,tahun,turnamen,negara,peringkat,penghargaan,createon,updateon) VALUES ('".$rowprestasi['prestasi_player_id']."','".$rowprestasi['player_id']."','".$rowprestasi['tahun']."','".$rowprestasi['turnamen']."','".$rowprestasi['negara']."','".$rowprestasi['peringkat']."','".$rowprestasi['penghargaan']."','".$rowprestasi['createon']."','".$rowprestasi['updateon']."')");
+		}
+	}
+	
+	$check5 = mysqli_query($con,"SELECT * FROM tbl_tmp_karir_player where player_id=".$id_player."");
+	$rowcountcheck5=mysqli_num_rows($check5);
+	if($rowcountcheck5<1){
+		while ($rowkarir = mysqli_fetch_array($resultkarir)) {
+			mysqli_query($con,"INSERT INTO tbl_tmp_karir_player (karir_id,player_id,bulan,tahun,klub,turnamen,negara,jumlah_main,no_pg,pelatih,timnas,createon,updateon) VALUES ('".$rowkarir['karir_id']."','".$rowkarir['player_id']."','".$rowkarir['bulan']."','".$rowkarir['tahun']."','".$rowkarir['klub']."','".$rowkarir['turnamen']."','".$rowkarir['negara']."','".$rowkarir['jumlah_main']."','".$rowkarir['no_pg']."','".$rowkarir['pelatih']."','".$rowkarir['timnas']."','".$rowkarir['createon']."','".$rowkarir['updateon']."')");
 		}
 	}
 	
