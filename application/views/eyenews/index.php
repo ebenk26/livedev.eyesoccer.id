@@ -77,7 +77,7 @@
 					?>							
 					    <li>
 						<span>
-						<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
+						<a style="text-align: left;" href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
 						<?= $row['title']; ?></a>									
 						</span>
 					    </li>
