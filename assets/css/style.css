@@ -3531,7 +3531,7 @@ ul, li {
     display: block;
     font-size: .8em;
     font-weight: 600;
-    max-height: 55px;
+    max-height: 70px;
     overflow: hidden;
 }
 .rd span, .rv span{
@@ -5078,4 +5078,13 @@ img.loading {
     all: unset !important;
     width: 100% !important;
     height: auto !important;
+}
+.data-title{
+    font-size: 1.1em !important;
+    font-weight: 500 !important;
+}
+.data-title-date{
+    font-size: .8em !important;
+    color: #afb0b4 !important;
+    font-weight: 500 !important;
 }
