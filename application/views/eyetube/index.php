@@ -213,7 +213,7 @@
             </div>
         </div>
 
-        <div class="center-desktop banner-150 tx-c" style="width:  1065px;float:  unset;background-color: unset;">
+        <div class="center-desktop banner-150 tx-c" style="width:  1065px;float:  unset;background-color: unset;height: unset;">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- EyesoccerDekstop 22#EeyetubeHome970x250 -->
 <ins class="adsbygoogle"
