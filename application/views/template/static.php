@@ -341,7 +341,7 @@
                 <a href="<?php echo base_url() ?>panduan-komunitas">Panduan Komunitas</a>
                 <a href="<?php echo base_url() ?>kontak">Kontak</a>
                 <a href="#">Karir</a>
-                <div class="container">
+                <div class="container" style="width:  100% !important;">
                     <div class="center50 c-l">
                         Copyright 2018 eyesoccer.id. All Rights Reserved.
                     </div>
