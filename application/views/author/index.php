@@ -143,7 +143,6 @@ foreach ($total500 as $tp500)
 					    $real_time = relative_time($tanggal);
 					    
 						echo relative_time($tanggal) . ' lalu - '.$lastnews['news_view'].' views';
-						echo '<br>Kategori Eye'.$lastnews['news_type'];
 					?>								
 				    </span>
 				</a>
@@ -183,7 +182,6 @@ foreach ($total500 as $tp500)
 					    $real_time = relative_time($tanggal);
 					    
 						echo relative_time($tanggal) . ' lalu - '.$pop['news_view'].' views';
-						echo '<br>Kategori Eye'.$lastnews['news_type'];
 					?>								
 				    </span>
 				</a>

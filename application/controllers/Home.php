@@ -701,33 +701,34 @@ class Home extends CI_Controller
 
             $set_tbl_view = $this->mod->set_tbl_view($object);
 
-            $em = $this->mod->get_jumlah_emot($tbl, $id, $field, $kanal);
-            $totemot = ($em->news_proud+$em->news_shock+$em->news_inspired+$em->news_happy+$em->news_sad+$em->news_angry+$em->news_fear+$em->news_fun);
+            $get_jumlah_emot = $this->mod->get_jumlah_emot($tbl, $id, $field, $kanal);
+
             if ($tipe == "proud") {
-                $pproud=number_format((($em->news_proud)/$totemot)*100,0);
-                $html["html"]=$pproud."%";
-            }   else
+                $html["html"] = $get_jumlah_emot->$field;
+            } else
+                if ($tipe == "smile") {
+                    $html["html"] = $get_jumlah_emot->$field;
+                } else
                     if ($tipe == "shock") {
-                        $pshock=number_format((($em->news_shock)/$totemot)*100,0);
-                        $html["html"]=$pshock."%";
-                    } elseif ($tipe == "inspired") {
-                            $pinspired=number_format((($em->news_inspired)/$totemot)*100,0);
-                            $html["html"]=$pinspired."%";
-                        } elseif ($tipe == "happy") {
-                                $phappy=number_format((($em->news_happy)/$totemot)*100,0);
-                                $html["html"]=$phappy."%";
-                            } elseif ($tipe == "sad") {
-                                    $psad=number_format((($em->news_sad)/$totemot)*100,0);
-                                    $html["html"]=$psad."%";
-                                } elseif ($tipe == "fear") {
-                                        $pfear=number_format((($em->news_fear)/$totemot)*100,0);
-                                        $html["html"]=$pfear."%";
-                                    } elseif ($tipe == "angry") {
-                                            $pangry=number_format((($em->news_angry)/$totemot)*100,0);
-                                            $html["html"]=$pangry."%";
-                                        } elseif ($tipe == "fun") {
-                                                $pfun=number_format((($em->news_fun)/$totemot)*100,0);
-                                                $html["html"]=$pfun."%";
+                        $html["html"] = $get_jumlah_emot->$field;
+                    } else
+                        if ($tipe == "inspired") {
+                            $html["html"] = $get_jumlah_emot->$field;
+                        } else
+                            if ($tipe == "happy") {
+                                $html["html"] = $get_jumlah_emot->$field;
+                            } else
+                                if ($tipe == "sad") {
+                                    $html["html"] = $get_jumlah_emot->$field;
+                                } else
+                                    if ($tipe == "fear") {
+                                        $html["html"] = $get_jumlah_emot->$field;
+                                    } else
+                                        if ($tipe == "angry") {
+                                            $html["html"] = $get_jumlah_emot->$field;
+                                        } else
+                                            if ($tipe == "fun") {
+                                                $html["html"] = $get_jumlah_emot->$field;
                                             }
 
             $html["status"] = 1;
