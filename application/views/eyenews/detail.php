@@ -114,16 +114,14 @@
                                 <tr>
                                     <td>
                                     
-                                        <a href="<?=base_url()?>author/<?php
-                                            $link_admin="?name=".$value['fullname'];echo "$link_admin"; ?>">
+                                        <a href="<?=base_url()?>author/<?php echo $value['fullname'];?>">
                                             <img src="<?=base_url()?>assets/eyenews/img/EYEME/user-discover.png" alt="profil foto">
                                         </a>
                                     </td>
                                     <td>
                                         <ul>
                                             <li>
-                                        <a href="<?=base_url()?>author/<?php                                         
-                                            $link_admin="?name=".$value['fullname'];echo "$link_admin"; ?>">
+                                        <a href="<?=base_url()?>author/<?php echo $value['fullname'];?>">
                                                     <span class="unname"><?= $value['fullname']; ?> - </span>
                                                     
                                                 </a>
