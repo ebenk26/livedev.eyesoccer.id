@@ -1,3 +1,9 @@
+<style>
+<style>
+.fixed-header {
+    top: 0px;
+}
+</style>
 <div id="Autthopage";>
 
 <?php 
@@ -145,7 +151,7 @@ foreach ($total500 as $tp500)
 			<?php
 		    }
 		?>
-		<div class="pagging-enews-home"><?php echo $pagging['pagging'];?></div>
+		<!--<div class="pagging-enews-home"><?php // echo $pagging['pagging'];?></div>-->
 		</div>
 	</div>
 	
@@ -195,3 +201,6 @@ foreach ($total500 as $tp500)
 
 
 </div>
+<script>
+	$('.fixed-header').css('top','0px');
+</script>

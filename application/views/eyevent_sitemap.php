@@ -7,17 +7,18 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-    <?php foreach($query as $row15){ ?>
+    <?php foreach($query as $row15){ 
+		if(!empty($row15['url'])){$row15['url']=$row15['url'];}else{$row15['url']=$row15['id_event'];}
+	?>
 	<url>	
-     <loc><?php echo base_url('eyenews/detail').'/'.$row15['url'];?></loc>	 
+     <loc><?php echo base_url('eyevent/detail').'/'.$row15['url'];?></loc>	 
 		<news:news>
 			<news:publication>
-				<news:name><![CDATA[ News EyeSoccer.id ]]></news:name>
+				<news:name><![CDATA[ Eyevent EyeSoccer.id ]]></news:name>
 				<news:language>id</news:language>
 			</news:publication>
 			<news:publication_date><?php $datetime = new DateTime($row15['publish_on']); echo $datetime->format(DateTime::ATOM); ?></news:publication_date>
 			<news:title><![CDATA[<?php echo $row15['title']; ?>]]></news:title>
-			<news:keywords><![CDATA[<?php echo $row15['news_type']; ?>]]></news:keywords>
 		</news:news>
 	</url>
     <?php } ?>

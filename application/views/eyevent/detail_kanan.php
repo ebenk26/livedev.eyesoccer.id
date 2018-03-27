@@ -42,8 +42,17 @@
                     }
                 ?>
             </div>
-            <div class="container banner-eyevent1 img-banner">
-                <img src="../../assets/img/iklanbanner/banner 315x320px-01.jpg" alt="Square ads">
+            <div class="container banner-eyevent1 img-banner tx-c">
+                <!-- <img src="../../assets/img/iklanbanner/banner 315x320px-01.jpg" alt="Square ads"> -->
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- EyesoccerDekstop 23#EyeventDetail315x320 -->
+                <ins class="adsbygoogle"
+                    style="display:inline-block;width:336px;height:280px"
+                    data-ad-client="ca-pub-7635854626605122"
+                    data-ad-slot="1220499717"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </div>

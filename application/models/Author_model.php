@@ -5,7 +5,7 @@ class Author_model extends CI_Model
 {
 	public function get_author_detail($username)
 	{
-		$query = $this->db->query(" SELECT * FROM tbl_admin A WHERE A.username = '$username'")->result_array();
+		$query = $this->db->query(" SELECT * FROM tbl_admin A WHERE A.fullname = '$username'")->result_array();
 		return $query; 
 	}
 	
@@ -13,7 +13,7 @@ class Author_model extends CI_Model
 	{
 		$query = $this->db->query(" SELECT A.*,B.* FROM tbl_eyenews A 
 									INNER JOIN tbl_admin B 	on B.admin_id = A.admin_id	
-									WHERE B.username = '$username' ORDER BY	A.publish_on DESC LIMIT 8
+									WHERE B.fullname = '$username' ORDER BY	A.publish_on DESC LIMIT 8
 										")->result_array();
 		return $query; 
 	}
@@ -22,7 +22,7 @@ class Author_model extends CI_Model
 	{
 		$query = $this->db->query(" SELECT A.*,B.* FROM tbl_eyenews A 
 									INNER JOIN tbl_admin B 	on B.admin_id = A.admin_id	
-									WHERE B.username = '$username' 
+									WHERE B.fullname = '$username' 
 									ORDER BY A.news_view DESC LIMIT 4
 										")->result_array($username);
 		return $query; 
@@ -32,7 +32,7 @@ class Author_model extends CI_Model
 	{
 		$query = $this->db->query(" SELECT count(A.eyenews_id) as total,SUM(IF(B.admin_id = A.admin_id,A.news_view, 0)) AS totalviews FROM tbl_eyenews A 
 									INNER JOIN tbl_admin B 	on B.admin_id = A.admin_id	
-									WHERE B.username = '$username' 
+									WHERE B.fullname = '$username' 
 										")->result_array($username);
 		return $query; 
 	}
@@ -40,7 +40,7 @@ class Author_model extends CI_Model
 	{
 		$query = $this->db->query(" SELECT count(A.eyenews_id) as total FROM tbl_eyenews A 
 									INNER JOIN tbl_admin B 	on B.admin_id = A.admin_id	
-									WHERE B.username = '$username' AND A.news_view>1000
+									WHERE B.fullname = '$username' AND A.news_view>1000
 										")->result_array($username);
 		return $query; 
 	}
@@ -48,7 +48,7 @@ class Author_model extends CI_Model
 	{
 		$query = $this->db->query(" SELECT count(A.eyenews_id) as total FROM tbl_eyenews A 
 									INNER JOIN tbl_admin B 	on B.admin_id = A.admin_id	
-									WHERE B.username = '$username' AND (A.news_view > 500 AND A.news_view <= 1000)
+									WHERE B.fullname = '$username' AND (A.news_view > 500 AND A.news_view <= 1000)
 										")->result_array($username);
 		return $query; 
 	}

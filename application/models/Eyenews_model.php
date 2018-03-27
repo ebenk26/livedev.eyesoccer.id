@@ -10,6 +10,8 @@ class Eyenews_model extends CI_Model
                                         A.*
                                     FROM
                                         tbl_eyenews A
+									WHERE
+										A.publish_on <= NOW()
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 5
@@ -23,6 +25,8 @@ class Eyenews_model extends CI_Model
                                         A.*
                                     FROM
                                         tbl_eyenews A
+									WHERE
+										A.publish_on <= NOW()
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 3
@@ -38,6 +42,8 @@ class Eyenews_model extends CI_Model
                                         A.*
                                     FROM
                                         tbl_eyenews A
+									WHERE
+										A.publish_on <= NOW()
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 12
@@ -89,8 +95,10 @@ class Eyenews_model extends CI_Model
                                         tbl_eyenews A
                                     WHERE
                                     	A.news_type LIKE '%$tipe%'
-                                    	AND 
+									AND 
                                     	A.eyenews_id != '$id'
+									AND
+										A.publish_on <= NOW()
                                     ORDER BY 
                                     	A.publish_on DESC
                                     LIMIT $limit
@@ -125,6 +133,8 @@ class Eyenews_model extends CI_Model
 										A.createon
                                     FROM
                                         tbl_eyenews A
+									WHERE
+										A.publish_on <= NOW()
                                     ORDER BY 
                                     	A.publish_on DESC
                                     LIMIT 5
@@ -144,6 +154,8 @@ class Eyenews_model extends CI_Model
 										A.news_view
                                     FROM
                                         tbl_eyenews A
+									WHERE
+										A.publish_on <= NOW()
                                     ORDER BY 
                                     	A.news_view DESC
                                     LIMIT 5
@@ -232,6 +244,8 @@ class Eyenews_model extends CI_Model
                                                 tbl_eyenews A
                                             WHERE
                                                 A.eyenews_id  = $id
+											AND
+												A.publish_on <= NOW()
                                                 ")->row();
         return $query;
     }
@@ -247,6 +261,8 @@ class Eyenews_model extends CI_Model
 										a.url
 									FROM
 										tbl_eyenews a
+									WHERE
+										a.publish_on <= NOW()
 									ORDER BY
 										a.publish_on DESC
 									LIMIT
@@ -268,6 +284,8 @@ class Eyenews_model extends CI_Model
 										tbl_eyenews a
 									WHERE
 										a.news_type = '$news_type'
+									AND
+										a.publish_on <= NOW()
 									ORDER BY
 										a.publish_on DESC
 									LIMIT
@@ -293,6 +311,8 @@ class Eyenews_model extends CI_Model
 									WHERE
 										a.publish_on<='".date("Y-m-d H:i:s")."'
 										and category_news='2'
+									AND
+										a.publish_on <= NOW()
 									ORDER BY
 										a.publish_on DESC
 									LIMIT
@@ -316,7 +336,7 @@ class Eyenews_model extends CI_Model
 									FROM
 										tbl_eyenews a
 									WHERE
-										a.publish_on
+										a.publish_on <= NOW()
 									ORDER BY
 										a.news_view DESC
 									LIMIT
@@ -475,6 +495,8 @@ public function get_trending_eyenews()
 										tbl_eyenews a
 									WHERE
 										a.url !=''
+									AND
+										a.publish_on <= NOW()
 									ORDER BY
 										a.news_view ASC
 									LIMIT
@@ -515,6 +537,8 @@ public function get_trending_eyenews()
                                         tbl_eyenews A
 									WHERE
 										A.news_type = 'Soccer Seri'
+									AND
+										A.publish_on <= NOW()
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 4

@@ -51,10 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['sitemap\.xml'] = "sitemap";
-$route['eyenews_sitemap\.xml'] = "eyenews_sitemap";
-$route['eyeprofile_player_sitemap\.xml'] = "eyeprofile_player_sitemap";
-$route['eyeprofile_club_sitemap\.xml'] = "eyeprofile_club_sitemap";
-$route['eyeprofile_official_sitemap\.xml'] = "eyeprofile_official_sitemap";
+$route['eyenews-sitemap\.xml'] = "eyenews_sitemap";
+$route['eyetube-sitemap\.xml'] = "eyetube_sitemap";
+$route['eyevent-sitemap\.xml'] = "eyevent_sitemap";
+$route['eyeprofile-player_sitemap\.xml'] = "eyeprofile_player_sitemap";
+$route['eyeprofile-club_sitemap\.xml'] = "eyeprofile_club_sitemap";
+$route['eyeprofile-official_sitemap\.xml'] = "eyeprofile_official_sitemap";
 
 $route['eyetube/kategori/Eye-Soccer-Flash'] 	= "eyetube/kategori/1";
 $route['eyetube/kategori/Eye-Soccer-Funny'] 	= "eyetube/kategori/2";
