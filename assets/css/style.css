@@ -996,6 +996,11 @@ footer{
 .t-live{
     display: block;
     color: #9E9E9E;
+    font-size: .9em;
+    line-height: 1em;
+    overflow: hidden;
+    margin: 2px 0px;
+    height: 1em;
 }
 .border-b .tx-c{
     font-size: .8em;
@@ -1007,7 +1012,7 @@ footer{
 }
 .border-b>tbody>tr>td>.i-r, .border-b>tbody>tr>td>.i-l{
     position: relative;
-    top: 7px;
+    /* top: 7px; */
 }
 .border-b>tbody>tr>td>.i-r>img, .border-b>tbody>tr>td>.i-l>img{
     width: 25px;
@@ -1016,10 +1021,10 @@ footer{
     padding-top: 20px;
 }
 .border-b>tbody>tr>td>.i-l{
-    left: 15px;
+    /* left: 15px; */
 }
 .border-b>tbody>tr>td>.i-r{
-    right: 15px;
+    /* right: 15px; */
 }
 .c-l{
     font-size: .7em;
@@ -5097,3 +5102,9 @@ img.loading {
 .border-b>tbody>tr>td>.i-r{
     top: unset;
 } */
+.clb{
+    font-size: .9em;
+    line-height: 1em;
+    height: 1em;
+    overflow: hidden;
+}

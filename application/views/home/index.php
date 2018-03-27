@@ -831,13 +831,13 @@
 									foreach($jadwal_today as $row){
 								?>
 									<tr>
-										<td class="tx-r"><?=$row["club_a"]?></td>
+										<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
 										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-										<td class="tx-l"><?=$row["club_b"]?></td>
+										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
 									</tr>
 								<?php }?>
 								</tbody>
@@ -851,13 +851,13 @@
 						?>
                             <tbody>
                                 <tr>
-									<td class="tx-r"><?=$row["club_a"]?></td>
+									<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
 									<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
                                     <td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 									<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 									</td>
 									<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-                                    <td class="tx-l"><?=$row["club_b"]?></td>
+                                    <td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
                                 </tr>
                             </tbody>
 						<?php }?>
@@ -871,13 +871,13 @@
 							?>
 								<tbody>
 									<tr>
-										<td class="tx-r"><?=$row["club_a"]?></td>
+										<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
 										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-										<td class="tx-l"><?=$row["club_b"]?></td>
+										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
 									</tr>
 								</tbody>
 							<?php }?>
