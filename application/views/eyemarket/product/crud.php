@@ -21,7 +21,7 @@
         </h1>
         <br>
         <div class="table-responsive">
-            <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+            <table class="table table-bordered" width="100%" id="ampun" cellspacing="0">
                 <thead>
                     <tr>
                         <th>ID</th>

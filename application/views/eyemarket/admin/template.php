@@ -135,6 +135,8 @@
         $(document).ready(function()
         {
             $("#<?= $active; ?>").addClass("active");
+
+            $('#ampun').DataTable();
         });
 
         function delImg1(idnya)
