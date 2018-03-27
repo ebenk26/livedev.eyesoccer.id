@@ -9,7 +9,7 @@
         <a href="">Panduan Komunitas</a>
         <a href="">Kontak</a>
         <a href="">Karir</a>
-        <div class="container">
+        <div class="container" style="width:  100% !important;">
             <div class="center50 c-l">
                 Copyright 2017 eyesoccer.com. All Rights Reserved.
             </div>
