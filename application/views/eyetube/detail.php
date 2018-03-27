@@ -154,107 +154,129 @@
                 </script>
                     <!-- <img src="../../assets/img/iklanbanner/banner 690x100px-01.jpg" alt=""> -->
                 </div>
-                <!-- EMOTICON -->
-                <input type="hidden" id="eyetube-id" value="<?= $eyetube_headline->eyetube_id; ?>" />
-                <h3 id="t1">Bagaimana reaksi Anda tentang video ini?</h3>                   
-                <div class="container mb-30">
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="proud"> <!-- tadinya happy -->
-                            <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
-                            </div>
-                            <span class="replace_proud"><?= $eyetube_headline->tube_proud; ?></span>
-                            <span class="load-proud" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>bangga</span>
-                        </a>
-                    </div>
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="inspired">
-                            <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/terinspirasi.png" alt="">
-                            </div>
-                            <span class="replace_inspired"><?= $eyetube_headline->tube_inspired; ?></span>
-                            <span class="load-inspired" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>terinspirasi</span>
-                        </a>
-                    </div>
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="happy"> <!-- tadinya smile -->
-                            <div class="img-box box-img-90">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/gembira.png" alt="">
-                            </div>
-                            <span class="replace_happy"><?= $eyetube_headline->tube_happy; ?></span>
-                            <span class="load-happy" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>gembira</span>
-                        </a>
-                    </div>
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="sad">
-                            <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/sedih.png" alt="">
-                            </div>
-                            <span class="replace_sad"><?= $eyetube_headline->tube_sad; ?></span>
-                            <span class="load-sad" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>sedih</span>
-                        </a>
-                    </div>
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="angry">
-                            <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/marah.png" alt="">
-                            </div>
-                            <span class="replace_angry"><?= $eyetube_headline->tube_angry; ?></span>
-                            <span class="load-angry" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>marah</span>
-                        </a>
-                    </div>
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="fear">
-                            <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/takut.png" alt="">
-                            </div>
-                            <span class="replace_fear"><?= $eyetube_headline->tube_fear; ?></span>
-                            <span class="load-fear" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>takut</span>
-                        </a>
-                    </div>
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="fun">
-                            <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/terhibur.png" alt="">
-                            </div>
-                            <span class="replace_fun"><?= $eyetube_headline->tube_fun; ?></span>
-                            <span class="load-fun" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>terhibur</span>
-                        </a>
-                    </div>
-                    <div class="col-2 col-emoji">
-                        <a class="emoticon" type_emot="shock">
-                            <div class="img-box">
-                                <img src="<?=base_url()?>assets/eyenews/img/emoji/terkejut.png" alt="">
-                            </div>
-                            <span class="replace_shock"><?= $eyetube_headline->tube_shock; ?></span>
-                            <span class="load-shock" style="display:none;">
-                                <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
-                             </span>
-                            <span>terkejut</span>
-                        </a>
-                    </div>
-                </div>      
+                    <!-- EMOTICON -->
+					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
+					<h3 id="t1">Bagaimana reaksi Anda tentang artikel ini?</h3>					
+                    <div id="divemot" class="container mb-30 bluehover">
+                    <?php $vptot=($value['news_proud']+$value['news_shock']+$value['news_inspired']+$value['news_happy']+$value['news_sad']+$value['news_fear']+$value['news_angry']+$value['news_fun']);
+                            if($vptot>0)
+                            {
+                                $vp['news_proud']=number_format(($value['news_proud']/$vptot)*100,0);
+                                $vp['news_shock']=number_format(($value['news_shock']/$vptot)*100,0);
+                                $vp['news_inspired']=number_format(($value['news_inspired']/$vptot)*100,0);
+                                $vp['news_happy']=number_format(($value['news_happy']/$vptot)*100,0);
+                                $vp['news_sad']=number_format(($value['news_sad']/$vptot)*100,0);
+                                $vp['news_fear']=number_format(($value['news_fear']/$vptot)*100,0);
+                                $vp['news_angry']=number_format(($value['news_angry']/$vptot)*100,0);
+                                $vp['news_fun']=number_format(($value['news_fun']/$vptot)*100,0);
+                            }else {
+                                $vp['news_proud']="0";
+                                $vp['news_shock']="0";
+                                $vp['news_inspired']="0";
+                                $vp['news_happy']="0";
+                                $vp['news_sad']="0";
+                                $vp['news_fear']="0";
+                                $vp['news_angry']="0";
+                                $vp['news_fun']="0";                             
+                            }
+                            ?>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="proud">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/bangga.png" alt="">
+                                </div>
+                                <span class="replace_proud"><?=$vp['news_proud']."%"?></span>
+                                <span class="load-proud" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>bangga</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="inspired">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/bingung.png" alt="">
+                                </div>
+                                <span class="replace_inspired"><?=$vp['news_inspired']."%"?></span>
+                                <span class="load-inspired" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>terinspirasi</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="happy"> <!-- tadinya smile -->
+                                <div class="img-box box-img-90">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/gembira.png" alt="">
+                                </div>
+                                <span class="replace_happy"><?=$vp['news_happy']."%"?></span>
+                                <span class="load-happy" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>gembira</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="sad">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/sedih.png" alt="">
+                                </div>
+                                <span class="replace_sad"><?=$vp['news_sad']."%"?></span>
+                                <span class="load-sad" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>sedih</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="angry">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/marah.png" alt="">
+                                </div>
+                                <span class="replace_angry"><?=$vp['news_angry']."%"?></span>
+                                <span class="load-angry" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>marah</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="fear">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/takut.png" alt="">
+                                </div>
+                                <span class="replace_fear"><?=$vp['news_fear']."%"?></span>
+                                <span class="load-fear" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>takut</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="fun">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/terhibur.png" alt="">
+                                </div>
+                                <span class="replace_fun"><?=$vp['news_fun']."%"?></span>
+                                <span class="load-fun" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>terhibur</span>
+                            </a>
+                        </div>
+                        <div class="col-2 col-emoji">
+                            <a class="emoticon" type_emot="shock">
+                                <div class="img-box">
+                                    <img src="<?=base_url()?>assets/eyenews/img/emoji/terkejut.png" alt="">
+                                </div>
+                                <span class="replace_shock"><?=$vp['news_shock']."%"?></span>
+                                <span class="load-shock" style="display:none;">
+                                    <img src="<?= base_url() ?>bs/loading/LOADING2.gif" style="width: 167%;margin-left: -35px;" >
+                                 </span>
+                                <span>terkejut</span>
+                            </a>
+                        </div>
+                    </div>	     
                 <div>
                     <span style="font-size: 17px;font-weight: 600;color: rgb(41, 41, 41);">Komentar</span>
 
@@ -548,7 +570,9 @@
                     setTimeout(function () {
                         $(".load-"+type).attr('style', 'display:none');
                         $(".replace_"+type).empty().html(data.html);
-                    }, 2000); 
+                    }, 2000);
+
+                        $("#divemot").load(" #divemot");
                 }
 
             });
