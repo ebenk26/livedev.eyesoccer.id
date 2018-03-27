@@ -110,6 +110,7 @@
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
             <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
+            <script src="<?php echo base_url();?>assets/js/jquery.sticky.js"></script>
 			<script src='<?=base_url()?>bs/js/infiniteScroll.js'></script>
 
             <link rel="manifest" href="/manifest.json" />
@@ -433,5 +434,39 @@
 			});
 		});
     </script>
+    <table class="tbl-sticky-ads">
+        <tr>
+            <td>
+                <div class="HomeBannerKiriResponsive">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- EyesoccerDekstop 2b#HomeBannerKiriResponsive -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="3363818459"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </td>
+            <td style="width: 1065px;">
+            </td>
+            <td>
+                <div class="HomeBannerKananResponsive">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- EyesoccerDekstop 2a#HomeBannerKananResponsive -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="5199644303"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </td>
+        </tr>
+    </table>
     </body>
 </html>

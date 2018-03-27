@@ -991,7 +991,10 @@ footer{
 .t-c-b{
     width: 185px;
     margin: 0 auto;
-    padding: 18px 0px;
+    padding: 34px 0px;
+}
+#liga_inggris td{
+    padding: 10px 8px;
 }
 .t-live{
     display: block;

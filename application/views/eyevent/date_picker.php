@@ -59,6 +59,8 @@
             <?php } ?>
         </div>
     </div>
+</div>
+    <div class="container eyv-r fl-r">
     <div class="d-r-v container" id="sidebar" style="background-color: white; width: 450px; float: left;" >
         <div class="fl-l">
             <h4 style="margin-top: 0px;">VIDEO</h4>
@@ -102,21 +104,8 @@
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-    var stickyWidgetTop = $('#sidebar').offset().top;
-    var stickyWidget = function(){
-    var scrollTop = $(window).scrollTop();    
-    if (scrollTop > stickyWidgetTop) {
-        $('#sidebar').addClass('sticky');
-        $('#sidebar').removeClass('add60');
-    } else {
-        $('#sidebar').removeClass('sticky');
-        $('#sidebar').addClass('add60');
-    }
-    };
-    stickyWidget();
-    $(window).scroll(function() {
-        stickyWidget();
-    });
+    $(document).ready(function(){
+        $("#sidebar").sticky({topSpacing:60});
+        $("#sidebar").sticky({bottomSpacing:150});
     });
 </script>

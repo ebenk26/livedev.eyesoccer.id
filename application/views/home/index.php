@@ -323,7 +323,7 @@
                     </div>
                 </div>
 			</div>
-			<div class="container mt-20 banner-home1 img-banner" style="background: unset;text-align: center;">
+			<div class="container mt-20 banner-home1 img-banner" style="background: unset;text-align: center;height: unset;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 2#HomeBannerTengah970x250 -->
 			<ins class="adsbygoogle"
@@ -718,7 +718,7 @@
         </div>
         <!-- BANNER -->
         <div class="center-desktop">
-            <div class="banner-150" style="margin-top: 20px;background: unset;">
+            <div class="banner-150" style="margin-top: 20px;background: unset;height: unset;">
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 					<!-- Eyesoccer 24#dekstopHomeBannerBawah -->
 					<ins class="adsbygoogle"
