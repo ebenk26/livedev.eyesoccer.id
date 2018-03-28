@@ -354,7 +354,7 @@
                     </ul>
                 </div>
             </div>
-			<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="height: unset;">
+			<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="height: 150px;background-color: unset;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
 			<ins class="adsbygoogle"
