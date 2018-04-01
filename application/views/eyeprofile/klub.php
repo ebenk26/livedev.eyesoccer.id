@@ -145,7 +145,7 @@
 				<div id='shownav'>
 			 </div>
 			<!--test-->
-            <div class="container t-b-b pd-b-20 pd-t-20"></div>
+			<div class="container t-b-b pd-b-20 pd-t-20"></div>
             <div class="container">
                 <h3 class="h3-oranye">Hasil pertandingan <?php echo $title_liga?></h3>
             <div id="jadwal" class="jadwal carousel slide m-0 p-d-l-0">
@@ -153,10 +153,10 @@
                     <i class="material-icons">keyboard_arrow_left</i>
                 </div>
                 <div role="listbox" class="j-box carousel-inner">
-				<?php if(count($get_jadwal_tomorrow_1)>0){?>
-						<div class="over item active">
+				<?php if(count($get_jadwal_hasil)>0){?>
+						<div class="over item">
 							<?php
-								foreach($get_jadwal_tomorrow_1 as $club){
+								foreach($get_jadwal_hasil2 as $club){
 								?>			
 									<div class="j-content">
 										<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
@@ -169,7 +169,7 @@
 						</div>
 						<div class="over item">	
 							<?php
-							foreach($get_jadwal_tomorrow_2 as $club){
+							foreach($get_jadwal_hasil1 as $club){
 							?>		
 								<div class="j-content">
 									<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
@@ -180,9 +180,9 @@
 							}
 							?>							
 						</div>	
-						<div class="over item">	
+						<div class="over item  active">	
 							<?php
-							foreach($get_jadwal_tomorrow_3 as $club){
+							foreach($get_jadwal_hasil as $club){
 							?>		
 								<div class="j-content">
 									<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>

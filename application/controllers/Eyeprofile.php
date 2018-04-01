@@ -52,26 +52,26 @@ class Eyeprofile extends CI_Controller {
 		$jml_klub = null;
 		$nama_liga = urldecode($liga);
 		$data["title_liga"] = $nama_liga;
-		$nama_liga_event = 'Go-Jek Traveloka Liga 1 - 2017';
-		$above_datetime = '2017-12-29 00:00:00';
+		$nama_liga_event = 'Liga 1 GOJEK 2018';
+		$above_datetime = '2018-12-29 00:00:00';
 		$cat_liga = null;
 		if($nama_liga == 'Liga Indonesia 1'){
 			$jml_klub = 18;	
 		}else if($nama_liga == 'Liga Indonesia 2'){
 			$jml_klub = 24;
 			$data["title_liga"] = $nama_liga;
-			$nama_liga_event = 'Liga 2 Go-Jek Traveloka - Play Off';
+			$nama_liga_event = 'Liga 2 GOJEK';
 		}else if($nama_liga == 'Liga Indonesia 3'){
 			$data["title_liga"] = $nama_liga;
-			$nama_liga_event = 'Liga Indonesia 3 Wilayah Jawa Barat';
+			$nama_liga_event = 'Liga Indonesia 3';
 		}else if($nama_liga == 'Liga Pelajar U-16 Piala Menpora'){
 			$data["title_liga"] = $nama_liga;
-			$nama_liga_event = 'Liga Pelajar U-16 Piala Menpora';
+			$nama_liga_event = 'Liga Pelajar U-16';
 			$cat_liga = $nama_liga;
 			$nama_liga = "Liga Usia Muda";
 		}else if($nama_liga == 'Liga Santri Nusantara'){
 			$data["title_liga"] = $nama_liga;
-			$nama_liga_event = 'Liga Santri Nusantara';
+			$nama_liga_event = 'Liga Santri';
 			$cat_liga = $nama_liga;
 			$nama_liga = "Liga Usia Muda";
 		}else if($nama_liga == 'Liga Indonesia U-19'){
@@ -92,9 +92,9 @@ class Eyeprofile extends CI_Controller {
 		}
 		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub,$cat_liga);
 		$data['avg_year'] = $this->Eyeprofile_model->get_club_liga_avggyear($nama_liga,$jml_klub,$cat_liga);
-		$data['get_jadwal_tomorrow_1'] = $this->Eyeprofile_model->get_jadwal_tomorrow_1($above_datetime,$nama_liga_event);
-		$data['get_jadwal_tomorrow_2'] = $this->Eyeprofile_model->get_jadwal_tomorrow_2($above_datetime,$nama_liga_event);
-		$data['get_jadwal_tomorrow_3'] = $this->Eyeprofile_model->get_jadwal_tomorrow_3($above_datetime,$nama_liga_event);
+		$data['get_jadwal_hasil'] = $this->Eyeprofile_model->get_jadwal_hasil($nama_liga_event);
+		$data['get_jadwal_hasil1'] = $this->Eyeprofile_model->get_jadwal_hasil1($nama_liga_event);
+		$data['get_jadwal_hasil2'] = $this->Eyeprofile_model->get_jadwal_hasil2($nama_liga_event);
 		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain($nama_liga);
 		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol($nama_liga);	
 		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();		
