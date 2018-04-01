@@ -1,3 +1,28 @@
+<style>
+.livechanel{
+    border-radius: 15px;
+    text-decoration: none;
+    background-color: #f5f5f5;
+    font-size: .9em;
+    font-weight: 500;
+    margin: 10px 5px;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.livechanel:hover{
+    border-radius: 15px;
+    text-decoration: none;
+    background-color: #dddddd;
+    font-weight: 500;
+    margin: 10px 5px;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+</style>
 <div class="container eyv m-t-20">
     <ol class="breadcrumb" style="margin-top: unset;
                                     margin-bottom: unset;
@@ -75,6 +100,20 @@
                                 </a>
                             </td>
                             <td>
+                            <span class="livechanel"><?php
+                                if($jdwl_nxt_ystd['live_pertandingan']!==NULL)
+                                {
+                                    $Clive="";
+                                    $live=$jdwl_nxt_ystd['live_pertandingan'];
+                                }
+                                else
+                                {
+                                    $Clive="";
+                                    $live="";
+                                }
+
+                                echo $Clive." ".$live;
+                                ?></span>
                                 <span><?= $jdwl_nxt_ystd["kompetisi"]; ?></span>
                                 <?= $jdwl_nxt_ystd["score_a"]; ?> - <?= $jdwl_nxt_ystd["score_b"]; ?>
                                 <span><?= $jdwl_nxt_ystd["lokasi_pertandingan"]; ?></span>
@@ -128,6 +167,20 @@
                                 </a>
                             </td>
                             <td>
+                                <span class="livechanel"><?php
+                                if($jdwl_ystd['live_pertandingan']!==NULL)
+                                {
+                                    $Clive="";
+                                    $live=$jdwl_ystd['live_pertandingan'];
+                                }
+                                else
+                                {
+                                    $Clive="";
+                                    $live="";
+                                }
+
+                                echo $Clive." ".$live;
+                                ?></span>
                                 <span><?= $jdwl_ystd["kompetisi"]; ?></span>
                                 <?= $jdwl_ystd["score_a"]; ?> - <?= $jdwl_ystd["score_b"]; ?>
                                 <span><?= $jdwl_ystd["lokasi_pertandingan"]; ?></span>
@@ -176,6 +229,20 @@
                                 </a>
                             </td>
                             <td>
+                                <span class="livechanel"><?php
+                                if($jdwl_today['live_pertandingan']!==NULL)
+                                {
+                                    $Clive="";
+                                    $live=$jdwl_today['live_pertandingan'];
+                                }
+                                else
+                                {
+                                    $Clive="Live";
+                                    $live="";
+                                }
+
+                                echo $Clive." ".$live;
+                                ?></span>
                                 <span><?= $jdwl_today["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_today["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_today["lokasi_pertandingan"]; ?></span>
@@ -228,7 +295,22 @@
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_a']; ?>" alt="">
                                 </a>
                             </td>
-                            <td> 
+                            <td>
+                                <span class="livechanel"><?php
+                                if($jdwl_tmrw['live_pertandingan']!==NULL)
+                                {
+                                    $Clive="";
+                                    $live=$jdwl_tmrw['live_pertandingan'];
+                                }
+                                else
+                                {
+                                    $Clive="";
+                                    $live="";
+                                }
+
+                                echo $Clive." ".$live;
+                                ?></span>
+
                                 <span><?= $jdwl_tmrw["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_tmrw["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_tmrw["lokasi_pertandingan"]; ?></span>
@@ -282,6 +364,20 @@
                                 </a>
                             </td>
                             <td> 
+                                <span class="livechanel"><?php
+                                if($jdwl_nxt_tmrw['live_pertandingan']!==NULL)
+                                {
+                                    $Clive="";
+                                    $live=$jdwl_nxt_tmrw['live_pertandingan'];
+                                }
+                                else
+                                {
+                                    $Clive="";
+                                    $live="";
+                                }
+
+                                echo $Clive." ".$live;
+                                ?></span>
                                 <span><?= $jdwl_nxt_tmrw["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_nxt_tmrw["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_nxt_tmrw["lokasi_pertandingan"]; ?></span>
@@ -334,7 +430,21 @@
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_a']; ?>" alt="">
                                 </a>
                             </td>
-                            <td> 
+                            <td>
+                                <span class="livechanel"><?php
+                                if($jdwl_three['live_pertandingan']!==NULL)
+                                {
+                                    $Clive="";
+                                    $live=$jdwl_three['live_pertandingan'];
+                                }
+                                else
+                                {
+                                    $Clive="";
+                                    $live="";
+                                }
+
+                                echo $Clive." ".$live;
+                                ?></span>
                                 <span><?= $jdwl_three["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_three["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_three["lokasi_pertandingan"]; ?></span>

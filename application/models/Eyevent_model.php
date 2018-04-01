@@ -35,6 +35,7 @@ class Eyevent_model extends CI_Model
 							a.score_b,
 							a.jadwal_pertandingan,
 							a.lokasi_pertandingan,
+							a.live_pertandingan,
 							c.club_id as club_id_a,
 							d.club_id as club_id_b,
 							c.logo as logo_a,
