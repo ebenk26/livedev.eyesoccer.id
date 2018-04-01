@@ -5,8 +5,7 @@
 .livechanel{
     border-radius: 15px;
     text-decoration: none;
-    background-color: #f5f5f5;
-    font-size: .9em;
+    background-color: #f5c6c6;
     font-weight: 500;
     margin: 10px 5px;
     margin-top: 10px;
@@ -103,19 +102,17 @@
                                 </a>
                             </td>
                             <td>
-                            <span class="livechanel"><?php
-                                if($jdwl_nxt_ystd['live_pertandingan']!==NULL)
+                                <span <?php
+                                if($jdwl_nxt_ystd['live_pertandingan']==NULL)
                                 {
-                                    $Clive="";
-                                    $live=$jdwl_nxt_ystd['live_pertandingan'];
+                                    $live='>';
                                 }
                                 else
                                 {
-                                    $Clive="";
-                                    $live="";
+                                    $live=' class="livechanel"> Live '.$jdwl_nxt_ystd['live_pertandingan'];
                                 }
 
-                                echo $Clive." ".$live;
+                                echo $live;
                                 ?></span>
                                 <span><?= $jdwl_nxt_ystd["kompetisi"]; ?></span>
                                 <?= $jdwl_nxt_ystd["score_a"]; ?> - <?= $jdwl_nxt_ystd["score_b"]; ?>
@@ -164,32 +161,50 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_ystd['url_a']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_ystd["liga_a"]=='Liga Lainnya') OR ($jdwl_ystd["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$jdwl_ystd["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_ystd["url_a"];
+                                                    }
+                                
+                                echo $href_a ?>">
                                 <cn class="clubname"><?=$jdwl_ystd["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_a']; ?>" alt="">
                                 </a>
                             </td>
                             <td>
-                                <span class="livechanel"><?php
-                                if($jdwl_ystd['live_pertandingan']!==NULL)
+                                <span <?php
+                                if($jdwl_ystd['live_pertandingan']==NULL)
                                 {
-                                    $Clive="";
-                                    $live=$jdwl_ystd['live_pertandingan'];
+                                    $live='>';
                                 }
                                 else
                                 {
-                                    $Clive="";
-                                    $live="";
+                                    $live=' class="livechanel"> Live '.$jdwl_ystd['live_pertandingan'];
                                 }
 
-                                echo $Clive." ".$live;
+                                echo $live;
                                 ?></span>
                                 <span><?= $jdwl_ystd["kompetisi"]; ?></span>
                                 <?= $jdwl_ystd["score_a"]; ?> - <?= $jdwl_ystd["score_b"]; ?>
                                 <span><?= $jdwl_ystd["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_ystd['url_b']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_ystd["liga_b"]=='Liga Lainnya') OR ($jdwl_ystd["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$jdwl_ystd["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_ystd["url_b"];
+                                                    }
+                                
+                                echo $href_b ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_b']; ?>" alt="">
                                     <cn class="clubname"><?=$jdwl_ystd["club_b"]?></cn>
                                 </a>
@@ -226,32 +241,50 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_today['url_a']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_today["liga_a"]=='Liga Lainnya') OR ($jdwl_today["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$jdwl_today["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_today["url_a"];
+                                                    }
+                                
+                                echo $href_a ?>">
                                     <cn class="clubname"><?=$jdwl_today["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_a']; ?>" alt="">
                                 </a>
                             </td>
                             <td>
-                                <span class="livechanel"><?php
-                                if($jdwl_today['live_pertandingan']!==NULL)
+                                <span <?php
+                                if($jdwl_today['live_pertandingan']==NULL)
                                 {
-                                    $Clive="";
-                                    $live=$jdwl_today['live_pertandingan'];
+                                    $live='>';
                                 }
                                 else
                                 {
-                                    $Clive="Live";
-                                    $live="";
+                                    $live=' class="livechanel"> Live '.$jdwl_today['live_pertandingan'];
                                 }
 
-                                echo $Clive." ".$live;
+                                echo $live;
                                 ?></span>
                                 <span><?= $jdwl_today["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_today["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_today["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_today['url_b']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_today["liga_b"]=='Liga Lainnya') OR ($jdwl_today["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$jdwl_today["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_today["url_b"];
+                                                    }
+                                
+                                echo $href_b ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_b']; ?>" alt="">
                                     <cn class="clubname"><?=$jdwl_today["club_b"]?></cn>
                                 </a>
@@ -293,25 +326,33 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_tmrw['url_a']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_tmrw["liga_a"]=='Liga Lainnya') OR ($jdwl_tmrw["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$jdwl_tmrw["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_tmrw["url_a"];
+                                                    }
+                                
+                                echo $href_a ?>">
                                 <cn class="clubname"><?=$jdwl_tmrw["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_a']; ?>" alt="">
                                 </a>
                             </td>
                             <td>
-                                <span class="livechanel"><?php
-                                if($jdwl_tmrw['live_pertandingan']!==NULL)
+                                <span <?php
+                                if($jdwl_tmrw['live_pertandingan']==NULL)
                                 {
-                                    $Clive="";
-                                    $live=$jdwl_tmrw['live_pertandingan'];
+                                    $live='>';
                                 }
                                 else
                                 {
-                                    $Clive="";
-                                    $live="";
+                                    $live=' class="livechanel"> Live '.$jdwl_tmrw['live_pertandingan'];
                                 }
 
-                                echo $Clive." ".$live;
+                                echo $live;
                                 ?></span>
 
                                 <span><?= $jdwl_tmrw["kompetisi"]; ?></span>
@@ -319,7 +360,17 @@
                                 <span><?= $jdwl_tmrw["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_tmrw['url_b']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_tmrw["liga_b"]=='Liga Lainnya') OR ($jdwl_tmrw["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$jdwl_tmrw["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_tmrw["url_b"];
+                                                    }
+                                
+                                echo $href_b ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_b']; ?>" alt="">
                                     <cn class="clubname"><?=$jdwl_tmrw["club_b"]?></cn>
                                 </a>
@@ -361,32 +412,50 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_tmrw['url_a']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_nxt_tmrw["liga_a"]=='Liga Lainnya') OR ($jdwl_nxt_tmrw["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$jdwl_nxt_tmrw["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_a"];
+                                                    }
+                                
+                                echo $href_a ?>">
                                 <cn class="clubname"><?=$jdwl_nxt_tmrw["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_a']; ?>" alt="">
                                 </a>
                             </td>
                             <td> 
-                                <span class="livechanel"><?php
-                                if($jdwl_nxt_tmrw['live_pertandingan']!==NULL)
+                                <span <?php
+                                if($jdwl_nxt_tmrw['live_pertandingan']==NULL)
                                 {
-                                    $Clive="";
-                                    $live=$jdwl_nxt_tmrw['live_pertandingan'];
+                                    $live='>';
                                 }
                                 else
                                 {
-                                    $Clive="";
-                                    $live="";
+                                    $live=' class="livechanel"> Live '.$jdwl_nxt_tmrw['live_pertandingan'];
                                 }
 
-                                echo $Clive." ".$live;
+                                echo $live;
                                 ?></span>
                                 <span><?= $jdwl_nxt_tmrw["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_nxt_tmrw["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_nxt_tmrw["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_tmrw['url_b']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_nxt_tmrw["liga_b"]=='Liga Lainnya') OR ($jdwl_nxt_tmrw["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$jdwl_nxt_tmrw["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_b"];
+                                                    }
+                                
+                                echo $href_b ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_b']; ?>" alt="">
                                     <cn class="clubname"><?=$jdwl_nxt_tmrw["club_b"]?></cn>
                                 </a>
@@ -428,32 +497,50 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_three['url_a']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_three["liga_a"]=='Liga Lainnya') OR ($jdwl_three["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$jdwl_three["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_three["url_a"];
+                                                    }
+                                
+                                echo $href_a ?>">
                                 <cn class="clubname"><?=$jdwl_three["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_a']; ?>" alt="">
                                 </a>
                             </td>
                             <td>
-                                <span class="livechanel"><?php
-                                if($jdwl_three['live_pertandingan']!==NULL)
+                                <span <?php
+                                if($jdwl_three['live_pertandingan']==NULL)
                                 {
-                                    $Clive="";
-                                    $live=$jdwl_three['live_pertandingan'];
+                                    $live='>';
                                 }
                                 else
                                 {
-                                    $Clive="";
-                                    $live="";
+                                    $live=' class="livechanel"> Live '.$jdwl_three['live_pertandingan'];
                                 }
 
-                                echo $Clive." ".$live;
+                                echo $live;
                                 ?></span>
                                 <span><?= $jdwl_three["kompetisi"]; ?></span>
                                 <?=date("H:i",strtotime($jdwl_three["jadwal_pertandingan"]))?>
                                 <span><?= $jdwl_three["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_three['url_b']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_three["liga_b"]=='Liga Lainnya') OR ($jdwl_three["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$jdwl_three["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_three["url_b"];
+                                                    }
+                                
+                                echo $href_b ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_b']; ?>" alt="">
                                     <cn class="clubname"><?=$jdwl_three["club_b"]?></cn>
                                 </a>

@@ -38,6 +38,8 @@ class Eyevent_model extends CI_Model
 							a.live_pertandingan,
 							c.club_id as club_id_a,
 							d.club_id as club_id_b,
+							c.competition as liga_a,
+							d.competition as liga_b,
 							c.logo as logo_a,
 							d.logo as logo_b,
 							c.name as club_a,
