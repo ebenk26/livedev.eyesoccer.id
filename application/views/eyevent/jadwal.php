@@ -1,4 +1,7 @@
 <style>
+.clubname {
+    text-transform: uppercase;
+}
 .livechanel{
     border-radius: 15px;
     text-decoration: none;
@@ -95,7 +98,7 @@
                         <tr>
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_ystd['url_a']; ?>">
-                                    <?=$jdwl_nxt_ystd["club_a"]?>
+                                <cn class="clubname"><?=$jdwl_nxt_ystd["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_a']; ?>" alt="">
                                 </a>
                             </td>
@@ -121,7 +124,7 @@
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_ystd['url_b']; ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_b']; ?>" alt="">
-                                    <?=$jdwl_nxt_ystd["club_b"]?>
+                                    <cn class="clubname"><?=$jdwl_nxt_ystd["club_b"]?></cn>
                                 </a>
                             </td>
                         </tr>
@@ -162,7 +165,7 @@
                         <tr>
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_ystd['url_a']; ?>">
-                                    <?=$jdwl_ystd["club_a"]?>
+                                <cn class="clubname"><?=$jdwl_ystd["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_a']; ?>" alt="">
                                 </a>
                             </td>
@@ -188,7 +191,7 @@
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_ystd['url_b']; ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_ystd['logo_b']; ?>" alt="">
-                                    <?=$jdwl_ystd["club_b"]?>
+                                    <cn class="clubname"><?=$jdwl_ystd["club_b"]?></cn>
                                 </a>
                             </td>
                         </tr>                            
@@ -224,7 +227,7 @@
                         <tr>
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_today['url_a']; ?>">
-                                    <?=$jdwl_today["club_a"]?>
+                                    <cn class="clubname"><?=$jdwl_today["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_a']; ?>" alt="">
                                 </a>
                             </td>
@@ -250,7 +253,7 @@
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_today['url_b']; ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_today['logo_b']; ?>" alt="">
-                                    <?=$jdwl_today["club_b"]?>
+                                    <cn class="clubname"><?=$jdwl_today["club_b"]?></cn>
                                 </a>
                             </td>
                         </tr>                            
@@ -291,7 +294,7 @@
                         <tr>
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_tmrw['url_a']; ?>">
-                                    <?=$jdwl_tmrw["club_a"]?>
+                                <cn class="clubname"><?=$jdwl_tmrw["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_a']; ?>" alt="">
                                 </a>
                             </td>
@@ -318,7 +321,7 @@
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_tmrw['url_b']; ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_tmrw['logo_b']; ?>" alt="">
-                                    <?=$jdwl_tmrw["club_b"]?>
+                                    <cn class="clubname"><?=$jdwl_tmrw["club_b"]?></cn>
                                 </a>
                             </td>
                         </tr>                            
@@ -359,7 +362,7 @@
                         <tr>
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_tmrw['url_a']; ?>">
-                                    <?=$jdwl_nxt_tmrw["club_a"]?>
+                                <cn class="clubname"><?=$jdwl_nxt_tmrw["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_a']; ?>" alt="">
                                 </a>
                             </td>
@@ -385,7 +388,7 @@
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_tmrw['url_b']; ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_tmrw['logo_b']; ?>" alt="">
-                                    <?=$jdwl_nxt_tmrw["club_b"]?>
+                                    <cn class="clubname"><?=$jdwl_nxt_tmrw["club_b"]?></cn>
                                 </a>
                             </td>
                         </tr>                            
@@ -426,7 +429,7 @@
                         <tr>
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_three['url_a']; ?>">
-                                    <?=$jdwl_three["club_a"]?>
+                                <cn class="clubname"><?=$jdwl_three["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_a']; ?>" alt="">
                                 </a>
                             </td>
@@ -452,7 +455,7 @@
                             <td>
                                 <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_three['url_b']; ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_three['logo_b']; ?>" alt="">
-                                    <?=$jdwl_three["club_b"]?>
+                                    <cn class="clubname"><?=$jdwl_three["club_b"]?></cn>
                                 </a>
                             </td>
                         </tr>                            
