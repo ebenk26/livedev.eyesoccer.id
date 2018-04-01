@@ -204,15 +204,29 @@
                 <!-- <img class="lazy" src="<?php echo base_url(); ?>assets/img/iklanbanner/banner 360x320px-01.jpg" alt=""> -->
             </div>
             <div class="container subjudul2">
-                <h4>JADWAL LIVE</h4>
+                <h4>JADWAL LIVE</h4>  
             </div>
             <div class="line-b"></div>
             <div>
                 <table>
-                    <?php
-                        foreach($jadwal_today as $row)
+                <?php 
+                    if (empty($jadwal_today))
                         {
-                            ?>	
+                ?>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="text-align: center;">
+                                    Tidak Ada Jadwal Live
+                                </td>
+                            </tr>                            
+                        </tbody>  
+                <?php        
+                    }
+                    else
+                    {               
+                        foreach($jadwal_today as $row)
+                                {
+                                    ?>	
                                 <!-- <tr>
                                         <td colspan="5"><p></p></td>
                                 </tr>						 -->
@@ -244,6 +258,7 @@
                                 </tr>
                             <?php
                         }
+                    }
                     ?>
                 </table>
                 <div class="line-b"></div>
