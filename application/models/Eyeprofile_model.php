@@ -216,7 +216,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN
 										tbl_club d ON d.club_id=a.tim_b
 								WHERE b.title like '%".$nama_liga_event."%' AND
-									a.jadwal_pertandingan <= '".date('Y-m-d H:i:s')."'
+									a.jadwal_pertandingan <= now()
 								order by
 									jadwal_pertandingan DESC LIMIT 6")->result_array();
 		return $query;
@@ -241,7 +241,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN
 										tbl_club d ON d.club_id=a.tim_b
 								WHERE b.title like '%".$nama_liga_event."%' AND
-									a.jadwal_pertandingan <= '".date('Y-m-d H:i:s')."'
+									a.jadwal_pertandingan <= now()
 								order by
 									jadwal_pertandingan DESC LIMIT 6,6")->result_array();
 		return $query;
@@ -266,7 +266,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN
 										tbl_club d ON d.club_id=a.tim_b
 								WHERE b.title like '%".$nama_liga_event."%' AND
-									a.jadwal_pertandingan <= '".date('Y-m-d H:i:s')."' 
+									a.jadwal_pertandingan <= now() 
 								order by
 									jadwal_pertandingan DESC LIMIT 12,6")->result_array();
 		return $query;
@@ -769,7 +769,7 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_hasil_klub($club_name)
+	public function get_hasil_klub($club_id)
 	{
 		$query = $this->db->query("SELECT 
 									a.*,c.club_id as club_id_a,
@@ -784,13 +784,13 @@ class Eyeprofile_model extends CI_Model
 									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
-									where a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' 
-									and c.name like '%".$club_name."%' or d.name like '%".$club_name."%'
-									order by 
-									a.id_jadwal_event DESC LIMIT 1")->result_array();
+									WHERE (a.tim_a='".$club_id."' OR a.tim_b='".$club_id."')
+									AND jadwal_pertandingan >now()
+									ORDER BY jadwal_pertandingan ASC
+									LIMIT 1")->result_array();
 		return $query;
 	}
-	
+
 	public function get_manager($club_id){
 		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position in ('manager','manajer','menejer') limit 1");
 		if($query->num_rows()>0){
