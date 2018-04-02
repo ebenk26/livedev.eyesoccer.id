@@ -368,34 +368,79 @@
 				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
 			</div>
             <div class="container" style="margin-top:7px;">
-                <h3>Pencetak Gol Terbanyak</h3>
-                <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
-                    <thead>
-                        <tr>
-                            <th class="t-b-b">No</th>
-                            <th class="t-b-b">Pemain</th>
-                            <th class="t-b-b">Umur</th>
-                            <th class="t-b-b">Main</th>
-                            <th class="t-b-b">goal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-					<?php 
-					$no=1;
-					foreach($pencetak_gol as $cetak){
+			 <h3>Pencetak Gol></h3>
+	
+			 <div class="container">
+                <h3>Pencetak Gol></h3>
+	
+				<table class="radius table table-striped" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th>Pemain</th>
+							<th>Tim</th>
+							<th>Gol</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+					if($title_liga == 'Liga Indonesia 1'){
+						$html = file_get_contents(LinkScrapingLigaIndonesia());
+						$premiere_doc = new DOMDocument();
+						libxml_use_internal_errors(TRUE);
+						if(!empty($html)){
+							$premiere_doc->loadHTML($html);
+							libxml_clear_errors();
+							$pokemon_xpath = new DOMXPath($premiere_doc);
+
+							//get all the tr's with an attribute
+							$pokemon_row = $pokemon_xpath->query('//tr[@data-people_id]');
+							$pokemon_list = array();
+							$i = 0;
+							if($pokemon_row->length > 0){
+								foreach($pokemon_row as $row){
+									if($i < 5){
+										$types = $pokemon_xpath->query('td', $row);
+										$n = 0;
+										foreach($types as $type){
+											if($type->nodeValue != ""){
+												if($n != 3){
+													if($n != 4){
+															if($n != 5){
+																$nodeValue = "<td>".$type->nodeValue.'</td>';
+																echo $nodeValue;
+															}
+													}
+												}
+											}
+											$n++;
+										}
+										$i ++;
+									}
+									echo "</tr>";
+								}
+							}
+						}
+						?>
+					</tbody>
+				</table>
+					<?php
+					}else{
 					?>
-                        <tr>
-                            <td><?=$no++?></td>
-                            <td><?=$cetak['name']?>
-                            <span><?=$cetak['position']?></span></td>
-                            </td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr><?php
-					}?>
-                    </tbody>
-                </table>
+								<tr>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>						
+							</tbody>
+						</table>
+					<?php
+					}
+				?>
+                <span class="next-right">Lihat Klasemen Lengkap
+                    <i class="material-icons t-8">keyboard_arrow_right</i>
+                </span>				
+            </div>
                 <div class="nav-pencetak-gol" style="margin-bottom:50px;display:none;">
                     <ul>
                         <li>
