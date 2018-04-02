@@ -52,7 +52,7 @@ class Eyeprofile extends CI_Controller {
 		$jml_klub = null;
 		$nama_liga = urldecode($liga);
 		$data["title_liga"] = $nama_liga;
-		$nama_liga_event = 'Liga 1 GOJEK 2018';
+		$nama_liga_event = 'LIGA 1 GOJEK  2018';
 		$above_datetime = '2018-12-29 00:00:00';
 		$cat_liga = null;
 		if($nama_liga == 'Liga Indonesia 1'){
