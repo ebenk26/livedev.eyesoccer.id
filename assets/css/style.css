@@ -140,7 +140,7 @@ video[poster=""]{
 .logo{
     padding-top: 15px;
     padding-left: 0px !important;
-    /* margin-left: -10px; */
+    margin-left: -10px;
 }
 .btn-login{
     padding: 25px 15px 25px 25px;
@@ -169,9 +169,6 @@ nav .center-desktop, .x-m{
     float: unset;
     display: block;
     height: 61px;
-}
-.x-m{
-    overflow: hidden;
 }
 .x-m>ul {
 	list-style:none;
@@ -991,19 +988,11 @@ footer{
 .t-c-b{
     width: 185px;
     margin: 0 auto;
-    padding: 34px 0px;
-}
-#liga_inggris td{
-    padding: 10px 8px;
+    padding: 18px 0px;
 }
 .t-live{
     display: block;
     color: #9E9E9E;
-    font-size: .9em;
-    line-height: 1em;
-    overflow: hidden;
-    margin: 2px 0px;
-    height: 1em;
 }
 .border-b .tx-c{
     font-size: .8em;
@@ -1015,7 +1004,7 @@ footer{
 }
 .border-b>tbody>tr>td>.i-r, .border-b>tbody>tr>td>.i-l{
     position: relative;
-    /* top: 7px; */
+    top: 7px;
 }
 .border-b>tbody>tr>td>.i-r>img, .border-b>tbody>tr>td>.i-l>img{
     width: 25px;
@@ -1024,10 +1013,10 @@ footer{
     padding-top: 20px;
 }
 .border-b>tbody>tr>td>.i-l{
-    /* left: 15px; */
+    left: 15px;
 }
 .border-b>tbody>tr>td>.i-r{
-    /* right: 15px; */
+    right: 15px;
 }
 .c-l{
     font-size: .7em;
@@ -5098,16 +5087,4 @@ img.loading {
     font-size: .8em !important;
     color: #afb0b4 !important;
     font-weight: 500 !important;
-}
-/* .border-b>tbody>tr>td{
-    padding: 24px 8px;
-}
-.border-b>tbody>tr>td>.i-r{
-    top: unset;
-} */
-.clb{
-    font-size: .9em;
-    line-height: 1em;
-    height: 1em;
-    overflow: hidden;
 }

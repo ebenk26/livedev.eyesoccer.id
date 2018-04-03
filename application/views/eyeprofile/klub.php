@@ -209,7 +209,16 @@
             </div>
         </div>
 		<div class="container banner-150 img-banner mt-20">
-			<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="banner ads full width">
+			<!-- <img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="banner ads full width"> -->
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- EyesoccerDekstop 15a#EyeprofileLigaBanner970x250 -->
+			<ins class="adsbygoogle"
+				style="display:inline-block;width:970px;height:250px"
+				data-ad-client="ca-pub-7635854626605122"
+				data-ad-slot="8424675076"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
 		</div>
         <div class="container t-b-b pd-t-20"></div>
         <div class="center-desktop m-0">
