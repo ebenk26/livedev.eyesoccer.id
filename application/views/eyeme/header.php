@@ -149,7 +149,7 @@
                 $icon = array(
                             array('icon'=> 'camera','link'=> MEURL.'explore','title'=> 'Jelajah','id' => 'explore'),
                             array('icon'=> 'notifications_none','link'=> '#','title'=> 'Pemberitahuan','id'=>'notif'),
-                            array('icon'=> 'camera_alt','link'=> '#','title'=> 'Unggah Gambar','id'=>'upload'),
+                            array('icon'=> 'camera_alt','link'=> '#','title'=> 'Unggah Gambar','id'=>'upload','onclick'=> 'show()'),
                             array('icon'=> 'person_outline','link'=> MEURL.'profile/'.$myusername,'title'=> 'Profil','id'=> 'prof'));
                 //icon menu 
                 foreach($icon as $k => $v){

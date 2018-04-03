@@ -3,7 +3,9 @@
     <div class="center-desktop m-0">
         <div class="container mt-20">
             
-    	<?php 
+    	<?php
+        // p($imgFollowing);
+        // exit; 
     	if(count($imgFollowing) > 0){
 
     		foreach($imgFollowing as $k=> $v){ ?>
@@ -56,6 +58,7 @@
                     <div class="p-r like ref-<?php echo $v['id_img']?>">
                         <?php echo count($v['like'])?>
                     </div>
+                   
 
                
                 <div class="w567 m-t-15">
