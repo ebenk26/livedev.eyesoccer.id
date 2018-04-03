@@ -145,7 +145,7 @@
 				<div id='shownav'>
 			 </div>
 			<!--test-->
-            <div class="container t-b-b pd-b-20 pd-t-20"></div>
+			<div class="container t-b-b pd-b-20 pd-t-20"></div>
             <div class="container">
                 <h3 class="h3-oranye">Hasil pertandingan <?php echo $title_liga?></h3>
             <div id="jadwal" class="jadwal carousel slide m-0 p-d-l-0">
@@ -153,10 +153,10 @@
                     <i class="material-icons">keyboard_arrow_left</i>
                 </div>
                 <div role="listbox" class="j-box carousel-inner">
-				<?php if(count($get_jadwal_tomorrow_1)>0){?>
-						<div class="over item active">
+				<?php if(count($get_jadwal_hasil)>0){?>
+						<div class="over item">
 							<?php
-								foreach($get_jadwal_tomorrow_1 as $club){
+								foreach($get_jadwal_hasil2 as $club){
 								?>			
 									<div class="j-content">
 										<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
@@ -169,7 +169,7 @@
 						</div>
 						<div class="over item">	
 							<?php
-							foreach($get_jadwal_tomorrow_2 as $club){
+							foreach($get_jadwal_hasil1 as $club){
 							?>		
 								<div class="j-content">
 									<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
@@ -180,9 +180,9 @@
 							}
 							?>							
 						</div>	
-						<div class="over item">	
+						<div class="over item  active">	
 							<?php
-							foreach($get_jadwal_tomorrow_3 as $club){
+							foreach($get_jadwal_hasil as $club){
 							?>		
 								<div class="j-content">
 									<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
@@ -262,19 +262,20 @@
 							$i = 0;
 							if($pokemon_row->length > 0){
 								foreach($pokemon_row as $row){
-									echo "<tr>";
 									if($i < 18){
 										$types = $pokemon_xpath->query('td', $row);
 										$n = 0;
 										foreach($types as $type){
-											if(!empty($type->nodeValue)){
+											if($type->nodeValue != ""){
 												if($n != 1){
 													if($n != 7){
 														if($n != 8){
 															if($n != 9){
 																if($n != 11){
-																	$nodeValue = "<td>".$type->nodeValue.'</td>';
-																	echo $nodeValue;
+																	if ($n != 12) {
+																		$nodeValue = "<td>".$type->nodeValue.'</td>';
+																		echo $nodeValue;
+																	}
 																}
 															}
 														}
@@ -374,36 +375,74 @@
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
-			</div>
-            <div class="container" style="margin-top:7px;">
-                <h3>Pencetak Gol Terbanyak</h3>
-                <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
-                    <thead>
-                        <tr>
-                            <th class="t-b-b">No</th>
-                            <th class="t-b-b">Pemain</th>
-                            <th class="t-b-b">Umur</th>
-                            <th class="t-b-b">Main</th>
-                            <th class="t-b-b">goal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-					<?php 
-					$no=1;
-					foreach($pencetak_gol as $cetak){
+			</div>	
+			 <div class="container" style="margin-top:7px;">
+                <h3>Daftar Pencetak Gol</h3>	
+				<table class="radius table table-striped" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th>Pemain</th>
+							<th>Tim</th>
+							<th>Gol</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+					if($title_liga == 'Liga Indonesia 1'){
+						$html = file_get_contents(LinkScrapingLigaIndonesia());
+						$premiere_doc = new DOMDocument();
+						libxml_use_internal_errors(TRUE);
+						if(!empty($html)){
+							$premiere_doc->loadHTML($html);
+							libxml_clear_errors();
+							$pokemon_xpath = new DOMXPath($premiere_doc);
+
+							//get all the tr's with an attribute
+							$pokemon_row = $pokemon_xpath->query('//tr[@data-people_id]');
+							$pokemon_list = array();
+							$i = 0;
+							if($pokemon_row->length > 0){
+								foreach($pokemon_row as $row){
+									if($i < 5){
+										$types = $pokemon_xpath->query('td', $row);
+										$n = 0;
+										foreach($types as $type){
+											if($type->nodeValue != ""){
+												if($n != 3){
+													if($n != 4){
+															if($n != 5){
+																$nodeValue = "<td>".$type->nodeValue.'</td>';
+																echo $nodeValue;
+															}
+													}
+												}
+											}
+											$n++;
+										}
+										$i ++;
+									}
+									echo "</tr>";
+								}
+							}
+						}
+						?>
+					</tbody>
+				</table>
+					<?php
+					}else{
 					?>
-                        <tr>
-                            <td><?=$no++?></td>
-                            <td><?=$cetak['name']?>
-                            <span><?=$cetak['position']?></span></td>
-                            </td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr><?php
-					}?>
-                    </tbody>
-                </table>
+								<tr>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>						
+							</tbody>
+						</table>
+					<?php
+					}
+				?>
+            </div>
                 <div class="nav-pencetak-gol" style="margin-bottom:50px;display:none;">
                     <ul>
                         <li>
