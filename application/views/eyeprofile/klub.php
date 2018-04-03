@@ -368,8 +368,7 @@
 				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
 			</div>	
 			 <div class="container" style="margin-top:7px;">
-                <h3>Daftar Pencetak Gol</h3>
-	
+                <h3>Daftar Pencetak Gol</h3>	
 				<table class="radius table table-striped" cellspacing="0" cellpadding="0">
 					<thead>
 						<tr>
@@ -434,9 +433,6 @@
 					<?php
 					}
 				?>
-                <span class="next-right">Lihat Klasemen Lengkap
-                    <i class="material-icons t-8">keyboard_arrow_right</i>
-                </span>				
             </div>
                 <div class="nav-pencetak-gol" style="margin-bottom:50px;display:none;">
                     <ul>

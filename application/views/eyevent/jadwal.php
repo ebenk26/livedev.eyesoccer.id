@@ -96,7 +96,17 @@
                     <tbody>
                         <tr>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_ystd['url_a']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_nxt_ystd["liga_a"]=='Liga Lainnya') OR ($jdwl_nxt_ystd["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$jdwl_nxt_ystd["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_a"];
+                                                    }
+                                
+                                echo $href_a ?>">
                                 <cn class="clubname"><?=$jdwl_nxt_ystd["club_a"]?></cn>
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_a']; ?>" alt="">
                                 </a>
@@ -119,7 +129,17 @@
                                 <span><?= $jdwl_nxt_ystd["lokasi_pertandingan"]; ?></span>
                             </td>
                             <td>
-                                <a href="<?= base_url(); ?>eyeprofile/klub_detail/<?= $jdwl_nxt_ystd['url_b']; ?>">
+                                <a href="<?php 
+                                                if(($jdwl_nxt_ystd["liga_b"]=='Liga Lainnya') OR ($jdwl_nxt_ystd["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$jdwl_nxt_ystd["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_b"];
+                                                    }
+                                
+                                echo $href_b ?>">
                                     <img src="<?=imgUrl()?>systems/club_logo/<?php print $jdwl_nxt_ystd['logo_b']; ?>" alt="">
                                     <cn class="clubname"><?=$jdwl_nxt_ystd["club_b"]?></cn>
                                 </a>
