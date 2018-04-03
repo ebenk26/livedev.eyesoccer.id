@@ -366,9 +366,10 @@
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
 				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
-			</div>
-            <div class="container" style="margin-top:7px;">
-			 <h3>Pencetak Gol</h3>
+			</div>	
+			 <div class="container" style="margin-top:7px;">
+                <h3>Daftar Pencetak Gol</h3>
+	
 				<table class="radius table table-striped" cellspacing="0" cellpadding="0">
 					<thead>
 						<tr>
