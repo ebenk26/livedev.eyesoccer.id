@@ -1,11 +1,5 @@
 <?= '<?xml version="1.0" encoding="UTF-8" ?>' ?>
 
-<?php
-$cmd15=$this->db->query("select * from tbl_eyenews order by eyenews_id DESC");
-
-//$eyenews_id=$row15['eyenews_id']; 
-
-?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 	  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -13,7 +7,7 @@ $cmd15=$this->db->query("select * from tbl_eyenews order by eyenews_id DESC");
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-    <?php foreach($cmd15->result_array() as $row15){ ?>
+    <?php foreach($query as $row15){ ?>
 	<url>	
      <loc><?php echo base_url('eyenews/detail').'/'.$row15['url'];?></loc>	 
 		<news:news>

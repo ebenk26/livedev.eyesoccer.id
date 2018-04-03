@@ -22,7 +22,7 @@ nav{
 .container{
     box-sizing: border-box;
 }
-.garis-x, .garis-banner, .x-m, footer, .banner-150, .rek-ber, .box-vl, .tab, .et-content, nav, .trending, .menu, .jadwal, .pemain, .bx-pemain, .container{
+.garis-x, .garis-banner, .x-m, footer, .rek-ber, .box-vl, .tab, .et-content, nav, .trending, .menu, .jadwal, .pemain, .bx-pemain, .container{
     width: 100%;
     float: left;
 }
@@ -140,7 +140,7 @@ video[poster=""]{
 .logo{
     padding-top: 15px;
     padding-left: 0px !important;
-    margin-left: -10px;
+    /* margin-left: -10px; */
 }
 .btn-login{
     padding: 25px 15px 25px 25px;
@@ -169,6 +169,9 @@ nav .center-desktop, .x-m{
     float: unset;
     display: block;
     height: 61px;
+}
+.x-m{
+    overflow: hidden;
 }
 .x-m>ul {
 	list-style:none;
@@ -855,10 +858,12 @@ nav .center-desktop, .x-m{
     position: relative;
     top: -60px;
 }
-.banner-150{
+/* .banner-150{
     height: 130px;
+    width: 100%;
+    float: left;
     background-color: gainsboro;
-}
+} */
 .t-30{
     top: -30px;
 }
@@ -986,11 +991,19 @@ footer{
 .t-c-b{
     width: 185px;
     margin: 0 auto;
-    padding: 18px 0px;
+    padding: 34px 0px;
+}
+#liga_inggris td{
+    padding: 10px 8px;
 }
 .t-live{
     display: block;
     color: #9E9E9E;
+    font-size: .9em;
+    line-height: 1em;
+    overflow: hidden;
+    margin: 2px 0px;
+    height: 1em;
 }
 .border-b .tx-c{
     font-size: .8em;
@@ -1002,7 +1015,7 @@ footer{
 }
 .border-b>tbody>tr>td>.i-r, .border-b>tbody>tr>td>.i-l{
     position: relative;
-    top: 7px;
+    /* top: 7px; */
 }
 .border-b>tbody>tr>td>.i-r>img, .border-b>tbody>tr>td>.i-l>img{
     width: 25px;
@@ -1011,10 +1024,10 @@ footer{
     padding-top: 20px;
 }
 .border-b>tbody>tr>td>.i-l{
-    left: 15px;
+    /* left: 15px; */
 }
 .border-b>tbody>tr>td>.i-r{
-    right: 15px;
+    /* right: 15px; */
 }
 .c-l{
     font-size: .7em;
@@ -2658,7 +2671,7 @@ ul, li {
     font-size: .9em;
 }
 .tentang li::before{
-    content: "• ";
+    content: "ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ ";
     color: red;
     font-size: 1.5em;
     line-height: 0px;
@@ -3529,7 +3542,7 @@ ul, li {
     display: block;
     font-size: .8em;
     font-weight: 600;
-    max-height: 55px;
+    max-height: 70px;
     overflow: hidden;
 }
 .rd span, .rv span{
@@ -4983,17 +4996,16 @@ img.loading {
     -webkit-transform: scale(1.5) !important;
     transform: scale(1.1, 1.1) translate(-45%,-45%) !important;
 }
-.img-banner{
+/* .img-banner{
     background-color: gainsboro;
 }
 .img-banner img {
     height: 100%;
     width: 100%;
-    /* background-color: gainsboro; */
 }
 .banner-a1{
     all: unset;
-    width: 320px !important;
+    width: 300px !important;
     height: 60px !important;
     float: right;
     margin: 5px !important;
@@ -5038,4 +5050,64 @@ img.loading {
 .banner-eyeprofile5{
     width: 425px;
     height: 200px;
+} 
+/*author*/
+.author-style
+{
+    padding-top:50px;
+    padding-bottom:50px;
+    height:50px;
+    background-color:#720404fc;
+}
+.author-name
+{
+    font-size:50px;
+    padding-left:250px;
+    margin-top:5px;
+    top:5px;
+    height:50px;
+    background-color:#ffa726;
+}
+.h3-author{
+
+    font-size: .8em;
+    text-transform: uppercase;
+    color: #010101;
+    background-color:#ffa726;
+    font-weight: 600;
+    padding-top:5px;padding-bottom:5px;padding-left:100px;
+}
+.author-pic
+{
+    padding-left:100px;
+    margin-top:-120px;
+}
+.L_author{   width:300px;font-size:14px;background-color:#ffa72699;}
+.L_author:hover{   width:300px;background-color:#d9993b99;}
+
+.news-capt img{
+    all: unset !important;
+    width: 100% !important;
+    height: auto !important;
+}
+.data-title{
+    font-size: 1.1em !important;
+    font-weight: 500 !important;
+}
+.data-title-date{
+    font-size: .8em !important;
+    color: #afb0b4 !important;
+    font-weight: 500 !important;
+}
+/* .border-b>tbody>tr>td{
+    padding: 24px 8px;
+}
+.border-b>tbody>tr>td>.i-r{
+    top: unset;
+} */
+.clb{
+    font-size: .9em;
+    line-height: 1em;
+    height: 1em;
+    overflow: hidden;
 }

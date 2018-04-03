@@ -195,7 +195,83 @@ class Eyeprofile_model extends CI_Model
 									jadwal_pertandingan DESC LIMIT 6")->result_array();
 		return $query;
 	}
+
 	
+	public function get_jadwal_hasil($nama_liga_event)
+	{
+		$query = $this->db->query("SELECT 
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub
+									FROM
+									tbl_jadwal_event a
+									LEFT JOIN
+										tbl_event b ON b.id_event=a.id_event
+									INNER JOIN
+										tbl_club c ON c.club_id=a.tim_a
+									INNER JOIN
+										tbl_club d ON d.club_id=a.tim_b
+								WHERE b.title like '%".$nama_liga_event."%' AND
+									a.jadwal_pertandingan <= now()
+								order by
+									jadwal_pertandingan DESC LIMIT 6")->result_array();
+		return $query;
+	}
+
+	public function get_jadwal_hasil1($nama_liga_event)
+	{
+		$query = $this->db->query("SELECT 
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub
+									FROM
+									tbl_jadwal_event a
+									LEFT JOIN
+										tbl_event b ON b.id_event=a.id_event
+									INNER JOIN
+										tbl_club c ON c.club_id=a.tim_a
+									INNER JOIN
+										tbl_club d ON d.club_id=a.tim_b
+								WHERE b.title like '%".$nama_liga_event."%' AND
+									a.jadwal_pertandingan <= now()
+								order by
+									jadwal_pertandingan DESC LIMIT 6,6")->result_array();
+		return $query;
+	}
+	
+	public function get_jadwal_hasil2($nama_liga_event)
+	{	
+		$query = $this->db->query("SELECT 
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub
+									FROM
+									tbl_jadwal_event a
+									LEFT JOIN
+										tbl_event b ON b.id_event=a.id_event
+									INNER JOIN
+										tbl_club c ON c.club_id=a.tim_a
+									INNER JOIN
+										tbl_club d ON d.club_id=a.tim_b
+								WHERE b.title like '%".$nama_liga_event."%' AND
+									a.jadwal_pertandingan <= now() 
+								order by
+									jadwal_pertandingan DESC LIMIT 12,6")->result_array();
+		return $query;
+	}
+
 	public function get_jadwal_tomorrow_1($datetime,$nama_liga)
 	{
 		$query = $this->db->query("SELECT 
@@ -253,7 +329,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
 									where b.title like '%".$nama_liga."%' 
-									AND a.jadwal_pertandingan>='".$datetime."' 
+									AND a.jadwal_pertandingan>='".date('Y-m-d H:i:s')."' - INTERVAL 1 DAY 
 									order by 
 									jadwal_pertandingan DESC LIMIT 12,6")->result_array();
 		return $query;
@@ -693,7 +769,7 @@ class Eyeprofile_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_hasil_klub($club_name)
+	public function get_hasil_klub($club_id)
 	{
 		$query = $this->db->query("SELECT 
 									a.*,c.club_id as club_id_a,
@@ -708,13 +784,13 @@ class Eyeprofile_model extends CI_Model
 									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
-									where a.jadwal_pertandingan>='".date("Y-m-d H:i:s")."' 
-									and c.name like '%".$club_name."%' or d.name like '%".$club_name."%'
-									order by 
-									a.id_jadwal_event DESC LIMIT 1")->result_array();
+									WHERE (a.tim_a='".$club_id."' OR a.tim_b='".$club_id."')
+									AND jadwal_pertandingan >now()
+									ORDER BY jadwal_pertandingan ASC
+									LIMIT 1")->result_array();
 		return $query;
 	}
-	
+
 	public function get_manager($club_id){
 		$query = $this->db->query("select * from tbl_official_team where club_now = '".$club_id."' and  position in ('manager','manajer','menejer') limit 1");
 		if($query->num_rows()>0){

@@ -51,10 +51,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['sitemap\.xml'] = "sitemap";
-$route['eyenews_sitemap\.xml'] = "eyenews_sitemap";
-$route['eyeprofile_player_sitemap\.xml'] = "eyeprofile_player_sitemap";
-$route['eyeprofile_club_sitemap\.xml'] = "eyeprofile_club_sitemap";
-$route['eyeprofile_official_sitemap\.xml'] = "eyeprofile_official_sitemap";
+$route['eyenews-sitemap\.xml'] = "eyenews_sitemap";
+$route['eyetube-sitemap\.xml'] = "eyetube_sitemap";
+$route['eyevent-sitemap\.xml'] = "eyevent_sitemap";
+$route['eyeprofile-player_sitemap\.xml'] = "eyeprofile_player_sitemap";
+$route['eyeprofile-club_sitemap\.xml'] = "eyeprofile_club_sitemap";
+$route['eyeprofile-official_sitemap\.xml'] = "eyeprofile_official_sitemap";
 
 $route['eyetube/kategori/Eye-Soccer-Flash'] 	= "eyetube/kategori/1";
 $route['eyetube/kategori/Eye-Soccer-Funny'] 	= "eyetube/kategori/2";
@@ -76,7 +78,10 @@ $route['pedoman-media-siber'] 					= "home/pedoman_media_siber";
 $route['kebijakan-privasi'] 					= "home/kebijakan_privasi";
 $route['panduan-komunitas'] 					= "home/panduan_komunitas";
 $route['kontak'] 								= "home/kontak_kami";
+$route['newsletter/eyetube'] 					= "home/newsletter/eyetube";
+$route['newsletter/eyenews'] 					= "home/newsletter/eyenews";
 $route['eyeprofile'] 							= "eyeprofile/klub";
+$route['author/(:any)'] 							= "author/name/$1";
 
 $route['eyetube/detail/ini-dia-wajah-baru-stadion-gelora-bung-karno-yang-menghabiskan-dana-760-miliar'] 	= "eyetube/detail/ini-dia-wajah-baru-sation-gelora-bung-karno-yang-menghabiskan-dana-760-miliar";
 

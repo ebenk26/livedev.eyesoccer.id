@@ -24,7 +24,7 @@
         <div class="m-0">
             <div class="container news-rcm">
                 <div class="subjudul2">
-                    <h4>REKOMENDASI</h4>
+                    <h4><a href="<?php echo base_url();?>eyenews/rekomendasi">REKOMENDASI</a></h4>
                 </div>
                 <?php
                     foreach($eyenews_rekomendasi as $rekomendasi)
@@ -56,7 +56,7 @@
             </div>
             <div class="container news-rcm-r fl-r">
                 <div class="subjudul2">
-                    <h4>TERPOPULER</h4>
+                    <h4><a href="<?php echo base_url();?>eyenews/populer">TERPOPULER</a></h4>
                 </div>
                 <?php
                     $ep = 0;
@@ -118,7 +118,7 @@
 <div class="container">
     <div class="m-0">
         <div class="subjudul2">
-            <h4>EyeTube</h4>
+            <h4><a href="<?php echo base_url();?>eyetube">EyeTube</a></h4>
         </div>
     </div>
     <div class="m-0">
@@ -153,7 +153,7 @@
     <div class="m-0 mt-10">
         <div class="container news-rcm">
             <div class="subjudul2">
-                <h4>SOCCER SERI</h4>
+                <h4><a href="<?php echo base_url();?>eyenews/kategori/Soccer Seri">SOCCER SERI</a></h4>
             </div>
             <?php
                 // foreach($all_news as $row12){
@@ -191,19 +191,42 @@
             ?>
         </div>
         <div class="container news-rcm-r2 fl-r">
-            <div class="container banner-eyenews4 img-banner mt-30">
-                <img class="lazy" src="<?php echo base_url(); ?>assets/img/iklanbanner/banner 360x320px-01.jpg" alt="">
+            <div class="container banner-eyenews4 img-banner mt-30" style="background-color: unset;">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- EyesoccerDekstop 16#EyenewsDetailSquare336x280 -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:336px;height:280px"
+                data-ad-client="ca-pub-7635854626605122"
+                data-ad-slot="3103367534"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+                <!-- <img class="lazy" src="<?php echo base_url(); ?>assets/img/iklanbanner/banner 360x320px-01.jpg" alt=""> -->
             </div>
             <div class="container subjudul2">
-                <h4>JADWAL LIVE</h4>
+                <h4>JADWAL LIVE</h4>  
             </div>
             <div class="line-b"></div>
             <div>
                 <table>
-                    <?php
-                        foreach($jadwal_today as $row)
+                <?php 
+                    if (empty($jadwal_today))
                         {
-                            ?>	
+                ?>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="text-align: center;">
+                                    Tidak Ada Jadwal Live
+                                </td>
+                            </tr>                            
+                        </tbody>  
+                <?php        
+                    }
+                    else
+                    {               
+                        foreach($jadwal_today as $row)
+                                {
+                                    ?>	
                                 <!-- <tr>
                                         <td colspan="5"><p></p></td>
                                 </tr>						 -->
@@ -235,12 +258,13 @@
                                 </tr>
                             <?php
                         }
+                    }
                     ?>
                 </table>
                 <div class="line-b"></div>
                 <div class="fl-r">
                     <a href="">
-                        <p class="lp" style="margin:0px;">Lihat selengkapnya ></p>
+                        <p class="lp" style="margin:0px;"><a href="<?php echo base_url();?>eyevent">Lihat selengkapnya ></a></p>
                     </a>
                 </div>
             </div>

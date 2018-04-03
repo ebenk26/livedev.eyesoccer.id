@@ -361,8 +361,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php
 				}
 			?>
-			<div class="container banner-eyeprofile5 img-banner fl-r mt-10">
-				<img src="../../assets/img/iklanbanner/banner 425x200 px-01.jpg" alt="Right ads">
+			<div class="container banner-eyeprofile5 img-banner fl-r mt-10" style="height: unset; background-color: unset;">
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- EyesoccerDekstop 8#EyeprofileKlubSupporter336x280 -->
+			<ins class="adsbygoogle"
+				style="display:inline-block;width:336px;height:280px"
+				data-ad-client="ca-pub-7635854626605122"
+				data-ad-slot="7731736047"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+				<!-- <img src="../../assets/img/iklanbanner/banner 425x200 px-01.jpg" alt="Right ads"> -->
 			</div>
 
 			<div class="container pd-b-50" style="padding-bottom: 100px;display:none;">

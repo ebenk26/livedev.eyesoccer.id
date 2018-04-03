@@ -403,6 +403,35 @@ class Eyemarket extends CI_Controller {
         
 	}
 
+	public function hapus_gambar()
+	{
+		$path = ($_SERVER['SERVER_NAME'] == 'localhost') ? './img/img_storage/' : MARKETFOLDER.'/produk';
+		$idnya = $_POST['idnya'];
+		$field = 'image'.$_POST['no'];
+
+		$this->db->select($field);
+		$this->db->where('id_product', $idnya);
+		$query = $this->db->get('eyemarket_images')->row();
+
+		$objek = array( $field => NULL );
+		$this->db->where('id_product', $idnya);
+		$query2 = $this->db->update('eyemarket_images', $objek);
+
+		$gambar = 'ori_'.$query->$field;
+		$pathnya = $path.$gambar;
+		$hapus = unlink($pathnya);
+
+		if ($hapus)
+		{
+			echo 1;
+		}
+		else
+		{
+			echo 0;
+		}
+		// var_dump($pathnya,$_POST,$query,$gambar);exit();
+	}
+
 	public function edit_produk($id)
 	{
 		$id_admin 	= $_SESSION['id'];

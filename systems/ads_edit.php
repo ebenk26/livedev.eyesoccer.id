@@ -66,22 +66,23 @@ print '<div class="form-group"><div class="alert alert-danger text-center" id="s
 else if(file_exists("eyeads_storage/".$pic)){
 print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">Image name already exist. Please, change your image name !</div></div>';   
 }
-else if($ex != "jpg" && $ex != "JPG" && $ex != "jpeg" && $ex != "JPEG" && $ex != "gif" && $ex != "GIF"){
+else if($ex != "jpg" && $ex != "JPG" && $ex != "jpeg" && $ex != "JPEG" && $ex != "gif" && $ex != "GIF" && $ex != "png" && $ex != "PNG"){
 print '<div class="form-group"><div class="alert alert-danger text-center" id="set8">Your extension file not support !</div></div>';    
 }
 else{      
 move_uploaded_file($_FILES['pic']['tmp_name'], "eyeads_storage/".$pic); 
 $orgfile="eyeads_storage/".$pic;
-list($width,$height)=getimagesize($orgfile);
-$newfile=imagecreatefromjpeg($orgfile);
+// list($width,$height)=getimagesize($orgfile);
+// $newfile=imagecreatefromjpeg($orgfile);
 $newwidth=292;
 $newheight=182; 
-$thumb1="eyeads_storage/t1".$pic;
-$truecolor=imagecreatetruecolor($newwidth, $newheight);
-imagecopyresampled($truecolor, $newfile, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-imagejpeg($truecolor,$thumb1,100);
-$thumb1=substr($thumb1,16,100); 
-
+$thumb1=$pic;
+// $thumb1="eyeads_storage/t1".$pic;
+// $truecolor=imagecreatetruecolor($newwidth, $newheight);
+// imagecopyresampled($truecolor, $newfile, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+// imagejpeg($truecolor,$thumb1,100);
+// $thumb1=substr($thumb1,16,100); 
+// echo "update tbl_ads set title='$title',note='$note',pic='$pic',thumb1='$thumb1' where ads_id='$ads_id'";exit();
 $cmd=mysqli_query($con,"update tbl_ads set title='$title',note='$note',pic='$pic',thumb1='$thumb1' where ads_id='$ads_id'");  
 header("location:ads?admin_id=$admin_id");
 } 

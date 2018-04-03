@@ -27,7 +27,7 @@ if($ins=="sukses"){
 		$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
 		$mail->Username = 'eyesoccerindonesia@gmail.com';                 // SMTP username
-		$mail->Password = 'BolaSepak777#';                           // SMTP password
+		$mail->Password = 'tahubulatsptbolagoreng2018$$$';                           // SMTP password
 		$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 		$mail->Port = 465;                                    // TCP port to connect to
 

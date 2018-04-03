@@ -2,7 +2,7 @@
 
 require "check_login.php";
 
-$admin_id=$_SESSION['admin_id'];
+$admin_id=$_GET['admin_id'];
 
 $player_id=$_GET['player_id'];
 
@@ -108,6 +108,10 @@ $club_id=$row['club_id'];
 			$no_hp=$_POST['no_hp'];
 			
 			$email=$_POST['email'];
+			
+			$gender=$_POST['gender'];
+			
+			$club_id=$_POST['club_id'];
 
 			// $pic=$_FILES['pic']['name']; 
 			$pic=rand(10000,99999)."-".$_FILES['pic']['name'];			
@@ -115,9 +119,9 @@ $club_id=$row['club_id'];
 			if(isset($_FILES['pic'])){
 				if(!empty($_FILES['pic']['name'])){
 					move_uploaded_file($_FILES['pic']['tmp_name'], "player_storage/".$pic);
-					$cmd=mysqli_query($con,"update tbl_player set name='".$name."',description='".$description."',birth_place='".$birth_place."',birth_date='".$birth_date."',height='".$height."',weight='".$weight."',nationality='".$nationality."',position='".$position."',position_2='".$position_2."',number='".$number."',call_name='".$call_name."',foot='".$foot."',fav_club='".$fav_club."',fav_player='".$fav_player."',fav_coach='".$fav_coach."',contract_range1='".$contract_range1."',contract_range2='".$contract_range2."',father='".$father."',mother='".$mother."',pic='".$pic."',no_hp='".$no_hp."',email='".$email."',updateon='".date('Y-m-d H:i:s')."' where player_id='".$player_id."'");
+					$cmd=mysqli_query($con,"update tbl_player set name='".$name."',description='".$description."',birth_place='".$birth_place."',birth_date='".$birth_date."',height='".$height."',weight='".$weight."',nationality='".$nationality."',position='".$position."',position_2='".$position_2."',number='".$number."',call_name='".$call_name."',foot='".$foot."',fav_club='".$fav_club."',fav_player='".$fav_player."',fav_coach='".$fav_coach."',contract_range1='".$contract_range1."',contract_range2='".$contract_range2."',father='".$father."',mother='".$mother."',pic='".$pic."',no_hp='".$no_hp."',email='".$email."',updateon='".date('Y-m-d H:i:s')."',gender='".$gender."',admin_id='".$admin_id."',club_id='".$club_id."' where player_id='".$player_id."'");
 				}else{
-					$cmd=mysqli_query($con,"update tbl_player set name='".$name."',description='".$description."',birth_place='".$birth_place."',birth_date='".$birth_date."',height='".$height."',weight='".$weight."',nationality='".$nationality."',position='".$position."',position_2='".$position_2."',number='".$number."',call_name='".$call_name."',foot='".$foot."',fav_club='".$fav_club."',fav_player='".$fav_player."',fav_coach='".$fav_coach."',contract_range1='".$contract_range1."',contract_range2='".$contract_range2."',father='".$father."',mother='".$mother."',no_hp='".$no_hp."',email='".$email."',updateon='".date('Y-m-d H:i:s')."' where player_id='".$player_id."'");
+					$cmd=mysqli_query($con,"update tbl_player set name='".$name."',description='".$description."',birth_place='".$birth_place."',birth_date='".$birth_date."',height='".$height."',weight='".$weight."',nationality='".$nationality."',position='".$position."',position_2='".$position_2."',number='".$number."',call_name='".$call_name."',foot='".$foot."',fav_club='".$fav_club."',fav_player='".$fav_player."',fav_coach='".$fav_coach."',contract_range1='".$contract_range1."',contract_range2='".$contract_range2."',father='".$father."',mother='".$mother."',no_hp='".$no_hp."',email='".$email."',updateon='".date('Y-m-d H:i:s')."',gender='".$gender."',admin_id='".$admin_id."',club_id='".$club_id."' where player_id='".$player_id."'");
 				}
 				
 				//add gallery player
@@ -125,16 +129,13 @@ $club_id=$row['club_id'];
 
 					foreach($_FILES['gallery_player']['tmp_name'] as $key => $tmp_name)
 					{
-						if(isset($_FILES['gallery_player']['tmp_name']) && $_FILES['gallery_player']['tmp_name']!="")
+						if(isset($_FILES['gallery_player']['tmp_name']) && $_FILES['gallery_player']['tmp_name']!="" && !empty($_FILES['gallery_player']['name'][$key]))
 						{
-							$gallery_player=rand(10000,99999)."-".$_FILES['gallery_player']['name'][$key];  
+							$gallery_player=rand(10000,99999)."-".$_FILES['gallery_player']['name'][$key];
+							$tags = "gallery pemain";
+							move_uploaded_file($_FILES['gallery_player']['tmp_name'][$key], "player_storage/".$gallery_player);
+							$cmd=mysqli_query($con,"insert into tbl_gallery(tags,pic,thumb1,player_id,upload_date) values ('".$tags."','".$gallery_player."','".$gallery_player."','".$player_id."','".date('Y-m-d H:i:s')."')");
 						}
-						else{
-							$gallery_player="logo_player_2.png";  
-						}
-						$tags = "gallery pemain";
-						move_uploaded_file($_FILES['gallery_player']['tmp_name'][$key], "player_storage/".$gallery_player);
-						$cmd=mysqli_query($con,"insert into tbl_gallery(tags,pic,thumb1,player_id,upload_date) values ('".$tags."','".$gallery_player."','".$gallery_player."','".$player_id."','".date('Y-m-d H:i:s')."')");
 					}
 				}else{
 				
@@ -154,7 +155,7 @@ $club_id=$row['club_id'];
 
 				else{         		
 
-					$cmd=mysqli_query($con,"update tbl_player set name='".$name."',description='".$description."',birth_place='".$birth_place."',birth_date='".$birth_date."',height='".$height."',weight='".$weight."',nationality='".$nationality."',position='".$position."',position_2='".$position_2."',number='".$number."',call_name='".$call_name."',foot='".$foot."',fav_club='".$fav_club."',fav_player='".$fav_player."',fav_coach='".$fav_coach."',contract_range1='".$contract_range1."',contract_range2='".$contract_range2."',father='".$father."',mother='".$mother."',pic='".$pic."',no_hp='".$no_hp."',email='".$email."',updateon='".date('Y-m-d H:i:s')."' where player_id='".$player_id."'");
+					$cmd=mysqli_query($con,"update tbl_player set name='".$name."',description='".$description."',birth_place='".$birth_place."',birth_date='".$birth_date."',height='".$height."',weight='".$weight."',nationality='".$nationality."',position='".$position."',position_2='".$position_2."',number='".$number."',call_name='".$call_name."',foot='".$foot."',fav_club='".$fav_club."',fav_player='".$fav_player."',fav_coach='".$fav_coach."',contract_range1='".$contract_range1."',contract_range2='".$contract_range2."',father='".$father."',mother='".$mother."',pic='".$pic."',no_hp='".$no_hp."',email='".$email."',updateon='".date('Y-m-d H:i:s')."',gender='".$gender."' where player_id='".$player_id."'");
 
 					move_uploaded_file($_FILES['pic']['tmp_name'], "player_storage/".$pic);
 					
@@ -167,7 +168,27 @@ $club_id=$row['club_id'];
 		}
 
       	?> 
+		
+		<div class="row">
+			<div class="col-lg-6 col-md-6" id="t1">Pilih Klub
 
+				<select name="club_id" class="form-control" id="ipt1">
+				<option value="">--Kosong--</option>
+				<?php
+
+				$cmd1=mysqli_query($con,"select club_id,name from tbl_club");
+				while($row1=mysqli_fetch_array($cmd1)){
+
+				print '<option value='.$row1['club_id'].''; if($row['club_id']==$row1['club_id']){print " selected";}else{print "";} print'>'.$row1['name'].'</option>';  
+
+				}
+
+				?>	
+
+				</select>	
+			</div>
+		</div>
+	  
       <div class="form-group text-left" id="t1">Nama<input type="text" name="name" value="<?php print $row['name']; ?>" class="form-control" id="ipt1"></div>
 	  
       <div class="form-group text-left" id="t1">Nama Panggilan<input type="text" name="call_name" value="<?php print $row['call_name']; ?>" class="form-control" id="ipt1"></div>
@@ -284,14 +305,28 @@ $club_id=$row['club_id'];
 		
 		<div class="col-lg-6 col-md-6" id="t1">Pemain Favorit<input type="text" name="fav_player" value="<?php print $row['fav_player']; ?>" class="form-control" id="ipt1"></div>	
 		
-		<div class="col-lg-6 col-md-6" id="t1">Pelatih Favorit<input type="text" name="fav_coach" value="<?php print $row['fav_coach']; ?>" class="form-control" id="ipt1"></div>	
+		<div class="col-lg-6 col-md-6" id="t1">Pelatih Favorit<input type="text" name="fav_coach" value="<?php print $row['fav_coach']; ?>" class="form-control" id="ipt1"></div>
+		
+		<div class="col-lg-6 col-md-6" id="t1">Jenis Kelamin
+		<select name="gender" class="form-control" id="ipt1">
+		<?php
+			$interests = array(
+				'1' => 'Pria',
+				'2' => 'Wanita'
+			);
+		?>
+		<?php foreach( $interests as $var => $interest ): ?>
+		<option value="<?php echo $var ?>"<?php if( $var == $row['gender'] ): ?> selected="selected"<?php endif; ?>><?php echo $interest ?></option>
+		<?php endforeach; ?>
+		</select>
+		</div>	
 		
 		<div class="col-lg-6 col-md-6" id="t1">Kisaran Kontrak<input type="number" name="contract_range1" value="<?php print $row['contract_range1']; ?>" class="form-control" id="ipt1">sampai dengan
 		<input type="number" name="contract_range2" value="<?php print $row['contract_range2']; ?>" class="form-control" id="ipt1">
 		</div>	
 		<div class="col-lg-12 col-md-12" id="t1" style="padding-top:20px;">
 			<b>Karir Klub</b><br>
-			<a href='<?=$base_url."/systems/karir_player_add?admin_id=".$_SESSION['admin_id']."&player_id=".$player_id."&jenis=klub#player";?>' class="btn btn-success">ADD</a>
+			<a target="_blank" href='<?=$base_url."/systems/karir_player_add?admin_id=".$_SESSION['admin_id']."&player_id=".$player_id."&jenis=klub#player";?>' class="btn btn-success">ADD</a>
 			<div class="">
 				<table class="table table-hover datatables">
 				<thead id="">
@@ -336,7 +371,7 @@ $club_id=$row['club_id'];
 				<td>'.$jumlah_main.'</td>
 				<td>'.$no_pg.'</td>
 				<td>'.$pelatih.'</td>
-				<td><a href="karir_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&karir_id='.$karir_id.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="karir_player_delete?admin_id='.$admin_id.'&karir_id='.$karir_id.'&player_id='.$player_id.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
+				<td><a target="_blank" href="karir_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&karir_id='.$karir_id.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="karir_player_delete?admin_id='.$admin_id.'&karir_id='.$karir_id.'&player_id='.$player_id.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
 				</tr>';
 				}
 				?>
@@ -348,7 +383,7 @@ $club_id=$row['club_id'];
 		
 		<div class="col-lg-12 col-md-12" id="t1" style="padding-top:20px;">
 			<b>Karir Timnas</b><br>
-			<a href='<?=$base_url."/systems/karir_player_add?admin_id=".$_SESSION['admin_id']."&player_id=".$player_id."&jenis=timnas#player";?>' class="btn btn-success">ADD</a>
+			<a target="_blank" href='<?=$base_url."/systems/karir_player_add?admin_id=".$_SESSION['admin_id']."&player_id=".$player_id."&jenis=timnas#player";?>' class="btn btn-success">ADD</a>
 			<div class="">
 				<table class="table table-hover datatables">
 				<thead id="">
@@ -393,7 +428,7 @@ $club_id=$row['club_id'];
 				<td>'.$jumlah_main.'</td>
 				<td>'.$no_pg.'</td>
 				<td>'.$pelatih.'</td>
-				<td><a href="karir_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&karir_id='.$karir_id.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="karir_player_delete?admin_id='.$admin_id.'&karir_id='.$karir_id.'&player_id='.$player_id.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
+				<td><a target="_blank" href="karir_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&karir_id='.$karir_id.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="karir_player_delete?admin_id='.$admin_id.'&karir_id='.$karir_id.'&player_id='.$player_id.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
 				</tr>';
 				}
 				?>
@@ -405,7 +440,7 @@ $club_id=$row['club_id'];
 		
 		<div class="col-lg-12 col-md-12" id="t1" style="padding-top:20px;">
 			<b>Prestasi</b><br>
-			<a href='<?=$base_url."/systems/prestasi_player_add?admin_id=".$_SESSION['admin_id']."&player_id=".$player_id."&jenis=timnas#player";?>' class="btn btn-success">ADD</a>
+			<a target="_blank" href='<?=$base_url."/systems/prestasi_player_add?admin_id=".$_SESSION['admin_id']."&player_id=".$player_id."&jenis=timnas#player";?>' class="btn btn-success">ADD</a>
 			<div class="">
 				<table class="table table-hover datatables">
 				<thead id="">
@@ -440,7 +475,7 @@ $club_id=$row['club_id'];
 				<td>'.$negara.'</td>
 				<td>'.$peringkat.'</td>
 				<td>'.$penghargaan.'</td>
-				<td><a href="prestasi_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&prestasi_player_id='.$prestasi_player_id.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="prestasi_player_delete?admin_id='.$admin_id.'&prestasi_player_id='.$prestasi_player_id.'&player_id='.$player_id.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
+				<td><a target="_blank" target="_blank" href="prestasi_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&prestasi_player_id='.$prestasi_player_id.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="prestasi_player_delete?admin_id='.$admin_id.'&prestasi_player_id='.$prestasi_player_id.'&player_id='.$player_id.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
 				</tr>';
 				}
 				?>
@@ -471,7 +506,7 @@ $club_id=$row['club_id'];
 				} 
 				else $noPage = 1;
 				$offset = ($noPage - 1) * $dataPerPage;
-				$result=mysqli_query($con,"SELECT * FROM tbl_gallery where player_id='$player_id'");
+				$result=mysqli_query($con,"SELECT * FROM tbl_gallery where player_id='$player_id' and tags='gallery pemain'");
 				while($data = mysqli_fetch_array($result))
 				{
 				$thumb1=$data['thumb1'];
@@ -479,7 +514,7 @@ $club_id=$row['club_id'];
 				$id_gallery=$data['id_gallery'];
 				print'<tr>
 				<td><img src="player_storage/'.$thumb1.'" style="width:100px;"></td>
-				<td><a href="gallery_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&id_gallery='.$id_gallery.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="gallery_player_delete?admin_id='.$admin_id.'&player_id='.$player_id.'&id_gallery='.$id_gallery.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
+				<td><a target="_blank" href="gallery_player_edit?admin_id='.$admin_id.'&player_id='.$player_id.'&id_gallery='.$id_gallery.'" class="btn" id="btn3">EDIT</a>&emsp;<a href="gallery_player_delete?admin_id='.$admin_id.'&player_id='.$player_id.'&id_gallery='.$id_gallery.'" onclick=\'confirm("Apa anda yakin untuk menghapus ?")\'>DELETE</a></td>
 				</tr>';
 				}
 				?>

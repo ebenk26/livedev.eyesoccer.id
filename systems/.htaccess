@@ -1,3 +1,8 @@
+php_value post_max_size 2000M
+php_value upload_max_filesize 2500M
+php_value max_execution_time 6000000
+php_value max_input_time 6000000
+
 <IfModule mod_deflate.c>
     <IfModule mod_setenvif.c>
         <IfModule mod_headers.c>
@@ -57,36 +62,11 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-# Redirect external .php requests to extensionless url
-RewriteCond %{THE_REQUEST} ^(.+)\.php
-RewriteRule ^(.+)\.php$ /$1 [R=301,L]
+#redirect http://www.eyesoccer.id to https://www.eyesoccer.id
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^www.eyesoccer.id [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-RewriteCond %{THE_REQUEST} ^(.+)\.php([0-9]+)
-RewriteRule ^(.+)\.php([0-9]+)$ /$1 [R=301,L]
-    
-    RewriteCond %{THE_REQUEST} ^(.+)\.pHP([0-9]+)
-    RewriteRule ^(.+)\.pHP([0-9]+)$ /$1 [R=301,L]
-    
-    RewriteCond %{THE_REQUEST} ^(.+)\.phP([0-9]+)
-    RewriteRule ^(.+)\.phP([0-9]+)$ /$1 [R=301,L]
-    
-    RewriteCond %{THE_REQUEST} ^(.+)\.Php([0-9]+)
-    RewriteRule ^(.+)\.Php([0-9]+)$ /$1 [R=301,L]
-    
-    RewriteCond %{THE_REQUEST} ^(.+)\.PHp([0-9]+)
-    RewriteRule ^(.+)\.PHp([0-9]+)$ /$1 [R=301,L]
-    
-    RewriteCond %{THE_REQUEST} ^(.+)\.PhP([0-9]+)
-    RewriteRule ^(.+)\.PhP([0-9]+)$ /$1 [R=301,L]
-    
-    RewriteCond %{THE_REQUEST} ^(.+)\.pHp([0-9]+)
-    RewriteRule ^(.+)\.pHp([0-9]+)$ /$1 [R=301,L]
-    
-    RewriteCond %{THE_REQUEST} ^(.+)\.PHP([0-9]+)
-    RewriteRule ^(.+)\.PHP([0-9]+)$ /$1 [R=301,L]
-
-RewriteCond %{THE_REQUEST} ^(.+)\.html
-RewriteRule ^(.+)\.html$ /$1 [R=301,L]
-
-RewriteCond %{THE_REQUEST} ^(.+)\.html([0-9]+)
-RewriteRule ^(.+)\.html([0-9]+)$ /$1 [R=301,L]
+#redirect http(s)://eyesoccer.id to https://www.eyesoccer.id
+RewriteCond %{HTTP_HOST} !^www.eyesoccer.id [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

@@ -38,6 +38,7 @@
         		<meta name="geo.placename"content="Indonesia" />
         		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
         		<link rel="canonical" href="https://www.eyesoccer.id<?php echo $_SERVER['REQUEST_URI'];?>" />
+        		<link rel="shortcut icon" type="<?=base_url()?>image/png" href="<?=base_url()?>img/tab_icon.png" />
         		<meta name="google-site-verification" content="Ypg1XCrvdn4IyWbgoGHkEWqmK5c8tz6wnBQvOObVRJE" />
         		<!-- End of SEO Meta Tags-->
 
@@ -80,6 +81,7 @@
                 <link href="<?=base_url()?>bs/jud/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
                 <link href="<?=base_url()?>bs/jud/css/custom.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/ads.css" rel="stylesheet">
 		<?php
             }
             else
@@ -89,6 +91,7 @@
                 <!-- <link href="<?= base_url(); ?>bs/css/jquery-ui.css" rel="stylesheet"> -->
                 <link href="<?= base_url(); ?>assets/css/bs.css" rel="stylesheet">
                 <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
+                <link href="<?= base_url(); ?>assets/css/ads.css" rel="stylesheet">
         <?php
             }
         ?>
@@ -107,6 +110,7 @@
             <script src="<?php echo base_url();?>bs/jquery/jquery-ui.js"></script>
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
             <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
+            <script src="<?php echo base_url();?>assets/js/jquery.sticky.js"></script>
 			<script src='<?=base_url()?>bs/js/infiniteScroll.js'></script>
 
             <link rel="manifest" href="/manifest.json" />
@@ -219,7 +223,7 @@
 							<img src="https://www.eyesoccer.id/img/logo2.png" alt="" height="40px">
 						</div>
 					</a>
-                    <div class="btn-login">
+                    <div class="btn-login" style="padding: 25px 15px 25px 5px;">
 					
                         <?php
                             if(!isset($_SESSION["id_member"]))
@@ -256,7 +260,19 @@
                     (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                         <!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner  320x60 px-01.jpg" alt="Static ads"> -->
-                    </div>       
+                    </div>  
+                    <div class="container banner-a1 img-banner" style="background: unset;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Eyesoccer 1b#dekstopHomeTopBanner -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="7928099633"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    </div>  
                 </div>                
             </div>
         </nav>
@@ -326,7 +342,7 @@
                 <a href="<?php echo base_url() ?>panduan-komunitas">Panduan Komunitas</a>
                 <a href="<?php echo base_url() ?>kontak">Kontak</a>
                 <a href="#">Karir</a>
-                <div class="container">
+                <div class="container" style="width:  100% !important;">
                     <div class="center50 c-l">
                         Copyright 2018 eyesoccer.id. All Rights Reserved.
                     </div>
@@ -418,5 +434,39 @@
 			});
 		});
     </script>
+    <table class="tbl-sticky-ads">
+        <tr>
+            <td>
+                <div class="HomeBannerKiriResponsive">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- EyesoccerDekstop 2b#HomeBannerKiriResponsive -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="3363818459"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </td>
+            <td style="width: 1065px;">
+            </td>
+            <td>
+                <div class="HomeBannerKananResponsive">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- EyesoccerDekstop 2a#HomeBannerKananResponsive -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-7635854626605122"
+                        data-ad-slot="5199644303"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </td>
+        </tr>
+    </table>
     </body>
 </html>

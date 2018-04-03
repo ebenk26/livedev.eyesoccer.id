@@ -77,7 +77,7 @@
 					?>							
 					    <li>
 						<span>
-						<a href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
+						<a style="text-align: left;" href="<?php echo base_url(); ?>eyenews/detail/<?= $row['url'];?>">
 						<?= $row['title']; ?></a>									
 						</span>
 					    </li>
@@ -94,7 +94,7 @@
 	<div class="container">
 	    <div class="m-0">
 		<div class="subjudul2">
-		    <h4>BERITA TERKINI</h4>
+		    <h4><a href="<?php echo base_url();?>eyenews/terkini">BERITA TERKINI</a></h4>
 		</div>
 	    </div>
 	    <div class="container m-t-15">
@@ -128,8 +128,17 @@
 		</div>
 	    </div>
 	</div>
-	<div class="container banner-150">
-		<img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads">
+	<div class="container banner-150 EyenewsHomeBanner970x90 tx-c" style="background-color: unset;">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- EyesoccerDekstop 18#EyenewsHomeBanner970x90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-7635854626605122"
+     data-ad-slot="8746576453"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		<!-- <img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="Banner Ads"> -->
 	</div>
 	
 	<?php $this->load->view('eyenews/category_widget'); ?>
