@@ -26,6 +26,14 @@ class Eyemarket extends CI_Controller {
 	public function index()
 	{	
 		$data['products']	= $this->Eyemarket_model->get_all_product();
+
+		$url 	= $this->config->item('api_url_lab')."market-category";
+		$cred 	= $this->config->item('credential');
+
+		$model 			=  $this->excurl->remoteCall($url,$cred);
+
+		$data["model"] = json_decode($model);
+
 		$data["body"] 		= $this->load->view('/eyemarket/new_view/index', $data, true);
 		$data["kanal"] 		= 'eyemarket';
 		
