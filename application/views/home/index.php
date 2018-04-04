@@ -378,8 +378,8 @@
 					}
 					?>
                 </div>
-                <div class="et-content2">				
-                    <div class="v-et-content2" style="margin-top: 78px;">
+                <div class="et-content2" style="margin-top:  -21px;">				
+                    <div class="v-et-content2">
 					<?php
 								$i = 0;
 								foreach ($video_eyetube as $videonya)
@@ -387,7 +387,7 @@
 									if ($i != 0)
 									{
 					?>			
-						<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>" style="text-decoration: unset;">
+						<a href="<?=base_url().'eyetube/detail/'.$videonya['url']; ?>" style="text-decoration: unset;display:  block;height:  250px;overflow:  hidden; margin-bottom: 15px;">
                         <!-- judul eyetube
 						<div class="t-et-content2">
                             <span class="et-st"><?php
@@ -397,7 +397,7 @@
 					?></span>
                             <p class="et-st-det"><?= $videonya['title']; ?></p>
                         </div> -->
-						<img class="v-et-2 v-et-100 lazy" width="100%" src="<?= MEVID.$videonya['thumb']; ?>/medium" alt="" style="margin-bottom: 10px;">
+						<img class="v-et-2 v-et-100 lazy" width="100%" src="<?= MEVID.$videonya['thumb']; ?>/medium" alt="" style="margin-bottom: 10px;bottom: unset;">
 							<!-- <div class="container btn-play2"><img class="lazy" src="<?php echo base_url()?>assets/home/img/btn-play.png" alt="" style="z-index:1;width:100%;height:100%;"></div>	 -->
 						</a>
 					<?php
@@ -411,7 +411,7 @@
                 </div>					
             </div>
 
-            <div class="container tab" style="padding-top: 30px;">
+            <div class="container tab" style="padding-top: 60px;">
                 <span href="" id="star" data-target="#esTab" data-slide-to="0" class="active nonactive" active="true">eyesoccer star</span>
                 <span href="" id="vpopuler" data-target="#esTab" data-slide-to="1" class="nonactive">video popular</span>
                 <span href="" id="vkamu" data-target="#esTab" data-slide-to="2" class="nonactive">video kamu</span>

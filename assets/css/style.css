@@ -140,7 +140,7 @@ video[poster=""]{
 .logo{
     padding-top: 15px;
     padding-left: 0px !important;
-    /* margin-left: -10px; */
+    margin-left: -10px;
 }
 .btn-login{
     padding: 25px 15px 25px 25px;
@@ -169,9 +169,6 @@ nav .center-desktop, .x-m{
     float: unset;
     display: block;
     height: 61px;
-}
-.x-m{
-    overflow: hidden;
 }
 .x-m>ul {
 	list-style:none;
@@ -991,19 +988,11 @@ footer{
 .t-c-b{
     width: 185px;
     margin: 0 auto;
-    padding: 34px 0px;
-}
-#liga_inggris td{
-    padding: 10px 8px;
+    padding: 18px 0px;
 }
 .t-live{
     display: block;
     color: #9E9E9E;
-    font-size: .9em;
-    line-height: 1em;
-    overflow: hidden;
-    margin: 2px 0px;
-    height: 1em;
 }
 .border-b .tx-c{
     font-size: .8em;
@@ -1015,7 +1004,7 @@ footer{
 }
 .border-b>tbody>tr>td>.i-r, .border-b>tbody>tr>td>.i-l{
     position: relative;
-    /* top: 7px; */
+    top: 7px;
 }
 .border-b>tbody>tr>td>.i-r>img, .border-b>tbody>tr>td>.i-l>img{
     width: 25px;
@@ -1024,10 +1013,10 @@ footer{
     padding-top: 20px;
 }
 .border-b>tbody>tr>td>.i-l{
-    /* left: 15px; */
+    left: 15px;
 }
 .border-b>tbody>tr>td>.i-r{
-    /* right: 15px; */
+    right: 15px;
 }
 .c-l{
     font-size: .7em;
@@ -4996,94 +4985,66 @@ img.loading {
     -webkit-transform: scale(1.5) !important;
     transform: scale(1.1, 1.1) translate(-45%,-45%) !important;
 }
-/* .img-banner{
-    background-color: gainsboro;
-}
-.img-banner img {
-    height: 100%;
-    width: 100%;
-}
-.banner-a1{
-    all: unset;
-    width: 300px !important;
-    height: 60px !important;
-    float: right;
-    margin: 5px !important;
-    overflow: hidden;
-}
-.banner-home1{
-    width: 1065px;
-    height: 300px;
-}
-.banner-eyenews1{
-    width: 315px;
-    height: 320px;
-}
-.banner-eyenews3{
-    width: 1065px;
-    height: 100px;
-}
-.banner-eyenews4{
-    width: 360px;
-    height: 320px;
-}
-.banner-eyetube1{
-    width: 300px;
-    height: 320px;
-}
-.banner-eyetube2{
-    width: 690px;
-    height: 100px;
-}
-.banner-eyevent1{
-    width: 300px;
-    height: 305px;
-}
-.banner-eyeprofile1{
-    width: 430px;
-    height: 300px;
-}
-.banner-eyeprofile4{
-    width: 425px;
-    height: 100px;
-}
-.banner-eyeprofile5{
-    width: 425px;
-    height: 200px;
-} 
 /*author*/
-.author-style
-{
-    padding-top:50px;
-    padding-bottom:50px;
-    height:50px;
-    background-color:#720404fc;
+.author-style{
+    padding: 30px 0 70px 0;
 }
-.author-name
-{
-    font-size:50px;
-    padding-left:250px;
-    margin-top:5px;
-    top:5px;
-    height:50px;
-    background-color:#ffa726;
+.author-name{
+    width: max-content;
+    margin: 25px;
+    cursor: default !important;
 }
-.h3-author{
-
-    font-size: .8em;
+.auth-line{
+    width: 100px;
+    border-top: 5px solid orange;
+    position: relative;
+    top: 80px;
+    left: 126px;
+}
+.author-pic{
+    width: 100px;
+    height: 100px;
+    background-color: gainsboro;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 2px 2px 4px gainsboro;
+}
+.author-pic img{
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+}
+.auth-details{
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: #010101;
-    background-color:#ffa726;
-    font-weight: 600;
-    padding-top:5px;padding-bottom:5px;padding-left:100px;
+    cursor: default !important;
 }
-.author-pic
-{
-    padding-left:100px;
-    margin-top:-120px;
+.tbl-author{
+    border-top: 1px solid gainsboro;
+    margin-top: 10px;
 }
-.L_author{   width:300px;font-size:14px;background-color:#ffa72699;}
-.L_author:hover{   width:300px;background-color:#d9993b99;}
+.tbl-author tr:hover{
+    background-color: #c1c1c11a;
+}
+.tbl-author td:nth-of-type(2){
+    text-align: right;
+}
+/* .tbl-author td:nth-of-type(3){
+    width: 60px;
+    padding-left: 0px;
+    text-align: left;
+} */
+.bb1g{
+    border-bottom: 1px solid gainsboro;
+    padding: 5px 0;
+}
+/* .L_author{   width:300px;font-size:14px;background-color:#ffa72699;}
+.L_author:hover{   width:300px;background-color:#d9993b99;} */
 
 .news-capt img{
     all: unset !important;
@@ -5099,15 +5060,46 @@ img.loading {
     color: #afb0b4 !important;
     font-weight: 500 !important;
 }
-/* .border-b>tbody>tr>td{
-    padding: 24px 8px;
-}
-.border-b>tbody>tr>td>.i-r{
-    top: unset;
-} */
 .clb{
     font-size: .9em;
     line-height: 1em;
     height: 1em;
     overflow: hidden;
+}
+.box-bj{
+    padding: 10px 10px 10px 15px;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    margin-bottom: 20px;
+}
+.bj{
+    color: #424242;
+    font-weight: 800;
+    font-size: .9em;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    display: block;
+}
+.bj-ttl{
+    font-size: .8em;
+    line-height: 1.4em;
+    border: none;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed gainsboro;
+    box-sizing: border-box;
+    margin-left: 10px;
+    padding-left: 5px;
+}
+.box-bj strong{
+    color: #424242;
+}
+.bj::before{
+    content: '';
+    width: 5px;
+    height: 18px;
+    position: relative;
+    background-color: #D32F2F;
+    display: block;
+    float: left;
+    margin-right: 10px;
 }

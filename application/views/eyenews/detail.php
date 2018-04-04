@@ -114,14 +114,16 @@
                                 <tr>
                                     <td>
                                     
-                                        <a href="<?=base_url()?>author/<?php echo $value['fullname'];?>">
+                                        <a href="<?=base_url()?>author/<?php
+                                            $link_admin="?name=".$value['fullname'];echo "$link_admin"; ?>">
                                             <img src="<?=base_url()?>assets/eyenews/img/EYEME/user-discover.png" alt="profil foto">
                                         </a>
                                     </td>
                                     <td>
                                         <ul>
                                             <li>
-                                        <a href="<?=base_url()?>author/<?php echo $value['fullname'];?>">
+                                        <a href="<?=base_url()?>author/<?php                                         
+                                            $link_admin="?name=".$value['fullname'];echo "$link_admin"; ?>">
                                                     <span class="unname"><?= $value['fullname']; ?> - </span>
                                                     
                                                 </a>
@@ -151,24 +153,24 @@
 									if($i == $tengah)
 									{
 							?>
-										<div class='col-lg-12 col-xs-12 bg-default thumbnail' style='line-height:200%;padding-left:10px;padding-right:10px;'>
-											<span style="color:#45a7c4;margin: unset;padding: unset;">Baca Juga :</span>
+										<div class='container box-bj'>
+											<span class="bj">Baca Juga :</span>
 											
 							<?php
 										foreach ($bacajuga as $judul)
 										{
 							?>
 											<a href="<?= base_url(); ?>eyenews/detail/<?= $judul["url"] ?>" id="a4" class="">
-												<p class='h6 text-bold' style='color:#45a7c4;margin: unset;padding: unset;'>
-													<strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> <?= $judul["title"]; ?></strong>
+												<p class='bj-ttl'>
+													<strong><?= $judul["title"]; ?></strong>
 												</p>      
 											</a>
 							<?php
 										}
 							?>
 											<a href="<?= base_url(); ?>eyetube/detail/<?= $video->url; ?>" id="a4" class="">
-												<p class='h6 text-bold' style='color:#45a7c4;margin: unset;padding: unset;'>
-													<strong><i class="fa fa-chevron-circle-right" aria-hidden="true"></i> Eyetube | <?= $video->title; ?></strong>
+												<p class='bj-ttl'>
+													<strong>Eyetube | <?= $video->title; ?></strong>
 												</p>
 											</a>
 											
