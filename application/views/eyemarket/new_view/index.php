@@ -5,7 +5,7 @@
                 </ul>
             </div>
             <div class="center-desktop m-0">
-                <div class="menu-3 m-0 tx-c bbg">
+                <div class="menu-3 m-0 tx-c">
                     <ul>
                         <?php 
                             for($i = 0; $i <= 8; $i++)
@@ -21,6 +21,9 @@
                 </div>
             </div>
     <div class="row m-0">
+    <div class="container br-market">
+			    	    <h2>Kaos</h2>
+			    	</div>
 
 <?php
     foreach ($products as $produk)
