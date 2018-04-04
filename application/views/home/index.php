@@ -3,6 +3,7 @@
             <div class="left navigate" href="#jadwal" role="button">
                 <i class="material-icons">keyboard_arrow_left</i>
             </div>
+            <div class="baseurl" val="<?php echo base_url()?>"></div>
             <div role="listbox" class="j-box carousel-inner">
                 <div class="over item active">
 				<?php foreach ($jadwal as $jadual){
