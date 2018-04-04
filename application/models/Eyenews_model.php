@@ -12,6 +12,8 @@ class Eyenews_model extends CI_Model
                                         tbl_eyenews A
 									WHERE
 										A.publish_on <= NOW()
+									AND
+										A.ads not in (1)
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 5
@@ -27,6 +29,8 @@ class Eyenews_model extends CI_Model
                                         tbl_eyenews A
 									WHERE
 										A.publish_on <= NOW()
+									AND
+										A.ads not in (1)
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 3
@@ -44,6 +48,8 @@ class Eyenews_model extends CI_Model
                                         tbl_eyenews A
 									WHERE
 										A.publish_on <= NOW()
+									AND
+										A.ads not in (1)
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 12
@@ -135,6 +141,8 @@ class Eyenews_model extends CI_Model
                                         tbl_eyenews A
 									WHERE
 										A.publish_on <= NOW()
+									AND
+										A.ads not in (1)
                                     ORDER BY 
                                     	A.publish_on DESC
                                     LIMIT 5
@@ -156,6 +164,8 @@ class Eyenews_model extends CI_Model
                                         tbl_eyenews A
 									WHERE
 										A.publish_on <= NOW()
+									AND
+										A.ads not in (1)
                                     ORDER BY 
                                     	A.news_view DESC
                                     LIMIT 5
@@ -263,6 +273,8 @@ class Eyenews_model extends CI_Model
 										tbl_eyenews a
 									WHERE
 										a.publish_on <= NOW()
+									AND
+										a.ads not in (1)
 									ORDER BY
 										a.publish_on DESC
 									LIMIT
@@ -542,6 +554,36 @@ public function get_trending_eyenews()
                                     ORDER BY 
                                         A.publish_on DESC
                                     Limit 4
+                                        ")->result_array();
+            return $query; 
+	}
+	
+	public function get_eyenews_ads1()
+	{
+		$query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        tbl_eyenews
+									WHERE
+										ads = 1
+                                    ORDER BY 
+                                        publish_on ASC
+                                    Limit 1
+                                        ")->result_array();
+            return $query; 
+	}
+	
+	public function get_eyenews_ads2()
+	{
+		$query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        tbl_eyenews
+									WHERE
+										ads = 1
+                                    ORDER BY 
+                                        publish_on DESC
+                                    Limit 1
                                         ")->result_array();
             return $query; 
 	}

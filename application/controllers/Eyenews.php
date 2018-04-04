@@ -38,12 +38,15 @@ class Eyenews extends CI_Controller {
 		$where    = array();
 		$selectID = 'eyenews_id';
 		$tbl      = 'tbl_eyenews';
-		$limit    = 4;
+		$limit    = 8;
 		$offset   = 5;
 		$uri_segment = 3;
 		$url      = 'eyenews/page';
 		$like = array('prod_name'=> '','merk'=> '');
 		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
+		
+		$data['paggingads1']   = $this->Eyenews_model->get_eyenews_ads1();
+		$data['paggingads2']   = $this->Eyenews_model->get_eyenews_ads2();
 		
 		$data['kanal'] 					= "eyenews";
 		$data["body"]=$this->load->view('eyenews/index', $data,true);
@@ -74,7 +77,7 @@ class Eyenews extends CI_Controller {
 		$where    = array();
 		$selectID = 'eyenews_id';
 		$tbl      = 'tbl_eyenews';
-		$limit    = 4;
+		$limit    = 8;
 		$offset   = $this->uri->segment(3) + 5;
 		$uri_segment = 3;
 		$url      = 'eyenews/page';
