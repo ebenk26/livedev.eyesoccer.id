@@ -5103,3 +5103,22 @@ img.loading {
     float: left;
     margin-right: 10px;
 }
+.br-market {
+    color: #f7c400;
+    border-bottom: 1px solid #f7c400;
+    height: 1.2em;
+    margin: 10px 0;
+}
+.br-market h2{
+    font-size: 1.2em;
+    font-weight: 400;
+    float: left;
+    padding: 0 15px 0 3px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    display: inline-block;
+    background-color: white;
+    position: relative;
+    top: -19px;
+    left: -15px;
+}
