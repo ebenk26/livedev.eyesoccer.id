@@ -89,6 +89,7 @@ $admin_id=$_SESSION["admin_id"];
       $credit=addslashes($_POST['credit']);
       $category_news=$_POST['category_news'];
       $tag=$_POST['tag'];
+      $ads=$_POST['ads'];
       $meta_description=$_POST['meta_description'];
       $pic=rand("1000","9999")."-".$_FILES['pic']['name'];
       $pic = preg_replace('/\s+/', '', $pic);
@@ -143,7 +144,7 @@ $admin_id=$_SESSION["admin_id"];
 		// exit();
 	// update rizki end
 		// $cmd=mysqli_query($con,"insert into tbl_eyenews (title,admin_id,news_type,description,credit,category_news,tag,meta_description,pic,thumb1, thumb2,createon,publish_on) values ('$title','".$_SESSION["admin_id"]."','$news_type','$description','$credit','$category_news','$tag','$meta_description','$pic','$thumb1','$pic2','$now','".$publish_on."')");   //ori cmd
-	  $cmd=mysqli_query($con,"insert into tbl_eyenews (title,admin_id,news_type,sub_category_name,description,credit,category_news,tag,meta_description,pic,thumb1,thumb2,createon,publish_on,url) values ('$title','".$_SESSION["admin_id"]."','$news_type','$sub_category_name','$description','$credit','$category_news','$tag','$meta_description','$pic','$thumb1','$pic2','$now','".$publish_on."','".$url."')");      
+	  $cmd=mysqli_query($con,"insert into tbl_eyenews (title,admin_id,news_type,sub_category_name,description,credit,category_news,tag,meta_description,pic,thumb1,thumb2,createon,publish_on,url,ads) values ('$title','".$_SESSION["admin_id"]."','$news_type','$sub_category_name','$description','$credit','$category_news','$tag','$meta_description','$pic','$thumb1','$pic2','$now','".$publish_on."','".$url."','".$ads."')");      
            // echo "insert into tbl_eyenews (title,admin_id,news_type,sub_category_name,description,credit,category_news,tag,meta_description,pic,thumb1,thumb2,createon,publish_on,url) values ('$title','".$_SESSION["admin_id"]."','$news_type','$sub_category_name','$description','$credit','$category_news','$tag','$meta_description','$pic','$thumb1','$pic2','$now','".$publish_on."','".$url."')";
            // exit();
            header("refresh:0");
@@ -177,6 +178,7 @@ $admin_id=$_SESSION["admin_id"];
 	  <div class="form-group" id="t1">Credit<input type="text" name="credit" class="form-control" id="set8"></div>
 	  <div class="form-group" id="t1">Category<select name="category_news" class="form-control"><option value="1">Bukan Rekomendasi</option><option value="2">Rekomendasi</option></select></div>		
 	  <div class="form-group" id="t1">Tag<input type="text" name="tag" class="form-control"></div>
+	  <div class="form-group" id="t1">Iklan<select name="ads" class="form-control"><option value="0">Bukan Iklan</option><option value="1">Iklan</option></select></div>
 	  <div class="form-group" style="color:#ff0033">Contoh : Ronaldo;Real Madrid;Spanyol</div>
 	  <div class="form-group" id="t1">Meta Description<input type="text" name="meta_description" class="form-control"></div>
 	  <div class="form-group" style="color:#ff0033">Note : Maximum 250 Karakter</div>	  
