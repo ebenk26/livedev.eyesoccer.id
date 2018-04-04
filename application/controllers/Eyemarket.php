@@ -25,19 +25,37 @@ class Eyemarket extends CI_Controller {
 
 	public function index()
 	{	
-		$data['products']	= $this->Eyemarket_model->get_all_product();
+		$data['products']	= $this->Eyemarket_model->get_produk_kat('1');
 
-		$url 	= $this->config->item('api_url_lab')."market-category";
-		$cred 	= $this->config->item('credential');
-
-		$model 			=  $this->excurl->remoteCall($url,$cred);
-
-		$data["model"] = json_decode($model);
+		$data["kat"] 		= $this->Eyemarket_model->get_all_kategori();
 
 		$data["body"] 		= $this->load->view('/eyemarket/new_view/index', $data, true);
 		$data["kanal"] 		= 'eyemarket';
 		
 		$this->load->view('/template/static', $data);
+	}
+
+	public function api_index()
+	{
+		$idkat = $_POST['idkat'];
+
+		$data['prod'] = $this->Eyemarket_model->get_produk_kat($idkat);
+		$data['kat'] = $this->Eyemarket_model->get_kategori($idkat);
+		
+		if ($data['prod'] == null)
+		{
+			$html = "<div class='container br-market'>
+    					<h2>".$data["kat"]->nama."</h2>
+					</div>
+					<h2 style='text-align:  center;font-size:  1.1em;color: #f5c600; font-weight: 400;'> yahh produk belum tersedia :(</h2>";
+		}
+		else
+		{
+			$html = $this->load->view('eyemarket/new_view/index_api',$data, true);
+		}
+
+		// var_dump($html);exit();
+		echo json_encode(array('html' => $html));
 	}
 
 	public function detail($toko,$title_slug)

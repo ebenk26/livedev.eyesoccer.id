@@ -208,7 +208,7 @@
                 </div>
             </div>
         </div>
-		<div class="container banner-150 img-banner mt-20">
+		<div class="container banner-150 img-banner mt-20 tx-c" style="height:auto; background-color:unset;">
 			<!-- <img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="banner ads full width"> -->
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 15a#EyeprofileLigaBanner970x250 -->
