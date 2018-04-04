@@ -4,7 +4,22 @@
                     <li><a href="<?= base_url(); ?>eyemarket">EyeMarket</a></li>
                 </ul>
             </div>
-
+            <div class="center-desktop m-0">
+                <div class="menu-3 m-0 tx-c bbg">
+                    <ul>
+                        <?php 
+                            for($i = 0; $i <= 8; $i++)
+                            {
+                        ?>
+                                <li>
+                                    <a href="#">Sleeveless shirt</a>
+                                </li>
+                        <?php  
+                            }
+                        ?>
+                    </ul>
+                </div>
+            </div>
     <div class="row m-0">
 
 <?php
