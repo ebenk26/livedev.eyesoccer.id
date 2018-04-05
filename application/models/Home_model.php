@@ -609,7 +609,28 @@ class Home_model extends CI_Model
 								")->result_array();
 		return $query;
 	}
+
 	
+	public function get_jadwal_hariini()
+	{
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d H:i:s")."') AND (a.jadwal_pertandingan <'".date("Y-m-d H:i:s")."' + INTERVAL 1 DAY) order by jadwal_pertandingan ASC LIMIT 8
+								")->result_array();
+		return $query;
+	}
+
+	public function get_jadwal_kemaren()
+	{
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d H:i:s")."' - INTERVAL 1 DAY) AND (a.jadwal_pertandingan <'".date("Y-m-d H:i:s")."') order by jadwal_pertandingan ASC LIMIT 8
+								")->result_array();
+		return $query;
+	}
+
+	public function get_jadwal_besok()
+	{
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d H:i:s")."' + INTERVAL 1 DAY) AND (a.jadwal_pertandingan <'".date("Y-m-d H:i:s")."' + INTERVAL 2 DAY) order by jadwal_pertandingan ASC LIMIT 8
+								")->result_array();
+		return $query;
+	}
 	public function get_eyemarket_main()
 	{
 		$query = $this->db->query("	SELECT
