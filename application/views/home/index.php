@@ -1,3 +1,10 @@
+		<style>
+		.score_match{
+			font-size: .9em !important;
+			color: #000000 !important;
+			font-weight: bold !important;
+		}
+		</style>
 		<!-- JADWAL -->
 		<div class="baseurl" val="<?php echo base_url()?>"></div>
 		<div id="jadwal" class="jadwal carousel slide" style="overflow:  hidden;">
@@ -724,16 +731,27 @@
         <div class="center-desktop t-40">
             <div class="container">
                 <div class="et-content1">
-                    <span class="jp green">JADWAL PERTANDINGAN</span>
+                    <span class="jp green">JADWAL & HASIL PERTANDINGAN</span>
                     <div class="border-box" style="margin-top: 22px;">
                         <div class="container bg-g">						
                             <div class="t-tab">
-								<div class="day-choose t-active" id="jadwal_today">
+								<div class="day-choose" id="jadwal_kemaren">
+                                    <a href="#" onclick="return false;">Kemaren
+                                        <span>
+											<?php
+												$date = new DateTime(date("Y-m-d"));
+												$date->modify('-1 day');
+												echo $date->format('d F');
+											?>
+										</span>
+                                    </a>
+                                </div>
+								<div class="day-choose t-active" id="jadwal_hariini">
                                     <a href="#" onclick="return false;">Hari ini
                                         <span><?=date("d F")?></span>
                                     </a>
                                 </div>
-                                <div class="day-choose" id="jadwal_tomorrow">
+                                <div class="day-choose" id="jadwal_besok">
                                     <a href="#" onclick="return false;">Besok
                                         <span>
 											<?php
@@ -744,64 +762,57 @@
 										</span>
                                     </a>
                                 </div>
-                                <div class="day-choose" id="jadwal_tomorrow2">
-                                    <a href="#" onclick="return false;">Lusa
-                                        <span>
-											<?php
-												$date = new DateTime(date("Y-m-d"));
-												$date->modify('+2 day');
-												echo $date->format('d F');
-											?>
-										</span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
-						<div id="tbl_jadwal_today">
-							
+						<div id="tbl_jadwal_kemaren" style="display:none">
 							<table class="table border-b">
+							<?php
+								if(empty($jadwal_kemaren)){
+							?>
 								<tbody>
-								<?php
-									foreach($jadwal_today as $row){
-								?>
+									<tr>
+										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Kemaren</span></td>
+									</tr>
+								</tbody>
+							<?php
+								}
+							else
+								{
+									foreach($jadwal_kemaren as $row){
+							?>
+								<tbody>
 									<tr>
 										<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
-										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
+										<td align="center"><span class="score_match"><?=$row["score_a"]?> - <?=$row["score_b"]?></span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
 										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
 									</tr>
-								<?php }?>
 								</tbody>
+							<?php
+									} 
+								}
+							?>
 							</table>
 						</div>
-						<div id="tbl_jadwal_tomorrow" style="display:none">
-							
+						<div id="tbl_jadwal_hariini">
 							<table class="table border-b">
+								<tbody>
+								<?php
+								if(empty($jadwal_hariini)){
+							?>
+								<tbody>
+									<tr>
+										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Hari ini</span></td>
+									</tr>
+								</tbody>
 							<?php
-						foreach($jadwal_tomorrow1 as $row){
-						?>
-                            <tbody>
-                                <tr>
-									<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
-									<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
-                                    <td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
-									<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
-									</td>
-									<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-                                    <td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
-                                </tr>
-                            </tbody>
-						<?php }?>
-							</table>
-						</div>
-						<div id="tbl_jadwal_tomorrow2" style="display:none">
-							
-							<table class="table border-b">
-							<?php
-							foreach($jadwal_tomorrow2 as $row){
+								}
+							else
+								{
+									foreach($jadwal_hariini as $row){
 							?>
 								<tbody>
 									<tr>
@@ -814,7 +825,44 @@
 										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
 									</tr>
 								</tbody>
-							<?php }?>
+							<?php
+									} 
+								}
+							?>
+								</tbody>
+							</table>
+						</div>
+						<div id="tbl_jadwal_besok" style="display:none">
+							<table class="table border-b">
+							<?php
+								if(empty($jadwal_besok)){
+							?>
+								<tbody>
+									<tr>
+										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Besok Hari</span></td>
+									</tr>
+								</tbody>
+							<?php
+								}
+							else
+								{
+									foreach($jadwal_besok as $row){
+							?>
+								<tbody>
+									<tr>
+										<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
+										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
+										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
+										</td>
+										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
+										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
+									</tr>
+								</tbody>
+							<?php
+									} 
+								}
+							?>
 							</table>
 						</div>
                         <div class="t-c-b">
@@ -1127,25 +1175,25 @@
 				})
 				
 
-				$('#tbl_jadwal_tomorrow,#tbl_jadwal_tomorrow2').hide();
+				$('#tbl_jadwal_kemaren,#tbl_jadwal_besok').hide();
 					
-				$('#jadwal_today').click(function(){
-					$('#tbl_jadwal_tomorrow,#tbl_jadwal_tomorrow2').hide();
+				$('#jadwal_hariini').click(function(){
+					$('#tbl_jadwal_kemaren,#tbl_jadwal_besok').hide();
 					$('.day-choose').removeClass('t-active');
-					$('#jadwal_today').addClass('t-active');
-					$('#tbl_jadwal_today').show();
+					$('#jadwal_hariini').addClass('t-active');
+					$('#tbl_jadwal_hariini').show();
 				});
-				$('#jadwal_tomorrow').click(function(){
-					$('#tbl_jadwal_tomorrow2,#tbl_jadwal_today').hide();
+				$('#jadwal_kemaren').click(function(){
+					$('#tbl_jadwal_besok,#tbl_jadwal_hariini').hide();
 					$('.day-choose').removeClass('t-active');
-					$('#jadwal_tomorrow').addClass('t-active');
-					$('#tbl_jadwal_tomorrow').show();
+					$('#jadwal_kemaren').addClass('t-active');
+					$('#tbl_jadwal_kemaren').show();
 				});
-				$('#jadwal_tomorrow2').click(function(){
-					$('#tbl_jadwal_tomorrow,#tbl_jadwal_today').hide();
+				$('#jadwal_besok').click(function(){
+					$('#tbl_jadwal_kemaren,#tbl_jadwal_hariini').hide();
 					$('.day-choose').removeClass('t-active');
-					$('#jadwal_tomorrow2').addClass('t-active');
-					$('#tbl_jadwal_tomorrow2').show();
+					$('#jadwal_besok').addClass('t-active');
+					$('#tbl_jadwal_besok').show();
 				});
 				$("#select_league").change(function(){
 					if($("#select_league").val() == "liga_indonesia"){

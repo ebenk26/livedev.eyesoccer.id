@@ -6,6 +6,7 @@
 <a href="member_player_update?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-user-circle-o"></i> PLAYER UPDATE</div></a>
 <div id="menu1"></i>CONTENT SETTINGS</div>
 <a href="club?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-futbol-o"></i> CLUB</div></a>
+<a href="free_player?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-futbol-o"></i> FREE PLAYER</div></a>
 <a href="eyenews?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-newspaper-o"></i> EYENEWS</div></a>
 <a href="eyetube?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-play-circle-o fa-lg"></i> EYETUBE</div></a>
 <a href="eyevent?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-calendar"></i> EYEVENT</div></a>
@@ -27,6 +28,7 @@
 <a href="eyetube_category?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-list"></i> EYETUBE CATEGORY</div></a>
 <a href="newsgallery?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-image"></i> NEWS GALLERY</div></a>
 <a href="aduser?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-user"></i> LIST ADMIN</div></a>
+<a href="eyeadsarticle?admin_id=<?php print $admin_id ?>"><div id="menu2"><i class="fa fa-user"></i> ADS ARTICLE</div></a>
 
 <a href="logout"><div id="menu2"><i class="fa fa-sign-out"></i> LOGOUT</div></a>
 <br><br>

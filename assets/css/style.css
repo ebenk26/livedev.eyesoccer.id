@@ -5103,53 +5103,45 @@ img.loading {
     float: left;
     margin-right: 10px;
 }
-.box-bg{
-   
-    background: linear-gradient(to left ,#F8F7F7,#E0E0E0,#F8F7F7,#E0E0E0);
-    background-size: 400% 400%;
-    -webkit-animation: grad 3s ease-in-out infinite;
-    -moz-animation: grad 3s ease-in-out infinite;
-    animation: grad 3s ease-in-out infinite;
-
+.br-market {
+    color: #f7c400;
+    border-bottom: 1px solid #f7c400;
+    height: 1.2em;
+    margin: 10px 0;
 }
-
-
-@-webkit-keyframes grad{
-  0% {
-        background-position: 100% 50%; 
-    }
-    
-    50%{
-        background-position: 50% 100%;
-    }
-    
-    100%{
-        background-position: 0% 50%;
-    }
+.br-market h2{
+    font-size: 1.2em;
+    font-weight: 400;
+    float: left;
+    padding: 0 15px 0 3px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    display: inline-block;
+    background-color: white;
+    position: relative;
+    top: -19px;
+    left: -15px;
+    color: #f5c600;
 }
-@-moz-keyframes grad{
-    0% {
-        background-position: 100% 50%; 
-    }
-    
-    50%{
-        background-position: 50% 100%;
-    }
-    
-    100%{
-        background-position: 0% 50%;
-    }
+.enews-detail p a{
+    color: #03A9F4;
+    text-decoration: none !important;
+    font-weight: 500;
 }
-@keyframes grad{
-   0% {
-        background-position: 100% 50%; 
-    }
-    
-    50%{
-        background-position: 50% 100%;
-    }
-    
-    100%{
-        background-position: 0% 50%;
-    }
+.enews-detail p a:hover{
+    border-bottom: 2px solid;
+}
+.enews-detail p strong{
+    color: #424242;
+    font-weight: 600;
+}
+.enews-detail p{
+    margin: 25px 0px;
+}
+.profile-writer>span{
+    float: right;
+    margin-right: 15px;
+    font-size: 12px;
+    padding-top: 8px;
+
 }

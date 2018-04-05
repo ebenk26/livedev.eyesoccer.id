@@ -54,7 +54,6 @@ $nestedData=array();
 	$nestedData[] = '<a href="eyenews_edit?admin_id=1&eyenews_id='.$eyenews_id.'" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>&emsp;<a class="btn btn-danger" onclick=\'if(confirm("Apa anda yakin untuk menghapus ?")) window.location = "eyenews_delete?admin_id=1&eyenews_id='.$eyenews_id.'"\'><i class="fa fa-trash-o" aria-hidden="true"></i></i> Delete</a>';
 	
 	$data2[] = $nestedData;
-	$i++;
 }
 
 

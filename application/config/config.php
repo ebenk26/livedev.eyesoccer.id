@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['credential'] 	= 'eyeapp:super4ppm1nd3d';
 $config['api_url'] 		= 'http://api.eyesoccer.id:8080/v1/';
+$config['api_url_lab'] 	= 'http://api.eyesoccer.id:3000/v1/';
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

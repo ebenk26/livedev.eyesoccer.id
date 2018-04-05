@@ -1,15 +1,15 @@
  <?php 
-	$club = json_decode($clubs);
+	$club = json_decode($clubs);//decode json from api 
 	$club = $club->data;
 ?>
     <div id="epSlide" class="carousel slide">
     	<div role="listbox" class="carousel-inner" style="height: 165px;overflow:  hidden;">  
 
 
-	<?php for($i= 0; $i < 12;$i+=4){ $k = 0 ;?>
+	<?php for($i= 0; $i < 12;$i+=4){ $k = 0 ;//looping with +4 ?>
 			<div class="box item <?php echo ($i == 0 ? 'active' : '')?>" style="margin-top: 3px;margin-left: 3px;">
 				<?php for($j=$i;$j < count($club);$j++){	
-					$k++;
+					$k++;//break looping if count of item is 4 
 					if($k == 5){
 						break;
 					}

@@ -208,7 +208,7 @@
                 </div>
             </div>
         </div>
-		<div class="container banner-150 img-banner mt-20">
+		<div class="container banner-150 img-banner mt-20 tx-c" style="height:auto; background-color:unset;">
 			<!-- <img src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="banner ads full width"> -->
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 15a#EyeprofileLigaBanner970x250 -->
@@ -318,36 +318,86 @@
         <div class="w-40 pd-t-20">
             <div class="container">
                 <h3>Transfer Terbaru</h3>
-                <table class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
-                    <thead>
-                        <tr>
-                            <th class="t-b-b">No</th>
-                            <th class="t-b-b">Pemain</th>
-                            <th class="t-b-b">Status</th>
-                            <th class="t-b-b">Dari</th>
-                            <th class="t-b-b">ke</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+				<table width="400" id="liga_indonesia" class="radius table table-striped" cellspacing="0" cellpadding="0">
+					<thead>
+						<tr>
+							<th width="30%">Pemain</th>
+							<th width="10%">Usia</th>
+							<th width="30%">Dari</th>
+							<th width="30%">Ke</th>
+						</tr>
+					</thead>
+					<tbody>
 					<?php
-					$no=1;
-					foreach($transfer_pemain as $transfer){
-					?>
-                        <tr>
-                            <td><?=$no++?></td>
-                            <td>
-                                <?=$transfer['nama']?>
-                                <span><?=$transfer['posisi']?></span>
-                            </td>
-                            <td>-</td>
-                            <td>-<img src="" alt="" width="25px"></td>
-                            <td>-<img src="" alt="" width="25px"></td>
-                        </tr>
-						<?php
+					if($title_liga == 'Liga Indonesia 1'){
+						$context = stream_context_create(array(
+							'http' => array(
+								'header' => array('User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'),
+							),
+						));
+						
+						$eyespot = file_get_contents('https://www.transfermarkt.com.mt/transfers/letztetransfers/statistik/plus/0?land_id=68', false, $context);
+						$premiere_doc = new DOMDocument();
+						libxml_use_internal_errors(TRUE);
+						if(!empty($eyespot)){
+							$premiere_doc->loadHTML($eyespot);
+							libxml_clear_errors();
+							$transfermarkt_xpath = new DOMXPath($premiere_doc);
+
+							//get all the tr's with an attribute
+							$transfermarkt_row = $transfermarkt_xpath->query('//tr[@class]');
+							$transfermarkt_list = array();
+							$i = 0;
+							if($transfermarkt_row->length > 0){
+								foreach($transfermarkt_row as $row){
+									if($i < 5){
+										$types = $transfermarkt_xpath->query('td', $row);
+										$n = 0;
+										foreach($types as $type){
+											if($type->nodeValue != ""){
+												if($n != 2){
+													if($n != 5){
+														if($n != 6){
+															if($n != 7){
+																if($n != 8){
+																	if ($n != 9) {
+																		$nodeValue = "<td>".$type->nodeValue.'</td>';
+																		echo $nodeValue;
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											$n++;
+										}
+										$i ++;
+									}
+									echo "</tr>";
+								}
+							}
 						}
-						?> 
-                    </tbody>
-                </table>
+						?>
+					</tbody>
+				</table>
+					<?php
+					}else{
+					?>
+								<tr>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>						
+							</tbody>
+						</table>
+					<?php
+					}
+				?>
                 <div class="nav-pencetak-gol" style="display:none;">
                     <ul>
                         <li>
@@ -364,18 +414,6 @@
                     </ul>
                 </div>
             </div>
-			<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="height: 150px;background-color: unset;">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
-			<ins class="adsbygoogle"
-				style="display:inline-block;width:336px;height:280px"
-				data-ad-client="ca-pub-7635854626605122"
-				data-ad-slot="9007490396"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
-			</div>	
 			 <div class="container" style="margin-top:7px;">
                 <h3>Daftar Pencetak Gol</h3>	
 				<table class="radius table table-striped" cellspacing="0" cellpadding="0">
