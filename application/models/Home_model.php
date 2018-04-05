@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home_model extends CI_Model
 {
+	private function __xurl() { return $this->config->item('api_url'); }
+    private function __xkey() { return $this->config->item('credential'); }
 
 	public function get_all_jadwal()
 	{
@@ -876,6 +878,15 @@ class Home_model extends CI_Model
 									LIMIT 3
                                         ")->result_array();
             return $query; 
+    }
+    function __profile_club(){
+    
+    	$query = array('page'=> '1','limit' => '12','competition' => 'Liga Indonesia 1');
+ 
+    	$data['clubs'] = $this->excurl->remoteCall($this->__xurl().'profile-club', $this->__xkey(), $query);
+    	$html = $this->load->view('home/home_club',$data,true);
+        $arr = array('xClass' => 'test' ,'xHtml'=> $html);
+        echo json_encode($arr);
     }
 
 }

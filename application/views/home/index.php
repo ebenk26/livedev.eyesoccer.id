@@ -1,4 +1,5 @@
 		<!-- JADWAL -->
+		<div class="baseurl" val="<?php echo base_url()?>"></div>
 		<div id="jadwal" class="jadwal carousel slide" style="overflow:  hidden;">
             <div class="left navigate" href="#jadwal" role="button">
                 <i class="material-icons">keyboard_arrow_left</i>
@@ -73,100 +74,32 @@
                 <i class="material-icons r-kl">keyboard_arrow_right</i>                       </a>         
             </span>            
             <div id="epSlide" class="carousel slide">
-                <div role="listbox" class="carousel-inner" style="height: 165px;overflow:  hidden;">                    
-                    <div class="box item active" style="margin-top: 3px;margin-left: 3px;">
-                        <?php 
-							foreach ($profile_club as $club)
-							{
-						?>			
-							
-								<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
-									<div class="box-content">
-										<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
-										<!--<img height="100px;" src="assets/img/ss-img.png">-->
-										<img width="130" height="130" class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-										<div class="detail">
-											<h2><?= $club['nama_club']; ?></h2>
-											<h3><?= $club['competition']; ?></h3>
-											<table>
-												<tr>
-													<td>Squad</td>
-													<td><?= $club['squad']; ?></td>
-												</tr>
-												<tr>
-													<td>Manager</td>
-													<td><?= $club['nama_manager']; ?></td>
-												</tr>
-											</table>                        
-										</div>
-									</div>
-								</a>
-						<?php 
-						}
-						?>
-                        </div>
-                        <div class="box item" style="margin-top: 3px;margin-left: 3px;">
-						<?php 
-						foreach ($profile_club_2 as $club)
-						{
-					?>			
-							<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
-								<div class="box-content">
-									<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
-									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img width="130" height="130" class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-									<div class="detail">
-										<h2><?= $club['nama_club']; ?></h2>
-										<h3><?= $club['competition']; ?></h3>
-										<table>
-											<tr>
-												<td>Squad</td>
-												<td><?= $club['squad']; ?></td>
-											</tr>
-											<tr>
-												<td>Manager</td>
-												<td><?= $club['nama_manager']; ?></td>
-											</tr>
-										</table>                        
-									</div>
-								</div>
-							</a>
-					<?php 
-					}
-					?>
-                        </div>
-                        <div class="box item" style="margin-top: 3px;margin-left: 3px;">
-						<?php 
-						foreach ($profile_club_3 as $club)
-						{
-					?>			
-							<a href="<?=base_url().'eyeprofile/klub_detail/'.$club['link_klub']; ?>">
-								<div class="box-content">
-									<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
-									<!--<img height="100px;" src="assets/img/ss-img.png">-->
-									<img width="130" height="130" class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $club['logo']; ?>">
-									<div class="detail">
-										<h2><?= $club['nama_club']; ?></h2>
-										<h3><?= $club['competition']; ?></h3>
-										<table>
-											<tr>
-												<td>Squad</td>
-												<td><?= $club['squad']; ?></td>
-											</tr>
-											<tr>
-												<td>Manager</td>
-												<td><?= $club['nama_manager']; ?></td>
-											</tr>
-										</table>                        
-									</div>
-								</div>
-							</a>
-					<?php 
-					}
-					?>
-                        </div>
+                <div role="listbox" class="carousel-inner" style="height: 165px;overflow:  hidden;">  
+
+                <div id="reqprofile" class="loadprofile" action="">    
+                <input type="hidden" name="fn" value="profile_club" class="cinput">  
+                	<script>
+                		$(document).ready(function(){
+                			$(window).on('load',function(){
+                			ajaxOnLoad('loadprofile');
+                			});
+
+                		})
+                	</script>          
+                </div> 
+                   
+                	<div id="test">
+	                    <div class="box item active" style="margin-top: 3px;margin-left: 3px;">
+	              			<?php 
+	              				for($i= 0;$i < 4;$i++){?>
+		                        	<div class="box-content box-bg">
+
+		                        	</div>	
+                        	<?php }?>	
+								
+	                    </div>
+                	</div>
                 </div>  
-    
                 <div class="carousel-indicators bx-dot ep-dot">
                     <span data-target="#epSlide" data-slide-to="0" class="dot active"></span>
                     <span data-target="#epSlide" data-slide-to="1" class="dot"></span>
@@ -1230,4 +1163,11 @@
 					}
 				});
 			})
+			
+
+
+			$('.multi-item-carousel').carousel({
+  interval: false
+});
+
 		</script>

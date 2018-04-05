@@ -111,6 +111,7 @@
             <script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
             <script src="<?php echo base_url();?>assets/js/lazyload.min.js"></script>
             <script src="<?php echo base_url();?>assets/js/jquery.sticky.js"></script>
+             <script src="<?php echo base_url();?>assets/js/main.js"></script>
 			<script src='<?=base_url()?>bs/js/infiniteScroll.js'></script>
 
             <link rel="manifest" href="/manifest.json" />
