@@ -35,7 +35,7 @@ class Eyenews extends CI_Controller {
 		$data['jadwal_tomorrow'] 		= $this->Eyenews_model->get_jadwal_tomorrow();	
 		$data['trending_eyenews'] 		= $this->Eyenews_model->get_trending_eyenews();
 
-		$where    = array();
+		$where    = array('ads !='=>'1');
 		$selectID = 'eyenews_id';
 		$tbl      = 'tbl_eyenews';
 		$limit    = 8;

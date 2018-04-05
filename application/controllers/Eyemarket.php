@@ -47,7 +47,7 @@ class Eyemarket extends CI_Controller {
 			$html = "<div class='container br-market'>
     					<h2>".$data["kat"]->nama."</h2>
 					</div>
-					<h2>Produk Kosong</h2>";
+					<h2 style='text-align:  center;font-size:  1.1em;color: #f5c600; font-weight: 400;'> yahh produk belum tersedia :(</h2>";
 		}
 		else
 		{

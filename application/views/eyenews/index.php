@@ -102,7 +102,7 @@
 			$i = 0;
 			foreach ($pagging['row'] as $similar)
 			{
-				if($i == 6){
+				if(isset($paggingads1) && $i == 6){
 					// print_r($paggingads);
 					foreach ($paggingads1 as $similar2){
 					?>
@@ -126,7 +126,7 @@
 						</div>
 					<?php
 					}
-				}else if($i == 7){
+				}else if(isset($paggingads1) && $i == 7){
 					// print_r($paggingads);
 					foreach ($paggingads2 as $similar2){
 					?>

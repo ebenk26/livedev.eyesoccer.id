@@ -5121,4 +5121,26 @@ img.loading {
     position: relative;
     top: -19px;
     left: -15px;
+    color: #f5c600;
+}
+.enews-detail p a{
+    color: #03A9F4;
+    text-decoration: none !important;
+    font-weight: 500;
+}
+.enews-detail p a:hover{
+    border-bottom: 2px solid;
+}
+.enews-detail p strong{
+    color: #424242;
+    font-weight: 600;
+}
+.enews-detail p{
+    margin: 25px 0px;
+}
+.profile-writer>span{
+    float: right;
+    margin-right: 15px;
+    font-size: 12px;
+    padding-top: 8px;
 }
