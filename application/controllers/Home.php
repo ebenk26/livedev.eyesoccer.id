@@ -72,6 +72,9 @@ class Home extends CI_Controller
         $data['jadwal_tomorrow2'] = $this->Home_model->get_jadwal_tomorrow2();
         $data['jadwal_yesterday'] = $this->Home_model->get_jadwal_yesterday();
         $data['jadwal_tomorrow'] = $this->Home_model->get_jadwal_tomorrow();
+        $data['jadwal_hariini'] = $this->Home_model->get_jadwal_hariini();
+        $data['jadwal_kemaren'] = $this->Home_model->get_jadwal_kemaren();
+        $data['jadwal_besok'] = $this->Home_model->get_jadwal_besok();
         $data['eyemarket_main'] = $this->Home_model->get_eyemarket_main();
         $data['klasemen'] = $this->Home_model->get_klasemen();
         $data['products'] = $this->Home_model->get_all_product();
