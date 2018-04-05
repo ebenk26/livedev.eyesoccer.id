@@ -164,8 +164,6 @@
 				})(window,document,'script','dataLayer','GTM-P7HQLCC');</script>
 				<!-- End Google Tag Manager -->
 		<?php
-			}else{
-				echo "ssss";
 			}
 		?>
     </head>
@@ -502,8 +500,6 @@
 				height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<!-- End Google Tag Manager (noscript) -->
 		<?php
-			}else{
-				echo "ssss";
 			}
 		?>
     </body>
