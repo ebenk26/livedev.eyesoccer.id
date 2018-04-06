@@ -412,6 +412,8 @@ class Home_model extends CI_Model
 											a.url
 										FROM
 											tbl_eyenews a
+										WHERE
+											a.ads not in (1)
 										ORDER BY
 											a.eyenews_id DESC
 										LIMIT
@@ -453,6 +455,8 @@ class Home_model extends CI_Model
 										tbl_eyenews a
 									WHERE
 										a.news_type = '$news_type'
+									AND
+										a.ads not in (1)
 									ORDER BY
 										a.eyenews_id DESC
 									LIMIT
