@@ -103,7 +103,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -136,7 +136,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -188,7 +188,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_ystd["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_ystd["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -221,7 +221,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_ystd["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_ystd["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -268,7 +268,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_today["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_today["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -301,7 +301,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_today["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_today["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -353,7 +353,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_tmrw["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_tmrw["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -387,7 +387,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_tmrw["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_tmrw["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -439,7 +439,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -472,7 +472,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -524,7 +524,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_three["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_three["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -557,7 +557,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_three["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_three["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">

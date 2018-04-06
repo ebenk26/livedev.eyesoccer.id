@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home_model extends CI_Model
 {
+	private function __xurl() { return $this->config->item('api_url'); }
+    private function __xkey() { return $this->config->item('credential'); }
 
 	public function get_all_jadwal()
 	{
@@ -617,21 +619,21 @@ class Home_model extends CI_Model
 	
 	public function get_jadwal_hariini()
 	{
-		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d")."') AND (a.jadwal_pertandingan <'".date("Y-m-d")."' + INTERVAL 1 DAY) order by jadwal_pertandingan ASC LIMIT 8
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b,c.competition as liga_a,d.competition as liga_b,c.url as url_a,d.url as url_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d")."') AND (a.jadwal_pertandingan <'".date("Y-m-d")."' + INTERVAL 1 DAY) order by jadwal_pertandingan ASC LIMIT 8
 								")->result_array();
 		return $query;
 	}
 
 	public function get_jadwal_kemaren()
 	{
-		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d")."' - INTERVAL 1 DAY) AND (a.jadwal_pertandingan <'".date("Y-m-d")."') order by jadwal_pertandingan ASC LIMIT 8
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b,c.competition as liga_a,d.competition as liga_b,c.url as url_a,d.url as url_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d")."' - INTERVAL 1 DAY) AND (a.jadwal_pertandingan <'".date("Y-m-d")."') order by jadwal_pertandingan ASC LIMIT 8
 								")->result_array();
 		return $query;
 	}
 
 	public function get_jadwal_besok()
 	{
-		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d")."' + INTERVAL 1 DAY) AND (a.jadwal_pertandingan <'".date("Y-m-d")."' + INTERVAL 2 DAY) order by jadwal_pertandingan ASC LIMIT 8
+		$query = $this->db->query("	SELECT a.*,c.club_id as club_id_a,d.club_id as club_id_b,c.logo as logo_a,d.logo as logo_b,c.name as club_a,d.name as club_b,c.competition as liga_a,d.competition as liga_b,c.url as url_a,d.url as url_b FROM tbl_jadwal_event a LEFT JOIN tbl_event b ON b.id_event=a.id_event INNER JOIN tbl_club c ON c.club_id=a.tim_a INNER JOIN tbl_club d ON d.club_id=a.tim_b where b.title !='' AND (a.jadwal_pertandingan >='".date("Y-m-d")."' + INTERVAL 1 DAY) AND (a.jadwal_pertandingan <'".date("Y-m-d")."' + INTERVAL 2 DAY) order by jadwal_pertandingan ASC LIMIT 8
 								")->result_array();
 		return $query;
 	}
@@ -901,6 +903,15 @@ class Home_model extends CI_Model
 									LIMIT 3
                                         ")->result_array();
             return $query; 
+    }
+    function __profile_club(){
+    
+    	$query = array('page'=> '1','limit' => '12','competition' => 'Liga Indonesia 1');
+ 
+    	$data['clubs'] = $this->excurl->remoteCall($this->__xurl().'profile-club', $this->__xkey(), $query);
+    	$html = $this->load->view('home/home_club',$data,true);
+        $arr = array('xClass' => 'test' ,'xHtml'=> $html);
+        echo json_encode($arr);
     }
 
 }

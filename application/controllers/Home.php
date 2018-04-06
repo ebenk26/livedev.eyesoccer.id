@@ -20,24 +20,23 @@ class Home extends CI_Controller
 
     public function index()
     {
+         if($_POST){
+
+            $fn   = $_POST['fn'];     
+            $data = [];
+            if(function_exists($fn))
+            {
+                $fn();
+            } else {
+                $fn = "__".$fn;
+                $this->Home_model->$fn();
+            }
+
+        }
+        else{
         $data["meta"]["title"] = "";
         $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
         $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-
-        // $cmd_ads=$this->db->query("select * from tbl_ads")->result_array();
-        // $i=0;
-        // foreach($cmd_ads as $ads){
-        // $e=0;
-        // foreach($ads as $key => $val)
-        // {
-        // $array[$i][$e] =  $val;
-        // $e++;
-        // }
-        // $i++;
-        // }
-        // $data["array"]=$array;
-        // $data["page"]="home";
-        // $data["popup"]=$array[14][3];
 
         $data['jadwal'] = $this->Home_model->get_all_jadwal();
         $data['jadwal_2'] = $this->Home_model->get_all_jadwal_2();
@@ -84,6 +83,7 @@ class Home extends CI_Controller
 
         $data["body"] = $this->load->view('home/index', $data, TRUE);
         $this->load->view('template/static', $data);
+        }
 
         //$data["body"]=$this->load->view('home/index2', $data, true);
         //$this->load->view('template-front-end',$data);
