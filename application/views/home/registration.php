@@ -42,7 +42,7 @@
                             <a href="<?php echo base_url()?>home/forgot_password">Lupa password?</a>
                         </div>
                         <button class="btn-orange-3" style="width:100%; margin:20px 0;">MASUK</button>
-                        <div class="container tx-c">
+<!--                         <div class="container tx-c">
                             <table>
                                 <tr>
                                     <td>
@@ -74,7 +74,7 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </form>
                 <form class="form-signup">
