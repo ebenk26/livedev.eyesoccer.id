@@ -587,6 +587,20 @@ public function get_trending_eyenews()
                                         ")->result_array();
             return $query; 
 	}
+	
+	public function get_eyenews_ads()
+	{
+		$query = $this->db->query(" SELECT
+                                        *
+                                    FROM
+                                        tbl_eyenews
+									WHERE
+										ads = 1
+                                    ORDER BY 
+                                        publish_on ASC
+                                        ")->result_array();
+            return $query; 
+	}
 }
 
 /* End of file Eyenews_model.php */

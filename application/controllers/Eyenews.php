@@ -45,8 +45,7 @@ class Eyenews extends CI_Controller {
 		$like = array('prod_name'=> '','merk'=> '');
 		$data['pagging']   = $this->Master_model->pagging($selectID, $tbl, $limit, $offset, $url, $uri_segment, '', $where, $selectFieldRow = '');
 		
-		$data['paggingads1']   = $this->Eyenews_model->get_eyenews_ads1();
-		$data['paggingads2']   = $this->Eyenews_model->get_eyenews_ads2();
+		$data['paggingads']   = $this->Eyenews_model->get_eyenews_ads();
 		
 		$data['kanal'] 					= "eyenews";
 		$data["body"]=$this->load->view('eyenews/index', $data,true);
