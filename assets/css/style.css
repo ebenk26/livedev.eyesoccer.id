@@ -1079,6 +1079,7 @@ footer{
     -webkit-animation-duration: .8s;
     animation-name: fade;
     animation-duration: .8s;
+    z-index: 1;
 }
 @-webkit-keyframes fade {
     0% {opacity: 0;}

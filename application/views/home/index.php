@@ -122,7 +122,7 @@
                 <i class="material-icons leftp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_left</i>
                 <i class="material-icons rightp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
-            <h3 class="o">Pemain Paling Banyak Dilihat</h3>
+            <h3 class="o">Pemain Sepak Bola Indonesia</h3>
             <div class="carousel slide" id="topPemain" >
                 <div class="bx-pemain carousel-inner" role="listbox">
                     <div class="item active">
