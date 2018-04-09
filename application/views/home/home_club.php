@@ -16,8 +16,8 @@
 					?>
 					<a href="<?=base_url().'eyeprofile/klub_detail/'.$club[$j]->slug; ?>">
 					<div class="box-content">
-						<img class="lazy" src="assets/img/ss-img.png" alt="">
-						<img height="100px;" src="assets/img/ss-img.png">
+						<img class="lazy" src="" alt="">
+						<img height="100px;" src="">
 						<img width="130" height="130" class="lazy" src="<?=$club[$j]->url_logo?>">
 						<div class="detail">
 							<h2><?= $club[$j]->name; ?></h2>

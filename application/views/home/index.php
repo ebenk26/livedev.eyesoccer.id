@@ -8,6 +8,24 @@
 		.listmatch:hover{
 		background-color:#fdd79f38;
 		}
+
+		.zona_ucl{background-color: #00580c3b;}
+		.zona_uefa{background-color: #333e963d;}
+		.zona_degradasi{background-color: #ff000047;}
+		.zona_aman{background-color: #ededed47;}
+		.zona_ucl:hover{background-color: #00580c54;}
+		.zona_uefa:hover{background-color: #333e9652;}
+		.zona_degradasi:hover{background-color: #ff00008f;}
+		.zona_aman:hover{background-color: #dcd9d947;}
+		.zona_acl{background-color: #00580c3b;}
+		.zona_afc{background-color: #333e963d;}
+		.zona_afc_wl{background-color: #333e9624;}
+		.zona_aman{background-color: #ededed47;}
+		.zona_acl:hover{background-color: #00580c54;}
+		.zona_afc:hover{background-color: #333e9652;}
+		.zona_afc_wl:hover{background-color: #333e964f;}
+		.zona_aman:hover{background-color: #dcd9d947;}
+
 		</style>
 		<!-- JADWAL -->
 		<div class="baseurl" val="<?php echo base_url()?>"></div>
@@ -122,7 +140,7 @@
                 <i class="material-icons leftp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_left</i>
                 <i class="material-icons rightp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
-            <h3 class="o">Pemain Paling Banyak Dilihat</h3>
+            <h3 class="o">Pemain Sepak Bola Indonesia</h3>
             <div class="carousel slide" id="topPemain" >
                 <div class="bx-pemain carousel-inner" role="listbox">
                     <div class="item active">
@@ -1001,7 +1019,7 @@
 				?>
                 </select>
                     <div class="border-box" style="margin-top: 10px;">
-                        <table id="liga_indonesia" class="table table-striped" style="display:none;">
+                        <table id="liga_indonesia" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -1031,11 +1049,26 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 18){
+											if($i == 1){
+												$trclass="<tr class='zona_acl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_afc'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_afc_wl'>";}
+											elseif($i == 16){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 17){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1066,7 +1099,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_inggris" class="table table-striped">
+						<table id="liga_inggris" class="radius" cellspacing="0" cellpadding="0">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -1090,15 +1123,34 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 20){
+											if($i == 1){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 4){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 5){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 19){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 20){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
-													if(!empty($type->nodeValue)){
+													if($type->nodeValue != ""){
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
@@ -1125,7 +1177,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_italia" class="table table-striped" style="display:none;">
+						<table id="liga_italia" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -1149,20 +1201,41 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 20){
+											if($i == 1){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 4){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 5){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 6){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 19){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 20){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
-													if(!empty($type->nodeValue)){
+													if($type->nodeValue != ""){
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
 																	if($n != 9){
-																		if ($n != 11) {
+																		if($n != 11){
 																			if ($n != 12) {
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
@@ -1184,7 +1257,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_spanyol" class="table table-striped" style="display:none;">
+						<table id="liga_spanyol" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -1208,11 +1281,32 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 20){
+											if($i == 1){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 4){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 5){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 6){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 19){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 20){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -1221,7 +1315,7 @@
 															if($n != 7){
 																if($n != 8){
 																	if($n != 9){
-																		if ($n != 11) {
+																		if($n != 11){
 																			if ($n != 12) {
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
