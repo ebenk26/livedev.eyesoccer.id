@@ -313,7 +313,7 @@
                 <span class="next-right">Lihat Klasemen Lengkap
                     <i class="material-icons t-8">keyboard_arrow_right</i>
                 </span>	
-				<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="width: 100%;padding: unset;position: relative;overflow: unset;height: 147px;">
+				<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="width: 100%;position: relative;overflow: unset;height: 147px;">
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
                             <ins class="adsbygoogle"
