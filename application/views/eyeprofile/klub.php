@@ -312,7 +312,21 @@
 				?>
                 <span class="next-right">Lihat Klasemen Lengkap
                     <i class="material-icons t-8">keyboard_arrow_right</i>
-                </span>				
+                </span>	
+				<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="width: 100%;padding: unset;position: relative;overflow: unset;height: 147px;">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
+                            <ins class="adsbygoogle"
+                                style="display:inline-block;width:336px;height:280px"
+                                data-ad-client="ca-pub-7635854626605122"
+                                data-ad-slot="9007490396"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+            
+                <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width" style="height: unset;position: absolute;top: 0px;left: 0px;">
+            </div>
+			
             </div>
         </div>
         <div class="w-40 pd-t-20">
@@ -414,12 +428,12 @@
                     </ul>
                 </div>
             </div>
-			<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="height: 110px;overflow: hidden;background-color: unset;z-index:  1;box-sizing:  border-box;margin: 15px auto;position: relative;">
+			<!-- <div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="height: 110px;overflow: hidden;background-color: unset;z-index:  1;box-sizing:  border-box;margin: 15px auto;position: relative;">
 				<div style="clip: rect(auto, auto, auto, auto);height: 100%;left: 0;position: absolute;width: 100%;">
 					<div style="height: 100%;margin: 0 auto;position: fixed; top: 70px; transform: translateX(15%) translatey(0%); width: 400px;text-align: center; right: 150px; display: flex; justify-content: flex-start;">
-							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 							<!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
-							<ins class="adsbygoogle"
+							<!-- <ins class="adsbygoogle"
 								style="display:inline-block;width:336px;height:280px"
 								data-ad-client="ca-pub-7635854626605122"
 								data-ad-slot="9007490396"></ins>
@@ -427,10 +441,10 @@
 							(adsbygoogle = window.adsbygoogle || []).push({});
 							</script>
 					</div>
-				</div>
+				</div> -->
 			
 				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
-			</div>	
+			<!-- </div>	 -->
 			 <div class="container" style="margin-top:7px;">
                 <h3>Daftar Pencetak Gol</h3>	
 				<table class="radius table table-striped" cellspacing="0" cellpadding="0">
