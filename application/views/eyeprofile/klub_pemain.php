@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </tr>
                             <tr>
                                 <td>Situs</td>
-                                <td>: </td>
+                                <td>: <?=$row["website"]?></td>
                             </tr>
 							
                         </tbody>
