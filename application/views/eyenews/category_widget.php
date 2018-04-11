@@ -1,4 +1,17 @@
 <style>
+	.clb{
+    text-transform: uppercase;
+    font-size:10px;
+	}
+	.tvchanel{
+		color:#d19595;
+		padding: 3px 0px;
+		border-radius: 15px;
+		background-color:#e6e6e652;
+	}
+	.listmatch:hover{
+	background-color:#fdd79f38;
+	}
 .nn img{
         height: 100%;
     position: absolute;
@@ -227,35 +240,56 @@
                         foreach($jadwal_today as $row)
                                 {
                                     ?>	
-                                <!-- <tr>
-                                        <td colspan="5"><p></p></td>
-                                </tr>						 -->
-                                <tr>
-                                    <td colspan="5" style="padding-top:5px; color:rgb(200,0,0);">
-                                        <span><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span><?=$row["club_a"]?></span>
-                                    </td>
-                                    <td>
-                                        <img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt="">
-                                    </td>
-                                    <td>
-                                        <!-- <span><?=date("d M Y - H:i:s",strtotime($row["jadwal_pertandingan"]))?></span> -->
-                                        <p><?=$row['live_pertandingan']?></p>
-                                    </td>
-                                    <td>
-                                        <img src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt="">
-                                    </td>
-                                    <td>
-                                        <span><?=$row["club_b"]?></span>
-                                    </td>
-                                </tr>
-                                <tr>
+								<tbody>
+									<tr class="listmatch">
+										<td>
+										<a href="<?php 
+                                                if(($row["liga_a"]=='Liga Lainnya') OR ($row["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$row["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$row["url_a"];
+                                                    }
+                                
+                                					echo $href_a ?>">
+										<span class="clb"><?=$row["club_a"]?></span></a></td>
+										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td><span class="tgl_live"><?=date("d M Y  H:i",strtotime($row["jadwal_pertandingan"]))?></span>
+										<span
+													<?php
+													if($row['live_pertandingan']==NULL)
+													{
+														$live='>';
+													}
+													else
+													{
+														$live=' class="t-live tvchanel"> '.$row['live_pertandingan'];
+													}
+
+													echo $live;
+													?>
+										</span>
+										</td>
+										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
+										<td class="tx-l">
+										<a href="<?php 
+                                                if(($row["liga_b"]=='Liga Lainnya') OR ($row["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$row["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$row["url_b"];
+                                                    }
+                                
+                                					echo $href_b ?>">
+										<span class="clb"><?=$row["club_b"]?></a></span></td>
+									</tr>
                                     <td colspan="5" class="garis-x4" style="padding-top:5px;"></td>
                                 </tr>
+								</tbody>
                             <?php
                         }
                     }

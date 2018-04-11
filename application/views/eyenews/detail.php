@@ -84,7 +84,8 @@
 	
         $tipe           = $value['news_type'];
         $id             = $value['eyenews_id'];
-        $bacajuga       = $this->Eyenews_model->get_baca_juga($tipe,$id,2);
+        $limit          = 2;
+        $bacajuga       = $this->Eyenews_model->get_baca_juga($tipe,$id,$limit);
         $video          = $this->Eyenews_model->get_eyetube_title();
 	
 	?>
@@ -109,24 +110,36 @@
 						</div>
                     </div>
                     <div class="container mt-10">
-                        <div class="fl-l n-c">
+                    <div class="fl-l n-c">
                             <table>
                                 <tr>
                                     <td>
-                                    
-                                        <a href="<?=base_url()?>author/<?php
-                                            $link_admin="?name=".$value['fullname'];echo "$link_admin"; ?>">
-                                            <img src="<?=base_url()?>assets/eyenews/img/EYEME/user-discover.png" alt="profil foto">
-                                        </a>
+                                    <?php 
+                                                if($value['ads_author']!=NULL)
+                                                {
+                                                    echo "<img src='".base_url()."assets/eyenews/img/EYEME/user-discover.png' alt='profil foto'>";
+                                                }
+                                                else
+                                                {
+                                                    $values=str_pad($value['admin_id'], 3, '0', STR_PAD_LEFT);
+                                                    echo "<a href='".base_url()."author/".$value['fullname']."-".$values."'><img src='".base_url()."assets/img/eyesoccer%20logo_001.png' alt='profil foto'></a>";
+                                                }
+                                            ?>
                                     </td>
                                     <td>
                                         <ul>
                                             <li>
-                                        <a href="<?=base_url()?>author/<?php                                         
-                                            $link_admin="?name=".$value['fullname'];echo "$link_admin"; ?>">
-                                                    <span class="unname"><?= $value['fullname']; ?> - </span>
-                                                    
-                                                </a>
+                                            <?php
+                                                if($value['ads_author']!=NULL)
+                                                {
+                                                    echo "<span class='unname'>".$value['ads_author']." - </span>";
+                                                }
+                                                else
+                                                {
+                                                    $values=str_pad($value['admin_id'], 3, '0', STR_PAD_LEFT);
+                                                    echo "<a href='".base_url()."author/".$value['fullname']."-".$values."'><span class='unname'>".$value['fullname']."</a> - </span>";
+                                                }
+                                            ?>
                                             </li>
                                             <li>
                                                 <span><?= date_format($date,"d M Y H:i:s"); ?> - </span>

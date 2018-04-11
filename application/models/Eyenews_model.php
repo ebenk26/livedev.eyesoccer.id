@@ -88,7 +88,6 @@ class Eyenews_model extends CI_Model
                                         ")->result_array();
         return $query; 
     }
-
     public function get_baca_juga($tipe,$id,$limit)
     {
 		$query = $this->db->query(" SELECT
@@ -108,6 +107,29 @@ class Eyenews_model extends CI_Model
                                     ORDER BY 
                                     	A.publish_on DESC
                                     LIMIT $limit
+                                        ")->result_array();
+        return $query; 
+	}
+	
+	public function get_baca_jugaads($idads,$limitads)
+    {
+		$query = $this->db->query(" SELECT
+										A.eyenews_id,
+                                        A.title,
+                                        A.thumb1,
+                                        A.publish_on,
+										A.url
+                                    FROM
+                                        tbl_eyenews A
+                                    WHERE
+                                    	A.ads!=0
+									AND 
+                                    	A.eyenews_id!='$idads'
+									AND
+										A.publish_on <= NOW()
+                                    ORDER BY 
+                                    	A.publish_on DESC
+                                    LIMIT $limitads
                                         ")->result_array();
         return $query; 
     }
@@ -411,8 +433,12 @@ public function get_jadwal_today()
 										d.club_id as club_id_b,
 										c.logo as logo_a,
 										d.logo as logo_b,
+										c.competition as liga_a,
+										d.competition as liga_b,
 										c.name as club_a,
-										d.name as club_b
+										d.name as club_b,
+										c.url as url_a,
+										d.url as url_b
 									FROM 
 										tbl_jadwal_event a 
 									LEFT JOIN 

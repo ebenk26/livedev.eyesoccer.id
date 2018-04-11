@@ -1,4 +1,17 @@
 <style>
+	.clb{
+    text-transform: uppercase;
+	}
+	.tvchanel{
+		color:#d19595;
+		padding: 3px 0px;
+		border-radius: 15px;
+		background-color:#e6e6e652;
+	}
+	.listmatch:hover{
+	background-color:#fdd79f38;
+	}
+
     .pagging-enews-home .pagination > li > a, .pagination > li > span {
 	color: rgb(200,0,0);
     }
@@ -6,7 +19,7 @@
 	background-color: rgb(200,0,0);
 	border-color: rgb(200,0,0);
 	color: white;
-	z-index: 1;
+	z-index: 1; 
     }
     .menu-3 a:hover{
 	border-bottom: 3px solid rgb(200, 0, 0);
