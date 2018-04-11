@@ -1,5 +1,26 @@
 </div>
 <style>
+    .ads_selengkapnya{
+        display:  block;
+		width:  100%;
+		text-align:  center;
+		font-size:  .9em;
+		font-weight:  600;
+	}
+    .link_selengkapnya{
+        padding: 8px 20px;
+		border-radius: 20px;
+		font-weight:bold;
+		color: #7b7b7b;
+		background-color:#00ff0c87;
+    }
+    .link_selengkapnya:hover{
+        padding: 8px 20px;
+		border-radius: 20px;
+		font-weight:bold;
+		color: #ffffff;
+		background-color:#00a908c9;
+    }
     .pagination > .active > a {
 	z-index:1;
     }
@@ -115,9 +136,9 @@
                                 <tr>
                                     <td>
                                     <?php 
-                                                if($value['ads_author']!=NULL)
+                                                if($value['ads_author']!=NULL OR $value['ads_author']!=0)
                                                 {
-                                                    echo "<img src='".base_url()."assets/eyenews/img/EYEME/user-discover.png' alt='profil foto'>";
+                                                    echo "<a href='".$value['ads_link']."'><img src='".base_url()."assets/eyenews/img/EYEME/user-discover.png' alt='profil foto'></a>";
                                                 }
                                                 else
                                                 {
@@ -130,9 +151,9 @@
                                         <ul>
                                             <li>
                                             <?php
-                                                if($value['ads_author']!=NULL)
+                                                if($value['ads_author']!=NULL OR $value['ads_author']!=0)
                                                 {
-                                                    echo "<span class='unname'>".$value['ads_author']." - </span>";
+                                                    echo "<a href='".$value['ads_link']."'><span class='unname'>".$value['ads_author']." - </span></a>";
                                                 }
                                                 else
                                                 {
@@ -194,6 +215,16 @@
 								}
 							?>
 						</span>
+
+                    <?php
+                    if($value['ads_link']!=NULL OR $value['ads_link']!=0){
+                        echo "<span class='ads_selengkapnya'><a class='link_selengkapnya' href='".$value['ads_link']."'>lihat artikel asli &gt;&gt;&gt;</a></span>";
+                    }
+                    else{
+                        echo "<span></span>";
+                    }
+                    ?>
+
                     </div>
                     <!-- EMOTICON -->
 					<input type="hidden" id="eyenews_id22" value="<?=$id?>" />
