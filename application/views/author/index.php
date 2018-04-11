@@ -39,7 +39,7 @@ body{
 				<table class="tbl-author">
 					<tr>
 						<td>
-						Jumlah Post ad
+						Jumlah Post
 						</td>
 	<?php 
 		foreach ($totalpost as $tp)
