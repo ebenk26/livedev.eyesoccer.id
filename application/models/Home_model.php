@@ -905,9 +905,19 @@ class Home_model extends CI_Model
     	$query = array('page'=> '1','limit' => '12','competition' => 'Liga Indonesia 1');
  
     	$data['clubs'] = $this->excurl->remoteCall($this->__xurl().'profile-club', $this->__xkey(), $query);
-    	$html = $this->load->view('home/home_club',$data,true);
-        $arr = array('xClass' => 'test' ,'xHtml'=> $html);
+    	$html = $this->load->view('home/ajax/home_club',$data,true);
+        $arr = array('xClass' => 'reslistclub' ,'xHtml'=> $html);
         echo json_encode($arr);
+    }
+    function __list_player(){
+    	$page = rand(0,5);
+    	$query = array('page'=> $page,'limit' => '10','competition'=> 'Liga Indonesia 1');
+    	$data['player'] = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query);
+    	$html = $this->load->view('home/ajax/list_player',$data,true);
+    	$arr = array('xClass'=> 'resplayerlist','xHtml'=> $html);
+    	echo json_encode($arr);
+
+    	
     }
 
 }
