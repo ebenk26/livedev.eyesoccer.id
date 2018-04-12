@@ -1,4 +1,7 @@
 <style>
+.listmatch{
+background-color:#fcfcfc;
+}
 .listmatch:hover{
 background-color:#fdd79f38;
 }
@@ -9,10 +12,10 @@ background-color:#fdd79f38;
             color:#d19595;
 			padding: 3px 0px;
 			border-radius: 15px;
-			background-color:#e6e6e652;
+			background-color:#fa4f4f52;
 }
 .livechanel:hover{
-    background-color: #dddddd;
+    background-color: #ff4141a3;
 }
 </style>
 <div class="container eyv m-t-20">

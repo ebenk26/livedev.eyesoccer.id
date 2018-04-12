@@ -42,6 +42,8 @@ class Eyevent_model extends CI_Model
 							d.competition as liga_b,
 							c.logo as logo_a,
 							d.logo as logo_b,
+							c.competition as liga_a,
+							d.competition as liga_b,
 							c.name as club_a,
 							d.name as club_b,
 							c.url as url_a,
