@@ -84,7 +84,7 @@ define('MEURL', base_url() . 'eyeme/');
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('MEIMG', base_url() . 'img/img_storage/ori_');
 } else {
-    define('MEIMG', 'http://static.eyesoccer.id/v1/cache/images/');
+    define('MEIMG', 'https://static.eyesoccer.id/v1/cache/images/');
 }
 
 define('IMGPATH', './upload/eyeme/');
