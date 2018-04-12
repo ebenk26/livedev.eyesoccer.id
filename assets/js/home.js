@@ -31,9 +31,7 @@ $(document).ready(function(){
 		});
 		});
 });
-$(document).ready(function(){
-    $("#epSlide").carousel();
-});
+
 $(document).ready(function(){
     $("#topPemain").carousel();
     $(".leftp").click(function(){

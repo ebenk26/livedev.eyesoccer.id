@@ -102,190 +102,49 @@
                 <a href="<?php echo base_url()?>eyeprofile/klub"><span class="kl">Klub Lainnya</span>
                 <i class="material-icons r-kl">keyboard_arrow_right</i>                       </a>         
             </span>            
-            <div id="epSlide" class="carousel slide">
-                <div role="listbox" class="carousel-inner" style="height: 165px;overflow:  hidden;">  
-
-                <div id="reqprofile" class="loadprofile" action="">    
-                <input type="hidden" name="fn" value="profile_club" class="cinput">  
-                	<script>
-                		$(document).ready(function(){
-                			$(window).on('load',function(){
-                			ajaxOnLoad('loadprofile');
-                			});
-
-                		})
-                	</script>          
-                </div> 
-                   
-                	<div id="test">
-	                    <div class="box item active" style="margin-top: 3px;margin-left: 3px;">
-	              			<?php 
-	              				for($i= 0;$i < 4;$i++){?>
-		                        	<div class="box-content box-bg">
-
-		                        	</div>	
-                        	<?php }?>	
-								
-	                    </div>
-                	</div>
-                </div>  
-                <div class="carousel-indicators bx-dot ep-dot">
-                    <span data-target="#epSlide" data-slide-to="0" class="dot active"></span>
-                    <span data-target="#epSlide" data-slide-to="1" class="dot"></span>
-                    <span data-target="#epSlide" data-slide-to="2" class="dot"></span> 
-                </div>  
+          
+            <div id="reqprofile" class="loadprofile" action>    
+            <input type="hidden" name="fn" value="profile_club" class="cinput">  
+            	<script>
+            		$(document).ready(function(){
+            			$(window).on('load',function(){
+            			ajaxOnLoad('loadprofile');
+            			});
+            		})
+            	</script>          
             </div>
-        <div class="pemain">
+        	<div id="reslistclub">
+          		<?php for($i= 0;$i < 4;$i++){?>
+                	<div class="box-content box-bg">
+                	</div>	
+                <?php }?>	
+        	</div>
+            <div class="pemain">
             <div class="bx-nav">
                 <i class="material-icons leftp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_left</i>
                 <i class="material-icons rightp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
-            <h3 class="o">Pemain Sepak Bola Indonesia</h3>
-            <div class="carousel slide" id="topPemain" >
-                <div class="bx-pemain carousel-inner" role="listbox">
-                    <div class="item active">
-					<?php 
-					$bulan 	= array(
-									'01' => 'Jan',
-									'02' => 'Feb',
-									'03' => 'Mar',
-									'04' => 'Apr',
-									'05' => 'Mei',
-									'06' => 'Juni',
-									'07' => 'Juli',
-									'08' => 'Agust',
-									'09' => 'Sept',
-									'10' => 'Okt',
-									'11' => 'Nov',
-									'12' => 'Des',
-							);
-					foreach ($profile_player as $player)
-					{	
-					?>		
-						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
-							<div class="ctn-pemain">
-								<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
-							  <div class="des-img">
-								<img class="lazy" src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des">
-									<?php
-										$str_name = strlen($player['nama']);
-										if($str_name > 20){
-											$player['nama'] = substr($player['nama'],0,18);
-											$player['nama'] = $player['nama'].'...';
-										}else{
-											$player['nama'] = $player['nama'];
-										}
-										
-										$str_klub = strlen($player['klub']);
-										if($str_klub > 20){
-											$player['klub'] = substr($player['klub'],0,18);
-											$player['klub'] = $player['klub'].'...';
-										}else{
-											$player['klub'] = $player['klub'];
-										}
-									?>
-									<h3><?= $player['nama']; ?></h3>
-									<p style="color: black;font-weight: 500;">
-									<table class="des-p">
-									<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
-									<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
-									<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
-									</table>
-									</p>                        
-								</div>
-							</div>
-						</a>
-					<?php
-					}
-					?>	
-                    </div>
-                    <div class="item">
-					<?php
-					foreach ($profile_player_2 as $player)
-					{	
-					?>		
-						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
-							<div class="ctn-pemain">
-								<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
-								<div class="des-img"><img class="lazy" src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des">
-									<?php
-										$str_name = strlen($player['nama']);
-										if($str_name > 20){
-											$player['nama'] = substr($player['nama'],0,18);
-											$player['nama'] = $player['nama'].'...';
-										}else{
-											$player['nama'] = $player['nama'];
-										}
-										
-										$str_klub = strlen($player['klub']);
-										if($str_klub > 20){
-											$player['klub'] = substr($player['klub'],0,18);
-											$player['klub'] = $player['klub'].'...';
-										}else{
-											$player['klub'] = $player['klub'];
-										}
-									?>
-									<h3><?= $player['nama']; ?></h3>
-									<p style="color: black;font-weight: 500;">
-									<table class="des-p">
-									<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
-									<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
-									<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
-									</table>
-									</p>  
-								</div>
-							</div>
-						</a>
-					<?php
-					}
-					?>
-                    </div>
-                    <div class="item">
-					<?php
-					foreach ($profile_player_3 as $player)
-					{	
-					?>			
-						<a href="<?=base_url().'eyeprofile/pemain_detail/'.$player['link_player']; ?>">
-							<div class="ctn-pemain">
-								<!--<img class="lazy" src="assets/img/ss-img.png" alt="">-->
-								<div class="des-img"><img class="lazy" src="<?php echo imgUrl();?>systems/player_storage/<?= $player['foto']; ?>" alt=""></div>
-								<div class="container des">
-									<?php
-										$str_name = strlen($player['nama']);
-										if($str_name > 20){
-											$player['nama'] = substr($player['nama'],0,18);
-											$player['nama'] = $player['nama'].'...';
-										}else{
-											$player['nama'] = $player['nama'];
-										}
-										
-										$str_klub = strlen($player['klub']);
-										if($str_klub > 20){
-											$player['klub'] = substr($player['klub'],0,18);
-											$player['klub'] = $player['klub'].'...';
-										}else{
-											$player['klub'] = $player['klub'];
-										}
-									?>
-									<h3><?= $player['nama']; ?></h3>
-									<p style="color: black;font-weight: 500;">
-									<table class="des-p">
-									<tr><td>Posisi</td><td>:</td><td><?= $player['posisi']; ?></td></tr>
-									<tr><td>Klub</td><td>:</td><td><?= $player['klub']; ?></td></tr>
-									<tr><td>Tanggal Lahir</td><td>:</td><td><?= $player['tanggal']." ".$bulan[$player['bulan']]." ".$player['tahun']; ?></td></tr>
-									</table>
-									</p>  
-								</div>
-							</div>
-						</a>
-					<?php
-					}
-					?>
-                    </div>
-                </div>
-			</div>
+
+            <h3 class="o">Pemain Paling Banyak Dilihat</h3>
+            <div id="resplayerlist">
+            <div style="margin:auto;width:76%">
+            	<div id="reqplayerlist" class="loadplayerlist" action>
+            		<input type="hidden" name="fn" value="list_player" class="cinput">
+            			<script>
+            				$(document).ready(function(){
+            					$(window).on('load',function(){
+            						ajaxOnLoad('loadplayerlist');
+            					});
+            				});
+            			</script>
+		            <?php for($i= 0;$i < 3;$i++){?>
+		            	<div class="box-content box-bg">
+		            	</div>	
+		            <?php }?>	
+	        	</div>
+        	</div>
+        	</div>
+            
 			<div class="container mt-20 banner-home1 img-banner" style="background: unset;text-align: center;height: unset;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 2#HomeBannerTengah970x250 -->
@@ -1428,7 +1287,7 @@
 
 
 			$('.multi-item-carousel').carousel({
-  interval: false
+  				interval: false
 });
 
 		</script>

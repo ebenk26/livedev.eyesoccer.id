@@ -218,7 +218,7 @@
 
                     <?php
                     if($value['ads_link']!=NULL OR $value['ads_link']!=0){
-                        echo "<span class='ads_selengkapnya'><a class='link_selengkapnya' href='".$value['ads_link']."'>lihat artikel asli &gt;&gt;&gt;</a></span>";
+                        echo "<span target='_blank' class='ads_selengkapnya'><a class='link_selengkapnya' href='".$value['ads_link']."'>lihat artikel asli &gt;&gt;&gt;</a></span>";
                     }
                     else{
                         echo "<span></span>";

@@ -98,6 +98,7 @@ define('MEMBERAREA', base_url() . 'home/member_area');
 define('EYEPROFILE', base_url() . 'eyeprofile/');
 define('pCLUB', EYEPROFILE . 'klub');
 define('pPLAYER', EYEPROFILE . 'pemain');
+define('PLAYERDETAIL', EYEPROFILE . 'pemain_detail/');
 define('pOFFICIAL', EYEPROFILE . 'official');
 define('pREFEREE', EYEPROFILE . 'referee');
 define('pSUPPORT', EYEPROFILE . 'supporter');
@@ -123,7 +124,15 @@ function p($arr)
     print_r($arr);
     echo '</pre>';
 }
+function formatDate($date){
+    $month =  array('Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des');
+    $date = str_replace('-', '/', $date);
+    $date = str_replace('/', ' ', $date);
+    $date = explode(' ', $date);
+    $date[1] = $month[abs($date[1]) - 1];
+    return implode(" ",$date);
 
+}
 function imgCache($url, $size = "medium")
 {
     return 'http://static.eyesoccer.id/v1/cache/images/' . $url . '/' . $size;
