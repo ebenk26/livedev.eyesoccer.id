@@ -1,28 +1,18 @@
 <style>
+.listmatch:hover{
+background-color:#fdd79f38;
+}
 .clubname {
     text-transform: uppercase;
 }
 .livechanel{
-    border-radius: 15px;
-    text-decoration: none;
-    background-color: #f5c6c6;
-    font-weight: 500;
-    margin: 10px 5px;
-    margin-top: 10px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-    margin-left: 5px;
+            color:#d19595;
+			padding: 3px 0px;
+			border-radius: 15px;
+			background-color:#e6e6e652;
 }
 .livechanel:hover{
-    border-radius: 15px;
-    text-decoration: none;
     background-color: #dddddd;
-    font-weight: 500;
-    margin: 10px 5px;
-    margin-top: 10px;
-    margin-right: 5px;
-    margin-bottom: 10px;
-    margin-left: 5px;
 }
 </style>
 <div class="container eyv m-t-20">
@@ -94,7 +84,7 @@
                 {
         ?>
                     <tbody>
-                        <tr>
+                        <tr class="listmatch">
                             <td>
                                 <a href="<?php 
                                                 if(($jdwl_nxt_ystd["liga_a"]=='Liga Lainnya') OR ($jdwl_nxt_ystd["liga_a"]=='Liga International'))
@@ -103,7 +93,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -136,7 +126,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_ystd["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -179,7 +169,7 @@
                 {
         ?>
                     <tbody>
-                        <tr>
+                        <tr class="listmatch">
                             <td>
                                 <a href="<?php 
                                                 if(($jdwl_ystd["liga_a"]=='Liga Lainnya') OR ($jdwl_ystd["liga_a"]=='Liga International'))
@@ -188,7 +178,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_ystd["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_ystd["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -221,7 +211,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_ystd["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_ystd["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -259,7 +249,7 @@
                 {
         ?>
                     <tbody>
-                        <tr>
+                        <tr class="listmatch">
                             <td>
                                 <a href="<?php 
                                                 if(($jdwl_today["liga_a"]=='Liga Lainnya') OR ($jdwl_today["liga_a"]=='Liga International'))
@@ -268,7 +258,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_today["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_today["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -301,7 +291,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_today["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_today["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -344,7 +334,7 @@
                 {
         ?>
                     <tbody>
-                        <tr>
+                        <tr class="listmatch">
                             <td>
                                 <a href="<?php 
                                                 if(($jdwl_tmrw["liga_a"]=='Liga Lainnya') OR ($jdwl_tmrw["liga_a"]=='Liga International'))
@@ -353,7 +343,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_tmrw["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_tmrw["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -387,7 +377,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_tmrw["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_tmrw["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -430,7 +420,7 @@
                 {
         ?>
                     <tbody>
-                        <tr>
+                        <tr class="listmatch">
                             <td>
                                 <a href="<?php 
                                                 if(($jdwl_nxt_tmrw["liga_a"]=='Liga Lainnya') OR ($jdwl_nxt_tmrw["liga_a"]=='Liga International'))
@@ -439,7 +429,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -472,7 +462,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_nxt_tmrw["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">
@@ -515,7 +505,7 @@
                 {
         ?>
                     <tbody>
-                        <tr>
+                        <tr class="listmatch">
                             <td>
                                 <a href="<?php 
                                                 if(($jdwl_three["liga_a"]=='Liga Lainnya') OR ($jdwl_three["liga_a"]=='Liga International'))
@@ -524,7 +514,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_a="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_three["url_a"];
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$jdwl_three["url_a"];
                                                     }
                                 
                                 echo $href_a ?>">
@@ -557,7 +547,7 @@
                                                     }
                                                 else
                                                     {
-                                                        $href_b="<?= base_url(); ?>eyeprofile/klub_detail/".$jdwl_three["url_b"];
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$jdwl_three["url_b"];
                                                     }
                                 
                                 echo $href_b ?>">

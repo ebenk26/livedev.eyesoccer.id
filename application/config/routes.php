@@ -81,7 +81,7 @@ $route['kontak'] 								= "home/kontak_kami";
 $route['newsletter/eyetube'] 					= "home/newsletter/eyetube";
 $route['newsletter/eyenews'] 					= "home/newsletter/eyenews";
 $route['eyeprofile'] 							= "eyeprofile/klub";
-$route['author/(:any)'] 							= "author/name/$1";
+$route['author/(:any)'] 							= "author/index/$1";
 
 $route['eyetube/detail/ini-dia-wajah-baru-stadion-gelora-bung-karno-yang-menghabiskan-dana-760-miliar'] 	= "eyetube/detail/ini-dia-wajah-baru-sation-gelora-bung-karno-yang-menghabiskan-dana-760-miliar";
 

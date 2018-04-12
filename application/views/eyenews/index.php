@@ -1,4 +1,17 @@
 <style>
+	.clb{
+    text-transform: uppercase;
+	}
+	.tvchanel{
+		color:#d19595;
+		padding: 3px 0px;
+		border-radius: 15px;
+		background-color:#e6e6e652;
+	}
+	.listmatch:hover{
+	background-color:#fdd79f38;
+	}
+
     .pagging-enews-home .pagination > li > a, .pagination > li > span {
 	color: rgb(200,0,0);
     }
@@ -6,7 +19,7 @@
 	background-color: rgb(200,0,0);
 	border-color: rgb(200,0,0);
 	color: white;
-	z-index: 1;
+	z-index: 1; 
     }
     .menu-3 a:hover{
 	border-bottom: 3px solid rgb(200, 0, 0);
@@ -97,60 +110,16 @@
 		    <h4><a href="<?php echo base_url();?>eyenews/terkini">BERITA TERKINI</a></h4>
 		</div>
 	    </div>
-	    <div class="container mt-20">
+	    <div class="container mt-20" style="margin-top: 0;">
 		    <?php
 			$i = 0;
+			if(isset($paggingads)){
+				$x = count($paggingads);
+				$n = count($pagging['row']) - $x;
+				$pagging['row'] = array_slice($pagging['row'],$x);
+			}
 			foreach ($pagging['row'] as $similar)
 			{
-				if(isset($paggingads1) && $i == 6){
-					// print_r($paggingads);
-					foreach ($paggingads1 as $similar2){
-					?>
-						<div class="w4">
-							<a href="<?php echo NEWSDETAIL.$similar2['url'];?>">
-
-							<div style="width:100%; height:160px; overflow:hidden;">
-								<img src="<?php echo MEVID.$similar2['thumb1']; ?>" style="min-width:100%; height:100%;" alt="<?= $similar2['title']; ?>" title="<?= $similar2['title']; ?>">
-							</div>
-							<p class="sub-en"><?= $similar2['title']; ?></p>
-							<span class="time-view">Tulisan Kamu</span><br>
-							<span class="time-view">
-							<?php
-								$date    = new DateTime($similar2['publish_on']);
-								$tanggal = date_format($date,"Y-m-d H:i:s");
-								
-								echo relative_time($tanggal) . ' lalu - '.$similar2['news_view'].' views';
-							?>								
-							</span>
-							</a>
-						</div>
-					<?php
-					}
-				}else if(isset($paggingads1) && $i == 7){
-					// print_r($paggingads);
-					foreach ($paggingads2 as $similar2){
-					?>
-						<div class="w4">
-							<a href="<?php echo NEWSDETAIL.$similar2['url'];?>">
-
-							<div style="width:100%; height:160px; overflow:hidden;">
-								<img src="<?php echo MEVID.$similar2['thumb1']; ?>" style="min-width:100%; height:100%;" alt="<?= $similar2['title']; ?>" title="<?= $similar2['title']; ?>">
-							</div>
-							<p class="sub-en"><?= $similar2['title']; ?></p>
-							<span class="time-view">Tulisan Kamu</span><br>
-							<span class="time-view">
-							<?php
-								$date    = new DateTime($similar2['publish_on']);
-								$tanggal = date_format($date,"Y-m-d H:i:s");
-								
-								echo relative_time($tanggal) . ' lalu - '.$similar2['news_view'].' views';
-							?>								
-							</span>
-							</a>
-						</div>
-					<?php
-					}
-				}else{
 			    ?>
 				<div class="w4">
 				    <a href="<?php echo NEWSDETAIL.$similar->url;?>">
@@ -170,11 +139,34 @@
 				    </a>
 				</div>
 			    <?php
+			}
+			if(isset($paggingads)){
+				foreach ($paggingads as $similar2)
+				{
+				?>
+					<div class="w4">
+						<a href="<?php echo NEWSDETAIL.$similar2['url'];?>">
+
+						<div style="width:100%; height:160px; overflow:hidden;">
+							<img src="<?php echo MEVID.$similar2['thumb1']; ?>" style="min-width:100%; height:100%;" alt="<?= $similar2['title']; ?>" title="<?= $similar2['title']; ?>">
+						</div>
+						<p class="sub-en"><?= $similar2['title']; ?></p>
+						<span class="time-view">Tulisan Kamu</span><br>
+						<span class="time-view">
+						<?php
+							$date    = new DateTime($similar2['publish_on']);
+							$tanggal = date_format($date,"Y-m-d H:i:s");
+							
+							echo relative_time($tanggal) . ' lalu - '.$similar2['news_view'].' views';
+						?>								
+						</span>
+						</a>
+					</div>
+				<?php
 				}
-				$i++;
 			}
 		    ?>
-		    <div class="pagging-enews-home"><?php echo $pagging['pagging'];?></div>
+		    <!--<div class="pagging-enews-home"><?php echo $pagging['pagging'];?></div>-->
 	    </div>
 	</div>
 	<div class="container banner-150 EyenewsHomeBanner970x90 tx-c" style="background-color: unset;">

@@ -12,6 +12,73 @@
 		margin-right: 20px;
 		margin-bottom: 20px;
 	}
+
+	.zona_acl{background-color:#00791b3b;}
+	.zona_aclqf{background-color:#0700ff29;}
+	.zona_afc{background-color:#0700ff29;}
+	.zona_afc_wl{background-color:#0700ff17;}
+	.zona_degradasi{background-color:#ff000012;}
+	.zona_aman{background-color:#807e7e12;}
+	.zona_acl:hover{background-color:#00791b82;}
+	.zona_aclqf:hover{background-color:#0700ff82;}
+	.zona_afc:hover{background-color:#0700ff57;}
+	.zona_afc_wl:hover{background-color:#0700ff45;}
+	.zona_degradasi:hover{background-color:#ff00007a;}
+	.zona_aman:hover{background-color:#cdadad12;}
+	.dt_zona_acl{
+    font-size:10px;
+    padding: 0px 15px 0px 15px;
+    margin: 20px 20px 20px 20px;
+    position:relative;
+    top:-1px;
+    left:-30px;
+}
+.dt_zona_afc{
+    font-size:10px;
+    padding: 0px 15px 0px 15px;
+    margin: 20px 20px 20px 20px;
+    position:relative;
+    top:-35px;
+    left:150px;
+}
+.dt_zona_afcwl{
+    font-size:10px;
+    padding: 0px 15px 0px 15px;
+    margin: 20px 20px 20px 20px;
+    position:relative;
+    top:-68px;
+    left:260px;
+}
+
+.dt_acl{
+    background-color:#c4e0ca;
+    width: 20px;
+    height:10px;
+    padding: 0px 15px 0px 15px;
+    margin: 10px 10px 10px 10px;
+    border-radius:8px;
+}
+.dt_afc{
+    background-color:#d7d6ff;
+    width: 20px;
+    height:10px;
+    padding: 0px 15px 0px 15px;
+    margin: 10px 10px 10px 10px;
+    border-radius:8px;
+}
+.dt_afcwl{
+    background-color:#e9e8ff;
+    width: 20px;
+    height:10px;
+    padding: 0px 15px 0px 15px;
+    margin: 10px 10px 10px 10px;
+    border-radius:8px;
+}
+
+.dt_acl:hover{background-color:#43de64;}
+.dt_afc:hover{background-color:#5f5dce;}
+.dt_afcwl:hover{background-color:#a39fff;}
+
 </style>
         <div class="center-desktop m-0">
 			<div class="crumb m-t-100">
@@ -233,16 +300,16 @@
                     </select>                    
                 </div>-->
 				
-				<table id="liga_indonesia" class="radius table table-striped" cellspacing="0" cellpadding="0">
+				<table id="liga_indonesia" class="radius" cellspacing="0" cellpadding="0">
 					<thead>
 						<tr>
 							<th>#</th>
 							<th>Klub</th>
-							<th>MN</th>
+							<th>Main</th>
 							<th>M</th>
 							<th>S</th>
 							<th>K</th>
-							<th>P</th>
+							<th>Pts</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -259,10 +326,26 @@
 							//get all the tr's with an attribute
 							$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 							$pokemon_list = array();
-							$i = 0;
+							$i = 1;
 							if($pokemon_row->length > 0){
 								foreach($pokemon_row as $row){
-									if($i < 18){
+									if($i == 1){
+										$trclass="<tr class='zona_acl'>";}
+									elseif($i == 2){
+										$trclass="<tr class='zona_afc'>";}
+									elseif($i == 3){
+										$trclass="<tr class='zona_afc_wl'>";}
+									elseif($i == 16){
+										$trclass="<tr class='zona_degradasi'>";}
+									elseif($i == 17){
+										$trclass="<tr class='zona_degradasi'>";}
+									elseif($i == 18){
+										$trclass="<tr class='zona_degradasi'>";}		
+									else{
+										$trclass="<tr class='zona_aman'>";}
+									
+									echo $trclass;
+									if($i <= 18){
 										$types = $pokemon_xpath->query('td', $row);
 										$n = 0;
 										foreach($types as $type){
@@ -310,9 +393,37 @@
 					<?php
 					}
 				?>
-                <span class="next-right">Lihat Klasemen Lengkap
+                <span class="next-right">Selengkapnya
                     <i class="material-icons t-8">keyboard_arrow_right</i>
-                </span>				
+                </span>
+				<div class="detail_klasemen">
+            	<div class="dt_klasemen">
+            			<div class="dt_zona_acl"> <span class="dt_acl"></span>
+        				AFC Champions League
+        				</div>
+						<div class="dt_zona_afc"> <span class="dt_afc"></span>
+        				AFC Cup
+        				</div>
+						<div class="dt_zona_afcwl"> <span class="dt_afcwl"></span>
+        				AFC Cup Possible
+        				</div>
+            	</div>
+          		</div>			
+                </span>	
+				<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="width: 100%;position: relative;overflow: unset;height: 147px;">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
+                            <ins class="adsbygoogle"
+                                style="display:inline-block;width:336px;height:280px"
+                                data-ad-client="ca-pub-7635854626605122"
+                                data-ad-slot="9007490396"></ins>
+                            <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+            
+                <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width" style="height: unset;position: absolute;top: 0px;left: 0px;">
+            </div>
+			
             </div>
         </div>
         <div class="w-40 pd-t-20">
@@ -414,12 +525,12 @@
                     </ul>
                 </div>
             </div>
-			<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="height: 110px;overflow: hidden;background-color: unset;z-index:  1;box-sizing:  border-box;margin: 15px auto;position: relative;">
+			<!-- <div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="height: 110px;overflow: hidden;background-color: unset;z-index:  1;box-sizing:  border-box;margin: 15px auto;position: relative;">
 				<div style="clip: rect(auto, auto, auto, auto);height: 100%;left: 0;position: absolute;width: 100%;">
 					<div style="height: 100%;margin: 0 auto;position: fixed; top: 70px; transform: translateX(15%) translatey(0%); width: 400px;text-align: center; right: 150px; display: flex; justify-content: flex-start;">
-							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 							<!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
-							<ins class="adsbygoogle"
+							<!-- <ins class="adsbygoogle"
 								style="display:inline-block;width:336px;height:280px"
 								data-ad-client="ca-pub-7635854626605122"
 								data-ad-slot="9007490396"></ins>
@@ -427,10 +538,10 @@
 							(adsbygoogle = window.adsbygoogle || []).push({});
 							</script>
 					</div>
-				</div>
+				</div> -->
 			
 				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
-			</div>	
+			<!-- </div>	 -->
 			 <div class="container" style="margin-top:7px;">
                 <h3>Daftar Pencetak Gol</h3>	
 				<table class="radius table table-striped" cellspacing="0" cellpadding="0">

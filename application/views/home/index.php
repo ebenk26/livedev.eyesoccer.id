@@ -1,9 +1,31 @@
 		<style>
-		.score_match{
-			font-size: .9em !important;
-			color: #000000 !important;
-			font-weight: bold !important;
+		.tvchanel{
+			color:#d19595;
+			padding: 3px 0px;
+			border-radius: 15px;
+			background-color:#e6e6e652;
 		}
+		.listmatch:hover{
+		background-color:#fdd79f38;
+		}
+
+		.zona_ucl{background-color: #00580c3b;}
+		.zona_uefa{background-color: #333e963d;}
+		.zona_degradasi{background-color: #ff000047;}
+		.zona_aman{background-color: #ededed47;}
+		.zona_ucl:hover{background-color: #00580c54;}
+		.zona_uefa:hover{background-color: #333e9652;}
+		.zona_degradasi:hover{background-color: #ff00008f;}
+		.zona_aman:hover{background-color: #dcd9d947;}
+		.zona_acl{background-color: #00580c3b;}
+		.zona_afc{background-color: #333e963d;}
+		.zona_afc_wl{background-color: #333e9624;}
+		.zona_aman{background-color: #ededed47;}
+		.zona_acl:hover{background-color: #00580c54;}
+		.zona_afc:hover{background-color: #333e9652;}
+		.zona_afc_wl:hover{background-color: #333e964f;}
+		.zona_aman:hover{background-color: #dcd9d947;}
+
 		</style>
 		<!-- JADWAL -->
 		<div class="baseurl" val="<?php echo base_url()?>"></div>
@@ -102,6 +124,7 @@
                 <i class="material-icons leftp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_left</i>
                 <i class="material-icons rightp i-bx-nav" href="#topPemain" role="button">keyboard_arrow_right</i>
             </div>
+
             <h3 class="o">Pemain Paling Banyak Dilihat</h3>
             <div id="resplayerlist">
             <div style="margin:auto;width:76%">
@@ -589,7 +612,7 @@
         <div class="center-desktop t-40">
             <div class="container">
                 <div class="et-content1">
-                    <span class="jp green">JADWAL & HASIL PERTANDINGAN</span>
+                    <span class="jp green">JADWAL PERTANDINGAN</span>
                     <div class="border-box" style="margin-top: 22px;">
                         <div class="container bg-g">						
                             <div class="t-tab">
@@ -639,14 +662,52 @@
 									foreach($jadwal_kemaren as $row){
 							?>
 								<tbody>
-									<tr>
-										<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
+									<tr class="listmatch">
+										<td class="tx-r">
+										<a href="<?php 
+                                                if(($row["liga_a"]=='Liga Lainnya') OR ($row["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$row["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$row["url_a"];
+                                                    }
+                                
+                                					echo $href_a ?>">
+										<span class="clb"><?=$row["club_a"]?></span></a></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
-										<td align="center"><span class="score_match"><?=$row["score_a"]?> - <?=$row["score_b"]?></span>
+										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?>
+										<span
+													<?php
+													if($row['live_pertandingan']==NULL)
+													{
+														$live='>';
+													}
+													else
+													{
+														$live=' class="t-live tvchanel"> '.$row['live_pertandingan'];
+													}
+
+													echo $live;
+													?>
+										</span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
+										<td class="tx-l">
+										<a href="<?php 
+                                                if(($row["liga_b"]=='Liga Lainnya') OR ($row["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$row["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$row["url_b"];
+                                                    }
+                                
+                                					echo $href_b ?>">
+										<span class="clb"><?=$row["club_b"]?></a></span></td>
 									</tr>
 								</tbody>
 							<?php
@@ -673,14 +734,52 @@
 									foreach($jadwal_hariini as $row){
 							?>
 								<tbody>
-									<tr>
-										<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
+									<tr class="listmatch">
+										<td class="tx-r">
+										<a href="<?php 
+                                                if(($row["liga_a"]=='Liga Lainnya') OR ($row["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$row["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$row["url_a"];
+                                                    }
+                                
+                                					echo $href_a ?>">
+													<span class="clb"><?=$row["club_a"]?></span></a></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
-										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
+										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?>
+										<span
+													<?php
+													if($row['live_pertandingan']==NULL)
+													{
+														$live='>';
+													}
+													else
+													{
+														$live=' class="t-live tvchanel"> '.$row['live_pertandingan'];
+													}
+
+													echo $live;
+													?>
+										</span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
+										<td class="tx-l">
+										<a href="<?php 
+                                                if(($row["liga_b"]=='Liga Lainnya') OR ($row["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$row["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$row["url_b"];
+                                                    }
+                                
+                                					echo $href_b ?>">
+										<span class="clb"><?=$row["club_b"]?></span></a></td>
 									</tr>
 								</tbody>
 							<?php
@@ -707,14 +806,53 @@
 									foreach($jadwal_besok as $row){
 							?>
 								<tbody>
-									<tr>
-										<td class="tx-r"><span class="clb"><?=$row["club_a"]?></span></td>
+									<tr class="listmatch">
+										<td class="tx-r">
+										<a href="<?php 
+                                                if(($row["liga_a"]=='Liga Lainnya') OR ($row["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$row["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$row["url_a"];
+                                                    }
+                                
+                                					echo $href_a ?>">
+													<span class="clb"><?=$row["club_a"]?></span>
+										</a></td>
 										<td><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
-										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?><span class="t-live"><?=$row["live_pertandingan"]?></span>
+										<td class="tx-c"><?=date("H:i",strtotime($row["jadwal_pertandingan"]))?>
+										<span
+													<?php
+													if($row['live_pertandingan']==NULL)
+													{
+														$live='>';
+													}
+													else
+													{
+														$live=' class="t-live tvchanel"> '.$row['live_pertandingan'];
+													}
+
+													echo $live;
+													?>
+										</span>
 										<span class="t-live"><?=$row["lokasi_pertandingan"]?></span>
 										</td>
 										<td><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
-										<td class="tx-l"><span class="clb"><?=$row["club_b"]?></span></td>
+										<td class="tx-l">
+										<a href="<?php 
+                                                if(($row["liga_b"]=='Liga Lainnya') OR ($row["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$row["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$row["url_b"];
+                                                    }
+                                
+                                					echo $href_b ?>">
+										<span class="clb"><?=$row["club_b"]?></span></a></td>
 									</tr>
 								</tbody>
 							<?php
@@ -740,7 +878,7 @@
 				?>
                 </select>
                     <div class="border-box" style="margin-top: 10px;">
-                        <table id="liga_indonesia" class="table table-striped" style="display:none;">
+                        <table id="liga_indonesia" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -770,11 +908,26 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 18){
+											if($i == 1){
+												$trclass="<tr class='zona_acl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_afc'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_afc_wl'>";}
+											elseif($i == 16){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 17){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 18){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -805,7 +958,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_inggris" class="table table-striped">
+						<table id="liga_inggris" class="radius" cellspacing="0" cellpadding="0">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -829,15 +982,34 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 20){
+											if($i == 1){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 4){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 5){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 19){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 20){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
-													if(!empty($type->nodeValue)){
+													if($type->nodeValue != ""){
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
@@ -864,7 +1036,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_italia" class="table table-striped" style="display:none;">
+						<table id="liga_italia" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -888,20 +1060,41 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 20){
+											if($i == 1){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 4){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 5){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 6){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 19){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 20){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
-													if(!empty($type->nodeValue)){
+													if($type->nodeValue != ""){
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
 																	if($n != 9){
-																		if ($n != 11) {
+																		if($n != 11){
 																			if ($n != 12) {
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
@@ -923,7 +1116,7 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_spanyol" class="table table-striped" style="display:none;">
+						<table id="liga_spanyol" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -947,11 +1140,32 @@
 									//get all the h2's with an id
 									$pokemon_row = $pokemon_xpath->query('//tr[@data-team_id]');
 									$pokemon_list = array();
-									$i = 0;
+									$i = 1;
 									if($pokemon_row->length > 0){
 										foreach($pokemon_row as $row){
-											echo "<tr>";
-											if($i < 20){
+											if($i == 1){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 2){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 3){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 4){
+												$trclass="<tr class='zona_ucl'>";}
+											elseif($i == 5){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 6){
+												$trclass="<tr class='zona_uefa'>";}
+											elseif($i == 18){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 19){
+												$trclass="<tr class='zona_degradasi'>";}
+											elseif($i == 20){
+												$trclass="<tr class='zona_degradasi'>";}		
+											else{
+												$trclass="<tr class='zona_aman'>";}
+											
+											echo $trclass;
+											if($i <= 20){
 												$types = $pokemon_xpath->query('td', $row);
 												$n = 0;
 												foreach($types as $type){
@@ -960,7 +1174,7 @@
 															if($n != 7){
 																if($n != 8){
 																	if($n != 9){
-																		if ($n != 11) {
+																		if($n != 11){
 																			if ($n != 12) {
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
