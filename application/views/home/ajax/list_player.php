@@ -10,7 +10,7 @@ $player = json_decode($player)->data;
     			echo '<div class="item '.($i == 0 ? 'active' :'').'">';
 
     				for($j=$i;$j < count($player);$j++){
-    					$p= $player; $k++;
+    					$p = $player; $k++;
     					if($k == 4){break;}?>
 
     				<a href="<?php echo PLAYERDETAIL.$p[$j]->slug?>'">
