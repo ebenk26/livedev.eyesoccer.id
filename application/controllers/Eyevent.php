@@ -252,40 +252,67 @@ class Eyevent extends CI_Controller {
 		$jadwalnya 		= $this->Eyevent_model->get_all_jadwal($tanggal,null);
 		$txt = '';
 		foreach ($jadwalnya as $value)
-		{
-			if (!empty($value['club_a']))
+		{	
+			if($value['live_pertandingan']==NULL)
 			{
+				$live='';
+			}
+			else
+			{
+				$live="<span class='livechanel'> Live ".$value['live_pertandingan']."</span>";
+			}
+			if (!empty($value['club_a']))
+			{	
+				if(($value["liga_a"]=='Liga Lainnya') OR ($value["liga_a"]=='Liga International'))
+					{
+						$href_a="#no_detail_club_".$value["club_a"];
+					}
+				else
+					{
+						$href_a=base_url()."eyeprofile/klub_detail/".$value["url_a"];
+					}
+				if(($value["liga_b"]=='Liga Lainnya') OR ($value["liga_b"]=='Liga International'))
+					{
+						$href_b="#no_detail_club_".$value["club_b"];
+					}
+				else
+					{
+						$href_b=base_url()."eyeprofile/klub_detail/".$value["url_b"];
+					}
+													
 				if ($value["jadwal_pertandingan"] < date('Y-m-d H:i:s'))
-				{
-					$txt.= "	<tr>
-			                        <td>".$value['club_a']."
+				{	
+					$txt.= "	<tr class='listmatch'>
+			                        <td><a href='".$href_a."'>".$value['club_a']."</a>
 			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
 			                        </td> \
-			                        <td>
+									<td>
+										".$live."
 			                        	<span>".$value["kompetisi"]."</span>
 			                        	".$value['score_a']." - ".$value['score_b']."
 			                            <span>".$value["lokasi_pertandingan"]."</span>
 			                        </td>
 			                        <td>
 			                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
-			                            ".$value["club_b"]."
+			                            <a href='".$href_b."'>".$value["club_b"]."</a>
 			                        </td>
 			                    </tr>	";
 				}
 				else
-				{
-					$txt.= "	<tr>
-			                        <td>".$value['club_a']."
+				{	
+					$txt.= "	<tr class='listmatch'>
+			                        <td><a href='".$href_a."'>".$value['club_a']."</a>
 			                            <img src='".imgUrl()."systems/club_logo/".$value['logo_a']."' alt=''>
 			                        </td> \
-			                        <td>
+									<td>
+										".$live."
 			                        	<span>".$value["kompetisi"]."</span>
-			                         	".date("H:i",strtotime($value["jadwal_pertandingan"]))."
+			                        	".date("H:i",strtotime($value["jadwal_pertandingan"]))."
 			                            <span>".$value["lokasi_pertandingan"]."</span>
 			                        </td>
 			                        <td>
 			                            <img src='".imgUrl()."systems/club_logo/".$value["logo_b"]."' alt=''>
-			                            ".$value["club_b"]."
+			                            <a href='".$href_b."'>".$value["club_b"]."</a>
 			                        </td>
 			                    </tr>	";
 				}
