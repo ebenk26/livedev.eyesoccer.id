@@ -3,14 +3,42 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Excurl
-{
+class Excurl {
 
     /**
      * Default options for every request
      * @static
      */
     public static $curlOptions = array();
+    private function __xurl() { return $this->ci->config->item('xurl'); }
+    private function __xkey() { return $this->ci->config->item('xkey'); }
+    private function __xurlback() { return $this->ci->config->item('xurlback'); }
+    private function __xkeyback() { return $this->ci->config->item('xkeyback'); }
+
+    function __construct()
+    {
+        $this->ci = &get_instance();
+    }
+
+    function reqCurl($url, $query = array(), $upload = '')
+    {
+        $data = $this->remoteCall($this->__xurl().$url, $this->__xkey(), $query, $upload);
+        if (json_decode($data) == NULL) {
+            print_r($data);
+        } else {
+            return json_decode($data);
+        }
+    }
+
+    function reqAction($url, $query = array(), $upload = '')
+    {
+        $data = $this->remoteCall($this->__xurlback().$url, $this->__xkeyback(), $query, $upload);
+        if (json_decode($data) == NULL) {
+            print_r($data);
+        } else {
+            return json_decode($data);
+        }
+    }
 
     function reqDataInfo($url, $cred = '', $data = array())
     {
@@ -111,8 +139,10 @@ class Excurl
         if (is_array($file)) {
             $files = [];
             foreach ($file as $f) {
-                $files[] = array('name' => $f, 'filename' => $_FILES[$f]['name'], 'filetype' => $_FILES[$f]['type'],
-                    'content' => file_get_contents($_FILES[$f]['tmp_name']));
+                if ($_FILES[$f]['tmp_name'] != '') {
+                    $files[] = array('name' => $f, 'filename' => $_FILES[$f]['name'], 'filetype' => $_FILES[$f]['type'],
+                        'content' => file_get_contents($_FILES[$f]['tmp_name']));
+                }
             }
 
             $url_data = http_build_query($data);

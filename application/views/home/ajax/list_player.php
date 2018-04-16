@@ -13,7 +13,7 @@ $player = json_decode($player)->data;
     					$p = $player; $k++;
     					if($k == 4){break;}?>
 
-    				<a href="<?php echo PLAYERDETAIL.$p[$j]->slug?>'">
+    				<a href="<?php echo PLAYERDETAIL.$p[$j]->slug?>">
 						<div class="ctn-pemain">
 						  <div class="des-img">
 							<img class="lazy" src="<?php echo $p[$j]->url_pic?>" alt="<?php echo $p[$j]->name?>"></div>
