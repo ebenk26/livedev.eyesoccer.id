@@ -26,58 +26,58 @@
 	.zona_degradasi:hover{background-color:#ff00007a;}
 	.zona_aman:hover{background-color:#cdadad12;}
 	.dt_zona_acl{
-    font-size:10px;
-    padding: 0px 15px 0px 15px;
-    margin: 20px 20px 20px 20px;
-    position:relative;
-    top:-1px;
-    left:-30px;
-}
-.dt_zona_afc{
-    font-size:10px;
-    padding: 0px 15px 0px 15px;
-    margin: 20px 20px 20px 20px;
-    position:relative;
-    top:-35px;
-    left:150px;
-}
-.dt_zona_afcwl{
-    font-size:10px;
-    padding: 0px 15px 0px 15px;
-    margin: 20px 20px 20px 20px;
-    position:relative;
-    top:-68px;
-    left:260px;
-}
+		font-size:10px;
+		padding: 0px 15px 0px 15px;
+		margin: 20px 20px 20px 20px;
+		position:relative;
+		top:-1px;
+		left:-30px;
+	}
+	.dt_zona_afc{
+		font-size:10px;
+		padding: 0px 15px 0px 15px;
+		margin: 20px 20px 20px 20px;
+		position:relative;
+		top:-35px;
+		left:150px;
+	}
+	.dt_zona_afcwl{
+		font-size:10px;
+		padding: 0px 15px 0px 15px;
+		margin: 20px 20px 20px 20px;
+		position:relative;
+		top:-68px;
+		left:260px;
+	}
 
-.dt_acl{
-    background-color:#c4e0ca;
-    width: 20px;
-    height:10px;
-    padding: 0px 15px 0px 15px;
-    margin: 10px 10px 10px 10px;
-    border-radius:8px;
-}
-.dt_afc{
-    background-color:#d7d6ff;
-    width: 20px;
-    height:10px;
-    padding: 0px 15px 0px 15px;
-    margin: 10px 10px 10px 10px;
-    border-radius:8px;
-}
-.dt_afcwl{
-    background-color:#e9e8ff;
-    width: 20px;
-    height:10px;
-    padding: 0px 15px 0px 15px;
-    margin: 10px 10px 10px 10px;
-    border-radius:8px;
-}
+	.dt_acl{
+		background-color:#c4e0ca;
+		width: 20px;
+		height:10px;
+		padding: 0px 15px 0px 15px;
+		margin: 10px 10px 10px 10px;
+		border-radius:8px;
+	}
+	.dt_afc{
+		background-color:#d7d6ff;
+		width: 20px;
+		height:10px;
+		padding: 0px 15px 0px 15px;
+		margin: 10px 10px 10px 10px;
+		border-radius:8px;
+	}
+	.dt_afcwl{
+		background-color:#e9e8ff;
+		width: 20px;
+		height:10px;
+		padding: 0px 15px 0px 15px;
+		margin: 10px 10px 10px 10px;
+		border-radius:8px;
+	}
 
-.dt_acl:hover{background-color:#43de64;}
-.dt_afc:hover{background-color:#5f5dce;}
-.dt_afcwl:hover{background-color:#a39fff;}
+	.dt_acl:hover{background-color:#43de64;}
+	.dt_afc:hover{background-color:#5f5dce;}
+	.dt_afcwl:hover{background-color:#a39fff;}
 
 </style>
         <div class="center-desktop m-0">
@@ -303,13 +303,16 @@
 				<table id="liga_indonesia" class="radius" cellspacing="0" cellpadding="0">
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Klub</th>
-							<th>Main</th>
-							<th>M</th>
-							<th>S</th>
-							<th>K</th>
-							<th>Pts</th>
+							<th title="Posisi">#</th>
+							<th title="Nama Klub">Klub</th>
+							<th title="Jumlah Main">B</th>
+							<th title="Menang">M</th>
+							<th title="Seri">S</th>
+							<th title="Kalah">K</th>
+							<th title="Memasukan">MG</th>
+							<th title="Kemasukan">KG</th>
+							<th title="Selisih Gol">SG</th>
+							<th title="Point">Pts</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -351,16 +354,10 @@
 										foreach($types as $type){
 											if($type->nodeValue != ""){
 												if($n != 1){
-													if($n != 7){
-														if($n != 8){
-															if($n != 9){
-																if($n != 11){
-																	if ($n != 12) {
-																		$nodeValue = "<td>".$type->nodeValue.'</td>';
-																		echo $nodeValue;
-																	}
-																}
-															}
+													if($n != 11){
+														if ($n != 12) {
+															$nodeValue = "<td>".$type->nodeValue.'</td>';
+															echo $nodeValue;
 														}
 													}
 												}
@@ -397,17 +394,17 @@
                     <i class="material-icons t-8">keyboard_arrow_right</i>
                 </span>
 				<div class="detail_klasemen">
-            	<div class="dt_klasemen">
-            			<div class="dt_zona_acl"> <span class="dt_acl"></span>
-        				AFC Champions League
-        				</div>
-						<div class="dt_zona_afc"> <span class="dt_afc"></span>
-        				AFC Cup
-        				</div>
-						<div class="dt_zona_afcwl"> <span class="dt_afcwl"></span>
-        				AFC Cup Possible
-        				</div>
-            	</div>
+					<div class="dt_klasemen">
+							<div class="dt_zona_acl"> <span class="dt_acl"></span>
+							AFC Champions League
+							</div>
+							<div class="dt_zona_afc"> <span class="dt_afc"></span>
+							AFC Cup
+							</div>
+							<div class="dt_zona_afcwl"> <span class="dt_afcwl"></span>
+							AFC Cup Possible
+							</div>
+					</div>
           		</div>			
                 </span>	
 				<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="width: 100%;position: relative;overflow: unset;height: 147px;">
