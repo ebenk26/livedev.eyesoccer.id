@@ -1,5 +1,22 @@
 $(document).ready(function () {
+    var OSName="Unknown OS";
+    if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
+    if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
+    if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
+    if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
 
+    console.log('Your OS: '+OSName);
+    if(OSName == "Linux"){
+        $(".linkdbcls").attr("href","https://play.google.com/store/apps/details?id=com.eyesoccer.eyesoccer&hl=in");
+        $(".linkdbcls").attr("target","_blank");
+    }else if(OSName == "MacOS"){
+        $(".linkdbcls").attr('href','https://itunes.apple.com/us/app/eyesoccer-apps/id1345440798?ls=1&mt=8');
+        $(".linkdbcls").attr("target","_blank");
+    }else{
+        $(".dbcls").attr('href','#');
+        $(".dbcls").hide();
+    }
+    // console.log(navigator);
     // Click on Point
     $(document).on("click", ".form_point", function (e) {
         e.preventDefault();
