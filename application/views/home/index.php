@@ -34,7 +34,7 @@
 		padding: 20px 20px 20px 20px;
 		margin: 20px 20px 20px 20px;
 		position:relative;
-		top:15px;
+		top:17px;
 		left:-40px;
 	}
 	.detailzona_kontinental2{
@@ -43,7 +43,7 @@
 		margin: 20px 20px 20px 20px;
 		position:relative;
 		top:-58px;
-		left:110px;
+		left:115px;
 	}
 	.detailzona_degradasi{
 		font-size:12px;
@@ -1108,7 +1108,7 @@
 										UEFA Champions
 										</div>
 										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
-										Europa League
+										UEFA League
 										</div>
 										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
 										Zona Degradasi
@@ -1203,7 +1203,7 @@
 										UEFA Champions
 										</div>
 										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
-										Europa League
+										UEFA League
 										</div>
 										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
 										Zona Degradasi
@@ -1297,7 +1297,7 @@
 										UEFA Champions
 										</div>
 										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
-										Europa League
+										UEFA League
 										</div>
 										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
 										Zona Degradasi
