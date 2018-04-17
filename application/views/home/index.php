@@ -1108,7 +1108,7 @@
 										UEFA Champions
 										</div>
 										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
-										UEFA League
+										Europa League
 										</div>
 										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
 										Zona Degradasi
@@ -1203,7 +1203,7 @@
 										UEFA Champions
 										</div>
 										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
-										UEFA League
+										Europa League
 										</div>
 										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
 										Zona Degradasi
@@ -1297,7 +1297,7 @@
 										UEFA Champions
 										</div>
 										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
-										UEFA League
+										Europa League
 										</div>
 										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
 										Zona Degradasi
