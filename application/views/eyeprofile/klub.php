@@ -1,4 +1,7 @@
 <style>
+	.tab-active{
+    background-color: #ffa7261f;
+	}
     .slc-musim{
         font-size: .95em !important;
         padding: 7px 20px !important;
@@ -539,9 +542,20 @@
 			
 				<!-- <img src="<?php echo base_url()?>assets/img/iklanbanner/banner 425x100 px-01.jpg" alt="banner ads full width"> -->
 			<!-- </div>	 -->
-			 <div class="container" style="margin-top:7px;">
-                <h3>Daftar Pencetak Gol</h3>	
-				<table class="radius table table-striped" cellspacing="0" cellpadding="0">
+			 <div class="container" style="margin-top:7px;" align="center">
+									
+										<button id="topskorer" class="tab-active"><a href="#" onclick="return false;">Top Scorer
+										</a></button>
+										<button id="topassist" class=" "><a href="#" onclick="return false;">Top Assist
+										</a></button>
+										<button id="kk" class=" "><a href="#" onclick="return false;">Yellow Card
+										</a></button>
+										<button id="km" class=" "><a href="#" onclick="return false;">Red Card
+										</a></button>
+										<button id="pass" class=" "><a href="#" onclick="return false;">Passing
+										</a></button>
+
+				<table id="top_scorer" class="radius table table-striped" cellspacing="0" cellpadding="0">
 					<thead>
 						<tr>
 							<th>Pemain</th>
@@ -566,7 +580,7 @@
 							$i = 0;
 							if($pokemon_row->length > 0){
 								foreach($pokemon_row as $row){
-									if($i < 5){
+									if($i < 10){
 										$types = $pokemon_xpath->query('td', $row);
 										$n = 0;
 										foreach($types as $type){
@@ -574,6 +588,100 @@
 												if($n != 3){
 													if($n != 4){
 															if($n != 5){
+																$nodeValue = "<td>".$type->nodeValue.'</td>';
+																echo $nodeValue;
+															}
+													}
+												}
+											}
+											$n++;
+										}
+										$i ++;
+									}
+									echo "</tr>";
+								}
+							}
+						}
+						?>
+					</tbody>
+				</table>
+					<?php
+					}else{
+					?>
+								<tr>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+								</tr>						
+							</tbody>
+						</table>
+					<?php
+					}
+				?>
+			<table align="center" id="k_k" class="radius table table-striped" cellspacing="0" cellpadding="0" style="display:none">
+					<thead>
+						<tr>
+							<th>Kartu Kuning</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr><td>Tidak tersedia saat ini</td></tr>
+					</tbody>
+			</table>
+			<table id="k_m" class="radius table table-striped" cellspacing="0" cellpadding="0" style="display:none">
+					<thead>
+						<tr>
+							<th>Kartu Merah</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr><td>Tidak tersedia saat ini</td></tr>
+					</tbody>
+			</table>
+			<table id="pa_ss" class="radius table table-striped" cellspacing="0" cellpadding="0" style="display:none">
+					<thead>
+								<tr>
+									<th>Pass</th>
+								</tr>
+							</thead>
+							<tbody>
+							<tr><td>Tidak tersedia saat ini</td></tr>
+							</tbody>
+					</table>
+			<table id="top_assist" class="radius table table-striped" cellspacing="0" cellpadding="0" style="display:none">
+					<thead>
+						<tr>
+							<th>Pemain</th>
+							<th>Tim</th>
+							<th>Assist</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php
+					if($title_liga == 'Liga Indonesia 1'){
+						$html = file_get_contents(LinkScrapingAssistLigaIndonesia());
+						$premiere_doc = new DOMDocument();
+						libxml_use_internal_errors(TRUE);
+						if(!empty($html)){
+							$premiere_doc->loadHTML($html);
+							libxml_clear_errors();
+							$pokemon_xpath = new DOMXPath($premiere_doc);
+
+							//get all the tr's with an attribute
+							$pokemon_row = $pokemon_xpath->query('//tr');
+							$pokemon_list = array();
+							$i = 0;
+							if($pokemon_row->length > 0){
+								foreach($pokemon_row as $row){
+									if($i < 22){
+										$types = $pokemon_xpath->query('td[@class="hell"]', $row);
+										$n = 0;
+										foreach($types as $type){
+											if($type->nodeValue != ""){
+												if($n != 0){
+													if($n != 2){
+															if($n != 3){
 																$nodeValue = "<td>".$type->nodeValue.'</td>';
 																echo $nodeValue;
 															}
@@ -633,4 +741,34 @@
 					$("#chained_liga").show();
 				}
 			})
+			$('#topskorer').click(function(){
+				$('#top_assist,#k_k,#k_m,#pa_ss').hide();
+				$('#topassist,#kk,#km,#pass').removeClass('tab-active');
+				$('#topskorer').addClass('tab-active');
+				$('#top_scorer').show();
+				});
+			$('#topassist').click(function(){
+				$('#top_scorer,#k_k,#k_m,#pa_ss').hide();
+				$('#topskorer,#kk,#km,#pass').removeClass('tab-active');
+				$('#topassist').addClass('tab-active');
+				$('#top_assist').show();
+			});
+			$('#kk').click(function(){
+				$('#top_assist,#top_scorer,#k_m,#pa_ss').hide();
+				$('#topassist,#topskorer,#km,#pass').removeClass('tab-active');
+				$('#kk').addClass('tab-active');
+				$('#k_k').show();
+				});
+			$('#km').click(function(){
+				$('#top_scorer,#top_assist,#k_k,#pa_ss').hide();
+				$('#topskorer,#topassist,#kk,#pass').removeClass('tab-active');
+				$('#km').addClass('tab-active');
+				$('#k_m').show();
+			});
+			$('#pass').click(function(){
+				$('#top_scorer,#top_assist,#k_k,#k_m').hide();
+				$('#topskorer,#topassist,#kk,#km').removeClass('tab-active');
+				$('#pass').addClass('tab-active');
+				$('#pa_ss').show();
+			});
 		</script>

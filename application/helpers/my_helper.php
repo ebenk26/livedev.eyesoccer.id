@@ -539,7 +539,10 @@ function LinkScrapingLigaIndonesia()
     // return "http://www.klasemenliga.com/?page=season&id=15105";
     return "https://id.soccerway.com/national/indonesia/super-liga/2018/regular-season/r45094/";
 }
-
+function LinkScrapingAssistLigaIndonesia()
+{
+    return "http://www.worldfootball.net/assists/idn-liga-1-2018/";
+}
 function LinkScrapingLigaInggris()
 {
     // return "http://www.klasemenliga.com/?page=competition&id=8";
