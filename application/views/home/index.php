@@ -9,6 +9,8 @@
 		background-color:#fdd79f38;
 		}
 
+
+
 		.zona_ucl{background-color: #00580c3b;}
 		.zona_uefa{background-color: #333e963d;}
 		.zona_degradasi{background-color: #ff000047;}
@@ -26,6 +28,55 @@
 		.zona_afc_wl:hover{background-color: #333e964f;}
 		.zona_aman:hover{background-color: #dcd9d947;}
 
+	.detailzona_kontinental1{
+	    z-index:-1;
+		font-size:12px;
+		padding: 20px 20px 20px 20px;
+		margin: 20px 20px 20px 20px;
+		position:relative;
+		top:17px;
+		left:-40px;
+	}
+	.detailzona_kontinental2{
+		font-size:12px;
+		padding: 20px 20px 20px 20px;
+		margin: 20px 20px 20px 20px;
+		position:relative;
+		top:-58px;
+		left:115px;
+	}
+	.detailzona_degradasi{
+		font-size:12px;
+		padding: 20px 20px 20px 20px;
+		margin: 20px 20px 20px 20px;
+		position:relative;
+		top:-132px;
+		left:255px;
+	}
+	.detailkontinental1{
+		background-color:#c4d8c7;
+		width: 20px;
+		height:10px;
+		padding: 5px 15px 0px 15px;
+		margin: 10px 10px 10px 10px;
+		border-radius:8px;
+	}
+	.detailkontinental2{
+		background-color:#ced1e6;
+		width: 20px;
+		height:10px;
+		padding: 5px 15px 0px 15px;
+		margin: 10px 10px 10px 10px;
+		border-radius:8px;
+	}
+	.detaildegradasi{
+		background-color:#ffb8b8;
+		width: 20px;
+		height:10px;
+		padding: 5px 15px 0px 15px;
+		margin: 10px 10px 10px 10px;
+		border-radius:8px;
+	}
 		</style>
 		<!-- JADWAL -->
 		<div class="baseurl" val="<?php echo base_url()?>"></div>
@@ -877,17 +928,19 @@
 					}
 				?>
                 </select>
-                    <div class="border-box" style="margin-top: 10px;">
-                        <table id="liga_indonesia" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
+				<div>
+						<div id="liga_indonesia" style="margin-top: 10px;">
+						<table class="border-box radius" cellspacing="0" cellpadding="0">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Klub</th>
-									<th>MN</th>
-									<th>M</th>
-									<th>S</th>
-									<th>K</th>
-									<th>P</th>
+									<th title="Posisi">#</th>
+									<th title="Klub">Klub</th>
+									<th title="Bermain">B</th>
+									<th title="Menang">M</th>
+									<th title="Seri">S</th>
+									<th title="Kalah">K</th>
+									<th title="Selisih Goal">SG</th>
+									<th title="Points">Pts</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -935,9 +988,9 @@
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
-																	if($n != 9){
-																		if($n != 11){
-																			if ($n != 12) {
+																	if($n != 11){
+																		if($n != 12){
+																			if($n != 13){
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
 																			}
@@ -958,16 +1011,30 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_inggris" class="radius" cellspacing="0" cellpadding="0">
+						<div class="detailklasemen">
+										<div class="detailzona_kontinental1"> <span class="detailkontinental1"></span>
+										AFC Champion
+										</div>
+										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
+										AFC Cup
+										</div>
+										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
+										Zona Degradasi
+										</div>
+									</div>
+						</div>
+						<div id="liga_inggris" style="display:none;" style="margin-top: 10px;">
+						<table class="border-box radius"  cellspacing="0" cellpadding="0">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Klub</th>
-									<th>MN</th>
-									<th>M</th>
-									<th>S</th>
-									<th>K</th>
-									<th>P</th>
+									<th title="Posisi">#</th>
+									<th title="Klub">Klub</th>
+									<th title="Bermain">B</th>
+									<th title="Menang">M</th>
+									<th title="Seri">S</th>
+									<th title="Kalah">K</th>
+									<th title="Selisih Goal">SG</th>
+									<th title="Points">Pts</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -1013,9 +1080,9 @@
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
-																	if($n != 9){
-																		if($n != 11){
-																			if ($n != 12) {
+																	if($n != 11){
+																		if($n != 12){
+																			if($n != 13){
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
 																			}
@@ -1036,16 +1103,31 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_italia" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
+									<div class="detailklasemen">
+										<div class="detailzona_kontinental1"> <span class="detailkontinental1"></span>
+										UEFA Champions
+										</div>
+										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
+										Europa League
+										</div>
+										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
+										Zona Degradasi
+										</div>
+									</div>
+						</div>
+						</div>
+						<div id="liga_italia" style="display:none;" style="margin-top: 10px;">
+						<table class="border-box radius"  cellspacing="0" cellpadding="0">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Klub</th>
-									<th>MN</th>
-									<th>M</th>
-									<th>S</th>
-									<th>K</th>
-									<th>P</th>
+									<th title="Posisi">#</th>
+									<th title="Klub">Klub</th>
+									<th title="Bermain">B</th>
+									<th title="Menang">M</th>
+									<th title="Seri">S</th>
+									<th title="Kalah">K</th>
+									<th title="Selisih Goal">SG</th>
+									<th title="Points">Pts</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -1093,9 +1175,9 @@
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
-																	if($n != 9){
-																		if($n != 11){
-																			if ($n != 12) {
+																	if($n != 11){
+																		if($n != 12){
+																			if($n != 13){
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
 																			}
@@ -1116,16 +1198,30 @@
 							?>
 							</tbody>
 						</table>
-						<table id="liga_spanyol" class="radius" cellspacing="0" cellpadding="0" style="display:none;">
+						<div class="detailklasemen">
+										<div class="detailzona_kontinental1"> <span class="detailkontinental1"></span>
+										UEFA Champions
+										</div>
+										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
+										Europa League
+										</div>
+										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
+										Zona Degradasi
+										</div>
+									</div>
+						</div>
+						<div id="liga_spanyol" style="display:none;" style="margin-top: 10px;">
+						<table class="border-box radius"  cellspacing="0" cellpadding="0">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Klub</th>
-									<th>MN</th>
-									<th>M</th>
-									<th>S</th>
-									<th>K</th>
-									<th>P</th>
+									<th title="Posisi">#</th>
+									<th title="Klub">Klub</th>
+									<th title="Bermain">B</th>
+									<th title="Menang">M</th>
+									<th title="Seri">S</th>
+									<th title="Kalah">K</th>
+									<th title="Selisih Goal">SG</th>
+									<th title="Points">Pts</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -1173,9 +1269,9 @@
 														if($n != 1){
 															if($n != 7){
 																if($n != 8){
-																	if($n != 9){
-																		if($n != 11){
-																			if ($n != 12) {
+																	if($n != 11){
+																		if($n != 12){
+																			if($n != 13){
 																				$nodeValue = "<td>".$type->nodeValue.'</td>';
 																				echo $nodeValue;
 																			}
@@ -1196,10 +1292,18 @@
 							?>
 							</tbody>
 						</table>
-                        <span style="display: none;">
-                            <a href="<?=base_url()?>eyenews" class="ttl">Lihat Selengkapnya</a>
-                            <i class="material-icons r-ttl">keyboard_arrow_right</i>                                
-                        </span>                      
+						<div class="detailklasemen">
+										<div class="detailzona_kontinental1"> <span class="detailkontinental1"></span>
+										UEFA Champions
+										</div>
+										<div class="detailzona_kontinental2"> <span class="detailkontinental2"></span>
+										Europa League
+										</div>
+										<div class="detailzona_degradasi"> <span class="detaildegradasi"></span>
+										Zona Degradasi
+										</div>
+									</div>
+						</div>
                     </div>
                 </div>
             </div>
