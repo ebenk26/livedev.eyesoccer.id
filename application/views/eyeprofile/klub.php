@@ -387,6 +387,9 @@
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
+									<td>-</td>
+									<td>-</td>
+									<td>-</td>
 								</tr>						
 							</tbody>
 						</table>
@@ -500,9 +503,6 @@
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
 								</tr>						
 							</tbody>
 						</table>
@@ -612,7 +612,6 @@
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
-									<td>-</td>
 								</tr>						
 							</tbody>
 						</table>
@@ -703,7 +702,6 @@
 					}else{
 					?>
 								<tr>
-									<td>-</td>
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
