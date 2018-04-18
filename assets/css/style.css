@@ -4860,6 +4860,22 @@ height: 100%;
     cursor: pointer;
     font-weight: 600;
 }
+.orange-default li {
+    background: #fca900;
+    padding: 8px 10px;
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+    border: 1px solid #fca900;
+    cursor: pointer;
+    font-weight: 600;
+
+
+}
+
+.orange-default .active{
+    background-color:#F57C00 !important;
+}
 .orange-default #nav_tab.actnet, .orange-default #nav_tab:hover{
     background: #F57C00 !important;
 }
@@ -5195,3 +5211,5 @@ img.loading {
     100%{
         background-position: 0% 50%;
     }
+.min{
+    width: 40px;height: 40px;border-radius:50%}

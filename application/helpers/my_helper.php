@@ -97,7 +97,7 @@ define('IMGSTORE', base_url() . 'assets/img_storage/');
 define('MEMBERAREA', base_url() . 'home/member_area');
 define('EYEPROFILE', base_url() . 'eyeprofile/');
 define('pCLUB', EYEPROFILE . 'klub');
-define('pPLAYER', EYEPROFILE . 'pemain');
+define('pPLAYER', EYEPROFILE . 'pemain/');
 define('PLAYERDETAIL', EYEPROFILE . 'pemain_detail/');
 define('CLUBDETAIL', EYEPROFILE . 'klub_detail/');
 define('pOFFICIAL', EYEPROFILE . 'official');

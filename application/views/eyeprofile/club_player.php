@@ -11,9 +11,6 @@
 		padding-top: 40px;
 	}
 </style>
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 </div>
 <div class="w-blue">
     <img src="<?php echo base_url()?>assets/img/segitiga-putih-01.png" alt="">
@@ -21,13 +18,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
 		<?php
-		foreach($get_klub_detail as $row){
+		#foreach($get_klub_detail as $row){
 		?>		
-			<input type="hidden" class="hidden_title" value="<?php echo $row['club_id']; ?>"/>
+			<input type="hidden" class="hidden_title" value="<?php echo @$row['club_id']; ?>"/>
 			<div class="left">
-              
+               
                 <div class="box-img-radius">
-                    <img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
+                    <img src="<?php echo imgUrl()?>systems/club_logo/<?php echo @$row['logo']; ?>" alt="">                        
                 </div>
             </div>
             <div class="right">
@@ -37,47 +34,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tbody>
                             <tr>
                                 <td>Nama Klub</td>
-                                <td>: <?=$row["name"]?></td>
+                                <td>: <?=@$row["name"]?></td>
                             </tr>
                             <tr>
                                 <td>Tanggal Berdiri</td>
-                                <td>: <?=$row["establish_date"]?></td>
+                                <td>: <?=@$row["establish_date"]?></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td>: <?=strip_tags($row["address"])?></td>
+                                <td>: <?=strip_tags(@$row["address"])?></td>
                             </tr>
                             <tr>
                                 <td>Situs</td>
-                                <td>: <?=$row["website"]?></td>
+                                <td>: <?=@$row["website"]?></td>
                             </tr>
 							
                         </tbody>
                     </table>
                 </div>
                 <div class="t-30">
-                    <h3><?=$row["competition"]?></h3>
+                    <h3><?@=$row["competition"]?></h3>
                     <table>
                         <tbody>
                             <tr>
                                 <td>Level Liga</td>
-                                <td>: <?=$row["competition"]?></td>
+                                <td>: <?=@$row["competition"]?></td>
                             </tr>
                             <tr>
                                 <td>No. Telp</td>
-                                <td>: <?=$row["phone"]?></td>
+                                <td>: <?=@$row["phone"]?></td>
                             </tr>
 							<tr>
                                 <td>Fax</td>
-                                <td>: <?=$row["fax"]?></td>
+                                <td>: <?=@$row["fax"]?></td>
                             </tr>
                             <tr>
                                 <td>Manajer</td>
-                                <td>: <?=$get_manager?></td>
+                                <td>: <?=@$get_manager?></td>
                             </tr>
 							<tr>
                                 <td>Pelatih</td>
-                                <td>: <?=$get_pelatih?></td>
+                                <td>: <?=@$get_pelatih?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,19 +84,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tbody>
                             <tr>
                                 <td style="width: 120px;">Jumlah Pemain</td>
-                                <td>: <?=count($get_player_list)?> Pemain</td>
+                                <td>: <?=count(@$get_player_list)?> Pemain</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>: <?=$row["email"]?></td>
+                                <td>: <?=@$row["email"]?></td>
                             </tr>
                             <tr>
                                 <td>Stadium</td>
-                                <td>: <?=$row["stadium"]?></td>
+                                <td>: <?=@$row["stadium"]?></td>
                             </tr>
                             <tr>
                                 <td>Panggilan Klub</td>
-                                <td>: <?=$row["nickname"]?></td>
+                                <td>: <?=@$row["nickname"]?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -118,36 +115,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="center-desktop m-l-158">
 			<h3 class="sjrh">Sejarah</h3>
 			<p>
-				<?=$row["description"]?>
+				<?php @$row["description"]?>
 			</p>
 		</div>
 		<?php
-		}
+		#}
 		?>
 			<div class="center-desktop m-0 maintab" id="tabs-pemain">
 			
 			<?php
 			$no = 1;
-			foreach($get_player_list as $row){		
+			#foreach($get_player_list as $row){		
 			?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
-						<span><?=$row['number']?></span>
-						<h1><?=$row['name']?></h1>
-						<span><?=$row['position']?></span>
+						<span><?=@$row['number']?></span>
+						<h1><?=@$row['name']?></h1>
+						<span><?=@$row['position']?></span>
 					</div>
 					<div class="img-pemain">
-						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["pic"]?>" alt="">                
+						<img src="<?=@imgUrl()?>systems/player_storage/<?=$row["pic"]?>" alt="">                
 					</div>
 					<table>
 						<tbody>
 							<tr>
 								<td>Kewarganegaraan</td>
-								<td><?=$row['nationality']?></td>
+								<td><?=@$row['nationality']?></td>
 							</tr>
 							<tr>
 								<td>Tgl Lahir</td>
-								<td><?=$row['birth_date']?></td>
+								<td><?=@$row['birth_date']?></td>
 							</tr>
 							<tr>
 								<td>Main</td>
@@ -155,8 +152,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</tr>
 						</tbody>
 					</table>
-					<a target="_blank" href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Pemain</button></a>
-				</div><?php }?>                                      
+					<a target="_blank" href="<?=base_url()?>eyeprofile/pemain_detail/<?=@$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Pemain</button></a>
+				</div><?php #}?>                                      
 				<div class="container banner-150 img-banner">
 					<img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
 				</div>
@@ -165,35 +162,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-ofisial">
 			<?php
 			$no = 1;
-			foreach($get_official_list as $row){		
+			#foreach($get_official_list as $row){		
 			?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
 						<span></span>
-						<h1><?=$row['name']?></h1>
-						<span><?=$row['position']?></span>
+						<h1></h1>
+						<span></span>
 					</div>
 					<div class="img-pemain">
-						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["official_photo"]?>" alt="">                
+						<img src="systems/player_storage/" alt="no">                
 					</div>
 					<table>
 						<tbody>
 							<tr>
 								<td>Kewarganegaraan</td>
-								<td><?=$row['nationality']?></td>
+								<td><?=@$row['nationality']?></td>
 							</tr>
 							<tr>
 								<td>Tgl Lahir</td>
-								<td><?=$row['birth_date']?></td>
+								<td><?=@$row['birth_date']?></td>
 							</tr>
 							<tr>
 								<td>Lisensi</td>
-								<td><?=$row['license']?></td>
+								<td><?=@$row['license']?></td>
 							</tr>
 						</tbody>
 					</table>
 					<a target="_blank" href="<?=base_url()?>eyeprofile/official_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Ofisial</button></a>
-				</div><?php }?> 
+				</div><?php #}?> 
 				<div class="container banner-150 img-banner">
 					<img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
 				</div>                                     
@@ -224,7 +221,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</table>
 			</div>
 			<?php 
-				if(count($get_hasil_klub)>0){
+				#if(count($get_hasil_klub)>0){
 			?>
 			<div class="w-40 pd-t-20">
 				<h3 class="">Pertandingan Selanjutnya</h3>
@@ -233,43 +230,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<tbody>
 							<tr>
 								<td colspan="3">
-									<?php foreach($get_klub_detail as $row){ ?>
-									<h4><?php echo strtoupper($row['competition'])?></h4>
-									<?php } ?>
-									<?php foreach($get_hasil_klub as $row){
-										$datetime = new DateTime($row['jadwal_pertandingan']);
-										if($datetime->format('l') == 'Monday'){
-											$hari = 'Senin';
-										}else if($datetime->format('l') == 'Tuesday'){
-											$hari = 'Selasa';
-										}else if($datetime->format('l') == 'Wednesday'){
-											$hari = 'Rabu';
-										}else if($datetime->format('l') == 'Thursday'){
-											$hari = 'Kamis';
-										}else if($datetime->format('l') == 'Friday'){
-											$hari = 'Jumat';
-										}else if($datetime->format('l') == 'Saturday'){
-											$hari = 'Sabtu';
-										}else if($datetime->format('l') == 'Sunday'){
-											$hari = 'Minggu';
-										}else{
-											$hari = $datetime->format('l');
-										}
+									<?php #foreach($get_klub_detail as $row){ ?>
+									<h4><?php #echo strtoupper($row['competition'])?></h4>
+									<?php #} ?>
+									// <?php //foreach($get_hasil_klub as $row){
+									// 	$datetime = new DateTime($row['jadwal_pertandingan']);
+									// 	if($datetime->format('l') == 'Monday'){
+									// 		$hari = 'Senin';
+									// 	}else if($datetime->format('l') == 'Tuesday'){
+									// 		$hari = 'Selasa';
+									// 	}else if($datetime->format('l') == 'Wednesday'){
+									// 		$hari = 'Rabu';
+									// 	}else if($datetime->format('l') == 'Thursday'){
+									// 		$hari = 'Kamis';
+									// 	}else if($datetime->format('l') == 'Friday'){
+									// 		$hari = 'Jumat';
+									// 	}else if($datetime->format('l') == 'Saturday'){
+									// 		$hari = 'Sabtu';
+									// 	}else if($datetime->format('l') == 'Sunday'){
+									// 		$hari = 'Minggu';
+									// 	}else{
+									// 		$hari = $datetime->format('l');
+									// 	}
 									?>
-									<span class="date-box-pertandingan"><?php echo $hari.", ".$datetime->format('d M Y')?>
-										<br><?php echo $datetime->format('H:i')." WIB";?>
-										<br><?php echo $row['lokasi_pertandingan']?>
+									<span class="date-box-pertandingan"><?php echo @$hari.", "?>
+										<br><?php echo " WIB";?>
+										<br><?php echo @$row['lokasi_pertandingan']?>
 									</span>
 								</td>
 							</tr>
 							<tr class="t-20">
 								<td width="40%">
 									<!--<i class="material-icons i-l-pertandingan">keyboard_arrow_left</i>-->
-									<img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo_a']?>" alt=""> <?php echo $row['club_a'];?>
+									<img src="<?php echo imgUrl()?>systems/club_logo/<?php echo @$row['logo_a']?>" alt=""> <?php echo @$row['club_a'];?>
 								</td>
 								<td width="20%" style="font-weight: 600;">vs</td>
 								<td width="40%">
-									<img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo_b']?>" alt=""> <?php echo $row['club_b'];?>
+									<img src="<?php echo imgUrl()?>systems/club_logo/<?php echo @$row['logo_b']?>" alt=""> <?php echo @$row['club_b'];?>
 									<!--<i class="material-icons i-r-pertandingan">keyboard_arrow_right</i>-->
 								</td>
 							</tr>
@@ -282,7 +279,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<?php // echo $row['score_b']?>
 								</td>
 							</tr>-->
-							<?php } ?>
+							<?php #} ?>
 						</tbody>
 					</table>
 				</div>
@@ -301,36 +298,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</thead>
 						<tbody>
 						<?php
-							$html = file_get_contents(LinkScrapingLigaIndonesia());
-							$premiere_doc = new DOMDocument();
-							libxml_use_internal_errors(TRUE); //disable libxml errors
-							if(!empty($html)){ //if any html is actually returned
-								$premiere_doc->loadHTML($html);
-								libxml_clear_errors(); //remove errors for yucky html
-								$pokemon_xpath = new DOMXPath($premiere_doc);
-								//get all the h2's with an id
-								$pokemon_row = $pokemon_xpath->query('//tr[@data-person_id]');
-								$pokemon_list = array();
-								$i = 0;
-								if($pokemon_row->length > 0){
-									foreach($pokemon_row as $row){
-										echo "<tr>";
-										if($i < 18){
-											$types = $pokemon_xpath->query('td', $row);
-											$n = 0;
-											foreach($types as $type){
-												if($type->nodeValue != ""){
-													$nodeValue = "<td>".$type->nodeValue.'</td>';
-													echo $nodeValue;
-												}
-												$n++;
-											}
-											$i ++;
-										}
-										echo "</tr>";
-									}
-								}
-							} 
+							// $html = file_get_contents(LinkScrapingLigaIndonesia());
+							// $premiere_doc = new DOMDocument();
+							// libxml_use_internal_errors(TRUE); //disable libxml errors
+							// if(!empty($html)){ //if any html is actually returned
+							// 	$premiere_doc->loadHTML($html);
+							// 	libxml_clear_errors(); //remove errors for yucky html
+							// 	$pokemon_xpath = new DOMXPath($premiere_doc);
+							// 	//get all the h2's with an id
+							// 	$pokemon_row = $pokemon_xpath->query('//tr[@data-person_id]');
+							// 	$pokemon_list = array();
+							// 	$i = 0;
+							// 	if($pokemon_row->length > 0){
+							// 		foreach($pokemon_row as $row){
+							// 			echo "<tr>";
+							// 			if($i < 18){
+							// 				$types = $pokemon_xpath->query('td', $row);
+							// 				$n = 0;
+							// 				foreach($types as $type){
+							// 					if($type->nodeValue != ""){
+							// 						$nodeValue = "<td>".$type->nodeValue.'</td>';
+							// 						echo $nodeValue;
+							// 					}
+							// 					$n++;
+							// 				}
+							// 				$i ++;
+							// 			}
+							// 			echo "</tr>";
+							// 		}
+							// 	}
+							#} 
 						?>
 						</tbody>
 					</table>
@@ -352,7 +349,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 			<?php
-				}
+				#}
 			?>
 			<div class="container banner-eyeprofile5 img-banner fl-r mt-10" style="height: unset; background-color: unset;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -372,22 +369,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div role="listbox" class="carousel-inner">
 						<div class="box item active" style="height: 225px;">
 							<?php
-							foreach ($products as $produk){
+							#foreach ($products as $produk){
 							?>					
 							<div class="em-box">
-								<h4><?=$produk["nama"]?></h4>
+								<h4><?=@$produk["nama"]?></h4>
 								<div class="container">
 									<div class="w-40 m-r-1">
 										<img class="img-prod" src="<?= MEIMG; ?><?= $produk['image1'] ?>" alt="">
 									</div>
 									<div class="w-60">
 										<span>Harga</span>
-										<h5>Rp.<?= number_format($produk['harga'],0,',','.'); ?></h5>
+										<h5>Rp.<?= number_format(@$produk['harga'],0,',','.'); ?></h5>
 										<a href="<?= base_url(); ?>eyemarket/detail/<?= $produk['toko']; ?>/<?= $produk['title_slug']; ?>" ><button type="submit" class="beli">Beli</a></button>
 									</div>
 								</div>
 							</div>
-							<?php } ?>						
+							<?php #} ?>						
 						</div>
 						<div class="carousel-indicators bx-dot ep-dot">
 							<span data-target="#em2Slide" data-slide-to="0" class="dot active"></span>
@@ -405,16 +402,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div role="listbox" class="carousel-inner">
 						<div class="box item active">
 							<?php 
-								foreach ($get_gallery as $gl){
-									$explode = explode('-',$gl['pic']);
-									if(!empty($explode[1])){
+								#foreach ($get_gallery as $gl){
+									// $explode = explode('-',$gl['pic']);
+									// if(!empty($explode[1])){
 							?>
 										<div class="em-box">
 											<img src="<?php echo imgUrl();?>systems/club_storage/<?php echo $gl['pic'];?>" alt="klub galeri" width="220">
 										</div>
 							<?php
-									}
-								}
+									#}
+								#}
 							?>
 						</div>
 					</div>
@@ -422,32 +419,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 	</div>
-<script>
-		function openTab(evt,tabbing){
-			// alert(tabbing);
-			var i, maintab, klubtab;
-			tabcontent = document.getElementsByClassName("maintab");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-			tablinks = document.getElementsByClassName("klubtab");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(" active", "");
-			}
-			document.getElementById(tabbing).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-	var fn = $(".hidden_title").val();
-	$('#tbl_karir_klub').DataTable( {
-		"order":[[1,"asc"]],
-		"processing": true,
-		"serverSide": true,
-		"ajax":{
-			url :"<?php echo base_url()?>eyeprofile/get_list_karir_klub/"+fn, // json datasource
-			type: "post",  // method  , by default get
-		},
-		"language": {
-			"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
-		}
-	} );
-</script>
+		<script>
+				function openTab(evt,tabbing){
+					// alert(tabbing);
+					var i, maintab, klubtab;
+					tabcontent = document.getElementsByClassName("maintab");
+					for (i = 0; i < tabcontent.length; i++) {
+						tabcontent[i].style.display = "none";
+					}
+					tablinks = document.getElementsByClassName("klubtab");
+					for (i = 0; i < tablinks.length; i++) {
+						tablinks[i].className = tablinks[i].className.replace(" active", "");
+					}
+					document.getElementById(tabbing).style.display = "block";
+					evt.currentTarget.className += " active";
+				}
+			var fn = $(".hidden_title").val();
+			$('#tbl_karir_klub').DataTable( {
+				"order":[[1,"asc"]],
+				"processing": true,
+				"serverSide": true,
+				"ajax":{
+					url :"<?php echo base_url()?>eyeprofile/get_list_karir_klub/"+fn, // json datasource
+					type: "post",  // method  , by default get
+				},
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+				}
+			} );
+		</script>
