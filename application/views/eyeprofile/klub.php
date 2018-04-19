@@ -393,7 +393,7 @@
                 <span class="next-right">Selengkapnya
                     <i class="material-icons t-8">keyboard_arrow_right</i>
                 </span>
-				<div class="detail_klasemen">
+				<div class="detail_klasemen" style="height: 30px;">
 					<div class="dt_klasemen">
 							<div class="dt_zona_acl"> <span class="dt_acl"></span>
 							AFC Champions League
@@ -407,7 +407,7 @@
 					</div>
           		</div>			
                 </span>	
-				<div class="container banner-eyeprofile4 img-banner mt-20 tx-c" style="width: 100%;position: relative;overflow: unset;height: 147px;">
+				<div class="container img-banner tx-c" style="width: 100%;position: relative;overflow: unset;height: unset;min-height: 150px !important;">
                             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                             <!-- EyesoccerDekstop 11#EyeprofileLigaKlub336x280 -->
                             <ins class="adsbygoogle"
@@ -493,9 +493,6 @@
 					}else{
 					?>
 								<tr>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
@@ -595,7 +592,6 @@
 					}else{
 					?>
 								<tr>
-									<td>-</td>
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>

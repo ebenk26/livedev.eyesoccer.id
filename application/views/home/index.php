@@ -930,7 +930,7 @@
                 </select>
 				<div>
 						<div id="liga_indonesia" style="margin-top: 10px;">
-						<table class="border-box radius" cellspacing="0" cellpadding="0">
+						<table class="border-box radius" cellspacing="0" cellpadding="0" style="margin-top: 3px;">
 							<thead>
 								<tr>
 									<th title="Posisi">#</th>

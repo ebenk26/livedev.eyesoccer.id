@@ -5195,3 +5195,7 @@ img.loading {
     100%{
         background-position: 0% 50%;
     }
+}
+.stripe.cell-border.dataTable.no-footer{
+    display: table;
+}
