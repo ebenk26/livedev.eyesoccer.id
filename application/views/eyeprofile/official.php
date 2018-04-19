@@ -13,7 +13,7 @@
 	<div class="crumb">
 		<ul>
 		<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
-		<li><a href='<?php echo base_url().'eyeprofile/klub'; ?>' style='display: unset'>Eyeprofile</a></li>
+		<li><a href='<?php echo pCLUB ?>' style='display: unset'>Eyeprofile</a></li>
 		<li><a href='#' style='display: unset'>Ofisial</a></li>
 		</ul>
 	</div>
@@ -31,7 +31,7 @@
 				<?php
 					foreach($get_all_kompetisi as $row){
 				?>
-					<option value="<?php echo base_url()."eyeprofile/official/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+					<option value="<?php echo base_url()."eyeprofile/official/".$row->competition?>"><?php echo $row->competition;?></option>';  
 				<?php
 					}
 				?>

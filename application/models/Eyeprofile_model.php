@@ -3,6 +3,9 @@
 class Eyeprofile_model extends CI_Model
 {
 //membaca tabel database
+		private function __xurl() { return $this->config->item('api_url'); }
+    	private function __xkey() { return $this->config->item('credential'); }
+
         public function listing(){
             $this->db->select('tbl_category_product.*,category_product_name');
             $this->db->from('tbl_category_product');
@@ -662,6 +665,13 @@ class Eyeprofile_model extends CI_Model
 
 		echo json_encode($json_data); 
 	}
+	public function __getListPlayer($competition = '',$page = '1',$limit='10'){
+		$query = array('page' => $page, 'limit' => $limit, 'competition' => $competition);
+		$res  = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query);
+		p($res);
+		exit;
+		return $res;
+	}
 	
 	public function get_list_official($requestData,$liga)
 	{
@@ -813,14 +823,30 @@ class Eyeprofile_model extends CI_Model
 	
 	public function get_all_kompetisi()
 	{
-		$query = $this->db->query("select competition from tbl_competitions where competition not in ('SSB / Akademi Sepakbola')")->result_array();
-		return $query;
+		$query  = array('page' => '1','limit' => '10');
+		$r  = $this->excurl->remoteCall($this->__xurl().'competition',$this->__xkey(),$query);
+		$r = json_decode($r)->data;
+
+		$r[count($r)] = $r[0];
+		//order values of array 
+		for($i= 0 ;$i < count($r);$i++){
+		
+			$r[$i] = $r[$i+1];
+			if($i == 5){
+				unset($r[5]);
+			}
+
+		}
+		$res = array_values($r);
+		return $res;
 	}
 	
 	public function get_all_liga()
 	{
-		$query = $this->db->query("select nama_liga from tbl_liga")->result_array();
-		return $query;
+		$query  = array('page' => '1','limit' => '10');
+		$res  = $this->excurl->remoteCall($this->__xurl().'league',$this->__xkey(),$query);
+		$res = json_decode($res)->data;
+		return $res;
 	}
 	
 	public function get_official_detail($url){
@@ -890,6 +916,33 @@ class Eyeprofile_model extends CI_Model
 	public function get_gallery_club($club_id){
 		$query = $this->db->query("select * from tbl_gallery where klub_id='".$club_id."'")->result_array();
 		return $query;
+	}
+	public function clublist($query){
+		$res   = $this->excurl->remoteCall($this->__xurl().'profile-club', $this->__xkey(), $query);
+		return $res;
+	}
+	public function  __getplayerlist(){
+		$competition = $this->input->post('competition');
+		$page  = $this->input->post('page');
+		$query = array('page'=> $page,'limit' => '10','competition'=> $competition);
+		$query2 = $query;
+		$query2['playercount'] = true;
+		$data['res'] = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query);
+		$data['count'] = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query2);
+
+		$html = $this->load->view('eyeprofile/ajax/playerlist',$data,true);
+		$arr = array('xClass'=> 'loadlistplayer','xHtml'=> $html);
+		echo json_encode($arr);
+
+	}
+	public function __getdataleague(){
+		$competition = $this->input->post('competition');
+		$query = array('page'=> '1','limit' => '10','competition'=> $competition,'playercount'=> true,'count'=> true);
+		$data['player'] = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query);
+		$data['club']  = $this->excurl->remoteCall($this->__xurl().'profile-club',$this->__xkey(),$query);
+		$html = $this->load->view('eyeprofile/ajax/leaguedata',$data,true);
+		$arr = array('xClass'=> 'resdataleague','xHtml'=> $html);
+		echo json_encode($arr);
 	}
 }
 

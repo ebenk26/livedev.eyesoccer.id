@@ -97,7 +97,7 @@ define('IMGSTORE', base_url() . 'assets/img_storage/');
 define('MEMBERAREA', base_url() . 'home/member_area');
 define('EYEPROFILE', base_url() . 'eyeprofile/');
 define('pCLUB', EYEPROFILE . 'klub');
-define('pPLAYER', EYEPROFILE . 'pemain');
+define('pPLAYER', EYEPROFILE . 'pemain/');
 define('PLAYERDETAIL', EYEPROFILE . 'pemain_detail/');
 define('CLUBDETAIL', EYEPROFILE . 'klub_detail/');
 define('pOFFICIAL', EYEPROFILE . 'official');
@@ -126,12 +126,14 @@ function p($arr)
     echo '</pre>';
 }
 function formatDate($date){
-    $month =  array('Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des');
-    $date = str_replace('-', '/', $date);
-    $date = str_replace('/', ' ', $date);
-    $date = explode(' ', $date);
-    $date[1] = $month[abs($date[1]) - 1];
-    return implode(" ",$date);
+    if($date != ''){
+        $month =  array('Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des');
+        $date = str_replace('-', '/', $date);
+        $date = str_replace('/', ' ', $date);
+        $date = explode(' ', $date);
+        $date[1] = $month[abs($date[1]) - 1];
+        return implode(" ",$date);
+    }
 
 }
 function imgCache($url, $size = "medium")
@@ -539,7 +541,10 @@ function LinkScrapingLigaIndonesia()
     // return "http://www.klasemenliga.com/?page=season&id=15105";
     return "https://id.soccerway.com/national/indonesia/super-liga/2018/regular-season/r45094/";
 }
-
+function LinkScrapingAssistLigaIndonesia()
+{
+    return "http://www.worldfootball.net/assists/idn-liga-1-2018/";
+}
 function LinkScrapingLigaInggris()
 {
     // return "http://www.klasemenliga.com/?page=competition&id=8";
