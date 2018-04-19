@@ -126,12 +126,14 @@ function p($arr)
     echo '</pre>';
 }
 function formatDate($date){
-    $month =  array('Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des');
-    $date = str_replace('-', '/', $date);
-    $date = str_replace('/', ' ', $date);
-    $date = explode(' ', $date);
-    $date[1] = $month[abs($date[1]) - 1];
-    return implode(" ",$date);
+    if($date != ''){
+        $month =  array('Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des');
+        $date = str_replace('-', '/', $date);
+        $date = str_replace('/', ' ', $date);
+        $date = explode(' ', $date);
+        $date[1] = $month[abs($date[1]) - 1];
+        return implode(" ",$date);
+    }
 
 }
 function imgCache($url, $size = "medium")

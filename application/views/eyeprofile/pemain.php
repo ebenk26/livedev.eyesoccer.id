@@ -60,8 +60,7 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
             <div class="reqdataleague" id="reqdata" action="playerlist"> 
                 <input type="hidden" name="fn" value="getdataleague" class="cinput">
                 <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">
-                
-
+    
                 <script>
                     $(function(){
                         ajaxOnLoad('reqdataleague');
@@ -94,13 +93,13 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
         </script>
     </div>
     <div id="loadlistplayer">
-    <ul style="width:100%;">
-        <?php
-            for($i = 0; $i <= 10; $i++ ){
-                echo '<li class="box-bg" style="width: 100%;height: 30px"></li>';
-            }
-        ?>
-            
-    </ul>
+        <ul style="width:100%;">
+            <?php
+                for($i = 0; $i <= 10; $i++ ){
+                    echo '<li class="box-bg" style="width: 100%;height: 30px"></li>';
+                }
+            ?>
+                
+        </ul>
     </div>
 </div>
