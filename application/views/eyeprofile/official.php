@@ -31,7 +31,7 @@
 				<?php
 					foreach($get_all_kompetisi as $row){
 				?>
-					<option value="<?php echo base_url()."eyeprofile/official/".$row['competition']?>"><?php echo $row['competition'];?></option>';  
+					<option value="<?php echo base_url()."eyeprofile/official/".$row->competition?>"><?php echo $row->competition;?></option>';  
 				<?php
 					}
 				?>

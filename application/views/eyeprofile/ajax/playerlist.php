@@ -13,7 +13,7 @@
 		<tr>
 			<td><?php echo $no?></td>
 			<td style=""><img  src="<?php echo $r->url_pic?>" style="width: 40px;height:40px;border-radius:50%;vertical-align: inherit;"> 
-				 <?php echo anchor(PLAYERDETAIL.$r->name,$r->name)?></td>
+				 <?php echo anchor(PLAYERDETAIL.$r->slug,$r->name)?></td>
 			<td><?php echo formatDate($r->birth_date)?></td>
 			<td><?php echo $r->position_a?></td>
 			<td><?php echo $r->club?></td>
