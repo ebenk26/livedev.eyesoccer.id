@@ -5211,5 +5211,10 @@ img.loading {
     100%{
         background-position: 0% 50%;
     }
+}
+.stripe.cell-border.dataTable.no-footer{
+    display: table;
+}
 .min{
-    width: 40px;height: 40px;border-radius:50%}
+    width: 40px;height: 40px;border-radius:50%
+}

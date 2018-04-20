@@ -65,7 +65,8 @@ class Home extends CI_Controller
         $data['eyevent_main'] = $this->Home_model->get_eyevent_main();
         $data['eyevent_main_2'] = $this->Home_model->get_eyevent_main_2();
         $data['eyevent_main_3'] = $this->Home_model->get_eyevent_main_3();
-
+        
+        $data['jadwal_home'] = $this->Home_model->get_jadwal_home();
         $data['jadwal_today'] = $this->Home_model->get_jadwal_today();
         $data['jadwal_tomorrow1'] = $this->Home_model->get_jadwal_tomorrow1();
         $data['jadwal_tomorrow2'] = $this->Home_model->get_jadwal_tomorrow2();
