@@ -16,7 +16,7 @@ $res[0] = json_decode($res[0]); ?>
 		<tr>
 			<td><?php echo $no?></td>
 			<td style=""><img  src="<?php echo checkImg($r->url_pic)?>" style="width: 40px;height:40px;border-radius:50%;vertical-align: inherit;"> 
-				 <?php echo anchor(PLAYERDETAIL.$r->slug,$r->name)?></td>
+				 <?php echo anchor(OFFICIALDETAIL.$r->slug,$r->name)?></td>
 			<td><?php echo $r->club?></td>	
 			<td><?php echo formatDate($r->birth_date)?></td>
 			<td><?php echo $r->position?></td>

@@ -101,6 +101,7 @@ define('pPLAYER', EYEPROFILE . 'pemain/');
 define('PLAYERDETAIL', EYEPROFILE . 'pemain_detail/');
 define('CLUBDETAIL', EYEPROFILE . 'klub_detail/');
 define('pOFFICIAL', EYEPROFILE . 'official/');
+define('OFFICIALDETAIL', EYEPROFILE . 'official_detail/');
 define('pREFEREE', EYEPROFILE . 'referee/');
 define('pSUPPORT', EYEPROFILE . 'supporter/');
 define('EYETUBE', base_url() . 'eyetube');
