@@ -15,7 +15,7 @@ $res[0] = json_decode($res[0]); ?>
 		<?php $no = 0; foreach($res[0]->data as $r): $no++ ?>
 		<tr>
 			<td><?php echo $no?></td>
-			<td style=""><img  src="<?php echo $r->url_pic?>" style="width: 40px;height:40px;border-radius:50%;vertical-align: inherit;"> 
+			<td style=""><img  src="<?php echo checkImg($r->url_pic)?>" style="width: 40px;height:40px;border-radius:50%;vertical-align: inherit;"> 
 				 <?php echo anchor(PLAYERDETAIL.$r->slug,$r->name)?></td>
 			<td><?php echo $r->club?></td>	
 			<td><?php echo formatDate($r->birth_date)?></td>

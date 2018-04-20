@@ -125,6 +125,14 @@ function p($arr)
     print_r($arr);
     echo '</pre>';
 }
+function checkImg($url){
+    $explode = explode('/',$url);
+    if($explode[6] == ''){
+        return imgCache('LOGO UNTUK APLIKASI.jpg','thumb');
+    }
+    return $url;
+
+}
 function formatDate($date){
     if($date != ''){
         $month =  array('Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des');
