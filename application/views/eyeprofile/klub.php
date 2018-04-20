@@ -1,4 +1,6 @@
-
+<?php 
+$comp = ($this->uri->segment(3) == '' ? 'Liga Indonesia 1' : urldecode($this->uri->segment(3)));
+$pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this->uri->segment(6) : $this->uri->segment(5)) : 1 );?>
 <style>
 	.tab-active{
     background-color: #ffa7261f;
@@ -84,24 +86,24 @@
 	.dt_afcwl:hover{background-color:#a39fff;}
 
 </style>
-
-
+<div id="uri_segment" val="<?php echo $this->uri->segment(3)?>"></div>
+<div class="baseurl" val="<?php echo EYEPROFILE?>"></div>
         <div class="center-desktop m-0">
 			<div class="crumb m-t-100">
 				<ul>
 				<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
-				<li><a href='<?php echo base_url().'eyeprofile/klub'; ?>' style='display: unset'>Eyeprofile</a></li>
+				<li><a href='<?php echo pCLUB; ?>' style='display: unset'>Eyeprofile</a></li>
 				<li><a href='#' style='display: unset'>Klub</a></li>
 				</ul>
 			</div>
             <div class="menu-2 w-100 m-0-0 pd-t-20">
-                <ul>
-                    <li class="active"><a href="<?=base_url()?>eyeprofile/klub" >Klub</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
-                    <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
-				</ul>
+	            <ul>
+	                <li  class="active"><?php echo anchor(pCLUB,'Klub')?></li>
+	                <li><?php echo anchor(pPLAYER,'Pemain')?></li>
+	                <li><?php echo anchor(pOFFICIAL,'Ofisial')?></li>
+	                <li><?php echo anchor(pREFEREE,'Perangkat Pertandingan')?></li>
+	                <li><?php echo anchor(pSUPPORT,'supporter')?></li>
+	            </ul>
                 <select id="chained_kompetisi" name="" selected="true" class="slc-musim fl-r" onchange="if(this.options[this.selectedIndex].value != 'Liga Usia Muda'){window.location = this.options[this.selectedIndex].value};" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
 				<?php foreach($competition as $r){?>
@@ -113,101 +115,67 @@
 				
 				<select id="chained_liga" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: 0px 0px 2px;display:none;">
 					<option value="">--Pilih Kategori Liga--</option>
-				<?php
-					foreach($get_all_liga as $row){
-				?>
-						<option value="<?php echo base_url()."eyeprofile/klub/".$row->league?>"><?php echo $row->league?></option>';  
-				<?php
-					}
-				?>
+
+				<?php foreach($get_all_liga as $row):?>
+
+
+					<option <?php echo ($row->league == urldecode($this->uri->segment(4)) ? 'selected' :'')?> value="<?php echo pCLUB.'Liga Usia Muda/'.$row->league?>"><?php echo $row->league?></option>';  
+
+				<?php endforeach;?>
                 </select>
             </div>
         </div>
         <div class="center-desktop m-0">		
-            <div class="container box-border-radius fl-l mt-30">
-				
-                <div class="fl-l img-80" style="display:none;">				
-                    <img src="<?=imgUrl()?>assets/img/content_11.jpg" alt="" height="100%">
-                </div>
-                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l" style="width:500px;">
-                    <table>
-                        <tr>
-                            <td>Level Liga</td>
-                            <td>: <?php echo $title_liga; ?></td>
-                        </tr>
-                        <tr>
-                            <td>Jumlah Klub</td> 
-                            <td>: <?php echo count($club_main)?> Klub</td>
-                        </tr>
-                        <tr>
-                            <td>Jumlah Pemain</td>
-                            <td>:
-							<?php echo count($get_player_liga);?> Pemain</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="tabel-liga-370 table-pd-3 fl-l">
-                    <table>
-                        <tr>
-                            <td>Pemain Asing</td>
-                            <td>:
-							<?php echo count($get_player_liga_strange);?> Pemain</td>
-                        </tr>
-                        <tr>
-                            <td>Rata - Rata Usia Pemain</td>
-                            <td>: <?php if(!empty($avg_year)) echo $avg_year[0]['usia'].' Tahun'; else echo '-';?></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="center-desktop m-0 orange-default">
-			<div class='testlist'>
-			<?php 
-				if($page == 1)
-				{
-					?> <div class='pageon' value='true'></div> <?php
-				}
-			?>
-			</div>
-				<!--test-->
+            <div id="resdataclub">
+	        <div class="container box-border-radius fl-l mt-30">  
+	            <div class="reqdataleague" id="reqdata" action="do"> 
+	                <input type="hidden" name="fn" value="getclubdata" class="cinput">
+	                <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">   
+	                <script>
+	                    $(function(){
+	                        ajaxOnLoad('reqdataleague');
+	                    })
+	                </script>
+
+	                <div class="fl-l img-80" style="display:none;">				
+	                    <img src="<?=imgUrl()?>assets/img/content_11.jpg" alt="" height="100%">
+	                </div>
+	                <div class="tabel-liga-370 b-r-1 table-pd-3 fl-l box-bg" style="width:500px;height:140px;max-height: 200px !important;margin:auto">
+	                   
+	                </div>
+	                <div class="tabel-liga-370  b-r-1 table-pd-3 fl-l box-bg" style="width:500px;height:140px;max-height: 200px;margin:auto">
+	                   
+	                </div>
+	            </div>
+	        </div>
+	        </div>
+	      <div id="resclublist">
+	      <div id="reqclublist" class="loadclublist" action="do">
+	      		<input type="hidden" name="fn" value="getlistclub" class="cinput">
+	      		<input type="hidden" name="page" value="<?php echo $pageCtrl?>" class="cinput">
+	      		<input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">
+	      	<?php if($this->uri->segment(4) AND $this->uri->segment(4) != 'page'){
+           		echo '<input type="hidden" name="league" value="'.urldecode($this->uri->segment(4)).'" class="cinput">';
+        	} ?>
+		      <div class='ep2box fl-l pd-t-20'>
+					<?php for($i=0;$i < 12;$i++):?>
+						<div class="box-content ep2 fl-l box-bg" style="margin:5px !important">
+						
+						</div>			 
+					<?php endfor;?>
+					
+				</div>
 				<script>
-					$(document).ready(function(){
-						setTimeout(function(){
-							<?php
-								$showpage = ceil(getTotalClub($liga)/12);
-								if($page > 1)
-								{
-									if($showpage == $page OR $page == $showpage - 1)
-									{
-										if($showpage == 2) //Showrun
-										{
-											?> nav_first(<?php echo $page; ?>); <?php 
-										} else {
-											?> nav_last(<?php echo $page; ?>); <?php 
-										}
-									} else {
-										?> nav_page(<?php echo $page; ?>); <?php 
-									}
-								} else {
-									if($page > 0)
-									{
-										?> nav_first(<?php echo $page; ?>); <?php 
-									}
-								}
-							?>
-						}, 500);
-					});
+					$(function(){
+						ajaxOnLoad('loadclublist');
+					})
 				</script>
-				<div id='showlist' value='.testlist'></div>
-				<div id='showbaseurl' value='<?php echo base_url()?>'></div>
-				<div id='shownewurl' value='<?php echo base_url()."eyeprofile/klub/$liga"; ?>'></div>
-				<div id='showurl' value='<?php echo base_url()."eyeprofile/getClub/$liga"; ?>'></div>
-				<div id='showpage' value='<?=$showpage;?>'></div>
-				<div id='showoff' value='4'></div>
-				<div id='showrun' value='2'></div>
-				<div id='shownav'>
-			 </div>
+			</div>
+        </div>
+    	</div>
+
+        <div class="center-desktop m-0 orange-default">
+			
 			<!--test-->
 			<div class="container t-b-b pd-b-20 pd-t-20"></div>
             <div class="container">
@@ -220,29 +188,23 @@
 				<?php if(count($get_jadwal_hasil)>0){?>
 						<div class="over item">
 							<?php
-								foreach($get_jadwal_hasil2 as $club){
-								?>			
+								foreach($get_jadwal_hasil2 as $club):?>			
 									<div class="j-content">
 										<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
 										<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
 										<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
 									</div>		
-								<?php
-								}
-								?>
+								<?php endforeach;?>
 						</div>
 						<div class="over item">	
 							<?php
-							foreach($get_jadwal_hasil1 as $club){
-							?>		
+							foreach($get_jadwal_hasil1 as $club):?>		
 								<div class="j-content">
 									<span class="t"><?=date("d M Y",strtotime($club["jadwal_pertandingan"]))?></span><br>
 									<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
 									<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
 								</div>		
-							<?php
-							}
-							?>							
+							<?php endforeach;s?>							
 						</div>	
 						<div class="over item  active">	
 							<?php
@@ -538,16 +500,11 @@
 			<!-- </div>	 -->
 			 <div class="container" style="margin-top:7px;" align="center">
 									
-										<button id="topskorer" class="tab-active"><a href="#" onclick="return false;">Top Scorer
-										</a></button>
-										<button id="topassist" class=" "><a href="#" onclick="return false;">Top Assist
-										</a></button>
-										<button id="kk" class=" "><a href="#" onclick="return false;">Yellow Card
-										</a></button>
-										<button id="km" class=" "><a href="#" onclick="return false;">Red Card
-										</a></button>
-										<button id="pass" class=" "><a href="#" onclick="return false;">Passing
-										</a></button>
+					<button id="topskorer" class="tab-active"><a href="#" onclick="return false;">Top Scorer</a></button>
+					<button id="topassist" class=" "><a href="#" onclick="return false;">Top Assist</a></button>
+					<button id="kk" class=" "><a href="#" onclick="return false;">Yellow Card</a></button>
+					<button id="km" class=" "><a href="#" onclick="return false;">Red Card</a></button>
+					<button id="pass" class=" "><a href="#" onclick="return false;">Passing</a></button>
 
 				<table id="top_scorer" class="radius table table-striped" cellspacing="0" cellpadding="0">
 					<thead>
@@ -726,13 +683,7 @@
         </div>
         </div>
 		<script>
-			$('#chained_kompetisi').on('change', function()
-			{
-				var value    = $(this).val();
-				if(value=='Liga Usia Muda'){
-					$("#chained_liga").show();
-				}
-			})
+		
 			$('#topskorer').click(function(){
 				$('#top_assist,#k_k,#k_m,#pa_ss').hide();
 				$('#topassist,#kk,#km,#pass').removeClass('tab-active');

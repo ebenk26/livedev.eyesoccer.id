@@ -18,6 +18,7 @@ class Eyeprofile extends CI_Controller {
 	
 	public function index()
 	{
+		
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
@@ -98,8 +99,7 @@ class Eyeprofile extends CI_Controller {
 		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain($nama_liga);
 		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol($nama_liga);		
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
-		
-
+	
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();		
 		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia',$cat_liga);		
 		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga,'indonesia',$cat_liga);		
@@ -142,56 +142,11 @@ class Eyeprofile extends CI_Controller {
 	{
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
-		}
-		//$this->load->view('eyeprofile/pemain');
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
-		$data["page"]="eyeprofile";		
-		$nama_subliga = "";
-		$jml_klub = null;
-		$nama_liga = urldecode($liga);
-		$cat_liga = null;
-		if($this->uri->segment(4)){
-			$nama_liga = urldecode($this->uri->segment(4));
-			$nama_subliga = urldecode($this->uri->segment(4));
-		}
-		$data["title_liga"] = urldecode($liga);
-		if($nama_liga == 'Liga Indonesia 1'){
-			$jml_klub = 18;	
-		}else if($nama_liga == 'Liga Indonesia 2'){
-			$jml_klub = 24;
-			$nama_liga_event = 'Liga 2 Go-Jek Traveloka - Play Off';
-		}else if($nama_liga == 'Liga Indonesia 3'){
-	
-			$nama_liga_event = 'Liga Indonesia 3 Wilayah Jawa Barat';
-		}else if($nama_liga == 'Liga Pelajar U-16 Piala Menpora'){
-
-			$nama_liga_event = 'Liga Pelajar U-16 Piala Menpora';
-			$cat_liga = $nama_liga;
-			$nama_liga = "Liga Usia Muda";
-		}else if($nama_liga == 'Liga Santri Nusantara'){
-	
-			$nama_liga_event = 'Liga Santri Nusantara';
-			$cat_liga = $nama_liga;
-			$nama_liga = "Liga Usia Muda";
-		}else if($nama_liga == 'Liga Indonesia U-19'){
-			
-			$nama_liga_event = 'Liga Indonesia U-19';
-			$cat_liga = $nama_liga;
-			$nama_liga = "Liga Usia Muda";
-		}
-		
-	
+		}	
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
-
-
-		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub,$cat_liga);
-		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia',$cat_liga);
-		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga,'indonesia',$cat_liga);		
+	
 		$data['kanal'] = "home";
-		$data['nama_subliga'] = $nama_subliga;
 		
 		$data["body"]=$this->load->view('eyeprofile/pemain',$data, true);
 
@@ -239,7 +194,6 @@ class Eyeprofile extends CI_Controller {
 		);
 		$mod  = $this->excurl->remoteCall($url,$cred,$event_data);
 		$decode  = json_decode($mod);
-		p($decode);
 
 
 	}
@@ -354,8 +308,6 @@ class Eyeprofile extends CI_Controller {
 	
 	public function get_list_pemain($liga){
 
-		// $res = $this->pmod->getListPlayer($liga,)
-		// p($_POST);
 		$requestData= $_POST;
 		$res = $this->Eyeprofile_model->get_list_pemain($requestData,urldecode($liga));
 		return $res;
@@ -373,9 +325,9 @@ class Eyeprofile extends CI_Controller {
 		return $res;
 	}
 	public function getClub($url,$limit=null){
-		$league = urldecode($url); 
+		$competition = urldecode($url); 
 		$val = $this->input->post('val');
-		$query = array('page' => $val,'limit' => 12,'competition'=> $league);
+		$query = array('page' => $val,'limit' => 12,'competition'=> $competition);
 		$res   = $this->pmod->clublist($query);
 		$res   = json_decode($res)->data;
 		
@@ -403,17 +355,20 @@ class Eyeprofile extends CI_Controller {
 				}
         echo "</div>";
 	}
-	public function playerlist(){
-		$fn   = $_POST['fn'];     
-		$data = [];
-		if(function_exists($fn))
-		{
-		    $fn();
-		} else {
-		    $fn = "__".$fn;
-		    $this->pmod->$fn();
-		}
+	public function do(){
+		if($_POST){
 
+			$fn   = $_POST['fn'];     
+			$data = [];
+			if(function_exists($fn))
+			{
+			    $fn();
+			} else {
+			    $fn = "__".$fn;
+			    $this->pmod->$fn();
+			}
+		}
 	}
+	
 	
 }

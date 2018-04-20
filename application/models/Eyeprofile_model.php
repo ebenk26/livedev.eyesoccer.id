@@ -923,13 +923,13 @@ class Eyeprofile_model extends CI_Model
 	}
 	public function  __getplayerlist(){
 		$competition = $this->input->post('competition');
+		$league = $this->input->post('league');
 		$page  = $this->input->post('page');
-		$query = array('page'=> $page,'limit' => '10','competition'=> $competition);
+		$query = array('page'=> $page,'limit' => '10','competition'=> $competition,'league'=> $league);
 		$query2 = $query;
 		$query2['playercount'] = true;
 		$data['res'] = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query);
 		$data['count'] = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query2);
-
 		$html = $this->load->view('eyeprofile/ajax/playerlist',$data,true);
 		$arr = array('xClass'=> 'loadlistplayer','xHtml'=> $html);
 		echo json_encode($arr);
@@ -944,8 +944,43 @@ class Eyeprofile_model extends CI_Model
 		$arr = array('xClass'=> 'resdataleague','xHtml'=> $html);
 		echo json_encode($arr);
 	}
+	public function __getclubdata(){
+
+		$competition = $this->input->post('competition');
+		$league  = $this->input->post('league');
+		$query[0] = array('competition' => $competition,'league'=> $league,'playercount'=> true);
+		$query[1] = array('competition' => $competition,'league'=> $league,'count'=> true);
+		$data['res'][0] = $this->excurl->remoteCall($this->__xurl().'profile',$this->__xkey(),$query[0]);
+		$data['res'][1] = $this->excurl->remoteCall($this->__xurl().'profile-club',$this->__xkey(),$query[1]);
+		$html = $this->load->view('eyeprofile/ajax/clubdata',$data,true);
+		$arr = array('xClass'=> 'resdataclub','xHtml'=> $html);
+		echo json_encode($arr);
+
+	}
+	public function __getlistofficial(){
+		$competition = $this->input->post('competition');
+		$league = $this->input->post('league');
+		$page = $this->input->post('page');
+		$query[0] = array('page'=> $page,'limit'=> '10','competition' => $competition,'league' => $league);
+		$query[1] = array('page'=> $page,'limit'=> '10','competition' => $competition,'league' => $league,'count'=> true);
+		$data['res'][0] = $this->excurl->remoteCall($this->__xurl().'profile-official',$this->__xkey(),$query[0]);
+		$data['res'][1] = $this->excurl->remoteCall($this->__xurl().'profile-official',$this->__xkey(),$query[1]);
+		$html = $this->load->view('eyeprofile/ajax/officiallist',$data,true);
+		$arr =array('xClass'=>'reslistofficial','xHtml'=> $html);
+		echo json_encode($arr);
+
+	}
+	public function __getlistclub(){
+		$competition = $this->input->post('competition');
+		$league = $this->input->post('league');
+		$page = $this->input->post('page');
+		$query[0] = array('page'=> $page,'limit'=> '12','competition'=> $competition,'league' => $league);
+		$query[1] = array('count'=> true,'competition'=> $competition,'league' => $league);
+		$data['res'] = $this->excurl->remoteCall($this->__xurl().'profile-club',$this->__xkey(),$query[0]);
+		$data['count'] = $this->excurl->remoteCall($this->__xurl().'profile-club',$this->__xkey(),$query[1]);
+		$html = $this->load->view('eyeprofile/ajax/clublist',$data,true);
+		$arr = array('xClass'=> 'resclublist','xHtml'=> $html);
+		echo json_encode($arr);
+	}
 }
 
-/* End of file Berita_model.php */
-/* Location: ./application/models/Berita_model.php */
-/* Please DO NOT modify this information : */

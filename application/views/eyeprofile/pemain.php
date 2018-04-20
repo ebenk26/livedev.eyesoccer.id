@@ -14,6 +14,7 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
     }
 </style>
 <div class="baseurl" val="<?php echo EYEPROFILE?>"></div>
+<div id="uri_segment" val="<?php echo $this->uri->segment(3)?>"></div>
 	<div class="crumb">
 		<ul>
 		<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
@@ -24,13 +25,14 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
 	</div>
 	<div class="center-desktop m-0">
         <div class="menu-2 w-100 m-0-0 pd-t-20">
-            <ul>
-                <li><a href="<?=pCLUB?>">Klub</a></li>
-                <li class="active"><a href="<?=base_url()?>eyeprofile/pemain">Pemain</a></li>
-                <li><a href="<?=base_url()?>eyeprofile/official">Ofisial</a></li>
-                <li><a href="<?=base_url()?>eyeprofile/referee">Perangkat Pertandingan</a></li>
-                <li><a href="<?=base_url()?>eyeprofile/supporter">supporter</a></li>
+           <ul>
+                <li><?php echo anchor(pCLUB,'Klub')?></li>
+                <li class="active"><?php echo anchor(pPLAYER,'Pemain')?></li>
+                <li><?php echo anchor(pOFFICIAL,'Ofisial')?></li>
+                <li><?php echo anchor(pREFEREE,'Perangkat Pertandingan')?></li>
+                <li><?php echo anchor(pSUPPORT,'supporter')?></li>
             </ul>
+
             <select id="chained_kompetisi" name="" selected="true" class="slc-musim fl-r" onchange="if(this.options[this.selectedIndex].value != 'Liga Usia Muda'){window.location = this.options[this.selectedIndex].value};" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
                 <?php foreach($competition as $r){?>
@@ -42,25 +44,21 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
 				
 			<select id="chained_liga" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: 0px 0px 2px;display:none;">
 				<option value="">--Pilih Kategori Liga--</option>
-			<?php
+			<?php foreach($get_all_liga as $row):?>
 
-				foreach($get_all_liga as $row){
-
-			?>
-				<option value="<?php echo base_url()."eyeprofile/pemain/Liga Usia Muda/".$row->league?>"><?php echo $row->league;?></option>';  
-			<?php
-				}
-			?>
+				<option <?php echo ($row->league == urldecode($this->uri->segment(4)) ? 'selected' :'')?> value="<?php echo base_url()."eyeprofile/pemain/Liga Usia Muda/".$row->league?>"><?php echo $row->league;?></option>';
+                  
+			<?php endforeach;?>
 			</select>
         </div>
     </div>
+
     <div class="center-desktop m-0">
         <div id="resdataleague">
         <div class="container box-border-radius fl-l mt-30">  
-            <div class="reqdataleague" id="reqdata" action="playerlist"> 
+            <div class="reqdataleague" id="reqdata" action="do"> 
                 <input type="hidden" name="fn" value="getdataleague" class="cinput">
-                <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">
-    
+                <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">   
                 <script>
                     $(function(){
                         ajaxOnLoad('reqdataleague');
@@ -76,16 +74,21 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
                 <div class="tabel-liga-370  b-r-1 table-pd-3 fl-l box-bg" style="width:500px;height:140px;max-height: 200px;margin:auto">
                    
                 </div>
-                </div>
             </div>
+        </div>
         </div>
     </div>
     <div class="center-desktop m-0">
     <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
-    <div id="reqlistplayer" class="loadlistplayer" action="playerlist">
+    <div id="reqlistplayer" class="loadlistplayer" action="do">
         <input type="hidden" name="fn" value="getplayerlist" class="cinput">
-        <input type="hidden" name="page" value="<?php echo ($this->uri->segment(5) ? $this->uri->segment(5) : 1 )?>" class="cinput"> 
+        <input type="hidden" name="page" value="<?php echo ($this->uri->segment(5) ?  $this->uri->segment(5) : 1 )?>" class="cinput"> 
         <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput"> 
+
+        <?php 
+        if($this->uri->segment(4) AND $this->uri->segment(4) != 'page'){
+            echo '<input type="hidden" name="league" value="'.urldecode($this->uri->segment(4)).'" class="cinput">';
+        } ?>
         <script>
             $(function(){
                 ajaxOnLoad('loadlistplayer');
