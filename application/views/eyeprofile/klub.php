@@ -204,7 +204,7 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
 									<span class="r"><?=$club["club_a"]?></span><span class="s"><?=$club["score_a"]?></span><br>
 									<span class="r"><?=$club["club_b"]?></span><span class="s"><?=$club["score_b"]?></span><br>
 								</div>		
-							<?php endforeach;s?>							
+							<?php endforeach;?>							
 						</div>	
 						<div class="over item  active">	
 							<?php
