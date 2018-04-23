@@ -150,7 +150,7 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
 	        </div>
 	        </div>
 	      <div id="resclublist">
-	      <div id="reqclublist" class="loadclublist" action="do">
+	      <div id="reqclublist" class="loadclublist" action="doit">
 	      		<input type="hidden" name="fn" value="getlistclub" class="cinput">
 	      		<input type="hidden" name="page" value="<?php echo $pageCtrl?>" class="cinput">
 	      		<input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">

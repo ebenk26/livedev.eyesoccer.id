@@ -70,7 +70,7 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
     </div>
     <div class="center-desktop m-0">
     <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
-    <div id="reqlistplayer" class="loadlistofficial" action="do">
+    <div id="reqlistplayer" class="loadlistofficial" action="doit">
 	    <input type="hidden" name="fn" value="getlistofficial" class="cinput">
         <input type="hidden" name="page" value="<?php echo ($this->uri->segment(5) ?  $this->uri->segment(5) : 1 )?>" class="cinput"> 
         <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput"> 
