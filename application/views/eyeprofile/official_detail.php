@@ -5,12 +5,14 @@
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
 		<?php 
-        
-        foreach($res->data as $r){?>
+        $res = json_decode($res);
+        $r = $res->data; ?>
+
+
             <div class="left">
                 
                 <div class="box-img-radius">
-                    <img src="<?php echo imgUrl()?>systems/player_storage/<?php echo $row['official_photo']; ?>" alt="">
+                    <img src="<?php echo $r->url_logo; ?>" alt="">
                 </div>
             </div>
             <div class="right">
@@ -19,15 +21,15 @@
                         <tbody>
                             <tr>
                                 <td>Tempat Lahir </td>
-                                <td>:  <?php echo (!empty($row['birth_place']) ? $row['birth_place'] : '-');?></td>
+                                <td>:  <?php echo (!empty($r->birth_place) ? $r->birth_place : '-');?></td>
                             </tr>
                             <tr>
                                 <td>Tanggal lahir</td>
-                                <td>: <?php echo (!empty($row['birth_date']) ? $row['birth_date'] : '-')?></td>
+                                <td>: <?php echo (!empty($r->birth_date) ? $r->birth_date : '-')?></td>
                             </tr>
                             <tr>
                                 <td>Kewarganegaraan</td>
-                                <td>: <?php echo (!empty($row['nationality']) ? $row['nationality'] : '-') ?></td>
+                                <td>: <?php echo (!empty($r->nationality) ? $r->nationality : '-') ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -37,15 +39,15 @@
                         <tbody>
                             <tr>
                                 <td>klub Sekarang </td>
-                                <td>: <a href="<?php echo base_url()."eyeprofile/klub_detail/".$row['club_url']?>"><?php echo (!empty($row['club_name']) ? $row['club_name'] : '-')?></a></td>
+                                <td>: <?php echo (!empty($r->club) ? $r->club : '-')?></td>
                             </tr>
                             <tr>
                                 <td>Posisi</td>
-                                <td>: <?php echo(!empty($row['position']) ? $row['position'] : '-')?></td>
+                                <td>: <?php echo(!empty($r->position) ? $r->position : '-')?></td>
                             </tr>
                             <tr>
                                 <td> Kontrak</td>
-                                <td>: <?php echo(!empty($row['contract']) ? $row['contract'] : '-')?></td>
+                                <td>: <?php echo(!empty($r->contract) ? $r->contract : '-')?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -55,24 +57,21 @@
                         <tbody>
                             <tr>
                                 <td>Lisensi</td>
-                                <td>: <?php echo (!empty($row['license']) ? $row['license'] : '')?></td>
+                                <td>: <?php echo (!empty($r->license) ? $r->license: '')?></td>
                             </tr>
                             <tr>
                                 <td>Nomor Identitas</td>
-                                <td>: <?php echo (!empty($row['no_identity']) ? $row['no_identity'] : '') ?></td>
+                                <td>: <?php echo (!empty($r->no_identity) ? $r->no_identity : '') ?></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
            
-            <h3><?php echo $row['name'];?></h3>
+            <h3><?php echo $r->name;?></h3>
 
         </div>
     </div>
-	<?php
-		}
-		?>
     <div class="desktop pd-t-280">
     <div class="center-desktop m-0" style="padding-top: 30px;">
         <div class="w-60 m-r-1 pd-t-20 formasi">

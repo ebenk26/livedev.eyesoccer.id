@@ -924,6 +924,7 @@ class Eyeprofile_model extends CI_Model
 	public function __official_detail($slug){
 		$query = ['url'=> $slug];
 		$res = $this->excurl->remoteCall($this->__xurl().'profile-official/'.$slug,$this->__xkey(),$query);
+		
 		return $res;
 	}
 	public function  __getplayerlist(){
