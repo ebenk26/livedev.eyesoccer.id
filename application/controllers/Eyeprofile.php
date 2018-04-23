@@ -335,7 +335,7 @@ class Eyeprofile extends CI_Controller {
 				}
         echo "</div>";
 	}
-	public function do(){
+	public  function doit(){
 		if($_POST){
 			$fn   = $_POST['fn'];     
 			$data = [];
@@ -347,6 +347,7 @@ class Eyeprofile extends CI_Controller {
 			    $this->pmod->$fn();
 			}
 		}
+
 	}
 	
 	
