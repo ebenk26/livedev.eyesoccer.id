@@ -988,5 +988,11 @@ class Eyeprofile_model extends CI_Model
 		$arr = array('xClass'=> 'resclublist','xHtml'=> $html);
 		echo json_encode($arr);
 	}
+	public function __club_detail($url){
+		$query = ['url'=> $url];
+		$res = $this->excurl->remoteCall($this->__xurl().'profile-club/'.$url,$this->__xkey(),$query);
+		$res = json_decode($res);
+		return $res;
+	}
 }
 

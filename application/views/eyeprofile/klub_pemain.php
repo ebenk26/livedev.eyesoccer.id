@@ -21,13 +21,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container">
         <div class="garis-banner over-in profile-pemain">
 		<?php
-		foreach($get_klub_detail as $row){
+			$r = $res->data;
+			$players = $res->data->players;
+			$official = $res->data->official;
+			$cr = $res->data->careers;
+			$gallery = $res->data->gallery;
 		?>		
-			<input type="hidden" class="hidden_title" value="<?php echo $row['club_id']; ?>"/>
+			<input type="hidden" class="hidden_title" value="<?php echo $r->club_id; ?>"/>
 			<div class="left">
               
                 <div class="box-img-radius">
-                    <img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo']; ?>" alt="">                        
+                    <img src="<?php echo $r->url_logo ?>" alt="">                        
                 </div>
             </div>
             <div class="right">
@@ -37,47 +41,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tbody>
                             <tr>
                                 <td>Nama Klub</td>
-                                <td>: <?=$row["name"]?></td>
+                                <td>: <?=$r->name?></td>
                             </tr>
                             <tr>
                                 <td>Tanggal Berdiri</td>
-                                <td>: <?=$row["establish_date"]?></td>
+                                <td>: <?=$r->establish_date?></td>
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td>: <?=strip_tags($row["address"])?></td>
+                                <td>: <?=strip_tags($r->address)?></td>
                             </tr>
                             <tr>
                                 <td>Situs</td>
-                                <td>: <?=$row["website"]?></td>
+                                <td>: <?=$r->website?></td>
                             </tr>
 							
                         </tbody>
                     </table>
                 </div>
                 <div class="t-30">
-                    <h3><?=$row["competition"]?></h3>
+                    <h3><?=$r->competition?></h3>
                     <table>
                         <tbody>
                             <tr>
                                 <td>Level Liga</td>
-                                <td>: <?=$row["competition"]?></td>
+                                <td>: <?=$r->competition?></td>
                             </tr>
                             <tr>
                                 <td>No. Telp</td>
-                                <td>: <?=$row["phone"]?></td>
+                                <td>: <?=$r->phone?></td>
                             </tr>
 							<tr>
                                 <td>Fax</td>
-                                <td>: <?=$row["fax"]?></td>
+                                <td>: <?=$r->fax?></td>
                             </tr>
                             <tr>
                                 <td>Manajer</td>
-                                <td>: <?=$get_manager?></td>
+                                <td>: <?=$r->manager?></td>
                             </tr>
 							<tr>
                                 <td>Pelatih</td>
-                                <td>: <?=$get_pelatih?></td>
+                                <td>: <?=$r->coach?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -87,19 +91,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <tbody>
                             <tr>
                                 <td style="width: 120px;">Jumlah Pemain</td>
-                                <td>: <?=count($get_player_list)?> Pemain</td>
+                                <td>: <?=$r->number_of_player?> Pemain</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>: <?=$row["email"]?></td>
+                                <td>: <?=$r->email?></td>
                             </tr>
                             <tr>
                                 <td>Stadium</td>
-                                <td>: <?=$row["stadium"]?></td>
+                                <td>: <?=$r->stadium?></td>
                             </tr>
                             <tr>
                                 <td>Panggilan Klub</td>
-                                <td>: <?=$row["nickname"]?></td>
+                                <td>: <?=$r->nickname?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -118,36 +122,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="center-desktop m-l-158">
 			<h3 class="sjrh">Sejarah</h3>
 			<p>
-				<?=$row["description"]?>
+				<?=$r->description?>
 			</p>
 		</div>
-		<?php
-		}
-		?>
+
 			<div class="center-desktop m-0 maintab" id="tabs-pemain">
 			
 			<?php
 			$no = 1;
-			foreach($get_player_list as $row){		
+			foreach($players as $p){		
 			?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
-						<span><?=$row['number']?></span>
-						<h1><?=$row['name']?></h1>
-						<span><?=$row['position']?></span>
+						<span><?=$p->number?></span>
+						<h1><?=$p->name?></h1>
+						<span><?=$p->position_a?></span>
 					</div>
 					<div class="img-pemain">
-						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["pic"]?>" alt="">                
+						<img src="<?=$p->url_pic?>" alt="">                
 					</div>
 					<table>
 						<tbody>
 							<tr>
 								<td>Kewarganegaraan</td>
-								<td><?=$row['nationality']?></td>
+								<td><?=$p->nationality?></td>
 							</tr>
 							<tr>
 								<td>Tgl Lahir</td>
-								<td><?=$row['birth_date']?></td>
+								<td><?=$p->birth_date?></td>
 							</tr>
 							<tr>
 								<td>Main</td>
@@ -155,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</tr>
 						</tbody>
 					</table>
-					<a target="_blank" href="<?=base_url()?>eyeprofile/pemain_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Pemain</button></a>
+					<a target="_blank" href="<?=$p->share_url?>" ><button class="btn-orange-2" type="button">Lihat Detail Pemain</button></a>
 				</div><?php }?>                                      
 				<div class="container banner-150 img-banner">
 					<img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
@@ -165,35 +167,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="center-desktop m-0 pd-t-100 maintab" style="display:none;" id="tabs-ofisial">
 			<?php
 			$no = 1;
-			foreach($get_official_list as $row){		
-			?>
+			foreach($official as $o):?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
 						<span></span>
-						<h1><?=$row['name']?></h1>
-						<span><?=$row['position']?></span>
+						<h1><?=$o->name?></h1>
+						<span><?=$o->position?></span>
 					</div>
 					<div class="img-pemain">
-						<img src="<?=imgUrl()?>systems/player_storage/<?=$row["official_photo"]?>" alt="">                
+						<img src="<?=$o->url_pic?>" alt="">                
 					</div>
 					<table>
 						<tbody>
 							<tr>
 								<td>Kewarganegaraan</td>
-								<td><?=$row['nationality']?></td>
+								<td><?=$o->nationality?></td>
 							</tr>
 							<tr>
 								<td>Tgl Lahir</td>
-								<td><?=$row['birth_date']?></td>
+								<td><?=$o->birth_date?></td>
 							</tr>
 							<tr>
 								<td>Lisensi</td>
-								<td><?=$row['license']?></td>
+								<td><?=$o->license?></td>
 							</tr>
 						</tbody>
 					</table>
-					<a target="_blank" href="<?=base_url()?>eyeprofile/official_detail/<?=$row["url"]?>" ><button class="btn-orange-2" type="button">Lihat Detail Ofisial</button></a>
-				</div><?php }?> 
+					<a target="_blank" href="<?=$o->share_url?>" ><button class="btn-orange-2" type="button">Lihat Detail Ofisial</button></a>
+				</div><?php endforeach;?> 
 				<div class="container banner-150 img-banner">
 					<img class="lazy" src="<?php echo base_url()?>assets/img/banner-home.jpeg" alt="">
 				</div>                                     
@@ -209,22 +210,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="center-desktop m-0">
 			<div class="w-60 m-r-1 pd-t-20 formasi">
 				<h3 class="">Prestasi Klub</h3>
-				<table class="stripe cell-border" cellspacing="0" width="100%" id="tbl_karir_klub">
-					<thead id="back900">
-						<th>No</th>
-						<th>Bulan</th>
-						<th>Tahun</th>
-						<th>Turnamen</th>
-						<th>Peringkat</th>
-						<th>Pelatih</th>
+				<table class="table table-stripped table-hover">
+					
+					<thead>
+						<tr>
+							<th>NO</th>
+							<th>Bulan</th>
+							<th>Tahun</th>
+							<th>Turnamen</th>
+							<th>peringkat</th>
+							<th>pelatih</th>
+						</tr>
 					</thead>
-					<tbody >
+					<tbody>
+						
+						<?php
+							$no = 0 ;
+							for($i= 0 ;$i <count($cr);$i++){
+								$no++;
+								echo '<tr>';
+								echo '<td>'.$no.'</td>';
+								echo '<td>'.$cr[$i]->month.'</td>';
+								echo '<td>'.$cr[$i]->year.'</td>';
+								echo '<td>'.$cr[$i]->tournament.'</td>';
+								echo '<td>'.$cr[$i]->rank.'</td>';	
+								echo '<td>'.$cr[$i]->coach.'</td>';
+								echo '</tr>';
 
+							}
+
+						?>
+						
 					</tbody>
 				</table>
+				<!-- <div class="box-bg" style="height:200px">
+				
+				
+				</div> -->
 			</div>
 			<?php 
-				if(count($get_hasil_klub)>0){
+				if(count($get_hasil_klub) > 0){
 			?>
 			<div class="w-40 pd-t-20">
 				<h3 class="">Pertandingan Selanjutnya</h3>
@@ -372,7 +397,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div role="listbox" class="carousel-inner">
 						<div class="box item active" style="height: 225px;">
 							<?php
-							foreach ($products as $produk){
+							foreach ($products as $produk):
 							?>					
 							<div class="em-box">
 								<h4><?=$produk["nama"]?></h4>
@@ -387,7 +412,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 								</div>
 							</div>
-							<?php } ?>						
+							<?php endforeach; ?>						
 						</div>
 						<div class="carousel-indicators bx-dot ep-dot">
 							<span data-target="#em2Slide" data-slide-to="0" class="dot active"></span>
@@ -405,16 +430,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div role="listbox" class="carousel-inner">
 						<div class="box item active">
 							<?php 
-								foreach ($get_gallery as $gl){
-									$explode = explode('-',$gl['pic']);
-									if(!empty($explode[1])){
+								foreach ($gallery as $gl):
+									$exp = explode('/',$gl->url_pic);
+									$exp_img = explode('-',$exp[6]);
+
+									if(!empty($exp_img[1])):
 							?>
 										<div class="em-box">
-											<img src="<?php echo imgUrl();?>systems/club_storage/<?php echo $gl['pic'];?>" alt="klub galeri" width="220">
+											<img src="<?php echo $gl->url_pic;?>" alt="klub galeri" width="220">
 										</div>
 							<?php
-									}
-								}
+									endif;
+								endforeach;
 							?>
 						</div>
 					</div>
