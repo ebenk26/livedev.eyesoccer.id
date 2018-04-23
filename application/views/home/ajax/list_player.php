@@ -7,7 +7,7 @@ $player = json_decode($player)->data;
     	<?php
 
     		for($i = 0 ; $i < 9; $i+=3){ $k= 0;
-    			echo '<div class="item '.($i == 0 ? 'active' :'').'">';
+    			echo '<div class="item '.($i == 0 ? 'active' :'').'" style="padding-left: 10px;">';
 
     				for($j=$i;$j < count($player);$j++){
     					$p = $player; $k++;
