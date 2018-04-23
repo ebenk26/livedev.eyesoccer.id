@@ -1,6 +1,6 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap>
-	<loc>https://www.eyesoccer.id/eyenews-sitemap.xml</loc>
+	<loc>https://www.eyesoccer.id/eyenews-main-sitemap.xml</loc>
 </sitemap>
 <sitemap>
 	<loc>https://www.eyesoccer.id/eyetube-sitemap.xml</loc>
