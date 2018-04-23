@@ -56,7 +56,7 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
     <div class="center-desktop m-0">
         <div id="resdataleague">
         <div class="container box-border-radius fl-l mt-30">  
-            <div class="reqdataleague" id="reqdata" action="do"> 
+            <div class="reqdataleague" id="reqdata" action="doit"> 
                 <input type="hidden" name="fn" value="getdataleague" class="cinput">
                 <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">   
                 <script>
