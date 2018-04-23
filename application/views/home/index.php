@@ -199,11 +199,11 @@
         	</div>
         	</div>
             
-			<div class="container mt-20 banner-home1 img-banner" style="background: unset;text-align: center;height: unset;">
+			<div class="container mt-20 banner-home1 img-banner" style="background-color: unset;text-align: center;height: unset;background: url('<?php echo base_url()?>assets/img/banner/1065X255px.png');background-repeat: no-repeat;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 2#HomeBannerTengah970x250 -->
 			<ins class="adsbygoogle"
-				 style="display:inline-block;width:970px;height:250px"
+				 style="display:inline-block;width:970;height:250px"
 				 data-ad-client="ca-pub-7635854626605122"
 				 data-ad-slot="2297288991"></ins>
 			<script>
@@ -594,7 +594,7 @@
         </div>
         <!-- BANNER -->
         <div class="center-desktop">
-            <div class="banner-150" style="margin-top: 20px;background: unset;height: unset;">
+            <div class="banner-150" style="margin-top: 20px;background-color: unset;height: unset;background: url('<?php echo base_url()?>assets/img/banner/1065X100px.png');background-repeat: no-repeat;">
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 					<!-- Eyesoccer 24#dekstopHomeBannerBawah -->
 					<ins class="adsbygoogle"

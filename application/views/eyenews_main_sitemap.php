@@ -12,12 +12,12 @@
 <loc>https://www.eyesoccer.id/eyenews-3-sitemap.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://www.eyesoccer.id/eyetube-4-sitemap.xml</loc>
+<loc>https://www.eyesoccer.id/eyenews-4-sitemap.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://www.eyesoccer.id/eyevent-5-sitemap.xml</loc>
+<loc>https://www.eyesoccer.id/eyenews-5-sitemap.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://www.eyesoccer.id/eyevent-6-sitemap.xml</loc>
+<loc>https://www.eyesoccer.id/eyenews-6-sitemap.xml</loc>
 </sitemap>
 </sitemapindex>

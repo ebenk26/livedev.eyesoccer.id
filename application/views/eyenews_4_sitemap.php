@@ -12,7 +12,7 @@
      <loc><?php echo base_url('eyenews/detail').'/'.$row15['url'];?></loc>	 
 		<news:news>
 			<news:publication>
-				<news:name>News EyeSoccer.id</news:name>
+				<news:name>Eyesoccer Indonesia</news:name>
 				<news:language>id</news:language>
 			</news:publication>
 			<news:genres>PressRelease</news:genres>
