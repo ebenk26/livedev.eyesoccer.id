@@ -3,7 +3,7 @@ $res = json_decode($res);
 
 echo "<div class='ep2box fl-l pd-t-20'>";		
 
-	foreach($res->data as $r){
+	foreach($res->data as $r):
 	$url = preg_match("/[^\/]+$/", $r->url_logo, $matches);
 	echo '<a href="'.CLUBDETAIL.$r->slug.'" style="text-decoration:unset;color:#424242;">'.'<div class="box-content ep2 fl-l">';
 			echo '<img src="'.(count($matches) == 0 ? imgCache('LOGO UNTUK APLIKASI.jpg') : $r->url_logo).'" alt="" >';
@@ -23,7 +23,8 @@ echo "<div class='ep2box fl-l pd-t-20'>";
 			</div>
 		</div>
 	</a>";
-	}
+	endforeach;
+	
 echo "</div>";?>
 
 

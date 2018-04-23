@@ -108,13 +108,6 @@ class Eyeprofile extends CI_Controller {
 		$data["body"]=$this->load->view('eyeprofile/klub', $data, true);
 		$this->load->view('template/static',$data);		
 	}
-	public function club_detail($url=''){
-		$data['kanal'] = 'eyeprofile';
-		$data['body'] = $this->load->view('eyeprofile/club_player',true);
-		$this->load->view('template/static',$data);
-
-
-	}
 	public function klub_detail($url = '')
     {
         if ($url == "") {
@@ -123,21 +116,34 @@ class Eyeprofile extends CI_Controller {
         $data["meta"]["title"] = "";
         $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
         $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-        $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
+        // $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
         $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
-        $data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);
-        $data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);
+       
+
+        // $data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);
+        // $data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);
         $data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['club_id']);
-        $data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);
-        $data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);
-        $data['get_gallery'] = $this->Eyeprofile_model->get_gallery_club($data['get_klub_detail_row_array']['club_id']);
-        $data['products'] = $this->Home_model->get_all_product();
+
+        // $data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);
+        // $data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);
+        // $data['get_gallery'] = $this->Eyeprofile_model->get_gallery_club($data['get_klub_detail_row_array']['club_id']);
+        // $data['products'] = $this->Home_model->get_all_product();
         $data['kanal'] = "home";
+        $data['res'] = $this->pmod->__club_detail($url);
+        #$data['career'] = $this->
         $this->load->view('config-session', $data);
         $data["body"] = $this->load->view('eyeprofile/klub_pemain', $data, true);
         $this->load->view('template/static', $data);
     }
-	
+	public function get_career($url){
+		$page = $this->input->post('page');
+		$limit = $this->input->post('limit');
+		$data = ['limit'=> $limir,'page'=> $page];
+		$res = $this->pmod->__club_detail($url);
+		$html = $this->load->view('eyeprofile/ajax/career',$data,true);
+		echo json_encode(['xClass'=> 'rescareer','xHtml'=> $html]);
+
+	}
 	public function pemain()
 	{
 		
