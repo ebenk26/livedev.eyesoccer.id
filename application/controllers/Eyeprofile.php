@@ -138,11 +138,9 @@ class Eyeprofile extends CI_Controller {
         $this->load->view('template/static', $data);
     }
 	
-	public function pemain($liga=null)
+	public function pemain()
 	{
-		if($liga==null){
-			$liga = "Liga%20Indonesia%201";
-		}	
+		
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
 	
@@ -197,29 +195,11 @@ class Eyeprofile extends CI_Controller {
 
 
 	}
-	public function official($liga=null)
+	public function official()
 	{
-		if($liga==null){
-			$liga = "Liga%20Indonesia%201";
-		}
-		$jml_klub = null;
-		$nama_liga = urldecode($liga);
-		$data["title_liga"] = $nama_liga;
-		if($nama_liga == 'Liga Indonesia 1'){
-			$jml_klub = 18;	
-		}else if($nama_liga == 'Liga Indonesia 2'){
-			$nama_liga = 'Liga Indonesia 2';
-			$jml_klub = 24;
-			$data["title_liga"] = $nama_liga;
-		}
 		
 		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
-		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();
-		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
-
-		$data['club_main'] = $this->Eyeprofile_model->get_club_liga($nama_liga,$jml_klub);
-		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia');
-		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga);		
+		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();		
 		$data['kanal'] = "home";
 		
 		$data['kanal'] = "home";
@@ -227,8 +207,8 @@ class Eyeprofile extends CI_Controller {
 		$this->load->view('template/static',$data);		
 	}	
 
-	public function official_detail($url=null,$action=null){
-		if($url=="")
+	public function official_detail($slug=null){
+		if($slug=="")
 		{
 			redirect("eyeprofile/official");
 			
@@ -238,7 +218,7 @@ class Eyeprofile extends CI_Controller {
 		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
 
 		$data["page"]="eyeprofile";
-		$data['get_official_detail'] = $this->Eyeprofile_model->get_official_detail($url);
+		$data['res'] = $this->pmod->__official_detail($slug);
 		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/official_detail', $data, true);
@@ -357,7 +337,6 @@ class Eyeprofile extends CI_Controller {
 	}
 	public function do(){
 		if($_POST){
-
 			$fn   = $_POST['fn'];     
 			$data = [];
 			if(function_exists($fn))

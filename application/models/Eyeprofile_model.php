@@ -921,6 +921,11 @@ class Eyeprofile_model extends CI_Model
 		$res   = $this->excurl->remoteCall($this->__xurl().'profile-club', $this->__xkey(), $query);
 		return $res;
 	}
+	public function __official_detail($slug){
+		$query = ['url'=> $slug];
+		$res = $this->excurl->remoteCall($this->__xurl().'profile-official/'.$slug,$this->__xkey(),$query);
+		return $res;
+	}
 	public function  __getplayerlist(){
 		$competition = $this->input->post('competition');
 		$league = $this->input->post('league');
