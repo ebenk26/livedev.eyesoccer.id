@@ -116,10 +116,8 @@ class Eyeprofile extends CI_Controller {
         $data["meta"]["title"] = "";
         $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
         $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-        // $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
+        $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
         $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
-       
-
         // $data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);
         // $data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);
         $data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['club_id']);
