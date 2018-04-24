@@ -12,7 +12,7 @@
      <loc><?php echo base_url('eyenews/detail').'/'.$row15['url'];?></loc>	 
 		<news:news>
 			<news:publication>
-				<news:name><![CDATA[ News EyeSoccer.id ]]></news:name>
+				<news:name><![CDATA[ Eyesoccer Indonesia ]]></news:name>
 				<news:language>id</news:language>
 			</news:publication>
 			<news:publication_date><?php $datetime = new DateTime($row15['publish_on']); echo $datetime->format(DateTime::ATOM); ?></news:publication_date>
