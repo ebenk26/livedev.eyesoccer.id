@@ -408,7 +408,7 @@ nav .center-desktop, .x-m{
     background-color: gainsboro;
     border: 1px solid #f3f3f3;
 }
-.ev-box-content>img{
+.ev-box-content>img, .ev-box-content>a>img{
 	width: 100%;
 	border-radius: 8px;
 }
@@ -920,7 +920,7 @@ th{
 }
 footer{
     background-color: #616161;
-    margin-top: 100px;
+    /* margin-top: 100px; */
 }
 .f-w{
     width: 870px;
