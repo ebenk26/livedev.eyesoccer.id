@@ -1,4 +1,4 @@
-		<style>
+<style>
 		.tvchanel{
 			color:#d19595;
 			padding: 3px 0px;
@@ -628,8 +628,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
                         <div class="box item">	
@@ -638,8 +638,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
 						<div class="box item">	
@@ -648,8 +648,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
                     </div>  
