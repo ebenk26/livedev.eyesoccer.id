@@ -134,14 +134,24 @@ function checkImg($url){
     return $url;
 
 }
-function formatDate($date){
+function formatDate($date,$str = ' '){
     if($date != ''){
         $month =  array('Jan','Feb','Mar','Apr','Mei','Juni','Juli','Agust','Sept','Okt','Nov','Des');
-        $date = str_replace('-', '/', $date);
-        $date = str_replace('/', ' ', $date);
-        $date = explode(' ', $date);
-        $date[1] = $month[abs($date[1]) - 1];
-        return implode(" ",$date);
+        $date = str_replace('-', '/', $date);//replace string - to /
+        $date = str_replace('/', ' ', $date);//replace string / to ' '
+        $exp = explode(' ', $date);//explode date to array
+        $abs = (abs($exp[1]) === 0 ? 0 : abs($exp[1]) -1 );//get month 
+        $exp[1] = ($abs === 0 ? 0 : $month[$abs]); //convert number to month 
+        if(strlen($exp[0]) == 4){
+            $new[0] = $exp[2];
+            $new[1] = $exp[1];
+            $new[2] = $exp[0];
+            $imp = implode($str,$new);
+            return $imp;
+        }
+        $imp = implode($str,$exp);
+        
+        return $imp;
     }
 
 }
