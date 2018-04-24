@@ -57,7 +57,7 @@ $route['eyevent-sitemap\.xml'] = "eyevent_sitemap";
 $route['eyeprofile-player-sitemap\.xml'] = "eyeprofile_player_sitemap";
 $route['eyeprofile-club-sitemap\.xml'] = "eyeprofile_club_sitemap";
 /* Site Map Tambahan*/
-$route['eyenews-sitemap\.xml'] = "eyenews_sitemap";             /* old*/
+$route['eyenews-sitemap\.xml'] = "eyenews_sitemap/";             /* old*/
 $route['eyenews-gn-sitemap\.xml'] = "eyenews_gn_sitemap";       /* Site Map  2 Hari Terakhir*/
 $route['eyenews-main-sitemap\.xml'] = "eyenews_main_sitemap";   /* Site Map untuk List Archive */
 /* Site Map Bulanan Archive*/
