@@ -17,7 +17,8 @@ echo "<div class='ep2box fl-l pd-t-20'>";
 					echo "</tr>
 					<tr>";
 						echo "<td>Manager</td>";
-						echo "<td>: ".getManager($r->club_id)."</td>";
+						echo "<td>: ".$r->manager."</td>";
+						//getManager($r->id_club)
 					echo "</tr>
 				</table>
 			</div>
