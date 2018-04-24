@@ -12,13 +12,12 @@
      <loc><?php echo base_url('eyenews/detail').'/'.$row15['url'];?></loc>	 
 		<news:news>
 			<news:publication>
-				<news:name>Eyesoccer Indonesia</news:name>
+				<news:name><![CDATA[ Eyesoccer Indonesia ]]></news:name>
 				<news:language>id</news:language>
 			</news:publication>
-			<news:genres>PressRelease</news:genres>
 			<news:publication_date><?php $datetime = new DateTime($row15['publish_on']); echo $datetime->format(DateTime::ATOM); ?></news:publication_date>
-			<news:title><?php echo $row15['title']; ?></news:title>
-			<news:keywords>Berita Bola <?php echo $row15['news_type']; ?></news:keywords>
+			<news:title><![CDATA[<?php echo $row15['title']; ?>]]></news:title>
+			<news:keywords><![CDATA[<?php echo $row15['news_type']; ?>]]></news:keywords>
 		</news:news>
 	</url>
     <?php } ?>
