@@ -140,11 +140,18 @@ function formatDate($date,$str = ' '){
         $date = str_replace('-', '/', $date);//replace string - to /
         $date = str_replace('/', ' ', $date);//replace string / to ' '
         $exp = explode(' ', $date);//explode date to array
-        $abs = (abs($exp[1]) === 0 ? abs($exp[1]) : abs($exp[1]) -1 );//get month 
-        $exp[1] = $month[$abs]; //convert number to month 
+        $abs = (abs($exp[1]) === 0 ? 0 : abs($exp[1]) -1 );//get month 
+        $exp[1] = ($abs === 0 ? 0 : $month[$abs]); //convert number to month 
+        if(strlen($exp[0]) == 4){
+            $new[0] = $exp[2];
+            $new[1] = $exp[1];
+            $new[2] = $exp[0];
+            $imp = implode($str,$new);
+            return $imp;
+        }
         $imp = implode($str,$exp);
         
-        return $imp;
+        return $date;
     }
 
 }
