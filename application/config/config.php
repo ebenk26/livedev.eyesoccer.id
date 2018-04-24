@@ -6,14 +6,26 @@ $config['credential'] 	= 'eyeapp:super4ppm1nd3d';
 $config['api_url'] 		= 'http://api.eyesoccer.id:8080/v1/';
 $config['api_url_lab'] 	= 'http://api.eyesoccer.id:3000/v1/';
 
-$xurl = 'http://api.eyesoccer.id:8080/v1/';
+/*
+ *
+ * API Credential
+ *
+ */
+$xurl = 'http://api.eyesoccer.id:3000/v1/';
 $xurlback = 'http://api.eyesoccer.id:3000/v1/';
 
 $config['xurl'] = $xurl;
 $config['xkey'] = 'eyeapp:super4ppm1nd3d';
 
-$config['xurlback'] = $xurl;
+$config['xurlback'] = $xurlback;
 $config['xkeyback'] = 'eyeback:superb4cksm4rt3r';
+
+/*
+ *
+ * Template Folder
+ *
+ */
+$config['themes'] = 'themes/v1/';
 
 /*
 |--------------------------------------------------------------------------
