@@ -57,17 +57,9 @@ $route['eyevent-sitemap\.xml'] = "eyevent_sitemap";
 $route['eyeprofile-player-sitemap\.xml'] = "eyeprofile_player_sitemap";
 $route['eyeprofile-club-sitemap\.xml'] = "eyeprofile_club_sitemap";
 /* Site Map Tambahan*/
-$route['eyenews-sitemap\.xml'] = "eyenews_sitemap/";             /* old*/
-$route['eyenews-gn-sitemap\.xml'] = "eyenews_gn_sitemap";       /* Site Map  2 Hari Terakhir*/
-$route['eyenews-main-sitemap\.xml'] = "eyenews_main_sitemap";   /* Site Map untuk List Archive */
-/* Site Map Bulanan Archive*/
-$route['eyenews-1-sitemap\.xml'] = "eyenews_1_sitemap";   /* 01-07-2017-----01-10-2017 */
-$route['eyenews-2-sitemap\.xml'] = "eyenews_2_sitemap";   /* 01-10-2017-----01-01-2018 */
-$route['eyenews-3-sitemap\.xml'] = "eyenews_3_sitemap";   /* 01-01-2018-----01-04-2018 */
-$route['eyenews-4-sitemap\.xml'] = "eyenews_4_sitemap";   /* 01-04-2018-----01-07-2018 */
-$route['eyenews-5-sitemap\.xml'] = "eyenews_5_sitemap";   /* 01-07-2018-----01-10-2018 */
-$route['eyenews-6-sitemap\.xml'] = "eyenews_6_sitemap";   /* 01-10-2018-----01-01-2019 */
 
+
+$route['eyenews-sitemap\.xml'] = "eyenews_sitemap"; /* 3 hari terakhir*/
 $route['eyetube/kategori/Eye-Soccer-Flash'] 	= "eyetube/kategori/1";
 $route['eyetube/kategori/Eye-Soccer-Funny'] 	= "eyetube/kategori/2";
 $route['eyetube/kategori/Eye-Soccer-Hits'] 		= "eyetube/kategori/3";
@@ -92,7 +84,7 @@ $route['newsletter/eyetube'] 					= "home/newsletter/eyetube";
 $route['newsletter/eyenews'] 					= "home/newsletter/eyenews";
 $route['eyeprofile'] 							= "eyeprofile/klub";
 $route['author/(:any)'] 							= "author/index/$1";
-
+$route['author'] 							= "author/home";
 $route['eyetube/detail/ini-dia-wajah-baru-stadion-gelora-bung-karno-yang-menghabiskan-dana-760-miliar'] 	= "eyetube/detail/ini-dia-wajah-baru-sation-gelora-bung-karno-yang-menghabiskan-dana-760-miliar";
 
 //$route['seo/sitemap\.xml'] = "seo/sitemap";

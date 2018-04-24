@@ -11,9 +11,7 @@
 		padding-top: 40px;
 	}
 </style>
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 </div>
 <div class="w-blue">
     <img src="<?php echo base_url()?>assets/img/segitiga-putih-01.png" alt="">
@@ -27,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$cr = $res->data->careers;
 			$gallery = $res->data->gallery;
 		?>		
-			<input type="hidden" class="hidden_title" value="<?php echo $r->club_id; ?>"/>
+			<input type="hidden" class="hidden_title" value="<?php echo $r->id_club; ?>"/>
 			<div class="left">
               
                 <div class="box-img-radius">
@@ -134,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
 				<div class="box-pemain">
 					<div class="bg-pemain">
-						<span><?=$p->number?></span>
+						<span><?=$p->back_number?></span>
 						<h1><?=$p->name?></h1>
 						<span><?=$p->position_a?></span>
 					</div>

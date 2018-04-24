@@ -1,4 +1,4 @@
-		<style>
+<style>
 		.tvchanel{
 			color:#d19595;
 			padding: 3px 0px;
@@ -14,71 +14,46 @@
 
 
 
-		.zona_ucl{background-color: #00580c3b;}
-		.zona_uefa{background-color: #333e963d;}
-		.zona_degradasi{background-color: #ff000047;}
-		.zona_aman{background-color: #ededed47;}
-		.zona_ucl:hover{background-color: #00580c54;}
+		/* .zona_ucl{background-color: #00580c3b;} */
+		.zona_degradasi{background-color: #FFEBEE;color: #F44336;}
+		/* .zona_ucl:hover{background-color: #00580c54;} */
 		.zona_uefa:hover{background-color: #333e9652;}
-		.zona_degradasi:hover{background-color: #ff00008f;}
-		.zona_aman:hover{background-color: #dcd9d947;}
-		.zona_acl{background-color: #00580c3b;}
-		.zona_afc{background-color: #333e963d;}
-		.zona_afc_wl{background-color: #333e9624;}
-		.zona_aman{background-color: #ededed47;}
-		.zona_acl:hover{background-color: #00580c54;}
-		.zona_afc:hover{background-color: #333e9652;}
-		.zona_afc_wl:hover{background-color: #333e964f;}
-		.zona_aman:hover{background-color: #dcd9d947;}
+		.zona_degradasi:hover{background-color: #FFCDD2;}
+		.zona_ucl, .zona_uefa, .zona_acl{background-color: #C5E1A5;}
+		.zona_afc{background-color: #D1C4E9;}
+		.zona_afc_wl{background-color: #F3E5F5;}
+		.zona_ucl:hover, .zona_uefa:hover, .zona_acl:hover{background-color: #AED581;}
+		.zona_afc:hover{background-color: #CE93D8;}
+		.zona_afc_wl:hover{background-color: #E1BEE7;}
 
-	.detailzona_kontinental1{
-	    z-index:-1;
-		font-size:12px;
-		padding: 20px 20px 20px 20px;
-		margin: 20px 20px 20px 20px;
-		position:relative;
-		top:17px;
-		left:-40px;
-	}
-	.detailzona_kontinental2{
-		font-size:12px;
-		padding: 20px 20px 20px 20px;
-		margin: 20px 20px 20px 20px;
-		position:relative;
-		top:-58px;
-		left:115px;
-	}
-	.detailzona_degradasi{
-		font-size:12px;
-		padding: 20px 20px 20px 20px;
-		margin: 20px 20px 20px 20px;
-		position:relative;
-		top:-132px;
-		left:255px;
+	.detailzona_kontinental2, .detailzona_kontinental1, .detailzona_degradasi{
+	    font-size: 12px;
+		position: relative;
+		float: left;
 	}
 	.detailkontinental1{
-		background-color:#c4d8c7;
+		background-color: #C5E1A5;
+	}
+	.detailkontinental1, .detailkontinental2, .detaildegradasi{
 		width: 20px;
-		height:10px;
-		padding: 5px 15px 0px 15px;
-		margin: 10px 10px 10px 10px;
-		border-radius:8px;
+		height: 20px;
+		margin: 0px 10px;
+		border-radius: 10px;
+		display: block;
+		float: left;
+		box-sizing: border-box;
 	}
 	.detailkontinental2{
-		background-color:#ced1e6;
-		width: 20px;
-		height:10px;
-		padding: 5px 15px 0px 15px;
-		margin: 10px 10px 10px 10px;
-		border-radius:8px;
+		background-color:#D1C4E9;
 	}
 	.detaildegradasi{
-		background-color:#ffb8b8;
-		width: 20px;
-		height:10px;
-		padding: 5px 15px 0px 15px;
-		margin: 10px 10px 10px 10px;
-		border-radius:8px;
+		background-color:#FFCDD2;
+	}
+	.detailklasemen{
+		float: left;
+		height: 25px;
+		margin-top: 10px;
+		width: 100%;
 	}
 		</style>
 		<!-- JADWAL -->
@@ -203,7 +178,7 @@
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 2#HomeBannerTengah970x250 -->
 			<ins class="adsbygoogle"
-				 style="display:inline-block;width:970;height:250px"
+				 style="display:inline-block;width:970px;height:250px"
 				 data-ad-client="ca-pub-7635854626605122"
 				 data-ad-slot="2297288991"></ins>
 			<script>
@@ -628,8 +603,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
                         <div class="box item">	
@@ -638,8 +613,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
 						<div class="box item">	
@@ -648,8 +623,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
                     </div>  
@@ -757,7 +732,7 @@
                 </select>
 				<div id="klasemen4liga">
 						<div id="liga_indonesia" style="top:-10px;">
-								<table class="border-box radius" cellspacing="0" cellpadding="0" style="margin-top: 3px;">
+								<table class="border-box radius" cellspacing="0" cellpadding="0" style="margin-top: 11px;">
 									<thead>
 										<tr>
 											<th title="Posisi">#</th>
@@ -851,7 +826,7 @@
 								</div>
 						</div>
 						<div id="liga_inggris" style="display:none;">
-								<table class="border-box radius"  cellspacing="0" cellpadding="0">
+								<table class="border-box radius"  cellspacing="0" cellpadding="0" style="margin-top: 11px;">
 									<thead>
 										<tr>
 											<th title="Posisi">#</th>
@@ -943,7 +918,7 @@
 								</div>
 						</div>
 						<div id="liga_italia" style="display:none;">
-								<table class="border-box radius"  cellspacing="0" cellpadding="0">
+								<table class="border-box radius"  cellspacing="0" cellpadding="0" style="margin-top: 11px;">
 									<thead>
 										<tr>
 											<th title="Posisi">#</th>
@@ -1037,7 +1012,7 @@
 								</div>
 						</div>
 						<div id="liga_spanyol" style="display:none;">
-								<table class="border-box radius"  cellspacing="0" cellpadding="0">
+								<table class="border-box radius"  cellspacing="0" cellpadding="0" style="margin-top: 11px;">
 									<thead>
 										<tr>
 											<th title="Posisi">#</th>
@@ -1133,6 +1108,7 @@
                 </div>
             </div>
         </div>
+        
 		<script>
 			$(document).ready(function(){
 				$(document).on('click', '.tab2 span', function() {
