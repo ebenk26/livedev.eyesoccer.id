@@ -203,7 +203,7 @@
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 2#HomeBannerTengah970x250 -->
 			<ins class="adsbygoogle"
-				 style="display:inline-block;width:970;height:250px"
+				 style="display:inline-block;width:970px;height:250px"
 				 data-ad-client="ca-pub-7635854626605122"
 				 data-ad-slot="2297288991"></ins>
 			<script>
