@@ -57,8 +57,9 @@ $route['eyevent-sitemap\.xml'] = "eyevent_sitemap";
 $route['eyeprofile-player-sitemap\.xml'] = "eyeprofile_player_sitemap";
 $route['eyeprofile-club-sitemap\.xml'] = "eyeprofile_club_sitemap";
 /* Site Map Tambahan*/
-$route['eyenews-sitemap\.xml'] = "eyenews_sitemap"; /* 3 hari terakhir*/
 
+
+$route['eyenews-sitemap\.xml'] = "eyenews_sitemap"; /* 3 hari terakhir*/
 $route['eyetube/kategori/Eye-Soccer-Flash'] 	= "eyetube/kategori/1";
 $route['eyetube/kategori/Eye-Soccer-Funny'] 	= "eyetube/kategori/2";
 $route['eyetube/kategori/Eye-Soccer-Hits'] 		= "eyetube/kategori/3";

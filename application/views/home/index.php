@@ -1108,6 +1108,7 @@
                 </div>
             </div>
         </div>
+        
 		<script>
 			$(document).ready(function(){
 				$(document).on('click', '.tab2 span', function() {
