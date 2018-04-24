@@ -151,7 +151,7 @@ function formatDate($date,$str = ' '){
         }
         $imp = implode($str,$exp);
         
-        return $date;
+        return $imp;
     }
 
 }
