@@ -1,5 +1,4 @@
 <style>
-<style>
 .fixed-header {
     top: 0px;
 }

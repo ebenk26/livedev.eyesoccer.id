@@ -13,6 +13,15 @@ class Author extends CI_Controller {
 			$this->load->helper(array('form','url','text','date','my'));
 			$this->load->helper('my');
     }
+	public function home()
+	{	
+		$data['author_list']			= $this->Author_model->get_list_author();
+		$data['kanal'] 					="author";
+		$data["body"]					=$this->load->view('author/home', $data,true);
+
+		$this->load->view('template/static',$data);		
+	}
+
 	public function index($name="")
 	{	
 		$names=explode("-",$name);

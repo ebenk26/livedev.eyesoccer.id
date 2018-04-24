@@ -28,6 +28,15 @@ class Author_model extends CI_Model
 		return $query; 
 	}
 
+	public function get_list_author()
+	{
+		$query = $this->db->query(" SELECT a.fullname,count(b.eyenews_id) AS total FROM tbl_admin a
+				INNER JOIN tbl_eyenews b on a.admin_id=b.admin_id
+				GROUP BY b.admin_id ORDER BY total DESC
+										")->result_array();
+		return $query; 
+	}
+
 	public function get_total_post($username)
 	{
 		$query = $this->db->query(" SELECT count(A.eyenews_id) as total,SUM(IF(B.admin_id = A.admin_id,A.news_view, 0)) AS totalviews FROM tbl_eyenews A 
