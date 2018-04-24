@@ -667,13 +667,14 @@ class Home_model extends CI_Model
 	public function get_eyevent_main()
 	{
 		$query = $this->db->query("	SELECT
-										id_event,
+									id_event,
 									title,
 									description,
 									pic,
 									publish_on,
 									updateon,
-									thumb1
+									thumb1,
+									url
 									FROM
 										tbl_event
 									ORDER BY 
@@ -687,13 +688,14 @@ class Home_model extends CI_Model
 	public function get_eyevent_main_2()
 	{
 		$query = $this->db->query("	SELECT
-										id_event,
+									id_event,
 									title,
 									description,
 									pic,
 									publish_on,
 									updateon,
-									thumb1
+									thumb1,
+									url
 									FROM
 										tbl_event
 									ORDER BY 
@@ -707,13 +709,14 @@ class Home_model extends CI_Model
 	public function get_eyevent_main_3()
 	{
 		$query = $this->db->query("	SELECT
-										id_event,
+									id_event,
 									title,
 									description,
 									pic,
 									publish_on,
 									updateon,
-									thumb1
+									thumb1,
+									url
 									FROM
 										tbl_event
 									ORDER BY 

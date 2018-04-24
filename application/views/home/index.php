@@ -1,4 +1,4 @@
-		<style>
+<style>
 		.tvchanel{
 			color:#d19595;
 			padding: 3px 0px;
@@ -203,7 +203,7 @@
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 2#HomeBannerTengah970x250 -->
 			<ins class="adsbygoogle"
-				 style="display:inline-block;width:970px;height:250px"
+				 style="display:inline-block;width:970;height:250px"
 				 data-ad-client="ca-pub-7635854626605122"
 				 data-ad-slot="2297288991"></ins>
 			<script>
@@ -628,8 +628,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
                         <div class="box item">	
@@ -638,8 +638,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
 						<div class="box item">	
@@ -648,8 +648,8 @@
 						?>
                             <div class="ev-box-content">
                                 <!--<img class="lazy" src="assets/img/video-small.png" alt="">-->
-								<img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
-                            </div>
+								<a href="<?php echo base_url()."eyevent/detail/".$row['url']?>"><img class="lazy" src="<?=imgUrl()?>systems/eyevent_storage/<?php print $row['thumb1']; ?>">								
+                            </a></div>
 						<?php }?>
                         </div>
                     </div>  
@@ -851,7 +851,7 @@
 								</div>
 						</div>
 						<div id="liga_inggris" style="display:none;">
-								<table class="border-box radius"  cellspacing="0" cellpadding="0" style="margin-top: 3px;">
+								<table class="border-box radius"  cellspacing="0" cellpadding="0">
 									<thead>
 										<tr>
 											<th title="Posisi">#</th>
@@ -943,7 +943,7 @@
 								</div>
 						</div>
 						<div id="liga_italia" style="display:none;">
-								<table class="border-box radius"  cellspacing="0" cellpadding="0" style="margin-top: 3px;">
+								<table class="border-box radius"  cellspacing="0" cellpadding="0">
 									<thead>
 										<tr>
 											<th title="Posisi">#</th>
@@ -1037,7 +1037,7 @@
 								</div>
 						</div>
 						<div id="liga_spanyol" style="display:none;">
-								<table class="border-box radius"  cellspacing="0" cellpadding="0" style="margin-top: 3px;">
+								<table class="border-box radius"  cellspacing="0" cellpadding="0">
 									<thead>
 										<tr>
 											<th title="Posisi">#</th>
