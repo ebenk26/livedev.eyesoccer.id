@@ -1,4 +1,5 @@
 <?php
+$select = urldecode($this->uri->segment(3));
 $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->uri->segment(3)));
 ?>
 <style>
@@ -32,14 +33,11 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
             </ul>
             <select id="competition_change" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
-				<?php
-					foreach($get_all_kompetisi as $row){
-				?>
-					<option value="<?php echo base_url()."eyeprofile/official/".$row->competition?>"><?php echo $row->competition;?></option>';  
-				<?php
-					}
-				?>
-					<option value="<?php echo base_url()."eyeprofile/official/non liga"?>">Non Liga</option>
+				<?php foreach($get_all_kompetisi as $r): ?>
+					<option <?php echo ($select == $r->competition ? 'selected' :'')?> value="<?php echo pOFFICIAL.$r->competition?>"> <?php echo $r->competition;?></option>';  
+
+				<?php endforeach;	?>
+					<option value="<?php echo pOFFICIAL.'non liga'?>">Non Liga</option>
             </select>
         </div>
     </div>

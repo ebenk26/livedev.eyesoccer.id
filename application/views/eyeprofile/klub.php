@@ -106,11 +106,11 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
 	            </ul>
                 <select id="chained_kompetisi" name="" selected="true" class="slc-musim fl-r" onchange="if(this.options[this.selectedIndex].value != 'Liga Usia Muda'){window.location = this.options[this.selectedIndex].value};" style="margin: -12px 0 2px 0;">
 					<option value="">--Pilih Liga--</option>
-				<?php foreach($competition as $r){?>
+				<?php foreach($competition as $r):?>
 				
-				<option <?php echo ($r->competition == urldecode($this->uri->segment(3)) ? 'selected' : '')?> value="<?php echo ($r->competition =='Liga Usia Muda' ? 'Liga Usia Muda' : base_url()."eyeprofile/klub/".$r->competition)?>"><?php echo $r->competition;?></option>';  
-				<?php } ?>
-				<option value="<?php echo base_url()."eyeprofile/klub/non liga"?>">Non Liga</option>
+				<option <?php echo ($r->competition == urldecode($this->uri->segment(3)) || substr($r->competition,0,4) == urldecode($this->uri->segment(3)) ? 'selected' : '')?> value="<?php echo ($r->competition =='Liga Usia Muda' ? 'Liga Usia Muda' : pCLUB.$r->competition)?>"><?php echo $r->competition;?></option>
+				<?php endforeach; ?>
+				<option <?php echo (urldecode($this->uri->segment(3)) == 'non liga' ? 'selected' : '') ?> value="<?php echo pCLUB."non liga"?>" >Non Liga</option>
                 </select>
 				
 				<select id="chained_liga" name="" selected="true" class="slc-musim fl-r" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="margin: 0px 0px 2px;display:none;">
@@ -563,8 +563,7 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
-<<<<<<< HEAD
-=======
+
 								</tr>						
 							</tbody>
 						</table>
@@ -658,7 +657,7 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
->>>>>>> e945fe3265d600d22ee039cf21cc2180bc6f48ad
+
 								</tr>						
 							</tbody>
 						</table>

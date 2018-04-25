@@ -136,7 +136,7 @@ class Eyeprofile extends CI_Controller {
 	public function get_career($url){
 		$page = $this->input->post('page');
 		$limit = $this->input->post('limit');
-		$data = ['limit'=> $limir,'page'=> $page];
+		$data = ['limit'=> $limit,'page'=> $page];
 		$res = $this->pmod->__club_detail($url);
 		$html = $this->load->view('eyeprofile/ajax/career',$data,true);
 		echo json_encode(['xClass'=> 'rescareer','xHtml'=> $html]);
@@ -181,28 +181,12 @@ class Eyeprofile extends CI_Controller {
         } else {
             redirect('home');
         }
-
-
 	
 	}
-	public function response_api($id){
-		$url  = $this->config->item('api_url')."profile/{$id}";
-		$cred = $this->config->item('credential');
-
-		$event_data	= array(
-							'startdate' => '',
-							'enddate' => '',
-							'related' => true,
-		);
-		$mod  = $this->excurl->remoteCall($url,$cred,$event_data);
-		$decode  = json_decode($mod);
-
-
-	}
+	
 	public function official()
 	{
 		
-		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
 		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();		
 		$data['kanal'] = "home";
 		
