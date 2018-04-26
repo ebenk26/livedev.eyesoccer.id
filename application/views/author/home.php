@@ -20,7 +20,7 @@ tr.list_author:hover{
 						<div class="w4">
 							<a>
 								<div class="w4-f">
-									<img src="<?php echo imgUrl(); ?>assets/img/eyesoccer logo_001.png" style="width:10%;" alt="<?= $author['fullname']; ?>">
+								<a href="<?=base_url()."author/".$author['fullname'];?>"><img src="<?php echo imgUrl(); ?>assets/img/eyesoccer logo_001.png" style="width:10%;" alt="<?= $author['fullname']; ?>"></a>
 								</div>
 								</a>
 						</div>
@@ -29,7 +29,7 @@ tr.list_author:hover{
 						<table>
 							<tr>
 								<td>
-								<p><h2><?= $author['fullname'];?></h2></p>
+								<p><a href="<?=base_url()."author/".$author['fullname'];?>"><h2><?= $author['fullname'];?></h2></a></p>
 								<span class="time-view">
 								<?= $author['total'];?> post					
 								</span>
