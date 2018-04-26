@@ -325,7 +325,7 @@
 									<!--<i class="material-icons i-l-pertandingan">keyboard_arrow_left</i>-->
 									<img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo_a']?>" alt=""> <?php echo $row['club_a'];?>
 								</td>
-								<td width="20%" style="font-weight: 600;">vs</td>
+								<td width="20%" style="font-weight: 600;font-size: 40px;">vs</td>
 								<td width="40%">
 									<img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo_b']?>" alt=""> <?php echo $row['club_b'];?>
 									<!--<i class="material-icons i-r-pertandingan">keyboard_arrow_right</i>-->
