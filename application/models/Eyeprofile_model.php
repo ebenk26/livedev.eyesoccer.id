@@ -1010,8 +1010,14 @@ class Eyeprofile_model extends CI_Model
 
 	}
 	public function __getlistofficial(){
-		$competition = $this->input->post('competition');
-		$league = $this->input->post('league');
+		if($this->input->post('competition') == 'SSB ' || $this->input->post('competition') == 'non liga'){
+			$competition = 'SSB / Akademi Sepakbola';
+			$league = '';
+		}
+		else{
+			$competition = $this->input->post('competition');
+			$league = $this->input->post('league');
+		}
 		$page = $this->input->post('page');
 		$query[0] = array('page'=> $page,'limit'=> '10','competition' => $competition,'league' => $league);
 		$query[1] = array('page'=> $page,'limit'=> '10','competition' => $competition,'league' => $league,'count'=> true);

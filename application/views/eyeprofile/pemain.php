@@ -1,5 +1,6 @@
 <?php
 $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->uri->segment(3)));
+$pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this->uri->segment(6) : $this->uri->segment(5)) : 1 )
 ?>
 <style>
     .slc-musim{
@@ -88,7 +89,7 @@ $comp =  ($this->uri->segment(3)  =='' ? 'Liga Indonesia 1' : urldecode($this->u
     <img src="<?=base_url()?>newassets/img/ic_search.png" alt="" class="img-src-200">
     <div id="reqlistplayer" class="loadlistplayer" action="doit">
         <input type="hidden" name="fn" value="getplayerlist" class="cinput">
-        <input type="hidden" name="page" value="<?php echo ($this->uri->segment(5) ?  $this->uri->segment(5) : 1 )?>" class="cinput"> 
+        <input type="hidden" name="page" value="<?php echo $pageCtrl ?>" class="cinput"> 
         <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput"> 
 
         <?php 
