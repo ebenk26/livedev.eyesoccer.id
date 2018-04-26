@@ -56,6 +56,7 @@ $route['eyetube-sitemap\.xml'] = "eyetube_sitemap";
 $route['eyevent-sitemap\.xml'] = "eyevent_sitemap";
 $route['eyeprofile-player-sitemap\.xml'] = "eyeprofile_player_sitemap";
 $route['eyeprofile-club-sitemap\.xml'] = "eyeprofile_club_sitemap";
+$route['eyeprofile-official-sitemap\.xml'] = "eyeprofile_official_sitemap";
 /* Site Map Tambahan*/
 
 

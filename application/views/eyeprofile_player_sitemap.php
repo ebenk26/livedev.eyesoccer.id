@@ -1,6 +1,6 @@
 <?= '<?xml version="1.0" encoding="UTF-8" ?>' ?>
 <?php
-$cmd15=$this->db->query("select * from tbl_player order by player_id DESC");
+$cmd15=$this->db->query("select * from eyeprofile_player order by id_player DESC LIMIT 1000");
 
 //$eyenews_id=$row15['eyenews_id']; 
 
@@ -14,7 +14,7 @@ $cmd15=$this->db->query("select * from tbl_player order by player_id DESC");
 
     <?php foreach($cmd15->result_array() as $row15){ ?>
 	<url>	
-     <loc><?php echo base_url('eyeprofile/detail').'/'.$row15['name'];?></loc>	 
+     <loc><?php echo base_url('eyeprofile/pemain_detail').'/'.$row15['slug'];?></loc>	 
 	</url>
     <?php } ?>
 

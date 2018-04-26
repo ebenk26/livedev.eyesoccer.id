@@ -141,8 +141,53 @@ class Eyeprofile extends CI_Controller {
         // $data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);
         // $data['get_gallery'] = $this->Eyeprofile_model->get_gallery_club($data['get_klub_detail_row_array']['club_id']);
         // $data['products'] = $this->Home_model->get_all_product();
-        $data['kanal'] = "home";
-        $data['res'] = $this->pmod->__club_detail($url);
+				
+		
+		$data['kanal'] = "home";
+		$data['res'] = $this->pmod->__club_detail($url);
+		$r = $data['res']->data;
+		$data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+		$data["meta"]["share"]='
+		<!-- Begin of SEO Meta Tags -->
+		<title>'.$r->name.' - Profil Database Klub Sepak Bola | EyeProfile - Eyesoccer.ID</title>
+		<meta name="title" content=" '.$r->name.'Profil Database Klub Sepak Bola | EyeProfile - Eyesoccer.ID" />
+		<meta name="description" content="('.$r->name.') - Lihat profil dan statistik selengkapnya >> />
+		<meta name="googlebot-news" content="index,follow" />
+		<meta name="googlebot" content="index,follow" />
+		<meta name="image" content="'.$r->url_logo.'" />
+		<meta name="robots" content="index,follow" />
+		<meta name="author" content="EyeSoccer.id" />
+		<meta name="language" content="id" />
+		<meta name="geo.country" content="id" name="geo.country" />
+		<meta http-equiv="content-language" content="In-Id" />
+		<meta name="geo.placename"content="Indonesia" />
+		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
+		<link rel="canonical" href="https://eyesoccer.id/eyeprofile/klub_detail/'.$r->slug.'" />
+		<!-- End of SEO Meta Tags-->
+
+		<!-- Begin of Facebook Open graph data-->
+		<meta property="fb:app_id" content="140611863350583" />
+		<meta property="og:site_name" content="EyeSoccer" />
+		<meta property="og:url" content="https://eyesoccer.id/eyeprofile/klub_detail/'.$r->slug.'" />
+		<meta property="og:type" content="Website" />
+		<meta property="og:title" content="'.$r->name.' - EyeProfile | EyeSoccer" />
+		<meta property="og:image" content="'.$r->url_logo.'" />
+		<meta property="og:description" content="('.$r->name.') - Lihat profil dan detail selengkapnya.." />
+		<meta property="og:locale" content="id_ID" />
+		<!--End of Facebook open graph data-->
+		   
+		<!--begin of twitter card data-->
+		<meta name="twitter:card" content="summary" />    
+		<meta name="twitter:site" content="@eyesoccer_id" />
+		<meta name="twitter:creator" content="@eyesoccer_id" />
+		<meta name="twitter:domain" content="EyeSoccer"/>
+		<meta name="twitter:title" content="'.$r->name.'" />
+		<meta name="twitter:description" content="('.$r->name.') - Lihat profil dan detail selengkapnya.." />
+		<meta name="twitter:image" content="'.$r->url_logo.'" />
+		<!--end of twitter card data-->
+		';
         #$data['career'] = $this->
         $this->load->view('config-session', $data);
         $data["body"] = $this->load->view('eyeprofile/klub_pemain', $data, true);
@@ -155,29 +200,20 @@ class Eyeprofile extends CI_Controller {
 		$res = $this->pmod->__club_detail($url);
 		$html = $this->load->view('eyeprofile/ajax/career',$data,true);
 		echo json_encode(['xClass'=> 'rescareer','xHtml'=> $html]);
-
 	}
 	public function pemain()
 	{
-		
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
-	
 		$data['kanal'] = "home";
-		
 		$data["body"]=$this->load->view('eyeprofile/pemain',$data, true);
-
 		$this->load->view('template/static',$data);		
 	}
-	
 	public function pemain_detail($id=''){
 		if ($id == "") {
             redirect("eyeprofile/pemain");
-        }
-        $data["meta"]["title"] = "";
-        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
-        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-        #$data["page"] = "eyeprofile";
+		}
+
         $data["pid"] = $id;
         $url = $this->config->item('api_url') . "profile/{$id}";
         $cred = $this->config->item('credential');
@@ -185,17 +221,61 @@ class Eyeprofile extends CI_Controller {
             'startdate' => '',
             'enddate' => '',
             'related' => true,
-        );
-        $obj = $this->excurl->remoteCall($url, $cred, $event_data);
+		);
+		$obj = $this->excurl->remoteCall($url, $cred, $event_data);
         $response = json_decode($obj);
-        if ($response AND $response->data) {
+
+		$data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+		$data["meta"]["share"]='
+		<!-- Begin of SEO Meta Tags -->
+		<title> '.$response->data->name.' - EyeProfile | EyeSoccer</title>
+		<meta name="title" content=" '.$response->data->name.'Profil Database | EyeProfile - Eyesoccer.ID" />
+		<meta name="description" content="('.$response->data->name.' - '.$response->data->club.') - Lihat profil dan statistik selengkapnya >> />
+		<meta name="googlebot-news" content="index,follow" />
+		<meta name="googlebot" content="index,follow" />
+		<meta name="image" content="'.$response->data->url_pic.'" />
+		<meta name="robots" content="index,follow" />
+		<meta name="author" content="EyeSoccer.id" />
+		<meta name="language" content="id" />
+		<meta name="geo.country" content="id" name="geo.country" />
+		<meta http-equiv="content-language" content="In-Id" />
+		<meta name="geo.placename"content="Indonesia" />
+		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
+		<link rel="canonical" href="https://eyesoccer.id/eyeprofile/pemain_detail/'.$response->data->slug.'" />
+		<!-- End of SEO Meta Tags-->
+
+		<!-- Begin of Facebook Open graph data-->
+		<meta property="fb:app_id" content="140611863350583" />
+		<meta property="og:site_name" content="EyeSoccer" />
+		<meta property="og:url" content="https://eyesoccer.id/eyeprofile/pemain_detail/'.$response->data->slug.'" />
+		<meta property="og:type" content="Website" />
+		<meta property="og:title" content="'.$response->data->name.' - EyeProfile | EyeSoccer" />
+		<meta property="og:image" content="'.$response->data->url_pic.'" />
+		<meta property="og:description" content="Lihat profil dan detail '.$response->data->name.' - '.$response->data->club.' selengkapnya.." />
+		<meta property="og:locale" content="id_ID" />
+		<!--End of Facebook open graph data-->
+		   
+		<!--begin of twitter card data-->
+		<meta name="twitter:card" content="summary" />    
+		<meta name="twitter:site" content="@eyesoccer_id" />
+		<meta name="twitter:creator" content="@eyesoccer_id" />
+		<meta name="twitter:domain" content="EyeSoccer"/>
+		<meta name="twitter:title" content="'.$response->data->name.'" />
+		<meta name="twitter:description" content="Lihat profil dan detail '.$response->data->name.' - '.$response->data->club.' selengkapnya.." />
+		<meta name="twitter:image" content="'.$response->data->url_pic.'" />
+		<!--end of twitter card data-->
+		';
+
+		if ($response AND $response->data) {
             $data["kanal"] = 'eyeprofile';
             $data['res'] = $response->data;
             $data['body'] = $this->load->view('eyeprofile/pemain_detail', $data, true);
             $this->load->view('template/static', $data);
         } else {
             redirect('home');
-        }
+		}
 	
 	}
 	
@@ -214,7 +294,6 @@ class Eyeprofile extends CI_Controller {
 		if($slug=="")
 		{
 			redirect("eyeprofile/official");
-			
 		}			
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
@@ -222,6 +301,50 @@ class Eyeprofile extends CI_Controller {
 
 		$data["page"]="eyeprofile";
 		$data['res'] = $this->pmod->__official_detail($slug);
+		$res = json_decode($data['res']);
+        $r = $res->data;
+		$data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+		$data["meta"]["share"]='
+		<!-- Begin of SEO Meta Tags -->
+		<title>'.$r->name.' - Profil Database Klub Sepak Bola | EyeProfile - Eyesoccer.ID</title>
+		<meta name="title" content=" '.$r->name.'Profil Database Klub Sepak Bola | EyeProfile - Eyesoccer.ID" />
+		<meta name="description" content="Lihat profil dan statistik '.$r->name.' selengkapnya >> />
+		<meta name="googlebot-news" content="index,follow" />
+		<meta name="googlebot" content="index,follow" />
+		<meta name="image" content="'.$r->url_pic.'" />
+		<meta name="robots" content="index,follow" />
+		<meta name="author" content="EyeSoccer.id" />
+		<meta name="language" content="id" />
+		<meta name="geo.country" content="id" name="geo.country" />
+		<meta http-equiv="content-language" content="In-Id" />
+		<meta name="geo.placename"content="Indonesia" />
+		<link rel="publisher" href="https://plus.google.com/u/1/105520415591265268244" />
+		<link rel="canonical" href="https://eyesoccer.id/eyeprofile/klub_detail/'.$r->slug.'" />
+		<!-- End of SEO Meta Tags-->
+
+		<!-- Begin of Facebook Open graph data-->
+		<meta property="fb:app_id" content="140611863350583" />
+		<meta property="og:site_name" content="EyeSoccer" />
+		<meta property="og:url" content="https://eyesoccer.id/eyeprofile/klub_detail/'.$r->slug.'" />
+		<meta property="og:type" content="Website" />
+		<meta property="og:title" content="'.$r->name.' - EyeProfile | EyeSoccer" />
+		<meta property="og:image" content="'.$r->url_pic.'" />
+		<meta property="og:description" content="Lihat profil dan detail '.$r->name.' selengkapnya.." />
+		<meta property="og:locale" content="id_ID" />
+		<!--End of Facebook open graph data-->
+		   
+		<!--begin of twitter card data-->
+		<meta name="twitter:card" content="summary" />    
+		<meta name="twitter:site" content="@eyesoccer_id" />
+		<meta name="twitter:creator" content="@eyesoccer_id" />
+		<meta name="twitter:domain" content="EyeSoccer"/>
+		<meta name="twitter:title" content="'.$r->name.'" />
+		<meta name="twitter:description" content="('.$r->name.') - Lihat profil dan detail selengkapnya.." />
+		<meta name="twitter:image" content="'.$r->url_pic.'" />
+		<!--end of twitter card data-->
+		';
 		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/official_detail', $data, true);
