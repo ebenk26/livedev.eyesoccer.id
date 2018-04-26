@@ -784,6 +784,8 @@ class Eyeprofile_model extends CI_Model
 		$query = $this->db->query("SELECT 
 									a.*,c.club_id as club_id_a,
 									d.club_id as club_id_b,
+									a.tim_a as tim_a,
+									a.tim_b as tim_b,
 									c.logo as logo_a,
 									d.logo as logo_b,
 									c.name as club_a,
@@ -798,6 +800,31 @@ class Eyeprofile_model extends CI_Model
 									AND jadwal_pertandingan >now()
 									ORDER BY jadwal_pertandingan ASC
 									LIMIT 1")->result_array();
+		return $query;
+	}
+
+	public function get_list_mh($club_id_a)
+	{
+		$query = $this->db->query("SELECT a.score_a,a.score_b,a.tim_a,a.tim_b,b.name as club_a,c.name as club_b
+									FROM tbl_jadwal_event a
+									INNER JOIN tbl_club b ON b.club_id=a.tim_a 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_b 
+									WHERE (tim_a='".$club_id_a."' OR tim_b='".$club_id_a."')
+									AND jadwal_pertandingan <now()
+									ORDER BY jadwal_pertandingan DESC
+									LIMIT 5")->result_array();
+		return $query;
+	}
+	public function get_list_mv($club_id_b)
+	{
+		$query = $this->db->query("SELECT a.score_a,a.score_b,a.tim_a,a.tim_b,b.name as club_a,c.name as club_b
+									FROM tbl_jadwal_event a
+									INNER JOIN tbl_club b ON b.club_id=a.tim_a 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_b 
+									WHERE (tim_a='".$club_id_b."' OR tim_b='".$club_id_b."')
+									AND jadwal_pertandingan <now()
+									ORDER BY jadwal_pertandingan DESC
+									LIMIT 5")->result_array();
 		return $query;
 	}
 

@@ -1,4 +1,8 @@
 <style>
+	.t-20 td {
+    top: 0px;
+    position: relative;
+	}
 	.sjrh{
 		font-size: 1.2em;
 		font-weight: 500;
@@ -9,6 +13,37 @@
 		font-size: .9em;
 		text-align: left !important;
 		padding-top: 40px;
+	}
+
+	.class-W{
+		background-color:#1dd163;
+		border-radius:15px;
+		border: 5px solid white;
+		font-weight:bold;
+		max-width: 8px;
+	}
+	.class-L{
+		background-color:#d81c1c;
+		border-radius:15px;
+		border: 5px solid white;
+		font-weight:bold;
+		max-width: 8px;
+	}
+	.class-D{
+		background-color:#d5b41b;
+		border-radius:15px;
+		border: 5px solid white;
+		font-weight:bold;
+		max-width: 8px;
+	}
+	.class-W:hover{
+		background-color:#00ab42;
+	}
+	.class-L:hover{
+		background-color:#a00000;
+	}
+	.class-D:hover{
+		background-color:#c7a400;
 	}
 </style>
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
@@ -263,17 +298,17 @@
 										$datetime = new DateTime($row['jadwal_pertandingan']);
 										if($datetime->format('l') == 'Monday'){
 											$hari = 'Senin';
-										}else if($datetime->format('l') == 'Tuesday'){
+										}elseif($datetime->format('l') == 'Tuesday'){
 											$hari = 'Selasa';
-										}else if($datetime->format('l') == 'Wednesday'){
+										}elseif($datetime->format('l') == 'Wednesday'){
 											$hari = 'Rabu';
-										}else if($datetime->format('l') == 'Thursday'){
+										}elseif($datetime->format('l') == 'Thursday'){
 											$hari = 'Kamis';
-										}else if($datetime->format('l') == 'Friday'){
+										}elseif($datetime->format('l') == 'Friday'){
 											$hari = 'Jumat';
-										}else if($datetime->format('l') == 'Saturday'){
+										}elseif($datetime->format('l') == 'Saturday'){
 											$hari = 'Sabtu';
-										}else if($datetime->format('l') == 'Sunday'){
+										}elseif($datetime->format('l') == 'Sunday'){
 											$hari = 'Minggu';
 										}else{
 											$hari = $datetime->format('l');
@@ -294,6 +329,76 @@
 								<td width="40%">
 									<img src="<?php echo imgUrl()?>systems/club_logo/<?php echo $row['logo_b']?>" alt=""> <?php echo $row['club_b'];?>
 									<!--<i class="material-icons i-r-pertandingan">keyboard_arrow_right</i>-->
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table>
+										<tr>
+										<?php foreach($get_list_mh as $mh){
+												$mhform=0;
+												if ($mh['tim_a']==$club_id_a){
+													if($mh['score_a'] > $mh['score_b'] ){
+														$mhform="W";
+													}elseif($mh['score_a'] < $mh['score_b'] ){
+														$mhform="L";
+													}else{
+														$mhform="D";
+													}
+												}
+												elseif ($mh['tim_b']==$club_id_a){
+													if($mh['score_a'] > $mh['score_b'] ){
+														$mhform="L";
+													}elseif($mh['score_a'] < $mh['score_b'] ){
+														$mhform="W";
+													}else{
+														$mhform="D";
+													}
+												}
+											?>
+											<td title="<?=$mh['club_a']." ".$mh['score_a']."-".$mh['score_b']." ".$mh['club_b'];?>" align="center" class="class-<?=$mhform;?>">
+												<?=$mhform;?>
+											</td>
+										<?php }
+										?>
+										</tr>
+									</table>
+								</td>
+								<td>
+								</td>
+								<td>
+									<table>
+										<tr>
+										<?php
+										foreach($get_list_mv as $mv){
+												$mvform="";
+												if ($mv['tim_b']==$club_id_b){
+													//echo $mv['score_a'].'/'.$mv['score_b'].'<br>';
+													if($mv['score_a'] > $mv['score_b'] ){
+														$mvform="L";
+													}elseif($mv['score_a'] < $mv['score_b'] ){
+														$mvform="W";
+													}else{
+														$mvform="D";
+													}
+												}
+												elseif ($mv['tim_a']==$club_id_b){
+													if($mv['score_a'] > $mv['score_b'] ){
+														$mvform="W";
+													}elseif($mv['score_a'] < $mv['score_b'] ){
+														$mvform="L";
+													}else{
+														$mvform="D";
+													}
+												}
+												?>
+											<td title="<?php echo $mv['club_a']." ".$mv['score_a']."-".$mv['score_b']." ".$mv['club_b'];?>" align="center" class="class-<?=$mvform;?>">
+												<?=$mvform;?>
+											</td>
+										<?php }
+										?>
+										</tr>
+									</table>								
 								</td>
 							</tr>
 							<!--<tr class="t-20">
