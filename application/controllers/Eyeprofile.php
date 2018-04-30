@@ -21,7 +21,7 @@ class Eyeprofile extends CI_Controller {
 		
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";		
+		$data["meta"]["description"]=meta('',['url'=> pCLUB,'result'=> 'desc']);		
 		$data["page"]="eyeprofile";		
 		
 		$data['club_header'] = $this->Eyeprofile_model->get_club_header();
@@ -45,11 +45,8 @@ class Eyeprofile extends CI_Controller {
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
 		}
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-		$data["liga"]=$liga;		
-		$data["page"]=$page;
+
+		$data["meta"]["share"] = meta('',['url'=> pCLUB,'result'=> 'share']); 
 		$jml_klub = null;
 		$nama_liga = urldecode($liga);
 		$data["title_liga"] = $nama_liga;
@@ -114,11 +111,10 @@ class Eyeprofile extends CI_Controller {
         }
         $data["meta"]["title"] = "";
         $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
-        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
+        $data["meta"]["description"] = meta('',['url'=> pPLAYER,'result'=> 'share']);
         $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
         $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
-        // $data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);
-        // $data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);
+
         $data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['club_id']);
 		if($data['get_hasil_klub']==NULL){
 			$club_id_a="";
@@ -135,7 +131,13 @@ class Eyeprofile extends CI_Controller {
 		
         $data['kanal'] = "home";
         $data['res'] = $this->pmod->__club_detail($url);
+        $r = $data['res']->data;	
 
+		
+		$data["meta"]["title"] = "";
+        $data["meta"]["image"] = meta('',['url'=> CLUBDETAIL,'result'=> 'image']);
+        $data["meta"]["description"] =meta('',['url'=> CLUBDETAIL,'result'=> 'desc']);
+		$data["meta"]["share"]=meta($r,['url'=> CLUBDETAIL,'result'=> 'share']);
         $this->load->view('config-session', $data);
         $data["body"] = $this->load->view('eyeprofile/klub_pemain', $data, true);
         $this->load->view('template/static', $data);
@@ -147,29 +149,22 @@ class Eyeprofile extends CI_Controller {
 		$res = $this->pmod->__club_detail($url);
 		$html = $this->load->view('eyeprofile/ajax/career',$data,true);
 		echo json_encode(['xClass'=> 'rescareer','xHtml'=> $html]);
-
 	}
 	public function pemain()
 	{
+		$data["meta"]["share"]= meta('',['url'=> pPLAYER,'result'=> 'share']);
 		
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
-	
 		$data['kanal'] = "home";
-		
 		$data["body"]=$this->load->view('eyeprofile/pemain',$data, true);
-
 		$this->load->view('template/static',$data);		
 	}
-	
 	public function pemain_detail($id=''){
 		if ($id == "") {
             redirect("eyeprofile/pemain");
-        }
-        $data["meta"]["title"] = "";
-        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
-        $data["meta"]["description"] = "Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-        #$data["page"] = "eyeprofile";
+		}
+
         $data["pid"] = $id;
         $url = $this->config->item('api_url') . "profile/{$id}";
         $cred = $this->config->item('credential');
@@ -177,26 +172,30 @@ class Eyeprofile extends CI_Controller {
             'startdate' => '',
             'enddate' => '',
             'related' => true,
-        );
-        $obj = $this->excurl->remoteCall($url, $cred, $event_data);
+		);
+		$obj = $this->excurl->remoteCall($url, $cred, $event_data);
         $response = json_decode($obj);
-        if ($response AND $response->data) {
+
+		$data["meta"]["title"] = "";
+		 $data["meta"]["share"] = meta($response->data,['url'=> PLAYERDETAIL,'result'=> 'share']);
+        $data["meta"]["image"] = meta('',['url'=> PLAYERDETAIL,'result'=> 'image']);
+        $data["meta"]["description"] = meta('',['url'=> PLAYERDETAIL,'result'=> 'desc']);
+
+		if ($response AND $response->data) {
             $data["kanal"] = 'eyeprofile';
             $data['res'] = $response->data;
             $data['body'] = $this->load->view('eyeprofile/pemain_detail', $data, true);
             $this->load->view('template/static', $data);
         } else {
             redirect('home');
-        }
+		}
 	
 	}
 	
 	public function official()
 	{
-		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
-		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();		
-		$data['kanal'] = "home";
-		
+		$data["meta"]["share"]= meta('',['url'=> pOFFICIAL,'result'=> 'share']);
+		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();		
 		$data['kanal'] = "home";
 		$data["body"]=$this->load->view('eyeprofile/official', $data, true);
 		$this->load->view('template/static',$data);		
@@ -206,14 +205,15 @@ class Eyeprofile extends CI_Controller {
 		if($slug=="")
 		{
 			redirect("eyeprofile/official");
-			
 		}			
-		$data["meta"]["title"]="";
-		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]="Website dan Social Media khusus sepakbola terkeren dan terlengkap dengan data base seluruh stakeholders sepakbola Indonesia";
-
 		$data["page"]="eyeprofile";
 		$data['res'] = $this->pmod->__official_detail($slug);
+		$res = json_decode($data['res']);
+        $r = $res->data;
+		$data["meta"]["title"] = "";
+        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["description"] = meta('',['url'=>OFFICIALDETAIL,'result'=> 'desc']);
+		$data["meta"]["share"] = meta($r,['url'=> OFFICIALDETAIL,'result'=> 'share']);
 		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/official_detail', $data, true);
@@ -222,6 +222,7 @@ class Eyeprofile extends CI_Controller {
 	
 	public function supporter($liga=null)
 	{
+		$data["meta"]["share"]=meta('',['url'=> pSUPPORT,'result'=> 'share']);
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
 		}
@@ -252,6 +253,7 @@ class Eyeprofile extends CI_Controller {
 	
 	public function referee($liga=null)
 	{
+		$data["meta"]["share"]= meta('',['url'=> pREFEREE,'result'=> 'share']);
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
 		}
