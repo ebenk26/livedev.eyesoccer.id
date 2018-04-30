@@ -177,7 +177,7 @@ class Eyeprofile_model extends CI_Model
 									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."','wni','WNI','') and b.active = 1")->result_array();
 		return $query;
 	}
-	
+
 	public function get_profile_club()
 	{
 		$query = $this->db->query("SELECT 
@@ -776,7 +776,34 @@ class Eyeprofile_model extends CI_Model
 		$query = $this->db->query("select * from tbl_player where club_id='".$club_id."'")->result_array();
 		return $query;
 	}
-	
+
+	public function get_result_klub($cidclub)
+	{
+		$query = $this->db->query("SELECT
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									a.tim_a as tim_a,
+									a.tim_b as tim_b,
+									c.competition as liga_a,
+									d.competition as liga_b,
+									c.url as url_a,
+									d.url as url_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub,
+									c.competition
+									FROM tbl_jadwal_event a 
+									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
+									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
+									WHERE (a.tim_a='".$cidclub."' OR a.tim_b='".$cidclub."')
+									AND jadwal_pertandingan < now()
+									ORDER BY jadwal_pertandingan DESC
+									LIMIT 5")->result_array();
+		return $query;
+	}
 	public function get_hasil_klub($club_id)
 	{
 		$query = $this->db->query("SELECT 
@@ -845,7 +872,7 @@ class Eyeprofile_model extends CI_Model
 		}
 		return $query;
 	}
-	
+
 	
 	public function get_list_karir_klub($requestData,$club_id)
 	{
@@ -943,10 +970,6 @@ class Eyeprofile_model extends CI_Model
 		return $res;
 	}
 	
-	public function get_official_detail($url){
-		$query = $this->db->query("select a.*,b.name as club_name,b.url as club_url from tbl_official_team a left join tbl_club b on a.club_now=b.club_id where a.url='".$url."'")->result_array();
-		return $query;
-	}
 	public function __official_detail($slug){
 		$query = ['url'=> $slug];
 		$res = $this->excurl->remoteCall($this->__xurl().'profile-official/'.$slug,$this->__xkey(),$query);

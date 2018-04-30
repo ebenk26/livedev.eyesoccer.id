@@ -1,9 +1,6 @@
 <?= '<?xml version="1.0" encoding="UTF-8" ?>' ?>
 <?php
-$cmd15=$this->db->query("select * from eyeprofile_player order by id_player DESC LIMIT 1000");
-
-//$eyenews_id=$row15['eyenews_id']; 
-
+$cmd15=$this->db->query("select * from tbl_player order by player_id DESC LIMIT 5000");
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 	  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
@@ -14,7 +11,7 @@ $cmd15=$this->db->query("select * from eyeprofile_player order by id_player DESC
 
     <?php foreach($cmd15->result_array() as $row15){ ?>
 	<url>	
-     <loc><?php echo base_url('eyeprofile/pemain_detail').'/'.$row15['slug'];?></loc>	 
+     <loc><?php echo base_url('eyeprofile/pemain_detail').'/'.$row15['url'];?></loc>	 
 	</url>
     <?php } ?>
 
