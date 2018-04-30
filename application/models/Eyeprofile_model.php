@@ -824,7 +824,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
 									WHERE (a.tim_a='".$club_id."' OR a.tim_b='".$club_id."')
-									AND jadwal_pertandingan <now()
+									AND jadwal_pertandingan >now()
 									ORDER BY jadwal_pertandingan ASC
 									LIMIT 1")->result_array();
 		return $query;
