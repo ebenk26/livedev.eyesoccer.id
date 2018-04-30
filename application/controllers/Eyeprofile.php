@@ -154,7 +154,9 @@ class Eyeprofile extends CI_Controller {
         $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
         // $data['get_official_list'] = $this->Eyeprofile_model->get_official_list($data['get_klub_detail_row_array']['club_id']);
         // $data['get_player_list'] = $this->Eyeprofile_model->get_player_list($data['get_klub_detail_row_array']['club_id']);
-        $data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['club_id']);
+		$cidclub=$data['get_klub_detail_row_array']['club_id'];
+		$data['get_result_klub'] = $this->Eyeprofile_model->get_result_klub($cidclub);
+		$data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['club_id']);
 		if($data['get_hasil_klub']==NULL){
 			$club_id_a="";
 			$club_id_b="";

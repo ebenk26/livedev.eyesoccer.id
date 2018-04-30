@@ -241,58 +241,78 @@
 		</div>
 	
 		<div class="center-desktop m-0">
-			<div class="w-60 m-r-1 pd-t-20 formasi">
-				<h3 class="">Prestasi Klub</h3>
-				<table class="table table-stripped table-hover">
-					
-					<thead>
-						<tr>
-							<th>NO</th>
-							<th>Bulan</th>
-							<th>Tahun</th>
-							<th>Turnamen</th>
-							<th>peringkat</th>
-							<th>pelatih</th>
-						</tr>
-					</thead>
-					<tbody>
-						
-						<?php
-							$no = 0 ;
-							for($i= 0 ;$i <count($cr);$i++){
-								$no++;
-								echo '<tr>';
-								echo '<td>'.$no.'</td>';
-								echo '<td>'.$cr[$i]->month.'</td>';
-								echo '<td>'.$cr[$i]->year.'</td>';
-								echo '<td>'.$cr[$i]->tournament.'</td>';
-								echo '<td>'.$cr[$i]->rank.'</td>';	
-								echo '<td>'.$cr[$i]->coach.'</td>';
-								echo '</tr>';
-
-							}
-
-						?>
-						
-					</tbody>
-				</table>
-				<!-- <div class="box-bg" style="height:200px">
-				
-				
-				</div> -->
-			</div>
+		<div class="et-content1">
+					<h3 style="font-size: .8em;text-transform: uppercase;color: #ef9a00;font-weight: 600;margin-top: 36px;">Pertandingan Sebelumnya</h3>
+                    <div class="border-box" style="margin-top: 22px;">
+							<div id="result_club">
+							<table class="table border-b" width="800px">
+							<?php
+								if(empty($get_result_klub)){
+							?>
+								<tbody>
+									<tr>
+										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Sebelumnya</span></td>
+									</tr>
+								</tbody>
+							<?php
+								}
+							else
+								{
+									foreach($get_result_klub as $row){
+							?>
+								<tbody>
+									<tr class="listmatch">
+										<td class="tx-r">
+										<a href="<?php 
+                                                if(($row["liga_a"]=='Liga Lainnya') OR ($row["liga_a"]=='Liga International'))
+                                                    {
+                                                        $href_a="#no_detail_club_".$row["club_a"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_a=base_url()."eyeprofile/klub_detail/".$row["url_a"];
+                                                    }
+                                
+                                					echo $href_a ?>">
+										<span class="clb"><?=$row["club_a"]?></span></a></td>
+										<td style="width: 20px;"><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
+										<td align="center" style="font-weight:bold;"><?=$row["score_a"]?> - <?=$row["score_b"]?></td>
+										<td style="width: 20px;"><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
+										<td class="tx-l">
+										<a href="<?php 
+                                                if(($row["liga_b"]=='Liga Lainnya') OR ($row["liga_b"]=='Liga International'))
+                                                    {
+                                                        $href_b="#no_detail_club_".$row["club_b"];
+                                                    }
+                                                else
+                                                    {
+                                                        $href_b=base_url()."eyeprofile/klub_detail/".$row["url_b"];
+                                                    }
+                                
+                                					echo $href_b ?>">
+										<span class="clb"><?=$row["club_b"]?></a></span></td>
+									</tr>
+								</tbody>
+							<?php
+									} 
+								}
+							?>
+							</table>
+						</div>
+                    </div>
+                </div>
 			<?php 
 				if(count($get_hasil_klub) > 0){
 			?>
 			<div class="w-40 pd-t-20">
 				<h3 class="">Pertandingan Selanjutnya</h3>
-				<div class="container box-pertandingan">
+				<div class="container box-pertandingan" style="margin-left: 20px;margin-top: 24px;width:445px;">
 					<table>
 						<tbody>
 							<tr>
 								<td colspan="3">
 									<?php foreach($get_klub_detail as $row){ ?>
-									<h4><?php echo strtoupper($row['competition'])?></h4>
+									<h4 style="margin-top: 6px;"><?php echo strtoupper($row['competition'])?></h4>
 									<?php } ?>
 									<?php foreach($get_hasil_klub as $row){
 										$datetime = new DateTime($row['jadwal_pertandingan']);
@@ -314,7 +334,7 @@
 											$hari = $datetime->format('l');
 										}
 									?>
-									<span class="date-box-pertandingan"><?php echo $hari.", ".$datetime->format('d M Y')?>
+									<span class="date-box-pertandingan" style="line-height: 1.5em;margin-top: 20px;display:  block;margin-bottom: 15px;"><?php echo $hari.", ".$datetime->format('d M Y')?>
 										<br><?php echo $datetime->format('H:i')." WIB";?>
 										<br><?php echo $row['lokasi_pertandingan']?>
 									</span>
@@ -366,7 +386,7 @@
 								</td>
 								<td>
 								</td>
-								<td>
+								<td style="padding: 12px 8px;">
 									<table>
 										<tr>
 										<?php
@@ -414,7 +434,6 @@
 						</tbody>
 					</table>
 				</div>
-				
 				<div class="container" style="display:none;">
 					<h3 class="pd-t-20">Pencetak Gol Terbanyak</h3>
 					<table id="liga_indonesia" class="pencetak-gol radius table table-striped" cellspacing="0" cellpadding="0">
@@ -494,7 +513,46 @@
 			</script> -->
 				<!-- <img src="../../assets/img/iklanbanner/banner 425x200 px-01.jpg" alt="Right ads"> -->
 			<!-- </div> -->
+			<div class="w-60 m-r-1 pd-t-20 formasi" style="width: 1062px;">
+				<h3 class="">Prestasi Klub</h3>
+				<table class="table table-stripped table-hover">
+					
+					<thead>
+						<tr>
+							<th>NO</th>
+							<th>Bulan</th>
+							<th>Tahun</th>
+							<th>Turnamen</th>
+							<th>peringkat</th>
+							<th>pelatih</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+						<?php
+							$no = 0 ;
+							for($i= 0 ;$i <count($cr);$i++){
+								$no++;
+								echo '<tr>';
+								echo '<td>'.$no.'</td>';
+								echo '<td>'.$cr[$i]->month.'</td>';
+								echo '<td>'.$cr[$i]->year.'</td>';
+								echo '<td>'.$cr[$i]->tournament.'</td>';
+								echo '<td>'.$cr[$i]->rank.'</td>';	
+								echo '<td>'.$cr[$i]->coach.'</td>';
+								echo '</tr>';
 
+							}
+
+						?>
+						
+					</tbody>
+				</table>
+				<!-- <div class="box-bg" style="height:200px">
+				
+				
+				</div> -->
+			</div>
 			<div class="container pd-b-50" style="padding-bottom: 100px;display:none;">
 				<div id="em2Slide" class="carousel slide">
 					<div role="listbox" class="carousel-inner">

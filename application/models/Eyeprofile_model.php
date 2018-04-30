@@ -177,7 +177,7 @@ class Eyeprofile_model extends CI_Model
 									where ".$compt." and nationality not in ('".$nationality."','".ucwords($nationality)."','".strtoupper($nationality)."','".strtolower($nationality)."','wni','WNI','') and b.active = 1")->result_array();
 		return $query;
 	}
-	
+
 	public function get_profile_club()
 	{
 		$query = $this->db->query("SELECT 
@@ -778,7 +778,34 @@ class Eyeprofile_model extends CI_Model
 		$query = $this->db->query("select * from tbl_player where club_id='".$club_id."'")->result_array();
 		return $query;
 	}
-	
+
+	public function get_result_klub($cidclub)
+	{
+		$query = $this->db->query("SELECT
+									a.*,c.club_id as club_id_a,
+									d.club_id as club_id_b,
+									a.tim_a as tim_a,
+									a.tim_b as tim_b,
+									c.competition as liga_a,
+									d.competition as liga_b,
+									c.url as url_a,
+									d.url as url_b,
+									c.logo as logo_a,
+									d.logo as logo_b,
+									c.name as club_a,
+									d.name as club_b,
+									c.url as link_klub,
+									c.competition
+									FROM tbl_jadwal_event a 
+									LEFT JOIN tbl_event b ON b.id_event=a.id_event 
+									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
+									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
+									WHERE (a.tim_a='".$cidclub."' OR a.tim_b='".$cidclub."')
+									AND jadwal_pertandingan < now()
+									ORDER BY jadwal_pertandingan DESC
+									LIMIT 5")->result_array();
+		return $query;
+	}
 	public function get_hasil_klub($club_id)
 	{
 		$query = $this->db->query("SELECT 
@@ -797,7 +824,7 @@ class Eyeprofile_model extends CI_Model
 									INNER JOIN tbl_club c ON c.club_id=a.tim_a 
 									INNER JOIN tbl_club d ON d.club_id=a.tim_b 
 									WHERE (a.tim_a='".$club_id."' OR a.tim_b='".$club_id."')
-									AND jadwal_pertandingan >now()
+									AND jadwal_pertandingan <now()
 									ORDER BY jadwal_pertandingan ASC
 									LIMIT 1")->result_array();
 		return $query;
@@ -847,7 +874,73 @@ class Eyeprofile_model extends CI_Model
 		}
 		return $query;
 	}
-	
+		public function get_all_jadwal($tanggalnya,$liganya)
+	{
+		// $query = $this->db->query("SELECT
+		// 							a.jadwal_pertandingan,
+		// 							c.club_id as club_id_a,
+		// 							d.club_id as club_id_b,
+		// 							c.logo as logo_a,
+		// 							d.logo as logo_b,
+		// 							c.name as club_a,
+		// 							d.name as club_b
+		// 						FROM
+		// 							tbl_jadwal_event a
+		// 							LEFT JOIN
+		// 								tbl_event b ON b.id_event=a.id_event
+		// 							INNER JOIN
+		// 								tbl_club c ON c.club_id=a.tim_a
+		// 							INNER JOIN
+		// 								tbl_club d ON d.club_id=a.tim_b
+		// 						WHERE
+		// 							a.jadwal_pertandingan BETWEEN '$tanggalnya 00:00:01' AND '$tanggalnya 23:59:59'
+		// 							AND
+		// 							a.id_event = $liganya
+		// 						order by
+		// 							jadwal_pertandingan DESC
+		// 						LIMIT
+		// 							6")->result_array();
+
+		$this->db->select('	a.score_a,
+							a.score_b,
+							a.jadwal_pertandingan,
+							a.lokasi_pertandingan,
+							a.live_pertandingan,
+							c.club_id as club_id_a,
+							d.club_id as club_id_b,
+							c.competition as liga_a,
+							d.competition as liga_b,
+							c.logo as logo_a,
+							d.logo as logo_b,
+							c.competition as liga_a,
+							d.competition as liga_b,
+							c.name as club_a,
+							d.name as club_b,
+							c.url as url_a,
+							d.url as url_b,
+							b.title as kompetisi
+							');
+
+		$this->db->from('tbl_jadwal_event AS a');
+
+		$this->db->join('tbl_event AS b', 'b.id_event=a.id_event', 'LEFT');
+		$this->db->join('tbl_club AS c', 'c.club_id=a.tim_a', 'INNER');
+		$this->db->join('tbl_club AS d', 'd.club_id=a.tim_b', 'INNER');
+
+		$this->db->where('a.jadwal_pertandingan >=', $tanggalnya.' 00:00:01');
+		$this->db->where('a.jadwal_pertandingan <=', $tanggalnya.' 23:59:59');
+		
+		if ($liganya != null)
+		{
+			$this->db->where('a.id_event', $liganya);
+		}
+
+		$this->db->order_by('a.jadwal_pertandingan', 'desc');
+
+		$query = $this->db->get()->result_array();
+
+		return $query;
+	}
 	public function get_all_kompetisi()
 	{
 		$query  = array('page' => '1','limit' => '10');

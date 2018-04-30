@@ -650,7 +650,7 @@
 							?>
 								<tbody>
 									<tr>
-										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Kemaren</span></td>
+										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Selanjutnya</span></td>
 									</tr>
 								</tbody>
 							<?php
