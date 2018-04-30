@@ -1,6 +1,6 @@
 <?= '<?xml version="1.0" encoding="UTF-8" ?>' ?>
 <?php
-$cmd15=$this->db->query("select * from eyeprofile_club order by id_club DESC LIMIT 100");
+$cmd15=$this->db->query("select * from tbl_club order by cid DESC LIMIT 5000");
 
 //$eyenews_id=$row15['eyenews_id']; 
 
@@ -14,7 +14,7 @@ $cmd15=$this->db->query("select * from eyeprofile_club order by id_club DESC LIM
 
     <?php foreach($cmd15->result_array() as $row15){ ?>
 	<url>	
-     <loc><?php echo base_url('eyeprofile/klub_detail').'/'.$row15['slug'];?></loc>	 
+     <loc><?php echo base_url('eyeprofile/klub_detail').'/'.$row15['url'];?></loc>	 
 	</url>
     <?php } ?>
 

@@ -45,6 +45,15 @@
 	.class-D:hover{
 		background-color:#c7a400;
 	}
+	.div-W{background-color:#1dd163;padding:5px 0px 5px 0px;border-radius:50px;font-weight:bold;}
+	.div-D{background-color:#d5b41b;padding:5px 0px 5px 0px;border-radius:50px;font-weight:bold;}
+	.div-L{background-color:#d81c1c;padding:5px 0px 5px 0px;border-radius:50px;font-weight:bold;}
+	.div-W:hover{background-color:#00a942;}
+	.div-D:hover{background-color:#af9000;}
+	.div-L:hover{background-color:#bf0000;}
+	.listmatch:hover{
+		background-color:#fdd79f38;
+		}
 </style>
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 </div>
@@ -262,6 +271,34 @@
 							?>
 								<tbody>
 									<tr class="listmatch">
+										<td><?php
+										if ($row['tim_a']==$club_id){
+											if($row['score_a'] > $row['score_b'] ){
+												$rowform="W";
+												$titleform="WIN";
+											}elseif($row['score_a'] < $row['score_b'] ){
+												$rowform="L";
+												$titleform="LOSE";
+											}else{
+												$rowform="D";
+												$titleform="DRAW";
+											}
+										}
+										elseif ($row['tim_b']==$club_id){
+											if($row['score_a'] > $row['score_b'] ){
+												$rowform="L";
+												$titleform="LOSE";
+											}elseif($row['score_a'] < $row['score_b'] ){
+												$rowform="W";
+												$titleform="WIN";
+											}else{
+												$rowform="D";
+												$titleform="DRAW";
+											}
+										}
+										echo "<div title='".$titleform."' align='center' class='div-".$rowform."'>".$rowform."</div>"; 
+										?>
+										</td>
 										<td class="tx-r">
 										<a href="<?php 
                                                 if(($row["liga_a"]=='Liga Lainnya') OR ($row["liga_a"]=='Liga International'))
@@ -276,7 +313,9 @@
                                 					echo $href_a ?>">
 										<span class="clb"><?=$row["club_a"]?></span></a></td>
 										<td style="width: 20px;"><span class="i-l"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_a']; ?>" alt=""></span></td>
-										<td align="center" style="font-weight:bold;"><?=$row["score_a"]?> - <?=$row["score_b"]?></td>
+										<td width="100" align="center" style="font-weight:bold;">
+											<?=$row["score_a"]?> - <?=$row["score_b"]?>
+										</td>
 										<td style="width: 20px;"><span class="i-r"><img class="lazy" src="<?=imgUrl()?>systems/club_logo/<?php print $row['logo_b']; ?>" alt=""></span></td>
 										<td class="tx-l">
 										<a href="<?php 
@@ -386,7 +425,7 @@
 								</td>
 								<td>
 								</td>
-								<td style="padding: 12px 8px;">
+								<td style="padding: 24px;">
 									<table>
 										<tr>
 										<?php

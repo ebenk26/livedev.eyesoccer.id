@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Eyeprofile_official_sitemap extends CI_Controller {
     function index()
     {
-    	$query = $this->db->query("select * from tbl_official_team order by official_id DESC");  
+    	$query = $this->db->query("select * from tbl_official_team order by official_id DESC LIMIT 5000");  
     	//print_r($query->result_array()); 	
     	$data1=array();
     	foreach ($query->result_array() as $key) {
