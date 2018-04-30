@@ -106,11 +106,15 @@ class Eyeprofile extends CI_Controller {
 	}
 	public function klub_detail($url = '')
     {
-        if ($url == "") {
+    	$res= $this->pmod->__club_detail($url);
+        if ($url == "" || $res->status == 'Error') {
             redirect("eyeprofile/klub/Liga Indonesia 1");
         }
+        
+		$data['res'] = $res;
+        $r = $data['res']->data;	
         $data["meta"]["title"] = "";
-        $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
+        $data["meta"]["image"] = meta('',['url'=> pPLAYER,'result'=> 'image']);
         $data["meta"]["description"] = meta('',['url'=> pPLAYER,'result'=> 'share']);
         $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
         $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
@@ -130,14 +134,6 @@ class Eyeprofile extends CI_Controller {
 		$data['get_list_mv'] = $this->Eyeprofile_model->get_list_mv($club_id_b);
 		
         $data['kanal'] = "home";
-        $data['res'] = $this->pmod->__club_detail($url);
-        $r = $data['res']->data;	
-
-		
-		$data["meta"]["title"] = "";
-        $data["meta"]["image"] = meta('',['url'=> CLUBDETAIL,'result'=> 'image']);
-        $data["meta"]["description"] =meta('',['url'=> CLUBDETAIL,'result'=> 'desc']);
-		$data["meta"]["share"]=meta($r,['url'=> CLUBDETAIL,'result'=> 'share']);
         $this->load->view('config-session', $data);
         $data["body"] = $this->load->view('eyeprofile/klub_pemain', $data, true);
         $this->load->view('template/static', $data);
@@ -153,7 +149,6 @@ class Eyeprofile extends CI_Controller {
 	public function pemain()
 	{
 		$data["meta"]["share"]= meta('',['url'=> pPLAYER,'result'=> 'share']);
-		
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
 		$data['kanal'] = "home";
@@ -195,7 +190,8 @@ class Eyeprofile extends CI_Controller {
 	public function official()
 	{
 		$data["meta"]["share"]= meta('',['url'=> pOFFICIAL,'result'=> 'share']);
-		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();		
+		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
+		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();		
 		$data['kanal'] = "home";
 		$data["body"]=$this->load->view('eyeprofile/official', $data, true);
 		$this->load->view('template/static',$data);		
