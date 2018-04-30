@@ -16,6 +16,7 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
     }
 </style>
 <div class="baseurl" val="<?php echo EYEPROFILE?>"></div>
+<div id="uri_segment" val="<?php echo $this->uri->segment(3)?>"></div>
 	<div class="crumb">
 		<ul>
 		<li><a href='<?php echo base_url(); ?>' style='display: unset'>Home</a></li>
@@ -50,7 +51,7 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
                 <option <?php echo ($row->league == urldecode($this->uri->segment(4)) ? 'selected' :'')?> value="<?php echo base_url()."eyeprofile/official/Liga Usia Muda/".$row->league?>"><?php echo $row->league;?></option>';
                   
             <?php endforeach;?>
-            </select>s
+            </select>
         </div>
     </div>
     <div class="center-desktop m-0">
@@ -58,7 +59,10 @@ $pageCtrl = ($this->uri->segment(5) ?  ($this->uri->segment(5) == 'page' ? $this
         <div class="container box-border-radius fl-l mt-30">  
             <div class="reqdataofficial" id="reqofficial" action="doit"> 
                 <input type="hidden" name="fn" value="getdataleague" class="cinput">
-                <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">   
+                <input type="hidden" name="competition" value="<?php echo $comp?>" class="cinput">  
+                 <?php if($this->uri->segment(4) AND $this->uri->segment(4) != 'page'){
+                    echo '<input type="hidden" name="league" value="'.urldecode($this->uri->segment(4)).'" class="cinput">';
+                } ?> 
                 <script>
                     $(function(){
                         ajaxOnLoad('reqdataofficial');

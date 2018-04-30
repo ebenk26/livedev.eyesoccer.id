@@ -99,7 +99,6 @@ class Eyeprofile extends CI_Controller {
 		$data['transfer_pemain'] = $this->Eyeprofile_model->get_transfer_pemain($nama_liga);
 		$data['pencetak_gol'] = $this->Eyeprofile_model->get_pencetak_gol($nama_liga);		
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
-	
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();		
 		$data['get_player_liga'] = $this->Eyeprofile_model->get_player_liga($nama_liga,'indonesia',$cat_liga);		
 		$data['get_player_liga_strange'] = $this->Eyeprofile_model->get_player_liga_strange($nama_liga,'indonesia',$cat_liga);		
@@ -134,16 +133,9 @@ class Eyeprofile extends CI_Controller {
 		$data['get_list_mh'] = $this->Eyeprofile_model->get_list_mh($club_id_a);
 		$data['get_list_mv'] = $this->Eyeprofile_model->get_list_mv($club_id_b);
 		
-
-		// p($data['get_list_mv']);exit();
-		// var_dump($data['get_list_mv']);exit();
-        // $data['get_manager'] = $this->Eyeprofile_model->get_manager($data['get_klub_detail_row_array']['club_id']);
-        // $data['get_pelatih'] = $this->Eyeprofile_model->get_pelatih($data['get_klub_detail_row_array']['club_id']);
-        // $data['get_gallery'] = $this->Eyeprofile_model->get_gallery_club($data['get_klub_detail_row_array']['club_id']);
-        // $data['products'] = $this->Home_model->get_all_product();
         $data['kanal'] = "home";
         $data['res'] = $this->pmod->__club_detail($url);
-        #$data['career'] = $this->
+
         $this->load->view('config-session', $data);
         $data["body"] = $this->load->view('eyeprofile/klub_pemain', $data, true);
         $this->load->view('template/static', $data);
@@ -247,7 +239,6 @@ class Eyeprofile extends CI_Controller {
 			$data["title_liga"] = $nama_liga;
 		}
 		
-		// $data['kompetisi_pro'] = $this->Eyeprofile_model->get_kompetisi_pro();
 		$data['get_all_kompetisi'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['pemain_klub'] = $this->Eyeprofile_model->get_pemain_klub();
 
