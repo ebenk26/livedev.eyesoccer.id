@@ -1,4 +1,3 @@
-</div>
 <style>
     .ads_selengkapnya{
         display:  block;

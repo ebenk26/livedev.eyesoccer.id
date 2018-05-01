@@ -1,6 +1,7 @@
 <?php 
 $res = json_decode($res);
 
+
 echo "<div class='ep2box fl-l pd-t-20'>";		
 
 	foreach($res->data as $r):

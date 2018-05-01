@@ -1,5 +1,14 @@
 <?php  
-$res[0] = json_decode($res[0]); ?>
+//pagination varriable
+$res[0] = json_decode($res[0]);
+$res[1]  = json_decode($res[1])->data;
+$countLocalPlayer = $res[1][0]->cc;
+$limit = $res[0]->query->limit;
+(int) $page  = $res[0]->query->page;
+$totalPage = ceil($countLocalPlayer/$limit); //total page
+$competition = $res[0]->query->competition;
+$uri = ($competition == null ? 'Liga Indonesia 1' : $competition);
+?>
 <table class="stripe cell-border table-striped table-hover" cellspacing="0" width="100%">
 	<thead id="back900">
 		<th>No</th>
@@ -12,7 +21,8 @@ $res[0] = json_decode($res[0]); ?>
 		
 	</thead>
 	<tbody >
-		<?php $no = 0; foreach($res[0]->data as $r): $no++ ?>
+		<?php $no = ($page == 1 ? 0 : ($page-1) * $limit); 
+			foreach($res[0]->data as $r): $no++; ?>
 		<tr>
 			<td><?php echo $no?></td>
 			<td style=""><img  src="<?php echo checkImg($r->url_pic)?>" style="width: 40px;height:40px;border-radius:50%;vertical-align: inherit;"> 
@@ -28,15 +38,6 @@ $res[0] = json_decode($res[0]); ?>
 	</tbody>
 	
 </table>
-<?php
-
-$res[1]  = json_decode($res[1])->data;
-$countLocalPlayer = $res[1][0]->cc;
-$limit = $res[0]->query->limit;
-(int) $page  = $res[0]->query->page;
-$totalPage = ceil($countLocalPlayer/$limit); //total page
-$competition = $res[0]->query->competition;
-$uri = ($competition == null ? 'Liga Indonesia 1' : $competition);?>
 
 <div class="pull-right">
 	

@@ -174,7 +174,7 @@
         	</div>
         	</div>
             
-			<div class="container mt-20 banner-home1 img-banner" style="background-color: unset;text-align: center;height: unset;background: url('<?php echo base_url()?>assets/img/banner/1065X255px.png');background-repeat: no-repeat;">
+			<div class="container mt-20 banner-home1 img-banner" style="background-color: unset;text-align: center;height: unset;background: url('<?php echo base_url()?>assets/img/banner/1065X255px.png');background-repeat: no-repeat;line-height: 0px;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- EyesoccerDekstop 2#HomeBannerTengah970x250 -->
 			<ins class="adsbygoogle"
@@ -650,7 +650,7 @@
 							?>
 								<tbody>
 									<tr>
-										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Kemaren</span></td>
+										<td align="center"><span class="t-live"> Tidak Ada Pertandingan Selanjutnya</span></td>
 									</tr>
 								</tbody>
 							<?php
