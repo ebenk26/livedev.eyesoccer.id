@@ -155,7 +155,7 @@ function formatDate($date,$str = ' '){
     }
 
 }
-function meta($d ='', $opt = ['url']){
+function set_meta($d ='', $opt = ['url']){
     if($d != ''){
         $meta_share = '
             <!-- Begin of SEO Meta Tags -->

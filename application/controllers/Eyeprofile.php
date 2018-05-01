@@ -21,7 +21,7 @@ class Eyeprofile extends CI_Controller {
 		
 		$data["meta"]["title"]="";
 		$data["meta"]["image"]=base_url()."/assets/img/tab_icon.png";
-		$data["meta"]["description"]=meta('',['url'=> pCLUB,'result'=> 'desc']);		
+		$data["meta"]["description"]= set_meta('',['url'=> pCLUB,'result'=> 'desc']);		
 		$data["page"]="eyeprofile";		
 		
 		$data['club_header'] = $this->Eyeprofile_model->get_club_header();
@@ -46,7 +46,7 @@ class Eyeprofile extends CI_Controller {
 			$liga = "Liga%20Indonesia%201";
 		}
 
-		$data["meta"]["share"] = meta('',['url'=> pCLUB,'result'=> 'share']); 
+		$data["meta"]["share"] = set_meta('',['url'=> pCLUB,'result'=> 'share']); 
 		$jml_klub = null;
 		$nama_liga = urldecode($liga);
 		$data["title_liga"] = $nama_liga;
@@ -114,8 +114,8 @@ class Eyeprofile extends CI_Controller {
 		$data['res'] = $res;
         $r = $data['res']->data;	
         $data["meta"]["title"] = "";
-        $data["meta"]["image"] = meta('',['url'=> pPLAYER,'result'=> 'image']);
-        $data["meta"]["description"] = meta('',['url'=> pPLAYER,'result'=> 'share']);
+        $data["meta"]["image"] = set_meta('',['url'=> pPLAYER,'result'=> 'image']);
+        $data["meta"]["description"] = set_meta('',['url'=> pPLAYER,'result'=> 'share']);
         $data['get_klub_detail'] = $this->Eyeprofile_model->get_klub_detail($url);
         $data['get_klub_detail_row_array'] = $this->Eyeprofile_model->get_klub_detail_row_array($url);
         $data['get_hasil_klub'] = $this->Eyeprofile_model->get_hasil_klub($data['get_klub_detail_row_array']['club_id']);
@@ -156,7 +156,7 @@ class Eyeprofile extends CI_Controller {
 	}
 	public function pemain()
 	{
-		$data["meta"]["share"]= meta('',['url'=> pPLAYER,'result'=> 'share']);
+		$data["meta"]["share"]= set_meta('',['url'=> pPLAYER,'result'=> 'share']);
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
 		$data['kanal'] = "home";
@@ -180,9 +180,9 @@ class Eyeprofile extends CI_Controller {
         $response = json_decode($obj);
 
 		$data["meta"]["title"] = "";
-		 $data["meta"]["share"] = meta($response->data,['url'=> PLAYERDETAIL,'result'=> 'share']);
-        $data["meta"]["image"] = meta('',['url'=> PLAYERDETAIL,'result'=> 'image']);
-        $data["meta"]["description"] = meta('',['url'=> PLAYERDETAIL,'result'=> 'desc']);
+		 $data["meta"]["share"] = set_meta($response->data,['url'=> PLAYERDETAIL,'result'=> 'share']);
+        $data["meta"]["image"] = set_meta('',['url'=> PLAYERDETAIL,'result'=> 'image']);
+        $data["meta"]["description"] = set_meta('',['url'=> PLAYERDETAIL,'result'=> 'desc']);
 
 		if ($response AND $response->data) {
             $data["kanal"] = 'eyeprofile';
@@ -197,7 +197,7 @@ class Eyeprofile extends CI_Controller {
 	
 	public function official()
 	{
-		$data["meta"]["share"]= meta('',['url'=> pOFFICIAL,'result'=> 'share']);
+		$data["meta"]["share"]= set_meta('',['url'=> pOFFICIAL,'result'=> 'share']);
 		$data['get_all_liga'] = $this->Eyeprofile_model->get_all_liga();
 		$data['competition'] = $this->Eyeprofile_model->get_all_kompetisi();		
 		$data['kanal'] = "home";
@@ -216,8 +216,8 @@ class Eyeprofile extends CI_Controller {
         $r = $res->data;
 		$data["meta"]["title"] = "";
         $data["meta"]["image"] = base_url() . "/assets/img/tab_icon.png";
-        $data["meta"]["description"] = meta('',['url'=>OFFICIALDETAIL,'result'=> 'desc']);
-		$data["meta"]["share"] = meta($r,['url'=> OFFICIALDETAIL,'result'=> 'share']);
+        $data["meta"]["description"] = set_meta('',['url'=>OFFICIALDETAIL,'result'=> 'desc']);
+		$data["meta"]["share"] = set_meta($r,['url'=> OFFICIALDETAIL,'result'=> 'share']);
 		$data['kanal'] = "home";
 		$this->load->view('config-session',$data);
 		$data["body"]=$this->load->view('eyeprofile/official_detail', $data, true);
@@ -226,7 +226,7 @@ class Eyeprofile extends CI_Controller {
 	
 	public function supporter($liga=null)
 	{
-		$data["meta"]["share"]=meta('',['url'=> pSUPPORT,'result'=> 'share']);
+		$data["meta"]["share"]=set_meta('',['url'=> pSUPPORT,'result'=> 'share']);
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
 		}
@@ -257,7 +257,7 @@ class Eyeprofile extends CI_Controller {
 	
 	public function referee($liga=null)
 	{
-		$data["meta"]["share"]= meta('',['url'=> pREFEREE,'result'=> 'share']);
+		$data["meta"]["share"]= set_meta('',['url'=> pREFEREE,'result'=> 'share']);
 		if($liga==null){
 			$liga = "Liga%20Indonesia%201";
 		}
