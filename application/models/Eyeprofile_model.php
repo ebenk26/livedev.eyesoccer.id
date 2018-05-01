@@ -3,7 +3,7 @@
 class Eyeprofile_model extends CI_Model
 {
 //membaca tabel database
-		private function __xurl() { return $this->config->item('api_url_lab'); }
+		private function __xurl() { return $this->config->item('api_url'); }
     	private function __xkey() { return $this->config->item('credential'); }
 
         public function listing(){

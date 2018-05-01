@@ -34,7 +34,7 @@
                                 <td>: <?php echo (!empty($res->nationality) ? $res->nationality: '-') ?></td>
                             </tr>
 							<?php 
-								if($res->status != "Profesional" && $res->mother != ""){
+								if($res->level != "Profesional" && $res->mother != ""){
 							?>
 							<tr>
                                 <td>Nama Ayah</td>
@@ -66,7 +66,7 @@
                                 <td>: <?php echo (empty($res->contract_range1) || empty($res->contract_range1) ? ' - ' : $res->contract_range1.'-'.$res->contract_range2)?></td>
                             </tr>
 							<?php 
-								if($res->status != "Profesional" && $res->mother != ""){
+								if($res->level != "Profesional" && $res->mother != ""){
 							?>
 							<tr>
                                 <td>Klub Favorit</td>
@@ -110,7 +110,7 @@
                 </div>
             </div>
            
-            <h3><?php echo $res->name.' ('.$res->number.')'?></h3>
+            <h3><?php echo $res->name.' ('.$res->back_number.')'?></h3>
 
         </div>
     </div>
