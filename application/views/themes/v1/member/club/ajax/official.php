@@ -1,6 +1,15 @@
-<a href="<?php echo base_url('member/official/?act=add'); ?>" class="btn-blue disp-inblock mg-t mg-b15">Tambah</a>
+<a href="<?php echo base_url('member/official/?act=add'); ?>" class="btn-white-orange fl-r"><i class="fas fa-plus mg-r5"></i>Tambah</a>
+<div class="container mg-tb15">
+    <div class="pp-profil">
+        <img src="<?php echo ($club AND $club->url_logo) ? $club->url_logo : base_url("assets/themes/v1/img/fav.png"); ?>" alt="" class="viewimg">
+    </div>
+    <div class="full-width tx-center mg-tb15">
+        <?php echo ($club) ? $club->name : ''; ?>
+    </div>
+</div>
 
-<?php
+<div class="container mg-t15">
+    <?php
     if ($official) {
         foreach ($official->data as $p) {
             ?>
@@ -11,7 +20,7 @@
                     <span class="cinput disp-none" name="act" val="2"></span>
                     <input type="hidden" name="id" value="<?php echo $p->id_official; ?>" class="cinput">
                 </a>
-                <a href="<?php echo base_url('member/official/?act='.$p->id_official); ?>"><i class="far fa-edit mg-r10" style="float:right; font-size:.9em;"></i></a>
+                <a href="<?php echo base_url('member/official/?act=' . $p->id_official); ?>"><i class="far fa-edit mg-r10" style="float:right; font-size:.9em;"></i></a>
                 <div class="col-xs-4 edits">
                     <div class="img-round">
                         <img src="<?php echo $p->url_pic; ?>" alt="">
@@ -29,4 +38,5 @@
 
         $this->library->backnext('pageofficial', 'pagetotalofficial', $officialcount, 'member', 'clubofficial', 20);
     }
-?>
+    ?>
+</div>

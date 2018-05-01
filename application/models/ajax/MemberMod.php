@@ -167,11 +167,10 @@ class MemberMod extends CI_Model
         $param = array('id_member' => $this->session->member['id'], 'detail' => true, 'md5' => true);
         $res = $this->excurl->reqCurlback('me', $param);
         $v = $res->data;
-		// print_r($this->session->member['id']);exit();
+
         $query = array('id_club' => ($v[0]->id_club == 0 ? 1128 : $v[0]->id_club), 'detail' => true);
         $data['klubdetail'] = $this->excurl->reqCurlback('profile-club', $query);
         $val = $data['klubdetail']->data;
-		// print_r($data['klubdetail']);exit();
 		
         $queryprov = array();
         $data['provinsilist'] = $this->excurl->reqCurlback('provinsi', $queryprov);
@@ -182,8 +181,6 @@ class MemberMod extends CI_Model
         $data['kabupatenlist'] = $this->excurl->reqCurlback('kabupaten', $querykab);
         $val = $data['kabupatenlist']->data;
         $data['kabupaten'] = $val;
-		// print_r($data['kabupaten']);exit();
-		// print_r($data['klubdetail']->data[0]->Id_kabupaten);exit();
 
         $html = $this->load->view($this->__theme() . 'member/club/ajax/infoklub', $data, true);
 
@@ -195,15 +192,11 @@ class MemberMod extends CI_Model
     {
         $name = $this->input->post('name');
         $namealias = $this->input->post('namealias');
+        $address = $this->input->post('address');
+        $phone = $this->input->post('phone');
+        $ses = $this->session->userdata('member');
 
-        $sesi = $this->session->userdata('member');
-
-        $query = array( 
-            'uid' => $sesi['id'],
-            'name' => $name,
-            'namealias' => $namealias
-        );
-
+        $query = array( 'uid' => $ses['id'], 'name' => $name, 'namealias' => $namealias, 'address' => $address, 'phone' => $phone);
         $res = $this->excurl->reqCurlapp('register-club', $query, array('legal_pt', 'legal_kemenham', 'legal_npwp', 'legal_dirut'));
 
         $arr = $this->library->errorMessage($res);
@@ -216,16 +209,16 @@ class MemberMod extends CI_Model
         $this->tools->__flashMessage($arr);
     }
 
-    function __get_listclub()
+    function __listclub()
     {
-        $query = array(
-            'page' => '',
-            'limit' => '',
-        );
-        $data['clubs'] = $this->excurl->reqCurlapp('profile-club', $query);
+        $text = $this->input->post('club');
 
-        $html = $this->load->view($this->__theme().'member/player/ajax/view_regplayer',$data,true);
-        $data = array('xClass'=> 'reqclub','xHtml' => $html);
+        $query = array('page' => '', 'limit' => '', 'search' => $text, 'competition' => 'Liga Usia Muda');
+        $clubs = $this->excurl->reqCurlapp('profile-club', $query);
+        $data['club'] = $clubs->data;
+
+        $html = $this->load->view($this->__theme() . 'member/player/ajax/listclub', $data, true);
+        $data = array('xClass' => 'showclub', 'xHtml' => $html);
         $this->tools->__flashMessage($data);
     }
 
@@ -280,25 +273,21 @@ class MemberMod extends CI_Model
         $member = $this->excurl->reqCurlapp('me', $query);
         $member = ($member) ? $member->data[0] : '';
 
+        $query = [];
         if ($member->id_club > 0) {
-            $query = array('id_club' => $id_club, 'name' => $name, 'nickname' => $nickname, 'address' => $address, 'description' => $description, 'establish_date' => $establish_date, 'phone' => $phone, 'email' => $email, 'owner' => $owner, 'coach' => $coach, 'provinsi' => $provinsi, 'kabupaten' => $kabupaten, 'manager' => $manager, 'slug' => $slug, 'supporter_name' => $supporter_name, 'training_schedule' => $training_schedule);
-        } else {
-            $query = array();
+            $query = array('id_club' => $id_club, 'name' => $name, 'nickname' => $nickname, 'address' => $address, 'description' => $description,
+                           'establish_date' => date('Y-m-d', strtotime($establish_date)), 'phone' => $phone, 'email' => $email, 'owner' => $owner,
+                           'coach' => $coach, 'provinsi' => $provinsi, 'kabupaten' => $kabupaten, 'manager' => $manager, 'slug' => $slug,
+                           'supporter_name' => $supporter_name, 'training_schedule' => $training_schedule);
         }
-		
-        $res = $this->excurl->reqCurlapp('edit-club', $query, array('logo', 'legal_pt'));
-		
-        // print_r($res);
-        // exit;
+
+        $res = $this->excurl->reqCurlapp('edit-club', $query, array('logo', 'legal_pt', 'legal_kemenham', 'legal_npwp', 'legal_dirut'));
         $arr = $this->library->errorMessage($res);
 
         if ($res->status == 'Success') {
             $message = "Data berhasil disimpan.";
-            $arr = array('xDirect' => base_url() . 'member', 'xCss' => 'boxsuccess', 'xMsg' => $message, 'xAlert' => true);
-        }else{
-			$message = "Data gagal disimpan.";
-            $arr = array('xDirect' => base_url() . 'member', 'xCss' => 'boxfailed', 'xMsg' => $message, 'xAlert' => true);
-		}
+            $arr = array('xDirect' => base_url('member/klub'), 'xCss' => 'boxsuccess', 'xMsg' => $message, 'xAlert' => true);
+        }
 
         $this->tools->__flashMessage($arr);
     }
@@ -310,6 +299,9 @@ class MemberMod extends CI_Model
         $query = array('id_member' => $this->session->member['id'], 'detail' => true, 'md5' => true);
         $member = $this->excurl->reqCurlapp('me', $query);
         $member = ($member) ? $member->data[0] : '';
+
+        $club = $this->excurl->reqCurlback('profile-club', ['id_club' => $member->id_club]);
+        $data['club'] = ($club) ? $club->data[0] : '';
 
         $query = array('page' => $this->session->userdata('pageplayer'), 'limit' => 20, 'id_club' => $member->id_club,
                        'sortby' => 'a.id_player', 'sortdir' => 'desc');
@@ -344,10 +336,13 @@ class MemberMod extends CI_Model
         $member = $this->excurl->reqCurlapp('me', $query);
         $member = ($member) ? $member->data[0] : '';
 
+        $birthdate = $this->input->post('birth_date');
+        $birthdate = ($birthdate) ? date('Y-m-d', strtotime($this->input->post('birth_date'))) : '';
+
         $dt = [];
         if ($this->input->post('act') < 2) {
             $dt = array('name' => $this->input->post('name'), 'nickname' => $this->input->post('nickname'), 'description' => $this->input->post('description'),
-                        'birth_place' => $this->input->post('birth_place'), 'birth_date' => date('Y-m-d', strtotime($this->input->post('birth_date'))),
+                        'birth_place' => $this->input->post('birth_place'), 'birth_date' => $birthdate,
                         'phone' => $this->input->post('phone'), 'mobile' => $this->input->post('mobile'), 'email' => $this->input->post('email'),
                         'height' => $this->input->post('height'), 'weight' => $this->input->post('weight'), 'gender' => $this->input->post('gender'),
                         'nationality' => $this->input->post('nationality'), 'position_a' => $this->input->post('position_a'), 'position_b' => $this->input->post('position_b'),
@@ -697,6 +692,9 @@ class MemberMod extends CI_Model
         $member = $this->excurl->reqCurlapp('me', $query);
         $member = ($member) ? $member->data[0] : '';
 
+        $club = $this->excurl->reqCurlback('profile-club', ['id_club' => $member->id_club]);
+        $data['club'] = ($club) ? $club->data[0] : '';
+
         $query = array('page' => $this->session->userdata('pageclubofficial'), 'limit' => 20, 'id_club' => $member->id_club,
                        'sortby' => 'a.id_official', 'sortdir' => 'desc');
 
@@ -736,13 +734,16 @@ class MemberMod extends CI_Model
         $club = $this->excurl->reqCurlback('profile-club',  $query);
         $club = ($club) ? $club->data[0] : '';
 
+        $birthdate = $this->input->post('birth_date');
+        $birthdate = ($birthdate) ? date('Y-m-d', strtotime($this->input->post('birth_date'))) : '';
+
         $dt = [];
         if ($this->input->post('act') < 2) {
             $dt = array('slug' => $club->slug, 'name' => $this->input->post('name'), 'position' => $this->input->post('position'),
                         'nationality' => $this->input->post('nationality'), 'license' => $this->input->post('license'), 'no_identity' => $this->input->post('no_identity'),
-                        'birth_place' => $this->input->post('birth_place'), 'birth_date' => date('Y-m-d', strtotime($this->input->post('birth_date'))),
-                        'address' => $this->input->post('address'), 'phone' => $this->input->post('phone'), 'email' => $this->input->post('email'),
-                        'contact' => $this->input->post('contact'), 'contract' => $this->input->post('contract'));
+                        'birth_place' => $this->input->post('birth_place'), 'birth_date' => $birthdate, 'address' => $this->input->post('address'),
+                        'phone' => $this->input->post('phone'), 'email' => $this->input->post('email'), 'contact' => $this->input->post('contact'),
+                        'contract' => $this->input->post('contract'));
         }
 
         if ($this->input->post('act') > 0) {
@@ -788,6 +789,9 @@ class MemberMod extends CI_Model
         $query = array('id_member' => $this->session->member['id'], 'detail' => true, 'md5' => true);
         $member = $this->excurl->reqCurlapp('me', $query);
         $member = ($member) ? $member->data[0] : '';
+
+        $club = $this->excurl->reqCurlback('profile-club', ['id_club' => $member->id_club]);
+        $data['club'] = ($club) ? $club->data[0] : '';
 
         $query = array('page' => $this->session->userdata('pageclubcareer'), 'limit' => 20, 'id_club' => $member->id_club,
                        'sortby' => 'a.id_career', 'sortdir' => 'desc');
@@ -871,23 +875,6 @@ class MemberMod extends CI_Model
         $this->tools->__flashMessage($arr);
     }
 
-    function __list_club()
-    {
-        $text = $this->input->post('club');
-
-        $query = array(
-            'page' => '',
-            'limit' => '',
-            'search' => $text
-        );
-        $clubs = $this->excurl->reqCurlapp('profile-club', $query);
-        $data['club'] = $clubs->data;
-        // var_dump($club);exit();
-        $html = $this->load->view($this->__theme() . 'member/player/ajax/listclub', $data, true);
-        $data = array('xClass' => 'showclub', 'xHtml' => $html);
-        $this->tools->__flashMessage($data);
-    }
-
 	function __galeri()
     {
         $param = array('id_member' => $this->session->member['id'], 'detail' => true, 'md5' => true);
@@ -947,59 +934,72 @@ class MemberMod extends CI_Model
 
     function __verify()
     {
+        $this->library->backnext('pageverify', 'pagetotalverify');
+
         $param = array('id_member' => $this->session->member['id'], 'detail' => true, 'md5' => true);
         $res = $this->excurl->reqCurlback('me', $param);
         $v = $res->data;
 
-        $query = array(
-            'page' => '',
-            'limit' => '',
-            'id_club' => $v[0]->id_club,
-        );
+        $club = $this->excurl->reqCurlback('profile-club', ['id_club' => $v[0]->id_club]);
+        $data['club'] = ($club) ? $club->data[0] : '';
+        $slug = $data['club']->slug;
 
-        $club = $this->excurl->reqCurlapp('profile-club', $query)->data;
-        $slug = $club[0]->slug;
-
-        $query = array(
-            'page' => '',
-            'limit' => '',
-            'club' => $slug,
-        );
-
-        $data['verify'] = $this->excurl->reqCurlapp('reglist-player', $query)->data;
+        $query = array('page' => $this->session->userdata('pageverify'), 'limit' => 20, 'club' => $slug,
+                       'active' => 'false', 'sortby' => 'a.id_register', 'sortdir' => 'desc');
+        $data['verify'] = $this->excurl->reqCurlapp('reglist-player', $query);
+        $data['verifycount'] = $this->excurl->reqCurlapp('reglist-player', array_merge($query, ['count' => true]));
         
-        $html = $this->load->view($this->__theme().'member/club/ajax/verifikasi',$data,true);
-        $data = array('xClass'=> 'reqverify','xHtml' => $html);
-        $this->tools->__flashMessage($data);
+        $html = $this->load->view($this->__theme().'member/club/ajax/verifikasi', $data, true);
+        $data = array('xClass' => 'reqverify', 'xHtml' => $html, 'xUrlhash' => base_url() . 'member/verifikasi/' . $this->session->userdata('pageverify'));
+        $this->tools->__flashMessage($data);;
     }
 
-    function __detail_verify()
+    function __verifydetail()
     {
         $param = array('id_member' => $this->session->member['id'], 'detail' => true, 'md5' => true);
         $res = $this->excurl->reqCurlback('me', $param);
         $v = $res->data;
 
-        $query = array(
-            'page' => '',
-            'limit' => '',
-            'id_club' => $v[0]->id_club,
-        );
-
-        $club = $this->excurl->reqCurlapp('profile-club', $query)->data;
-        
+        $club = $this->excurl->reqCurlapp('profile-club', ['id_club' => $v[0]->id_club])->data;
         $slug = $club[0]->slug;
 
-        $query = array(
-            'page' => '',
-            'limit' => '',
-            'club' => $slug,
-            'member' => md5($this->input->post('id_member')),
-        );
-
+        $query = array('page' => '', 'limit' => '', 'club' => $slug, 'id_register' => $this->input->post('act'));
         $data['verify'] = $this->excurl->reqCurlapp('reglist-player', $query)->data;
 
-        $html = $this->load->view($this->__theme().'member/club/ajax/verikasiform',$data,true);
+        $html = $this->load->view($this->__theme().'member/club/ajax/verifikasiform', $data, true);
         $data = array('xClass'=> 'reqverify','xHtml' => $html);
         $this->tools->__flashMessage($data);
     }
+
+    function __verifyapp()
+    {
+        $id_reg = $this->input->post('id_reg');
+        $query  = array('id' => $id_reg, 'player' => '');
+        $res = $this->excurl->reqCurlapp('verify-player', $query);
+        $arr = $this->library->errorMessage($res);
+
+        if ($res->status == 'Success') {
+            $msg = 'Pemain atas nama '.$this->input->post('name').' berhasil di setujui.';
+            $arr = array('xDirect' => base_url('member/verifikasi'), 'xCss' => 'boxsuccess', 'xMsg' => $msg, 'xAlert' => true);
+        }
+
+        $this->tools->__flashMessage($arr);
+    }
+
+    function __verifycount()
+    {
+        $param = array('id_member' => $this->session->member['id'], 'detail' => true, 'md5' => true);
+        $res = $this->excurl->reqCurlback('me', $param);
+        $v = $res->data;
+
+        $club = $this->excurl->reqCurlapp('profile-club', ['id_club' => $v[0]->id_club])->data;
+        $slug = $club[0]->slug;
+
+        $query = array('club' => $slug, 'active' => 'false', 'count' => true);
+        $verify = $this->excurl->reqCurlapp('reglist-player', $query);
+
+        $data = array('xClass' => 'reqverifycount', 'xHtml' => $verify->data[0]->cc);
+        $this->tools->__flashMessage($data);;
+    }
+
 }

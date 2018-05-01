@@ -1936,10 +1936,11 @@ ul, li {
     display: block;
     float: left;
     border-top: 1px solid gainsboro;
-    width: 94%;
+    width: 100%;
     text-align: right;
     font-weight: 500;
     text-transform: capitalize;
+    box-sizing: border-box;
 }
 .detail-posisi{
     box-shadow: 0 1px 11px -5px #727277;
@@ -2856,7 +2857,7 @@ ul, li {
     float: left;
     margin: 0px 1.5%;
     text-align: center;
-    max-width: 120px;
+    max-width: 117px;
     min-height: 120px;
     max-height: 125px;
 }
@@ -4271,7 +4272,7 @@ video::-webkit-media-controls-panel {
     position:  absolute;right:  5px;top:  5px;font-size:  1em;
 }
 .to-open{
-    /* display: none; */
+    display: none;
 }
 .sbpbtn{
     /* position: fixed; */
@@ -4305,4 +4306,62 @@ video::-webkit-media-controls-panel {
 }
 input[type="file"]{
     border: 2px solid #d8d8d8 !important;
+}
+.x-form-daftar-pemain td{
+    padding: 3px;
+}
+.x-form-daftar-pemain tr td:nth-of-type(1){
+    /* max-width: 50px; */
+    color: #616161;
+}
+.loadclubcount .content-tab-eprofile tr td:nth-of-type(2){
+    text-align: right;
+}
+.unset-btn-white{
+    position: relative;
+    top: unset;
+    left: unset;
+    right: unset;
+    float: unset;
+    background-color: white;
+    color: #2a85ec;
+    width: unset;
+    height: unset;
+    padding: 8px 15px;
+    display: block;
+    border-radius: 5px;
+    max-width: 300px;
+}
+.h2-pemain-top-head{
+    font-weight: 400;
+    width: 100%;
+    float: left;
+    margin: 8px 0px;
+}
+.black-notif{
+    position: absolute;
+    top: -1em;
+    font-size: .9em;
+    padding: 3px 6px;
+    background-color: #616161;
+    color: white;
+    font-weight: 600;
+    -webkit-font-smoothing: unset;
+    border-radius: 10px;
+}
+#showclub{
+    height: 120px;
+    overflow-y: scroll;
+    position: absolute;
+    background-color: white;
+}
+.ep-des p{
+    text-align: left !important;
+    font-size: .9em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    letter-spacing: .5px;
+    -webkit-font-smoothing: unset;
+    margin: 1.4em 0px;
+    color: #333;
 }

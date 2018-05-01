@@ -1,6 +1,14 @@
-<a href="<?php echo base_url('member/player/?tab=profil'); ?>" class="btn-blue disp-inblock mg-t mg-b15">Tambah</a>
-
-<?php
+<a href="<?php echo base_url('member/player/?tab=profil'); ?>" class="btn-white-orange fl-r"><i class="fas fa-plus mg-r5"></i>Tambah</a>
+<div class="container mg-tb15">
+    <div class="pp-profil">
+        <img src="<?php echo ($club AND $club->url_logo) ? $club->url_logo : base_url("assets/themes/v1/img/fav.png"); ?>" alt="" class="viewimg">
+    </div>
+    <div class="full-width tx-center mg-tb15">
+        <?php echo ($club) ? $club->name : ''; ?>
+    </div>
+</div>
+<div class="container">
+    <?php
     if ($player) {
         foreach ($player->data as $p) {
             ?>
@@ -11,7 +19,7 @@
                     <span class="cinput disp-none" name="act" val="2"></span>
                     <input type="hidden" name="uid" value="<?php echo $p->slug; ?>" class="cinput">
                 </a>
-                <a href="<?php echo base_url('member/player/?tab=profil&uid='.$p->id); ?>"><i class="far fa-edit mg-r10" style="float:right; font-size:.9em;"></i></a>
+                <a href="<?php echo base_url('member/player/?tab=profil&uid=' . $p->id); ?>"><i class="far fa-edit mg-r10" style="float:right; font-size:.9em;"></i></a>
                 <div class="col-xs-4 edits">
                     <div class="img-round">
                         <img src="<?php echo $p->url_pic; ?>" alt="">
@@ -29,4 +37,5 @@
 
         $this->library->backnext('pageplayer', 'pagetotalplayer', $playercount, 'member', 'player', 20);
     }
-?>
+    ?>
+</div>
